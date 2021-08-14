@@ -22,7 +22,6 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 
 	queryURL := "https://translate.google.cn/translate_a/single?client=gtx&sl=" +
 		sourceLang + "&tl=" + targetLang + "&dt=t&q=" + url.QueryEscape(source)
-
 	// fmt.Println(queryURL)
 	resp, err := http.Get(queryURL)
 	if err != nil {
@@ -97,7 +96,7 @@ func main() {
 	if *inputFile == "" {
 		log.Fatalln("Error, no input file. Please use `-f filename` to select a file.")
 	} else {
-		fmt.Printf("Input file is %q\n", *inputFile)
+		log.Printf("Input file is %q\n", *inputFile)
 	}
 
 	outFile, err := os.Create("tr-" + *inputFile)
@@ -143,5 +142,5 @@ func main() {
 	err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN", outFile)
 	check(err)
 
-	log.Println("Done.")
+	log.Println("Done. Generated output file: ", "tr-"+*inputFile)
 }

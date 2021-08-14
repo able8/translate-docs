@@ -7,7 +7,15 @@
 ### 如何使用
 
 ```
-./translate_darwin_amd64 -f filename
+./translate_darwin_amd64 -f example-input.md
+
+```
+
+Output:
+```
+2021/08/14 23:31:06 Input file is "example-input.md"
+2021/08/14 23:31:06 Translating ...
+2021/08/14 23:31:06 Done. Generated output file:  tr-example-input.md
 ```
 
 ### go build 生成 Mac、linux、Windows 平台可执行文件
