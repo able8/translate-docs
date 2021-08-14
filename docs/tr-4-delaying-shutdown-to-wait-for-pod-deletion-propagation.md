@@ -2,6 +2,8 @@
 
 # 延迟关闭以等待 Pod 删除传播
 
+> From: https://blog.gruntwork.io/delaying-shutdown-to-wait-for-pod-deletion-propagation-445f779a8304
+
 Delaying Shutdown of Pods In Kubernetes
 
 延迟关闭 Kubernetes 中的 Pod
@@ -28,11 +30,11 @@ So what causes the pod to be removed from the `Service` ? To understand this, we
 
 When a pod is removed from the cluster via the API, all that is happening is that the pod is marked for deletion in the metadata server. This sends a pod deletion notification to all relevant subsystems that then handle  it:
 
-当通过 API 从集群中删除一个 Pod 时，所发生的一切就是该 Pod 在元数据服务器中被标记为删除。这会向所有相关子系统发送一个 pod 删除通知，然后处理它：
-
 - The `kubelet` running the pod starts the shutdown sequence described in the previous post.
  - The `kube-proxy` daemon running on all the nodes will remove the pod’s ip address from `iptables`.
  - The endpoints controller will remove the pod from the list of valid endponts, in turn removing the pod from the `Service` .
+
+当通过 API 从集群中删除一个 Pod 时，所发生的一切就是该 Pod 在元数据服务器中被标记为删除。这会向所有相关子系统发送一个 pod 删除通知，然后处理它：
 
 - 运行 pod 的 `kubelet` 启动上一篇文章中描述的关闭序列。
 - 在所有节点上运行的 `kube-proxy` 守护进程将从 `iptables` 中删除 pod 的 IP 地址。
@@ -69,7 +71,7 @@ We will need to update our config to introduce the delay as part of the `preStop
          # nginx.
          "sleep 5 && /usr/sbin/nginx -s quit",
        ]
- ``` 
+```
 
 
 Now let’s walk through what happens during the shutdown sequence in our example. Like in the previous post, we will start with `kubectl drain` , which will evict the pods on the nodes. This will send a delete pod event that notifies the `kubelet` and the Endpoint Controller (which manages the `Service` endpoints) simultaneously. Here, we assume the `preStop` hook starts before the controller removes the pod.
@@ -94,7 +96,7 @@ At this point the `preStop` hook starts, which will delay the shutdown sequence 
 
 The pod is removed from the controller while the shutdown sequence is delayed.
 
-当关闭序列延迟时，吊舱从控制器中移除。
+当关闭序列延迟时，pod从控制器中移除。
 
 Note that during this delay, the pod is still up so even if it receives  connections, the pod is still able to handle the connections. Additionally, if any clients try to connect after the pod is removed  from the controller, they will not be routed to the pod being shutdown. So in this scenario, assuming the Controller handles the event during  the delay period, there will be no downtime.
 
@@ -121,7 +123,7 @@ At this point, it is safe to do any upgrades on Node 1, including  rebooting the
 
 If you made it this far, you might be wondering how we recreate the Pods  that were originally scheduled on the node. Now we know how to  gracefully shutdown the Pods, but what if it is critical to get back to  the original number of Pods running? This is where the `Deployment` resource comes into play.
 
-如果您做到了这一点，您可能想知道我们如何重新创建最初在节点上调度的 Pod。现在我们知道如何优雅地关闭 Pod，但是如果恢复到原来运行的 Pod 数量很重要呢？这就是“部署”资源发挥作用​​的地方。
+如果您做到了这一点，您可能想知道我们如何重新创建最初在节点上调度的 Pod。现在我们知道如何优雅地关闭 Pod，但是如果恢复到原来运行的 Pod 数量很重要呢？这就是“部署”资源发挥作用的地方。
 
 The `Deployment` resource is called [a controller,](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) and it does the work of maintaining a specified desired state on the  cluster. If you recall our resource config, we do not directly create  Pods in the config. Instead, we use `Deployment` resources to automatically manage our Pods for us by providing it a template for how to create the Pods. This is what the `template` section is in our config:
 
@@ -138,9 +140,9 @@ The `Deployment` resource is called [a controller,](https://kubernetes.io/docs/c
          image: nginx:1.15
          ports:
          - containerPort: 80
- ```
+```
 
- 
+
 This specifies that Pods in our `Deployment` should be created with the label `app: nginx` and one container running the `nginx:1.15` image, exposing port `80` .
 
 这指定了我们的 `Deployment` 中的 Pod 应该使用标签 `app: nginx` 和一个运行 `nginx:1.15` 镜像的容器创建，暴露端口 `80`。
@@ -152,16 +154,16 @@ In addition to the Pod template, we also provide a spec to the `Deployment` reso
 ```
  spec:
    replicas: 2
- ```
+```
 
- 
+
 This notifies the controller that it should try to maintain 2 Pods running  on the cluster. Anytime the number of running Pods drops, the controller will automatically create a new one to replace it. So in our case, the  when we evict the Pod from the node during a drain operation, the `Deployment` controller automatically recreates it on one of the other available nodes.
 
 这会通知控制器它应该尝试维护在集群上运行的 2 个 Pod。每当正在运行的 Pod 数量下降时，控制器会自动创建一个新的来替换它。因此，在我们的例子中，当我们在 Drain 操作期间从节点中驱逐 Pod 时，“Deployment”控制器会自动在其他可用节点之一上重新创建它。
 
 ## Summary
 
-＃＃ 概括
+## 概括
 
 In sum, with adequate delays in the `preStop` hooks and graceful termination, we can now shutdown our pods gracefully on a single node. And with `Deployment` resources, we can automatically recreate the shut down Pods. But what  if we want to replace all the nodes in the cluster at once?
 
@@ -173,6 +175,7 @@ If we naively drain all the nodes, we could end up with downtime because  the se
 
 If we instead try to drain nodes one at a time, we could end up with new  Pods being launched on the remaining old nodes. This risks a situation  where we might end up with all our Pod replicas running on one of the  old nodes, so that when we get to drain that one, we still lose all our  Pod replicas. 
 如果我们尝试一次排空一个节点，我们最终可能会在剩余的旧节点上启动新的 Pod。这存在一种风险，即我们可能最终将所有 Pod 副本都运行在一个旧节点上，因此当我们耗尽该节点时，我们仍然会丢失所有 Pod 副本。
+
 To handle this situation, Kubernetes offers a feature called `PodDisruptionBudgets`, which indicate tolerance for the number of pods that can be shutdown at any given point in time. In [the next and final part of our series](https://blog.gruntwork.io/avoiding-outages-in-your-kubernetes-cluster-using-poddisruptionbudgets-ef6a4baa5085), we will cover how we can use this to control the number of drain events that can happen concurrently despite our naive approach to issue a  drain call for all nodes in parallel.
 
 为了处理这种情况，Kubernetes 提供了一个名为“PodDisruptionBudgets”的功能，它表示可以在任何给定时间点关闭的 pod 数量的容差。在 [我们系列的下一部分也是最后一部分](https://blog.gruntwork.io/avoiding-outages-in-your-kubernetes-cluster-using-poddisruptionbudgets-ef6a4baa5085) 中，我们将介绍如何使用它来尽管我们为所有节点并行发出排放调用的幼稚方法，但控制可以同时发生的排放事件的数量。
@@ -186,4 +189,4 @@ The Gruntwork Blog
 Gruntwork 博客
 
 - [Kubernetes](https://blog.gruntwork.io/tagged/kubernetes) 
-- [Kubernetes](https://blog.gruntwork.io/tagged/kubernetes)
+
