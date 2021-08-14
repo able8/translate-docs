@@ -2,6 +2,8 @@
 
 # 使用 PodDisruptionBudgets 避免 Kubernetes 集群中断
 
+> https://blog.gruntwork.io/d-ef6a4baa5085
+
 Preventing Pods from Eviction with Pod Disruption Budgets in Kubernetes
 
 使用 Kubernetes 中的 Pod 中断预算防止 Pod 被驱逐

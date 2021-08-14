@@ -2,7 +2,7 @@
 
 使用 [Google 翻译 API](https://translate.google.cn/)，将输入文档按段落生成 英文 - 中文 对照翻译。
 
-有时阅读英文文档，理解不够准确，使用中英文对照理解更准确。在改进翻译中，加深理解。
+阅读英文文档，有时理解不准确，使用中英文对照理解更准确。在改进翻译中，加深理解。
 
 ### 如何使用
 
@@ -26,8 +26,22 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o translate_lin
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_windows_amd64.exe translate.go
 ```
 
-## docs
+---
+
+# docs & blogs
+
+## Kubernetes
 
 1. [Handling Client Requests Properly with Kubernetes 使用 Kubernetes 正确处理客户端请求](docs/tr-1-Handling-Client-Requests-Properly-with-Kubernetes.md)
 1. [Zero Downtime Server Updates For Your Kubernetes Cluster Kubernetes 集群的零停机服务器更新](docs/tr-2-zero-downtime-server-updates-for-your-kubernetes-cluster.md)
 1. [Gracefully Shutting Down Pods in a Kubernetes Cluster 优雅地关闭 Kubernetes 集群中的 Pod](docs/tr-3-gracefully-shutting-down-pods-in-a-kubernetes-cluster.md)
+1. [Delaying Shutdown to Wait for Pod Deletion Propagation 延迟关闭以等待 Pod 删除传播](docs/tr-4-delaying-shutdown-to-wait-for-pod-deletion-propagation.md)
+1. [Avoiding Outages in your Kubernetes Cluster using PodDisruptionBudgets 使用 PodDisruptionBudgets 避免 Kubernetes 集群中断](docs/tr-5-avoiding-outages-in-your-kubernetes-cluster-using-poddisruptionbudgets.md)
+
+
+## Golang
+
+## Cloud Native
+
+
+
