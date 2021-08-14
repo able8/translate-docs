@@ -16,12 +16,12 @@ This is part 2 of [our journey](https://blog.gruntwork.io/zero-downtime-server-u
 
 By default, `kubectl drain` will evict pods in a way to honor the pod lifecycle. What this means in practice is that it will respect the following flow:
 
-默认情况下，`kubectl drain` 将以一种尊重 Pod 生命周期的方式驱逐 Pod。这在实践中意味着它将遵循以下流程：
-
 - `drain` will issue a request to delete the pods on the target node to the control plane. This will subsequently notify the `kubelet` on the target node to start shutting down the pods.
  - The `kubelet` on the node will invoke the `preStop` hook in the pod.
  - Once the `preStop` hook completes, the `kubelet` on the node will issue the `TERM` signal to the running application in the containers of the pod.
  - The `kubelet` on the node will wait for up to the grace period (specified on the pod, or passed in from the command line; defaults to 30 seconds) for the  containers to shut down, before forcibly killing the process (with ` SIGKILL`). Note that this grace period includes the time to execute the `preStop` hook.
+
+默认情况下，`kubectl drain` 将以一种尊重 Pod 生命周期的方式驱逐 Pod。这在实践中意味着它将遵循以下流程：
 
 - `drain` 将向控制平面发出删除目标节点上的 pod 的请求。这将随后通知目标节点上的 `kubelet` 开始关闭 pod。
 - 节点上的 `kubelet` 将调用 pod 中的 `preStop` 钩子。
@@ -44,16 +44,16 @@ In our example, Nginx does not gracefully handle the `TERM` signal by default, c
          # Gracefully shutdown nginx
          "/usr/sbin/nginx", "-s", "quit"
        ]
- ```
+```
 
- 
+
 With this config, the shutdown sequence will issue the command `/usr/sbin/nginx -s quit` before sending `SIGTERM` to the Nginx process in the container. Note that since the command will gracefully stop the Nginx process and the pod, the `TERM` signal essentially becomes a noop.
 
 使用此配置，关闭序列将在将“SIGTERM”发送到容器中的 Nginx 进程之前发出命令“/usr/sbin/nginx -s quit”。请注意，由于该命令将优雅地停止 Nginx 进程和 pod，因此“TERM”信号本质上变成了一个 noop。
 
 This should be nested under the Nginx container spec. When we include this, the full config for the `Deployment` looks as follows:
 
-这应该嵌套在 Nginx 容器规范下。当我们包含它时，“部署”的完整配置如下所示：
+这应该嵌套在 Nginx 容器规范下。当我们包含它时，完整的 `Deployment` 配置如下所示：
 
 ```
  ---
@@ -85,9 +85,9 @@ This should be nested under the Nginx container spec. When we include this, the 
                  # Gracefully shutdown nginx
                  "/usr/sbin/nginx", "-s", "quit"
                ]
- ```
+```
 
- 
+
 ## Continuous Traffic After Shutdown
 
 ## 关机后持续流量
@@ -130,7 +130,7 @@ In this example, when the application pod receives the traffic after the  shutdo
 
 在这个例子中，当应用程序 pod 在关闭序列启动后收到流量时，第一个客户端将收到来自服务器的响应。但是，第二个客户端收到错误，这将被视为停机。
 
-So why does this happen? And how do you mitigate potential downtime for  clients that end up connecting to the server during a shutdown sequence? In [the next part of our series](https://blog.gruntwork.io/delaying-shutdown-to-wait-for-pod-deletion-propagation-445f779a8304), we will cover the pod eviction lifecylce in more details and describe how you can introduce a delay in the `preStop` hook to mitigate the effects of continuous traffic from the `Service` .
+So why does this happen? And how do you mitigate potential downtime for  clients that end up connecting to the server during a shutdown sequence? In [the next part of our series](https://blog.gruntwork.io/delaying-shutdown-to-wait-for-pod-deletion-propagation-445f779a8304), we will cover the pod eviction lifecylce in more details and describe how you can introduce a delay in the `preStop` hook to mitigate the effects of continuous traffic from the `Service`.
 
 那么为什么会发生这种情况呢？以及如何减少在关闭序列期间最终连接到服务器的客户端的潜在停机时间？在 [我们系列的下一部分](https://blog.gruntwork.io/delaying-shutdown-to-wait-for-pod-deletion-propagation-445f779a8304) 中，我们将更详细地介绍 pod eviction lifecylce 和描述如何在 `preStop` 钩子中引入延迟以减轻来自 `Service` 的持续流量的影响。
 
