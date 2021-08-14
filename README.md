@@ -29,3 +29,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 ## docs
 
 1. [Handling Client Requests Properly with Kubernetes 使用 Kubernetes 正确处理客户端请求](docs/tr-1-Handling-Client-Requests-Properly-with-Kubernetes.md)
+1. [Zero Downtime Server Updates For Your Kubernetes Cluster Kubernetes 集群的零停机服务器更新](docs/tr-2-zero-downtime-server-updates-for-your-kubernetes-cluster.md)
