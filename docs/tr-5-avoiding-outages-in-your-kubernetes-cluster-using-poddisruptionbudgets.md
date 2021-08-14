@@ -32,16 +32,16 @@ To configure a pod disruption budget, we will create a `PodDisruptionBudget` res
    selector:
      matchLabels:
        app: nginx
- ```
+```
 
- 
+
 This indicates to Kubernetes that we want at least 1 pod that matches the label `app: nginx` to be available at any given time. Using this, we can induce Kubernetes to wait for the pod in one drain request to be replaced before evicting the pods in a second drain request.
 
 这向 Kubernetes 表明我们希望在任何给定时间至少有 1 个与标签“app: nginx”匹配的 pod 可用。使用这个，我们可以诱导 Kubernetes 在第二个排水请求中驱逐 Pod 之前等待一个排水请求中的 pod 被替换。
 
 ## Example
 
-＃＃ 例子
+## 例子
 
 To illustrate how this works, let’s go back to our example. For the sake  of simplicity, we will ignore any prestop hooks, readiness probes, and  service requests in this example. We will also assume that we want to do a one to one replacement of the cluster nodes. This means that we will  expand our cluster by doubling the number of nodes, with the new nodes  running the new image.
 
@@ -75,6 +75,7 @@ So to start, the two threads managing the drain sequence will taint the nodes so
 
 After the tainting completes, the drain threads will start evicting the pods  on the nodes. As part of this, the drain thread will query the control  plane to see if the eviction will cause the service to drop below the  configured Pod Disruption Budget (PDB). 
 污染完成后，drain 线程将开始驱逐节点上的 pod。作为其中的一部分，drain 线程将查询控制平面以查看驱逐是否会导致服务低于配置的 Pod 中断预算 (PDB)。
+
 Note that the control plane will serialize the requests, processing one PDB  inquiry at a time. As such, in this case, the control plane will respond to one of the requests with a success, while failing the other. This is because the first request is based on 2 pods being available. Allowing  this request would drop the number of pods available to 1, which means  the budget is maintained. When it allows the request to proceed, one of  the pods is then evicted, thereby becoming unavailable. At that point,  when the second request is processed, the control plane will reject it  because allowing that request would drop the number of available pods  down to 0, dropping below our configured budget.
 
 请注意，控制平面将序列化请求，一次处理一个 PDB 查询。因此，在这种情况下，控制平面将成功响应其中一个请求，而另一个失败。这是因为第一个请求基于 2 个可用的 pod。允许此请求会将可用的 pod 数量降至 1，这意味着预算得以维持。当它允许请求继续时，其中一个 pod 将被驱逐，从而变得不可用。此时，当第二个请求被处理时，控制平面将拒绝它，因为允许该请求会将可用 Pod 的数量降至 0，低于我们配置的预算。
@@ -113,27 +114,27 @@ With that, we have successfully migrated both pods to the new nodes, without eve
 
 # Summary
 
-＃ 概括
+## 概括
 
 So to tie all that together, in this blog post series we covered:
-
-因此，为了将所有这些联系在一起，在这个博客文章系列中，我们介绍了：
 
 - How to use lifecycle hooks to implement the ability to gracefully shutdown  our applications so that they are not abruptly terminated.
  - How pods are removed from the system and why it is necessary to introduce delays in the shutdown sequence.
  - How to specify pod disruption budgets to ensure that we always have a  certain number of pods available to continuously service a functioning  application in the face of disruption.
 
+
+因此，为了将所有这些联系在一起，在这个博客文章系列中，我们介绍了：
 - 如何使用生命周期钩子实现优雅关闭我们的应用程序的能力，以便它们不会突然终止。
 - 如何从系统中移除 Pod 以及为什么需要在关闭序列中引入延迟。
 - 如何指定 pod 中断预算以确保我们始终有一定数量的 pod 可用，以便在遇到中断时持续为正常运行的应用程序提供服务。
 
 When these features are all used together, we are able to achieve our goal of a zero downtime rollout of instance updates!
 
-当这些功能全部一起使用时，我们就能够实现实例更新的零停机时间推出的目标！
+当这些功能全部一起使用时，我们就能够实现实例更新的零停机时间部署的目标！
 
 But don’t just take my word for it! Go ahead and take this configuration  out for a spin. You can even write automated tests using terratest, by  leveraging the functions in [the k8s module](https://godoc.org/github.com/gruntwork-io/terratest/modules/k8s), and [the ability to continuously check an endpoint](https://godoc.org/github.com/gruntwork-io/terratest/modules/http-helper#ContinuouslyCheckUrl). After all, one of the important [lessons we learned from writing 300k lines of infrastructure code](https://blog.gruntwork.io/5-lessons-learned-from-writing-over-300-000-lines-of- infrastructure-code-36ba7fadeac1) is that infrastructure code without automated tests is broken.
 
-但不要只相信我的话！继续并尝试使用此配置。您甚至可以使用 terratest 编写自动化测试，利用 [k8s 模块](https://godoc.org/github.com/gruntwork-io/terratest/modules/k8s) 中的功能和 [持续检查的能力一个端点]（https://godoc.org/github.com/gruntwork-io/terratest/modules/http-helper#ContinuouslyCheckUrl）。毕竟，[我们从编写 30 万行基础设施代码中学到的经验教训]（https://blog.gruntwork.io/5-lessons-learned-from-writing-over-300-000-lines-of- Infrastructure-code-36ba7fadeac1) 是没有自动化测试的基础架构代码被破坏。
+但不要只相信我的话！继续并尝试使用此配置。您甚至可以使用 terratest 编写自动化测试，利用 [k8s 模块](https://godoc.org/github.com/gruntwork-io/terratest/modules/k8s) 中的功能和 [持续检查的能力一个端点](https://godoc.org/github.com/gruntwork-io/terratest/modules/http-helper#ContinuouslyCheckUrl)。毕竟，[我们从编写 30 万行基础设施代码中学到的经验教训](https://blog.gruntwork.io/5-lessons-learned-from-writing-over-300-000-lines-of-Infrastructure-code-36ba7fadeac1) 是没有自动化测试的基础架构代码被破坏。
 
 *To get a fully implemented version of zero downtime Kubernetes cluster updates on AWS and more, check out* [*Gruntwork.io*](http://gruntwork.io)*.*
 
@@ -141,3 +142,4 @@ But don’t just take my word for it! Go ahead and take this configuration  out 
 
 The Gruntwork Blog 
 Gruntwork 博客
+
