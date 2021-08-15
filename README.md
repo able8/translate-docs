@@ -40,6 +40,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [How does 'kubectl exec' work?](docs/tr-6-how-kubectl-exec-works.md)
 1. [What is an Operator](docs/tr-16-what-is-an-operator.md)
 1. [Introducing Operators: Putting Operational Knowledge into Software](docs/tr-17-introducing-operators.md)
+1. [Go Operator Tutorial](docs/tr-18-Go-Operator-Tutorial.md)
 1. [](docs/)
 
 
