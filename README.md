@@ -42,7 +42,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 ## Docker and Container
 
+1. [Kubernetes vs Docker: Understanding Containers in 2021 了解 Kubernetes vs Docker](docs/tr-8-kubernetes-vs-docker.md)
 1. [Learning Path: Basics of Container Runtimes 学习路径：容器运行时的基础知识](docs/tr-7-basics-of-container-runtimes.md)
+
 
 
 ## Golang
