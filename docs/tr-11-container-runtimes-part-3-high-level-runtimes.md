@@ -2,13 +2,11 @@
 
 # 容器运行时第 3 部分：高级运行时
 
-*Oct 30, 2018*
+Oct 30, 2018 From: https://www.ianlewis.org/en/container-runtimes-part-3-high-level-runtimes
 
-*2018 年 10 月 30 日*
+This is the third part in a four-part series on container runtimes. It's been a while since [part 1](https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r), but in that post I gave an overview of container runtimes and discussed the differences between low-level and high-level runtimes. In [part 2](https://www.ianlewis.org/en/container-runtimes-part-2-anatomy-low-level-contai) I went into detail on low-level container runtimes and built a simple low-level runtime.
 
-*This is the third part in a four-part series on container runtimes. It's been a while since [part 1](https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r), but in that post I gave an overview of container runtimes and discussed the differences between low-level and high-level runtimes. In [part 2](https://www.ianlewis.org/en/container-runtimes-part-2-anatomy-low-level-contai) I went into detail on low-level container runtimes and built a simple low- level runtime.*
-
-*这是关于容器运行时的四部分系列中的第三部分。距离 [第 1 部分](https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r) 已经有一段时间了，但在那篇文章中，我概述了容器运行时并讨论了低级和高级运行时之间的差异。在 [第 2 部分](https://www.ianlewis.org/en/container-runtimes-part-2-anatomy-low-level-contai) 中，我详细介绍了低级容器运行时并构建了一个简单的低级容器级别运行时。*
+这是关于容器运行时的四部分系列中的第三部分。距离 [第 1 部分](https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r) 已经有一段时间了，但在那篇文章中，我概述了容器运行时并讨论了低级和高级运行时之间的差异。在 [第 2 部分](https://www.ianlewis.org/en/container-runtimes-part-2-anatomy-low-level-contai) 中，我详细介绍了低级容器运行时并构建了一个简单的低级容器级别运行时。*
 
 High-level runtimes are higher up the stack than low-level runtimes. While low-level runtimes are responsible for the mechanics of actually  running a container, high-level runtimes are responsible for transport  and management of container images, unpacking the image, and passing off to the low-level runtime to run the container. Typically, high-level  runtimes provide a daemon application and an API that remote  applications can use to logically run containers and monitor them but  they sit on top of and delegate to low-level runtimes or other  high-level runtimes for the actual work.
 
@@ -21,8 +19,6 @@ High-level runtimes can also provide features that sound low-level,  but are use
 Here's a conceptual diagram to understand how the components fit together:
 
 这是一个概念图，用于了解组件如何组合在一起：
-
-![Runtime architecture diagram](https://storage.googleapis.com/static.ianlewis.org/prod/img/771/runtime-architecture.png)
 
 ![运行时架构图](https://storage.googleapis.com/static.ianlewis.org/prod/img/771/runtime-architecture.png)
 
@@ -54,8 +50,6 @@ Docker originally implemented both high-level and low-level runtime  features, b
 
 Docker 最初实现了高级和低级运行时功能，但后来这些部分被分解为单独的项目，如 runc 和 containerd。 Docker 现在由`dockerd` 守护进程、`docker-containerd` 守护进程和`docker-runc` 组成。 `docker-containerd` 和 `docker-runc` 只是 vanilla `containerd` 和 `runc` 的 Docker 打包版本。
 
-![Docker architecture diagram](https://storage.googleapis.com/static.ianlewis.org/prod/img/771/docker.png)
-
 ![Docker架构图](https://storage.googleapis.com/static.ianlewis.org/prod/img/771/docker.png)
 
 `dockerd` provides features such as building images, and dockerd uses `docker-containerd` to provide features such as image management and running containers. For instance, Docker's build step is actually just some logic that  interprets a Dockerfile, runs the necessary commands in a container  using `containerd`, and saves the resulting container file system as an image.
@@ -64,85 +58,75 @@ Docker 最初实现了高级和低级运行时功能，但后来这些部分被�
 
 ## containerd
 
-## 容器
-
 [containerd](https://containerd.io/) is a high-level  runtime that was split off from Docker. Like runc, which was broken off  as the low-level runtime piece, containerd was broken off as the  high-level runtime piece of Docker. `containerd` implements  downloading images, managing them, and running containers from images. When it needs to run a container it unpacks the image into an OCI  runtime bundle and shells out to `runc` to run it.
 
-[containerd](https://containerd.io/) 是一个从 Docker 中分离出来的高级运行时。就像 runc 被拆分为低级运行时部分一样，containerd 被拆分为 Docker 的高级运行时部分。 `containerd` 实现了下载镜像、管理镜像以及从镜像运行容器。当它需要运行一个容器时，它会将镜像解包到一个 OCI 运行时包中，并通过“runc”来运行它。
+[containerd](https://containerd.io/) 是一个从 Docker 中分离出来的高级运行时。就像 runc 是被拆分出的低级运行时部分一样，containerd 是被拆分出的 Docker 的高级运行时部分。 `containerd` 实现了下载镜像、管理镜像以及从镜像运行容器。当它需要运行一个容器时，它会将镜像解包到一个 OCI 运行时包中，并通过“runc”来运行它。
 
-Containerd also provides an API and client application that can be  used to interact with it. The containerd command line client is `ctr`.
+Containerd also provides an API and client application that can be  used to interact with it. The containerd command line client is `ctr`.`ctr` can be used to tell `containerd` to pull a container image:
 
 Containerd 还提供了可用于与其交互的 API 和客户端应用程序。 containerd 命令行客户端是 `ctr`。
 
-`ctr` can be used to tell `containerd` to pull a container image:
-
-`ctr` 可用于告诉 `containerd` 拉取容器镜像：
+ctr` 可用于告诉 `containerd` 拉取容器镜像：
 
 ```
  $ sudo ctr images pull docker.io/library/redis:latest
- ```
+```
 
- 
+
 List the images you have:
 
 列出您拥有的图像：
 
 ```
  $ sudo ctr images list
- ```
+```
 
- 
+
 Run a container based on an image:
 
 运行基于镜像的容器：
 
 ```
  $ sudo ctr container create docker.io/library/redis:latest redis
- ```
+```
 
- 
+
 List the running containers:
 
 列出正在运行的容器：
 
 ```
  $ sudo ctr container list
- ```
+```
 
- 
+
 Stop the container:
 
 停止容器：
 
 ```
  $ sudo ctr container delete redis
- ``` 
+```
 
 
 These commands are similar to how a user interacts with Docker. However, in contrast with Docker, containerd is focused solely on  running containers, so it does not provide a mechanism for building  containers. Docker was focused on end-user and developer use cases,  whereas containerd is focused on operational use cases, such as running  containers on servers. Tasks such as building container images are left  to other tools.
 
 这些命令类似于用户与 Docker 交互的方式。但是，与 Docker 相比，containerd 只专注于运行容器，因此它没有提供构建容器的机制。 Docker 专注于最终用户和开发人员用例，而 containerd 专注于操作用例，例如在服务器上运行容器。诸如构建容器镜像之类的任务留给了其他工具。
 
-# rkt
-
-#rkt
+## rkt
 
 In the previous post, I mentioned that `rkt` is a runtime  that has both low-level and high-level features. For instance, much like Docker, rkt allows you to build container images, fetch and manage  container images in a local repository, and run them all from a single  command. `rkt` stops short of Docker's functionality, however, in that it doesn't provide a long-running daemon and remote API.
 
 在上一篇文章中，我提到 rkt 是一个同时具有低级和高级功能的运行时。例如，与 Docker 非常相似，rkt 允许您构建容器镜像，在本地存储库中获取和管理容器镜像，并通过单个命令运行它们。然而，`rkt` 没有提供 Docker 的功能，因为它不提供长期运行的守护进程和远程 API。
 
-You can fetch remote images:
-
-您可以获取远程图像：
+You can fetch remote images: 您可以获取远程图像：
 
 ```
  $ sudo rkt fetch coreos.com/etcd:v3.3.10
- ```
+```
 
- 
-You can then list the images installed locally:
 
-然后，您可以列出本地安装的映像：
+You can then list the images installed locally: 然后，您可以列出本地安装的映像：
 
 ```
  $ sudo rkt image list
@@ -150,27 +134,27 @@ You can then list the images installed locally:
  sha512-07738c36c639     coreos.com/rkt/stage1-fly:1.30.0        44MiB   2 minutes ago   2 minutes ago
  sha512-51ea8f513d06     coreos.com/oem-gce:1855.5.0             591MiB  2 minutes ago   2 minutes ago
  sha512-2ba519594e47     coreos.com/etcd:v3.3.10                 69MiB   25 seconds ago  24 seconds ago
- ```
+```
 
- 
-And delete images:
 
-并删除图像：
+And delete images: 并删除图像：
 
 ```
  $ sudo rkt image rm coreos.com/etcd:v3.3.10
  successfully removed aci for image: "sha512-2ba519594e4783330ae14e7691caabfb839b5f57c0384310a7ad5fa2966d85e3"
  rm: 1 image(s) successfully removed
- ```
+```
 
- 
+
 Though rkt doesn't seem to be actively developed very much anymore it is an interesting tool and an important part of the history of  container technology.
 
 虽然 rkt 似乎不再被积极开发，但它是一个有趣的工具，也是容器技术历史的重要组成部分。
 
-# Onward, Upward
+## Onward, Upward
 
-# 向前，向上
+## 向前，向上
 
 In the next post I'll move up the stack and talk about runtimes from  the perspective of Kubernetes and how they work. Be sure to add [my RSS feed](https://www.ianlewis.org/feed/enfeed) or follow me on Twitter to get notified when the next blog post comes out. 
+
 在下一篇文章中，我将向上移动堆栈并从 Kubernetes 的角度讨论运行时及其工作原理。请务必添加 [我的 RSS 提要](https://www.ianlewis.org/feed/enfeed) 或在 Twitter 上关注我，以便在下一篇博文发布时收到通知。
+
