@@ -38,7 +38,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Delaying Shutdown to Wait for Pod Deletion Propagation](docs/tr-4-delaying-shutdown-to-wait-for-pod-deletion-propagation.md)
 1. [Avoiding Outages in your Kubernetes Cluster using PodDisruptionBudgets](docs/tr-5-avoiding-outages-in-your-kubernetes-cluster-using-poddisruptionbudgets.md)
 1. [How does 'kubectl exec' work?](docs/tr-6-how-kubectl-exec-works.md)
-1. [](docs/)
+1. [What is an Operator](docs/tr-16-what-is-an-operator.md)
 1. [](docs/)
 
 
