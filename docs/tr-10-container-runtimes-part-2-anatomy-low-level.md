@@ -2,9 +2,7 @@
 
 # 容器运行时第 2 部分：底层容器运行时剖析
 
-*Feb 26, 2018*
-
-*2018 年 2 月 26 日*
+*Feb 26, 2018* From https://www.ianlewis.org/en/container-runtimes-part-2-anatomy-low-level-contai
 
 This is the second in a four-part series on container runtimes. In [part 1](https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r), I gave an overview of container runtimes and discussed the differences  between low-level and high -level runtimes. In this post I will go into  detail on low-level container runtimes.
 
@@ -34,9 +32,9 @@ A robust low-level container runtime, however, would do a lot more,  like allow 
 
 然而，一个强大的低级容器运行时会做更多的事情，比如允许在 cgroup 上设置资源限制、设置根文件系统以及将容器的进程 chroot 到根文件系统。
 
-# Building a Sample Runtime
+## Building a Sample Runtime
 
-# 构建示例运行时
+## 构建示例运行时
 
 Let's walk through running a simple ad hoc runtime to set up a container. We can perform the steps using the standard Linux [cgcreate](https://linux.die.net/man/1/cgcreate), [cgset](https://linux.die.net/man/1/cgset) , [cgexec](https://linux.die.net/man/1/cgexec), [chroot](http://man7.org/linux/man-pages/man2/chroot.2.html) and [ unshare](http://man7.org/linux/man-pages/man1/unshare.1.html) commands. You'll need to run most of the commands below as root.
 
@@ -50,9 +48,9 @@ First let's set up a root filesystem for our container. We'll use the busybox Do
  $ CID=$(docker create busybox)
  $ ROOTFS=$(mktemp -d)
  $ docker export $CID | tar -xf - -C $ROOTFS
- ```
+```
 
- 
+
 Now let's create our cgroup and set restrictions on the memory and  CPU. Memory limits are set in bytes. Here we are setting the limit to  100MB.
 
 现在让我们创建我们的 cgroup 并设置内存和 CPU 的限制。内存限制以字节为单位设置。在这里，我们将限制设置为 100MB。
@@ -62,25 +60,27 @@ Now let's create our cgroup and set restrictions on the memory and  CPU. Memory 
  $ cgcreate -g cpu,memory:$UUID
  $ cgset -r memory.limit_in_bytes=100000000 $UUID
  $ cgset -r cpu.shares=512 $UUID
- ```
+```
 
- 
+
 CPU usage can be restricted in one of two ways. Here we set our CPU  limit using CPU "shares". Shares are an amount of CPU time relative to  other processes running at the same time. Containers running by  themselves can use the whole CPU, but if other containers are running,  they can use a proportional amount of CPU to their CPU shares.
 
 可以通过以下两种方式之一限制 CPU 使用率。在这里，我们使用 CPU“份额”设置我们的 CPU 限制。份额是相对于同时运行的其他进程的 CPU 时间量。自己运行的容器可以使用整个 CPU，但如果其他容器正在运行，它们可以使用与其 CPU 份额成比例的 CPU。
 
 CPU limits based on CPU cores are a bit more complicated. They let  you set hard limits on the amount of CPU cores that a container can use. Limiting CPU cores requires you set two options on the cgroup, `cfs_period_us` and `cfs_quota_us`. `cfs_period_us` specifies how often CPU usage is checked and `cfs_quota_us` specifies the amount of time that a task can run on one core in one period. Both are specified in microseconds. 
+
 基于 CPU 内核的 CPU 限制要复杂一些。它们让您可以对容器可以使用的 CPU 内核数量设置硬限制。限制 CPU 内核需要您在 cgroup 上设置两个选项，`cfs_period_us` 和 `cfs_quota_us`。 `cfs_period_us` 指定检查 CPU 使用率的频率，`cfs_quota_us` 指定任务可以在一个周期内在一个内核上运行的时间量。两者都以微秒为单位指定。
+
 For instance, if we wanted to limit our container to two cores we  could specify a period of one second and a quota of two seconds (one  second is 1,000,000 microseconds) and this would effectively allow our  process to use two cores during a one-second period. [This article](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/sec-cpu) explains this concept in depth.
 
-例如，如果我们想将容器限制为两个内核，我们可以指定一秒的时间段和两秒的配额（一秒是 1,000,000 微秒），这将有效地允许我们的进程在一秒内使用两个内核时期。 【本文】（https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/sec-cpu）深入解释了这个概念。
+例如，如果我们想将容器限制为两个内核，我们可以指定一秒的时间段和两秒的配额（一秒是 1,000,000 微秒），这将有效地允许我们的进程在一秒内使用两个内核时期。[This article](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/sec-cpu) 深入解释了这个概念。
 
 ```
  $ cgset -r cpu.cfs_period_us=1000000 $UUID
  $ cgset -r cpu.cfs_quota_us=2000000 $UUID
- ```
+```
 
- 
+
 Next we can execute a command in the container. This will execute the command within the cgroup we created, unshare the specified namespaces, set the hostname, and chroot to our filesystem.
 
 接下来我们可以在容器中执行一个命令。这将在我们创建的 cgroup 中执行命令，取消共享指定的命名空间，设置主机名和 chroot 到我们的文件系统。
@@ -92,9 +92,9 @@ Next we can execute a command in the container. This will execute the command wi
  / # echo "Hello from in a container"
  Hello from in a container
  / # exit
- ```
+```
 
- 
+
 Finally, after our command has completed, we can clean up by deleting the cgroup and temporary directory that we created.
 
 最后，在我们的命令完成后，我们可以通过删除我们创建的 cgroup 和临时目录来进行清理。
@@ -102,9 +102,9 @@ Finally, after our command has completed, we can clean up by deleting the cgroup
 ```
  $ cgdelete -r -g cpu,memory:$UUID
  $ rm -r $ROOTFS
- ```
+```
 
- 
+
 To further demonstrate how this works, I wrote a simple runtime in bash called [execc](https://github.com/ianlewis/execc). It supports mount, user, pid, ipc, uts, and network namespaces; setting memory limits; setting CPU limits by number of cores; mounting the proc file system; and running the container in its own root file system.
 
 为了进一步演示这是如何工作的，我在 bash 中编写了一个简单的运行时，名为 [execc](https://github.com/ianlewis/execc)。支持mount、user、pid、ipc、uts、网络命名空间；设置内存限制；按内核数设置 CPU 限制；挂载proc文件系统；并在其自己的根文件系统中运行容器。
@@ -119,8 +119,6 @@ In order to better understand low-level container runtimes it's  useful to look 
 
 ### lmctfy
 
-### lmctfy
-
 Though not in wide use, one container runtime of note is [lmctfy](https://github.com/google/lmctfy). lmctfy is a project by Google, based on the internal container runtime that [Borg](https://research.google.com/pubs/pub43438.html) uses. One of its most interesting features is that it supports  container hierarchies that use cgroup hierarchies via the container  names. For example, a root container called "busybox" could create  sub-containers under the name "busybox/sub1" or "busybox/sub2" where the names form a kind of path structure. As a result each sub-container can have its own cgroups that are then limited by the parent container's  cgroup. This is inspired by Borg and gives containers in lmctfy the  ability to run sub-task containers under a pre-allocated set of  resources on a server, and thus achieve more stringent SLOs than could  be provided by the runtime itself.
 
 虽然没有被广泛使用，但一个值得注意的容器运行时是 [lmctfy](https://github.com/google/lmctfy)。 lmctfy 是 Google 的一个项目，基于 [Borg](https://research.google.com/pubs/pub43438.html) 使用的内部容器运行时。它最有趣的特性之一是它支持通过容器名称使用 cgroup 层次结构的容器层次结构。例如，名为“busybox”的根容器可以在名称“busybox/sub1”或“busybox/sub2”下创建子容器，其中名称形成一种路径结构。因此，每个子容器都可以拥有自己的 cgroup，然后受父容器的 cgroup 限制。这受到 Borg 的启发，使 lmctfy 中的容器能够在服务器上预先分配的一组资源下运行子任务容器，从而实现比运行时本身所能提供的更严格的 SLO。
@@ -130,8 +128,6 @@ While lmctfy provides some interesting features and ideas, other  runtimes were 
 虽然 lmctfy 提供了一些有趣的功能和想法，但其他运行时更有用，因此 Google 决定社区最好专注于 Docker 的 libcontainer 而不是 lmctfy。
 
 ### runc
-
-### 运行
 
 runc is currently the most widely used container runtime. It was  originally developed as part of Docker and was later extracted out as a  separate tool and library.
 
@@ -148,18 +144,18 @@ First create the root filesystem. Here we'll use busybox again.
 ```
  $ mkdir rootfs
  $ docker export $(docker create busybox) | tar -xf - -C rootfs
- ```
+```
 
- 
+
 Next create a config.json file.
 
 接下来创建一个 config.json 文件。
 
 ```
  $ runc spec
- ```
+```
 
- 
+
 This command creates a template config.json for our container. It should look something like this:
 
 此命令为我们的容器创建模板 config.json。它应该是这样的：
@@ -184,9 +180,9 @@ This command creates a template config.json for our container. It should look so
                  "cwd": "/",
                  "capabilities": {
  ...
- ```
+```
 
- 
+
 By default it runs the sh command in a container with a root  filesystem at ./rootfs. Since that's exactly the setup we want we can  just go ahead and run the container.
 
 默认情况下，它在一个根文件系统位于 ./rootfs 的容器中运行 sh 命令。由于这正是我们想要的设置，我们可以继续运行容器。
@@ -195,11 +191,10 @@ By default it runs the sh command in a container with a root  filesystem at ./ro
  $ sudo runc run mycontainerid
  / # echo "Hello from in a container"
  Hello from in a container
- ```
+```
 
- 
+
 ## rkt 
-## rkt
 rkt is a popular alternative to Docker/runc that was developed by  CoreOS. rkt is a bit hard to categorize because it provides all the  features that other low-level runtimes like runc provide, but also  provides features typical of high-level runtimes. Here I'll describe the low-level features of rkt and leave the high-level features for the  next post.
 
 rkt 是 CoreOS 开发的 Docker/runc 的流行替代品。 rkt 有点难以分类，因为它提供了 runc 等其他低级运行时提供的所有功能，但也提供了高级运行时的典型功能。在这里我将描述rkt的低级特性，而将高级特性留给下一篇文章。
@@ -229,12 +224,12 @@ You can build a container image using the `acbuild` tool. You can use acbuild in
  acbuild annotation add authors "Carly Container <carly@example.com>"
  acbuild write hello-0.0.1-linux-amd64.aci
  acbuild end
- ```
+```
 
- 
+
 ## Adiós!
 
-##再见！
+## 再见！
 
 I hope this helped you get an idea of what low-level container  runtimes are. While most users of containers will use higher-level  runtimes, it's good to know how containers are working underneath the  covers for troubleshooting issues and debugging.
 
@@ -264,5 +259,6 @@ Until then, you can get more involved with the Kubernetes community via these ch
 
 > 感谢 [Craig Box](https://twitter.com/craigbox)、Jack Wilbur、Philip Mallory、[David Gageot](https://twitter.com/dgageot)、Jonathan MacMillan 和 [Maya Kaczorowski]( https://twitter.com/MayaKaczorowski) 用于审阅这篇文章的草稿。*
 
------- 
+------
+
 
