@@ -52,7 +52,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Container Runtimes Part 4: Kubernetes Container Runtimes & CRI](docs/tr-12-container-runtimes-part-4-kubernetes-container-run.md)
 1. [Docker components explained](docs/tr-13-docker-components-explained.md)
 1. [Docker vs CRI-O vs Containerd](docs/tr-14-docker-vs-cri-o-vs-containerd.md)
-1. [](docs/)
+1. [Introducing Container Runtime Interface (CRI) in Kubernetes](docs/tr-15-container-runtime-interface-cri-in-kubernetes.md)
 1. [](docs/)
 
 ## Golang
