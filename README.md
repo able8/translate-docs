@@ -38,13 +38,15 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Delaying Shutdown to Wait for Pod Deletion Propagation 延迟关闭以等待 Pod 删除传播](docs/tr-4-delaying-shutdown-to-wait-for-pod-deletion-propagation.md)
 1. [Avoiding Outages in your Kubernetes Cluster using PodDisruptionBudgets 使用 PodDisruptionBudgets 避免 Kubernetes 集群中断](docs/tr-5-avoiding-outages-in-your-kubernetes-cluster-using-poddisruptionbudgets.md)
 1. [How does 'kubectl exec' work? 'kubectl exec' 是如何工作的？](docs/tr-6-how-kubectl-exec-works.md)
+1. [](docs/)
+1. [](docs/)
 
-
-## Docker and Container
 
 1. [Kubernetes vs Docker: Understanding Containers in 2021 了解 Kubernetes vs Docker](docs/tr-8-kubernetes-vs-docker.md)
 1. [Learning Path: Basics of Container Runtimes 学习路径：容器运行时的基础知识](docs/tr-7-basics-of-container-runtimes.md)
-1. [](docs/tr-9-container-runtimes-part-1-introduction-container-r.md)
+1. [Container Runtimes Part 1: An Introduction to Container Runtimes 容器运行时第 1 部分：容器运行时简介](docs/tr-9-container-runtimes-part-1-introduction-container-r.md)
+1. [](docs/)
+1. [](docs/)
 
 ## Golang
 
