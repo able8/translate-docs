@@ -28,7 +28,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 ---
 
-# docs & blogs
+# Translate docs & blogs
 
 ## Kubernetes
 
