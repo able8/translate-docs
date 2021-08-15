@@ -4,8 +4,6 @@
 
 >  From https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r
 
-> 来自 https://www.ianlewis.org/en/container-runtimes-part-1-introduction-container-r
-
 One of the terms you hear a lot when dealing with containers is "container runtime". "Container runtime" can have different meanings to different people so it's no wonder that it's such a confusing and  vaguely understood term, even within the container community.
 
 在处理容器时，您经常听到的术语之一是“容器运行时”。 “容器运行时”对不同的人可能有不同的含义，因此即使在容器社区内，它也是一个如此令人困惑和模糊理解的术语也就不足为奇了。
@@ -45,13 +43,13 @@ If you're not super familiar with containers, check out these links first and co
 Docker was released in 2013 and solved many of the problems that  developers had running containers end-to-end. It had all these things:
  - A container image format
  - A method for building container images (Dockerfile/docker build)
- - A way to manage container images (docker images, docker rm ![img](), etc.)
+ - A way to manage container images (docker images, docker rm, etc.)
  - A way to manage instances of containers (docker ps, docker rm , etc.)
  - A way to share container images (docker push/pull)
  - A way to run containers (docker run)
 
 Docker 于 2013 年发布，解决了开发人员在端到端运行容器时遇到的许多问题。它有所有这些东西：
-- 一种容器图像格式
+- 一种容器镜像格式
 - 一种构建容器镜像的方法（Dockerfile/docker build）
 - 一种管理容器实例的方法（docker ps、docker rm 等）
 - 一种共享容器镜像的方法（docker push/pull）
@@ -63,27 +61,30 @@ At the time, Docker was a monolithic system. However, none of these  features we
 
 Because of that, Docker, Google, CoreOS, and other vendors created the [Open Container Initiative (OCI)](https://www.opencontainers.org/). They then broke out their code for running containers as a tool and library called [runc](https://github.com/opencontainers/runc) and donated it to OCI as a reference implementation of the [OCI runtime specification](https: //github.com/opencontainers/runtime-spec).
 
-因此，Docker、Google、CoreOS 和其他供应商创建了[开放容器计划 (OCI)](https://www.opencontainers.org/)。然后，他们将用于运行容器的代码作为一个名为 [runc](https://github.com/opencontainers/runc) 的工具和库分解出来，并将其捐赠给 OCI 作为 [OCI 运行时规范](https: //github.com/opencontainers/runtime-spec）。
+因此，Docker、Google、CoreOS 和其他供应商创建了[开放容器计划 (OCI)](https://www.opencontainers.org/)。然后，他们将用于运行容器的代码作为一个名为 [runc](https://github.com/opencontainers/runc) 的工具和库分解出来，并将其捐赠给 OCI 作为 [OCI 运行时规范](https: //github.com/opencontainers/runtime-spec)。
 
 It was initially confusing what Docker had contributed to OCI. What  they contributed was a standard way to "run" containers but nothing  more. They didn't include the image format or registry push/pull  formats. When you run a Docker container, these are the steps Docker  actually goes through:
  1. Download the image
  2. Unpack the image into a "bundle". This flattens the layers into a single filesystem.
  3. Run the container from the bundle
 
-最初，人们对 Docker 对 OCI 的贡献感到困惑。他们贡献的是一种“运行”容器的标准方式，仅此而已。它们不包括图像格式或注册表推/拉格式。当你运行一个 Docker 容器时，这些是 Docker 实际经历的步骤：
-1.下载镜像
-2. 将图像解压成一个“包”。这将层扁平化为单个文件系统。
+最初，人们对 Docker 对 OCI 的贡献感到困惑。他们贡献的是一种“运行”容器的标准方式，仅此而已。它们不包括镜像格式或注册表推/拉格式。当你运行一个 Docker 容器时，这些是 Docker 实际经历的步骤：
+
+1. 下载镜像
+
+1. 将镜像解压成一个“包”。这将层扁平化为单个文件系统。
+
 3. 从 bundle 中运行容器
 
 What Docker standardized was only #3. Until that was clarified,  everyone had thought of a container runtime as supporting all of the  features Docker supported. Eventually, Docker folks clarified that the [original spec](https://github.com/opencontainers/runtime-spec/commit/77d44b10d5df53ee63f0768cd0a29ef49bad56b6#diff-b84a8d65d8ed53f4794cd2db7e8ea731R45) stated that only the "running the container" part that made up the  runtime. This is a disconnect that continues even today, and makes  "container runtimes" such a confusing topic. I'll hopefully show that  neither side is totally wrong and I'll use the term pretty broadly in  this blog post.
 
-Docker 标准化的只是#3。在澄清之前，每个人都认为容器运行时支持 Docker 支持的所有功能。最终，Docker 人员澄清了 [原始规范]（https://github.com/opencontainers/runtime-spec/commit/77d44b10d5df53ee63f0768cd0a29ef49bad56b6#diff-b84a8d65d8ed53f4794cd2db7e63f0768cd0a29ef49bad56b6#diff-b84a8d65d8ed53f4794cd2db7e63f0768cd0a29ef49bad56b6#diff-b84a8d65d8ed53f4794cd2db7e63f0768cd0a29ef49bad56b6#diff-b84a8d65d8ed53f4794cd2db7e63f0768。即使在今天，这种脱节仍在继续，并使“容器运行时”成为一个令人困惑的话题。我希望表明双方都没有完全错误，我将在这篇博文中广泛使用该术语。
+Docker 标准化的只是#3。在澄清之前，每个人都认为容器运行时支持 Docker 支持的所有功能。最终，Docker 人员澄清了 [原始规范](https://github.com/opencontainers/runtime-spec/commit/77d44b10d5df53ee63f0768cd0a29ef49bad56b6#diff-b84a8d65d8ed53f4794cd2db7e8ea731R45) 。即使在今天，这种脱节仍在继续，并使“容器运行时”成为一个令人困惑的话题。我希望表明双方都没有完全错误，我将在这篇博文中广泛使用该术语。
 
 ## Low-Level and High-Level Container Runtimes 
 ## 低级和高级容器运行时
 When folks think of container runtimes, a list of examples might come to mind; runc, lxc, lmctfy, Docker (containerd), rkt, cri-o. Each of  these is built for different situations and implements different  features. Some, like containerd and cri-o, actually use runc to run the  container but implement image management and APIs on top. You can think  of these features -- which include image transport, image management,  image unpacking, and APIs -- as high-level features as compared to  runc's low-level implementation.
 
-当人们想到容器运行时，可能会想到一系列示例； runc、lxc、lmctfy、Docker（容器）、rkt、cri-o。这些中的每一个都是为不同的情况而构建的，并实现了不同的功能。有些，如 containerd 和 cri-o，实际上使用 runc 来运行容器，但在顶部实现图像管理和 API。与 runc 的低级实现相比，您可以将这些功能（包括图像传输、图像管理、图像解包和 API）视为高级功能。
+当人们想到容器运行时，可能会想到一系列示例； runc、lxc、lmctfy、Docker（容器）、rkt、cri-o。这些中的每一个都是为不同的情况而构建的，并实现了不同的功能。有些，如 containerd 和 cri-o，实际上使用 runc 来运行容器，但在顶部实现镜像管理和 API。与 runc 的低级实现相比，您可以将这些功能（包括镜像传输、镜像管理、镜像解包和 API）视为高级功能。
 
 With that in mind you can see that the container runtime space is  fairly complicated. Each runtime covers different parts of this  low-level to high-level spectrum. Here is a very subjective diagram:
 
@@ -93,7 +94,7 @@ With that in mind you can see that the container runtime space is  fairly compli
 
 So for practical purposes, actual container runtimes that focus on  just running containers are usually referred to as "low-level container  runtimes". Runtimes that support more high-level features, like image  management and gRPC/Web APIs, are usually referred to as "high-level  container tools", "high-level container runtimes" or usually just  "container runtimes". I'll refer to them as "high-level container  runtimes". It's important to note that low-level runtimes and high-level runtimes are fundamentally different things that solve different  problems.
 
-因此，出于实际目的，专注于运行容器的实际容器运行时通常被称为“低级容器运行时”。支持更多高级功能的运行时，如图像管理和 gRPC/Web API，通常被称为“高级容器工具”、“高级容器运行时”或通常简称为“容器运行时”。我将它们称为“高级容器运行时”。重要的是要注意，低级运行时和高级运行时是解决不同问题的根本不同的东西。
+因此，出于实际目的，专注于运行容器的实际容器运行时通常被称为“低级容器运行时”。支持更多高级功能的运行时，如镜像管理和 gRPC/Web API，通常被称为“高级容器工具”、“高级容器运行时”或通常简称为“容器运行时”。我将它们称为“高级容器运行时”。重要的是要注意，低级运行时和高级运行时是解决不同问题的根本不同的东西。
 
 Containers are implemented using [Linux namespaces](https://en.wikipedia.org/wiki/Linux_namespaces) and [cgroups](https://en.wikipedia.org/wiki/Cgroups). Namespaces let you virtualize system resources, like the file system or networking, for each container. Cgroups provide a way to limit the  amount of resources like CPU and memory that each container can use. At  the lowest level, container runtimes are responsible for setting up  these namespaces and cgroups for containers, and then running commands  inside those namespaces and cgroups. Low-level runtimes support using  these operating system features.
 
@@ -101,7 +102,7 @@ Containers are implemented using [Linux namespaces](https://en.wikipedia.org/wik
 
 Typically, developers who want to run apps in containers will need  more than just the features that low-level runtimes provide. They need  APIs and features around image formats, image management, and sharing  images. These features are provided by high-level runtimes. Low-level  runtimes just don't provide enough features for this everyday use. For  that reason the only folks that will actually use low-level runtimes  would be developers who implement higher level runtimes, and tools for  containers.
 
-通常，想要在容器中运行应用程序的开发人员需要的不仅仅是低级运行时提供的功能。他们需要有关图像格式、图像管理和共享图像的 API 和功能。这些功能由高级运行时提供。低级运行时无法为日常使用提供足够的功能。出于这个原因，真正使用低级运行时的人将是实现更高级别运行时和容器工具的开发人员。
+通常，想要在容器中运行应用程序的开发人员需要的不仅仅是低级运行时提供的功能。他们需要有关镜像格式、镜像管理和共享镜像的 API 和功能。这些功能由高级运行时提供。低级运行时无法为日常使用提供足够的功能。出于这个原因，真正使用低级运行时的人将是实现更高级别运行时和容器工具的开发人员。
 
 Developers who implement low-level runtimes will say that higher  level runtimes like containerd and cri-o are not actually container  runtimes, as from their perspective they outsource the implementation of running a container to runc. But, from the user's perspective, they are a singular component that provides the ability to run containers. One  implementation can be swapped out for another, so it still makes sense  to call it a runtime from that perspective. Even though containerd and  cri-o both use runc, they are very different projects that have very  different feature support.
 
@@ -128,14 +129,10 @@ Until then, you can get more involved with the Kubernetes community via these ch
  - Follow [@Kubernetesio](https://twitter.com/kubernetesio) on Twitter
  - Join the Kubernetes[ Slack](http://slack.k8s.io/) and chat with us. (I'm ianlewis so say Hi!)
  - Contribute to the Kubernetes project on[ GitHub](https://github.com/kubernetes/kubernetes) 
-在此之前，您可以通过以下渠道更多地参与 Kubernetes 社区：
-- 在 [Stack Overflow](http://stackoverflow.com/questions/tagged/kubernetes) 上发布和回答问题
-- 在 Twitter 上关注 [@Kubernetesio](https://twitter.com/kubernetesio)
-- 加入 Kubernetes[Slack](http://slack.k8s.io/) 和我们聊天。 （我是 ianlewis 所以打个招呼吧！）
-- 为 [GitHub](https://github.com/kubernetes/kubernetes) 上的 Kubernetes 项目做出贡献
 > Thanks to [Sandeep Dinesh](https://twitter.com/SandeepDinesh), [Mark Mandel](https://twitter.com/neurotic), [Craig Box](https://twitter.com/craigbox) , [Maya Kaczorowski](https://twitter.com/mayakaczorowski), and Joe Burnett for reviewing drafts of this post.
 
 > 感谢 [Sandeep Dinesh](https://twitter.com/SandeepDinesh)、[Mark Mandel](https://twitter.com/neurotic)、[Craig Box](https://twitter.com/craigbox) , [Maya Kaczorowski](https://twitter.com/mayakaczorowski) 和 Joe Burnett 审阅了这篇文章的草稿。
 
------- 
+------
+
 
