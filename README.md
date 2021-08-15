@@ -37,6 +37,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Gracefully Shutting Down Pods in a Kubernetes Cluster 优雅地关闭 Kubernetes 集群中的 Pod](docs/tr-3-gracefully-shutting-down-pods-in-a-kubernetes-cluster.md)
 1. [Delaying Shutdown to Wait for Pod Deletion Propagation 延迟关闭以等待 Pod 删除传播](docs/tr-4-delaying-shutdown-to-wait-for-pod-deletion-propagation.md)
 1. [Avoiding Outages in your Kubernetes Cluster using PodDisruptionBudgets 使用 PodDisruptionBudgets 避免 Kubernetes 集群中断](docs/tr-5-avoiding-outages-in-your-kubernetes-cluster-using-poddisruptionbudgets.md)
+1. [How does 'kubectl exec' work? 'kubectl exec' 是如何工作的？](docs/tr-6-how-kubectl-exec-works.md)
 
 
 ## Golang
