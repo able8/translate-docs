@@ -65,7 +65,7 @@ Before Docker, running containers was indeed possible, but it was  hard work. Do
 - 监控和记录容器活动。
 - 挂载共享目录。
 - 对容器设置资源限制。
-- 构建图像。 `Dockerfile` 是构建容器镜像的事实上的格式。
+- 构建镜像。 `Dockerfile` 是构建容器镜像的事实上的格式。
 - 从注册表中推送和拉取镜像。
 
 In its first iterations, Docker used Linux Containers (LXC) as the runtime backend. As the project evolved, LXC was replaced by [containerd](https://containerd.io/), Docker’s own implementation. A modern Docker installation is divided into two services: `containerd`, responsible for managing containers, and `dockerd`, which does all the rest.

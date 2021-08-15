@@ -10,7 +10,7 @@ This is the fourth and last part in a four part series on container runtimes. It
 
 Kubernetes runtimes are high-level container runtimes that support the [Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md) ( CRI). CRI was introduced in Kubernetes 1.5 and acts as a bridge between the [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet) and the container runtime. High-level container runtimes that want to  integrate with Kubernetes are expected to implement CRI. The runtime is  expected to handle the management of images and to support [Kubernetes pods](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway), as well as manage the individual containers so a Kubernetes runtime **must** be a high-level runtime per our definition in part 3. Low level  runtimes just don't have the necessary features. Since part 3 explains  all about high-level container runtimes, I'm going to focus on CRI and  introduce a few of the runtimes that support CRI in this post.
 
-Kubernetes 运行时是支持 [Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md) 的高级容器运行时（ CRI）。 CRI 是在 Kubernetes 1.5 中引入的，充当 [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet) 和容器运行时之间的桥梁。希望与 Kubernetes 集成的高级容器运行时需要实现 CRI。运行时预计将处理图像管理并支持 [Kubernetes pods](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)，以及管理单个容器，以便根据我们在第 3 部分中的定义，Kubernetes 运行时**必须** 是高级运行时。低级运行时只是没有必要的功能。由于第 3 部分解释了有关高级容器运行时的所有内容，因此我将重点介绍 CRI 并在本文中介绍一些支持 CRI 的运行时。
+Kubernetes 运行时是支持 [Container Runtime Interface](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-node/container-runtime-interface.md) 的高级容器运行时（ CRI）。 CRI 是在 Kubernetes 1.5 中引入的，充当 [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet) 和容器运行时之间的桥梁。希望与 Kubernetes 集成的高级容器运行时需要实现 CRI。运行时预计将处理镜像管理并支持 [Kubernetes pods](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)，以及管理单个容器，以便根据我们在第 3 部分中的定义，Kubernetes 运行时**必须** 是高级运行时。低级运行时只是没有必要的功能。由于第 3 部分解释了有关高级容器运行时的所有内容，因此我将重点介绍 CRI 并在本文中介绍一些支持 CRI 的运行时。
 
 In order to understand more about CRI it's worth taking a look at the overall Kubernetes architecture. The kubelet is an agent that sits on  each worker node in the Kubernetes cluster. The kubelet is responsible  for managing the container workloads for its node. When it comes to  actually run the workload, the kubelet uses CRI to communicate with the  container runtime running on that same node. In this way CRI is simply  an abstraction layer or API that allows you to switch out container  runtime implementations instead of having them built into the kubelet.
 
@@ -55,7 +55,7 @@ Docker 对 CRI 的支持是第一个开发出来的，并作为 `kubelet` 和 Do
 ### 克里欧
 cri-o is a lightweight CRI runtime made as a Kubernetes specific high-level runtime. It supports the management of [OCI compatible images](https://github.com/opencontainers/image-spec) and pulls from any OCI compatible image registry. It supports `runc` and Clear Containers as low-level runtimes. It supports other OCI  compatible low-level runtimes in theory, but relies on compatibility  with the `runc` [OCI command line interface](https://github.com/opencontainers/runtime-tools/blob/master/docs/command- line-interface.md), so in practice it isn't as flexible as `containerd`'s shim API.
 
-cri-o 是一个轻量级的 CRI 运行时，作为 Kubernetes 特定的高级运行时。它支持管理 [OCI 兼容图像](https://github.com/opencontainers/image-spec) 并从任何 OCI 兼容图像注册表中提取。它支持 `runc` 和 Clear Containers 作为低级运行时。它理论上支持其他 OCI 兼容的低级运行时，但依赖于与 `runc` [OCI 命令行接口](https://github.com/opencontainers/runtime-tools/blob/master/docs/command-line-interface.md），所以在实践中它不像`containerd`的shim API那么灵活。
+cri-o 是一个轻量级的 CRI 运行时，作为 Kubernetes 特定的高级运行时。它支持管理 [OCI 兼容镜像](https://github.com/opencontainers/image-spec) 并从任何 OCI 兼容镜像注册表中提取。它支持 `runc` 和 Clear Containers 作为低级运行时。它理论上支持其他 OCI 兼容的低级运行时，但依赖于与 `runc` [OCI 命令行接口](https://github.com/opencontainers/runtime-tools/blob/master/docs/command-line-interface.md），所以在实践中它不像`containerd`的shim API那么灵活。
 
 cri-o's endpoint is at `/var/run/crio/crio.sock` by default so you can configure `crictl` like so.
 
@@ -74,7 +74,7 @@ cri-o's endpoint is at `/var/run/crio/crio.sock` by default so you can configure
 
 CRI is a [protocol buffers](https://developers.google.com/protocol-buffers/) and [gRPC](https://grpc.io/) API. The specification is defined in a [protobuf file](https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/cri-api/pkg/apis/runtime/v1alpha2/api.proto ) in the Kubernetes repository under the kubelet. CRI defines several  remote procedure calls (RPCs) and message types. The RPCs are for  operations like "pull image" (`ImageService.PullImage`), "create pod" (`RuntimeService.RunPodSandbox`), "create container" (`RuntimeService.CreateContainer`), "start container" (`RuntimeService. StartContainer`), "stop container" (`RuntimeService.StopContainer`), etc.
 
-CRI 是一个 [protocol buffers](https://developers.google.com/protocol-buffers/) 和 [gRPC](https://grpc.io/) API。该规范定义在 [protobuf 文件](https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/cri-api/pkg/apis/runtime/v1alpha2/api.proto ) 在 kubelet 下的 Kubernetes 存储库中。 CRI 定义了几种远程过程调用 (RPC) 和消息类型。 RPC 用于诸如“拉图像”（`ImageService.PullImage`）、“创建 pod”（`RuntimeService.RunPodSandbox`）、“创建容器”（`RuntimeService.CreateContainer`）、“启动容器”（`RuntimeService. StartContainer`）、“停止容器”（`RuntimeService.StopContainer`）等。
+CRI 是一个 [protocol buffers](https://developers.google.com/protocol-buffers/) 和 [gRPC](https://grpc.io/) API。该规范定义在 [protobuf 文件](https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/cri-api/pkg/apis/runtime/v1alpha2/api.proto ) 在 kubelet 下的 Kubernetes 存储库中。 CRI 定义了几种远程过程调用 (RPC) 和消息类型。 RPC 用于诸如“拉镜像”（`ImageService.PullImage`）、“创建 pod”（`RuntimeService.RunPodSandbox`）、“创建容器”（`RuntimeService.CreateContainer`）、“启动容器”（`RuntimeService. StartContainer`）、“停止容器”（`RuntimeService.StopContainer`）等。
 
 For example, a typical interaction over CRI that starts a new  Kubernetes Pod would look something like the following (in my own form  of pseudo gRPC; each RPC would get a much bigger request object. I'm  simplifying it for brevity). The `RunPodSandbox` and `CreateContainer` RPCs return IDs in their responses which are used in subsequent requests:
 
@@ -125,7 +125,7 @@ Or you can specify the runtime endpoint on each command line execution:
 
 Let's run a pod with a single container with `crictl`. First you would tell the runtime to pull the `nginx` image you need since you can't start a container without the image stored locally.
 
-让我们用 crictl 运行一个带有单个容器的 pod。首先，您会告诉运行时拉取您需要的“nginx”图像，因为如果没有本地存储的图像，您将无法启动容器。
+让我们用 crictl 运行一个带有单个容器的 pod。首先，您会告诉运行时拉取您需要的“nginx”镜像，因为如果没有本地存储的镜像，您将无法启动容器。
 
 ```
  sudo crictl pull nginx

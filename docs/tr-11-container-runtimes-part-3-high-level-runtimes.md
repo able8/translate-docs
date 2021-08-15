@@ -40,7 +40,7 @@ Docker 是最早的开源容器运行时之一。它由平台即服务公司 dot
 
 Docker is a container runtime that incorporates building, packaging,  sharing, and running containers. Docker has a client/server architecture and was originally built as a monolithic daemon, `dockerd`, and the `docker` client application. The daemon provided most of the logic of building  containers, managing the images, and running containers, along with an  API. The command line client could be run to send commands and to get  information from the daemon.
 
-Docker 是一个容器运行时，包括构建、打包、共享和运行容器。 Docker 有一个客户端/服务器架构，最初是作为一个单一的守护进程构建的，`dockerd` 和 `docker` 客户端应用程序。该守护进程提供了构建容器、管理图像和运行容器的大部分逻辑，以及一个 API。可以运行命令行客户端来发送命令并从守护程序获取信息。
+Docker 是一个容器运行时，包括构建、打包、共享和运行容器。 Docker 有一个客户端/服务器架构，最初是作为一个单一的守护进程构建的，`dockerd` 和 `docker` 客户端应用程序。该守护进程提供了构建容器、管理镜像和运行容器的大部分逻辑，以及一个 API。可以运行命令行客户端来发送命令并从守护程序获取信息。
 
 It was the first popular runtime to incorporate all of the features  needed during the lifecycle of building and running containers.
 
@@ -75,7 +75,7 @@ ctr` 可用于告诉 `containerd` 拉取容器镜像：
 
 List the images you have:
 
-列出您拥有的图像：
+列出您拥有的镜像：
 
 ```
  $ sudo ctr images list
@@ -119,7 +119,7 @@ In the previous post, I mentioned that `rkt` is a runtime  that has both low-lev
 
 在上一篇文章中，我提到 rkt 是一个同时具有低级和高级功能的运行时。例如，与 Docker 非常相似，rkt 允许您构建容器镜像，在本地存储库中获取和管理容器镜像，并通过单个命令运行它们。然而，`rkt` 没有提供 Docker 的功能，因为它不提供长期运行的守护进程和远程 API。
 
-You can fetch remote images: 您可以获取远程图像：
+You can fetch remote images: 您可以获取远程镜像：
 
 ```
  $ sudo rkt fetch coreos.com/etcd:v3.3.10
@@ -137,7 +137,7 @@ You can then list the images installed locally: 然后，您可以列出本地�
 ```
 
 
-And delete images: 并删除图像：
+And delete images: 并删除镜像：
 
 ```
  $ sudo rkt image rm coreos.com/etcd:v3.3.10

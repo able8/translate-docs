@@ -205,7 +205,7 @@ rkt 最初使用 [Application Container](https://coreos.com/rkt/docs/latest/app-
 
 Application Container Image (ACI) is the image format for Appc. Images are a tar.gz containing a manifest directory and a rootfs  directory for the root filesystem. You can read more about ACI [here](https://github.com/appc/spec/blob/master/spec/aci.md).
 
-应用程序容器映像 (ACI) 是 Appc 的映像格式。图像是包含清单目录和根文件系统的 rootfs 目录的 tar.gz。您可以在 [此处](https://github.com/appc/spec/blob/master/spec/aci.md) 阅读有关 ACI 的更多信息。
+应用程序容器映像 (ACI) 是 Appc 的映像格式。镜像是包含清单目录和根文件系统的 rootfs 目录的 tar.gz。您可以在 [此处](https://github.com/appc/spec/blob/master/spec/aci.md) 阅读有关 ACI 的更多信息。
 
 You can build a container image using the `acbuild` tool. You can use acbuild in shell scripts that can be executed much like Dockerfiles are run.
 

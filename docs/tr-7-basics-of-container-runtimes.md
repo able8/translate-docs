@@ -45,7 +45,7 @@ Let's go back for the fourth chapter of the series: Kubernetes and Container Run
  https://www.ianlewis.org/en/container-runtimes-part-4-kubernetes-container-run
 
 让我们回到本系列的第四章：Kubernetes 和容器运行时接口。我建议下载“crictl”并尝试一下。
-注意：它已经在“种类”节点的图像中可用。只需运行一个 docker exec 并深入挖掘！！！
+注意：它已经在“种类”节点的镜像中可用。只需运行一个 docker exec 并深入挖掘！！！
 
 After learning docker, containerd and cri-o, it is better to read a blog post about their comparison. I liked the short list about how cri-o does handle its responsibilities.
  https://computingforgeeks.com/docker-vs-cri-o-vs-containerd/
