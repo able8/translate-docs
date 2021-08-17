@@ -1,5 +1,7 @@
 # Ready-to-use commands and tips for kubectl        
 
+From: https://blog.flant.com/ready-to-use-commands-and-tips-for-kubectl/
+
 *Kubectl* is the most important Kubernetes command-line tool that allows you to run commands against clusters. We at [Flant](https://flant.com/) internally share our knowledge of using it via formal wiki-like instructions as well as Slack messages *(we also have a handy and smart search engine in place — but that’s a whole different story…)*. Over the years, we have accumulated a large number of various kubectl  tips and tricks. Now, we’ve decided to share some of our cheat sheets  with a wider community.
 
 I am sure our readers might be familiar with many of them. But still, I hope you will learn something new and, thereby, improve your  productivity.

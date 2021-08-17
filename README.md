@@ -42,7 +42,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Introducing Operators: Putting Operational Knowledge into Software](docs/tr-17-introducing-operators.md)
 1. [Go Operator Tutorial](docs/tr-18-Go-Operator-Tutorial.md)
 1. [Ready-to-use commands and tips for kubectl](docs/tr-19-ready-to-use-commands-and-tips-for-kubectl.md)
-1. [](docs/)
+1. [How we enjoyed upgrading a bunch of Kubernetes clusters from v1.16 to v1.19](docs/tr-20-how-we-enjoyed-upgrading-kubernetes-clusters.md)
 1. [](docs/)
 1. [](docs/)
 1. [](docs/)
