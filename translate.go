@@ -70,7 +70,12 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			output = output + translatedText
-			input = input + sourceText + " "
+			if sourceText[len(sourceText)-1:] == "\n" {
+				input = input + sourceText
+			} else {
+				input = input + sourceText + " "
+			}
+
 			if strings.Contains(sourceText, "\n\n") {
 				fmt.Fprintf(outFile, "%s%s", strings.TrimRight(input, " "), output)
 				input, output = "", ""
