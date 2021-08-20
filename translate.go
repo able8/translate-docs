@@ -53,8 +53,9 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			resultSlice := slice.([]interface{})
 			translatedText, sourceText := resultSlice[0].(string), resultSlice[1].(string)
 
-			if strings.Contains(sourceText, "![img]") || strings.Contains(sourceText, "----") {
-				translatedText = ""
+			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
+				input = input + sourceText
+				continue
 			}
 
 			if strings.Contains(sourceText, "```") && strings.Contains(input, "```") {
