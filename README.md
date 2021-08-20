@@ -63,7 +63,13 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 ## Golang
 
+1. [Keep-Alive in http requests in golang](docs/tr-22-keep-alive-http-requests-in-golang.md)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+
 ## Cloud Native
+
 
 
 
