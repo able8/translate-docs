@@ -71,5 +71,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 ## Cloud Native
 
 
+## Others
 
-
+1. [Fix the Problem, Not the Symptoms](docs/tr-24-fix-problem-not-symptoms.md)
+1. [](docs/)
