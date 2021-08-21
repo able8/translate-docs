@@ -78,7 +78,8 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			if strings.Contains(sourceText, "\n\n") {
-				fmt.Fprintf(outFile, "%s%s", strings.TrimRight(input, " "), output)
+				// fmt.Fprintf(outFile, "%s%s", strings.TrimRight(input, " "), output)
+				fmt.Fprintf(outFile, "%s%s", input, output)
 				input, output = "", ""
 			}
 		}
