@@ -45,6 +45,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [How we enjoyed upgrading a bunch of Kubernetes clusters from v1.16 to v1.19](docs/tr-20-how-we-enjoyed-upgrading-kubernetes-clusters.md)
 1. [Using Telepresence 2 for Kubernetes debugging and local development](docs/tr-21-telepresence-2-local-development.md)
 1. [Everything you Need to Know about Kubernetes Quality of Service (QoS) Classes](docs/tr-29-everything-you-need-to-know-about-kubernetes-quality-of-service-qos-classes.md)
+1. [Kubernetes Autoscaling in Production: Best Practices for Cluster Autoscaler, HPA and VP](docs/tr-33-kubernetes-in-production-best-practices-for-cluster-autoscaler-hpa-and-vpa.md)
+1. [A CIOs Guide to Kubernetes Best Practices in Production](docs/tr-34-a-cios-guide-to-kubernetes-best-practices-in-production.md)
+1. [10 Kubernetes Operators Every DevOps needs to know about](docs/tr-31-10-kubernetes-operators-every-devops-needs-to-know-about.md)
 1. [](docs/)
 
 
@@ -60,7 +63,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Docker vs CRI-O vs Containerd](docs/tr-14-docker-vs-cri-o-vs-containerd.md)
 1. [Introducing Container Runtime Interface (CRI) in Kubernetes](docs/tr-15-container-runtime-interface-cri-in-kubernetes.md)
 1. [Understanding Docker Container Exit Codes](docs/tr-28-understanding-docker-container-exit-codes.md)
-1. [](docs/)
 
 ## Golang
 
@@ -73,6 +75,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 ## Cloud Native
 
+1. [A Comprehensive Guide to Cloud Native: Tools, Practices and Culture](docs/tr-32-a-comprehensive-guide-to-cloud-native-tools-practices-and-culture.md)
+1. [The State of Cloud Native: Challenges, Culture and Technology](docs/tr-30-the-state-of-cloud-native-challenges-culture-and-technology.md)
+1. [](docs/)
 
 ## Others
 
