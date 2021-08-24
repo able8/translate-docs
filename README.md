@@ -44,7 +44,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Ready-to-use commands and tips for kubectl](docs/tr-19-ready-to-use-commands-and-tips-for-kubectl.md)
 1. [How we enjoyed upgrading a bunch of Kubernetes clusters from v1.16 to v1.19](docs/tr-20-how-we-enjoyed-upgrading-kubernetes-clusters.md)
 1. [Using Telepresence 2 for Kubernetes debugging and local development](docs/tr-21-telepresence-2-local-development.md)
-1. [](docs/)
+1. [Everything you Need to Know about Kubernetes Quality of Service (QoS) Classes](docs/tr-29-everything-you-need-to-know-about-kubernetes-quality-of-service-qos-classes.md)
 1. [](docs/)
 
 
