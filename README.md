@@ -70,6 +70,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Don’t use Go’s default HTTP client (in production)](docs/tr-23-don-t-use-go-s-default-http-client.md)
 1. [Using Context in Golang - Cancellation, Timeouts and Values (With Examples)](docs/tr-26-context-cancellation-and-values.md)
 1. [map[string]interface{} in Go](docs/tr-27-map-string-interface.md)
+1. [Graceful Shutdowns in Golang with signal.NotifyContext](docs/36-graceful-shutdowns-in-golang-with-signal-notify-context.md)
+1. [](docs/)
+1. [](docs/)
 1. [](docs/)
 1. [](docs/)
 
@@ -78,9 +81,12 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [A Comprehensive Guide to Cloud Native: Tools, Practices and Culture](docs/tr-32-a-comprehensive-guide-to-cloud-native-tools-practices-and-culture.md)
 1. [The State of Cloud Native: Challenges, Culture and Technology](docs/tr-30-the-state-of-cloud-native-challenges-culture-and-technology.md)
 1. [How was the world's largest cloud vendor, AWS, born?](docs/tr-35-how-aws-born.md)
+1. [](docs/)
+1. [](docs/)
 
 ## Others
 
 1. [Fix the Problem, Not the Symptoms](docs/tr-24-fix-problem-not-symptoms.md)
 1. [Why do (some) engineers write bad code?](docs/tr-25-why-engineers-write-bad-code.md)
+1. [](docs/)
 1. [](docs/)
