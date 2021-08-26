@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"regexp"
 	"strings"
 	"time"
 )
@@ -53,20 +54,25 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			resultSlice := slice.([]interface{})
 			translatedText, sourceText := resultSlice[0].(string), resultSlice[1].(string)
 
+			translatedText = strings.Replace(translatedText, "＃", "#", -1)
+			// remove space in urls
+			translatedText = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(translatedText, "](http$1$2)")
+			sourceText = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(sourceText, "](http$1$2)")
+
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
 				input = input + sourceText
 				continue
 			}
 
 			if strings.Contains(sourceText, "```") && strings.Contains(input, "```") {
-				input = input + sourceText + " "
+				input = input + sourceText
 				fmt.Fprintf(outFile, "%s\n", input)
 				input, output = "", ""
 				continue
 			}
 
 			if strings.Contains(input, "```") {
-				input = input + sourceText + " "
+				input = input + sourceText
 				continue
 			}
 
@@ -78,7 +84,6 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			if strings.Contains(sourceText, "\n\n") {
-				// fmt.Fprintf(outFile, "%s%s", strings.TrimRight(input, " "), output)
 				fmt.Fprintf(outFile, "%s%s", input, output)
 				input, output = "", ""
 			}
