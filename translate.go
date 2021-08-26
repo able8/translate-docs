@@ -55,9 +55,6 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			translatedText, sourceText := resultSlice[0].(string), resultSlice[1].(string)
 
 			translatedText = strings.Replace(translatedText, "＃", "#", -1)
-			// remove space in urls
-			translatedText = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(translatedText, "](http$1$2)")
-			sourceText = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(sourceText, "](http$1$2)")
 
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
 				input = input + sourceText
@@ -84,10 +81,16 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			if strings.Contains(sourceText, "\n\n") {
+				// remove space in urls
+				input = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(input, "](http$1$2)")
+				output = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(output, "](http$1$2)")
+
 				fmt.Fprintf(outFile, "%s%s", input, output)
 				input, output = "", ""
 			}
 		}
+		input = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(input, "](http$1$2)")
+		output = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(output, "](http$1$2)")
 		fmt.Fprintf(outFile, "%s\n%s\n", input, output)
 		return nil
 	} else {

@@ -4,8 +4,6 @@
 
 May 02, 2020 at 05:36
 
-2020 年 5 月 2 日 05:36
-
 In this post I want to discuss *faking* (or *redirecting*) standard input and output (`os.Stdin` and `os.Stdout`) in Go programs. This is often done in tests, but may also be useful in other scenarios.
 
 在这篇文章中，我想讨论 Go 程序中的*伪造*（或*重定向*）标准输入和输出（`os.Stdin` 和 `os.Stdout`）。这通常在测试中完成，但在其他场景中也可能有用。
@@ -26,7 +24,7 @@ if out != expected { ... }
 
 We assume `FunctionUnderTest` reads from `os.Stdin` and writes to `os.Stdout` directly (this whole post is unnecessary if `FunctionUnderTest` uses dependency injection to take an `io.Reader` and `io.Writer` instead) . Therefore `StartFakingIO` should redirect the `os.Stdin` and `os.Stdout` globals, such that the code of `FunctionUnderTest` remains unchanged.
 
-我们假设`FunctionUnderTest`从`os.Stdin`读取并直接写入`os.Stdout`（如果`FunctionUnderTest`使用依赖注入来代替`io.Reader`和`io.Writer`，则不需要整篇文章） .因此`StartFakingIO` 应该重定向`os.Stdin` 和`os.Stdout` 全局变量，这样`FunctionUnderTest` 的代码保持不变。
+我们假设`FunctionUnderTest`从`os.Stdin`读取并直接写入`os.Stdout`（如果`FunctionUnderTest`使用依赖注入来代替`io.Reader`和`io.Writer`，则不需要整篇文章）。因此`StartFakingIO` 应该重定向`os.Stdin` 和`os.Stdout` 全局变量，这样`FunctionUnderTest` 的代码保持不变。
 
 ## Pipes
 
@@ -171,9 +169,9 @@ func main() {
 }
 ```
 
-
 It's exactly the same code, except that now we print out "hello to stdout" 5000 times, for a total of 75,000 bytes, which should overflow the buffer. 
 这是完全相同的代码，除了现在我们打印出 5000 次“hello to stdout”，总共 75,000 个字节，这应该会溢出缓冲区。
+
 Indeed, if you run this program, it hangs. Sending SIGQUIT to the program shows it's stuck in the call to `fmt.Print`. Without anything reading from the pipe's other end, the program can't proceed once the pipe buffer has been filled. Obviously, this problem may not apply to most scenarios - you don't typically print out this much data, especially in unit tests. But it's still fairly common to get bitten by it.
 
 事实上，如果你运行这个程序，它就会挂起。向程序发送 SIGQUIT 表明它卡在对 `fmt.Print` 的调用中。如果没有从管道的另一端读取任何内容，一旦管道缓冲区被填满，程序就无法继续。显然，这个问题可能不适用于大多数场景——您通常不会打印出这么多数据，尤其是在单元测试中。但被它咬伤仍然很常见。
@@ -272,11 +270,11 @@ func New(stdinText string) (*FakeStdio, error) {
 
 Of particular interest in this code:
 
-对这段代码特别感兴趣：
 
 1. The ASCII diagrams showing how the different pipes are hooked together.
 2. A goroutine that runs in the background throughout the lifetime of a `FakeStdio`. This goroutine continuously reads from the reading end of the fake stdout to drain the buffer, ensuring that large writes don't block.
 
+对这段代码特别感兴趣：
 1. ASCII 图显示了不同的管道是如何连接在一起的。
 2. 在“FakeStdio”的整个生命周期中在后台运行的 goroutine。该 goroutine 不断从伪 stdout 的读取端读取以耗尽缓冲区，确保不会阻塞大量写入。
 
@@ -359,8 +357,6 @@ My implementation has an additional method I haven't shown so far:
 
 ```
 // CloseStdin closes the fake stdin.This may be necessary if the process has
-``
-
 // logic for reading stdin until EOF; otherwise such code would block forever.
 func (sf *FakeStdio) CloseStdin() {
    if sf.stdinWriter != nil {
@@ -369,15 +365,6 @@ func (sf *FakeStdio) CloseStdin() {
    }
 }
 ```
-
-// 读取标准输入直到 EOF 的逻辑；否则这样的代码将永远阻塞。
-func (sf *FakeStdio) CloseStdin() {
-  如果 sf.stdinWriter != nil {
-    sf.stdinWriter.Close()
-    sf.stdinWriter = nil
-  }
-}
-``
 
 As its comment explains, this is important to test code that reads `os.Stdin` until it's closed - think a standard Unix line filter program.
 
@@ -399,13 +386,4 @@ Finally, this code only handles `os.Stdin` and `os.Stdout`; there's also `os.Std
 
 最后，这段代码只处理 `os.Stdin` 和 `os.Stdout`；还有我们可以捕获的`os.Stderr`。如果需要，添加这应该是微不足道的。
 
-## Redirecting output from cgo
 
-## 重定向来自 cgo 的输出
-
-The post so far discussed redirecting streams used directly from Go code. This won't help us if our code calls into C code that emits output to stdout directly. I've discussed this scenario before [in a post about Python](https://eli.thegreenplace.net/2015/redirecting-all-kinds-of-stdout-in-python/), and the Go situation is very similar .
-
-到目前为止，这篇文章讨论了直接从 Go 代码中使用的重定向流。如果我们的代码调用直接将输出发送到 stdout 的 C 代码，这将无济于事。我之前[在一篇关于 Python 的帖子](https://eli.thegreenplace.net/2015/redirecting-all-kinds-of-stdout-in-python/) 中讨论过这个场景，Go 的情况非常相似.
-
-The solution will be similar as well - using the `dup` and `dup2` syscalls to redirect the underlying file descriptors. These are accessible directly from pure Go code using the `syscall` package. I won't provide a handy type with methods here, but [this code snippet](https://github.com/eliben/code-for-blog/blob/master/2020/go-fake-stdio/snippets/redirect -cgo-stdout.go) demonstrates how to redirect stdout printed by a sample C function invoked from Go. 
-解决方案也将类似 - 使用 `dup` 和 `dup2` 系统调用来重定向底层文件描述符。这些可以使用 `syscall` 包直接从纯 Go 代码访问。我不会在这里提供一个方便的方法类型，但是 [这个代码片段](https://github.com/eliben/code-for-blog/blob/master/2020/go-fake-stdio/snippets/redirect -cgo-stdout.go) 演示了如何重定向由 Go 调用的示例 C 函数打印的标准输出。

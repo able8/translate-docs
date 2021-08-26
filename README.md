@@ -74,7 +74,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Graceful shutdown with Go http servers and Kubernetes rolling updates](docs/tr-37-graceful-shutdown-with-go-http-servers-and-kubernetes-rolling-updates.md)
 1. [The awesomeness of the httptest package in Go](docs/tr-38-golang-mockmania-httptest.md)
 1. [Concurrency Patterns in Go: sync.WaitGroup](docs/tr-39-concurrency-patterns-in-go-sync-waitgroup.md)
-1. [](docs/)
+1. [Faking stdin and stdout in Go](docs/tr-40-faking-stdin-and-stdout-in-go.md)
 
 ## Cloud Native
 
