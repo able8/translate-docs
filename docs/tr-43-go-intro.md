@@ -62,7 +62,7 @@ Here are some of the reasons I enjoy programming in Go (and why you might like i
 - **Desired.** 根据 StackOverflow 的 2019 年调查，它是 [第三大最想要的](https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted) 编程语言，所以它是易于雇用想要使用它的开发人员。
 - **大量用于云工具。** Docker 和 Kubernetes 是用 Go 编写的，Dropbox、Digital Ocean、Cloudflare 和许多其他公司广泛使用它。
 
-## The standard library
+## The standard library 
 
 ## 标准库
 
@@ -71,9 +71,7 @@ Go’s [standard library](https://golang.org/pkg/)is  extensive, cross-platform,
 Go 的 [标准库](https://golang.org/pkg/) 是广泛的、跨平台的，并且有据可查。与 Python 类似，Go 带有“内置电池”，因此您可以立即构建有用的服务器和 CLI 工具，而无需任何第三方依赖。以下是一些亮点（偏向于我使用过的）：
 
 - Input/output: [OS calls](https://golang.org/pkg/os/),files and directories, [buffered I/O](https://golang.org/pkg/bufio/).
-- HTTP: a production-ready [client and server](https://golang.org/pkg/net/http/), TLS, HTTP/2, simple routing, URL and cookie parsing. 
-- 输入/输出：[OS 调用](https://golang.org/pkg/os/)、文件和目录、[缓冲I/O](https://golang.org/pkg/bufio/)。
-- HTTP：生产就绪 [客户端和服务器](https://golang.org/pkg/net/http/)、TLS、HTTP/2、简单路由、URL 和 cookie 解析。
+- HTTP: a production-ready [client and server](https://golang.org/pkg/net/http/), TLS, HTTP/2, simple routing, URL and cookie parsing.
 - Strings: [all the basics](https://golang.org/pkg/strings/),handling of [raw bytes](https://golang.org/pkg/bytes/), [unicode conversions](https://golang.org/pkg/unicode/).
 - Encodings: [JSON](https://golang.org/pkg/encoding/json/),[XML](https://golang.org/pkg/encoding/xml/), [CSV](https://golang.org/pkg/encoding/csv/), [base64](https://golang.org/pkg/encoding/base64/),[hex](https://golang.org/pkg/encoding/hex /), [binary](https://golang.org/pkg/encoding/binary/), more.
 - Templating: simple but powerful [text](https://golang.org/pkg/text/template/)and auto-escaped [HTML](https://golang.org/pkg/html/template/) templates.
@@ -89,6 +87,8 @@ Go 的 [标准库](https://golang.org/pkg/) 是广泛的、跨平台的，并且
 - Go source code tools: [parser](https://golang.org/pkg/go/parser/),[AST](https://golang.org/pkg/go/ast/), code [formatting] (https://golang.org/pkg/go/printer/).
 - Reflection: powerful run-time [reflection support](https://golang.org/pkg/reflect/).
 
+- 输入/输出：[OS 调用](https://golang.org/pkg/os/)、文件和目录、[缓冲I/O](https://golang.org/pkg/bufio/)。
+- HTTP：生产就绪 [客户端和服务器](https://golang.org/pkg/net/http/)、TLS、HTTP/2、简单路由、URL 和 cookie 解析。
 - 字符串：[所有基础知识](https://golang.org/pkg/strings/)、[原始字节](https://golang.org/pkg/bytes/)、[unicode 转换](https ://golang.org/pkg/unicode/）。
 - 编码：[JSON](https://golang.org/pkg/encoding/json/)、[XML](https://golang.org/pkg/encoding/xml/)、[CSV](https:///golang.org/pkg/encoding/csv/), [base64](https://golang.org/pkg/encoding/base64/),[hex](https://golang.org/pkg/encoding/hex /), [二进制](https://golang.org/pkg/encoding/binary/), 更多。
 - 模板：简单但功能强大的 [text](https://golang.org/pkg/text/template/)和自动转义的 [HTML](https://golang.org/pkg/html/template/) 模板。
@@ -143,7 +143,7 @@ func main() {
 
 ### 有些争议的功能
 
-Go has a few things that put some people off when they first see the  language, but turn out to be quite nice once you get used to them.
+Go has a few things that put some people off when they first see the  language, but turn out to be quite nice once you get used to them. 
 
 Go 有一些东西会让一些人在第一次看到这门语言时感到不舒服，但是一旦你习惯了它们就会变得非常好。
 
@@ -170,8 +170,10 @@ func doThing() { ... } // doThing is not exported
 ```
 
 
-Another thing that gets some developers: warnings are errors! Go’s  built-in tools have very few options, and things that would be warnings  in other compilers are errors in Go (or put another way, there are no  warnings). 
+Another thing that gets some developers: warnings are errors! Go’s  built-in tools have very few options, and things that would be warnings  in other compilers are errors in Go (or put another way, there are no  warnings).
+
 另一件事让一些开发人员感到：警告是错误！ Go 的内置工具很少有选择，而在其他编译器中会是警告的东西在 Go 中是错误（或者换句话说，没有警告）。
+
 So even things like unused local variables or unused imports are  compile errors – this can be slightly annoying during development, but  it keeps the code clean, and avoids developers fighting over which  compiler warnings to turn on.
 
 因此，即使像未使用的局部变量或未使用的导入这样的事情也是编译错误——这在开发过程中可能会有点烦人，但它可以保持代码干净，并避免开发人员为打开哪些编译器警告而争吵。
@@ -241,7 +243,7 @@ func add(x, y int) int {
 ```
 
 
-On the other hand, Go doesn’t do any automatic type coercion, even  between integers of different widths or signed-ness. To quote the [FAQ answer](https://golang.org/doc/faq#conversions) comparing Go’s approach to C:
+On the other hand, Go doesn’t do any automatic type coercion, even  between integers of different widths or signed-ness. To quote the [FAQ answer](https://golang.org/doc/faq#conversions) comparing Go’s approach to C: 
 
 另一方面，Go 不会进行任何自动类型强制，即使在不同宽度或符号的整数之间也是如此。引用 [FAQ answer](https://golang.org/doc/faq#conversions) 比较 Go 与 C 的方法：
 
@@ -289,8 +291,10 @@ for word, count := range counts { ... }
 
 ### 切片非常好
 
-In Go, a *slice* is a reference to part of an array – the  internal representation is very simple: a data pointer, a length, and a  capacity. Slices are generic, so you can have a slice of `float64`, denoted as `[]float64`, or a slice of `Person` structs, `[]Person`. 
+In Go, a *slice* is a reference to part of an array – the  internal representation is very simple: a data pointer, a length, and a  capacity. Slices are generic, so you can have a slice of `float64`, denoted as `[]float64`, or a slice of `Person` structs, `[]Person`.
+
 在 Go 中，*slice* 是对数组一部分的引用——内部表示非常简单：数据指针、长度和容量。切片是通用的，所以你可以有一个 `float64` 的切片，表示为 `[]float64`，或者一个 `Person` 结构的切片，`[]Person`。
+
 You can “slice” slices with Python-like syntax, for example `slice[:5]` to return a new slice viewing the first five elements. The new slice  still refers to the same backing array, so it’s as efficient as dealing  with pointers, but memory-safe – the runtime prevents you from walking  off the end of a slice or doing other nasty things.
 
 您可以使用类似 Python 的语法“切片”切片，例如 `slice[:5]` 以返回查看前五个元素的新切片。新切片仍然引用相同的后备数组，因此它与处理指针一样有效，但内存安全 - 运行时可防止您离开切片的末尾或做其他讨厌的事情。
@@ -365,7 +369,7 @@ Go has pointers, but unlike in C and C++, they’re safe. You can’t  point to 
 
 Go 有指针，但与 C 和 C++ 不同，它们是安全的。您不能指向不存在的内存，并且运行时会阻止您取消引用 nil 指针。事实上，根本没有指针算法——如果你想索引到某个东西，你必须使用安全切片，或者退回到低级的 `unsafe` 包（我从来不需要它）。
 
-Pointers use `*` and `&` syntax like C, with `*` fetching the value at a pointer’s address, and `&` taking the address of a variable.
+Pointers use `*` and `&` syntax like C, with `*` fetching the value at a pointer’s address, and `&` taking the address of a variable. 
 
 指针使用类似 C 的 `*` 和 `&` 语法，`*` 获取指针地址处的值，而 `&` 获取变量地址。
 
@@ -413,11 +417,13 @@ defer f.Close()
 
 ### 协程
 
-*Goroutines* are Go’s concurrency mechanism: they’re like  threads, but much lighter weight – you can easily have 100,000 or even a million goroutines alive at once. The Go runtime schedules the  Goroutines, waking them up and executing them on operating system  threads as needed (when I/O is ready, for example). 
+*Goroutines* are Go’s concurrency mechanism: they’re like  threads, but much lighter weight – you can easily have 100,000 or even a million goroutines alive at once. The Go runtime schedules the  Goroutines, waking them up and executing them on operating system  threads as needed (when I/O is ready, for example).
+
 *Goroutines* 是 Go 的并发机制：它们就像线程，但重量要轻得多——你可以轻松地同时拥有 100,000 甚至 100 万个 goroutines。 Go 运行时调度 Goroutines，唤醒它们并根据需要在操作系统线程上执行它们（例如，当 I/O 准备就绪时）。
+
 One of the neat things about Go’s concurrency model is that all the  standard library functions have simple, synchronous APIs – and if you  need concurrency, you use goroutines explicitly. This avoids the problem with [“colored functions”](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/) – the two sets of APIs that some languages have, one for async and one for synchronous functions.
 
-Go 并发模型的优点之一是所有标准库函数都有简单的同步 API——如果你需要并发，你可以明确地使用 goroutines。这避免了 [“彩色函数”](https://journal.stuffwithstuff.com/2015/02/01/what-c​​olor-is-your-function/) 的问题——某些语言具有的两组 API，一种用于异步功能，一种用于同步功能。
+Go 并发模型的优点之一是所有标准库函数都有简单的同步 API——如果你需要并发，你可以明确地使用 goroutines。这避免了 [“彩色函数”](https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/) 的问题——某些语言具有的两组 API，一种用于异步功能，一种用于同步功能。
 
 To kick off a goroutine, just write `go backgroundFunc()`, and Go’s runtime will kick off `backgroundFunc` on a new goroutine. Here’s a simple example of a handler function that  records a user signing up and then sends them an email in the background (this is similar to real code I use in my [side gig](https://giftyweddings.com/)):
 
@@ -476,7 +482,7 @@ Channels are powerful constructs, and there's much to say about them  (buffered 
 
 通道是强大的构造，关于它们有很多要说的（缓冲与非缓冲、封闭通道等），但我会把它留给 [Effective Go](https://golang.org/doc/effective_go.html#channels ）。
 
-### Types and methods
+### Types and methods 
 
 ### 类型和方法
 
@@ -545,19 +551,12 @@ type Writer interface {
 
 func main() {
     p := &Person{"Bob", 42}
-``
-
-fmt.Println(p.String())
-     // Equivalent (Person implements Stringer, which Println looks for)
-     fmt.Println(p)
+    fmt.Println(p.String())
+    // Equivalent (Person implements Stringer, which Println looks for)
+    fmt.Println(p)
 }
 ```
 
-fmt.Println(p.String())
-    // 等价（Person 实现 Stringer，Println 寻找它）
-    fmt.Println(p)
-}
-``
 
 It’s hard to overstate the importance of interfaces in Go. They’re used to make algorithms generic and functions testable. [Read more about them in Effective Go.](https://golang.org/doc/effective_go.html#interfaces)
 
@@ -647,6 +646,8 @@ func main() {
 ```
 
 
+
+
 ## The `go` tool
 
 ## `go` 工具
@@ -673,7 +674,7 @@ And there are many more commands – read the [full documentation](https://golan
 
 But to me the most amazing thing of all is that if you set two environment variables, `GOOS` and `GOARCH`, and then run `go build`, Go cross-compiles your project for the given operating system and  architecture. Here’s a one-liner to create a deployable Linux binary on a macOS or Windows machine:
 
-但对我来说最令人惊奇的是，如果你设置两个环境变量，`GOOS` 和 `GOARCH`，然后运行 ​​`go build`，Go 会针对给定的操作系统和架构交叉编译你的项目。这是在 macOS 或 Windows 机器上创建可部署的 Linux 二进制文件的单行代码：
+但对我来说最令人惊奇的是，如果你设置两个环境变量，`GOOS` 和 `GOARCH`，然后运行 `go build`，Go 会针对给定的操作系统和架构交叉编译你的项目。这是在 macOS 或 Windows 机器上创建可部署的 Linux 二进制文件的单行代码：
 
 ```
 GOOS=linux GOARCH=amd64 go build
@@ -693,4 +694,6 @@ There’s much more to say about Go and its ecosystem, but hopefully  this is a 
 关于 Go 及其生态系统还有很多话要说，但希望这对那些来自其他语言的人来说是一个有用的介绍。首先，我强烈推荐官方 [Go Tour](https://tour.golang.org/)。要深入了解，请阅读[Effective Go](https://golang.org/doc/effective_go.html) 和优秀的书 [The Go Programming Language](https://www.gopl.io/)。
 
 Oh, and [write in Go!](https://www.youtube.com/watch?v=LJvEIjRBSDA) 
+
 哦，还有 [用 Go 写！](https://www.youtube.com/watch?v=LJvEIjRBSDA)
+

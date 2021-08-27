@@ -60,6 +60,8 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			translatedText = strings.Replace(translatedText, "＃＃＃", "### ", -1)
 			translatedText = strings.Replace(translatedText, "＃＃", "## ", -1)
 			translatedText = strings.Replace(translatedText, "＃", "# ", -1)
+			// fix Zero width space Unicode
+			translatedText = strings.Replace(translatedText, "\u200B", "", -1)
 
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
 				input = input + sourceText
@@ -143,7 +145,8 @@ func main() {
 	count := 0
 	for _, line := range lines {
 		count = count + len(line)
-		if count+len(line) > 4900 {
+		// Do not break the code block
+		if count+len(line) > 4500 && strings.Count(strings.Join(translateLines, "\n"), "```")%2 == 0 {
 			log.Println("Translating ...")
 			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN", outFile)
 			check(err)
