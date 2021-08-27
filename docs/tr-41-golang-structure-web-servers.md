@@ -2,7 +2,7 @@
 
 # [我如何在 Go 中构建 Web 服务器](https://www.dudley.codes/posts/2020.05.19-golang-structure-web-servers/)
 
-Switching to Go from a decade of C# momentum has been an interesting journey. At times I revel in Go’s [simplicity](https://www.youtube.com/watch?v=rFejpH_tAHM);at other times frustration swells when familiar OOP [patterns](https://en.wikipedia.org/wiki/Software_design_pattern) don’t harmonize in a Go codebase. Fortunately, I’ve stumbled upon some  patterns for writing HTTP services that have been working well with my  team.
+Switching to Go from a decade of C# momentum has been an interesting journey. At times I revel in Go’s [simplicity](https://www.youtube.com/watch?v=rFejpH_tAHM); at other times frustration swells when familiar OOP [patterns](https://en.wikipedia.org/wiki/Software_design_pattern) don’t harmonize in a Go codebase. Fortunately, I’ve stumbled upon some  patterns for writing HTTP services that have been working well with my  team.
 
 从十年的 C# 势头转向 Go 是一段有趣的旅程。有时我陶醉于 Go 的 [简单](https://www.youtube.com/watch?v=rFejpH_tAHM)；有时，当熟悉的OOP [模式](https://en.wikipedia.org/wiki/Software_design_pattern) 在 Go 代码库中不协调时，挫败感会膨胀。幸运的是，我偶然发现了一些编写 HTTP 服务的模式，这些模式在我的团队中运行良好。
 
@@ -41,9 +41,9 @@ type Broker struct {
 ```
 
 
-The broker can be initialized with the [blocking](https://stackoverflow.com/questions/2407589/what-does-the-term-blocking-mean-in-programming)function `New()` which validates configurations and runs all the needed pre-flight checks.
+The broker can be initialized with the [blocking](https://stackoverflow.com/questions/2407589/what-does-the-term-blocking-mean-in-programming) function `New()` which validates configurations and runs all the needed pre-flight checks.
 
-可以使用 [blocking](https://stackoverflow.com/questions/2407589/what-does-the-term-blocking-mean-in-programming)函数 New() 来初始化代理，该函数验证配置并运行所有需要的飞行前检查。
+可以使用 [blocking](https://stackoverflow.com/questions/2407589/what-does-the-term-blocking-mean-in-programming)函数 New() 来初始化代理，该函数验证配置并运行所有需要的事先准备检查。
 
 ```go
 func New(cfg Config, port int) (*Broker, error) {
@@ -147,23 +147,11 @@ HTTP 管道设置在 `BuildPipeline()` 函数中完成，它将通过 `srv.Start
 ```go
 func BuildPipeline(srv webserver.Server, r *mux.Router) {
     r.Use(middleware.Metrics(), middleware.Authentication(srv))
-```去
-
-r.HandleFunc("/ping", routes.Ping()).Methods(http.MethodGet)
-
-     r.HandleFunc("/ping", routes.Ping()).Methods(http.MethodGet)
-
+    r.HandleFunc("/ping", routes.Ping()).Methods(http.MethodGet)
     ...
-
-     ...
-
     r.HandleFunc("/makes/{makeID}/models/{modelID}", model.get(srv)).Methods(http.MethodGet)
 }
 ```
-
-r.HandleFunc("/makes/{makeID}/models/{modelID}", model.get(srv)).Methods(http.MethodGet)
-}
-``
 
 ### Middleware
 
@@ -202,7 +190,7 @@ func Authentication(srv webserver.Server) func(h http.Handler) http.Handler {
 
 ### Routes
 
-### 路线
+### 路由
 
 Routes have a similar footprint as middleware – a simpler setup but with the same benefits.
 
@@ -213,13 +201,10 @@ func GetLatest(srv webserver.Server) http.HandlerFunc {
     if srv == nil {
         log.Fatal().Msg("a nil dependency was passed to the `/makes/{makeID}/models/{modelID}` route")
     }
-
     // additional setup logic
     ...
-
     return func(w http.ResponseWriter, r *http.Request) {
         ...
-
         makeDTO, err := srv.Get
     }
 }
@@ -254,7 +239,7 @@ The directory structure is *highly* optimized for discoverability.
 - **app/** is for the project applications - this is the entry point newcomers gravitate towards when exploring the codebase.
 - **./service-api/** is the micro-service API for this repository; all HTTP implementation details live here.
 - **cmd/** is where any command-line applications belong.
-- internal/ is a special directory that cannot be imported by projects outside of this repo.
+- **internal/** is a special directory that cannot be imported by projects outside of this repo.
 - **./service/** is where all the domain logic goes; from there it can be imported by `service-api`, `service-tool-x`, and any future applications/packages that would benefit from accessing it directly.
 - **pkg/** is for any packages that are encouraged to be imported by projects outside this repo.
 - **./client/** is a client library for accessing `service-api`. Other teams can import it without having to write their own and we can “[dogfood it](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)” with our own CI/CD tools stored in `cmd/`.
@@ -316,3 +301,4 @@ The directory structure is *highly* optimized for discoverability.
 ##  也可以看看
 - [How I Organize Struct in Go Projects](https://www.dudley.codes/posts/2021.02.23-golang-struct-organization/) 
 - [我如何在 Go 项目中组织结构](https://www.dudley.codes/posts/2021.02.23-golang-struct-organization/)
+
