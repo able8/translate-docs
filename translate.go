@@ -18,24 +18,24 @@ import (
 
 var outFile *os.File
 
-// Translate use google translate api to translate
+// Use google translate api
 func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
-
 	queryURL := "https://translate.google.cn/translate_a/single?client=gtx&sl=" +
 		sourceLang + "&tl=" + targetLang + "&dt=t&q=" + url.QueryEscape(source)
 	// fmt.Println(queryURL)
-	resp, err := http.Get(queryURL)
-	if err != nil {
-		for try := 0; try < 3; try++ {
-			resp, err = http.Get(queryURL)
-			if resp.StatusCode == http.StatusOK {
-				break
-			}
+	var resp *http.Response
+	var err error
+	for try := 0; try < 3; try++ {
+		resp, err = http.Get(queryURL)
+		if resp.StatusCode == http.StatusOK {
+			break
 		}
+	}
+	if err != nil {
 		return fmt.Errorf("failed to get translation result from translate.google.cn, err: %s", resp.Status)
 	}
-	defer resp.Body.Close()
 
+	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return errors.New("failed to read response body")
@@ -62,6 +62,8 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			translatedText = strings.Replace(translatedText, "＃", "# ", -1)
 			// fix Zero width space Unicode
 			translatedText = strings.Replace(translatedText, "\u200B", "", -1)
+			// fix the Chinese （）
+			translatedText = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(translatedText, "]($1)")
 
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
 				input = input + sourceText
@@ -150,7 +152,7 @@ func main() {
 			log.Println("Translating ...")
 			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN", outFile)
 			check(err)
-			time.Sleep(2 * time.Second)
+			time.Sleep(1 * time.Second)
 			count = len(line)
 			translateLines = nil
 		}
