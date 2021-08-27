@@ -54,7 +54,12 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			resultSlice := slice.([]interface{})
 			translatedText, sourceText := resultSlice[0].(string), resultSlice[1].(string)
 
-			translatedText = strings.Replace(translatedText, "＃", "#", -1)
+			// fix title in translatedText
+			translatedText = regexp.MustCompile(`(#+)(\p{Han}+)`).ReplaceAllString(translatedText, "$1 $2")
+			translatedText = strings.Replace(translatedText, "＃＃＃＃", "#### ", -1)
+			translatedText = strings.Replace(translatedText, "＃＃＃", "### ", -1)
+			translatedText = strings.Replace(translatedText, "＃＃", "## ", -1)
+			translatedText = strings.Replace(translatedText, "＃", "# ", -1)
 
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
 				input = input + sourceText

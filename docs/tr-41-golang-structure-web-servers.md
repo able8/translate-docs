@@ -24,7 +24,7 @@ An example repo is available [on GitHub](https://github.com/dudleycodes/golang-m
 
 ### The Broker
 
-###经纪人
+### 经纪人
 
 A `Broker` struct is the glue that binds distinct service packages to the HTTP  logic. No package-scoped variables are used. Interfaces of dependencies  are embedded to take advantage of [Go's composition](https://www.ardanlabs.com/blog/2015/09/composition-with-go.html).
 
@@ -167,7 +167,7 @@ r.HandleFunc("/makes/{makeID}/models/{modelID}", model.get(srv)).Methods(http.Me
 
 ### Middleware
 
-###中间件
+### 中间件
 
 Middleware returns a function that takes a handler which builds the needed `http.HandlerFunc`. This allows the `webserver.Server` interface to be injected and have all the safety checks only executed at start up rather than on every route invocation.
 
@@ -236,18 +236,19 @@ The directory structure is *highly* optimized for discoverability.
 
 ```text
 ├── app/
-|└── service-api/**
+|   └── service-api/**
 ├── cmd/
-|└── service-tool-x/
+|   └── service-tool-x/
 ├── internal/
-|└── service/
-|└── mock/
+|   └── service/
+|       └── mock/
 ├── pkg/
-|├── client/
-|└── dtos/
+|   ├── client/
+|   └── dtos/
 ├── (.editorconfig, .gitattributes, .gitignore)
 └── go.mod
 ```
+
 
 
 - **app/** is for the project applications - this is the entry point newcomers gravitate towards when exploring the codebase.
@@ -285,12 +286,12 @@ The directory structure is *highly* optimized for discoverability.
     ├── cfg/
     ├── middleware/
     ├── routes/
-    |├── makes/
-    ||└── models/**
-    |├── create.go
-    |├── create_test.go
-    |├── get.go
-    |└── get_test.go
+    |   ├── makes/
+    |   |   └── models/**
+    |   ├── create.go
+    |   ├── create_test.go
+    |   ├── get.go
+    |   └── get_test.go
     ├── webserver/
     ├── main.go
     └── pipeline.go
@@ -312,6 +313,6 @@ The directory structure is *highly* optimized for discoverability.
 - **pipeline.go** `BuildPipeline()` 函数所在的位置。
 
 ## See Also 
-## 也可以看看
+##  也可以看看
 - [How I Organize Struct in Go Projects](https://www.dudley.codes/posts/2021.02.23-golang-struct-organization/) 
 - [我如何在 Go 项目中组织结构](https://www.dudley.codes/posts/2021.02.23-golang-struct-organization/)
