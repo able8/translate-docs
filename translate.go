@@ -156,6 +156,8 @@ func main() {
 			count = len(line)
 			translateLines = nil
 		}
+		// replace tab with 4 space
+		line = strings.Replace(line, "\t", "    ", -1)
 		translateLines = append(translateLines, line)
 	}
 	log.Println("Translating ...")
