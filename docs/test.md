@@ -1,0 +1,3 @@
+This is only a small sample of what you can do with Kafka, but I’m  hoping to dig deeper into some of its other features and use cases in  future posts. Thanks for taking the time to read this post, and I hope  you’ll decide to stop by again soon! All of the code in this post is  available on my [GitHub](https://github.com/aaronraff/blog-code/tree/master/an-introduction-to-producing-and-consuming-kafka-messages-in-go).
+
+If you liked this post, it would mean a lot to me if you shared it with your friends! 

@@ -65,7 +65,8 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			// fix the Chinese （）
 			translatedText = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(translatedText, "]($1)")
 
-			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") {
+			// Do not translate these lines
+			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") || strings.Contains(sourceText, "From: http") {
 				input = input + sourceText
 				continue
 			}
