@@ -96,7 +96,7 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 		}
 		input = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(input, "](http$1$2)")
 		output = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(output, "](http$1$2)")
-		fmt.Fprintf(outFile, "%s\n%s\n", input, output)
+		fmt.Fprintf(outFile, "%s\n\n%s\n\n", input, output)
 		return nil
 	} else {
 		return errors.New("No translated data in responce")
@@ -142,11 +142,6 @@ func main() {
 
 	count := 0
 	for _, line := range lines {
-		if line == "" {
-			translateLines = append(translateLines, "")
-			continue
-		}
-
 		count = count + len(line)
 		if count+len(line) > 4900 {
 			log.Println("Translating ...")
