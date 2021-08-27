@@ -10,6 +10,10 @@
 2. [Proposed Solution](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Solution)
 3. [Conclusion](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Conclusion)
 
+1. [问题](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Problem)
+2. [建议的解决方案](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Solution)
+3. [结论](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Conclusion)
+
 ## Problem
 
 ##  问题
@@ -19,17 +23,17 @@ However, this presents a problem; if your application has lots of traffic, then 
 Some of the pricing models are so inscrutable, that the logging service providers offer calculators ( [here](https://calculator.aws/),[here](https://cloud.google.com/products/calculator), [etc](https://azure.microsoft.com/en-us/pricing/calculator/)) to try and help you figure out what should ideally have been kindergaten arithmetic.
 
 在您的应用程序中，您希望日志语句涵盖所有执行流程。这样，如果出现问题，您可以 [trace](https://www.komu.engineer/blogs/timescaledb/timescaledb-for-logs#Opinion3) 流在此时中断。
-然而，这带来了一个问题；如果您的应用程序有大量流量，那么它生成的日志量将是巨大的。这本身不是问题，如果不是因为您将日志记录用作服务提供商并且 [他们](https://www.datadoghq.com/pricing/)[charge](https://www.loggly.com/plans-and-pricing/) 一个 [arm](https://www.honeycomb.io/pricing/)和一个 [leg](https://www.sumologic.com/pricing/ ) 对于每个日志事件。
+然而，这带来了一个问题；如果您的应用程序有大量流量，那么它生成的日志量将是巨大的。这本身不是问题，如果不是因为您将日志记录用作服务提供商并且 [他们](https://www.datadoghq.com/pricing/)[charge](https:/ /www.loggly.com/plans-and-pricing/) 一个 [arm](https://www.honeycomb.io/pricing/)和一个 [leg](https://www.sumologic.com/pricing/ ) 对于每个日志事件。
 一些定价模型非常难以理解，以至于日志服务提供商提供计算器（[此处](https://calculator.aws/)、[此处](https://cloud.google.com/products/calculator)、[etc](https://azure.microsoft.com/en-us/pricing/calculator/)) 尝试帮助您找出理想情况下应该是幼儿园数学。
 
 So it seems like for you to have your cake and eat it too, you have to part with large sums of money every month(and due to elastic pricing you can't even tell in advance how much that will be.)
-There are two main ways that people try and solve this problem(usually at the [suggestion](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters)of the [said](https://docs.honeycomb.io/working-with-your-data/best-practices/sampling/) logging service providers);
+There are two main ways that people try and solve this problem(usually at the [suggestion](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters)of the [said](https ://docs.honeycomb.io/working-with-your-data/best-practices/sampling/) logging service providers);
 1. Filtering logs by severity and only sending logs above a certain severity to the logging service provider.
 2. and/or
 3. Sampling logs so that you only send a certain percentage to the logging service provider.
 
 因此，对于您来说，似乎既要吃蛋糕又要吃蛋糕，每个月都必须分出一大笔钱（由于弹性定价，您甚至无法提前知道要花多少钱。）
-人们尝试解决此问题的主要方法有两种（通常在 [said](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters)日志服务提供商）；
+人们尝试解决此问题的主要方法有两种（通常在 [said](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters)://docs.honeycomb.io/working-with-your-data/best-practices/sampling/) 日志服务提供商）；
 1、按严重性过滤日志，只将高于一定严重性的日志发送给日志服务提供商。
 2. 和/或
 3. 对日志进行采样，以便您只将一定比例的日志发送给日志服务提供商。
@@ -46,33 +50,33 @@ func main() {
 }
 
 func updateSocialMedia(msg string) {
-traceID := "sa225Hqk" //should be randomly generated per call
-logger := logrus.WithFields(logrus.Fields{"traceID": traceID})
+    traceID := "sa225Hqk" //should be randomly generated per call
+    logger := logrus.WithFields(logrus.Fields{"traceID": traceID})
 
-tweet(msg, logger)
-facebook(msg, logger)
-linkedin(msg, logger)
+    tweet(msg, logger)
+    facebook(msg, logger)
+    linkedin(msg, logger)
 }
 
 func tweet(msg string, logger *logrus.Entry) {
-logger.Info("tweet send start")
-// code to call twitter API goes here
-logger.Info("tweet send end.")
+    logger.Info("tweet send start")
+    // code to call twitter API goes here
+    logger.Info("tweet send end.")
 }
 
 func facebook(msg string, logger *logrus.Entry) {
-logger.Info("facebook send start")
-err := facebookAPI(msg)
-if err != nil {
-logger.Errorf("facebook send failed. error=%s", err)
-}
-logger.Info("facebook send end.")
+    logger.Info("facebook send start")
+    err := facebookAPI(msg)
+    if err != nil {
+        logger.Errorf("facebook send failed. error=%s", err)
+    }
+    logger.Info("facebook send end.")
 }
 
 func linkedin(msg string, logger *logrus.Entry) {
-logger.Info("linkedin send start")
-// code to call linkedin API goes here
-logger.Info("linkedin send end.")
+    logger.Info("linkedin send start")
+    // code to call linkedin API goes here
+    logger.Info("linkedin send end.")
 }
                 
 ```
