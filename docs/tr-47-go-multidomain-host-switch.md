@@ -12,7 +12,7 @@ When writing [Go](http://golang.org) HTTP services we  might need to perform dif
 
 # 主机交换机
 
-As difficult as host switch may sound, it is actually quite easy to implement. We need to implement the [http.Handler](https://golang.org/pkg/net/http/#Handler)interface. To do that we will create a type for which we implement the `ServeHTTP` method. We will just use a map here, in which we map host names (with port) to http.Handlers.
+As difficult as host switch may sound, it is actually quite easy to implement. We need to implement the [http.Handler](https://golang.org/pkg/net/http/#Handler) interface. To do that we will create a type for which we implement the `ServeHTTP` method. We will just use a map here, in which we map host names (with port) to http.Handlers.
 
 尽管主机切换听起来很困难，但实际上很容易实现。我们需要实现 [http.Handler](https://golang.org/pkg/net/http/#Handler) 接口。为此，我们将创建一个类型，为其实现“ServeHTTP”方法。我们将在这里只使用一个映射，在其中我们将主机名（带端口）映射到 http.Handlers。
 
@@ -107,5 +107,3 @@ Even though we perform only read operation, it is always better to use mutexes w
 Today we have created a simple `HostSwitch` which allows us to handle requests only if they come from valid hosts  or perform different logic per host. This example demonstrates how to  handle multidomains with Go. Example on [The Go Playground](https://play.golang.org/p/bMbKPGE7LhT) 
 
 今天我们创建了一个简单的`HostSwitch`，它允许我们仅处理来自有效主机的请求或为每个主机执行不同的逻辑。此示例演示如何使用 Go 处理多域。 
-
-
