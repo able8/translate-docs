@@ -88,7 +88,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [](docs/tr-51-lets-build-a-full-text-search-engine.md)
 1. [](docs/tr-52-go-routing.md)
 1. [A Gentle Introduction to Web Services With Go](docs/tr-53-go-web-services.md)
-1. [](docs/tr-54-golang-logging.md)
+1. [Logging in Go: Choosing a System and Using it](docs/tr-54-golang-logging.md)
 1. [How to customize Go's HTTP client](docs/tr-55-customize-http-client.md)
 1. [](docs/tr-56-structuring-and-testing-http-handlers-in-go.md)
 1. [Correlating Logs](docs/tr-57-correlating-logs.md)

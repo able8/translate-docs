@@ -1,6 +1,6 @@
 # Logging in Go: Choosing a System and Using it
 
-# 登录 Go：选择一个系统并使用它
+#  Go 日志记录：选择一个系统并使用它
 
 Apr 1, 2020 From: https://www.honeybadger.io/blog/golang-logging/
 
@@ -10,7 +10,7 @@ Go 具有内置功能，可以让程序员更轻松地实现日志记录。第�
 
 You're relatively new to the Go language. You're probably using it to write a web app or a server, and you need to create a log  file. So, you do a quick web search and find that there are a ton of  options for logging in go. How do you know which one to pick? This  article will equip you to answer that question.
 
-您对 Go 语言比较陌生。您可能正在使用它来编写 Web 应用程序或服务器，并且您需要创建一个日志文件。因此，您进行了快速的网络搜索，并发现有大量登录 go 的选项。你怎么知道选哪一个？这篇文章将使您有能力回答这个问题。
+您对 Go 语言比较陌生。您可能正在使用它来编写 Web 应用程序或服务器，并且您需要创建一个日志文件。因此，您进行了快速的网络搜索，并发现有大量 go日志 的选项。你怎么知道选哪一个？这篇文章将使您有能力回答这个问题。
 
 We will take a look at the built-in `log` package and  determine what projects it is suited for before exploring other logging  solutions that are prevalent in the Go ecosystem.
 
@@ -22,7 +22,7 @@ We will take a look at the built-in `log` package and  determine what projects i
 
 I don't need to tell you how important logging is. Logs are used by  every production web application to help developers and operations:
 
-我不需要告诉你日志有多重要。每个生产 Web 应用程序都使用日志来帮助开发人员和操作：
+我不需要告诉你日志有多重要。每个生产 Web 应用程序都使用日志来帮助开发和操作人员：
 
 - Spot bugs in the application's code
 - Discover performance problems
@@ -330,7 +330,7 @@ It couldn't be any easier!
 
 ### Logging in JSON 
 
-### 登录 JSON
+### JSON 日志
 
 `logrus` is well suited for structured logging in JSON  which — as JSON is a well-defined standard — makes it easy for external  services to parse your logs and also makes the addition of context to a  log message relatively straightforward through the use of fields , as shown below:
 
@@ -437,7 +437,7 @@ log.SetLevel(log.DebugLevel)
 
 ## Wrap up
 
-##  包起来
+##  总结
 
 In this post, we explored the use of the built-in log package and  established that it should only be used for trivial applications or when building a quick prototype. For everything else, the use of a  mainstream logging framework is a must.
 
@@ -450,4 +450,3 @@ We also looked at ways to ensure that the information contained in your logs is 
 Thanks for reading! 
 
 谢谢阅读！
-
