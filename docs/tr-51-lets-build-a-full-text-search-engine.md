@@ -4,11 +4,11 @@
 
 - July 28, 2020 From: https://artem.krylysov.com/blog/2020/07/28/lets-build-a-full-text-search-engine/
 
-Full-Text Search is one of those tools people use every day  without realizing it. If you ever googled "golang coverage report" or  tried to find "indoor wireless camera" on an e-commerce website, you  used some kind of full-text search.
+Full-Text Search is one of those tools people use every day without realizing it. If you ever googled "golang coverage report" or tried to find "indoor wireless camera" on an e-commerce website, you used some kind of full-text search.
 
 全文搜索是人们每天都在不知不觉中使用的工具之一。如果您曾经在电子商务网站上搜索过“golang 覆盖率报告”或尝试查找“室内无线摄像头”，那么您使用了某种全文搜索。
 
-Full-Text Search (FTS) is a technique for searching text in a  collection of documents. A document can refer to a web page, a newspaper article, an email message, or any structured text.
+Full-Text Search (FTS) is a technique for searching text in a collection of documents. A document can refer to a web page, a newspaper article, an email message, or any structured text.
 
 全文搜索 (FTS) 是一种在文档集合中搜索文本的技术。文档可以指网页、报纸文章、电子邮件或任何结构化文本。
 
@@ -344,8 +344,6 @@ func stemmerFilter(tokens []string) []string {
 ```
 
 
-
-
 Note
 
 笔记
@@ -399,7 +397,7 @@ type index map[string][]int
 
 Building the index consists of analyzing the documents and adding their IDs to the map:
 
-构建索引包括分析文档并将其 ID 添加到地图中：
+构建索引包括分析文档并将其 ID 添加到 Map 中：
 
 ```
 func (idx index) add(docs []document) {
@@ -426,7 +424,7 @@ func main() {
 
 It works! Each token in the map refers to IDs of the documents that contain the token:
 
-有用！地图中的每个令牌指的是包含该令牌的文档的 ID：
+有用！map 中的每个令牌指的是包含该令牌的文档的 ID：
 
 ```
 map[donut:[1 2] glass:[1] is:[2] on:[1] only:[1] plate:[1]]
@@ -463,7 +461,7 @@ And finally, we can find all documents that mention cats. Searching 600K documen
 
 With the inverted index, the time complexity of the search query is  linear to the number of search tokens. In the example query above, other than analyzing the input text, search had to perform only three map lookups.
 
-使用倒排索引，搜索查询的时间复杂度与搜索标记的数量成线性关系。在上面的示例查询中，除了分析输入文本外，搜索只需要执行三个地图查找。
+使用倒排索引，搜索查询的时间复杂度与搜索标记的数量成线性关系。在上面的示例查询中，除了分析输入文本外，搜索只需要执行三个map查找。
 
 ### Boolean queries
 
@@ -563,6 +561,8 @@ I didn't touch on a lot of things that can significantly improve the performance
 - Support indexing multiple document fields.
 - Sort results by relevance.
 
+
+
 - 扩展布尔查询以支持 *OR* 和 *NOT*。
 - 将索引存储在磁盘上：
   - 每次重新启动应用程序时重建索引可能需要一段时间。
@@ -578,4 +578,5 @@ The full source code is available on [GitHub](https://github.com/akrylysov/simpl
 I'm not a native English speaker and I'm trying to improve my language skills. Feel free to correct me if you spot any spelling or  grammatical error! 
 
 我的母语不是英语，我正在努力提高我的语言技能。如果您发现任何拼写或语法错误，请随时纠正我！
+
 
