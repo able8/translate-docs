@@ -10,13 +10,13 @@ June 2020
 
 > 总结：我已经为刚接触 Go 语言的开发人员介绍了几次 Go 的介绍——这是一篇连载为技术文章的演讲。它着眼于您可能想要使用 Go 的原因，并简要概述了标准库和语言本身。
 
-A few years ago I [learned Go](https://benhoyt.com/writings/learning-go/)by porting the server for my [Gifty Weddings](https://giftyweddings.com/) side gig from Python to Go. It was a fun way to learn the language, and took me about “two weeks of bus commutes” to learn Go at a basic level  and port the code.
+A few years ago I [learned Go](https://benhoyt.com/writings/learning-go/) by porting the server for my [Gifty Weddings](https://giftyweddings.com/) side gig from Python to Go. It was a fun way to learn the language, and took me about “two weeks of bus commutes” to learn Go at a basic level  and port the code.
 
 几年前，我通过将我的 [Gifty Weddings](https://giftyweddings.com/) 的服务器从 Python 移植到走。这是一种学习语言的有趣方式，我花了大约“两周的公交车通勤时间”来基本学习 Go 并移植代码。
 
 Since then, I've really enjoyed working with the language, and have  used it extensively at work as well as on side projects like [GoAWK](https://benhoyt.com/writings/goawk/)and [zztgo](https ://benhoyt.com/writings/zzt-in-go/). Go usage at [Compass.com](https://www.compass.com/), my current workplace, has grown significantly in the time I’ve been  there – around half of our 200 plus services are written in Go.
 
-从那以后，我真的很喜欢使用这种语言，并且在工作中以及像 [GoAWK](https://benhoyt.com/writings/goawk/)和 [zztgo](https ://benhoyt.com/writings/zzt-in-go/）。在我目前的工作场所 [Compass.com](https://www.compass.com/) 上，Go 的使用量在我工作后显着增长——我们 200 多个服务中约有一半是用 Go 编写的。
+从那以后，我真的很喜欢使用这种语言，并且在工作中以及像 [GoAWK](https://benhoyt.com/writings/goawk/)和 [zztgo](https ://benhoyt.com/writings/zzt-in-go/)。在我目前的工作场所 [Compass.com](https://www.compass.com/) 上，Go 的使用量在我工作后显着增长——我们 200 多个服务中约有一半是用 Go 编写的。
 
 This article describes what I think are some of the great things  about Go, gives a very brief overview of the standard library, and then  digs into the core language. But if you just want a feel for what real  Go code looks like, skip to the [HTTP server examples](https://benhoyt.com/writings/go-intro/#http-server-examples).
 
@@ -24,7 +24,7 @@ This article describes what I think are some of the great things  about Go, give
 
 ## Why Go?
 
-## 为什么要去？
+## 为什么Go？
 
 As the following [Google Trends chart](https://trends.google.com/trends/explore?date=2010-01-012020-06-09&q=golang&hl=en-US) shows, Go has become very popular over the past few years, partly  because of the simplicity of the language, but perhaps more importantly  because of the excellent tooling.
 
@@ -36,30 +36,54 @@ Here are some of the reasons I enjoy programming in Go (and why you might like i
 
 以下是我喜欢用 Go 编程的一些原因（以及你可能也喜欢它的原因）：
 
-- **Small and simple core language.** Go feels similar in size to C, with a very readable [language spec](https://golang.org/ref/spec)that's only about 50 pages long (compared to the [Java spec's](https://docs.oracle.com/javase/specs/jls/se12/jls12.pdf) 770 pages). This makes it easy to learn or teach to others.
+- **Small and simple core language.** Go feels similar in size to C, with a very readable [language spec ](https://golang.org/ref/spec)that's only about 50 pages long (compared to the [Java spec's](https://docs.oracle.com/javase/specs/jls/se12/jls12.pdf) 770 pages). This makes it easy to learn or teach to others.
+
 - **High quality standard library**, especially for servers and network tasks. More details [below](https://benhoyt.com/writings/go-intro/#the-standard-library).
+
 - **First class concurrency** with *goroutines* (like threads, but lighter) and the `go` keyword to start a goroutine, *channels* for communicating between them, and a runtime whose scheduler coordinates all this.
+
 - **Compiles to native code**, producing easy-to-deploy binaries on all the major platforms.
+
 - **Garbage collection** that doesn’t require knob-tweaking ([optimized](https://blog.golang.org/ismmkeynote)for low latency).
+
 - **Statically typed**, but has type inference to avoid a lot of “type stuttering”.
+
 - **Great documentation** that is succinct and includes many runnable examples.
+
 - **Excellent tooling.** Just type `go build` to build your project, `go test` to find and run your tests, etc. There’s CPU and memory profiling, code coverage, and cross compilation – all without external tooling.
+
 - **Fast compile times.** The language was designed from day one with fast compile times in mind. In fact, co-creator Rob Pike [jokes](https://www.informit.com/articles/article.aspx?p=1623555) that “Go was conceived while waiting for a big [C++] compilation.”
+
 - **Very stable** language and library, with a strict [compatibility promise](https://golang.org/doc/go1compat) that all Go 1 programs will run unchanged on later versions of Go 1.x.
+
 - **Desired.** According to StackOverflow's 2019 survey, it's the [third most wanted](https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted) programming language, so it's easy to hire developers who want to use it.
+
 - **Heavily used in cloud tools.** Docker and Kubernetes are written in Go, and Dropbox, Digital Ocean, Cloudflare, and many other companies use it extensively.
 
+  
+
 - **小而简单的核心语言。** Go 感觉在大小上与 C 相似，具有非常易读的 [语言规范](https://golang.org/ref/spec)，只有大约50 页长（与[Java 规范](https://docs.oracle.com/javase/specs/jls/se12/jls12.pdf) 770 页）。这使得学习或教给他人变得容易。
+
 - **高质量的标准库**，特别适用于服务器和网络任务。更多详情[下文](https://benhoyt.com/writings/go-intro/#the-standard-library)。
+
 - **一级并发**，带有 *goroutines*（类似于线程，但更轻量级）和 `go` 关键字来启动一个 goroutine，*channels* 用于它们之间的通信，以及一个运行时，其调度程序协调所有这些。
+
 - **编译为本机代码**，在所有主要平台上生成易于部署的二进制文件。
+
 - **垃圾收集**，不需要旋钮调整（[优化]（https://blog.golang.org/ismmkeynote）以实现低延迟）。
+
 - **静态类型**，但具有类型推断以避免大量“类型卡顿”。
+
 - **优秀的文档**，简洁并包含许多可运行的示例。
+
 - **优秀的工具。** 只需输入 `go build` 来构建你的项目，输入 `go test` 来查找和运行你的测试等等。还有 CPU 和内存分析、代码覆盖率和交叉编译——所有这些都不需要外部工具。
+
 - **快速编译时间。** 该语言从一开始就考虑到了快速编译时间。事实上，共同创作者 Rob Pike [笑话](https://www.informit.com/articles/article.aspx?p=1623555) 说“Go 是在等待大型 [C++] 编译时构思出来的。”
+
 - **非常稳定**的语言和库，具有严格的[兼容性承诺](https://golang.org/doc/go1compat)，所有 Go 1 程序将在 Go 1.x 的更高版本上保持不变。
+
 - **Desired.** 根据 StackOverflow 的 2019 年调查，它是 [第三大最想要的](https://insights.stackoverflow.com/survey/2019#most-loved-dreaded-and-wanted) 编程语言，所以它是易于雇用想要使用它的开发人员。
+
 - **大量用于云工具。** Docker 和 Kubernetes 是用 Go 编写的，Dropbox、Digital Ocean、Cloudflare 和许多其他公司广泛使用它。
 
 ## The standard library 
@@ -87,6 +111,8 @@ Go 的 [标准库](https://golang.org/pkg/) 是广泛的、跨平台的，并且
 - Go source code tools: [parser](https://golang.org/pkg/go/parser/),[AST](https://golang.org/pkg/go/ast/), code [formatting] (https://golang.org/pkg/go/printer/).
 - Reflection: powerful run-time [reflection support](https://golang.org/pkg/reflect/).
 
+
+
 - 输入/输出：[OS 调用](https://golang.org/pkg/os/)、文件和目录、[缓冲I/O](https://golang.org/pkg/bufio/)。
 - HTTP：生产就绪 [客户端和服务器](https://golang.org/pkg/net/http/)、TLS、HTTP/2、简单路由、URL 和 cookie 解析。
 - 字符串：[所有基础知识](https://golang.org/pkg/strings/)、[原始字节](https://golang.org/pkg/bytes/)、[unicode 转换](https ://golang.org/pkg/unicode/）。
@@ -106,7 +132,7 @@ Go 的 [标准库](https://golang.org/pkg/) 是广泛的、跨平台的，并且
 
 In terms of third party packages, typical Go philosophy is almost the opposite of JavaScript’s approach of pulling in `npm` packages left, right, and center. Russ Cox (tech lead of the Go team at Google) talks about [our software dependency problem](https://research.swtch.com/deps),and Go co-creator Rob Pike [likes to say](https:/ /go-proverbs.github.io/), “A little copying is better than a little dependency.” So it’s fair to  say that most Gophers are pretty conservative about using third party  libraries.
 
-就第三方包而言，典型的 Go 哲学几乎与 JavaScript 将 npm 包向左、向右和居中拉入的方法相反。 Russ Cox（Google Go 团队的技术负责人）谈论 [我们的软件依赖问题](https://research.swtch.com/deps)，以及Go 的共同创造者 Rob Pike [喜欢说](https:/ /go-proverbs.github.io/)，“一点点复制比一点点依赖要好。”所以可以说大多数 Gophers 对使用第三方库相当保守。
+就第三方包而言，典型的 Go 哲学几乎与 JavaScript 将 npm 包向左、向右和居中拉入的方法相反。 Russ Cox（Google Go 团队的技术负责人）谈论 [我们的软件依赖问题](https://research.swtch.com/deps)，以及Go 的共同创造者 Rob Pike [喜欢说](https:/ /go-proverbs.github.io/)，“一点点复制比一点点依赖要好。” 所以可以说大多数 Gophers 对使用第三方库相当保守。
 
 That said, since I originally wrote this talk, the Go team has designed and built [modules](https://blog.golang.org/using-go-modules), the Go team's official answer to how you should manage and version -pin  your dependencies. I’ve found it pleasant to use, and it works with all  the normal `go` sub-commands.
 
@@ -209,7 +235,7 @@ Go 经常被批评的第二件事是用户定义的泛型。所以你不能定�
 
 The other thing to note is that generics *are* being worked on: the Go team just [wants to add them](https://blog.golang.org/why-generics)in a way that's very Go-like and that counts the cost, rather than a bolted on addition. There's a [draft proposal](https://github.com/golang/proposal/blob/master/design/go2draft-contracts.md), an [experimental implementation](https://go-review.googlesource.com/c/go/+/187317/), and even a recent type theory paper on the subject called [Featherweight Go](https://arxiv.org/abs/2005.11710). So I wouldn’t be surprised if we saw Go shipping with a form of generics in the next 12-18 months.
 
-另一件需要注意的事情是泛型 * 正在* 正在研究中：Go 团队只是 [想添加它们](https://blog.golang.org/why-generics)以一种非常类似于 Go 的方式计算成本，而不是盲目的加法。有一个[草案提案](https://github.com/golang/proposal/blob/master/design/go2draft-contracts.md)，一个[实验实施](https://go-review.googlesource.com/c/go/+/187317/)，甚至是最近一篇关于该主题的类型理论论文，名为 [Featherweight Go](https://arxiv.org/abs/2005.11710)。因此，如果我们在接下来的 12 到 18 个月内看到 Go 带有某种形式的泛型，我不会感到惊讶。
+另一件需要注意的事情是泛型正在研究中：Go 团队只是 [想添加它们](https://blog.golang.org/why-generics)以一种非常类似于 Go 的方式计算成本，而不是盲目的加法。有一个[草案提案](https://github.com/golang/proposal/blob/master/design/go2draft-contracts.md)，一个[实验实施](https://go-review.googlesource.com/c/go/+/187317/)，甚至是最近一篇关于该主题的类型理论论文，名为 [Featherweight Go](https://arxiv.org/abs/2005.11710)。因此，如果我们在接下来的 12 到 18 个月内看到 Go 带有某种形式的泛型，我不会感到惊讶。
 
 Okay, so enough about what Go doesn’t have. Let’s look at what features it does have (many of them unique).
 
@@ -328,8 +354,6 @@ Slice functionality is pretty minimalist, and one thing I missed (coming from Py
 
 ### Maps
 
-### 地图
-
 A Go `map` is an unordered hash table mapping keys to values. Like slices, they’re generic and type-safe, so you can have (for example) a `map[string]int`, which means “map of string keys to int values”.
 
 Go `map` 是一个将键映射到值的无序哈希表。像切片一样，它们是泛型且类型安全的，因此您可以拥有（例如）一个 `map[string]int`，意思是“字符串键到 int 值的映射”。
@@ -439,8 +463,6 @@ func ProcessSignup(u *User) {
 
 
 ### Channels
-
-### 频道
 
 Starting a goroutines doesn’t return a promise or goroutine ID – if  you want to communicate between goroutines or signal that work is done,  you have to explicitly use *channels*. Channels are Go’s main inter-goroutine communication mechanism, and as the [Go Proverb](https://go-proverbs.github.io/) says, “Don’t communicate by sharing memory, share memory by communicating.”
 
@@ -687,13 +709,12 @@ Isn’t that cool? Development hasn’t been this easy since [Turbo Pascal](http
 
 ## Wrapping up
 
-##  包起来
+##  总结
 
-There’s much more to say about Go and its ecosystem, but hopefully  this is a helpful introduction for those coming from other languages. To get started, I highly recommend the official [Go Tour](https://tour.golang.org/).For going deeper, read [Effective Go](https://golang.org/doc/effective_go.html) and then the excellent book [The Go Programming Language](https://www.gopl.io/).
+There’s much more to say about Go and its ecosystem, but hopefully  this is a helpful introduction for those coming from other languages. To get started, I highly recommend the official [Go Tour](https://tour.golang.org/). For going deeper, read [Effective Go](https://golang.org/doc/effective_go.html) and then the excellent book [The Go Programming Language](https://www.gopl.io/).
 
-关于 Go 及其生态系统还有很多话要说，但希望这对那些来自其他语言的人来说是一个有用的介绍。首先，我强烈推荐官方 [Go Tour](https://tour.golang.org/)。要深入了解，请阅读[Effective Go](https://golang.org/doc/effective_go.html) 和优秀的书 [The Go Programming Language](https://www.gopl.io/)。
+关于 Go 及其生态系统还有很多话要说，但希望这对那些来自其他语言的人来说是一个有用的介绍。首先，我强烈推荐官方 [Go Tour](https://tour.golang.org/)。要深入了解，请阅读 [Effective Go](https://golang.org/doc/effective_go.html) 和优秀的书 [The Go Programming Language](https://www.gopl.io/)。
 
 Oh, and [write in Go!](https://www.youtube.com/watch?v=LJvEIjRBSDA) 
 
 哦，还有 [用 Go 写！](https://www.youtube.com/watch?v=LJvEIjRBSDA)
-

@@ -77,7 +77,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Faking stdin and stdout in Go](docs/tr-40-faking-stdin-and-stdout-in-go.md)
 1. [How I Structure Web Servers in Go](docs/tr-41-golang-structure-web-servers.md)
 1. [Logging without losing money or context](docs/tr-42-log-without-losing-context.md)
-1. [](docs/tr-43-go-intro.md)
+1. [An intro to Go for non-Go developers](docs/tr-43-go-intro.md)
 1. [](docs/tr-44-go-cli-how-to-and-advice.md)
 1. [](docs/tr-45-how-to-handle-errors-in-go-5-rules.md)
 1. [](docs/tr-46-an-introduction-to-producing-and-consuming-kafka-messages-in-go.md)
