@@ -84,7 +84,7 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			output = output + translatedText
-			if sourceText[len(sourceText)-1:] == "\n" {
+			if len(sourceText) > 0 && sourceText[len(sourceText)-1:] == "\n" {
 				input = input + sourceText
 			} else {
 				input = input + sourceText + " "
