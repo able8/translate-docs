@@ -94,7 +94,7 @@ There are two broad ways in which a Go app is deployed: containerized or native.
 
 部署 Go 应用程序有两种广泛的方式：容器化或原生。
 
-A containerized app is put in a container and then deployed to the cloud, which can be anything from a Kubernetes setup to an IaaS provider like [Heroku](https://www.heroku.com/)or [Platform.sh]( https://platform.sh/).
+A containerized app is put in a container and then deployed to the cloud, which can be anything from a Kubernetes setup to an IaaS provider like [Heroku](https://www.heroku.com/) or [Platform.sh]( https://platform.sh/).
   However, not every deployment needs the complexity that the containerized approach brings. One can get very far with a single VPS or dedicated server. I am a strong believer in continuing to support the “$5 Digital Ocean” crowd, especially now that Go has given us extra performance compared to the old PHP days.
 
 将容器化应用程序放入容器中，然后部署到云中，可以是从 Kubernetes 设置到 IaaS 提供商的任何内容，例如 [Heroku](https://www.heroku.com/) 或 [Platform.sh]( https://platform.sh/）。
@@ -102,7 +102,7 @@ A containerized app is put in a container and then deployed to the cloud, which 
 
 A native deployment usually means Linux, which is nowadays powered by [systemd](https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal).Systemd will automatically start our app and bind it to the specified port, restart on failure, and redirect logs from stderr to syslog or [journald](https://sematext.com/blog/journald-logging-tutorial/). When redeploying our app, during the 1-2s downtime window, systemd will queue up any incoming requests, ensuring zero downtime deploys.
 
-本机部署通常是指 Linux，它现在由 [systemd](https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal)提供支持。 Systemd 将自动启动我们的应用程序并将其绑定到指定的端口，失败时重新启动，并将日志从 stderr 重定向到 syslog 或 [journald](https://sematext.com/blog/journald-logging-tutorial/)。在重新部署我们的应用程序时，在 1-2 秒的停机时间窗口内，systemd 会将所有传入请求排队，确保零停机时间部署。
+本机部署通常是指 Linux，它现在由 [systemd](https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal) 提供支持。 Systemd 将自动启动我们的应用程序并将其绑定到指定的端口，失败时重新启动，并将日志从 stderr 重定向到 syslog 或 [journald](https://sematext.com/blog/journald-logging-tutorial/)。在重新部署我们的应用程序时，在 1-2 秒的停机时间窗口内，systemd 会将所有传入请求排队，确保零停机时间部署。
 
 This sounds great, but it requires a bit of adaptation on our side. Aside from having to ship two systemd config files (a unit file and a socket file), the app also needs to be able to listen on a systemd socket.
 
@@ -208,8 +208,6 @@ server := NewServer(addr, r)
 server.ListenAndServe()
 ```
 
-
-### TLS
 
 ### TLS
 
@@ -452,4 +450,3 @@ A simple microservice deployed to a known place can keep its code simple. A larg
 I have gathered the httpx code shared here and published it as [bojanz/httpx](https://github.com/bojanz/httpx).The README has working examples of systemd unit and socket files. The code itself is only a hundred lines long (without comments), so I  encourage those unenthusiastic about introducing another dependency to  just copy the code into their project. After all, a little copying is better than a little dependency. 
 
 我收集了此处共享的 httpx 代码并将其发布为 [bojanz/httpx](https://github.com/bojanz/httpx)。 README 中有 systemd 单元和套接字文件的工作示例。代码本身只有一百行（没有注释），所以我鼓励那些不热衷于引入另一个依赖项的人将代码复制到他们的项目中。毕竟，一点点复制比一点点依赖要好。
-
