@@ -82,7 +82,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [How to handle errors in Go?](docs/tr-45-how-to-handle-errors-in-go-5-rules.md)
 1. [An Introduction to Producing and Consuming Kafka Messages in Go](docs/tr-46-an-introduction-to-producing-and-consuming-kafka-messages-in-go.md)
 1. [Handling multidomain HTTP requests with simple host switch](docs/tr-47-go-multidomain-host-switch.md)
-1. [](docs/tr-48-handle-signals-to-graceful-shutdown-http-server.md)
+1. [How to handle signals with Go to graceful shutdown HTTP server](docs/tr-48-handle-signals-to-graceful-shutdown-http-server.md)
 1. [](docs/tr-49-implementing-traceroute-in-go.md)
 1. [](docs/tr-50-tests-make-your-code-inherently-better.md)
 1. [](docs/tr-51-lets-build-a-full-text-search-engine.md)

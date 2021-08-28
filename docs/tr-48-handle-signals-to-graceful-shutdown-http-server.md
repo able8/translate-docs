@@ -4,7 +4,7 @@
 
 Written on June 18, 2020  ​From: https://rafallorenz.com/go/handle-signals-to-graceful-shutdown-http-server/
 
-In this article we are going to learn how to handle os incoming [signals](https://golang.org/pkg/os/signal)for performing graceful shutdown of http server. To do so we are going to take advantage of [os/signal](https://golang.org/pkg/os/signal) package.
+In this article we are going to learn how to handle os incoming [signals](https://golang.org/pkg/os/signal) for performing graceful shutdown of http server. To do so we are going to take advantage of [os/signal](https://golang.org/pkg/os/signal) package.
 
 在本文中，我们将学习如何处理 os 传入 [信号](https://golang.org/pkg/os/signal)以正常关闭 http 服务器。为此，我们将利用 [os/signal](https://golang.org/pkg/os/signal) 包。
 
@@ -93,14 +93,14 @@ When signal is received we will call a callback followed after by `os.Exit(0)`, 
 
 To gracefully shutdown [http.Server](https://golang.org/pkg/net/http/#Server)we can use [Shutdown](https://golang.org/pkg/net/http/#Server. Shutdown) method.
 
-要正常关闭 [http.Server](https://golang.org/pkg/net/http/#Server)，我们可以使用 [Shutdown](https://golang.org/pkg/net/http/#Server.关机）方法。
+要正常关闭 [http.Server](https://golang.org/pkg/net/http/#Server)，我们可以使用 Shutdown 方法。
 
 > Shutdown gracefully shuts down the server without interrupting any  active connections. Shutdown works by first closing all open listeners,  then closing all idle connections, and then waiting indefinitely for  connections to return to idle and then shut down. If the provided  context expires before the shutdown is complete, Shutdown returns the  context’s error, otherwise it returns any error returned from closing  the Server’s underlying Listener(s).
 
 > 关闭可以正常关闭服务器，而不会中断任何活动连接。关闭的工作原理是首先关闭所有打开的侦听器，然后关闭所有空闲连接，然后无限期地等待连接返回空闲状态，然后关闭。如果提供的上下文在关闭完成之前到期，则 Shutdown 返回上下文的错误，否则返回关闭服务器底层侦听器返回的任何错误。
 
 ```
-   ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+  ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
   defer cancel()
 
   if err := httpServer.Shutdown(ctx);err != nil {
@@ -124,7 +124,7 @@ To gracefully shutdown [http.Server](https://golang.org/pkg/net/http/#Server)we 
 > [RegisterOnShutdown](https://golang.org/pkg/net/http/#Server.RegisterOnShutdown) 注册一个函数以在关闭时调用。这可用于正常关闭经过 ALPN 协议升级或被劫持的连接。此函数应启动特定于协议的正常关闭，但不应等待关闭完成。
 
 ```
-     ctx, cancel := context.WithCancel(context.Background())
+    ctx, cancel := context.WithCancel(context.Background())
 
     httpServer.RegisterOnShutdown(cancel)
 ```
@@ -163,7 +163,7 @@ If you do not care about notifying long-lived connections during  shutdown and d
 如果您不关心在关闭期间通知长期连接并且不想等待它们正常关闭。快速解决方案是手动取消“BaseContext”而不是使用“RegisterOnShutdown”，这使得上下文在关闭期间作为第一个过程被取消。
 
 ```
-     ctx, cancel := context.WithCancel(context.Background())
+    ctx, cancel := context.WithCancel(context.Background())
 
     httpServer := &http.Server{
         Addr:        ":8080",
@@ -265,13 +265,11 @@ When Shutdown is called, `Serve`, `ListenAndServe`, and `ListenAndServeTLS` imme
 
 **注意**：我们推迟了 `os.Exit()` 后跟 `return`。延迟不会在“Fatal()”上运行。
 
-> Calling Goexit from the main goroutine terminates that goroutine  without func main returning. Since func main has not returned, the  program continues execution of other goroutines. If all other goroutines exit, the program crashes. 
+> Calling Goexit from the main goroutine terminates that goroutine without func main returning. Since func main has not returned, the  program continues execution of other goroutines. If all other goroutines exit, the program crashes. 
 
 > 从主协程调用 Goexit 会终止该协程，而 func main 不返回。由于 func main 没有返回，程序继续执行其他 goroutine。如果所有其他 goroutine 退出，程序就会崩溃。
 
 You can read conversation about it [here](https://www.reddit.com/r/golang/comments/hbalgf/how_to_handle_signals_with_go_to_graceful/fv800rj?utm_source=share&utm_medium=web2x)
-
-你可以在[这里]阅读关于它的对话（https://www.reddit.com/r/golang/comments/hbalgf/how_to_handle_signals_with_go_to_graceful/fv800rj?utm_source=share&utm_medium=web2x）
 
 Run this example on [The Go Playground](https://play.golang.org/p/6w3yFxU1N24)
 
@@ -284,4 +282,5 @@ Run this example on [The Go Playground](https://play.golang.org/p/6w3yFxU1N24)
 By using tools provided by go environment, we can easily handle  graceful shutdown of our application. We could simply create a package  to handle that for us, in fact I already have created one if you are  interested. [shutdown](https://github.com/vardius/shutdown) - is a simple go signals handler for performing graceful shutdown by executing callback function. 
 
 通过使用 go 环境提供的工具，我们可以轻松处理应用程序的正常关闭。我们可以简单地创建一个包来为我们处理这个问题，事实上，如果您有兴趣，我已经创建了一个。 [shutdown](https://github.com/vardius/shutdown) - 是一个简单的 go 信号处理程序，用于通过执行回调函数执行正常关闭。
+
 
