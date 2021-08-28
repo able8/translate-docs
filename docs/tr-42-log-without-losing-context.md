@@ -1,14 +1,13 @@
-# Logging without losing money or context.
+# Logging without losing money or context
 
-# 在不损失金钱或上下文的情况下进行日志记录。
+# 在不损失金钱或上下文的情况下进行日志记录
 
 26 May 2020
-
-2020 年 5 月 26 日
 
 1. [Problem](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Problem)
 2. [Proposed Solution](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Solution)
 3. [Conclusion](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Conclusion)
+
 
 1. [问题](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Problem)
 2. [建议的解决方案](https://www.komu.engineer/blogs/log-without-losing-context/log-without-losing-context#Solution)
@@ -19,7 +18,7 @@
 ##  问题
 
 In your application, you want all flows of execution to be covered with log statements. That way, if something were to go wrong, you can be able to [trace](https://www.komu.engineer/blogs/timescaledb/timescaledb-for-logs#Opinion3) at which point the flow broke at.
-However, this presents a problem; if your application has lots of traffic, then the amount of logs it generates are going to be gigantic. This in itself is not a problem, were it not for the fact that you are using a logging as a service provider and [they](https://www.datadoghq.com/pricing/)all [charge](https:/ /www.loggly.com/plans-and-pricing/) an [arm](https://www.honeycomb.io/pricing/)and a [leg](https://www.sumologic.com/pricing/ ) for every log event.
+However, this presents a problem; if your application has lots of traffic, then the amount of logs it generates are going to be gigantic. This in itself is not a problem, were it not for the fact that you are using a logging as a service provider and [they](https://www.datadoghq.com/pricing/) all [charge](https:/ /www.loggly.com/plans-and-pricing/) an [arm](https://www.honeycomb.io/pricing/) and a [leg](https://www.sumologic.com/pricing/ ) for every log event.
 Some of the pricing models are so inscrutable, that the logging service providers offer calculators ( [here](https://calculator.aws/),[here](https://cloud.google.com/products/calculator), [etc](https://azure.microsoft.com/en-us/pricing/calculator/)) to try and help you figure out what should ideally have been kindergaten arithmetic.
 
 在您的应用程序中，您希望日志语句涵盖所有执行流程。这样，如果出现问题，您可以 [trace](https://www.komu.engineer/blogs/timescaledb/timescaledb-for-logs#Opinion3) 流在此时中断。
@@ -27,14 +26,17 @@ Some of the pricing models are so inscrutable, that the logging service provider
 一些定价模型非常难以理解，以至于日志服务提供商提供计算器（[此处](https://calculator.aws/)、[此处](https://cloud.google.com/products/calculator)、[etc](https://azure.microsoft.com/en-us/pricing/calculator/)) 尝试帮助您找出理想情况下应该是幼儿园数学。
 
 So it seems like for you to have your cake and eat it too, you have to part with large sums of money every month(and due to elastic pricing you can't even tell in advance how much that will be.)
-There are two main ways that people try and solve this problem(usually at the [suggestion](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters)of the [said](https ://docs.honeycomb.io/working-with-your-data/best-practices/sampling/) logging service providers);
+There are two main ways that people try and solve this problem(usually at the [suggestion](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters) of the [said](https ://docs.honeycomb.io/working-with-your-data/best-practices/sampling/) logging service providers);
+
 1. Filtering logs by severity and only sending logs above a certain severity to the logging service provider.
 2. and/or
 3. Sampling logs so that you only send a certain percentage to the logging service provider.
 
 因此，对于您来说，似乎既要吃蛋糕又要吃蛋糕，每个月都必须分出一大笔钱（由于弹性定价，您甚至无法提前知道要花多少钱。）
-人们尝试解决此问题的主要方法有两种（通常在 [said](https://docs.datadoghq.com/logs/indexes/#examples-of-exclusion-filters)://docs.honeycomb.io/working-with-your-data/best-practices/sampling/) 日志服务提供商）；
-1、按严重性过滤日志，只将高于一定严重性的日志发送给日志服务提供商。
+人们尝试解决此问题的主要方法有两种；
+
+1. 按严重性过滤日志，只将高于一定严重性的日志发送给日志服务提供商。
+
 2. 和/或
 3. 对日志进行采样，以便您只将一定比例的日志发送给日志服务提供商。
 
@@ -81,7 +83,6 @@ func linkedin(msg string, logger *logrus.Entry) {
                 
 ```
 
-
 If we were filtering logs and only sending logs of ERROR level to our logging service provider, then we would lose context on how the *facebook send failed* error came to be. I had previosuly written that logs are primarily used to [help debug issues in production;](https://www.komu.engineer/blogs/timescaledb/timescaledb-for-logs) thus, context and chronology of events that led to a particular issue are of importance. You do not want to investigate a murder mystery where half the clues have been deliberately wiped out by your earlier self.
 In the same way, if we were sampling logs; the chronology leading upto the error would be missing a few INFO log statements since those would have been sampled out.
 
@@ -102,8 +103,9 @@ I think we should be able to implement such a logging scheme. The basic idea is;
 The circular buffer can be in memory or on disk/whatever and the size is configurable. 
 我认为我们应该能够实现这样的日志记录方案。基本思想是；每当您的应用程序发出日志事件时，所有日志都会进入大小为 X 的 [循环缓冲区](https://en.wikipedia.org/wiki/Circular_buffer)。每当发出错误日志时，整个循环缓冲区都会被刷新并它的所有内容都被发送到日志服务提供者。
 循环缓冲区可以在内存或磁盘/任何地方，并且大小是可配置的。
+
 I took a stub at implementing this using [sirupsen/logrus](https://github.com/sirupsen/logrus) which is a popular logging library for the Go programming language, but the implementation should be transferable across libraries/languages.
-In [sirupsen/logrus](https://pkg.go.dev/github.com/sirupsen/logrus),you can declare a [hook](https://pkg.go.dev/github.com/sirupsen/ logrus?tab=doc#Hook) implementing the custom behaviour that you want.
+In [sirupsen/logrus](https://pkg.go.dev/github.com/sirupsen/logrus), you can declare a [hook](https://pkg.go.dev/github.com/sirupsen/ logrus?tab=doc#Hook) implementing the custom behaviour that you want.
 
 我使用 [sirupsen/logrus](https://github.com/sirupsen/logrus) 实现了这一点，这是 Go 编程语言的流行日志库，但实现应该可以跨库/语言转移。
 在[sirupsen/logrus](https://pkg.go.dev/github.com/sirupsen/logrus)中，可以声明一个[hook](https://pkg.go.dev/github.com/sirupsen/logrus?tab=doc#Hook) 实现您想要的自定义行为。
@@ -194,7 +196,6 @@ Now, if any error occurs; all the logs and chronology leading upto the error are
 
 ```go
 go run .
-
 {"level":"info","msg":"tweet send start","time":"2020-05-25T21:03:36+03:00","traceID":"sa225Hqk"}
 {"level":"info","msg":"tweet send end.","time":"2020-05-25T21:03:36+03:00","traceID":"sa225Hqk"}
 {"level":"info","msg":"facebook send start","time":"2020-05-25T21:03:36+03:00","traceID":"sa225Hqk"}
@@ -231,5 +232,5 @@ All the code in this blogpost, including the full source code, can be found at: 
 
 这篇博文中的所有代码，包括完整的源代码，可以在以下位置找到：https://github.com/komuw/komu.engineer/tree/master/blogs/log-without-losing-context
 
-You can comment on this article [by clicking here.](https://github.com/komuw/komu.engineer/issues/17)https://github.com/komuw/komu.engineer/issues/17) 
-你可以评论这篇文章 [点击这里。](https://github.com/komuw/komu.engineer/issues/17)https://github.com/komuw/komu.engineer/issues/17)
+You can comment on this article [by clicking here.](https://github.com/komuw/komu.engineer/issues/17)
+你可以评论这篇文章 [点击这里。](https://github.com/komuw/komu.engineer/issues/17)
