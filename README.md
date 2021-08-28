@@ -90,10 +90,10 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [A Gentle Introduction to Web Services With Go](docs/tr-53-go-web-services.md)
 1. [Logging in Go: Choosing a System and Using it](docs/tr-54-golang-logging.md)
 1. [How to customize Go's HTTP client](docs/tr-55-customize-http-client.md)
-1. [](docs/tr-56-structuring-and-testing-http-handlers-in-go.md)
+1. [Structuring and testing HTTP handlers in Go](docs/tr-56-structuring-and-testing-http-handlers-in-go.md)
 1. [Correlating Logs](docs/tr-57-correlating-logs.md)
 1. [Environment variables in Golang](docs/tr-58-environment-variables-in-golang.md)
-1. [](docs/tr-59-golang-docker-integration-tests.md)
+1. [Automating Go Integration Tests With Docker](docs/tr-59-golang-docker-integration-tests.md)
 1. [Increasing http.Server boilerplate](docs/tr-60-increasing-http-server-boilerplate-go.md)
 1. [Developing price and currency handling for Go](docs/tr-61-price-currency-handling-go.md)
 

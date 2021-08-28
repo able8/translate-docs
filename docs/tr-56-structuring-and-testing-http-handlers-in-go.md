@@ -60,7 +60,7 @@ func PartyStarter(mux chi.Router, s partyStarterRepo) {
 
 ### 请求多路复用器作为参数
 
-The `PartyStarter` function takes the request multiplexer `mux` (in this case [chi](https://github.com/go-chi/chi),but use any you like) as the first parameter. This means that the handler registers itself, including defining the route and its parameters. It's nice to have this very close to the handler code, both for increased readability, but also that it's very clear that they belong together and should be changed together. For example, if the `id` parameter changes in name or content, the code right below should reflect that.
+The `PartyStarter` function takes the request multiplexer `mux` (in this case [chi](https://github.com/go-chi/chi), but use any you like) as the first parameter. This means that the handler registers itself, including defining the route and its parameters. It's nice to have this very close to the handler code, both for increased readability, but also that it's very clear that they belong together and should be changed together. For example, if the `id` parameter changes in name or content, the code right below should reflect that.
 
 `PartyStarter` 函数将请求多路复用器 `mux`（在本例中为 [chi](https://github.com/go-chi/chi)，但可以使用任何你喜欢的）作为第一个参数。这意味着处理程序会注册自己，包括定义路由及其参数。很高兴将此代码与处理程序代码非常接近，既提高了可读性，又很明显它们属于一起并且应该一起更改。例如，如果 `id` 参数的名称或内容发生变化，下面的代码应该反映这一点。
 
@@ -175,4 +175,5 @@ I'm Markus, a professional software consultant and developer. 🤓✨ You can re
 I'm currently [building Go courses over at golang.dk](https://www.golang.dk/). 
 
 我目前正在 [在 golang.dk 上构建 Go 课程](https://www.golang.dk/)。
+
 

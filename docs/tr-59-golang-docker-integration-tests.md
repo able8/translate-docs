@@ -4,8 +4,6 @@
 
 2020-10-02
 
-2020-10-02
-
 Go developers have everything needed to start writing automated unit tests using the `go test` command baked directly into the compiler toolchain. By hooking into the `testing` package’s lifecycle and importing Docker’s client libraries, we can  automate integration tests that manage their own Docker containers.
 
 Go 开发人员拥有使用直接嵌入编译器工具链的 go test 命令开始编写自动化单元测试所需的一切。通过连接到 `testing` 包的生命周期并导入 Docker 的客户端库，我们可以自动化管理他们自己的 Docker 容器的集成测试。
@@ -74,7 +72,7 @@ Fortunately, we can run the external dependency in a Docker container; we can  a
 
 I like to keep these integration tests apart from our regular unit tests by creating an `integration_test.go` file that will serve as their entry point, and constraining it with a [build tag](https://golang.org/cmd/go/#hdr-Build_constraints).
 
-我喜欢通过创建一个 `integration_test.go` 文件作为它们的入口点，并用 [build 标签](https://golang.org/cmd/去/#hdr-Build_constraints）。
+我喜欢通过创建一个 `integration_test.go` 文件作为它们的入口点，并用 build 标签。
 
 ```go
 // +build integration
@@ -181,9 +179,7 @@ func startPostgreContainer(port int) (closer func(), err error) {
     // Return a lambda function to stop the container, along with a nil error.
     return func() {
         closeContainer()
-
         timeout := 10 * time.Second
-
         if err := dockerClient.ContainerStop(context.Background(), cont.ID, &timeout);err != nil {
             fmt.Printf("failed to stop container: %s", err.Error())
         }
@@ -371,8 +367,6 @@ Go 的 test 命令将尽可能使用以前的结果，跳过对未更改代码�
 
 `go test ./... --tags integration --count=1`.
 
-`去测试 ./... --tags 集成 --count=1`。
-
 > See also: [issue #3799](https://github.com/golang/go/issues/23799), a discussion around implementing a feature so that test can identify themselves as un-uncacheable.
 
 > 另见：[issue #3799](https://github.com/golang/go/issues/23799)，关于实现一个特性的讨论，以便测试可以将自己标识为不可缓存的。
@@ -383,7 +377,7 @@ Go 的 test 命令将尽可能使用以前的结果，跳过对未更改代码�
 
 When calling `os.Exit()` defer statements will not execute. Make sure the `closer` lambda function is called explicitly before calling `os.Exit()`.
 
-调用`os.Exit()` defer 语句时不会执行。确保在调用 `os.Exit()` 之前显式调用了 `closer` lambda 函数。
+调用`os.Exit()` 时，defer 语句不会执行。确保在调用 `os.Exit()` 之前显式调用了 `closer` lambda 函数。
 
 ### Failed to pull docker image, repository name must be canonical
 
@@ -406,4 +400,5 @@ Executing these integration tests from within a Docker container is outside this
 
 ## 其他资源
 - [使用 Docker Engine SDK 开发](https://docs.docker.com/engine/api/sdk/)
+
 
