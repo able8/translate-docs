@@ -73,8 +73,6 @@ func nah() (string, error) {
 
 ♛ PRO:
 
-♛ 专业：
-
 ```
 func earlyReturnRocks() (string, error) {
     nowNs := time.Now().Nanosecond()
@@ -146,8 +144,6 @@ You are right, and sometimes you need to return some additional information abou
 
 ♛ PRO:
 
-♛ 专业：
-
 ```
 package main
 
@@ -201,8 +197,6 @@ When you log an error, you are handling it. Do NOT return the error back to the 
 当您记录错误时，您正在处理它。不要将错误返回给调用者 - 强迫他也处理它！
 
 [![Alt Text](https://res.cloudinary.com/practicaldev/image/fetch/s--S-nVw0UM--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/ph3vyxeh9l0mtukitcdj.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--S-nVw0UM--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/ph3vyxeh9l0mtukitcdj.png)
-
-uploads.s3.amazonaws.com/i/ph3vyxeh9l0mtukitcdj.png)](https://res.cloudinary.com/practicaldev/image/fetch/s--S-nVw0UM--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/ph3vyxeh9l0mtukitcdj.png)
 
 Why? Because you don't want to log the same message twice or more:
 
@@ -258,8 +252,6 @@ func validateToken() (desiredValue string, err error) {
 ```
 
 
-
-
 Messy output when logging AND returning:
 
 记录和返回时的混乱输出：
@@ -270,8 +262,6 @@ token validation failed.token expired at 115431493validating token failed.token 
 
 
 ♛ PRO either logs OR returns:
-
-♛ PRO 要么记录要么返回：
 
 ```
 validating token failed.token expired at block 599480733
@@ -299,4 +289,3 @@ I tweet about it at: https://twitter.com/Web3Coach
 我正在写一本关于“如何从头开始在 Go 中构建点对点系统”的电子书！
 看看：https://web3.coach/#book
 我在推特上介绍它：https://twitter.com/Web3Coach
-
