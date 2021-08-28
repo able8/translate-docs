@@ -15,9 +15,9 @@ Kafka 是一个流行的分布式流媒体平台。让我们来看看在 Go 中�
 
 # 什么是卡夫卡？
 
-The [official documentation](https://kafka.apache.org/)describes Kafka as being a “distributed streaming platform”. In many  cases it is used as a message queue that microservices produce events  to. These events are then consumed and processed by other microservices. This is the use case that this post will focus on, however there are  many [other ways](https://kafka.apache.org/uses) which Kafka can be used.
+The [official documentation](https://kafka.apache.org/) describes Kafka as being a “distributed streaming platform”. In many  cases it is used as a message queue that microservices produce events  to. These events are then consumed and processed by other microservices. This is the use case that this post will focus on, however there are  many [other ways](https://kafka.apache.org/uses) which Kafka can be used.
 
-[官方文档](https://kafka.apache.org/)将 Kafka 描述为“分布式流媒体平台”。在许多情况下，它用作微服务向其生成事件的消息队列。然后这些事件被其他微服务使用和处理。这是本文将重点关注的用例，但是有许多 [其他方式](https://kafka.apache.org/uses) 可以使用 Kafka。
+[官方文档](https://kafka.apache.org/) 将 Kafka 描述为“分布式流平台”。在许多情况下，它用作微服务向其生成事件的消息队列。然后这些事件被其他微服务使用和处理。这是本文将重点关注的用例，但是有许多 [其他方式](https://kafka.apache.org/uses) 可以使用 Kafka。
 
 There are a few important concepts to understand before starting. A *broker* in Kafka is another term for a server in the cluster. These brokers manage *topics* which is a way to group messages together. *Producers* are processes that write messages to topics, and *consumers* are processes that read messages from topics. The details about how  each of these components are designed are out of scope for this post,  but the [documentation](https://kafka.apache.org/intro) outlines each of these if you are interested.
 
@@ -27,7 +27,7 @@ There are a few important concepts to understand before starting. A *broker* in 
 
 # 在本地运行 Kafka
 
-All of the examples in this post will be interacting with a Kafka  cluster that is running locally on my machine. Getting one set up is  fairly straightforward and is explained in detail in the [quick start guide](https://kafka.apache.org/quickstart). It’s worth noting that my “cluster” will consist of only one node so  that we can focus on producing and consuming messages rather than  configuring and managing a cluster of servers. Of course, in practice  you would want a cluster of multiple machines so that you can take  advantage of Kafka’s fault-tolerance.
+All of the examples in this post will be interacting with a Kafka  cluster that is running locally on my machine. Getting one set up is  fairly straightforward and is explained in detail in the [quick start guide](https://kafka.apache.org/quickstart). It’s worth noting that my “cluster” will consist of only one node so  that we can focus on producing and consuming messages rather than  configuring and managing a cluster of servers. Of course, in practice you would want a cluster of multiple machines so that you can take  advantage of Kafka’s fault-tolerance.
 
 本文中的所有示例都将与在我的机器上本地运行的 Kafka 集群进行交互。进行设置相当简单，[快速入门指南](https://kafka.apache.org/quickstart) 中有详细说明。值得注意的是，我的“集群”将只包含一个节点，这样我们就可以专注于生产和消费消息，而不是配置和管理服务器集群。当然，在实践中你会想要一个多台机器的集群，这样你就可以利用 Kafka 的容错。
 
@@ -62,8 +62,6 @@ The first thing that we need to do is create a producer. We will need to provide
 
 *producer.go*
 
-*producer.go*
-
 ```go
 func main() {
     config := &kafka.ConfigMap{"bootstrap.servers": "localhost:9092"}
@@ -78,8 +76,6 @@ func main() {
 Next, we will create a message to be sent to the broker. We will need to include what topic and partition we want to send the message to as  well. Since we don’t care about the specific partition we can just use `kafka.PartitionAny`.
 
 接下来，我们将创建要发送给代理的消息。我们还需要包括我们要将消息发送到的主题和分区。由于我们不关心具体的分区，我们可以只使用 `kafka.PartitionAny`。
-
-*producer.go*
 
 *producer.go*
 
@@ -101,8 +97,6 @@ func main() {
 Now let’s send the message to the broker. To do this, we can send the message through the produce channel. It’s important to note that this  is an asynchronous operation, so we may want to also wait for the report to come back. We can do this by taking a look at the events channel.
 
 现在让我们将消息发送给代理。为此，我们可以通过生产通道发送消息。需要注意的是，这是一个异步操作，因此我们可能还想等待报告回来。我们可以通过查看事件通道来做到这一点。
-
-*producer.go*
 
 *producer.go*
 
@@ -130,8 +124,6 @@ If you run `go run producer.go` you will see the following output:
 
 *output*
 
-*输出*
-
 ```text
 2020/06/11 16:16:52 Message sent to topic test (partition 0) at offset 0
 ```
@@ -147,7 +139,7 @@ We’re now ready to consume some messages from the “test” topic! Setting up
 
 *consumer.go*
 
-*消费者。去*
+**
 
 ```go
 func main() {
@@ -169,8 +161,6 @@ Once we have created the consumer, we can subscribe to the “test”  topic and
 一旦我们创建了消费者，我们就可以订阅“测试”主题并轮询已推送到该主题的事件。我们还将设置一个信号处理程序，以便我们可以优雅地退出。
 
 *consumer.go*
-
-*消费者。去*
 
 ```go
 func main() {
@@ -277,4 +267,3 @@ This is only a small sample of what you can do with Kafka, but I’m  hoping to 
 If you liked this post, it would mean a lot to me if you shared it with your friends! 
 
 如果你喜欢这篇文章，如果你把它分享给你的朋友，那对我来说意义重大！
-
