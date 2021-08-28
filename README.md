@@ -91,7 +91,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [](docs/tr-54-golang-logging.md)
 1. [](docs/tr-55-customize-http-client.md)
 1. [](docs/tr-56-structuring-and-testing-http-handlers-in-go.md)
-1. [](docs/tr-57-correlating-logs.md)
+1. [Correlating Logs](docs/tr-57-correlating-logs.md)
 1. [Environment variables in Golang](docs/tr-58-environment-variables-in-golang.md)
 1. [](docs/tr-59-golang-docker-integration-tests.md)
 1. [](docs/tr-60-increasing-http-server-boilerplate-go.md)

@@ -103,7 +103,7 @@ The basic principle of a middleware is that it’s a way of organizing a  shared
 
 **Note:** I won't cover the whole story on how to create and use middlewares since there are [great posts](https://www.alexedwards.net/blog/making-and-using-middleware)about it that go into [detail](https://drstearns.github.io/tutorials/gomiddleware/), as well as some great libraries (such as [Negroni](https://github.com/urfave/negroni)) , check them out for more info.
 
-**注意：** 我不会介绍如何创建和使用中间件的整个故事，因为有 [很棒的帖子](https://www.alexedwards.net/blog/making-and-using-middleware)关于它进入 [详细](https://drstearns.github.io/tutorials/gomiddleware/)，以及一些很棒的库（例如 [Negroni](https://github.com/urfave/negroni)） ，查看它们以获取更多信息。
+**注意：**我不会介绍如何创建和使用中间件的整个故事，因为有 [很棒的帖子](https://www.alexedwards.net/blog/making-and-using-middleware)关于它进入 [详细](https://drstearns.github.io/tutorials/gomiddleware/)，以及一些很棒的库（例如 [Negroni](https://github.com/urfave/negroni)） ，查看它们以获取更多信息。
 
 Anyway, the gist of it is that a middleware is essentially a function that implements the [http.Handler](https://pkg.go.dev/net/http?tab=doc#Handler) interface and it takes a handler function as a parameter which is the `next` handler that should be invoked, after the middleware code is done.
 
@@ -356,4 +356,5 @@ Instead of wasting time on piecing together the  scattered information, a correl
 - [相关日志](https://filipnikolovski.com/posts/correlating-logs/)
 - [CI 环境中的 Bazel 性能](https://filipnikolovski.com/posts/bazel-performance-in-a-ci-environment/)
 - [避免服务部署过程中的陷阱](https://filipnikolovski.com/posts/avoiding-pitfalls-during-service-deployments/)
+
 
