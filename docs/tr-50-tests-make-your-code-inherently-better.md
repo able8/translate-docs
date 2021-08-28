@@ -4,7 +4,7 @@
 
 From: https://www.mitchdennett.com/tests-make-your-code-inherently-better/
 
-I have been developing software for about 8 years now but my  journey into testing has only been within the last 2 years. In college  we had half a semester on testing. Not even a whole class on it. It was  definitely an after thought and not a main focus it should be. Writing  tests has made my code cleaner and more concise than any other endeavor. Let's take a quick look at why.
+I have been developing software for about 8 years now but my journey into testing has only been within the last 2 years. In college we had half a semester on testing. Not even a whole class on it. It was  definitely an after thought and not a main focus it should be. Writing  tests has made my code cleaner and more concise than any other endeavor. Let's take a quick look at why.
 
 我已经开发软件大约 8 年了，但我的测试之旅只发生在最近 2 年。在大学里，我们有半个学期的考试时间。甚至整个班级都没有。这绝对是事后的想法，而不是它应该的主要关注点。编写测试使我的代码比任何其他努力都更简洁、更简洁。让我们快速了解一下原因。
 
@@ -14,7 +14,7 @@ In this short example we are going to look at a REST API that returns a list of 
 
 ## The "Bad" Code
 
-##“坏”代码
+## “坏”代码
 
 Let's take a look at some quote unquote bad code.
 
@@ -268,4 +268,5 @@ Now there is definitely more we can do to this code to improve it. But by  simpl
 Subscribe to get our latest content by email. We won't send you spam. Unsubscribe at any time. 
 
 订阅以通过电子邮件获取我们的最新内容。我们不会向您发送垃圾邮件。随时退订。
+
 
