@@ -2,11 +2,9 @@
 
 # [使用足够的架构编写 Go CLI](https://blog.carlmjohnson.net/post/2020/go-cli-how-to-and-advice/)
 
-Thursday, June 4, 2020
+Thursday, June 4, 2020 https://github.com/carlmjohnson/go-grab-xkcd
 
-2020 年 6 月 4 日，星期四
-
-As someone who has written [quite a few](https://blog.carlmjohnson.net/post/2018/go-cli-tools/)command line applications in Go, I was interested the other day when I saw [Diving into Go by building a CLI application](https://eryb.space/2020/05/27/diving-into-go-by-building-a-cli-application.html) by [Eryb](https://eryb.space) on social media. In the post, the author describes writing a simple application to fetch comics from the [XKCD API](https://xkcd.com/json.html) and display the results. It looks like this:
+As someone who has written [quite a few](https://blog.carlmjohnson.net/post/2018/go-cli-tools/) command line applications in Go, I was interested the other day when I saw [Diving into Go by building a CLI application](https://eryb.space/2020/05/27/diving-into-go-by-building-a-cli-application.html) by [Eryb](https://eryb.space) on social media. In the post, the author describes writing a simple application to fetch comics from the [XKCD API](https://xkcd.com/json.html) and display the results. It looks like this:
 
 作为用 Go 编写 [相当多](https://blog.carlmjohnson.net/post/2018/go-cli-tools/)命令行应用程序的人，前几天看到 [Diving into通过构建 CLI 应用程序](https://eryb.space/2020/05/27/diving-into-go-by-building-a-cli-application.html) by [Eryb](https://eryb.space）在社交媒体上。在帖子中，作者描述了编写一个简单的应用程序来从 [XKCD API](https://xkcd.com/json.html) 中获取漫画并显示结果。它看起来像这样：
 
@@ -34,7 +32,7 @@ Naturally, one thing lead to another, and I [forked and rewrote](https://github.
 
 ------
 
-Before I go too much further with this post, let me say that I don’t mean to  be overly negative. For such a small app, none of what follows  particularly matters. This app is simple enough that you could write it  in Bash if you wanted to. The point was to write an command line  interface for fun and get some experience doing it. So, with that in  mind, go read [Eryb's post](https://eryb.space/2020/05/27/diving-into-go-by-building-a-cli-application.html) first and then come back and let me share how I would approach writing  the same CLI in Go with the experience I've gained by writing so many  CLIs and having to extend them on and off over a period of years.
+Before I go too much further with this post, let me say that I don’t mean to  be overly negative. For such a small app, none of what follows  particularly matters. This app is simple enough that you could write it  in Bash if you wanted to. The point was to write an command line  interface for fun and get some experience doing it. So, with that in  mind, go read [Eryb's post](https://eryb.space/2020/05/27/diving-into-go-by-building-a-cli-application.html) first and then come back and let me share how I would approach writing  the same CLI in Go with the experience I've gained by writing so many CLIs and having to extend them on and off over a period of years.
 
 在我进一步讨论这篇文章之前，让我说我并不是想过于消极。对于这么小的应用程序，接下来的一切都不是特别重要。这个应用程序非常简单，如果你愿意，你可以用 Bash 编写它。重点是编写一个有趣的命令行界面并获得一些经验。因此，考虑到这一点，请先阅读 [Eryb 的帖子](https://eryb.space/2020/05/27/diving-into-go-by-building-a-cli-application.html) 然后再来回过头来，让我分享一下我将如何利用通过编写如此多的 CLI 并不得不在几年内断断续续地扩展它们而获得的经验，在 Go 中编写相同的 CLI。
 
@@ -42,7 +40,7 @@ My core principle is that while there are many possible architectures for an app
 
 我的核心原则是，虽然应用程序有许多可能的架构——[MVC](https://en.wikipedia.org/wiki/Model–view–controller)、[hexagonal](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)) 等——你几乎总是需要三层，永远不会后悔写作。您希望有一层 ** 处理用户输入** 并将其转换为规范化形式。您需要一层来**执行您的实际任务**。并且您需要一层来**处理格式化和输出**给用户。这些是您始终需要的三层。您可能需要也可能不需要的其他层，并且可以在很明显它们可能有帮助时添加它。对于 Go 命令行界面，这意味着最重要的事情是将标志解析的东西与执行分开，其他的一切都不是什么大不了的事情，让随着时间的推移而发展。主要的挑战是避免创建抽象，这些抽象实际上不会在设置时间与为您的程序编写未来扩展所节省的时间上付出代价。
 
-The first thing I noticed looking at [the source to the demo CLI](https://github.com/carlmjohnson/go-grab-xkcd/tree/v0.0.0)is that it was divided into three packages: main (necessarily ), model, and client. This is one package **too few** and two packages **too many**! A Go CLI should start with two packages: main (in which func main has  only one line) and everything else (in this case, call it package  grabxkcd).
+The first thing I noticed looking at [the source to the demo CLI](https://github.com/carlmjohnson/go-grab-xkcd/tree/v0.0.0) is that it was divided into three packages: main (necessarily ), model, and client. This is one package **too few** and two packages **too many**! A Go CLI should start with two packages: main (in which func main has  only one line) and everything else (in this case, call it package  grabxkcd).
 
 在查看 [演示 CLI 的源代码](https://github.com/carlmjohnson/go-grab-xkcd/tree/v0.0.0)时，我注意到的第一件事是它分为三个包： main （必须)、模型和客户端。这是一包**太少**和两包**太多**！ Go CLI 应该从两个包开始：main（其中 func main 只有一行）和其他所有包（在这种情况下，称为包grabxkcd）。
 
@@ -63,8 +61,6 @@ func main() {
     // …
 }
 ```
-
-
 
 
 I myself have written this more than a few times,  but for any serious CLI, this pattern breaks down quickly because it  allows for only one response to errors, immediately aborting. Often that is a good beginning for a CLI, but as it grows you find that you need  to handle some errors by retrying or ignoring or user notification, but  because your functions all return a single value instead of value plus  error, it becomes a ton of work to add proper error handling in after  the fact.
@@ -116,7 +112,7 @@ func init() {
 
 In his post [A Theory of Modern Go](https://peter.bourgon.org/blog/2017/06/09/theory-of-modern-go.html), Peter Bourgon proposes the following guidelines:
 
-在他的帖子 [现代围棋理论](https://peter.bourgon.org/blog/2017/06/09/theory-of-modern-go.html) 中，Peter Bourgon 提出了以下指导方针：
+在他的帖子 [现代 Go 理论](https://peter.bourgon.org/blog/2017/06/09/theory-of-modern-go.html) 中，Peter Bourgon 提出了以下指导方针：
 
 > - No package level variables
 > - No func init
@@ -160,7 +156,8 @@ Putting these pieces together, my recently created CLIs all follow this  pattern
 将这些部分放在一起，我最近创建的 CLI 都遵循这种模式：一行 main 函数调用一个函数（通常命名为 `app.CLI` 并在一个单独的包中），该函数首先使用标志包来解析用户输入，然后启动作为 `appEnv` 结构上的方法实际执行。这是 go-grab-xkcd 应用程序的 [我的版本](https://github.com/carlmjohnson/go-grab-xkcd/commit/d5d51722ef95a5ebdf49c453cd7f00ed4a9e3910) 的代码：
 
 ```go
-// In main.go / package main
+// In main.go 
+package main
 func main() {
     os.Exit(grabxkcd.CLI(os.Args[1:]))
 }
@@ -289,8 +286,6 @@ func (hc *XKCDClient) buildURL(n ComicNumber) string {
     return finalURL
 }
 ```
-
-
 
 
 Coming from other languages, there is a temptation to build clients like this that “encapsulate” the details of the API  by, for example, hiding the base URL. The idea is that you may want to  point the base URL at localhost or a staging server for testing. I think that in Go this is basically a mistake. The `http.Client` type has a member called `Transport` of type `http.RoundTripper` interface. By changing the client transport, you can make an `http.Client` do whatever you want in testing—or even production. For example, you might create a `RoundTripper` that adds auth headers (Google does this for [their APIs](https://pkg.go.dev/cloud.google.com/go?tab=doc)) or does caching or reads test responses from a test file. Controlling the `http.Client` is extremely powerful, so any Go package designed to help users with an API should let them supply their own clients. Once you do that, there’s no longer any point in monkeying with base URLs.
@@ -436,7 +431,7 @@ What I like about this is I feel it balances our  convenience as a developer whe
 
 我喜欢这个是我觉得它平衡了我们作为开发人员在编写代码时的便利性和我们包的任何潜在用户的便利性。这是一个简单的 CLI，所以除了我们之外，可能没有人会使用这段代码。一方面，我们发现为了我们自己的开发目的，拆分第二个包而不是将所有内容都放入包 main 更方便。但另一方面，我们并没有投入太多资金来创建一个充满功能和接口的大型公共 API，我们只是推测这些功能和接口可能在某一天对某人有用。这是我们需要的代码，如果它对其他人有帮助，那就太好了，如果没有，也没什么大不了的。
 
-[My final commit](https://github.com/carlmjohnson/go-grab-xkcd/commit/d5d51722ef95a5ebdf49c453cd7f00ed4a9e3910)has **197 additions** and **197 deletions**, meaning that for all my writing about different abstractions we may or may not want to use, in the end, **the code is the exact same length** as written by me as it was when written by Eryb. (Okay, yes, I may have noticed I was three lines away and squeezed a little to make it the exact same.) My code actually handles several error conditions that were overlooked  by the original demo, so we're actually doing a little bit more work  than the original app did. We’ve added just enough architecture to make  our CLI more robust and extensible without actually doing any more work  than normal.
+[My final commit](https://github.com/carlmjohnson/go-grab-xkcd/commit/d5d51722ef95a5ebdf49c453cd7f00ed4a9e3910) has **197 additions** and **197 deletions**, meaning that for all my writing about different abstractions we may or may not want to use, in the end, **the code is the exact same length** as written by me as it was when written by Eryb. (Okay, yes, I may have noticed I was three lines away and squeezed a little to make it the exact same.) My code actually handles several error conditions that were overlooked  by the original demo, so we're actually doing a little bit more work  than the original app did. We’ve added just enough architecture to make  our CLI more robust and extensible without actually doing any more work  than normal.
 
 [我的最终提交](https://github.com/carlmjohnson/go-grab-xkcd/commit/d5d51722ef95a5ebdf49c453cd7f00ed4a9e3910) 有 **197 个添加**和 **197 个删除**，这意味着我所有关于不同抽象的文章我们可能想也可能不想使用，最终，**代码的长度与我编写的代码和 Eryb 编写的代码长度完全相同。 （好吧，是的，我可能已经注意到我在三行之外并挤压了一点以使其完全相同。）我的代码实际上处理了原始演示忽略的几个错误条件，所以我们实际上做了一点比原始应用程序所做的工作更多。我们添加了刚好足够的架构，使我们的 CLI 更加健壮和可扩展，而实际上并没有做比平常更多的工作。
 
@@ -444,7 +439,7 @@ My code is designed to be easier to test… but I  haven’t actually written an
 
 我的代码被设计得更容易测试……但我实际上还没有编写任何测试。为什么？因为对于简单的 CLI，如果您不遵循 [TDD](https://en.wikipedia.org/wiki/Test-driven_development)，您可能不想花时间编写测试。我们的想法是留出空间，以便以后如果您想要或需要添加测试，有清晰且简单的过程来执行此操作。
 
-The point of all of this,  again, is not that my method is the only way to write a CLI in Go. For  simple CLIs, anything will work, including having a single main.go file  with a bunch of global variables and a `check` function. I  argue however that unlike creating a hexagonal architecture with many  layers of interfaces just in case you might need them in the future, my  method is **no more work** than the simple method while being **much better for extending in the future **.
+The point of all of this,  again, is not that my method is the only way to write a CLI in Go. For  simple CLIs, anything will work, including having a single main.go file  with a bunch of global variables and a `check` function. I  argue however that unlike creating a hexagonal architecture with many  layers of interfaces just in case you might need them in the future, my method is **no more work** than the simple method while being **much better for extending in the future **.
 
 同样，所有这一切的重点并不是我的方法是在 Go 中编写 CLI 的唯一方法。对于简单的 CLI，任何东西都可以工作，包括拥有一个包含一堆全局变量和一个 `check` 函数的单个 main.go 文件。然而，我认为与创建具有多层接口的六边形架构不同，以防万一您将来可能需要它们，我的方法**没有比简单方法更多的工作**，同时**更适合将来扩展**。
 
@@ -469,7 +464,6 @@ $ for i in {1..10};do ./go-grab-xkcd -n $i -s & done;wait
 ```
 
 
-I hope this helped you think about how to structure your CLIs, and you have fun experimenting with finding your own patterns*! 
+I hope this helped you think about how to structure your CLIs, and you have fun experimenting with finding your own patterns! 
 
-我希望这能帮助您思考如何构建您的 CLI，并且您在尝试寻找自己的模式时会很开心*！
-
+我希望这能帮助您思考如何构建您的 CLI，并且您在尝试寻找自己的模式时会很开心！
