@@ -262,8 +262,6 @@ godotenv : DB Host = localhost
 
 ## Viper package
 
-## 毒蛇包
-
 > Viper is a complete configuration solution for Go applications  including twelve-factor apps. It is designed to work within an  application and can handle all types of configuration needs and formats.
 
 > Viper 是 Go 应用程序的完整配置解决方案，包括十二要素应用程序。它旨在在应用程序中工作，可以处理所有类型的配置需求和格式。
@@ -376,24 +374,3 @@ Now you can manage environment variables in your go application, and  You can fo
 #### [Build and Push Docker Images with Go](https://www.loginradius.com/blog/async/build-push-docker-images-golang/)
 
 #### [使用 Go 构建和推送 Docker 镜像](https://www.loginradius.com/blog/async/build-push-docker-images-golang/)
-
-[Docker](https://www.loginradius.com/blog/async/tags/docker/)[Go](https://www.loginradius.com/blog/async/tags/go/)
-
-[Docker](https://www.loginradius.com/blog/async/tags/docker/)[Go](https://www.loginradius.com/blog/async/tags/go/)
-
-#### [Custom Encoders in the Mongo Go Driver](https://www.loginradius.com/blog/async/custom-encoders-in-the-mongo-go-driver/)
-
-#### [Mongo Go 驱动程序中的自定义编码器](https://www.loginradius.com/blog/async/custom-encoders-in-the-mongo-go-driver/)
-
-[Go](https://www.loginradius.com/blog/async/tags/go/)[Golang](https://www.loginradius.com/blog/async/tags/golang/)[MongoDriver](https://www.loginradius.com/blog/async/tags/mongo-driver/)
-
-[Go](https://www.loginradius.com/blog/async/tags/go/)[Golang](https://www.loginradius.com/blog/async/tags/golang/)[MongoDriver](https://www.loginradius.com/blog/async/tags/mongo-driver/)
-
-#### [Golang Maps - A Beginner’s Guide](https://www.loginradius.com/blog/async/golang-maps/)
-
-#### [Golang Maps - 初学者指南](https://www.loginradius.com/blog/async/golang-maps/)
-
-[Go](https://www.loginradius.com/blog/async/tags/go/)[dictionaries](https://www.loginradius.com/blog/async/tags/dictionaries/)[maps](https://www.loginradius.com/blog/async/tags/maps/) 
-
-[Go](https://www.loginradius.com/blog/async/tags/go/)[dictionaries](https://www.loginradius.com/blog/async/tags/dictionaries/)[maps](https://www.loginradius.com/blog/async/tags/maps/)
-
