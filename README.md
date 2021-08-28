@@ -86,7 +86,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Implementing traceroute in Go](docs/tr-49-implementing-traceroute-in-go.md)
 1. [Tests Make Your Code Inherently Better](docs/tr-50-tests-make-your-code-inherently-better.md)
 1. [Let's build a Full-Text Search engine](docs/tr-51-lets-build-a-full-text-search-engine.md)
-1. [](docs/tr-52-go-routing.md)
+1. [Different approaches to HTTP routing in Go](docs/tr-52-go-routing.md)
 1. [A Gentle Introduction to Web Services With Go](docs/tr-53-go-web-services.md)
 1. [Logging in Go: Choosing a System and Using it](docs/tr-54-golang-logging.md)
 1. [How to customize Go's HTTP client](docs/tr-55-customize-http-client.md)

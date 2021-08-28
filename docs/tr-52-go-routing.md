@@ -4,7 +4,7 @@
 
 July 2020 From: https://benhoyt.com/writings/go-routing/
 
-There are many ways to do HTTP path routing in Go – for better or worse. There’s the standard library’s [`http.ServeMux`](https://golang.org/pkg/net/http/#ServeMux),but it only supports basic prefix matching. There are many ways to do  more advanced routing yourself, including Axel Wagner's interesting [`ShiftPath` technique](https://blog.merovius.de/2017/06/18/how-not-to-use-an-http-router.html). And then of course there are lots of third-party router libraries. In  this article I’m going to do a comparison of several custom techniques  and some off-the-shelf packages.
+There are many ways to do HTTP path routing in Go – for better or worse. There’s the standard library’s [`http.ServeMux`](https://golang.org/pkg/net/http/#ServeMux), but it only supports basic prefix matching. There are many ways to do  more advanced routing yourself, including Axel Wagner's interesting [`ShiftPath` technique](https://blog.merovius.de/2017/06/18/how-not-to-use-an-http-router.html). And then of course there are lots of third-party router libraries. In  this article I’m going to do a comparison of several custom techniques  and some off-the-shelf packages.
 
 有很多方法可以在 Go 中进行 HTTP 路径路由——无论好坏。有标准库的 [`http.ServeMux`](https://golang.org/pkg/net/http/#ServeMux)，但它只支持基本的前缀匹配。有很多方法可以自己做更高级的路由，包括 Axel Wagner 有趣的 `ShiftPath` 技术。当然还有很多第三方路由器库。在本文中，我将对几种自定义技术和一些现成的软件包进行比较。
 
@@ -37,13 +37,15 @@ The `:slug` is a URL-friendly widget identifier like `foo-bar`, and the `:id` is
 
 In the rest of this article I'll present code for the various  approaches and discuss some pros and cons of each (all the code is in  the [benhoyt/go-routing](https://github.com/benhoyt/go-routing) repo). There’s a lot of code, but all of it is fairly straight-forward  and should be easy to skim. You can use the following links to skip down to a particular technique. First, the five custom techniques:
 
-在本文的其余部分，我将介绍各种方法的代码并讨论每种方法的一些优缺点。有很多代码，但所有代码都很简单，应该很容易浏览。您可以使用以下链接跳到特定技术。一、五种定制技巧：
+在本文的其余部分，我将介绍各种方法的代码并讨论每种方法的一些优缺点。有很多代码，但所有代码都很简单，应该很容易浏览。您可以使用以下链接跳到特定技术。首先，五种定制技巧：
 
 - [Regex table](https://benhoyt.com/writings/go-routing/#regex-table): loop through pre-compiled regexes and pass matches using the request context
 - [Regex switch](https://benhoyt.com/writings/go-routing/#regex-switch):a switch statement with cases that call a regex-based `match()` helper which scans path parameters into variables
 - [Pattern matcher](https://benhoyt.com/writings/go-routing/#pattern-matcher): similar to the above, but using a simple pattern matching function instead of regexes
 - [Split switch](https://benhoyt.com/writings/go-routing/#split-switch): split the path on `/` and then switch on the contents of the path segments
 - [ShiftPath](https://benhoyt.com/writings/go-routing/#shiftpath): Axel Wagner’s hierarchical `ShiftPath` technique
+
+
 
 - [Regex table](https://benhoyt.com/writings/go-routing/#regex-table)：循环预编译的正则表达式并使用请求上下文传递匹配项
 - [Regex switch](https://benhoyt.com/writings/go-routing/#regex-switch)：一个switch 语句，包含调用基于正则表达式的 `match()` 帮助程序，它将路径参数扫描到变量中
@@ -59,10 +61,6 @@ And three versions using third-party router packages:
 - [Gorilla](https://benhoyt.com/writings/go-routing/#gorilla): uses `github.com/gorilla/mux`
 - [Pat](https://benhoyt.com/writings/go-routing/#pat): uses `github.com/bmizerany/pat` 
 
-- [Chi](https://benhoyt.com/writings/go-routing/#chi)：使用`github.com/go-chi/chi`
-- [Gorilla](https://benhoyt.com/writings/go-routing/#gorilla)：使用`github.com/gorilla/mux`
-- [Pat](https://benhoyt.com/writings/go-routing/#pat)：使用`github.com/bmizerany/pat`
-
 I also tried [httprouter](https://github.com/julienschmidt/httprouter),which is supposed to be really fast, but it [can't handle](https://github.com/julienschmidt/httprouter/issues/73) URLs with overlapping prefixes like `/contact` and `/:slug`. Arguably this is bad URL design anyway, but a lot of real-world web apps do it, so I think this is quite limiting.
 
 我也试过 [httprouter](https://github.com/julienschmidt/httprouter)，它应该很快，但它[无法处理](https://github.com/julienschmidt/httprouter/issues/73) 带有重叠前缀的 URL，如 `/contact` 和 `/:slug`。可以说这无论如何都是糟糕的 URL 设计，但很多现实世界的网络应用程序都这样做，所以我认为这是非常有限的。
@@ -73,7 +71,7 @@ There are many other third-party router packages or “web frameworks”, but th
 
 In this comparison I’m not concerned about speed. Most of the approaches loop or `switch` through a list of routes (in contrast to fancy trie-lookup structures). All of these approaches only add a few *microseconds* to the request time (see [benchmarks](https://benhoyt.com/writings/go-routing/#benchmarks)), and that isn't an issue in any of the web applications I've worked on.
 
-在这个比较中，我不关心速度。大多数方法通过路由列表循环或“切换”（与花哨的查找树结构相反）。所有这些方法都只为请求时间增加了几微秒*（参见 [benchmarks](https://benhoyt.com/writings/go-routing/#benchmarks)），这在任何一个中都不是问题我工作过的网络应用程序。
+在这个比较中，我不关心速度。大多数方法通过路由列表循环或“切换”（与花哨的查找树结构相反）。所有这些方法都只为请求时间增加了几微秒（参见 [benchmarks](https://benhoyt.com/writings/go-routing/#benchmarks)），这在任何一个中都不是问题我工作过的网络应用程序。
 
 ## Regex table
 
@@ -901,17 +899,6 @@ But, just to show that none of these approaches *kill* performance, below is a s
 | split     | 984   |
 | *noop*    | *583* |
 
-|路由器 | ns/op |
-| |拍 | 3646 |
-|大猩猩| 2642 |
-|再餐桌 | 2014 |
-|重新切换 | 1970 |
-|转移路径 | 1607 |
-|志|第1370章
-|匹配 | 1025 |
-|分裂| 984 |
-| *noop* | *583* |
-
 As you can see, Pat and Gorilla are slower than the others, showing  that just because something is a well-known library doesn’t mean it’s  heavily optimized. Chi is one of the fastest, and my custom pattern  matcher and the plain `strings.Split()` method are the fastest.
 
 如您所见，Pat 和 Gorilla 比其他库慢，这表明某些库是知名库并不意味着它经过了大量优化。 Chi 是最快的之一，我的自定义模式匹配器和简单的 `strings.Split()` 方法是最快的。
@@ -959,4 +946,3 @@ In terms of third-party libraries, I quite like the [Chi version](https://benhoy
 On the other hand, I'm all too aware of node-modules syndrome and the [left-pad fiasco](https://www.davidhaney.io/npm-left-pad-have-we-forgotten-how-to-program/), and agree with [Russ Cox's take](https://research.swtch.com/deps) that dependencies should be used with caution. Developers shouldn’t be  scared of a little bit of code: writing a tiny customized regex router  is fun to do, easy to understand, and easy to maintain. 
 
 另一方面，我非常清楚节点模块综合症和 [left-pad 惨败](https://www.davidhaney.io/npm-left-pad-have-we-forgotten-how-to-program/)，并同意 [Russ Cox 的观点](https://research.swtch.com/deps) 应谨慎使用依赖项。开发人员不应该害怕一点点代码：编写一个小型定制的正则表达式路由器很有趣，易于理解且易于维护。
-
