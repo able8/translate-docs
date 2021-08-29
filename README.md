@@ -105,6 +105,15 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [](docs/)
 1. [](docs/)
 
+## DevOps
+
+1. [](docs/tr-62-gitops-developers-guide.md)
+1. [](docs/tr-63-developer-effectiveness.md)
+1. [](docs/tr-64-top-devops-engineer-interview-questions.md)
+1. [](docs/tr-65-podman-and-buildah-for-docker-users.md)
+1. [](docs/tr-65-slack-outage.md)
+
+
 ## Others
 
 1. [Fix the Problem, Not the Symptoms](docs/tr-24-fix-problem-not-symptoms.md)
