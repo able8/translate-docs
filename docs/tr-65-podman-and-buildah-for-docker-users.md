@@ -36,8 +36,6 @@ Essentially the Docker daemon does all the work with registries, images, contain
 
 [![How does Docker Work -- Docker architecture overview](https://developers.redhat.com/blog/wp-content/uploads/2019/02/fig1.png)](https://developers.redhat.com/blog/wp-content/uploads/2019/02/fig1.png)
 
-com/blog/wp-content/uploads/2019/02/fig1.png)
-
 This article does not get into the detailed pros and cons of the  Docker daemon process. There is much to be said in favor of this  approach and I can see why, in the early days of Docker, it made a lot  of sense. Suffice it to say that there were several reasons why Docker  users were concerned about this approach as usage went up. To list a  few:
 
 本文不深入探讨 Docker 守护进程的详细优缺点。有很多支持这种方法的说法，我明白为什么在 Docker 的早期，它很有意义。可以说，随着使用量的增加，Docker 用户对这种方法感到担忧有几个原因。列举几个：
@@ -64,8 +62,6 @@ Podman 方法只是通过 runC 容器运行时进程（不是守护进程）直�
 
 [![Podman architectural approach](https://developers.redhat.com/blog/wp-content/uploads/2019/02/fig2.png)](https://developers.redhat.com/blog/wp-content/uploads/2019/02/fig2.png)
 
-内容/上传/2019/02/fig2.png)
-
 Now that we’ve discussed some of the motivation it’s time to discuss  what that means for the user migrating to Podman. There are a few  things to unpack here and we’ll get into each one separately:
 
 现在我们已经讨论了一些动机，是时候讨论这对用户迁移到 Podman 意味着什么了。这里有一些东西需要解压，我们将分别介绍：
@@ -76,8 +72,6 @@ Now that we’ve discussed some of the motivation it’s time to discuss  what t
 - Podman and Docker images are compatible.
 - Podman does more than Docker for [Kubernetes](https://developers.redhat.com/topics/kubernetes/) environments.
 - What is Buildah and why might I need it?
-
-
 
 - 您安装 Podman 而不是 Docker。您不需要像 Docker 守护进程那样启动或管理守护进程。
 - 您在 Docker 中熟悉的命令对 Podman 的工作方式相同。
@@ -92,7 +86,7 @@ Now that we’ve discussed some of the motivation it’s time to discuss  what t
 
 ## 安装 Podman
 
-If you are using Docker today, you can remove it when you decide to  make the switch. However, you may wish to keep Docker around while you  try out Podman. There are some useful [tutorials](https://github.com/containers/libpod/blob/master/docs/tutorials/podman_tutorial.md)and an awesome [demonstration](https://github.com/containers/Demos /tree/master/building/buildah_intro) that you may wish to run through first so you can understand the  transition more. One example in the demonstration requires Docker in  order to show compatibility.
+If you are using Docker today, you can remove it when you decide to  make the switch. However, you may wish to keep Docker around while you  try out Podman. There are some useful [tutorials](https://github.com/containers/libpod/blob/master/docs/tutorials/podman_tutorial.md) and an awesome [demonstration](https://github.com/containers/Demos /tree/master/building/buildah_intro) that you may wish to run through first so you can understand the  transition more. One example in the demonstration requires Docker in  order to show compatibility.
 
 如果您现在正在使用 Docker，则可以在决定进行切换时将其删除。但是，您可能希望在试用 Podman 时保留 Docker。有一些有用的 [教程](https://github.com/containers/libpod/blob/master/docs/tutorials/podman_tutorial.md)和一个很棒的 [演示](https://github.com/containers/Demos /tree/master/building/buildah_intro)，您可能希望首先运行它，以便您可以更多地了解转换。演示中的一个示例需要 Docker 以显示兼容性。
 
@@ -105,8 +99,6 @@ To install Podman on [Red Hat Enterprise Linux](https://developers.redhat.com/pr
 ```
 
 
-
-
 ## Podman commands are the same as Docker’s
 
 ## Podman 命令与 Docker 相同
@@ -115,21 +107,13 @@ When building Podman, the goal was to make sure that Docker users  could easily 
 
 在构建 Podman 时，目标是确保 Docker 用户可以轻松适应。所以你熟悉的所有命令也存在于 Podman 中。事实上，有人声称如果你有运行 Docker 的现有脚本，你可以为 `podman` 创建一个 `docker` 别名，并且你的所有脚本都应该可以工作（`alias docker=podman`）。尝试一下。当然，你应该先停止Docker（`systemctl stop docker`）。您可以安装一个名为 `podman-docker` 的包，它可以为您进行转换。它在 `/usr/bin/docker` 放置一个脚本，该脚本使用相同的参数执行 Podman。
 
-The commands you are familiar with—`pull`, `push`, `build`, `run`, `commit`, `tag`, etc.—all exist with Podman. See the [manual pages for Podman](https://github.com/containers/Demos/tree/master/building/buildah_intro)for more information. One notable difference is that Podman has added  some convenience flags to some commands. For example, Podman has added `--all` (`-a`) flags for `podman rm` and `podman rmi`. Many users will find that very helpful.
+The commands you are familiar with—`pull`, `push`, `build`, `run`, `commit`, `tag`, etc.—all exist with Podman. See the [manual pages for Podman](https://github.com/containers/Demos/tree/master/building/buildah_intro) for more information. One notable difference is that Podman has added  some convenience flags to some commands. For example, Podman has added `--all` (`-a`) flags for `podman rm` and `podman rmi`. Many users will find that very helpful.
 
 你熟悉的命令——`pull`、`push`、`build`、`run`、`commit`、`tag` 等——都存在于Podman 中。有关详细信息，请参阅 [Podman 手册页](https://github.com/containers/Demos/tree/master/building/buildah_intro)。一个显着的区别是Podman 为一些命令添加了一些便利标志。例如，Podman 为 `podman rm` 和 `podman rmi` 添加了 `--all` (`-a`) 标志。许多用户会发现这非常有帮助。
 
 You can also run Podman from your normal non-root user in Podman 1.0  on Fedora. RHEL support is aimed for version 7.7 and 8.1 onwards. Enhancements in userspace security have made this possible. Running  Podman as a normal user means that Podman will, by default, store images and containers in the user’s home directory. This is explained in the  next section. For more information on how Podman runs as a non-root  user, please check out Dan Walsh's article: [How does rootless Podman work?](https://opensource.com/article/19/2/how-does-rootless-podman-work)
 
-您还可以在 Fedora 上的 Podman 1.0 中从普通的非 root 用户运行 Podman。 RHEL 支持针对 7.7 和 8.1 版本以上。用户空间安全性的增强使这成为可能。以普通用户身份运行 Podman 意味着，默认情况下 Podman 会将图像和容器存储在用户的主目录中。这将在下一节中解释。有关 Podman 如何以非 root 用户身份运行的更多信息，请查看 Dan Walsh 的文章：[无根 Podman 是如何工作的？](https://opensource.com/article/19/2/how-does-rootless- podman-工作）
-
-[![img](https://developers.redhat.com/blog/wp-content/uploads/2019/10/Java-Maven-Che-1024x314.png)](https://che.openshift.io/f?url=https://raw.githubusercontent.com/redhat-developer/devfile/master/getting-started/java-maven/devfile.yaml/?sc_cid=7013a000002D1quAAC)
-
-
-
-f?url=https://raw.githubusercontent.com/redhat-developer/devfile/master/getting-started/java-maven/devfile.yaml/?sc_cid=7013a000002D1quAAC)
-
-
+您还可以在 Fedora 上的 Podman 1.0 中从普通的非 root 用户运行 Podman。 RHEL 支持针对 7.7 和 8.1 版本以上。用户空间安全性的增强使这成为可能。以普通用户身份运行 Podman 意味着，默认情况下 Podman 会将图像和容器存储在用户的主目录中。这将在下一节中解释。有关 Podman 如何以非 root 用户身份运行的更多信息，请查看 Dan Walsh 的文章：无根 Podman 是如何工作的？
 
 ## Podman and container images
 
@@ -149,11 +133,7 @@ Since you can run `podman` without being root, there needs to be a separate plac
 
 Docker users coming to Podman find that knowing these locations is useful for debugging and for the important `rm -rf /var/lib/containers`, when you just want to start over. However, once you start using Podman, you’ll probably start using the new `-all` option to `podman rm` and `podman rmi` instead.
 
-
-
 来到 Podman 的 Docker 用户发现，当您只想重新开始时，了解这些位置对于调试和重要的 `rm -rf /var/lib/containers` 很有用。然而，一旦你开始使用 Podman，你可能会开始使用新的 `-all` 选项来代替 `podman rm` 和 `podman rmi`。
-
-
 
 ## Container images are compatible between Podman and other runtimes
 
@@ -220,8 +200,6 @@ Podman 提供了一些额外的功能来帮助 Kubernetes 环境中的开发人�
 
 Podman can generate a Kubernetes YAML file based on a running container using `podman generate kube`. The command `podman pod` can be used to help debug running Kubernetes pods along with the  standard container commands. For more details on how Podman can help  you transition to Kubernetes, see the following article by Brent Baude: [Podman can now ease the transition to Kubernetes and CRI-O](https://developers.redhat.com/blog/2019/01/29/podman-kubernetes-yaml/).
 
-
-
 Podman 可以使用 `podman generate kube` 基于正在运行的容器生成 Kubernetes YAML 文件。命令 `podman pod` 可用于帮助调试正在运行的 Kubernetes pod 以及标准容器命令。有关 Podman 如何帮助您过渡到 Kubernetes 的更多详细信息，请参阅 Brent Baude 的以下文章：[Podman 现在可以轻松过渡到 Kubernetes 和 CRI-O](https://developers.redhat.com/blog/2019/01/29/podman-kubernetes-yaml/)。
 
 
@@ -258,7 +236,7 @@ There are a couple of extra things practitioners need to understand about Builda
 2. Buildah’s `run` command is not the same as Podman’s `run` command. Because Buildah is for building images, the `run` command is *essentially the same as the Dockerfile* `RUN` *command*. In fact, I remember the week this was made explicit. I was foolishly  complaining that some port or mount that I was trying wasn’t working as I expected it to. Dan ([@rhatdan](https://twitter.com/rhatdan)) weighed in and said that Buildah should not be supporting running  containers in that way. No port mapping. No volume mounting. Those flags were removed. Instead `buildah run` is for running specific commands in order to help build a container image, for example, `buildah run dnf -y install nginx`.
 3. Buildah can build images from scratch, that is, images with nothing in them at all. Nothing. In fact, looking at the container storage  created as a result of a `buildah from scratch` command  yields an empty directory. This is useful for creating very lightweight  images that contain only the packages needed in order to run your  application. 
 
-1.它允许更精细地控制创建图像层。这是许多容器用户长期以来一直要求的功能。对单个层进行许多更改是可取的。
+ 1.它允许更精细地控制创建图像层。这是许多容器用户长期以来一直要求的功能。对单个层进行许多更改是可取的。
 2. Buildah 的 `run` 命令与 Podman 的 `run` 命令不同。因为 Buildah 是用来构建镜像的，所以 `run` 命令与 Dockerfile* 本质上是一样的* `RUN` *command*。事实上，我记得这是明确的那个星期。我愚蠢地抱怨我正在尝试的某些端口或安装没有按我预期的那样工作。 Dan ([@rhatdan](https://twitter.com/rhatdan)) 表示，Buildah 不应该支持以这种方式运行容器。没有端口映射。没有卷安装。那些标志被移除了。相反，`buildah run` 用于运行特定命令以帮助构建容器映像，例如，`buildah run dnf -y install nginx`。
 3. Buildah 可以从头开始构建镜像，也就是什么都没有的镜像。没有。事实上，查看由 `buildah from scratch` 命令创建的容器存储会产生一个空目录。这对于创建仅包含运行应用程序所需的包的非常轻量级的映像很有用。
 
@@ -268,19 +246,13 @@ A good example use case for a scratch build is to consider the  development imag
 
 [![Buildah is a powerful CLI](https://developers.redhat.com/blog/wp-content/uploads/2019/02/fig3-1024x703.png)](https://developers.redhat.com/blog/wp-content/uploads/2019/02/fig3.png)
 
-博客/wp-content/uploads/2019/02/fig3.png)
-
 Getting back to the evolution story...Now that we had solved the  Kubernetes runtime issue with CRI-O and runC, and we had solved the  build problem with Buildah, there was still one reason why Docker was  still needed on a Kubernetes host: debugging. How can we debug container issues on a host if we don't have the tools to do it? We would need to  install Docker, and then we are back where we started with the Docker  daemon on the host. Podman solves this problem.
 
 回到进化故事……既然我们已经用 CRI-O 和 runC 解决了 Kubernetes 运行时问题，并且我们已经用 Buildah 解决了构建问题，那么在 Kubernetes 主机上仍然需要 Docker 的原因还有一个：调试。如果我们没有工具，我们如何在主机上调试容器问题？我们需要安装 Docker，然后我们又回到了从主机上的 Docker 守护进程开始的地方。 Podman 解决了这个问题。
 
 Podman becomes a tool that solves two problems. It allows operators  to examine containers and images with commands they are familiar with  using. And it also provides developers with the same tools. So Docker  users, developers, or operators, can move to Podman, do all the fun  tasks that they are familiar with from using Docker, and do much more.
 
-
-
 Podman 成为解决两个问题的工具。它允许操作员使用他们熟悉的命令检查容器和图像。它还为开发人员提供了相同的工具。因此，Docker 用户、开发人员或操作员可以迁移到 Podman，执行他们使用 Docker 时熟悉的所有有趣任务，并做更多事情。
-
-
 
 ## Conclusion
 
@@ -313,13 +285,6 @@ For more information:
 
 
 
-- [libpod](https://github.com/containers/libpod)(Podman)
-  - [buildah](https://github.com/containers/buildah)
-  - [图像](https://github.com/containers/image)（使用 OCI 容器图像的代码）
-  - [storage](https://github.com/containers/storage)（本地镜像和容器存储代码）
-
-
-
 ## Related Articles
 
 ##  相关文章
@@ -332,8 +297,7 @@ For more information:
 - [Security Considerations for Container Runtimes](https://developers.redhat.com/blog/2018/12/19/security-considerations-for-container-runtimes/)(Video of Dan Walsh's talk from KubeCon 2018)
 - [IoT edge development and deployment with containers through OpenShift: Part 1](https://developers.redhat.com/blog/2019/01/31/iot-edge-development-and-deployment-with-containers-through-openshift-part-1/) (Building and testing ARM64 containers on OpenShift using podman, qemu, binfmt_misc, and Ansible)
 
- 
-
+  
 - [没有守护进程的容器：Podman 和 Buildah 在 RHEL 7.6 和 RHEL 8 Beta 中可用](https://developers.redhat.com/blog/2018/11/20/buildah-podman-containers-without-daemons/)
 - [Podman：在本地容器运行时管理 Pod 和容器](https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods/)
 - [Managing containerized system services with Podman](https://developers.redhat.com/blog/2018/11/29/managing-containerized-system-services-with-podman/)（使用systemd来管理你的podman容器）
@@ -342,9 +306,7 @@ For more information:
 - [容器运行时的安全考虑](https://developers.redhat.com/blog/2018/12/19/security-container-runtimes/)（Dan Walsh 在 KubeCon 2018 上的演讲视频）
 - [通过 OpenShift 使用容器进行物联网边缘开发和部署：第 1 部分](https://developers.redhat.com/blog/2019/01/31/iot-edge-development-and-deployment-with-containers-through-openshift-part-1/)（使用 podman、qemu、binfmt_misc 和 Ansible 在 OpenShift 上构建和测试 ARM64 容器）
 
- 
 
 *Last updated:              June 17, 2021* 
 
 *上次更新时间：2021 年 6 月 17 日*
-
