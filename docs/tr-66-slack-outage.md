@@ -14,7 +14,7 @@ Starting around 6:00 a.m. PST on January 4, 2021, some customers started experie
 问题摘要：
 从 2021 年 1 月 4 日太平洋标准时间上午 6:00 左右开始，一些客户在使用 Slack 时开始偶尔遇到错误和延迟增加。太平洋标准时间上午 7:00 左右，错误迅速增加，Slack 并非对所有客户都可用。
 
-Around 8:13 a.m. PST, we addressed an issue with our provisioning  service and began provisioning healthy servers once again to address  traffic requests. From there, at 8:45 a.m. PST, some customers began to  see improvements, but others who were trying to launch their Slack  clients were unable to do so. By around 9:15 a.m. PST most customers  were able to use Slack again. We continued to experience elevated errors until 10:40 a.m. PST, after which all customers were able to use Slack  again.
+Around 8:13 a.m. PST, we addressed an issue with our provisioning service and began provisioning healthy servers once again to address traffic requests. From there, at 8:45 a.m. PST, some customers began to see improvements, but others who were trying to launch their Slack clients were unable to do so. By around 9:15 a.m. PST most customers  were able to use Slack again. We continued to experience elevated errors until 10:40 a.m. PST, after which all customers were able to use Slack  again.
 
   太平洋标准时间上午 8 点 13 分左右，我们解决了供应服务的问题，并再次开始供应健康的服务器以解决流量请求。从那里开始，太平洋标准时间上午 8 点 45 分，一些客户开始看到改进，但其他试图启动 Slack 客户端的客户却无法这样做。到太平洋标准时间上午 9 点 15 分左右，大多数客户能够再次使用 Slack。在太平洋标准时间上午 10 点 40 分之前，我们继续遇到错误增加，之后所有客户都可以再次使用 Slack。
 
@@ -48,8 +48,6 @@ For any customers unable to access Slack, please try refreshing by using  CMD/CT
 
 Jan 5, 4:10 AM GMT+8
 
-1 月 5 日，格林威治标准时间 +8 上午 4:10
-
 We're seeing improvements with error rates on our side, and we believe affected customers should be able to access Slack.
 
   我们看到错误率有所改善，我们相信受影响的客户应该能够访问 Slack。
@@ -76,15 +74,11 @@ For those customers who are unable to access Slack (e.g. seeing a blank  screen 
 
 Jan 5, 2:51 AM GMT+8
 
-1 月 5 日，格林威治标准时间 +8 上午 2:51
-
 Some customers may be able to connect, but may also experience degraded  performance. We're continuing to work to resolve the issue.
 
 某些客户可能能够连接，但也可能会遇到性能下降的情况。我们正在继续努力解决这个问题。
 
 Jan 5, 2:00 AM GMT+8
-
-1 月 5 日，凌晨 2:00 GMT+8
 
 While the issue is largely still ongoing, we believe some customers may see  improvement in connecting to Slack after a refresh (CTRL/CMD + R).
 
@@ -92,15 +86,11 @@ While the issue is largely still ongoing, we believe some customers may see  imp
 
 Jan 5, 1:29 AM GMT+8
 
-1 月 5 日，格林威治标准时间 +8 上午 1:29
-
 There are no changes to report as of yet. We're still all hands on deck and  continuing to dig in on our side. We'll continue to share updates every  30 minutes until the incident has been downgraded.
 
 到目前为止，还没有要报告的变化。我们仍然全力以赴，继续站在我们这边。我们将继续每 30 分钟分享一次更新，直到事件被降级。
 
 Jan 5, 12:52 AM GMT+8
-
-1 月 5 日，格林威治标准时间 +8 上午 12:52
 
 We're continuing to investigate connection issues for customers, and have  upgraded the incident on our side to reflect an outage in service. All  hands are on deck on our end to further investigate. We'll be back in a  half hour to keep you posted.
 
@@ -108,23 +98,17 @@ We're continuing to investigate connection issues for customers, and have  upgra
 
 Jan 5, 12:20 AM GMT+8
 
-1 月 5 日，上午 12:20 格林威治标准时间+8
-
 We’re still investigating the ongoing connectivity issues with Slack. There's no additional information to share just yet, but we’ll follow up in 30  minutes. Thanks for bearing with us.
 
 我们仍在调查 Slack 的持续连接问题。目前还没有其他信息可以分享，但我们会在 30 分钟后跟进。感谢您的陪伴。
 
 Jan 4, 11:44 PM GMT+8 
 
-1 月 4 日，晚上 11:44 格林威治标准时间+8
-
 Customers may have trouble loading channels or connecting to Slack at this time. Our team is investigating and we'll follow up with more information as  soon as we have it. We apologize for any disruption caused.
 
 客户此时可能无法加载频道或连接到 Slack。我们的团队正在调查，我们会尽快跟进更多信息。对于造成的任何中断，我们深表歉意。
 
 Jan 4, 11:14 PM GMT+8
-
-1 月 4 日，晚上 11:14 格林威治标准时间+8
 
 Services affected
 
@@ -169,4 +153,5 @@ Link Previews
 Apps/Integrations/APIs 
 
 应用程序/集成/API
+
 
