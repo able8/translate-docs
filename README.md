@@ -107,9 +107,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 ## DevOps
 
-1. [](docs/tr-62-gitops-developers-guide.md)
-1. [](docs/tr-63-developer-effectiveness.md)
-1. [](docs/tr-64-top-devops-engineer-interview-questions.md)
+1. [A Developer’s Guide to GitOps](docs/tr-62-gitops-developers-guide.md)
+1. [Maximizing Developer Effectiveness](docs/tr-63-developer-effectiveness.md)
+1. [DevOps engineer job interview questions](docs/tr-64-top-devops-engineer-interview-questions.md)
 1. [Podman and Buildah for Docker users](docs/tr-65-podman-and-buildah-for-docker-users.md)
 
 

@@ -10,21 +10,9 @@
 
 ------
 
-[Tim Cochran](https://www.linkedin.com/in/timcochran)
-
-[蒂姆·科克伦](https://www.linkedin.com/in/timcochran)
-
 Tim Cochran is a Technical Director for the US East Market at Thoughtworks. Tim has over 19 years of experience leading work across start-ups and large enterprises in various domains such as retail, financial services, and government. He advises organizations on technology strategy and making the right technology investments to enable digital transformation goals. He is a vocal advocate for the developer experience and passionate about using data-driven approaches to improve it.
 
 Tim Cochran 是 Thoughtworks 美国东部市场的技术总监。 Tim 拥有超过 19 年在零售、金融服务和政府等各个领域的初创企业和大型企业领导工作的经验。他就技术战略和进行正确的技术投资为组织提供建议，以实现数字化转型目标。他是开发人员体验的积极倡导者，并热衷于使用数据驱动的方法来改进它。
-
-[PRODUCTIVITY](https://martinfowler.com/tags/productivity.html)
-
-[生产力](https://martinfowler.com/tags/productivity.html)
-
-[COLLABORATION](https://martinfowler.com/tags/collaboration.html)
-
-[协作](https://martinfowler.com/tags/collaboration.html)
 
 ## CONTENTS
 
@@ -84,8 +72,6 @@ The easiest way to explain is via a *developer day in the life:*
 
 *The developer:*
 
-*开发商：*
-
 - checks the team project management tool and then attends standup where she is clear about what she has to work on.
 - notes that the development environment has been automatically updated with libraries matching development and production, and the CI/CD pipelines are green.
 - pulls down the latest code, makes an incremental code change that is quickly validated by deploying to a local environment and by running unit tests.
@@ -111,8 +97,6 @@ The easiest way to explain is via a *developer day in the life:*
 ## 生活在低效率环境中的一天
 
 *The developer:*
-
-*开发商：*
 
 - starts the day having to deal immediately with a number of alerts for problems in production.
 - checks a number of logging and monitoring systems to find the error report as there are no aggregated logs across systems.
@@ -224,16 +208,6 @@ The key loops I have identified are:
 | Get answers to an internal technical query          | 1-2 weeks         | 30 mins                                       |
 | Launch a new service in production                  | 2-4 months        | 3 days                                        |
 | Validate a change was useful to the customer        | 6 months or never | 1 - 4 weeks (depending on scope of change)    |
-
-|反馈回路 |低效|高效率 |
-| - | |验证本地代码更改是否有效 | 2 分钟 | 5-15 秒（取决于技术选择）|
-|找出缺陷的根本原因 | 4-7 天 | 1 天 |
-|验证组件与其他组件集成 | 3 天 - 2 周 | 2 小时 |
-|验证更改是否满足非功能性需求 | 3 个月 | 1 天 - 1 周（取决于更改范围）|
-|在新团队中变得富有成效 | 2 个月 | 4 周 |
-|获取内部技术查询的答案 | 1-2 周 | 30 分钟 |
-|在生产中推出新服务 | 2-4 个月 | 3 天 |
-|验证更改对客户有用 | 6 个月或永远1 - 4 周（取决于变更范围）|
 
 The metrics are based on what I have observed is possible. Not every company needs every feedback loop to be in the high effectiveness bucket, but they provide concrete goals to guide decision-making. Engineering organizations should conduct research within their specific context to figure out what cycles and metrics are important technology strategy.
 
@@ -460,4 +434,5 @@ Thanks to my colleagues Cassie Shum and Carl Nygard for their feedback and help 
 Thanks to Mike McCormack and Gareth Morgan for editorial review. 
 
 感谢 Mike McCormack 和 Gareth Morgan 的编辑审核。
+
 

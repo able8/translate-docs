@@ -1,3 +1,5 @@
+# DevOps engineer job interview questions
+
 Experts share the DevOps engineer job interview questions you will face in 2021 and advice on how to answer them.
 
 
@@ -6,13 +8,9 @@ Experts share the DevOps engineer job interview questions you will face in 2021 
 
 January 11, 2021 From: https://enterprisersproject.com/article/2021/1/10-top-devops-engineer-interview-questions-2021?page=0%2C0
 
-180 readers like this
+Love it or leave it, the “[DevOps](https://enterprisersproject.com/tags/devops) engineer” title - still stirring debate among IT pros - is here to stay in 2021. It was one of the hottest and [ hardest-to-fill](https://enterprisersproject.com/article/2020/9/devops-engineer-hiring-tips) positions in IT in 2020.
 
-180个读者喜欢这个
-
-Love it or leave it, the “[DevOps](https://enterprisersproject.com/tags/devops)engineer” title - still stirring debate among IT pros - is here to stay in 2021. It was one of the hottest and [ hardest-to-fill](https://enterprisersproject.com/article/2020/9/devops-engineer-hiring-tips) positions in IT in 2020.
-
-爱它或离开它，“[DevOps](https://enterprisersproject.com/tags/devops)工程师”的头衔——仍然在 IT 专业人士之间激起争论——将在 2021 年继续存在。它是最热门和 [最难填补的](https://enterprisersproject.com/article/2020/9/devops-engineer-hiring-tips) 2020 年 IT 职位。
+爱它或离开它，“[DevOps](https://enterprisersproject.com/tags/devops) 工程师”的头衔——仍然在 IT 专业人士之间激起争论——将在 2021 年继续存在。它是最热门和 [最难填补的](https://enterprisersproject.com/article/2020/9/devops-engineer-hiring-tips) 2020 年 IT 职位。
 
 **[ Why is DevOps engineer a controversial IT title that's here to stay? [Eveline Oehrlich explains](https://enterprisersproject.com/article/2020/8/devops-engineer-in-demand-it-title?sc_cid=70160000000h0axaaq). ]**
 
@@ -26,7 +24,7 @@ What do DevOps hiring managers seek? "The number-one trait they look for is team
 
 DevOps 招聘经理寻求什么？ “他们寻找的第一要素是团队配合。”
 
-Ravi Lachhman, evangelist at [Harness](https://harness.io/), notes an intrinsic challenge in DevOps interviews for both sides of the table: The DevOps engineer title is inherently broad. Both the hiring  manager and the interviewee need to develop questions and answers  accordingly, and expand their horizons beyond the traditional technical  interview.
+Ravi Lachhman, evangelist at [Harness](https://harness.io/), notes an intrinsic challenge in DevOps interviews for both sides of the table: The DevOps engineer title is inherently broad. Both the hiring  manager and the interviewee need to develop questions and answers accordingly, and expand their horizons beyond the traditional technical  interview.
 
 [Harness](https://harness.io/) 的布道者 Ravi Lachman 指出，DevOps 面试中的内在挑战对双方来说都是如此：DevOps 工程师的职位本身就很宽泛。招聘经理和面试者都需要相应地制定问题和答案，并在传统的技术面试之外扩展他们的视野。
 
@@ -34,7 +32,7 @@ Ravi Lachhman, evangelist at [Harness](https://harness.io/), notes an intrinsic 
 
 “我很幸运最近与一系列 DevOps 领导者讨论了他们的招聘实践，”Lachhman 说。 “他们寻找的第一要素是团队配合。”
 
-While job seekers should anticipate technical questions around tools  and processes, the people part of the equation is just as important, if  not more: How do your individual traits bolster the team you’re looking  to join? There is likely less perceived value in ‘I know all the tools!” than in “Here’s how I’ve helped reduce operational complexity” or  “Here’s how I’ve helped different teams better work together toward  common goals.”
+While job seekers should anticipate technical questions around tools  and processes, the people part of the equation is just as important, if not more: How do your individual traits bolster the team you’re looking  to join? There is likely less perceived value in ‘I know all the tools!” than in “Here’s how I’ve helped reduce operational complexity” or  “Here’s how I’ve helped different teams better work together toward  common goals.”
 
 虽然求职者应该预见到有关工具和流程的技术问题，但等式中的人员部分同样重要，甚至更多：您的个人特征如何支持您希望加入的团队？ “我知道所有工具！”的感知价值可能较低。而不是“这就是我如何帮助降低运营复杂性”或“这是我如何帮助不同团队更好地为共同目标而合作”。
 
@@ -50,7 +48,7 @@ While job seekers should anticipate technical questions around tools  and proces
 
 ## 10 DevOps 工程师面试问题和答案
 
-With that context in mind, we asked Lachhman and other experts to  share some of the top interview questions for DevOps engineers positions (and similar roles) in 2021. And, of course, we’ll share advice on  developing good answers. You can use these from the standpoint of both  the interviewer and the candidate. (Also check out our related story, [Top IT interview questions for 2021](https://enterprisersproject.com/article/2020/12/top-it-job-interview-questions-2021),for more prep material.)
+With that context in mind, we asked Lachhman and other experts to  share some of the top interview questions for DevOps engineers positions (and similar roles) in 2021. And, of course, we’ll share advice on  developing good answers. You can use these from the standpoint of both  the interviewer and the candidate. (Also check out our related story, [Top IT interview questions for 2021](https://enterprisersproject.com/article/2020/12/top-it-job-interview-questions-2021), for more prep material.)
 
 考虑到这一背景，我们请 Lachhman 和其他专家分享 2021 年 DevOps 工程师职位（和类似角色）的一些热门面试问题。当然，我们将分享有关制定好的答案的建议。您可以从面试官和候选人的角度使用这些。 （另请查看我们的相关故事，[2021 年的热门 IT 面试问题](https://enterprisersproject.com/article/2020/12/top-it-job-interview-questions-2021)，了解更多准备材料。）
 
@@ -232,7 +230,7 @@ This big-picture question, suggested by Lachhman, could reveal a lot  about the 
 
 ## 10. How much of this job is on-call?
 
-## 10. 这项工作有多少是随叫随到的？
+## 10. 这项工作有多少是on-call？
 
 This is a good way to dig into an organization's philosophy (or  possible lack thereof) on work-life balance without actually using the  phrase “work-life balance” directly, which could produce a canned answer that obscures some of the realities of the job .
 
@@ -261,4 +259,5 @@ This is a chance to find out what’s expected of the DevOps engineer  in terms 
 **[ Get exercises and approaches that make disparate teams stronger. Read the digital transformation ebook: [Transformation Takes Practice](https://www.redhat.com/en/engage/open-practice-library-ebook?intcmp=701f2000000tjyaAAA). ]** 
 
 **[ 获取使不同团队更强大的练习和方法。阅读数字化转型电子书：[Transformation Takes Practice](https://www.redhat.com/en/engage/open-practice-library-ebook?intcmp=701f2000000tjyaAAA)。 ]**
+
 
