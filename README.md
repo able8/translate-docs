@@ -48,7 +48,12 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Kubernetes Autoscaling in Production: Best Practices for Cluster Autoscaler, HPA and VP](docs/tr-33-kubernetes-in-production-best-practices-for-cluster-autoscaler-hpa-and-vpa.md)
 1. [A CIOs Guide to Kubernetes Best Practices in Production](docs/tr-34-a-cios-guide-to-kubernetes-best-practices-in-production.md)
 1. [10 Kubernetes Operators Every DevOps needs to know about](docs/tr-31-10-kubernetes-operators-every-devops-needs-to-know-about.md)
-1. [](docs/)
+1. [](tr-67-bad-pods-kubernetes-pod-privilege-escalation.md)
+1. [](tr-68-graceful-shutdown.md)
+1. [](tr-69-introduction-to-ebpf.md)
+1. [](tr-70-kubernetes-autoscaling-strategies.md)
+1. [](tr-71-kubernetes-long-lived-connections.md)
+1. [](tr-72-kubernetes-operators-best-practices.md). [](docs/)
 
 
 ## Docker and Container
