@@ -4,8 +4,6 @@
 
 Mar 19, 2021
 
-2021 年 3 月 19 日
-
 ### Key Takeaways
 
 ### 关键要点
@@ -34,22 +32,6 @@ In [Team Topologies](https://teamtopologies.com/book), which I wrote with [Ma
 
 在我与 [Matthew Skelton](https://www.infoq.com/profile/Matthew-Skelton/) 共同撰写的 [Team Topologies](https://teamtopologies.com/book) 中，我们讨论了基本类型团队、他们的预期行为和目的，也许更重要的是团队之间的互动。因为这将推动技术的采用。如果我们不考虑这一点，我们可能会陷入陷阱并构建没有人需要或没有明确用例的技术或服务。
 
-#### Related Sponsored Content
-
-#### 相关赞助内容
-
-- ##### [Kubernetes Up & Running - Download the eBook (By O'Reilly)](http://www.infoq.com/infoq/url.action?i=e1b2b077-e265-40a5-8f12-593f0f6f6baa&t =f)
-
-- ##### [Kubernetes 启动和运行 - 下载电子书（O'Reilly 着）](http://www.infoq.com/infoq/url.action?i=e1b2b077-e265-40a5-8f12-593f0f6f6baa&t =f)
-
-#### Related Sponsor
-
-#### 相关赞助商
-
-[![](https://res.infoq.com/sponsorship/topic/22bdfa2a-7b5c-4be5-b60c-93141547ff5a/VMWareTanzuRSBLogo-1589361540634-1612367286968.png)](http://www.infoq.com/infoq/url.action?i=9e6eac17-4b86-410d-8cf9-9ce2e2a28863&t=f)
-
-/url.action?i=9e6eac17-4b86-410d-8cf9-9ce2e2a28863&t=f)
-
 ### [**Free your apps. Simplify your ops.**](http://www.infoq.com/infoq/url.action?i=4e465f12-aac3-4817-8b96-89c289f60a82&t=f)
 
 ### [**释放您的应用程序。简化您的操作。**](http://www.infoq.com/infoq/url.action?i=4e465f12-aac3-4817-8b96-89c289f60a82&t=f)
@@ -67,7 +49,9 @@ In 2019, Melanie Cebula, an infrastructure engineer at Airbnb, gave an excellent
 2019 年，Airbnb 基础设施工程师 Melanie Cebula 在 Qcon 做了精彩演讲。作为 InfoQ 的 DevOps 主编，我写了 [关于它的故事](https://www.infoq.com/news/2019/03/airbnb-kubernetes-workflow/)。在上线的第一周，这个故事的页面浏览量就超过了 23,000。这是我第一个真正的病毒式故事，我试图理解为什么这个故事会受到如此多的关注。是的，Airbnb 提供了帮助，Kubernetes 风靡一时，但我认为主要因素是这个故事是关于为数千名工程师大规模简化 Kubernetes 的采用。
 
 The point is that many developers and many engineers find it complicated and hard to adopt Kubernetes and change the way they work with the APIs and the artifacts they need to produce to use it effectively. 
+
 关键是，许多开发人员和工程师发现采用 Kubernetes 并改变他们使用 API 的方式以及他们需要生产以有效使用它的工件的方式既复杂又困难。
+
 The term “platform” has been overloaded with a lot of different meanings. Kubernetes is a platform in the sense that it helps us deal with the complexity of operating microservices. It helps provide better abstractions for deploying and running our services. That's all great, but there's a lot more going on. We need to think about how to size our hosts, how and when to create/destroy clusters, and how to update to new Kubernetes versions and who that will impact. We need to decide on how to isolate different environments or applications, with namespaces, clusters, or whatever it might be. Anyone who has worked with Kubernetes can add to this list: perhaps worrying about security, for example. A lot of things need to happen before we can use Kubernetes as a platform.
 
 “平台”一词已经被赋予了许多不同的含义。 Kubernetes 是一个平台，它帮助我们处理操作微服务的复杂性。它有助于为部署和运行我们的服务提供更好的抽象。这一切都很棒，但还有很多事情要做。我们需要考虑如何调整我们的主机大小，如何以及何时创建/销毁集群，以及如何更新到新的 Kubernetes 版本以及这会影响谁。我们需要决定如何隔离不同的环境或应用程序，使用命名空间、集群或任何可能的东西。任何使用 Kubernetes 的人都可以添加到此列表中：例如，可能担心安全性。在我们可以使用 Kubernetes 作为平台之前，需要做很多事情。
@@ -78,7 +62,7 @@ One problem is that the boundaries between roles are often unclear in an organiz
 
 [Evan Bottcher](https://www.linkedin.com/in/evanbottcher/) defines a digital platform as “a foundation of self-service APIs, tools, and services, but also knowledge and support, and everything arranged as a compelling internal product.” We know that self-service tools and APIs are important. They're critical in allowing a lot of teams to be more independent and to work autonomously. But I want to bring attention to his mention of “knowledge and support”. That implies that we have teams running the platform that are focused on helping product teams understand and adopt it, besides providing support when problems arise in the platform.
 
-[Evan Bottcher](https://www.linkedin.com/in/evanbottcher/) 将数字平台定义为“自助式 API、工具和服务的基础，同时也是知识和支持的基础，一切安排为引人注目的内部产品。”我们知道自助服务工具和 API 很重要。它们对于让许多团队更加独立和自主工作至关重要。但我想提请注意他提到的“知识和支持”。这意味着我们拥有运行平台的团队，除了在平台出现问题时提供支持外，还专注于帮助产品团队理解和采用它。
+[Evan Bottcher](https://www.linkedin.com/in/evanbottcher/) 将数字平台定义为“自助式 API、工具和服务的基础，同时也是知识和支持的基础，一切安排为引人注目的内部产品。” 我们知道自助服务工具和 API 很重要。它们对于让许多团队更加独立和自主工作至关重要。但我想提请注意他提到的“知识和支持”。这意味着我们拥有运行平台的团队，除了在平台出现问题时提供支持外，还专注于帮助产品团队理解和采用它。
 
 Another key aspect is to understand the platform as “a compelling internal product”, not a mandatory platform with shared services that we impose on everyone else. As an industry, we've been doing that for a long time, and it simply doesn't work very well. It often creates more pain than the benefits it provides for the teams forced to use a platform that is supposed to be a silver bullet. And we know silver bullets don’t exist.
 
@@ -115,7 +99,9 @@ Adopting Kubernetes is not a small change. It's more like an elephant charging i
 采用 Kubernetes 是一个不小的变化。这更像是一头大象冲进房间。我们必须以一种不会造成比带来的好处更多的痛苦的方式采用这项技术。我们不希望以图 1 那样的方式结束，它类似于 DevOps 运动之前的生活，具有孤立的群体。现在是 Kubernetes 团队而不是运营团队，但是如果我们创建一种孤立主义的方法，其中一个团队独立于另一个团队做出决策，我们将遇到同样的问题。
 
 If we make platform decisions without considering the impact on consumers, we're going to increase pain in the form of their cognitive load, the amount of effort our teams must put out to understand and use the platform. 
+
 如果我们在不考虑对消费者的影响的情况下做出平台决策，我们将增加他们认知负担的形式的痛苦，我们的团队必须为理解和使用平台付出的努力。
+
 [John Sweller](https://en.wikipedia.org/wiki/John_Sweller) formulated cognitive load as “the total amount of mental effort being used in the working memory”. We can break this down into three types of cognitive load: intrinsic, extraneous, and germane.
 
 [John Sweller](https://en.wikipedia.org/wiki/John_Sweller) 将认知负荷表述为“工作记忆中使用的脑力劳动总量”。我们可以将其分解为三种类型的认知负荷：内在的、外在的和密切的。
@@ -146,7 +132,7 @@ The general principle is to be mindful of the impact of your platform choices on
 
 ## Case studies
 
-＃＃ 实例探究
+## 实例探究
 
 I mentioned Airbnb engineer Melanie Cebula’s excellent talk at Qcon so let’s look at how that company reduced the cognitive load of their development teams.
 
@@ -174,6 +160,7 @@ In Team Topologies, we talk about four types of teams, shown in Figure 3. Stre
 
 **Figure 3: Four types of teams.** 
 **图 3：四种类型的团队。**
+
 The stream-aligned team resembles what organizations variously call a product team, DevOps team, or build-and-run team — these teams have end-to-end ownership of the services that they deliver. They have runtime ownership, and they can take feedback from monitoring or live customer usage for improving the next iteration of their service or application. We call this a “stream-aligned team” for two reasons. First, “product” is an overloaded term; as our systems become more and more complex, the less precise it is to define a standalone product. Second, we want to acknowledge the different types of streams beyond just the business-value streams; it can be compliance, specific user personas, or whatever makes sense for aligning a team with the value it provides.
 
 流对齐团队类似于组织对产品团队、DevOps 团队或构建和运行团队的不同称呼——这些团队对他们提供的服务拥有端到端的所有权。他们拥有运行时所有权，并且可以从监控或实时客户使用中获取反馈，以改进其服务或应用程序的下一次迭代。我们将其称为“流对齐团队”有两个原因。首先，“产品”是一个重载的术语；随着我们的系统变得越来越复杂，定义一个独立的产品就越不精确。其次，我们要承认不同类型的流，而不仅仅是业务价值流；它可以是合规性、特定的用户角色，或者任何使团队与其提供的价值保持一致的有意义的事情。
@@ -223,7 +210,9 @@ We talk about treating the platform as a product — an internal product, but st
 我们谈论将平台视为产品——一个内部产品，但仍然是一个产品。这意味着我们应该在使用它时考虑它的可靠性、它的适用性以及开发人员体验 (DevEx)。
 
 First, for the platform to be reliable, we need to have on-call support, because now the platform sits in the path of production. If our platform’s monitoring services fail or we run out of storage space for logs, for example, the customer-facing teams are going to suffer. They need someone who provides support, tells them what's going on, and estimates the expected time for a fix. It should also be easy to understand the status of the platform services and we should have clear, established communication channels between the platform and the stream teams in order to reduce cognitive load in communications. Finally, there needs to be coordination with potentially affected teams for any planned downtime. 
+
 首先，要使平台可靠，我们需要有随叫随到的支持，因为现在平台处于生产路径中。例如，如果我们平台的监控服务出现故障或我们的日志存储空间不足，那么面向客户的团队就会受到影响。他们需要有人提供支持，告诉他们发生了什么，并估计修复的预期时间。平台服务的状态也应该很容易理解，我们应该在平台和流团队之间建立清晰的、已建立的沟通渠道，以减少沟通中的认知负担。最后，对于任何计划的停机时间，都需要与可能受影响的团队进行协调。
+
 Secondly, having a platform that's fit for purpose means that we use techniques like prototyping and we get regular feedback from the internal customers. We use iterative practices like agile, pair programming, or TDD for faster delivery with higher quality. Importantly, we should focus on having fewer services of higher quality and availability rather than trying to build every service that we can imagine to be potentially useful. We need to focus on what teams really need and make sure those services are of high quality. This means we need very good product management to understand priorities, to establish a clear but flexible roadmap, and so on.
 
 其次，拥有适合目的的平台意味着我们使用原型设计等技术，并定期从内部客户那里获得反馈。我们使用诸如敏捷、结对编程或 TDD 之类的迭代实践来以更高的质量更快地交付。重要的是，我们应该专注于拥有更少的更高质量和更高可用性的服务，而不是尝试构建我们认为可能有用的每一个服务。我们需要专注于团队真正需要的东西，并确保这些服务是高质量的。这意味着我们需要非常好的产品管理来了解优先级，建立清晰但灵活的路线图等等。
@@ -267,7 +256,9 @@ In time, the platform team started to define their own SLAs and SLOs for the Kub
 随着时间的推移，平台团队开始为 Kubernetes 平台定义自己的 SLA 和 SLO，作为公司其他部门的榜样，并突出了性能、延迟和可靠性方面的改进。其他团队可以观察并做出明智的决定是否采用平台服务。请记住，它从未被强制要求，而始终是可选的。
 
 Booth told me that uSwitch saw traffic increasing through the Kubernetes platform versus what was going directly through AWS and this gave them some idea of how much adoption was taking place. Later, the team addressed some critical cross-functional gaps in security, GDPR data privacy and handling of alerts and SLOs. 
+
 Booth 告诉我，uSwitch 看到通过 Kubernetes 平台的流量与直接通过 AWS 的流量相比有所增加，这让他们对采用的情况有了一些了解。后来，该团队解决了安全性、GDPR 数据隐私以及警报和 SLO 处理方面的一些关键跨职能差距。
+
 One team, one of the more advanced in both engineering terms and revenue generation, was already doing everything that the Kubernetes platform could provide. They had no significant motivation to adopt the platform — until they were sure that it provided the same functionality with the increased levels of reliability, performance, and so on. It no longer made sense for them to take care of all these infrastructure aspects on their own. The team switched to use the Kubernetes platform and increased its capacity to focus on the business aspects of the service. That was the “ultimate” prize for the platform team, to gain the adoption from the most advanced engineering team in the organization.
 
 一个团队，在工程术语和创收方面更先进的团队之一，已经在做 Kubernetes 平台可以提供的一切。他们没有采用该平台的重大动机——直到他们确定它提供了相同的功能以及更高级别的可靠性、性能等。他们自己处理所有这些基础设施方面不再有意义。该团队转而使用 Kubernetes 平台，并增加了专注于服务业务方面的能力。这是平台团队的“终极”奖，获得组织中最先进的工程团队的采用。
@@ -330,6 +321,7 @@ The success of the platform team is the success of the stream-aligned teams. The
 
 **Figure 10: Airbnb’s platform team provides an abstraction of the underlying Kubernetes architecture.** 
 **图 10：Airbnb 的平台团队提供了底层 Kubernetes 架构的抽象。**
+
 Airbnb effectively had a platform team (although internally called Infrastructure team) to abstract a lot of the underlying details of the Kubernetes platform, as shown in Figure 10. This clarifies the platform's boundaries for the development teams and exposes those teams to a much smaller cognitive load than telling them to use Kubernetes and to read the official documentation to understand how it works. That's a huge task that requires a lot of effort. This platform-team approach reduces cognitive load by providing more tightly focused services that meet our teams’ needs.
 
 Airbnb 实际上有一个平台团队（虽然内部称为基础设施团队）来抽象 Kubernetes 平台的许多底层细节，如图 10 所示。这为开发团队澄清了平台的边界，并将这些团队暴露给一个更小的认知加载而不是告诉他们使用 Kubernetes 并阅读官方文档以了解其工作原理。这是一项艰巨的任务，需要付出很多努力。这种平台-团队方法通过提供更加专注的服务来满足我们团队的需求，从而减少了认知负担。
@@ -420,7 +412,8 @@ There are many good platform examples to look at from companies like  [Zalando
 
 ## About the Author
 
-＃＃ 关于作者
+## 关于作者
 
-**![](https://res.infoq.com/articles/kubernetes-successful-adoption-foundation/en/resources/4manuel-pais-1615999143952.jpg)Manuel Pais** is an independent IT organizational consultant and trainer, focused on team interactions, delivery practices, and accelerating flow. He is co-author of the book [Team Topologies: Organizing Business and Technology Teams for Fast Flow](https://teamtopologies.com/book). He helps organizations rethink their approach to software delivery, operations, and support via strategic assessments, practical workshops, and coaching. 
-，专注于团队互动、交付实践和加速流程。他是 [团队拓扑：组织业务和技术团队以实现快速流程](https://teamtopologies.com/book) 一书的合著者。他通过战略评估、实践研讨会和辅导帮助组织重新思考他们的软件交付、运营和支持方法。
+Manuel Pais** is an independent IT organizational consultant and trainer, focused on team interactions, delivery practices, and accelerating flow. He is co-author of the book [Team Topologies: Organizing Business and Technology Teams for Fast Flow](https://teamtopologies.com/book). He helps organizations rethink their approach to software delivery, operations, and support via strategic assessments, practical workshops, and coaching. 
+
+专注于团队互动、交付实践和加速流程。他是 [团队拓扑：组织业务和技术团队以实现快速流程](https://teamtopologies.com/book) 一书的合著者。他通过战略评估、实践研讨会和辅导帮助组织重新思考他们的软件交付、运营和支持方法。

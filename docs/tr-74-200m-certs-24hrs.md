@@ -4,15 +4,13 @@
 
 Feb 10, 2021 • Josh Aas
 
-2021 年 2 月 10 日 • 乔什·阿斯
-
 On a normal day Let’s Encrypt issues nearly [two million certificates](https://letsencrypt.org/stats/). When we think about what essential infrastructure for the Internet needs to be prepared for though, we’re not thinking about normal days. We want to be prepared to respond as best we can to the most difficult situations that might arise. In some of the worst scenarios, we might want to re-issue all of our certificates in a 24 hour period in order to avoid widespread disruptions. That means being prepared to issue 200 million certificates in a day, something no publicly trusted CA has ever done.
 
 在平常的日子里，Let's Encrypt 发行近 [200 万个证书](https://letsencrypt.org/stats/)。但是，当我们考虑需要为 Internet 准备哪些基本基础设施时，我们并不是在考虑正常的日子。我们希望做好准备，尽可能应对可能出现的最困难的情况。在一些最糟糕的情况下，我们可能希望在 24 小时内重新颁发我们的所有证书，以避免大范围的中断。这意味着准备好在一天内颁发 2 亿张证书，这是公开信任的 CA 从未做过的事情。
 
-We recently completed most of the work and investments needed to issue 200 million certificates in a day and we thought we’d let people know what was involved. All of this was made possible by our [sponsors](https://letsencrypt.org/sponsors/) and funders, including major hardware contributions from [Cisco](https://www.cisco.com/), [Thales] (https://www.thalesgroup.com/en), and [Fortinet](https://www.fortinet.com/).
+We recently completed most of the work and investments needed to issue 200 million certificates in a day and we thought we’d let people know what was involved. All of this was made possible by our [sponsors](https://letsencrypt.org/sponsors/) and funders, including major hardware contributions from [Cisco](https://www.cisco.com/), [Thales](https://www.thalesgroup.com/en), and [Fortinet](https://www.fortinet.com/).
 
-我们最近完成了一天签发 2 亿张证书所需的大部分工作和投资，我们认为我们会让人们知道所涉及的内容。所有这一切都是由我们的 [赞助商](https://letsencrypt.org/sponsors/) 和资助者实现的，其中包括 [Cisco](https://www.cisco.com/)、[Thales] 的主要硬件贡献(https://www.thalesgroup.com/en) 和 [Fortinet](https://www.fortinet.com/)。
+我们最近完成了一天签发 2 亿张证书所需的大部分工作和投资，我们认为我们会让人们知道所涉及的内容。所有这一切都是由我们的 [赞助商](https://letsencrypt.org/sponsors/) 和资助者实现的，其中包括主要硬件贡献 [Cisco](https://www.cisco.com/)、Thales 和  [Fortinet](https://www.fortinet.com/)。
 
 ## Scenarios
 
@@ -68,6 +66,7 @@ Let's Encrypt 基础设施最初是使用 1G 铜缆网络构建的。在绑定�
 
 By 2020 the volume of data we were moving around internally was too much to handle efficiently with 1G copper. Some normal operations were significantly slower than we’d like (e.g. backups, replicas), and during incidents the 1G network could cause significant delays in our response. 
 到 2020 年，我们在内部移动的数据量过多，无法使用 1G 铜线进行有效处理。一些正常操作比我们希望的要慢得多（例如备份、副本），并且在发生事件时，1G 网络可能会导致我们的响应出现严重延迟。
+
 We originally looked into upgrading to 10G, but learned that upgrading to 25G fiber wasn’t much more expensive. Cisco ended up generously donating most of the switches and equipment we needed for this upgrade, and after replacing a lot of server NICs Let’s Encrypt is now running on a 25G fiber network!
 
 我们最初考虑升级到 10G，但了解到升级到 25G 光纤并不昂贵。思科最终慷慨地捐赠了我们此次升级所需的大部分交换机和设备，在更换了大量服务器网卡后，Let's Encrypt 现在运行在 25G 光纤网络上！
@@ -87,6 +86,8 @@ Each Let’s Encrypt data center has a pair of Luna HSMs that sign all certifica
 - 200 million OCSP response signatures for revocation
 - 200 million certificate signatures for replacement certificates
 - 200 million OCSP response signatures for the new certificates
+
+
 
 - 2 亿个用于撤销的 OCSP 响应签名
 - 用于替换证书的 2 亿个证书签名
@@ -126,7 +127,9 @@ In order to get all those certificates replaced, we need an efficient and automa
 
 ## Supporting Let’s Encrypt
 
-## 支持让我们加密
+## 支持 Let’s Encrypt
 
 We depend on contributions from our community of users and supporters in order to provide our services. If your company or organization would like to [sponsor](https://letsencrypt.org/become-a-sponsor/) Let’s Encrypt please email us at [sponsor@letsencrypt.org](mailto:sponsor@letsencrypt.org). We ask that you make an [individual contribution](https://letsencrypt.org/donate/) if it is within your means. 
+
 我们依靠用户和支持者社区的贡献来提供我们的服务。如果您的公司或组织想要 [赞助](https://letsencrypt.org/become-a-sponsor/) Let's Encrypt，请发送电子邮件至 [sponsor@letsencrypt.org](mailto:sponsor@letsencrypt.org)。我们要求您在力所能及的情况下做出[个人贡献](https://letsencrypt.org/donate/)。
+

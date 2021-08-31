@@ -4,13 +4,11 @@
 
 12 Mar 2021
 
-2021 年 3 月 12 日
-
 Steve Francia
-Over the past 25 years Steve Francia has built some of the most innovative and successful technologies and companies which have become the foundation of cloud computing, embraced by enterprises and developers all over the world. He is currently product and strategy lead for the Go Programming Language at Google. He is the creator of Hugo, Cobra, Viper, spf13-vim and many additional open source projects, having the unique distinction of leading five of the world's largest open source projects.](https://github.com/spf13)
+Over the past 25 years Steve Francia has built some of the most innovative and successful technologies and companies which have become the foundation of cloud computing, embraced by enterprises and developers all over the world. He is currently product and strategy lead for the Go Programming Language at Google. He is the creator of Hugo, Cobra, Viper, spf13-vim and many additional open source projects, having the unique distinction of leading five of the world's largest open source [projects.](https://github.com/spf13)
 
 史蒂夫·弗兰西亚
-在过去的 25 年中，Steve Francia 建立了一些最具创新性和最成功的技术和公司，这些技术和公司已成为云计算的基础，受到全球企业和开发人员的欢迎。他目前是谷歌 Go 编程语言的产品和战略负责人。他是 Hugo、Cobra、Viper、spf13-vim 和许多其他开源项目的创建者，具有领导世界上最大的五个开源项目的独特优势。](https://github.com/spf13)
+在过去的 25 年中，Steve Francia 建立了一些最具创新性和最成功的技术和公司，这些技术和公司已成为云计算的基础，受到全球企业和开发人员的欢迎。他目前是谷歌 Go 编程语言的产品和战略负责人。他是 Hugo、Cobra、Viper、spf13-vim 和许多其他开源项目的创建者，具有领导世界上最大的五个开源项目的独特优势。
 
 While others may see [Rust](https://www.rust-lang.org/) and [Go](https://go.dev/) as competitive programming languages, neither the Rust nor the Go teams do. Quite the contrary, our teams have deep respect for what the others are doing, and see the languages as complimentary with a shared vision of modernizing the state of software development industry-wide.
 
@@ -27,10 +25,6 @@ Companies are finding value in adopting both languages and in their complimentar
 ## Language Comparison
 
 ## 语言比较
-
-LanguageGoRustCreation Date20092010Created atGoogleMozillaNotable software written in languageKubernetes, Docker, Github CLI, Hugo, Caddy, Drone, Ethereum, Syncthing, TerraformFirefox, ripgrep, alacritty, deno, HabitatKey workloadsAPIs, Web Apps, CLI apps, DevOps, Networking, Data Processing, cloud appsIoT, processing engines, security-sensitive apps, system components, cloud apps[Developer adoption](https://insights.stackoverflow.com/survey/2020%23technology-programming-scripting-and-markup-languages-all-respondents)8.8% (#12)5.1% (#19)[Most loved](https://insights.stackoverflow.com/survey/2020%23technology-programming-scripting-and-markup-languages-all-respondents)62.3% (#5 )86.1% (#1)[Most wanted](https://insights.stackoverflow.com/survey/2020%23technology-most-loved-dreaded-and-wanted-languages-wanted)17.9% (#3)14.6% (#5)
-
-LanguageGoRustCreation Date20092010创建于GoogleMozilla 用语言编写的著名软件Kubernetes、Docker、Github CLI、Hugo、Caddy、Drone、Ethereum、Syncthing、TerraformFirefox、ripgrep、alacritty、deno、HabitatKey 工作负载API、Web 应用程序、CLI 应用程序、DevOps、云处理、数据物联网应用程序处理引擎、安全敏感应用、系统组件、云应用[开发者采用](https://insights.stackoverflow.com/survey/2020%23technology-programming-scripting-and-markup-languages-all-respondents)8.8% (#12)5.1% (#19)[最受欢迎](https://insights.stackoverflow.com/survey/2020%23technology-programming-scripting-and-markup-languages-all-respondents)62.3% (#5 )86.1% (#1)[最想要的](https://insights.stackoverflow.com/survey/2020%23technology-most-loved-dreaded-and-wanted-languages-wanted)17.9% (#3)14.6% (#5)
 
 ## Similarities
 
@@ -50,6 +44,8 @@ Most of today’s popular languages were designed over 30 years ago. When those 
 4. Safety was a secondary concern… or not a concern at all.
 5. Software was typically written for a single platform.
 
+
+
 1. 摩尔定律被认为永远正确。
 2. 大多数软件项目是由小团队编写的，通常是一起工作。
 3. 大多数软件的依赖项相对较少，主要是专有的。
@@ -62,7 +58,7 @@ In contrast, both Rust and Go were written for today’s world and generally too
 
 ### 1\. Performance and Concurrency
 
-### 1\.性能和并发
+### 1\. 性能和并发
 
 Go and Rust are both compiled languages focused on producing efficient code. They also provide easy access to the multiple processors of today’s machines, making them ideal languages for writing efficient parallel code.
 
@@ -73,7 +69,9 @@ _“Using Go allowed MercadoLibre to cut the number of servers they use for this
 _“使用 Go 允许 MercadoLibre 将他们用于此服务的服务器数量减少到原始数量的八分之一（从 32 个服务器减少到 4 个），而且每台服务器可以以更少的功率运行（最初是四个 CPU 内核，现在减少到两个 CPU 内核）。使用 Go，该公司取消了 88% 的服务器，并将其余服务器的 CPU 削减了一半——从而节省了大量成本。”_—“[MercadoLibre 随 Go 一起成长](https://go.dev/solutions/mercadolibre /)”
 
 _“In our tightly managed environments where we run Go code, we have seen a CPU reduction of approximately ten percent [vs C++] with cleaner and maintainable code.”_ — [Bala Natarajan, Paypal](https://go.dev /solutions/paypal/) 
-_“在我们运行 Go 代码的严格管理的环境中，我们看到 CPU 减少了大约 10% [与 C++] 相比，代码更干净且可维护。”_ — [Bala Natarajan, Paypal](https://go.dev /解决方案/贝宝/）
+
+_“在我们运行 Go 代码的严格管理的环境中，我们看到 CPU 减少了大约 10% [与 C++] 相比，代码更干净且可维护。”_ — Bala Natarajan, Paypal
+
 _“Here at AWS, we love Rust, too, because it helps AWS write highly performant, safe infrastructure-level networking and other systems software. Amazon’s first notable product built with Rust, Firecracker, launched publicly in 2018 and provides the open source virtualization technology that powers AWS Lambda and other serverless offerings. But we also use Rust to deliver services such as Amazon Simple Storage Service (Amazon S3), Amazon Elastic Compute Cloud (Amazon EC2), Amazon CloudFront, Amazon Route 53, and more. Recently we launched Bottlerocket, a Linux-based container operating system written in Rust.” — [Matt Asay, Amazon Web Services](https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-how-wed-like-to-help/)_
 
 _“在 AWS，我们也喜欢 Rust，因为它可以帮助 AWS 编写高性能、安全的基础设施级网络和其他系统软件。亚马逊第一个使用 Rust 构建的著名产品 Firecracker 于 2018 年公开发布，提供支持 AWS Lambda 和其他无服务器产品的开源虚拟化技术。但我们也使用 Rust 提供服务，例如 Amazon Simple Storage Service (Amazon S3)、Amazon Elastic Compute Cloud (Amazon EC2)、Amazon CloudFront、Amazon Route 53 等。最近，我们推出了 Bottlerocket，这是一个用 Rust 编写的基于 Linux 的容器操作系统。” — [Matt Asay，亚马逊网络服务](https://aws.amazon.com/blogs/opensource/why-aws-loves-rust-and-how-wed-like-to-help/)_
@@ -84,7 +82,7 @@ _我们“看到我们的速度惊人地提高了 1200-1500%！我们从 Scala �
 
 ### 2\. Team Scalable — Reviewable
 
-### 2\。团队可扩展 - 可审查
+### 2. 团队可扩展 - 可审查
 
 Software development today is built by teams that grow and expand, often collaborating in a distributed way using source control. Go and Rust are both designed for how teams work, improving code reviews by removing unnecessary concerns like formatting, security, and complex organization. Both languages require relatively little context to understand what the code is doing, allowing reviewers to more quickly work with code written by other people and review code by both team members and code contributed by open source developers outside of your team.
 
@@ -100,7 +98,7 @@ _“在用 Go 编写服务时，我倾向于松一口气，因为与动态语言
 
 ### 3\. Open Source-aware
 
-### 3\。开源意识
+### 3. 开源意识
 
 The number of dependencies used by the average software project today is staggering. The decades-long goal of software reuse has been achieved in modern development, where today’s software is built using 100s of projects. To do so, developers use software repositories, which increasingly has become a staple of software development across a broadening range of applications. Each of the packages a developer includes, in turn, has its own dependencies. Languages for today’s programming environments need to handle this complexity effortlessly.
 
@@ -112,11 +110,13 @@ Go 和 Rust 都有包管理系统，允许开发人员制作他们想要构建�
 
 ### 4\. Safety
 
-### 4\。安全
+### 4. 安全
 
 The security concerns of today's applications are well-addressed by both Go and Rust, which ensure that code built in the languages run without exposing the user to a variety of classic security vulnerabilities like buffer overflows, use-after-free, etc. By removing these concerns, developers can focus on the problems at hand and build applications that are more secure by default. 
+
 Go 和 Rust 都很好地解决了当今应用程序的安全问题，确保在这些语言中构建的代码运行时不会将用户暴露于各种经典的安全漏洞，如缓冲区溢出、释放后使用等。有了这些顾虑，开发人员就可以专注于手头的问题，并构建默认情况下更安全的应用程序。
-_“The [Rust] compiler really holds your hand when working through the errors that you do get. This lets you focus on your business objectives rather than bug hunting or deciphering cryptic messages.” — [Josh Hannaford, IBM](https://developer.ibm.com/technologies/web-development/articles/why-webassembly-and-rust-together-improve-nodejs-performance/)_
+
+“The [Rust] compiler really holds your hand when working through the errors that you do get. This lets you focus on your business objectives rather than bug hunting or deciphering cryptic messages.” — [Josh Hannaford, IBM](https://developer.ibm.com/technologies/web-development/articles/why-webassembly-and-rust-together-improve-nodejs-performance/)_
 
 _“在处理您遇到的错误时，[Rust] 编译器真的会帮助您。这让您可以专注于您的业务目标，而不是寻找错误或破译神秘的消息。” — [Josh Hannaford，IBM](https://developer.ibm.com/technologies/web-development/articles/why-webassembly-and-rust-together-improve-nodejs-performance/)_
 
@@ -130,11 +130,11 @@ _“Go 是强静态类型的，没有隐式转换，但语法开销仍然非常�
 
 _“When building our Brotli compression library for storing block data at Dropbox, we limited ourselves to the safe subset of Rust and, further, to the core library (no-stdlib) as well, with the allocator specified as a generic. Using the subset of Rust this way made it very easy to call the Rust-Brotli library from Rust on the client-side and using the C FFI from both Python and Go on the Server. This compilation mode also provided [substantial security guarantees](https://dropbox.tech/infrastructure/lossless-compression-with-brotli). After some tuning, the Rust Brotli implementation, despite being 100% safe, array-bounds-checked code, was still faster than the corresponding native Brotli code in C.” — Daniel Reiter Horn, Dropbox_
 
-_“在构建用于在 Dropbox 存储块数据的 Brotli 压缩库时，我们将自己限制在 Rust 的安全子集，此外，还限制了核心库（no-stdlib），并将分配器指定为泛型。以这种方式使用 Rust 的子集使得在客户端从 Rust 调用 Rust-Brotli 库并在服务器上使用来自 Python 和 Go 的 C FFI 变得非常容易。这种编译模式还提供了【实质性的安全保证】（https://dropbox.tech/infrastructure/lossless-compression-with-brotli）。经过一些调整后，尽管 100% 安全、经过数组边界检查的代码，Rust Brotli 实现仍然比 C 中相应的本机 Brotli 代码快。” — Daniel Reiter Horn，Dropbox_
+_“在构建用于在 Dropbox 存储块数据的 Brotli 压缩库时，我们将自己限制在 Rust 的安全子集，此外，还限制了核心库（no-stdlib），并将分配器指定为泛型。以这种方式使用 Rust 的子集使得在客户端从 Rust 调用 Rust-Brotli 库并在服务器上使用来自 Python 和 Go 的 C FFI 变得非常容易。这种编译模式还提供了[实质性的安全保证](https://dropbox.tech/infrastructure/lossless-compression-with-brotli)。经过一些调整后，尽管 100% 安全、经过数组边界检查的代码，Rust Brotli 实现仍然比 C 中相应的本机 Brotli 代码快。” — Daniel Reiter Horn，Dropbox_
 
 ### 5\. Truly Portable
 
-### 5\。真正便携
+### 5. 真正便携
 
 It is trivial in both Go and Rust to write one piece of software that runs on many different operating systems and architectures. “Write once, compile anywhere.” In addition, both Go and Rust natively support cross-compilation eliminating the need for “build farms” commonly associated with older compiled languages.
 
@@ -162,10 +162,12 @@ In design, there are always trade-offs that must be made. While Go and Rust emer
 
 ### 1\. Performance
 
-### 1\.表现
+### 1. 表现
 
 Go has excellent performance right out of the box. By design, there are no knobs or levers that you can use to squeeze more performance out of Go. Rust is designed to enable you to squeeze every last drop of performance out of the code; in this regard, you really can’t find a faster language than Rust today. However, Rust’s increased performance comes at the cost of additional complexity. 
+
 Go 具有开箱即用的出色性能。按照设计，没有任何旋钮或控制杆可让您从 Go 中获得更多性能。 Rust 旨在使您能够从代码中挤出每一滴性能；在这方面，你今天真的找不到比 Rust 更快的语言。然而，Rust 的性能提升是以增加复杂性为代价的。
+
 _“Remarkably, we had only put very basic thought into optimization as the Rust version was written. Even with just basic optimization, Rust was able to outperform the hyper-hand-tuned Go version. This is a huge testament to how easy it is to write efficient programs with Rust compared to the deep dive we had to do with Go.” — [Jesse Howarth, Discord](https://blog.discord.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f)._
 
 _“值得注意的是，在编写 Rust 版本时，我们只对优化进行了非常基本的考虑。即使只是进行基本优化，Rust 也能够胜过超手动调整的 Go 版本。与我们必须使用 Go 进行的深入研究相比，这极大​​地证明了使用 Rust 编写高效的程序是多么容易。” — [Jesse Howarth, Discord](https://blog.discord.com/why-discord-is-switching-from-go-to-rust-a190bbca2b1f)._
@@ -176,7 +178,7 @@ _“通过将逐行 Python 代码移植到 Go 中，Dropbox 工程师经常看�
 
 ### 2\. Adaptability/Interability
 
-### 2\。适应性/交互性
+### 2. 适应性/交互性
 
 Go’s strength of quick iteration allows developers to try ideas quickly and hone in on working code that solves the task at hand. Often, this is sufficient and frees the developer to move onto other tasks. Rust, on the other hand, has longer compiles compared with Go, leading to slower iteration times. This leads Go to work better in scenarios where faster turnaround time allows developers to adapt to changing requirements, while Rust thrives in scenarios where more time can be given to making a more refined and performant implementation.
 
@@ -192,7 +194,7 @@ _“(I)如果你的用例更接近客户，它更容易受到需求变化的影�
 
 ### 3\. Learnability
 
-### 3\。可学习性
+### 3. 可学习性
 
 Simply put, there really isn’t a more approachable language than Go. There are many stories of teams who were able to adopt Go and put Go services/applications into production in a few weeks. Additionally, Go is relatively unique among languages in that its language design and practices are quite consistent over it’s 10+ year lifetime. So time invested in learning Go maintains its value for a long time. By comparison, Rust is considered a difficult language to learn due to its complexity. It generally takes several months of learning Rust to feel comfortable with it, but with this extra complexity comes precise control and increased performance.
 
@@ -212,10 +214,12 @@ _“然而，与其他编程语言不同，Go 的创建是为了最大限度地�
 
 ### 4\. Precise Control
 
-### 4\。精准控制
+### 4. 精准控制
 
 Perhaps one of Rust’s greatest strengths is the amount of control the developer has over how memory is managed, how to use the available resources of the machine, how code is optimized, and how problem solutions are crafted. This is not without a large complexity cost when compared to Go, which is designed less for this type of precise crafting and more for faster exploration times and quicker turnaround times. 
+
 也许 Rust 的最大优势之一是开发人员对如何管理内存、如何使用机器的可用资源、如何优化代码以及如何制定问题解决方案的控制量。与围棋相比，这并非没有很大的复杂性成本，围棋的设计目的不是为了这种精确的制作，而是为了更快的探索时间和更快的周转时间。
+
 _“As our experience with Rust grew, it showed advantages on two other axes: as a language with strong memory safety it was a good choice for processing at the edge and as a language that had tremendous enthusiasm it became one that became popular for de novo components.” — John Graham-Cumming, Cloudflare_
 
 _“随着我们对 Rust 的经验的增长，它在另外两个方面显示出优势：作为一种具有强大内存安全性的语言，它是边缘处理的不错选择；作为一种具有极大热情的语言，它成为一种流行的语言novo 组件。” — John Graham-Cumming，Cloudflare_
@@ -252,5 +256,3 @@ As your product matures, and requirements stabilize, there may be opportunities 
 
 随着产品的成熟和需求的稳定，可能有机会从性能的边际提高中获得巨大的成功。在这些情况下，使用 Rust 来最大化性能可能是值得的初始投资。
 
-Amazon Web Services is a sponsor of The New Stack. 
-Amazon Web Services 是 The New Stack 的赞助商。

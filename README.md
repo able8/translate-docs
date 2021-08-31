@@ -54,6 +54,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [](tr-70-kubernetes-autoscaling-strategies.md)
 1. [](tr-71-kubernetes-long-lived-connections.md)
 1. [](tr-72-kubernetes-operators-best-practices.md). [](docs/)
+1. [7 Principles of DevSecOps With Kubernetes](docs/tr-79-seven-principles-of-devsecops-with-kubernetes.md)
 
 
 ## Docker and Container
@@ -101,6 +102,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Automating Go Integration Tests With Docker](docs/tr-59-golang-docker-integration-tests.md)
 1. [Increasing http.Server boilerplate](docs/tr-60-increasing-http-server-boilerplate-go.md)
 1. [Developing price and currency handling for Go](docs/tr-61-price-currency-handling-go.md)
+1. [Rust vs. Go: Why They’re Better Together](docs/tr-78-rust-vs-go-why-theyre-better-together.md)
 
 ## Cloud Native
 
@@ -116,13 +118,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Maximizing Developer Effectiveness](docs/tr-63-developer-effectiveness.md)
 1. [DevOps engineer job interview questions](docs/tr-64-top-devops-engineer-interview-questions.md)
 1. [Podman and Buildah for Docker users](docs/tr-65-podman-and-buildah-for-docker-users.md)
-
-1. [](docs/tr-74-200m-certs-24hrs.md)
 1. [](docs/tr-75-engineering-dependability-and-fault-tolerance-in-a-distributed-system.md)
-1. [](docs/tr-76-failure-is-okay.md)
-1. [](docs/tr-77-kubernetes-successful-adoption-foundation.md)
-1. [](docs/tr-78-rust-vs-go-why-theyre-better-together.md)
-1. [](docs/tr-79-seven-principles-of-devsecops-with-kubernetes.md)
+1. [Kubernetes Is Not Your Platform, It's Just the Foundation](docs/tr-77-kubernetes-successful-adoption-foundation.md)
 1. [Moving k8s communication to gRPC](docs/tr-80-moving-k8s-communication-to-grpc.md)
 
 
@@ -131,5 +128,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Fix the Problem, Not the Symptoms](docs/tr-24-fix-problem-not-symptoms.md)
 1. [Why do (some) engineers write bad code?](docs/tr-25-why-engineers-write-bad-code.md)
 1. [Slack Outage Monday January 4, 2021](docs/tr-66-slack-outage.md)
+1. [Preparing to Issue 200 Million Certificates in 24 Hours](docs/tr-74-200m-certs-24hrs.md)
+1. [Everything is broken, and it’s okay](docs/tr-76-failure-is-okay.md)
 1. [](docs/)
 1. [](docs/)

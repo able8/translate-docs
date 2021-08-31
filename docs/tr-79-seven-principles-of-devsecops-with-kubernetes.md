@@ -2,9 +2,7 @@
 
 # Kubernetes DevSecOps 的 7 条原则
 
-March 15, 2021March 14, 2021
-
-2021 年 3 月 15 日 2021 年 3 月 14 日
+March 15, 2021
 
 In my article, “ [9 Pillars of Engineering DevOps With Kubernetes](https://containerjournal.com/uncategorized/9-pillars-of-engineering-devops-with-kubernetes/),” I explain that continuous security is a core pillar of every well-engineered DevOps.
 
@@ -20,7 +18,7 @@ Complex applications operating over complex distributed infrastructure can be di
 
 In this article, I indicate how Kubernetes can be used and configured to satisfy seven principles for a successful DevSecOps approach using Kubernetes. The seven DevSecOps principles are those identified in the [Department of Defense Enterprise DevSecOps Reference Design](https://dodcio.defense.gov/Portals/0/Documents/DoD%20Enterprise%20DevSecOps%20Reference%20Design%20v1.0_Public%20Release .pdf).
 
-在本文中，我将说明如何使用和配置 Kubernetes 以满足使用 Kubernetes 的成功 DevSecOps 方法的七个原则。七项 DevSecOps 原则是在 [国防部企业 DevSecOps 参考设计](https://dodcio.defense.gov/Portals/0/Documents/DoD%20Enterprise%20DevSecOps%20Reference%20Design%20v1.0_Public%20Release .pdf）。
+在本文中，我将说明如何使用和配置 Kubernetes 以满足使用 Kubernetes 的成功 DevSecOps 方法的七个原则。七项 DevSecOps 原则是在 [国防部企业 DevSecOps 参考设计](https://dodcio.defense.gov/Portals/0/Documents/DoD%20Enterprise%20DevSecOps%20Reference%20Design%20v1.0Public%20Release.pdf)。
 
 **Principle #1: Remove bottlenecks (including human ones) and manual actions.**
 
@@ -55,7 +53,9 @@ Modular applications architected as microservices benefit the most from Kubernet
 架构为微服务的模块化应用程序从 Kubernetes 中获益最多。根据十二要素应用原则设计并通过联网 API 进行通信的软件最适合在集群上进行可扩展部署。 Kubernetes 最适合编排云原生应用程序。模块化分布式服务能够更好地扩展和从故障中恢复。
 
 **Principle #5: Apply the cross-functional skill sets of development, cybersecurity and operations throughout the software life cycle, embracing a continuous monitoring approach in parallel instead of waiting to apply each skill set sequentially.** 
+
 **原则 #5：在整个软件生命周期中应用开发、网络安全和运营的跨职能技能集，采用并行的持续监控方法，而不是等待依次应用每个技能集。**
+
 Kubernetes provides a unified approach for container orchestration that applies end-to-end across the value stream. Continuous monitoring is facilitated because cloud-native applications, managed by Kubernetes, are constructed with health reporting metrics to enable the platform to manage life cycle events if an instance becomes unhealthy. They produce (and make available for export) robust telemetry data to alert operators to problems and allow them to make informed decisions. Kubernetes supports liveness and readiness probes that make it easy to determine the state of a containerized application.
 
 Kubernetes 提供了一种统一的容器编排方法，可以在整个价值流中端到端地应用。由于由 Kubernetes 管理的云原生应用程序构建有健康报告指标，以便平台能够在实例变得不健康时管理生命周期事件，从而促进了持续监控。他们生成（并提供用于导出）强大的遥测数据，以提醒操作员注意问题并让他们做出明智的决定。 Kubernetes 支持活跃度和就绪度探测，可以轻松确定容器化应用程序的状态。
@@ -82,6 +82,8 @@ Kubernetes 有许多不同的层和组件，必须考虑安全性。安全的关
 - Use process whitelisting to identify unexpected running processes.
 - Keep Kubernetes versions up to date.
 
+
+
 - 保护容器镜像以在 Kubernetes 上运行。使用安全代码扫描工具检查容器化代码中可能存在于容器代码本身以及映像所基于的任何上游依赖项中的漏洞。
 - 将 Kubernetes 节点隔离在不直接暴露给公共网络的单独网络上。
 - Kubernetes 支持基于角色的访问控制 (RBAC) 策略，以帮助防止对集群资源的未授权访问。
@@ -105,6 +107,9 @@ Kubernetes 的综合安全策略需要包含的不仅仅是少量的内置安全
 **原则 #7：部署不可变的基础设施，例如容器。**
 
 The concept of immutable infrastructure supported by Kubernetes, in which deployed components are replaced in their entirety, rather than being updated in place, requires standardization and emulation of common infrastructure components to achieve consistent and predictable results. 
+
 Kubernetes 支持的不可变基础设施的概念，即部署的组件被整体替换，而不是就地更新，需要对通用基础设施组件进行标准化和模拟，以实现一致和可预测的结果。
+
 In this article, I explained how Kubernetes can be used and configured to satisfy DoD’s seven DevSecOps principles for a successful DevSecOps approach using Kubernetes. While Kubernetes provides built-in security tools, they are not sufficient to fully protect against multiple types of potential vulnerabilities across multiple layers of Kubernetes infrastructure. All seven DevSecOps principles are important for an integrated security strategy that mitigates threats at all layers and levels of your stack. 
+
 在本文中，我解释了如何使用和配置 Kubernetes 来满足国防部的七项 DevSecOps 原则，从而成功地使用 Kubernetes 进行 DevSecOps 方法。虽然 Kubernetes 提供了内置的安全工具，但它们不足以完全保护 Kubernetes 基础架构的多层中的多种类型的潜在漏洞。所有七项 DevSecOps 原则对于减轻堆栈所有层和级别的威胁的集成安全策略都很重要。
