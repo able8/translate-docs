@@ -117,15 +117,13 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [DevOps engineer job interview questions](docs/tr-64-top-devops-engineer-interview-questions.md)
 1. [Podman and Buildah for Docker users](docs/tr-65-podman-and-buildah-for-docker-users.md)
 
-1. [](tr-74-200m-certs-24hrs.md)
-1. [](tr-75-engineering-dependability-and-fault-tolerance-in-a-distributed-system.md)
-1. [](tr-76-failure-is-okay.md)
-1. [](tr-77-kubernetes-successful-adoption-foundation.md)
-1. [](tr-78-rust-vs-go-why-theyre-better-together.md)
-1. [](tr-79-seven-principles-of-devsecops-with-kubernetes.md)
-1. [](tr-80-moving-k8s-communication-to-grpc.md)
-1. [](tr-81-why-did-i-leave-google-or-why-did-i-stay-so-long.md)
-1. [](tr-82-ssh-tunnels.md)
+1. [](docs/tr-74-200m-certs-24hrs.md)
+1. [](docs/tr-75-engineering-dependability-and-fault-tolerance-in-a-distributed-system.md)
+1. [](docs/tr-76-failure-is-okay.md)
+1. [](docs/tr-77-kubernetes-successful-adoption-foundation.md)
+1. [](docs/tr-78-rust-vs-go-why-theyre-better-together.md)
+1. [](docs/tr-79-seven-principles-of-devsecops-with-kubernetes.md)
+1. [Moving k8s communication to gRPC](docs/tr-80-moving-k8s-communication-to-grpc.md)
 
 
 ## Others

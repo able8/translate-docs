@@ -4,9 +4,7 @@
 
 2021/03/20 From: https://blog.cloudflare.com/moving-k8s-communication-to-grpc/
 
-2021/03/20 来自：https://blog.cloudflare.com/moving-k8s-communication-to-grpc/
-
-Over the past year and a half, Cloudflare has been hard at work moving our  back-end services running in our non-edge locations from bare metal  solutions and Mesos Marathon to a more unified approach using [Kubernetes(K8s)](https:/ /kubernetes.io/). We chose Kubernetes because it allowed us to split up our monolithic  application into many different microservices with granular control of  communication.
+Over the past year and a half, Cloudflare has been hard at work moving our  back-end services running in our non-edge locations from bare metal  solutions and Mesos Marathon to a more unified approach using [Kubernetes(K8s)](https:/ /kubernetes.io/). We chose Kubernetes because it allowed us to split up our monolithic application into many different microservices with granular control of communication.
 
 在过去的一年半里，Cloudflare 一直在努力将我们在非边缘位置运行的后端服务从裸机解决方案和 Mesos Marathon 迁移到使用 [Kubernetes(K8s)](https:/ /kubernetes.io/)。我们选择 Kubernetes 是因为它允许我们将单体应用程序拆分为许多不同的微服务，并对通信进行精细控制。
 
@@ -34,7 +32,7 @@ When the DNS team first moved to Kubernetes, all of our pod-to-pod  communicatio
 
 ![When the DNS team first moved to Kubernetes, all of our pod-to-pod communication was done through REST APIs and in many cases also included Kafka.](https://blog.cloudflare.com/content/images/2021/03/1-5.png)
 
-](https://blog.cloudflare.com/content/images/2021/03/1-5.png)
+
 
 We use Kafka because it allows us to handle large spikes in volume without losing information. For example, during a Secondary DNS Zone zone  transfer, Service A tells Service B that the zone is ready to be  published to the edge. Service B then calls Service A’s REST API,  generates the zone, and pushes it to the edge. If you want more  information about how this works, I wrote an entire blog post about the [Secondary DNS pipeline](https://blog.cloudflare.com/secondary-dns-deep-dive/) at Cloudflare.
 
@@ -56,8 +54,10 @@ Often  overlooked from a developer’s perspective, HTTP client libraries are  c
 
 从开发人员的角度来看，HTTP 客户端库经常被忽视，并且需要以字节为单位定义路径、处理参数和处理响应的代码。 gRPC 将所有这些抽象出来，并使网络调用感觉就像为结构定义的任何其他函数调用一样。
 
-The example below shows a very basic schema to set up a GRPC client/server system. As a result of gRPC using [protobuf](https://developers.google.com/protocol-buffers) for serialization, it is largely language agnostic. Once a schema is defined, the *protoc* command can be used to generate code for [many languages](https://grpc.io/docs/languages/). 
-下面的示例显示了一个非常基本的模式来设置 GRPC 客户端/服务器系统。由于 gRPC 使用 [protobuf](https://developers.google.com/protocol-buffers) 进行序列化，它在很大程度上与语言无关。定义模式后，*protoc* 命令可用于为[多种语言](https://grpc.io/docs/languages/) 生成代码。
+The example below shows a very basic schema to set up a gRPC client/server system. As a result of gRPC using [protobuf](https://developers.google.com/protocol-buffers) for serialization, it is largely language agnostic. Once a schema is defined, the *protoc* command can be used to generate code for [many languages](https://grpc.io/docs/languages/). 
+
+下面的示例显示了一个非常基本的模式来设置 gRPC 客户端/服务器系统。由于 gRPC 使用 [protobuf](https://developers.google.com/protocol-buffers) 进行序列化，它在很大程度上与语言无关。定义模式后，*protoc* 命令可用于为[多种语言](https://grpc.io/docs/languages/) 生成代码。
+
 Protocol Buffer data is structured as *messages,* with each *message* containing information stored in the form of fields. The fields are  strongly typed, providing type safety unlike JSON or XML. Two messages  have been defined, *Hello* and *HelloResponse*. Next we define a service called *HelloWorldHandler* which contains one RPC function called *SayHello* that must be implemented if any object wants to call themselves a *HelloWorldHandler*.
 
 协议缓冲区数据的结构为 *messages*，每个 *message* 包含以字段形式存储的信息。这些字段是强类型的，提供了与 JSON 或 XML 不同的类型安全性。已经定义了两个消息，*Hello* 和 *HelloResponse*。接下来，我们定义一个名为 *HelloWorldHandler* 的服务，其中包含一个名为 *SayHello* 的 RPC 函数，如果任何对象想要将自己称为 *HelloWorldHandler*，则必须实现该函数。
@@ -67,7 +67,7 @@ Simple Proto:
 简单的原型：
 
 ```js
-message Hello{
+ message Hello{
     string Name = 1;
  }
 
@@ -76,9 +76,9 @@ message Hello{
  service HelloWorldHandler {
     rpc SayHello(Hello) returns (HelloResponse){}
  }
- ```
+```
 
- 
+
 Once we run our *protoc* command, we are ready to write the server-side code. In order to implement the *HelloWorldHandler*, we must define a struct that implements all of the RPC functions specified in the protobuf schema above*.* In this case, the struct *Server* defines a function *SayHello* that takes in two parameters , context and **pb.Hello*. **pb.Hello* was previously specified in the schema and contains one field, *Name. SayHello* must also return the **pbHelloResponse* which has been defined without fields for simplicity.
 
 一旦我们运行了 *protoc* 命令，我们就可以编写服务器端代码了。为了实现 *HelloWorldHandler*，我们必须定义一个结构体来实现上面 protobuf 模式中指定的所有 RPC 函数*。* 在这种情况下，结构体 *Server* 定义了一个函数 *SayHello*，它接受两个参数，上下文和**pb.Hello*。 **pb.Hello* 之前已在架构中指定并包含一个字段 *Name。 SayHello* 还必须返回 **pbHelloResponse*，为了简单起见，该响应已定义为不带字段。
@@ -111,9 +111,9 @@ type Server struct{}
          panic(err)
      }
  }
- ```
+```
 
- 
+
 Finally, we need to implement the gRPC Client. First, we establish a TCP connection with the server. Then, we create a new *pb.HandlerClient*. The client is able to call the server's *SayHello* function by passing in a **pb.Hello* object.
 
 最后，我们需要实现 gRPC Client。首先，我们与服务器建立 TCP 连接。然后，我们创建一个新的 *pb.HandlerClient*。客户端可以通过传入一个 **pb.Hello* 对象来调用服务器的 *SayHello* 函数。
@@ -129,9 +129,9 @@ conn, err := gRPC.Dial("127.0.0.1:8080", gRPC.WithInsecure())
  }
  client := pb.NewHelloWorldHandlerClient(conn)
  client.SayHello(context.Background(), &pb.Hello{Name: "alex"})
- ```
+```
 
- 
+
 Though I have removed some code for simplicity, these *services* and *messages* can become quite complex if needed. The most important thing to  understand is that when a server attempts to announce itself as a *HelloWorldHandlerServer*, it is required to implement the RPC functions as specified within the  protobuf schema. This agreement between the client and server makes  cross-language network calls feel like regular function calls.
 
 尽管为了简单起见我删除了一些代码，但如果需要，这些 *services* 和 *messages* 可能会变得非常复杂。要理解的最重要的事情是，当服务器尝试将自己声明为 *HelloWorldHandlerServer* 时，需要实现 protobuf 模式中指定的 RPC 功能。客户端和服务器之间的这种协议使跨语言网络调用感觉就像常规函数调用一样。
@@ -160,6 +160,7 @@ Not all HTTP connections are created equal. Though Golang natively supports HTTP
 
 The best option  available in HTTP/1.1 is pipelining. Pipelining means that although  requests can share a connection, they must queue up one after the other  until the request in front completes. HTTP/2 improved pipelining by  using connection multiplexing. Multiplexing allows for multiple requests to be sent on the same connection and at the same time. 
 HTTP/1.1 中可用的最佳选项是流水线。流水线意味着虽然请求可以共享一个连接，但它们必须一个接一个地排队，直到前面的请求完成。 HTTP/2 通过使用连接多路复用改进了流水线。多路复用允许在同一连接上同时发送多个请求。
+
 HTTP REST APIs generally use JSON for their request and response format. Protobuf is the native request/response format of gRPC because it has a standard schema agreed upon by the client and server during registration. In  addition, protobuf is known to be significantly faster than JSON due to  its serialization speeds. I’ve run some benchmarks on my laptop, source  code can be found [here](https://github.com/Fattouche/protobuf-benchmark).
 
 HTTP REST API 通常使用 JSON 作为其请求和响应格式。 Protobuf 是 gRPC 的原生请求/响应格式，因为它具有客户端和服务器在注册期间商定的标准架构。此外，众所周知，protobuf 的序列化速度明显快于 JSON。我已经在我的笔记本电脑上运行了一些基准测试，源代码可以在这里找到（https://github.com/Fattouche/protobuf-benchmark）。
@@ -219,9 +220,9 @@ apiVersion: networking.k8s.io/v1
      ports:
      - protocol: TCP
        port: 5978
- ```
+```
 
- 
+
 In this example, taken from the [Kubernetes docs](https://kubernetes.io/docs/concepts/services-networking/network-policies/), we can see that this will create a network policy called  test-network-policy . This policy controls both ingress and egress  communication to or from any pod that matches the role *db* and enforces the following rules:
 
 在这个例子中，取自 [Kubernetes docs](https://kubernetes.io/docs/concepts/services-networking/network-policies/)，我们可以看到这将创建一个名为 test-network-policy 的网络策略.此策略控制与角色 *db* 匹配的任何 pod 的进出通信，并强制执行以下规则：
@@ -266,7 +267,7 @@ func (s *Server) UnaryAuthInterceptor(ctx context.Context, req interface{}, info
      // Verified
      return handler(ctx, req)
  }
- ``` 
+```
 
 
 In this example code snippet, we are grabbing the username, password, and requested function from the info object. We then authenticate  against the client to make sure that it has correct rights to call that  function. This interceptor will run before any of the other functions  get called, which means one implementation protects all functions. The  client would initialize its secure connection and send credentials like  so:
@@ -285,20 +286,21 @@ transportCreds, err := credentials.NewClientTLSFromFile(certFile, "")
  }
  client:= pb.NewRecordHandlerClient(conn)
  // Can now start using the client
- ```
+```
 
- 
+
 Here the client first verifies that the server matches with the  certFile. This step ensures that the client does not accidentally send  its password to a bad actor. Next, the client initializes the *perRPCCreds* struct with its username and password and dials the server with that  information. Any time the client makes a call to an rpc defined  function, its credentials will be verified by the server.
 
 这里客户端首先验证服务器是否与 certFile 匹配。此步骤可确保客户端不会意外地将其密码发送给不良行为者。接下来，客户端使用其用户名和密码初始化 *perRPCCreds* 结构，并使用该信息拨打服务器。每当客户端调用 rpc 定义的函数时，服务器都会验证其凭据。
 
 ### Next Steps
 
-＃＃＃ 下一步
+### 下一步
 
 Our next step is to remove the need for many applications to access the  database and ultimately DRY up our codebase by pulling all DNS-related  code into a single API, accessed from one gRPC interface. This removes  the potential for mistakes in individual applications and makes updating our database schema easier. It also gives us more granular control over which functions can be accessed rather than which tables can be  accessed.
 
 我们的下一步是消除许多应用程序访问数据库的需要，并最终通过将所有与 DNS 相关的代码提取到单个 API 中来干掉我们的代码库，从一个 gRPC 接口访问。这消除了单个应用程序中出错的可能性，并使更新我们的数据库架构更容易。它还使我们能够更精细地控制可以访问哪些函数而不是可以访问哪些表。
 
 So far, the DNS team is very happy with the results of  our gRPC migration. However, we still have a long way to go before we  can move entirely away from REST. We are also patiently waiting for [HTTP/3 support](https://github.com/grpc/grpc/issues/19126) for gRPC so that we can take advantage of those super [quic](https://en. wikipedia.org/wiki/QUIC) speeds! 
-到目前为止，DNS 团队对我们的 gRPC 迁移结果非常满意。然而，在我们完全摆脱 REST 之前，我们还有很长的路要走。我们也在耐心等待 gRPC 的 [HTTP/3 支持](https://github.com/grpc/grpc/issues/19126)，以便我们可以利用那些超级 [quic](https://en. wikipedia.org/wiki/QUIC）速度！
+到目前为止，DNS 团队对我们的 gRPC 迁移结果非常满意。然而，在我们完全摆脱 REST 之前，我们还有很长的路要走。我们也在耐心等待 gRPC 的 [HTTP/3 支持](https://github.com/grpc/grpc/issues/19126)，以便我们可以利用那些超级 [quic](https://en.wikipedia.org/wiki/QUIC)速度！
+
