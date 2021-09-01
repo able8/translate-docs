@@ -1,8 +1,8 @@
-This is only a small sample of what you can do with Kafka, but I’m  hoping to dig deeper into some of its other features and use cases in  future posts. Thanks for taking the time to read this post, and I hope  you’ll decide to stop by again soon! All of the code in this post is  available on my [GitHub](https://github.com/aaronraff/blog-code/tree/master/an-introduction-to-producing-and-consuming-kafka-messages-in-go).
+There are good reasons for keeping all the software involved up to date: Kubernetes clusters have a lot of potential for attacks due to their complex and distributed nature. On top of that, they make for attractive targets if looking for computing power. One example of attacks against Kubernetes is cryptojacking where attackers hijack clusters to mine cryptocurrency. [Tesla famously fell victim to such an attack a couple of years ago](https://redlock.io/blog/cryptojacking-tesla) and recently such attacks have become more sophisticated as evidenced by the [Hildegard malware](https://unit42.paloaltonetworks.com/hildegard-malware-teamtnt/).
 
-这只是你可以用 Kafka 做的事情的一小部分，但我希望在以后的文章中更深入地挖掘它的一些其他特性和用例。感谢您花时间阅读这篇文章，希望您能尽快决定再次光临！这篇文章中的所有代码都可以在我的 [GitHub](https://github.com/aaronraff/blog-code/tree/master/an-introduction-to-production-and-sumption-kafka-messages-in -走）。
+将所有涉及的软件保持最新是有充分理由的：Kubernetes 集群由于其复杂和分布式的特性而具有很大的攻击潜力。最重要的是，如果寻找计算能力，它们会成为有吸引力的目标。 Kubernetes 攻击的一个例子是加密劫持，攻击者劫持集群以挖掘加密货币。 [特斯拉在几年前成为此类攻击的受害者](https://redlock.io/blog/cryptojacking-tesla)，最近此类攻击变得更加复杂，[Hildegard 恶意软件](https://unit42.paloaltonetworks.com/hildegard-malware-teamtnt/)。
 
-If you liked this post, it would mean a lot to me if you shared it with your friends! 
+## The human aspect 
 
-如果你喜欢这篇文章，如果你把它分享给你的朋友，那对我来说意义重大！
+## 人性化
 

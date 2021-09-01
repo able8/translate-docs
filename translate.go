@@ -62,8 +62,6 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			translatedText = strings.Replace(translatedText, "＃", "# ", -1)
 			// fix Zero width space Unicode
 			translatedText = strings.Replace(translatedText, "\u200B", "", -1)
-			// fix the Chinese （）
-			translatedText = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(translatedText, "]($1)")
 
 			// Do not translate these lines
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") || strings.Contains(sourceText, "From: http") {
@@ -90,21 +88,31 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 				input = input + sourceText + " "
 			}
 
-			if strings.Contains(sourceText, "\n\n") {
+			if strings.Contains(sourceText, "\n\n") && !strings.Contains(sourceText, ":\n") {
+				// fix the Chinese （）
+				output = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(output, "]($1)")
+				output = regexp.MustCompile(`]\((.*)）`).ReplaceAllString(output, "]($1)")
+				output = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(output, "]($1)")
 				// remove space in urls
-				input = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(input, "](http$1$2)")
-				output = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(output, "](http$1$2)")
+				input = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(input, "](http$1$2)")
+				output = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(output, "](http$1$2)")
 
 				fmt.Fprintf(outFile, "%s%s", input, output)
 				input, output = "", ""
 			}
 		}
-		input = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(input, "](http$1$2)")
-		output = regexp.MustCompile(`]\(http(.*?) (.*?)\)`).ReplaceAllString(output, "](http$1$2)")
+
+		// fix the Chinese （）
+		output = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(output, "]($1)")
+		output = regexp.MustCompile(`]\((.*)）`).ReplaceAllString(output, "]($1)")
+		output = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(output, "]($1)")
+		input = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(input, "](http$1$2)")
+		output = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(output, "](http$1$2)")
+
 		fmt.Fprintf(outFile, "%s\n\n%s\n\n", input, output)
 		return nil
 	} else {
-		return errors.New("No translated data in responce")
+		return errors.New("no translated data in responce")
 	}
 }
 
