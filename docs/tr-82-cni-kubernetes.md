@@ -8,9 +8,9 @@ Understand where the CNI fits into the Kubernetes architecture.
 
 April 29, 2021 From: https://www.redhat.com/sysadmin/cni-kubernetes
 
-If you have worked with [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes?intcmp=701f20000012ngPAAQ)(K8s) and tried to learn some of its inner workings, either on the job or in a  training course, you must have learned a bit about [Container Network Interface](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) (CNI ). This article de-mystifies what CNI means and does.
+If you have worked with [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes?intcmp=701f20000012ngPAAQ) (K8s) and tried to learn some of its inner workings, either on the job or in a  training course, you must have learned a bit about [Container Network Interface](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/) (CNI). This article de-mystifies what CNI means and does.
 
-如果您使用过 [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes?intcmp=701f20000012ngPAAQ)(K8s) 并尝试了解其内部工作原理，无论是在在工作或培训课程中，你一定对【容器网络接口】（https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/）（CNI )。本文揭开了 CNI 的含义和作用的神秘面纱。
+如果您使用过 [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes?intcmp=701f20000012ngPAAQ)(K8s) 并尝试了解其内部工作原理，无论是在在工作或培训课程中，你一定对 [容器网络接口](https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/)（CNI)。本文揭开了 CNI 的含义和作用的神秘面纱。
 
 ## What is CNI?
 
@@ -43,6 +43,8 @@ The container/pod initially has no network interface. The container runtime call
 1. CNI specifications - Documents what the configuration format is  when you call the CNI plugin, what it should do with that information,  and the result that plugin should return.
 2. Set of reference and example plugins - These can help you  understand how to write a new plugin or how existing plugins might work. They are cloud-agnostic. These are limited functionality plugins and  just for reference.
 
+
+
 1. CNI 规范 - 记录调用 CNI 插件时的配置格式，它应该如何处理该信息，以及插件应该返回的结果。
 2. 参考和示例插件集 - 这些可以帮助您了解如何编写新插件或现有插件如何工作。它们与云无关。这些是功能有限的插件，仅供参考。
 
@@ -68,6 +70,8 @@ CNI规范
 2. The container runtime also provides related network configuration and container-specific data to the plugin.
 3. The CNI plugin performs the required operations and reports the result.
 
+
+
 1. 当容器运行时期望在容器上执行网络操作时，它（如 K8s 中的 kubelet）使用所需命令调用 CNI 插件。
 2. 容器运行时还为插件提供相关的网络配置和容器特定的数据。
 3. CNI 插件执行所需的操作并报告结果。
@@ -88,15 +92,12 @@ CNI provides the specifications for various plugins. And as you know, networking
 
 CNI 提供了各种插件的规范。如您所知，网络是一个复杂的主题，具有多种用户需求。因此，有多个 CNI 插件以不同的方式执行不同的操作以满足各种用例。
 
-***[ Learn the basics of using Kubernetes in this [free cheat sheet](https://developers.redhat.com/promotions/kubernetes-cheatsheet?intcmp=701f20000012ngPAAQ). ]***
-
-***[ 在此 [免费备忘单](https://developers.redhat.com/promotions/kubernetes-cheatsheet?intcmp=701f20000012ngPAAQ) 中了解使用 Kubernetes 的基础知识。 ]***
-
 ## Wrap up
 
-##  包起来
+##  总结
 
-There are many aspects of container orchestration and management with Kubernetes. You just learned a bit about the usage of CNI for  networking within Kubernetes. For more, see the [CNI project page](https://github.com/containernetworking/cni) on GitHub. 
+There are many aspects of container orchestration and management with Kubernetes. You just learned a bit about the usage of CNI for networking within Kubernetes. For more, see the [CNI project page](https://github.com/containernetworking/cni) on GitHub. 
 
-使用 Kubernetes 进行容器编排和管理有很多方面。您刚刚了解了在 Kubernetes 中使用 CNI 进行网络连接的一些知识。更多内容请查看 GitHub 上的【CNI 项目页面】(https://github.com/containernetworking/cni)。
+使用 Kubernetes 进行容器编排和管理有很多方面。您刚刚了解了在 Kubernetes 中使用 CNI 进行网络连接的一些知识。更多内容请查看 GitHub 上的 [CNI 项目页面](https://github.com/containernetworking/cni)。
+
 

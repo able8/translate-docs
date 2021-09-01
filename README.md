@@ -58,7 +58,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Kubernetes Is Not Your Platform, It's Just the Foundation](docs/tr-77-kubernetes-successful-adoption-foundation.md)
 1. [Moving k8s communication to gRPC](docs/tr-80-moving-k8s-communication-to-grpc.md)
 1. [Why you need a platform team for Kubernetes](docs/tr-81-why-you-need-a-platform-team-for-kubernetes)
-1. [](docs/)
+1. [A brief overview of the Container Network Interface (CNI) in Kubernetes](docs/tr-82-cni-kubernetes.md)
 1. [](docs/)
 1. [](docs/)
 1. [](docs/)

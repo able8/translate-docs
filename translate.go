@@ -62,6 +62,9 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			translatedText = strings.Replace(translatedText, "＃", "# ", -1)
 			// fix Zero width space Unicode
 			translatedText = strings.Replace(translatedText, "\u200B", "", -1)
+			// fix
+			translatedText = strings.Replace(translatedText, "【", " [", -1)
+			translatedText = strings.Replace(translatedText, "】", "]", -1)
 
 			// Do not translate these lines
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") || strings.Contains(sourceText, "From: http") {
