@@ -53,8 +53,10 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [](tr-69-introduction-to-ebpf.md)
 1. [](tr-70-kubernetes-autoscaling-strategies.md)
 1. [](tr-71-kubernetes-long-lived-connections.md)
-1. [](tr-72-kubernetes-operators-best-practices.md). [](docs/)
+1. [](tr-72-kubernetes-operators-best-practices.md)
 1. [7 Principles of DevSecOps With Kubernetes](docs/tr-79-seven-principles-of-devsecops-with-kubernetes.md)
+1. [Kubernetes Is Not Your Platform, It's Just the Foundation](docs/tr-77-kubernetes-successful-adoption-foundation.md)
+1. [Moving k8s communication to gRPC](docs/tr-80-moving-k8s-communication-to-grpc.md)
 
 
 ## Docker and Container
@@ -109,6 +111,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [A Comprehensive Guide to Cloud Native: Tools, Practices and Culture](docs/tr-32-a-comprehensive-guide-to-cloud-native-tools-practices-and-culture.md)
 1. [The State of Cloud Native: Challenges, Culture and Technology](docs/tr-30-the-state-of-cloud-native-challenges-culture-and-technology.md)
 1. [How was the world's largest cloud vendor, AWS, born?](docs/tr-35-how-aws-born.md)
+1. [Engineering dependability and fault tolerance in a distributed system](docs/tr-75-engineering-dependability-and-fault-tolerance-in-a-distributed-system.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -118,9 +121,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Maximizing Developer Effectiveness](docs/tr-63-developer-effectiveness.md)
 1. [DevOps engineer job interview questions](docs/tr-64-top-devops-engineer-interview-questions.md)
 1. [Podman and Buildah for Docker users](docs/tr-65-podman-and-buildah-for-docker-users.md)
-1. [](docs/tr-75-engineering-dependability-and-fault-tolerance-in-a-distributed-system.md)
-1. [Kubernetes Is Not Your Platform, It's Just the Foundation](docs/tr-77-kubernetes-successful-adoption-foundation.md)
-1. [Moving k8s communication to gRPC](docs/tr-80-moving-k8s-communication-to-grpc.md)
 
 
 ## Others

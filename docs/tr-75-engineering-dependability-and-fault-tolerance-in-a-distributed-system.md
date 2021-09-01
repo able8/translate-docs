@@ -2,15 +2,7 @@
 
 # 分布式系统中的工程可靠性和容错性
 
-[![](https://ik.imagekit.io/ably/ghost/prod/2019/05/paddy-byers-83e6fa6a5d47687601b0586d529a4619bbe68178b5ff4d1ba8636e4612ea716f.jpg?tr=w-300)](http://ably.com#footer-bio)
-
--生物）
-
-By: Paddy Byers
 Last updated: Aug 18, 202116 min read
-
-作者：帕迪拜尔斯
-最后更新时间：202116 年 8 月 18 日分钟阅读
 
 Users need to know that they can depend on the service that is provided to them. In practice, because from time to time individual elements will inevitably fail, this means you have to be able to continue in spite of those failures.
 
@@ -46,7 +38,7 @@ As a basis for that discussion, first some definitions:
 >
 > **可用性**
 >
-> 产品或服务在需要时**可用**的程度。这通常归结为使用 [统计独立故障] (https://www.ibm.com/support/knowledgecenter/STXNRM_3.15.1/coss.doc/correlatedFailureMitigation_defining_independent_versus_correlated_failures.html) 提供足够的资源冗余。
+> 产品或服务在需要时**可用**的程度。这通常归结为使用 统计独立故障 提供足够的资源冗余。
 >
 > **可靠性**
 >
@@ -130,7 +122,7 @@ Being tolerant to non-binary failures requires a lot of thought, engineering and
 
 ## Stateless services
 
-##无状态服务
+## 无状态服务
 
 Service layers that are **stateless** do not have a primary requirement for continuity of service for any individual component. The availability of resources directly translates into availability of the layer as a whole. Having access to extra resources whose failures are statistically independent is key to keeping the system going. Wherever possible, layers are designed to be stateless as a key enabler not only of availability, but also of scalability.
 
@@ -141,8 +133,6 @@ For stateless objects, it suffices to have multiple and independently available 
 对于无状态对象，拥有多个独立可用的组件就足以继续提供服务。没有状态，任何单个组件的耐用性都不是问题。
 
 ![Fault tolerant design of stateless components: a load balancer receives a request and selects an element to satisfy the request.](https://ik.imagekit.io/ably/ghost/prod/2021/02/fault-tolerance-of-a-stateless-component.png?tr=w-1520)
-
-of-a-stateless-component.png?tr=w-1520)
 
 However, simply having extra resources is not enough: you also have to use them effectively. You have to have a way of detecting resource availability, and to load-balance among redundant resources.
 
@@ -176,10 +166,12 @@ The consequent trade-offs are among the following:
 
 Redundant components, and in turn their dependencies, need to be engineered, configured and operated in [a way that ensures that any failures are statistically independent](https://www.ntnu.edu/documents/624876/1277590549/chapt04-1 .pdf). The simple math is: statistically independent failures render your chances of a catastrophic failure exponentially lower as you increase the level of redundancy. If the failures are set up to occur in statistical silos, then there is no cumulative effect, and you decrease the likelihood of complete failure by a whole order of magnitude with each additional redundant resource.
 
-冗余组件及其依赖项需要以[确保任何故障在统计上独立的方式]进行设计、配置和操作（https://www.ntnu.edu/documents/624876/1277590549/chapt04-1 .pdf）。简单的数学计算是：随着冗余级别的增加，统计上独立的故障会使您发生灾难性故障的几率呈指数级降低。如果将故障设置为在统计孤岛中发生，则不会产生累积效应，并且您可以使用每个额外的冗余资源将完全故障的可能性降低一个数量级。
+冗余组件及其依赖项需要以[确保任何故障在统计上独立的方式]进行设计、配置和操作。简单的数学计算是：随着冗余级别的增加，统计上独立的故障会使您发生灾难性故障的几率呈指数级降低。如果将故障设置为在统计孤岛中发生，则不会产生累积效应，并且您可以使用每个额外的冗余资源将完全故障的可能性降低一个数量级。
 
 At Ably, to increase statistical independence of failures, [we place/distribute capacity in multiple availability zones and in multiple regions](https://www.ably.io/network). Offering service from multiple availability zones within the same region is relatively simple: AWS enables this with very little effort. Availability zones generally have a good track record of failing independently, so this step by itself enables the existence of sufficient redundancy to support very high levels of availability. 
+
 在 Ably，为了提高故障的统计独立性，[我们在多个可用区和多个区域中放置/分配容量](https://www.ably.io/network)。从同一区域内的多个可用区提供服务相对简单：AWS 可以轻松实现这一点。可用性区域通常具有良好的独立故障记录，因此这一步本身就可以提供足够的冗余来支持非常高的可用性级别。
+
 However, this isn’t the whole story. It isn’t sufficient to rely on any specific region for multiple reasons – sometimes multiple availability zones (AZs) do fail at the same time; sometimes there might be local connectivity issues making the region unreachable; and sometimes there might simply be capacity limitations in a region that prevent all services from being supportable there. As a result, we also promote service availability by providing service in multiple regions. This is the ultimate way of ensuring statistical independence of failures.
 
 然而，这并不是故事的全部。出于多种原因，仅仅依赖于任何特定区域是不够的——有时多个可用区 (AZ) 确实会同时出现故障；有时可能存在本地连接问题，导致无法访问该区域；有时，某个地区可能只是存在容量限制，导致无法在该地区支持所有服务。因此，我们还通过在多个地区提供服务来提高服务可用性。这是确保故障统计独立性的最终方法。
@@ -194,7 +186,7 @@ Instead, we use a [combination of measures](https://knowledge.ably.com/routing-a
 
 ## Stateful services
 
-##有状态服务
+## 有状态服务
 
 At Ably, [reliability](https://www.ably.io/four-pillars-of-dependability#reliability) means business continuity of _stateful_ services, and it is a substantially more complicated problem to solve than just availability.
 
@@ -218,7 +210,7 @@ At Ably, we provision enough reserve capacity for stateless resources to support
 
 ![Fault tolerance of a stateful datastore: a query coordinator handles non-binary (Byzantine) failures via transactional replication of updates on multpile stores.](https://ik.imagekit.io/ably/ghost/prod/2021/02/fault-tolerance-of-a-stateful-datastore.png?tr=w-1520)
 
-/fault-tolerance-of-a-stateful-datastore.png?tr=w-1520)
+
 
 For example, if processing for a particular channel is taking place on a particular instance within the cluster, and that instance fails (forcing that channel role to move), mechanisms must be in place to ensure that things can continue.
 
@@ -260,7 +252,7 @@ The following are two illustrations of the architectural approaches we adopt at 
 
 [![Try our APIs for free](https://no-cache.hubspot.com/cta/default/6939709/85f436af-7315-44c9-aa12-d764f40b294d.png)](https://cta-redirect.hubspot.com/cta/redirect/6939709/85f436af-7315-44c9-aa12-d764f40b294d)
 
-hubspot.com/cta/redirect/6939709/85f436af-7315-44c9-aa12-d764f40b294d)
+
 
 ### Stateful role placement
 
@@ -303,7 +295,7 @@ Even though the role failed and there was resulting loss of state, there needs t
 即使角色失败并导致状态丢失，也需要有足够的状态持久化（并具有足够的冗余），以便可以连续恢复角色。连续性恢复是使服务在出现此类故障时可靠的原因；每个传输中消息的状态在角色重定位过程中都会保留。如果我们无法做到这一点，并在没有状态连续性的情况下简单地重新建立角色，我们可以确保服务可用性——但不能确保_可靠性_。
 
 ### Channel persistence layer 
-###通道持久层
+### 通道持久层
 When a message is published, we perform some processing, decide on success or failure, then respond to the call. The reliability guarantee means having certainty that once a message is acknowledged, all onward transmission implied by that will in fact take place. This in turn means that we can only acknowledge a message once we know for a fact that it is durably persisted, with sufficient redundancy that it cannot subsequently be lost.
 
 当消息发布时，我们执行一些处理，决定成功或失败，然后响应调用。可靠性保证意味着确定一旦消息被确认，所有隐含的向前传输实际上都会发生。这反过来意味着我们只能在知道消息持久存在的事实后才能确认消息，并且具有足够的冗余度，因此不会随后丢失。
@@ -317,8 +309,6 @@ Ensuring that messages are persisted in multiple AZs enables us to assume that f
 确保消息在多个可用区中持久化使我们能够假设这些区域中的故障是独立的，因此单个事件或原因不会导致数据丢失。安排此放置需要 AZ 感知编排，并确保对多个位置的写入实际上是事务性的，需要在消息持久层中达成分布式共识。
 
 ![Ensuring independence of failure of redundant components requires placing them into different availability zones such that requests can be made against coordinators in any such zone.](https://ik.imagekit.io/ably/ghost/prod/2021/02/ensure-redundant-components-fail-independently.png?tr=w-1520)
-
-/ensure-redundant-components-fail-independently.png?tr=w-1520)
 
 Structuring things this way allows us to start to quantify, probabilistically, the level of assurance. A service failure can only arise if there is a compound failure — that is, a failure in one AZ and, before that failure has been remediated, a failure in a second AZ.
 
@@ -368,7 +358,7 @@ This is another example of the general fault tolerance problem: with many moving
 
 ### Resource availability issues
 
-###资源可用性问题
+### 资源可用性问题
 
 At a very simple level, it is possible to provide redundant capacity only if the resources required are available. Occasionally there are situations where resources are simply unavailable at the moment they are demanded in a region, and it is necessary to offload demand to another region.
 
@@ -400,7 +390,7 @@ Simplistic fault tolerance mechanisms can exhibit this kind of O( _N²_) behavio
 
 ## Conclusion
 
-＃＃ 结论
+## 结论
 
 Fault tolerance is an approach to building systems able to withstand and mitigate adverse events and operating conditions in order to dependably continue delivering the level of service expected by the users of the system.
 
@@ -430,3 +420,4 @@ Ably 平台是根据这些原则从头开始设计的，目标是提供一流的
 
 _[Get in touch](https://www.ably.io/contact) to learn more about Ably and how we can help you deliver seamless realtime experiences to your customers._ 
 _[联系](https://www.ably.io/contact) 了解更多关于 Ably 以及我们如何帮助您为客户提供无缝实时体验。_
+
