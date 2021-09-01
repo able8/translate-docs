@@ -4,8 +4,6 @@
 
 on Jan 19, 2021 5:26:38 AM
 
-2021 年 1 月 19 日上午 5:26:38
-
 What are the risks associated with overly permissive pod creation in Kubernetes? The answer varies based on which of the host’s namespaces and security contexts are allowed. In this post, I will describe eight insecure pod configurations and the corresponding methods to perform privilege escalation. This article and the accompanying [repository](https://github.com/BishopFox/badPods) were created to help penetration testers and administrators better understand common misconfiguration scenarios.
 
 在 Kubernetes 中过度宽松地创建 Pod 会带来哪些风险？答案根据允许的主机命名空间和安全上下文而有所不同。在这篇文章中，我将描述八种不安全的 pod 配置以及相应的提权方法。本文和随附的 [repository](https://github.com/BishopFox/badPods) 旨在帮助渗透测试人员和管理员更好地了解常见的错误配置场景。
@@ -32,15 +30,15 @@ Kubernetes 和其他新的“DevOps”技术很难正确实施，并且经常被
 
 ## HARDENING PODS: HOW RISKY CAN A SINGLE ATTRIBUTE BE?
 
-## 硬化豆荚：单一属性的风险有多大？
+## 硬化Pods：单一属性的风险有多大？
 
 When it comes to Kubernetes security best practices, every checklist worth its salt mentions that you want to use the principle of least privilege when provisioning pods. But how can we enforce granular security controls and how do we evaluate the risk of each attribute?
 
 当谈到 Kubernetes 安全最佳实践时，每个值得一提的清单都提到您希望在配置 pod 时使用最小权限原则。但是，我们如何实施精细的安全控制以及如何评估每个属性的风险？
 
-A Kubernetes administrator can enforce the principle of least privilege using admission controllers. For example, there's a built-in Kubernetes controller called [PodSecurityPolicy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) and also a popular third-party admission controller called [OPA Gatekeeper] (https://github.com/open-policy-agent/gatekeeper). Admission controllers allow you to deny a pod entry into the cluster if it has more permissions than the policy allows.
+A Kubernetes administrator can enforce the principle of least privilege using admission controllers. For example, there's a built-in Kubernetes controller called [PodSecurityPolicy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) and also a popular third-party admission controller called [OPA Gatekeeper](https://github.com/open-policy-agent/gatekeeper). Admission controllers allow you to deny a pod entry into the cluster if it has more permissions than the policy allows.
 
-Kubernetes 管理员可以使用准入控制器强制执行最小权限原则。例如，有一个名为 [PodSecurityPolicy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) 的内置 Kubernetes 控制器以及一个名为 [OPA Gatekeeper] 的流行的第三方准入控制器（https://github.com/open-policy-agent/gatekeeper）。如果 Pod 具有比策略允许的更多权限，则准入控制器允许您拒绝该 Pod 进入集群。
+Kubernetes 管理员可以使用准入控制器强制执行最小权限原则。例如，有一个名为 [PodSecurityPolicy](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) 的内置 Kubernetes 控制器以及一个名为 OPA Gatekeeper 的流行的第三方准入控制器。如果 Pod 具有比策略允许的更多权限，则准入控制器允许您拒绝该 Pod 进入集群。
 
 However, even though the controls exist to define and enforce policy, the real-world security implications of allowing each specific attribute is not always understood, and quite often, pod creation is not as locked down as it needs to be.
 
@@ -56,7 +54,7 @@ But what if you can create a pod with just? What can you do in each case? Let’
 
 ![Kubernetes bad pods](https://labs.bishopfox.com/hs-fs/hubfs/Kubernetes%20-%20PAD%20PODS%20-%20300%20PPI%20-%20Option%2001.png?width=700&name=Kubernetes%20-%20PAD%20PODS%20-%20300%20PPI%20-%20Option%2001.png)
 
-700&name=Kubernetes%20-%20PAD%20PODS%20-%20300%20PPI%20-%20Option%2001.png)
+
 
 ## BAD PODS - ATTRIBUTES AND THEIR WORST-CASE SECURITY IMPACT
 
@@ -64,43 +62,43 @@ But what if you can create a pod with just? What can you do in each case? Let’
 
 The pods below are loosely ordered from highest to lowest security impact. Note that the generic attack paths that could affect any Kubernetes pod (eg, checking to see if the pod can access the cloud provider's metadata service or identifying misconfigured Kubernetes RBAC) are covered in [Bad Pod #8: Nothing allowed](http:/ /labs.bishopfox.com#pod8).
 
-下面的 pod 是从安全影响从最高到最低的松散排序。请注意，可能影响任何 Kubernetes pod 的通用攻击路径（例如，检查 pod 是否可以访问云提供商的元数据服务或识别错误配置的 Kubernetes RBAC）在 [Bad Pod #8: Nothing allowed](http:/ /labs.bishopfox.com#pod8）。
+下面的 pod 是从安全影响从最高到最低的松散排序。请注意，可能影响任何 Kubernetes pod 的通用攻击路径（例如，检查 pod 是否可以访问云提供商的元数据服务或识别错误配置的 Kubernetes RBAC）。
 
 ## THE BAD PODS LINEUP
 
-##糟糕的豆荚阵容
+## 糟糕的Pods阵容
 
 **Pods**
 
-**豆荚**
-
 [Bad Pod #1: Everything allowed](http://labs.bishopfox.com#Pod1)
-
-[坏 Pod #1：一切都允许](http://labs.bishopfox.com#Pod1)
 
 [Bad Pod #2: Privileged and hostPid](http://labs.bishopfox.com#Pod2)
 
-[坏 Pod #2：特权和 hostPid](http://labs.bishopfox.com#Pod2)
-
 [Bad Pod #3: Privileged only](http://labs.bishopfox.com#Pod3)
 
-[坏 Pod #3：仅限特权](http://labs.bishopfox.com#Pod3)
-
 [Bad Pod #4: hostPath only](http://labs.bishopfox.com#Pod4) 
-[坏 Pod #4：仅主机路径](http://labs.bishopfox.com#Pod4)
-[Bad Pod #5: hostPid only](http://labs.bishopfox.com#Pod5)
 
-[坏 Pod #5：仅 hostPid](http://labs.bishopfox.com#Pod5)
+[Bad Pod #5: hostPid only](http://labs.bishopfox.com#Pod5)
 
 [Bad Pod #6: hostNetwork only](http://labs.bishopfox.com#pod6)
 
-[坏 Pod #6：仅主机网络](http://labs.bishopfox.com#pod6)
-
 [Bad Pod #7: hostIPC only](http://labs.bishopfox.com#pod7)
 
-[坏 Pod #7：仅 hostIPC](http://labs.bishopfox.com#pod7)
-
 [Bad Pod #8: Nothing allowed](http://labs.bishopfox.com#pod8)
+
+[坏 Pod #1：一切都允许](http://labs.bishopfox.com#Pod1)
+
+[坏 Pod #2：特权和 hostPid](http://labs.bishopfox.com#Pod2)
+
+[坏 Pod #3：仅限特权](http://labs.bishopfox.com#Pod3)
+
+[坏 Pod #4：仅主机路径](http://labs.bishopfox.com#Pod4)
+
+[坏 Pod #5：仅 hostPid](http://labs.bishopfox.com#Pod5)
+
+[坏 Pod #6：仅主机网络](http://labs.bishopfox.com#pod6)
+
+[坏 Pod #7：仅 hostIPC](http://labs.bishopfox.com#pod7)
 
 [坏 Pod #8：不允许的东西](http://labs.bishopfox.com#pod8)
 
@@ -109,8 +107,6 @@ The pods below are loosely ordered from highest to lowest security impact. Note 
 ## 坏 POD \#1：一切都允许
 
 ![BAD POD #1: EVERYTHING ALLOWED](https://labs.bishopfox.com/hs-fs/hubfs/Check%20Box%20-%20Door%20Idea%20FINAL%2001%20-%20300PPI%20(1).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2001%20-%20300PPI%20(1).jpg)
-
-).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2001%20-%20300PPI%20(1).jpg)
 
 ### What’s the worst that can happen?
 
@@ -121,8 +117,6 @@ Multiple paths to full cluster compromise
 完整集群妥协的多种途径
 
 ### How?
-
-＃＃＃ 如何？
 
 The pod you create mounts the host’s filesystem to the pod. You'll have the best luck if you can schedule your pod on a control-plane node using the [nodeName](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/# create-a-pod-that-gets-scheduled-to-specific-node) selector in your manifest. You then `exec` into your pod and `chroot` to the directory where you mounted the host’s filesystem. You now have root on the node running your pod.
 
@@ -136,7 +130,7 @@ The pod you create mounts the host’s filesystem to the pod. You'll have the be
 
 Some additional privilege escalation patterns are outlined in the [README](https://github.com/BishopFox/badPods/tree/main/manifests/everything-allowed) document linked below and also in [Bad Pod #4: hostPath]( https://labs.bishopfox.com/tech-blog/bad-pods-kubernetes-pod-privilege-escalation?hs_preview=qrRGstOq-40671699438#Pod4).
 
-下面链接的 [README](https://github.com/BishopFox/badPods/tree/main/manifests/everything-allowed) 文档以及 [Bad Pod #4: hostPath]( https://labs.bishopfox.com/tech-blog/bad-pods-kubernetes-pod-privilege-escalation?hs_preview=qrRGstOq-40671699438#Pod4）。
+下面链接的 [README](https://github.com/BishopFox/badPods/tree/main/manifests/everything-allowed) 文档以及 [Bad Pod #4: hostPath](https://labs.bishopfox.com/tech-blog/bad-pods-kubernetes-pod-privilege-escalation?hs_preview=qrRGstOq-40671699438#Pod4)。
 
 ### Usage and exploitation examples
 
@@ -168,8 +162,6 @@ Some additional privilege escalation patterns are outlined in the [README](http
 
 ![BAD POD #2: PRIVILEGED AND HOSTPID](https://labs.bishopfox.com/hs-fs/hubfs/Check%20Box%20-%20Door%20Idea%20FINAL%2002%20-%20300PPI%20(1).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2002%20-%20300PPI%20(1).jpg)
 
-1).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2002%20-%20300PPI%20(1).jpg)
-
 ### What’s the worst that can happen?
 
 ### 可能发生的最坏情况是什么？
@@ -179,8 +171,6 @@ Multiple paths to full cluster compromise
 完整集群妥协的多种途径
 
 ### How?
-
-＃＃＃ 如何？
 
 In this scenario, the only thing that changes from the everything-allowed pod is how you gain root access to the host. Rather than `chroot`ing to the host’s filesystem, you can use `nsenter` to get a root shell on the node running your pod.
 
@@ -240,8 +230,6 @@ Multiple paths to full cluster compromise
 
 ### How?
 
-＃＃＃ 如何？
-
 If you only have `privileged: true`, there are two paths you can take:
 
 如果你只有 `privileged: true`，你可以选择两条路径：
@@ -300,8 +288,6 @@ Multiple paths to full cluster compromise
 
 ### How?
 
-＃＃＃ 如何？
-
 In this case, even if you don't have access to the host's process or network namespaces, if the administrators have not limited what you can mount, you can mount the entire host's filesystem into your pod, giving you read/write access on the host's filesystem. This allows you to execute most of the same privilege escalation paths outlined above. There are so many paths available that Ian Coldwater and Duffie Cooley gave an awesome Black Hat 2019 talk about it titled “ [The Path Less Traveled: Abusing Kubernetes Defaults!](https://www.youtube.com/watch?v=HmoVSmTIOxM )”
 
 在这种情况下，即使您无权访问主机的进程或网络命名空间，如果管理员没有限制您可以挂载的内容，您也可以将整个主机的文件系统挂载到您的 pod 中，从而为您提供读/写访问权限主机的文件系统。这允许您执行上面概述的大多数相同的权限提升路径。有很多可用的路径，以至于 Ian Coldwater 和 Duffie Cooley 在 2019 年的黑帽大会上发表了一篇很棒的演讲，题目是“[The Path Less Traveled: Abusing Kubernetes Defaults!](https://www.youtube.com/watch?v=HmoVSmTIOxM )”
@@ -354,8 +340,6 @@ Here are some privileged escalation paths that apply any time you have access to
 
 ![BAD POD #5: HOSTPID ONLY](https://labs.bishopfox.com/hs-fs/hubfs/Check%20Box%20-%20Door%20Idea%20FINAL%2005%20-%20300PPI%20(1).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2005%20-%20300PPI%20(1).jpg)
 
-).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2005%20-%20300PPI%20(1).jpg)
-
 ### What’s the worst that can happen?
 
 ### 可能发生的最坏情况是什么？
@@ -365,8 +349,6 @@ Application or cluster credential leaks if an application in the cluster is conf
 如果集群中的应用程序配置不正确，则应用程序或集群凭据泄漏。通过进程终止拒绝服务。
 
 ### How?
-
-＃＃＃ 如何？
 
 There’s no clear path to get root on the node with only `hostPID`, but there are still some good post-exploitation opportunities.
 
@@ -412,8 +394,6 @@ Potential path to cluster compromise
 
 ### How?
 
-＃＃＃ 如何？
-
 If you only have `hostNetwork: true`, you can’t get privileged code execution on the host directly, but if you cross your fingers, you might still find a path to cluster admin. There are three potential escalation paths:
 
 如果你只有 `hostNetwork: true`，你不能直接在主机上获得特权代码执行，但如果你交叉手指，你可能仍然找到集群管理员的路径。存在三种潜在的升级路径：
@@ -444,8 +424,6 @@ If you only have `hostNetwork: true`, you can’t get privileged code execution 
 ## BAD POD \#7：仅限主机
 ![BAD POD #7: HOSTIPC ONLY](https://labs.bishopfox.com/hs-fs/hubfs/Check%20Box%20-%20Door%20Idea%20FINAL%2007%20-%20300PPI%20(1).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2007%20-%20300PPI%20(1).jpg)
 
-).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2007%20-%20300PPI%20(1).jpg)
-
 ### What’s the worst that can happen?
 
 ### 可能发生的最坏情况是什么？
@@ -455,8 +433,6 @@ Ability to access data used by any pods that also use the host’s IPC namespace
 能够访问也使用主机的 IPC 命名空间的任何 pod 使用的数据
 
 ### How?
-
-＃＃＃ 如何？
 
 If any process on the host or any processes in a pod uses the host’s inter-process communication mechanisms (shared memory, semaphore arrays, message queues, etc.), you’ll be able to read/write to those same mechanisms. The first place you'll want to look is `/dev/shm`, as it is shared between any pod with `hostIPC: true` and the host. You'll also want to check out the other IPC mechanisms with `ipcs`.
 
@@ -486,8 +462,6 @@ If any process on the host or any processes in a pod uses the host’s inter-pro
 
 ![BAD POD #8: NOTHING ALLOWED](https://labs.bishopfox.com/hs-fs/hubfs/Check%20Box%20-%20Door%20Idea%20FINAL%2008%20-%20300PPI%20(1).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2008%20-%20300PPI%20(1).jpg)
 
-).jpg?width=700&name=Check%20Box%20-%20Door%20Idea%20FINAL%2008%20-%20300PPI%20(1).jpg)
-
 ### What’s the worst that can happen?
 
 ### 可能发生的最坏情况是什么？
@@ -497,8 +471,6 @@ Multiple potential paths to full cluster compromise
 完全入侵集群的多种潜在途径
 
 ### How?
-
-＃＃＃ 如何？
 
 To close our bad Pods lineup, there are plenty of attack paths that should be investigated any time you can create a pod or simply have access to a pod, even if there are no security attributes enabled. Here are some things to look for whenever you have access to a Kubernetes pod:
 
@@ -554,7 +526,7 @@ To close our bad Pods lineup, there are plenty of attack paths that should be in
 
 ## CONCLUSION
 
-＃＃ 结论
+## 结论
 
 Apart from the [Bad Pod #8: Nothing Allowed](http://labs.bishopfox.com#pod8) example, all of the privilege escalation paths covered in this blog post (and the [respective repository](https:// github.com/BishopFox/badPods)) can be mitigated with restrictive pod security policies. 
 除了 [Bad Pod #8：Nothing Allowed](http://labs.bishopfox.com#pod8) 示例之外，本博文（以及 [各自的存储库](https:// github.com/BishopFox/badPods)) 可以通过限制性 pod 安全策略来缓解。
@@ -563,4 +535,5 @@ Additionally, there are many other defense-in-depth security controls available 
 此外，Kubernetes 管理员还可以使用许多其他纵深防御安全控制，即使攻击者有权访问部分或全部主机命名空间和功能（例如，禁用自动挂载服务帐户令牌或通过强制执行“MustRunAsNonRoot=true”和“allowPrivilegeEscalation=false”来要求所有 pod 以非 root 用户身份运行）。与渗透测试的情况一样，您的里程可能会有所不同。
 
 Administrators are sometimes hard pressed to defend security best practices without examples that demonstrate the security implications of risky configurations. I hope the examples laid out in this post and the manifests contained in the [Bad Pods repository](https://github.com/BishopFox/badPods) help you enforce the principle of least privilege when it comes to Kubernetes pod creation in your organization. 
-管理员有时很难捍卫安全最佳实践，而没有示例来证明风险配置的安全影响。我希望本文中列出的示例以及 [Bad Pods 存储库](https://github.com/BishopFox/badPods) 中包含的清单可以帮助您在您的 Kubernetes Pod 创建中执行最小特权原则。组织。
+
+管理员有时很难捍卫安全最佳实践，而没有示例来证明风险配置的安全影响。我希望本文中列出的示例以及 [Bad Pods 存储库](https://github.com/BishopFox/badPods) 中包含的清单可以帮助您在你组织中的 Kubernetes Pod 创建中执行最小特权原则。

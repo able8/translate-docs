@@ -2,9 +2,7 @@
 
 # Kubernetes 中的优雅关闭和零停机部署
 
-Published in August 2020
-
-2020 年 8 月发布
+Published in August 2020 From: https://learnk8s.io/graceful-shutdown
 
 **TL;DR:** *In this article, you will learn how to prevent broken connections when a  Pod starts up or shuts down. You will also learn how to shut down  long-running tasks gracefully.*
 
@@ -50,8 +48,6 @@ Let's assume you want to create the following Pod in your cluster:
 
 pod.yaml
 
-pod.yaml
-
 ```
 apiVersion: v1
  kind: Pod
@@ -64,22 +60,18 @@ apiVersion: v1
        ports:
          - name: web
            containerPort: 80
- ```
+```
 
- 
+
 You can submit the YAML definition to the cluster with:
 
 您可以使用以下命令将 YAML 定义提交到集群：
 
-bash
-
-猛击
-
 ```
 kubectl apply -f pod.yaml
- ```
+```
 
- 
+
 As soon as you enter the command, kubectl submits the Pod definition to the Kubernetes API.
 
 只要您输入命令，kubectl 就会将 Pod 定义提交给 Kubernetes API。
@@ -90,7 +82,7 @@ As soon as you enter the command, kubectl submits the Pod definition to the Kube
 
 ## Saving the state of the cluster in the database
 
-##在数据库中保存集群的状态
+## 在数据库中保存集群的状态
 
 The Pod definition is received and inspected by the API and subsequently stored in the database — etcd.
 
@@ -108,18 +100,18 @@ The Scheduler:
 2. collects details about the workload such as CPU and memory requests and then
 3. decides which Node is best suited to run it [(through a process called Filters and Predicates).](https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/#extension-points)
 
-1.检查定义
+1. 检查定义
 2. 收集有关工作负载的详细信息，例如 CPU 和内存请求，然后
-3.决定哪个节点最适合运行它[（通过一个叫做过滤器和谓词的过程）。](https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/#extension-points)
+3. 决定哪个节点最适合运行它通过一个叫做过滤器和预言的过程
 
 At the end of the process:
 
-在过程结束时：
 
 - The Pod is marked as *Scheduled* in etcd.
 - The Pod has a Node assigned to it.
 - The state of the Pod is stored in etcd.
 
+在过程结束时：
 - Pod 在 etcd 中被标记为 *Scheduled*。
 - Pod 分配了一个节点。
 - Pod 的状态存储在 etcd 中。
@@ -127,16 +119,6 @@ At the end of the process:
 **But the Pod still does not exist.**
 
 **但 Pod 仍然不存在。**
-
-- ![When you submit a Pod with kubectl apply -f the YAML is sent to the Kubernetes API.](https://learnk8s.io/a/54a28f4c41dfd3abb594848af5f71eaf.svg)
-
-  1/3 When you submit a Pod with `kubectl apply -f` the YAML is sent to the Kubernetes API. Next
-
-1/3 当您使用 `kubectl apply -f` 提交 Pod 时，YAML 将发送到 Kubernetes API。下一个
-
-The previous tasks happened in the control plane, and the state is stored in the database.
-
-之前的任务发生在控制平面，状态存储在数据库中。
 
 *So who is creating the Pod in your Nodes?*
 
@@ -170,6 +152,7 @@ kubelet 不会自己创建 Pod。相反，它将工作委托给其他三个组�
 2. **The Container Network Interface (CNI)** — the component that connects the containers to the cluster network and assigns IP addresses.
 3. **The Container Storage Interface (CSI)** — the component that mounts volumes in your containers.
 
+
 1. **容器运行时接口 (CRI)** — 为 Pod 创建容器的组件。
 2. **容器网络接口 (CNI)** — 将容器连接到集群网络并分配 IP 地址的组件。
 3. **容器存储接口 (CSI)** — 在容器中安装卷的组件。
@@ -178,22 +161,17 @@ In most cases, the Container Runtime Interface (CRI) is doing a similar job to:
 
 在大多数情况下，容器运行时接口 (CRI) 的作用类似于：
 
-bash
-
-猛击
-
 ```
 docker run -d <my-container-image>
- ```
+```
 
- 
+
 The Container Networking Interface (CNI) is a bit more interesting because it is in charge of:
-
-容器网络接口（CNI）更有趣，因为它负责：
 
 1. Generating a valid IP address for the Pod.
 2. Connecting the container to the rest of the network.
 
+容器网络接口（CNI）更有趣，因为它负责：
 1. 为 Pod 生成一个有效的 IP 地址。
 2. 将容器连接到网络的其余部分。
 
@@ -231,12 +209,6 @@ You can imagine that inspecting etcd would reveal not just where the Pod is runn
 
 您可以想象，检查 etcd 不仅会揭示 Pod 的运行位置，还会揭示其 IP 地址。
 
-- ![The Kubelet polls the control plane for updates.](https://learnk8s.io/a/b8bdb7bf659fbea3d2949930093d56b1.svg)
-
-  1/5 The Kubelet polls the control plane for updates. Next
-
-1/5 Kubelet 轮询控制平面以获取更新。下一个
-
 If the Pod isn't part of any Service, this is the end of the journey.
 
 如果 Pod 不是任何服务的一部分，这就是旅程的终点​​。
@@ -255,11 +227,11 @@ Pod 已创建并可以使用。
 
 When you create a Service, there are usually two pieces of information that you should pay attention to:
 
-创建 Service 时，通常需要注意两条信息：
 
 1. The selector, which is used to specify the Pods that will receive the traffic.
 2. The `targetPort` — the port used by the Pods to receive traffic.
 
+创建 Service 时，通常需要注意两条信息：
 1. 选择器，用于指定将接收流量的 Pod。
 2. `targetPort` — Pod 用于接收流量的端口。
 
@@ -268,8 +240,6 @@ A typical YAML definition for the Service looks like this:
 服务的典型 YAML 定义如下所示：
 
 service.yaml
-
-服务.yaml
 
 ```
 apiVersion: v1
@@ -282,12 +252,11 @@ apiVersion: v1
      targetPort: 3000
    selector:
      name: app
- ```
+```
 
- 
 When you submit the Service to the cluster with `kubectl apply`, Kubernetes finds all the Pods that have the same label as the selector (`name: app`) and collects their IP addresses — but only if they passed the [Readiness probe] (https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe).
 
-当您使用 `kubectl apply` 将 Service 提交到集群时，Kubernetes 会找到与选择器（`name: app`）具有相同标签的所有 Pod 并收集它们的 IP 地址——但前提是它们通过了 [Readiness probe] （https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe）。
+当您使用 `kubectl apply` 将 Service 提交到集群时，Kubernetes 会找到与选择器（`name: app`）具有相同标签的所有 Pod 并收集它们的 IP 地址——但前提是它们通过了 [Readiness probe] (https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/#define-a-tcp-liveness-probe)。
 
 Then, for each IP address, it concatenates the IP address and the port.
 
@@ -301,9 +270,9 @@ If the IP address is `10.0.0.3` and the `targetPort` is `3000`, Kubernetes conca
 IP address + port = endpoint
  ---------------------------------
 10.0.0.3   + 3000 = 10.0.0.3:3000
- ```
+```
 
- 
+
 The endpoints are stored in etcd in another object called Endpoint.
 
 端点存储在另一个名为 Endpoint 的对象中的 etcd 中。
@@ -330,10 +299,6 @@ You can verify that with:
 
 您可以通过以下方式验证：
 
-bash
-
-猛击
-
 ```
 kubectl get services,endpoints
  NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)
@@ -343,9 +308,9 @@ kubectl get services,endpoints
  NAME                     ENDPOINTS
  endpoints/my-service-1   172.17.0.6:80,172.17.0.7:80
  endpoints/my-service-2   192.168.99.100:8443
- ```
+```
 
- 
+
 The Endpoint collects all the IP addresses and ports from the Pods.
 
 Endpoint 从 Pod 收集所有 IP 地址和端口。
@@ -356,12 +321,11 @@ Endpoint 从 Pod 收集所有 IP 地址和端口。
 
 The Endpoint object is refreshed with a new list of endpoints when:
 
-在以下情况下，使用新的端点列表刷新 Endpoint 对象：
-
 1. A Pod is created.
 2. A Pod is deleted.
 3. A label is modified on the Pod.
 
+在以下情况下，使用新的端点列表刷新 Endpoint 对象：
 1. 创建了一个 Pod。
 2. Pod 被删除。
 3. Pod 上修改了一个标签。
@@ -369,10 +333,6 @@ The Endpoint object is refreshed with a new list of endpoints when:
 So you can imagine that every time you create a Pod and after the kubelet  posts its IP address to the master Node, Kubernetes updates all the  endpoints to reflect the change:
 
 因此，您可以想象，每次创建 Pod 时，在 kubelet 将其 IP 地址发布到主节点后，Kubernetes 都会更新所有端点以反映更改：
-
-bash
-
-猛击
 
 ```
 kubectl get services,endpoints
@@ -383,28 +343,16 @@ kubectl get services,endpoints
  NAME                     ENDPOINTS
  endpoints/my-service-1   172.17.0.6:80,172.17.0.7:80,172.17.0.8:80
  endpoints/my-service-2   192.168.99.100:8443
- ```
+```
 
- 
+
 Great, the endpoint is stored in the control plane, and the Endpoint object was updated.
 
 太好了，端点存储在控制平面中，并且端点对象已更新。
 
-- ![In this picture, there's a single Pod deployed in your cluster.The Pod belongs to a Service. If you were to inspect etcd, you would find the Pod's details as well as Service.](https://learnk8s.io/a/5ec899bd0f7067f1e01bb1accacb35ac.svg)
-
-Pod 属于一个服务。如果您要检查 etcd，您会找到 Pod 的详细信息以及服务。](https://learnk8s.io/a/5ec899bd0f7067f1e01bb1accacb35ac.svg)
-
-  1/8
-
-1/8
-
-  In this picture, there's a single Pod deployed in your cluster. The Pod  belongs to a Service. If you were to inspect etcd, you would find the  Pod's details as well as Service.
+In this picture, there's a single Pod deployed in your cluster. The Pod  belongs to a Service. If you were to inspect etcd, you would find the  Pod's details as well as Service.
 
 在这张图片中，您的集群中部署了一个 Pod。 Pod 属于一个服务。如果您要检查 etcd，您会发现 Pod 的详细信息以及服务。
-
-  Next
-
-下一个
 
 *Are you ready to start using your Pod?*
 
@@ -434,19 +382,11 @@ So every time there is a change to an Endpoint (the object), kube-proxy  retriev
 
 因此，每次端点（对象）发生更改时，kube-proxy 都会检索新的 IP 地址和端口列表并编写新的 iptables 规则。
 
-- ![Let's consider this three-node cluster with two Pods and no Services.The state of the Pods is stored in etcd.](https://learnk8s.io/a/50e4746cbbda956a4550077f2954dd7a.svg)
 
-Pod 的状态存储在 etcd 中。](https://learnk8s.io/a/50e4746cbbda956a4550077f2954dd7a.svg)
-
-  1/6 
-1/6
 Let's consider this three-node cluster with two Pods and no Services. The state of the Pods is stored in etcd.
 
 让我们考虑这个具有两个 Pod 且没有服务的三节点集群。 Pod 的状态存储在 etcd 中。
 
-  Next
-
-下一个
 
 The Ingress controller uses the same list of endpoints.
 
@@ -461,8 +401,6 @@ When you set up an Ingress manifest you usually specify the Service as the desti
 当您设置 Ingress 清单时，您通常将服务指定为目的地：
 
 ingress.yaml
-
-入口.yaml
 
 ```
 apiVersion: networking.k8s.io/v1
@@ -480,9 +418,9 @@ apiVersion: networking.k8s.io/v1
                number: 80
          path: /
          pathType: Prefix
- ```
+```
 
- 
+
 *In reality, the traffic is not routed to the Service.*
 
 *实际上，流量不会路由到服务。*
@@ -501,17 +439,11 @@ As you can imagine, every time there is a change to an Endpoint (the  object), t
 
 - ![In this picture, there's an Ingress controller with a Deployment with two replicas and a Service.](https://learnk8s.io/a/175161d4127b2daf602b2a240190771d.svg)
 
-  1/9
 
-1/9
-
-  In this picture, there's an Ingress controller with a Deployment with two replicas and a Service.
+In this picture, there's an Ingress controller with a Deployment with two replicas and a Service.
 
 在这张图片中，有一个 Ingress 控制器和一个带有两个副本和一个服务的部署。
 
-  Next
-
-下一个
 
 There are more examples of Kubernetes components that subscribe to changes to endpoints.
 
@@ -555,13 +487,14 @@ A quick recap on what happens when you create a Pod:
 8. The kubelet reports the IP address to the control plane.
 9. The IP address is stored in etcd.
 
+
 1. Pod 存储在 etcd 中。
-2.调度器分配一个节点。它将节点写入 etcd。
+2. 调度器分配一个节点。它将节点写入 etcd。
 3. kubelet 被通知有一个新的和预定的 Pod。
 4. kubelet 将容器的创建委托给容器运行时接口 (CRI)。
 5. kubelet 委托将容器附加到容器网络接口 (CNI)。
 6. kubelet 将容器中的挂载卷委托给容器存储接口 (CSI)。
-7.容器网络接口分配一个IP地址。
+7. 容器网络接口分配一个IP地址。
 8. kubelet 将 IP 地址上报给控制平面。
 9、IP地址存储在etcd中。
 
@@ -579,15 +512,16 @@ And if your Pod belongs to a Service:
 8. Any service mesh installed in the cluster is notified of the Endpoint change.
 9. Any other operator subscribed to Endpoint changes is notified too.
 
+
 1. kubelet 等待成功的 Readiness 探测。
 2. 通知所有相关端点（对象）更改。
 3. 端点将新端点（IP 地址 + 端口对）添加到其列表中。
 4. Kube-proxy 收到 Endpoint 变化的通知。 Kube-proxy 更新每个节点上的 iptables 规则。
 5. 入口控制器收到端点变化的通知。控制器将流量路由到新的 IP 地址。
 6. CoreDNS 收到 Endpoint 更改的通知。如果服务的类型为 Headless，则更新 DNS 条目。
-7. 将端点更改通知云提供商。如果 Service 的类型为“类型：LoadBalancer”，则新端点将配置为负载均衡器池的一部分。
+7. 将端点更改通知云提供商。如果 Service 的类型为“类型：LoadBalancer，则新端点将配置为负载均衡器池的一部分。
 8. 集群中安装的任何服务网格都会收到端点更改的通知。
-9. 订阅端点更改的任何其他运营商也会收到通知。
+9. 订阅端点更改的任何其operator也会收到通知。
 
 *Such a long list for what is surprisingly a common task — creating a Pod.*
 
@@ -627,19 +561,12 @@ Since the components might be busy doing something else, **there is no guarantee
 
 For some, it could take less than a second; for others, it could take more. 
 对于某些人来说，可能只需要不到一秒钟；对于其他人，可能需要更多。
-- ![If you're deleting a Pod with kubectl delete pod, the command reaches the Kubernetes API first.](https://learnk8s.io/a/336567c1d80c8853cb6900bdf6fd30d9.svg)
 
-  1/5
 
-1/5
-
-  If you're deleting a Pod with `kubectl delete pod`, the command reaches the Kubernetes API first.
+If you're deleting a Pod with `kubectl delete pod`, the command reaches the Kubernetes API first.
 
 如果您使用 `kubectl delete pod` 删除 Pod，该命令首先到达 Kubernetes API。
 
-  Next
-
-下一个
 
 At the same time, the status of the Pod in etcd is changed to *Terminating*.
 
@@ -647,12 +574,11 @@ At the same time, the status of the Pod in etcd is changed to *Terminating*.
 
 The kubelet is notified of the change and delegates:
 
-kubelet 会收到更改和委托的通知：
-
 1. Unmounting any volumes from the container to the Container Storage Interface (CSI).
 2. Detaching the container from the network and releasing the IP address to the Container Network Interface (CNI).
 3. Destroying the container to the Container Runtime Interface (CRI).
 
+kubelet 会收到更改和委托的通知：
 1. 将任何卷从容器卸载到容器存储接口 (CSI)。
 2. 将容器从网络中分离，并将 IP 地址释放到容器网络接口（CNI）。
 3. 销毁容器到容器运行时接口（CRI）。
@@ -661,19 +587,9 @@ In other words, Kubernetes follows precisely the same steps to create a Pod but 
 
 换句话说，Kubernetes 遵循与创建 Pod 完全相同的步骤，但相反。
 
-- ![If you're deleting a Pod with kubectl delete pod, the command reaches the Kubernetes API first.](https://learnk8s.io/a/dbfd8be2cd6fbc3984dbb12cfece608d.svg)
-
-  1/3
-
-1/3
-
-  If you're deleting a Pod with `kubectl delete pod`, the command reaches the Kubernetes API first.
+If you're deleting a Pod with `kubectl delete pod`, the command reaches the Kubernetes API first.
 
 如果您使用 `kubectl delete pod` 删除 Pod，该命令首先到达 Kubernetes API。
-
-  Next
-
-下一个
 
 However, there is a subtle but essential difference.
 
@@ -699,19 +615,10 @@ And this could cause quite a few race conditions.
 
 *如果在传播端点之前删除 Pod 会怎样？*
 
-- ![Deleting the endpoint and deleting the Pod happen at the same time.](https://learnk8s.io/a/e17a49eb08f03f2c2ff02b91409314fb.svg)
 
-  1/3
-
-1/3
-
-  Deleting the endpoint and deleting the Pod happen at the same time.
+Deleting the endpoint and deleting the Pod happen at the same time.
 
 删除端点和删除 Pod 是同时发生的。
-
-  Next
-
-下一个
 
 ## Graceful shutdown
 
@@ -733,7 +640,7 @@ The Ingress controller, kube-proxy, CoreDNS, etc. didn't have enough time to rem
 
 Ingress 控制器、kube-proxy、CoreDNS 等没有足够的时间从其内部状态中删除 IP 地址。
 
-Ideally, Kubernetes should wait for all components in the cluster to have an  updated list of endpoints before the Pod is deleted.
+Ideally, Kubernetes should wait for all components in the cluster to have an updated list of endpoints before the Pod is deleted.
 
 理想情况下，Kubernetes 应该在删除 Pod 之前等待集群中的所有组件都有更新的端点列表。
 
@@ -767,13 +674,12 @@ Your application can capture that signal and start shutting down.
 
 Since it's unlikely that the endpoint is immediately deleted from all components in Kubernetes, you could:
 
-由于不太可能立即从 Kubernetes 的所有组件中删除端点，您可以：
-
 1. Wait a bit longer before exiting.
 2. Still process incoming traffic, despite the SIGTERM.
 3. Finally, close existing long-lived connections (perhaps a database connection or WebSockets).
 4. Close the process.
 
+由于不太可能立即从 Kubernetes 的所有组件中删除端点，您可以：
 1. 稍等片刻再退出。
 2. 仍然处理传入的流量，尽管有 SIGTERM。
 3. 最后，关闭现有的长期连接（可能是数据库连接或 WebSockets）。
@@ -833,8 +739,6 @@ Let's have a look at an example:
 
 pod.yaml
 
-pod.yaml
-
 ```
 apiVersion: v1
  kind: Pod
@@ -851,7 +755,7 @@ apiVersion: v1
          preStop:
            exec:
              command: ["sleep", "15"]
- ``` 
+```
 
 
 The `preStop` hook is one of the [Pod LifeCycle hooks](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/).
@@ -872,17 +776,10 @@ Here's a recap of what options you have:
 
 - ![You already know that, when a Pod is deleted, the kubelet is notified of the change.](https://learnk8s.io/a/bdaa1da0be0fa3e9fe022cbf2b22bd1d.svg)
 
-  1/5
-
-1/5
-
-  You already know that, when a Pod is deleted, the kubelet is notified of the change.
+You already know that, when a Pod is deleted, the kubelet is notified of the change.
 
 您已经知道，当 Pod 被删除时，kubelet 会收到更改通知。
 
-  Next
-
-下一个
 
 ## Grace periods and rolling updates
 
@@ -910,8 +807,6 @@ When you change the image in your Deployment, Kubernetes rolls out the change in
 
 pod.yaml
 
-pod.yaml
-
 ```
 apiVersion: apps/v1
  kind: Deployment
@@ -933,17 +828,16 @@ apiVersion: apps/v1
          image: nginx:1.19
          ports:
            - containerPort: 3000
- ```
+```
 
- 
+
 If you have three replicas and as soon as you submit the new YAML resources Kubernetes:
-
-如果您有三个副本，并且一旦您提交新的 YAML 资源 Kubernetes：
 
 - Creates a Pod with the new container image.
 - Destroys an existing Pod.
 - Waits for the Pod to be ready.
 
+如果您有三个副本，并且一旦您提交新的 YAML 资源 Kubernetes：
 - 使用新的容器镜像创建一个 Pod。
 - 摧毁一个现有的 Pod。
 - 等待 Pod 准备就绪。
@@ -966,13 +860,13 @@ Kubernetes repeats each cycle only after the new Pod is ready to receive traffic
 
 If you have 10 Pods and the Pod takes 2 seconds to be ready and 20 to shut down this is what happens:
 
-如果您有 10 个 Pod，并且 Pod 需要 2 秒才能准备好，需要 20 秒才能关闭，则会发生以下情况：
 
 1. The first Pod is created, and a previous Pod is terminated.
 2. The new Pod takes 2 seconds to be ready after that Kubernetes creates a new one.
 3. In the meantime, the Pod being terminated stays terminating for 20 seconds
 
-1.第一个Pod被创建，前一个Pod被终止。
+如果您有 10 个 Pod，并且 Pod 需要 2 秒才能准备好，需要 20 秒才能关闭，则会发生以下情况：
+1. 第一个Pod被创建，前一个Pod被终止。
 2. Kubernetes 创建一个新 Pod 后，新 Pod 需要 2 秒才能准备好。
 3. 同时，被终止的 Pod 保持终止状态 20 秒
 
@@ -1104,7 +998,7 @@ As a user disconnects from old Pods, you can gradually decrease the replicas and
 
 ## Summary
 
-＃＃ 概括
+## 概括
 
 You should pay attention to Pods being deleted from your cluster since their IP address might be still used to route traffic.
 
@@ -1132,3 +1026,4 @@ You can manually remove the older deployments as soon as the long-running task i
 
 Or you could automatically scale your deployment to zero replicas to automate the process. 
 或者您可以自动将您的部署扩展到零副本以自动化该过程。
+
