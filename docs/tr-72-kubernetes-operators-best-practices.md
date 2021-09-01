@@ -1,8 +1,8 @@
 # Kubernetes Operators Best Practices
-June 11, 2019 Raffaele Spazzoli
 
-# Kubernetes 运营商最佳实践
-2019 年 6 月 11 日拉斐尔·斯帕佐利
+# Kubernetes Operators 最佳实践
+
+2019 年 6 月 11 日 From https://cloud.redhat.com/blog/kubernetes-operators-best-practices
 
 ## Introduction
 
@@ -28,7 +28,7 @@ During the reconcile cycle, the controller has the responsibility to check that 
 
 This approach is referred to as [level-based, as opposed to edge-based](http://venkateshabbarapu.blogspot.com/2013/03/edge-triggered-vs-level-triggered.html). Deriving from electronic circuit design, level-based triggering is the idea of receiving an event (an interrupt for example) and reacting to a state, while edge-based triggering is the idea of receiving an event and reacting to a state variation.
 
-这种方法被称为[基于级别，而不是基于边缘](http://venkateshabbarapu.blogspot.com/2013/03/edge-triggered-vs-level-triggered.html)。源自电子电路设计，基于电平的触发是接收事件（例如中断）并对状态做出反应的想法，而基于边缘的触发是接收事件并对状态变化做出反应的想法。
+这种方法被称为[基于电平触发，而不是基于边缘](http://venkateshabbarapu.blogspot.com/2013/03/edge-triggered-vs-level-triggered.html)。源自电子电路设计，基于电平的触发是接收事件（例如中断）并对状态做出反应的想法，而基于边缘的触发是接收事件并对状态变化做出反应的想法。
 
 Level-based triggering, while arguably less efficient because it forces to re-evaluate the entire state as opposed to just what changed, is considered more suitable in complex and unreliable environments where signals can be lost or retransmitted multiple times.
 
@@ -46,7 +46,7 @@ Also relevant to this discussion is an understanding of the lifecycle of an API 
 
 When a request is made to the API server, especially for create and delete requests, the request goes through the above phases. Notice that it is possible to specify webhooks to perform [mutations and validations](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#experimenting-with-admission-webhooks). If the operator introduces a new [custom resource definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRD), we may have to also define those webhooks. Normally, the operator process would also implement the webhook endpoint by listening on a port.
 
-当向 API 服务器发出请求时，尤其是创建和删除请求时，请求会经历上述阶段。请注意，可以指定 webhooks 来执行 [突变和验证](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#experimenting-with-admission-webhooks)。如果运营商引入了新的【自定义资源定义】(https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRD)，我们可能还需要定义那些 webhooks。通常，操作员进程也会通过侦听端口来实现 webhook 端点。
+当向 API 服务器发出请求时，尤其是创建和删除请求时，请求会经历上述阶段。请注意，可以指定 webhooks 来执行 [突变和验证](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/#experimenting-with-admission-webhooks)。如果Operators引入了新的 自定义资源，我们可能还需要定义那些 webhooks。通常，操作员进程也会通过侦听端口来实现 webhook 端点。
 
 This document presents a set of best practices to keep in mind when designing and developing operators using the [Operator SDK](https://github.com/operator-framework/operator-sdk).
 
@@ -54,7 +54,7 @@ This document presents a set of best practices to keep in mind when designing an
 
 If your operator introduces a new CRD, the Operator SDK will assist in scaffolding it. To make sure your CRD conforms to the Kubernetes best practices for extending the API, follow [these conventions](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions. md#api-conventions).
 
-如果您的运营商引入了新的 CRD，运营商 SDK 将协助搭建它。为确保您的 CRD 符合 Kubernetes 扩展 API 的最佳实践，请遵循 [这些约定](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions。 md#api-约定）。
+如果您的Operators引入了新的 CRD，Operators SDK 将协助搭建它。为确保您的 CRD 符合 Kubernetes 扩展 API 的最佳实践，请遵循 [这些约定](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions。 md#api-约定）。
 
 All the best practices mentioned in this article are portrayed in an example available at the [operator-utils](https://github.com/redhat-cop/operator-utils) repository. This repository is also a library which you can import in your operator, giving you some useful utilities for writing your own operators.
 
@@ -66,23 +66,23 @@ Finally this set of best practices for writing operators represents my personal 
 
 # Creating watches
 
-# 创建手表
+# 创建 watch 
 
 As we said, controllers watch events on resources. This is done through the abstraction of watches.
 
-正如我们所说，控制器在资源上观察事件。这是通过手表的抽象来完成的。
+正如我们所说，控制器在资源上观察事件。这是通过 watch 的抽象来完成的。
 
 A watch is a mechanism to receive events of a certain type (either a core type or a CRD). A watch is normally created by specifying the following:
-
-watch 是一种接收某种类型（核心类型或 CRD）事件的机制。通常通过指定以下内容来创建监视：
 
 1. The resource type to watch.
 2. A handler. The handler maps the events on the watched type to one or more instances for which the reconcile cycle is called. Watched type and instance type do not have to be the same.
 3. A predicate. The predicate is a set of functions that can be customized to filter only the events we are interested in.
 
-1.要观看的资源类型。
+watch 是一种接收某种类型（核心类型或 CRD）事件的机制。通常通过指定以下内容来创建监视：
+
+1. 要观看的资源类型。
 2. 处理程序。处理程序将被监视类型上的事件映射到一个或多个调用协调周期的实例。监视类型和实例类型不必相同。
-3. 谓词。谓词是一组可以自定义的函数，可以只过滤我们感兴趣的事件。
+3. 断言。断言是一组可以自定义的函数，可以只过滤我们感兴趣的事件。
 
 The diagram below captures these contexts:
 
@@ -91,10 +91,11 @@ The diagram below captures these contexts:
 ![](https://assets.openshift.com/hubfs/Imported_Blog_Media/rafop4.png)
 
 In general, opening multiple watches on the same kind is acceptable because the watches are multiplexed. 
-一般情况下，在同一种情况下打开多个手表是可以接受的，因为手表是多路复用的。
+一般情况下，在同一种情况下打开多个 watch 是可以接受的，因为观察者是多路复用的。
+
 You should also try to filter events as much as possible. Here, for example, is a predicate that filters events on secrets. Here we are interested only in events on secrets of type _kubernetes.io/tls_ which have a certain annotation:
 
-您还应该尝试尽可能多地过滤事件。例如，这里是一个过滤秘密事件的谓词。在这里，我们只对 _kubernetes.io/tls_ 类型的机密事件感兴趣，这些事件具有特定的注释：
+您还应该尝试尽可能多地过滤事件。例如，这里是一个过滤秘密事件的断言。在这里，我们只对 _kubernetes.io/tls_ 类型的机密事件感兴趣，这些事件具有特定的注释：
 
 ```
 isAnnotatedSecret := predicate.Funcs{
@@ -134,18 +135,16 @@ isAnnotatedSecret := predicate.Funcs{
          return value == "true"
      },
  }
- ```
+```
 
- 
 A very common pattern is to observe events on the resources that we create (and we own) and to schedule a reconcile cycle on the CR that owns those resources, to do so you can use the _EnqueueRequestForOwner_ handler. This can be done as follows:
 
 一个非常常见的模式是观察我们创建（并且我们拥有）的资源上的事件，并在拥有这些资源的 CR 上安排协调周期，为此您可以使用 _EnqueueRequestForOwner_ 处理程序。这可以按如下方式完成：
 
 ```
 err = c.Watch(&source.Kind{Type: &examplev1alpha1.MyControlledType{}}, &handler.EnqueueRequestForOwner{})
- ```
+```
 
- 
 A less common situation is where an event is multicast to several destination resources. Consider the case of a controller that injects TLS secrets into routes based on an annotation. Multiple routes in the same namespace can point to the same secret. If the secret changes we need to update all the routes. So, we would need to create a watch on the secret type and the handler would look as follows:
 
 一种不太常见的情况是将事件多播到多个目标资源。考虑控制器根据注释将 TLS 秘密注入路由的情况。同一个命名空间中的多个路由可以指向同一个秘密。如果秘密发生变化，我们需要更新所有路由。因此，我们需要在秘密类型上创建一个监视，处理程序将如下所示：
@@ -184,9 +183,9 @@ type enqueueRequestForReferecingRoutes struct {
          }
  }
 
- ```
+```
 
- 
+
 # Resource Reconciliation Cycle
 
 # 资源协调周期
@@ -203,19 +202,19 @@ Below is a model of what a common reconciliation cycle for a controller that man
 
 As we can see from the diagram the main steps are:
 
-从图中我们可以看出，主要步骤是：
-
 1. Retrieve the interested CR instance.
 2. Manage the instance validity. We don’t want to try to do anything on an instance that does not carry valid values.
 3. Manage instance initialization. If some values of the instance are not initialized, this section will take care of it.
 4. Manage instance deletion. If the instance is being deleted and we need to do some specific clean up, this is where we manage it. 
+
+从图中我们可以看出，主要步骤是：
+
 1. 检索感兴趣的 CR 实例。
 2. 管理实例有效性。我们不想尝试在不携带有效值的实例上做任何事情。
 3. 管理实例初始化。如果实例的某些值未初始化，本节将处理它。
 4. 管理实例删除。如果实例被删除，我们需要做一些特定的清理，这就是我们管理它的地方。
 5. Manage controller business logic. If the above steps all pass we can finally manage and execute the reconciliation logic for this particular instance. This will be very controller specific.
-
-5. 管理控制器业务逻辑。如果上述步骤全部通过，我们最终可以管理和执行此特定实例的对帐逻辑。这将是非常特定于控制器的。
+6. 管理控制器业务逻辑。如果上述步骤全部通过，我们最终可以管理和执行此特定实例的对帐逻辑。这将是非常特定于控制器的。
 
 In the rest of this section you can find some more in depth considerations on each of these steps.
 
@@ -227,10 +226,10 @@ In the rest of this section you can find some more in depth considerations on ea
 
 Two types of validation exist: Syntactic validation and semantic validation.
 
-存在两种类型的验证：句法验证和语义验证。
-
 - **Syntactic validation** happens by defining OpenAPI validation rules.
 - **Semantic Validation** can be done by creating a ValidatingAdmissionConfiguration.
+
+存在两种类型的验证：句法验证和语义验证。
 
 - **语法验证**通过定义 OpenAPI 验证规则进行。
 - **语义验证**可以通过创建一个 ValidatingAdmissionConfiguration 来完成。
@@ -265,14 +264,14 @@ Semantic validation is about making sure that fields have sensible values and th
 
 If semantic validation is required by the given CR, then the operator should expose a webhook and [ValidatingAdmissionConfiguration](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/) should be created as part of the operator deployment.
 
-如果给定的 CR 需要语义验证，那么操作员应该公开一个 webhook 并且应该创建 [ValidatingAdmissionConfiguration](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)作为运营商部署的一部分。
+如果给定的 CR 需要语义验证，那么操作员应该公开一个 webhook 并且应该创建 [ValidatingAdmissionConfiguration](https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/)作为Operators部署的一部分。
 
 The following limitations currently exist:
 
-目前存在以下限制：
-
 1. In OpenShift 3.11, ValidatingAdmissionConfigurations are in tech preview (they are supported from 4.1 on).
 2. The Operator SDK has no support for scaffolding webhooks. This can be worked around using [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder), for example: kubebuilder webhook --group crew --version v1 --kind FirstMate --type=mutating --operations =create,update
+
+目前存在以下限制：
 
 1. 在 OpenShift 3.11 中，ValidatingAdmissionConfigurations 处于技术预览中（从 4.1 开始支持它们）。
 2. Operator SDK 不支持脚手架 webhook。这可以使用 [kubebuilder](https://github.com/kubernetes-sigs/kubebuilder) 解决，例如：kubebuilder webhook --group team --version v1 --kind FirstMate --type=mutating --operations =创建，更新
@@ -293,10 +292,8 @@ The code of the controller calling the validation method should look like this:
 if ok, err := r.IsValid(instance); !ok {<br/>
      return r.ManageError(instance, err)<br/>
  }
+```
 
- ```
-
- 
 Note that if the validation fails, we manage this error as described in the [error management section](http://cloud.redhat.com#error).
 
 请注意，如果验证失败，我们会按照 [错误管理部分](http://cloud.redhat.com#error) 中的描述管理此错误。
@@ -309,24 +306,23 @@ _IsValid_ 函数将类似于：
 func (r *ReconcileMyCRD) IsValid(obj metav1.Object) (bool, error) {<br/>
      mycrd, ok := obj.(*examplev1alpha1.MyCRD)<br/>
  // validation logic<br/>
- }
+}
+```
 
- ```
 
- 
 ## Resource Initialization
 
 ## 资源初始化
 
 One of the nice conventional features of Kubernetes resources is that only the needed fields of a resource are to be initialized by the user and the others can be omitted. This is the point of view of the user, but from the point of view of the coder and anyone debugging what is happening with a resource it is actually better to have all the fields initialized.This allows writing code without always checking if a field is defined, and allows for easy troubleshooting of error situations.In order to initialize resources there are two options:
 
-Kubernetes 资源的一个很好的传统特性是，用户只需要初始化资源所需的字段，其他字段可以省略。这是用户的观点，但从编码人员和任何调试资源正在发生的事情的人的角度来看，实际上最好初始化所有字段。这允许编写代码而不必总是检查字段是否正确定义，并允许轻松排除错误情况。为了初始化资源，有两个选项：
-
 1. Define an initialization method in the controller.
 2. Define a MutatingAdmissionConfiguration (the procedure issimilar to the ValidatingAdmissionConfiguration).
 
+Kubernetes 资源的一个很好的传统特性是，用户只需要初始化资源所需的字段，其他字段可以省略。这是用户的观点，但从编码人员和任何调试资源正在发生的事情的人的角度来看，实际上最好初始化所有字段。这允许编写代码而不必总是检查字段是否正确定义，并允许轻松排除错误情况。为了初始化资源，有两个选项：
+
 1. 在控制器中定义一个初始化方法。
-2. 定义一个 MutatingAdmissionConfiguration（过程类似于 ValidatingAdmissionConfiguration）。
+2. 定义一个 MutatingAdmissionConfiguration（过程类似于ValidatingAdmissionConfiguration）。
 
 **Recommendation:** define an initialization method in the controller. The code should look like this sample:
 
@@ -341,9 +337,7 @@ if ok := r.IsInitialized(instance); !ok {<br/>
      }<br/>
      return reconcile.Result{}, nil<br/>
  }
-
- ``` 
-
+```
 
 Notice that if the result is true, we update the instance and then we return. This will trigger another immediate reconcile cycle. This second time the initialize method will return false, and the logic will continue to the next phase.
 
@@ -355,7 +349,7 @@ Notice that if the result is true, we update the instance and then we return. Th
 
 If resources are not owned by the CR controlled by your operator but action needs to be taken when that CR is deleted, you must use a [finalizer](https://kubernetes.io/docs/tasks/access-kubernetes-api/ custom-resources/custom-resource-definitions/#finalizers).
 
-如果资源不属于您的运营商控制的 CR，但需要在删除该 CR 时采取行动，您必须使用 [finalizer](https://kubernetes.io/docs/tasks/access-kubernetes-api/自定义资源/自定义资源定义/#finalizers）。
+如果资源不属于您的Operators控制的 CR，但需要在删除该 CR 时采取行动，您必须使用 finalizer。
 
 Finalizers provide a mechanism to inform the Kubernetes control plane that an action needs to take place before the standard Kubernetes garbage collection logic can be performed.
 
@@ -367,21 +361,23 @@ One or more finalizers can be set on resources. Each controller should manage it
 
 This is the pseudo code algorithm to manage finalizers:
 
+1. If needed, add finalizers during the initialization method.
+
+2. If the resource is being deleted, check if the finalizer owned by this controller is present.
+3. If not, return
+4. If yes, execute the cleanup logic
+   1. If successful, update the CR by removing the finalizer.
+   2. If failure decide whether to retry or give up and likely leave garbage (in some situations this can be acceptable).
+
 这是管理终结器的伪代码算法：
 
-1. If needed, add finalizers during the initialization method.
-2. If the resource is being deleted, check if the finalizer owned by this controller is present.
-1. If not, return
-2. If yes, execute the cleanup logic
-       1. If successful, update the CR by removing the finalizer.
-       2. If failure decide whether to retry or give up and likely leave garbage (in some situations this can be acceptable).
-
 1. 如果需要，在初始化方法期间添加终结器。
+
 2. 如果正在删除资源，请检查该控制器拥有的终结器是否存在。
-1.如果没有，返回
-2. 如果是，则执行清理逻辑
-      1. 如果成功，则通过移除终结器来更新 CR。
-      2.如果失败决定是重试还是放弃并可能留下垃圾（在某些情况下这是可以接受的）。
+3. 如果没有，返回
+4. 如果是，则执行清理逻辑
+   1. 如果成功，则通过移除终结器来更新 CR。
+      2 .  如果失败决定是重试还是放弃并可能留下垃圾（在某些情况下这是可以接受的）。
 
 If your clean-up logic requires creating additional resources, do keep in mind that additional resources cannot be created in a namespace that is being deleted. A To-be-deleted namespace will trigger a delete of all in the included resources including your CR with the finalizer.
 
@@ -392,26 +388,42 @@ See an example of the code here:
 在此处查看代码示例：
 
 ```
-if util.IsBeingDeleted(instance) {<br/>
-     if !util.HasFinalizer(instance, controllerName) {<br/>
-         return reconcile.Result{}, nil<br/>
-     }<br/>
-     err := r.manageCleanUpLogic(instance)<br/>
-     if err != nil {<br/>
-         log.Error(err, "unable to delete instance", "instance", instance)<br/>
-         return r.ManageError(instance, err)<br/>
-     }<br/>
-     util.RemoveFinalizer(instance, controllerName)<br/>
-     err = r.GetClient().Update(context.TODO(), instance)<br/>
-     if err != nil {<br/>
-         log.Error(err, "unable to update instance", "instance", instance)<br/>
-         return r.ManageError(instance, err)<br/>
-     }<br/>
-     return reconcile.Result{}, nil<br/>
- }
- ```
+if util.IsBeingDeleted(instance) {
 
- 
+    if !util.HasFinalizer(instance, controllerName) {
+
+        return reconcile.Result{}, nil
+
+    }
+
+    err := r.manageCleanUpLogic(instance)
+
+    if err != nil {
+
+        log.Error(err, "unable to delete instance", "instance", instance)
+
+        return r.ManageError(instance, err)
+
+    }
+
+    util.RemoveFinalizer(instance, controllerName)
+
+    err = r.GetClient().Update(context.TODO(), instance)
+
+    if err != nil {
+
+        log.Error(err, "unable to update instance", "instance", instance)
+
+        return r.ManageError(instance, err)
+
+    }
+
+    return reconcile.Result{}, nil
+
+}
+```
+
+
 ## Resource Ownership
 
 ## 资源所有权
@@ -430,9 +442,8 @@ This behavior is instrumental to guarantee correct [garbage collection](https://
 
 ```
 controllerutil.SetControllerReference(owner, obj, r.GetScheme())
- ```
+```
 
- 
 Some other rules around ownership are the following:
 
 关于所有权的其他一些规则如下：
@@ -442,10 +453,10 @@ Some other rules around ownership are the following:
 3. A cluster level resource cannot own a namespaced resource.
 4. A cluster level object can own another cluster level object.
 
-1. 拥有者对象必须与拥有者在同一个命名空间中。
-2. 命名空间资源可以拥有集群级别的资源。我们在这里必须小心。一个对象可以有一个所有者列表。如果多个命名空间对象拥有相同的集群级对象，那么每个对象都应该声明所有权而不覆盖其他人的所有权（上面的 API 会处理这个问题）。
-3. 集群级资源不能拥有命名空间资源。
-4. 一个集群级别的对象可以拥有另一个集群级别的对象。
+5. 拥有者对象必须与拥有者在同一个命名空间中。
+6. 命名空间资源可以拥有集群级别的资源。我们在这里必须小心。一个对象可以有一个所有者列表。如果多个命名空间对象拥有相同的集群级对象，那么每个对象都应该声明所有权而不覆盖其他人的所有权（上面的 API 会处理这个问题）。
+7. 集群级资源不能拥有命名空间资源。
+8. 一个集群级别的对象可以拥有另一个集群级别的对象。
 
 ## Managing status
 
@@ -469,42 +480,38 @@ This way when we can update the status of our resources without increasing the _
 
 ```
 err = r.Status().Update(context.Background(), instance)
- ``` 
+```
 
 
 Now we need to write a predicate for our watch (see the section about watches for more details on these concepts) that will discard updates that did not increase the _ResourceGeneration_, this can be done using the [GenerationChangePredicate](https://github. com/operator-framework/operator-sdk/blob/master/pkg/predicate/predicate.go#L27)
 
-现在我们需要为我们的手表编写一个谓词（有关这些概念的更多详细信息，请参阅关于手表的部分），它将丢弃没有增加 _ResourceGeneration_ 的更新，这可以使用 [GenerationChangePredicate](https://github.com) 来完成。 com/operator-framework/operator-sdk/blob/master/pkg/predicate/predicate.go#L27)
+现在我们需要为我们的 watch 编写一个断言（有关这些概念的更多详细信息，请参阅关于 watch 的部分），它将丢弃没有增加 _ResourceGeneration_ 的更新，这可以使用 [GenerationChangePredicate](https://github.com) 来完成。 com/operator-framework/operator-sdk/blob/master/pkg/predicate/predicate.go#L27)
 
 If you recall, if we are using a finalizer, the finalizer should be set up at initialization time. If the finalizer is the only item that is being initialized, since it is a portion of the metadata field, the _ResourceGeneration_ will not be incremented. To account for that use case, the following  is a modified version of the predicate:
 
-如果你还记得，如果我们使用终结器，终结器应该在初始化时设置。如果终结器是唯一被初始化的项目，因为它是元数据字段的一部分，_ResourceGeneration_ 将不会增加。考虑到该用例，以下是谓词的修改版本：
+如果你还记得，如果我们使用终结器，终结器应该在初始化时设置。如果终结器是唯一被初始化的项目，因为它是元数据字段的一部分，_ResourceGeneration_ 将不会增加。考虑到该用例，以下是断言的修改版本：
 
 ```
-<span>type</span> <span>resourceGenerationOrFinalizerChangedPredicate</span> <span>struct</span> {<br/>	predicate.<span>Funcs</span><br/>}<br/><br /><span>// Update implements default UpdateEvent filter for validating resource version change</span><br/><span>func</span> (<span>resourceGenerationOrFinalizerChangedPredicate</span>) <span>Update</span >(<span>e</span> event.<span>UpdateEvent</span>) <span>bool</span> {<br/>	<span>if</span> <span>e</span> .<span>MetaNew</span>.<span>GetGeneration</span>() <span>==</span> <span>e</span>.<span>MetaOld</span>.<span> GetGeneration</span>() <span>&&</span> <span>reflect</span>.<span>DeepEqual</span>(<span>e</span>.<span>MetaNew</span> .<span>GetFinalizers</span>(), <span>e</span>.<span>MetaOld</span>.<span>GetFinalizers</span>()) {<br/>		<span>return </span> <span>false</span><br/>	}<br/>	<span>return</span> <span>true</span><br/>}
- ```
+type resourceGenerationOrFinalizerChangedPredicate struct {	predicate.Funcs}// Update implements default UpdateEvent filter for validating resource version changefunc (resourceGenerationOrFinalizerChangedPredicate) Update(e event.UpdateEvent) bool {	if e.MetaNew.GetGeneration() == e.MetaOld.GetGeneration() && reflect.DeepEqual(e.MetaNew.GetFinalizers(), e.MetaOld.GetFinalizers()) {		return false	}	return true}
+```
 
- 
+
 Now assuming your status is as follows:
 
 现在假设您的状态如下：
 
 ```
-<span>type</span> <span>MyCRStatus</span> <span>struct</span> {<br/>	<span>// +kubebuilder:validation:Enum=Success,Failure</span><br />	<span>Status</span>     <span>string</span>      <span>`json:"status,omitempty"`</span><br/>	<span>LastUpdate</span> metav1.<span >Time</span> <span>`json:"lastUpdate,omitempty"`</span><br/>	<span>Reason</span>     <span>string</span>      <span>`json:"reason ,omitempty"`</span><br/>}
- ```
+type MyCRStatus struct {	// +kubebuilder:validation:Enum=Success,Failure	Status     string      `json:"status,omitempty"`	LastUpdate metav1.Time `json:"lastUpdate,omitempty"`	Reason     string      `json:"reason,omitempty"`}
+```
 
- 
+
 You can write a function to manage the successful execution of a reconciliation cycle:
 
 您可以编写一个函数来管理对帐周期的成功执行：
 
 ``` 
-``
-<span><br/>func</span> (<span>r</span> <span>*</span><span>ReconcilerBase</span>) <span>ManageSuccess</span>(<span> obj</span> metav1.<span>Object</span>) (reconcile.<span>Result</span>, <span>error</span>) {<br/>	<span>runtimeObj</span> , <span>ok</span> <span>:=</span> (<span>obj</span>).(runtime.<span>Object</span>)<br/>	<span>if< /span> <span>!</span><span>ok</span> {<br/>		<span>log</span>.<span>Error</span>(<span>errors</span> .<span>New</span>(<span>"not a runtime.Object"</span>), <span>"passed object was not a runtime.Object"</span>, <span>"object" </span>, <span>obj</span>)<br/>		<span>return</span> reconcile.<span>Result</span>{}, <span>nil</span><br/ >	}<br/>	<span>if</span> <span>reconcileStatusAware</span>, <span>updateStatus</span> <span>:=</span> (<span>obj</span>) .(apis.<span>ReconcileStatusAware</span>); <span>updateStatus</span> {<br/>		<span>status</span> <span>:=</span> apis.<span>ReconcileStatus</span>{<br/>			<span>LastUpdate< /span>: <span>metav1</span>.<span>Now</span>(),<br/>			<span>Reason</span>:     <span>""</span>,<br/ >			<span>Status</span>:     <span>"Success"</span>,<br/>		}<br/>		<span>reconcileStatusAware</span>.<span>SetReconcileStatus</span>(<span >status</span>)<br/>		<span>err</span> <span>:=</span> <span>r</span>.<span>GetClient</span>().<span >Status</span>().<span>Update</span>(<span>context</span>.<span>Background</span>(), <span>runtimeObj</span>)<br/ >		<span>if</span> <span>err</span> <span>!=</span> <span>nil</span> {<br/>			<span>log</span>.<span >Error</span>(<span>err</span>, <span>"unable to update status"</span>)<br/>			<span>return</span> reconcile.<span>Result</ span>{<br/>				<span>RequeueAfter</span>: <span>time</span>.<span>Second</span>,<br/>				<span>Requeue</span>:      <span> true</span>,<br/>			}, <span>nil</span><br/>		}<br/>	} <span>else</span> {< br/>		<span>log</span>.<span>Info</span>(<span>"object is not RecocileStatusAware, not setting status"</span>)<br/>	}<br/>	<span >return</span> reconcile.<span>Result</span>{}, <span>nil</span><br/>}<br/>
+func (r *ReconcilerBase) ManageSuccess(obj metav1.Object) (reconcile.Result, error) {	runtimeObj, ok := (obj).(runtime.Object)	if !ok {		log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)		return reconcile.Result{}, nil	}	if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {		status := apis.ReconcileStatus{			LastUpdate: metav1.Now(),			Reason:     "",			Status:     "Success",		}		reconcileStatusAware.SetReconcileStatus(status)		err := r.GetClient().Status().Update(context.Background(), runtimeObj)		if err != nil {			log.Error(err, "unable to update status")			return reconcile.Result{				RequeueAfter: time.Second,				Requeue:      true,			}, nil		}	} else {		log.Info("object is not RecocileStatusAware, not setting status")	}	return reconcile.Result{}, nil}
 ```
-
-<span><br/>func</span> (<span>r</span> <span>*</span><span>ReconcilerBase</span>) <span>ManageSuccess</span>(<span> obj</span> metav1.<span>Object</span>) (reconcile.<span>Result</span>, <span>error</span>) {<br/> <span>runtimeObj</span> , <span>ok</span> <span>:=</span> (<span>obj</span>).(runtime.<span>Object</span>)<br/> <span>if< /span> <span>!</span><span>ok</span> {<br/> <span>log</span>.<span>Error</span>(<span>errors</span> .<span>New</span>(<span>"not a runtime.Object"</span>), <span>"passed object was not a runtime.Object"</span>, <span>"object" </span>, <span>obj</span>)<br/> <span>return</span> 协调。<span>Result</span>{}, <span>nil</span><br/ > }<br/> <span>if</span> <span>reconcileStatusAware</span>, <span>updateStatus</span> <span>:=</span> (<span>obj</span>) .(apis.<span>ReconcileStatusAware</span>); <span>updateStatus</span> {<br/> <span>status</span> <span>:=</span> apis.<span>ReconcileStatus</span>{<br/> <span>LastUpdate< /span>: <span>metav1</span>.<span>Now</span>(),<br/> <span>原因</span>: <span>""</span>,<br/ > <span>状态</span>：<span>"成功"</span>,<br/> }<br/> <span>reconcileStatusAware</span>.<span>SetReconcileStatus</span>(<span >status</span>)<br/> <span>err</span> <span>:=</span> <span>r</span>.<span>GetClient</span>().<span >状态</span>().<span>更新</span>(<span>context</span>.<span>背景</span>(), <span>runtimeObj</span>)<br/ > <span>if</span> <span>err</span> <span>!=</span> <span>nil</span> {<br/> <span>log</span>.<span >错误</span>(<span>err</span>, <span>“无法更新状态”</span>)<br/><span>返回</span>和解。<span>结果</ span>{<br/> <span>RequeueAfter</span>: <span>time</span>.<span>Second</span>,<br/> <span>Requeue</span>: <span> true</span>,<br/> }, <span>nil</span><br/> }<br/> } <span>else</span> {< br/> <span>日志</span>.<span>信息</span>（<span>“对象不是 RecocileStatusAware，未设置状态”</span>）<br/> }<br/> <span >return</span> 和解。<span>Result</span>{}, <span>nil</span><br/>}<br/>
-``
 
 ## Managing errors
 
@@ -521,8 +528,8 @@ There are two ways to notify the user of an error and they can be both used at t
 1. Return the error in the status of the object.
 2. Generate an [event](https://kubernetes.io/blog/2018/01/reporting-errors-using-kubernetes-events/) describing the error.
 
-1.返回对象状态的错误。
-2. 生成描述错误的 [event](https://kubernetes.io/blog/2018/01/reporting-errors-using-kubernetes-events/)。
+3. 返回对象状态的错误。
+4. 生成描述错误的 [event](https://kubernetes.io/blog/2018/01/reporting-errors-using-kubernetes-events/)。
 
 Also, if you believe the error might resolve itself, you should reschedule a reconciliation cycle after a certain period of time. Often, the period of time is increased exponentially so that at every iteration the reconciliation event is scheduled farther in the future (for example twice the amount of time every time).
 
@@ -533,60 +540,8 @@ We are going to build on top of status management to handle error conditions:
 我们将建立在状态管理之上来处理错误情况：
 
 ```
-func (r *ReconcilerBase) ManageError(obj metav1.Object, issue error) (reconcile.Result, error) {<br/>
-     runtimeObj, ok := (obj).(runtime.Object)<br/>
-     if !ok {<br/>
-         log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)<br/>
-         return reconcile.Result{}, nil<br/>
-     }<br/>
-     var retryInterval time.Duration<br/>
-     r.GetRecorder().Event(runtimeObj, "Warning", "ProcessingError", issue.Error())<br/>
-     if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {<br/>
-         lastUpdate := reconcileStatusAware.GetReconcileStatus().LastUpdate.Time<br/>
-         lastStatus := reconcileStatusAware.GetReconcileStatus().Status<br/>
-         status := apis.ReconcileStatus{<br/>
-             LastUpdate: metav1.Now(),<br/>
-             Reason:     issue.Error(),<br/>
-             Status:     "Failure",<br/>
-         }<br/>
-         reconcileStatusAware.SetReconcileStatus(status)<br/>
-         err := r.GetClient().Status().Update(context.Background(), runtimeObj)<br/>
-         if err != nil {<br/>
-             log.Error(err, "unable to update status")<br/>
-             return reconcile.Result{<br/>
-                 RequeueAfter: time.Second,<br/>
-                 Requeue:      true,<br/>
-             }, nil<br/>
-         }<br/>
-         if lastUpdate.IsZero() || lastStatus == "Success" {<br/>
-             retryInterval = time.Second<br/>
-         } else {<br/>
-             retryInterval = status.LastUpdate.Sub(lastUpdate).Round(time.Second)<br/>
-         }<br/>
-     } else {<br/> 
-``
-
-log.Info("object is not RecocileStatusAware, not setting status")<br/>
-         retryInterval = time.Second<br/>
-     }<br/>
-     return reconcile.Result{<br/>
-         RequeueAfter: time.Duration(math.Min(float64(retryInterval.Nanoseconds()*2), float64(time.Hour.Nanoseconds()*6))),<br/>
-         Requeue:      true,<br/>
-     }, nil<br/>
-}
-
-log.Info("对象不是 RecocileStatusAware，未设置状态")<br/>
-        retryInterval = time.Second<br/>
-    }<br/>
-    返回 reconcile.Result{<br/>
-        RequeueAfter: time.Duration(math.Min(float64(retryInterval.Nanoseconds()*2), float64(time.Hour.Nanoseconds()*6))),<br/>
-        重新排队：真的，<br/>
-    }, 无<br/>
-}
-
+func (r *ReconcilerBase) ManageError(obj metav1.Object, issue error) (reconcile.Result, error) {    runtimeObj, ok := (obj).(runtime.Object)    if !ok {        log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)        return reconcile.Result{}, nil    }    var retryInterval time.Duration    r.GetRecorder().Event(runtimeObj, "Warning", "ProcessingError", issue.Error())    if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {        lastUpdate := reconcileStatusAware.GetReconcileStatus().LastUpdate.Time        lastStatus := reconcileStatusAware.GetReconcileStatus().Status        status := apis.ReconcileStatus{            LastUpdate: metav1.Now(),            Reason:     issue.Error(),            Status:     "Failure",        }        reconcileStatusAware.SetReconcileStatus(status)        err := r.GetClient().Status().Update(context.Background(), runtimeObj)        if err != nil {            log.Error(err, "unable to update status")            return reconcile.Result{                RequeueAfter: time.Second,                Requeue:      true,            }, nil        }        if lastUpdate.IsZero() || lastStatus == "Success" {            retryInterval = time.Second        } else {            retryInterval = status.LastUpdate.Sub(lastUpdate).Round(time.Second)        }    } else {        log.Info("object is not RecocileStatusAware, not setting status")        retryInterval = time.Second    }    return reconcile.Result{        RequeueAfter: time.Duration(math.Min(float64(retryInterval.Nanoseconds()*2), float64(time.Hour.Nanoseconds()*6))),        Requeue:      true,    }, nil}
 ```
-
-``
 
 Notice that this function immediately sends an event, then it updates the status with the error condition. Finally, a calculation is made as to when to reschedule the next attempt. The algorithm tries to double the time every loop, up to a maximum of six hours.
 
@@ -598,7 +553,7 @@ Six hours is a good cap, because events last about six hours, so this should mak
 
 # Conclusion
 
-＃ 结论
+## 结论
 
 The practices presented in this blog deal with the most common concerns of designing a Kubernetes operator, and should allow you to write an operator that you feel confident putting in production. Very likely, this is just the beginning and it is easy to foresee that more frameworks and tools will come to life to help writing operators.
 

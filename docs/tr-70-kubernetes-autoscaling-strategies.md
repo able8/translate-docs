@@ -4,17 +4,13 @@
 
 Published in June 2021
 
-2021 年 6 月出版
-
-![Architecting Kubernetes clusters — choosing the best autoscaling strategy](https://learnk8s.io/a/0498c77a1b646af0f3fc42a03f0171fb.svg)
-
 *TL;DR: Scaling pods and nodes in a Kubernetes cluster could take several  minutes with the default settings. Learn how to size your cluster nodes, configure the Horizontal and Cluster Autoscaler, and overprovision your cluster for faster scaling.*
 
-*TL;DR：在默认设置下，扩展 Kubernetes 集群中的 pod 和节点可能需要几分钟时间。了解如何调整集群节点的大小、配置水平和集群自动缩放器以及过度配置集群以加快扩展速度。*
+*TL;DR：在默认设置下，扩展 Kubernetes 集群中的 pod 和节点可能需要几分钟时间。了解如何调整集群节点的大小、配置水平和集群自动伸缩以及过度配置集群以加快扩展速度。*
 
 **Table of content:**
 
-**表中的内容：**
+**目录：**
 
 - [When autoscaling pods goes wrong](https://learnk8s.io/kubernetes-autoscaling-strategies#when-autoscaling-pods-goes-wrong)
 - [How the Cluster Autoscaler works in Kubernetes](https://learnk8s.io/kubernetes-autoscaling-strategies#how-the-cluster-autoscaler-works-in-kubernetes)
@@ -26,7 +22,7 @@ Published in June 2021
 - [Why not autoscaling based on memory or CPU?](https://learnk8s.io/kubernetes-autoscaling-strategies#why-not-autoscaling-based-on-memory-or-cpu-)
 
 - [当自动缩放 pod 出错时](https://learnk8s.io/kubernetes-autoscaling-strategies#when-autoscaling-pods-goes-wrong)
-- [集群自动缩放器在 Kubernetes 中的工作原理](https://learnk8s.io/kubernetes-autoscaling-strategies#how-the-cluster-autoscaler-works-in-kubernetes)
+- [集群自动伸缩在 Kubernetes 中的工作原理](https://learnk8s.io/kubernetes-autoscaling-strategies#how-the-cluster-autoscaler-works-in-kubernetes)
 - [探索 pod 自动缩放前置时间](https://learnk8s.io/kubernetes-autoscaling-strategies#exploring-pod-autoscaling-lead-time)
 - [选择 Kubernetes 节点的最佳实例大小](https://learnk8s.io/kubernetes-autoscaling-strategies#choosing-the-optimal-instance-size-for-a-kubernetes-node)
 - [Kubernetes 集群中的过度配置节点](https://learnk8s.io/kubernetes-autoscaling-strategies#overprovisioning-nodes-in-your-kubernetes-cluster)
@@ -42,39 +38,33 @@ In Kubernetes, several things are referred to as "autoscaling", including:
 - [Vertical Pod Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler).
 - [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler).
 
-- [Horizo​​ntal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizo​​ntal-pod-autoscale/)。
-- [垂直 Pod 自动缩放器](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler)。
-- [集群自动缩放器](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)。
+- [水平 Pod 自动伸缩](https://kubernetes.io/docs/tasks/run-application/horizo​​ntal-pod-autoscale/)。
+- [垂直 Pod 自动伸缩](https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler)。
+- [集群自动伸缩](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)。
 
 Those autoscalers belong to different categories because they address other concerns.
 
-这些自动缩放器属于不同的类别，因为它们解决了其他问题。
+这些自动伸缩属于不同的类别，因为它们解决了其他问题。
 
 The **Horizontal Pod Autoscaler (HPA)** is designed to increase the replicas in your deployments.
 
-**Horizo​​ntal Pod Autoscaler (HPA)** 旨在增加部署中的副本。
+**Horizontal Pod Autoscaler (HPA)** 旨在增加部署中的副本。
 
 As your application receives more traffic, you could have the autoscaler  adjusting the number of replicas to handle more requests.
 
-随着您的应用程序收到更多流量，您可以让自动缩放器调整副本数量以处理更多请求。
+随着您的应用程序收到更多流量，您可以让自动伸缩调整副本数量以处理更多请求。
 
 - ![The Horizontal Pod Autoscaler (HPA) inspects metrics such as memory and CPU at a regular interval.](https://learnk8s.io/a/b39ab8cff1b9a9f443aa9ef798c9dffb.svg)
 
-  1/2
+The Horizontal Pod Autoscaler (HPA) inspects metrics such as memory and CPU at a regular interval.
 
-1/2
+Horizontal Pod Autoscaler (HPA) 会定期检查内存和 CPU 等指标。
 
-  The Horizontal Pod Autoscaler (HPA) inspects metrics such as memory and CPU at a regular interval.
 
-Horizo​​ntal Pod Autoscaler (HPA) 会定期检查内存和 CPU 等指标。
-
-  Next
-
-下一个
 
 The **Vertical Pod Autoscaler (VPA)** is useful when you can't create more copies of your Pods, but you still need to handle more traffic.
 
-当您无法创建更多 Pod 副本但仍需要处理更多流量时，**垂直 Pod 自动缩放器 (VPA)** 非常有用。
+当您无法创建更多 Pod 副本但仍需要处理更多流量时，**垂直 Pod 自动伸缩 (VPA)** 非常有用。
 
 As an example, you can't scale a database (easily) only by adding more Pods.
 
@@ -90,21 +80,13 @@ But you can make a database handle more connections by increasing the memory and
 
 That's precisely the purpose of the vertical autoscaler — increasing the size of the Pod.
 
-这正是垂直自动缩放器的目的——增加 Pod 的大小。
+这正是垂直自动伸缩的目的——增加 Pod 的大小。
 
 - ![You can't only increase the number of replicas to scale a database in Kubernetes.](https://learnk8s.io/a/41e2f5317f5dc17ddd0fcb9846ceeae1.svg)
 
-  1/2
-
-1/2
-
-  You can't only increase the number of replicas to scale a database in Kubernetes.
+You can't only increase the number of replicas to scale a database in Kubernetes.
 
 您不能仅通过增加副本数量来扩展 Kubernetes 中的数据库。
-
-  Next
-
-下一个
 
 Lastly, the **Cluster Autoscaler (CA)**.
 
@@ -118,19 +100,11 @@ If there are too many empty nodes, the cluster autoscaler will remove them to re
 
 如果空节点过多，集群自动扩缩器会移除它们以降低成本。
 
-- ![When you scale your pods in Kubernetes, you might run out of space.](https://learnk8s.io/a/7389f3827b5ba289475c2f03893b0d9e.svg)
+![When you scale your pods in Kubernetes, you might run out of space.](https://learnk8s.io/a/7389f3827b5ba289475c2f03893b0d9e.svg)
 
-  1/3
-
-1/3
-
-  When you scale your pods in Kubernetes, you might run out of space.
+When you scale your pods in Kubernetes, you might run out of space.
 
 当您在 Kubernetes 中扩展 Pod 时，您可能会耗尽空间。
-
-  Next
-
-下一个
 
 While these components all "autoscale" something, they are entirely unrelated to each other.
 
@@ -146,7 +120,7 @@ And they are developed in separate projects and can be used independently from e
 
 **However, scaling your cluster requires fine-tuning the setting of the autoscalers so that they work in concert.**
 
-**但是，扩展集群需要微调自动缩放器的设置，以便它们协同工作。**
+**但是，扩展集群需要微调自动伸缩的设置，以便它们协同工作。**
 
 Let's have a look at an example.
 
@@ -167,16 +141,16 @@ You provisioned a cluster with a single node of 8GB and 2 vCPU — it should  be
 ![A single node cluster with 8GB of memory and 2 vCPU](https://learnk8s.io/a/458f663479dc10d60ba31648fbb225fb.svg)
 
 You deploy a single Pod and set up: 
-您部署单个 Pod 并设置：
 1. An **Horizontal Pod Autoscaler** adds a replica every 10 incoming requests (i.e. if you have 40 concurrent requests, it should scale to 4 replicas).
 2. A **Cluster Autoscaler** to create more nodes when resources are low.
 
-1. **Horizo​​ntal Pod Autoscaler** 每 10 个传入请求添加一个副本（即如果您有 40 个并发请求，它应该扩展到 4 个副本）。
+您部署单个 Pod 并设置：
+1. **Horizontal Pod Autoscaler** 每 10 个传入请求添加一个副本（即如果您有 40 个并发请求，它应该扩展到 4 个副本）。
 2. **Cluster Autoscaler** 在资源不足时创建更多节点。
 
 > The Horizontal Pod Autoscaler can scale the replicas in your deployment  using Custom Metrics such as the queries per second (QPS) from an  Ingress controller.
 
-> Horizo​​ntal Pod Autoscaler 可以使用自定义指标来扩展部署中的副本，例如来自 Ingress 控制器的每秒查询数 (QPS)。
+> Horizontal Pod Autoscaler 可以使用自定义指标来扩展部署中的副本，例如来自 Ingress 控制器的每秒查询数 (QPS)。
 
 You start driving traffic 30 concurrent requests to your cluster and observe the following:
 
@@ -186,7 +160,7 @@ You start driving traffic 30 concurrent requests to your cluster and observe the
 2. Two more Pods are created.
 3. The **Cluster Autoscaler** doesn't trigger — no new node is created in the cluster.
 
-1. **Horizo​​ntal Pod Autoscaler** 开始扩展 Pod。
+1. **Horizontal Pod Autoscaler** 开始扩展 Pod。
 2. 又创建了两个 Pod。
 3. **Cluster Autoscaler** 不会触发——没有在集群中创建新节点。
 
@@ -198,23 +172,22 @@ It makes sense since there's enough space for one more Pod in that node.
 
 You further increase the traffic to 40 concurrent requests and observe again:
 
-您进一步将流量增加到 40 个并发请求并再次观察：
-
 1. The **Horizontal Pod Autoscaler** creates one more Pod.
 2. The Pod is pending and cannot be deployed.
 3. The **Cluster Autoscaler** triggers creating a new node.
 4. The node is provisioned in 4 minutes. After that, the pending Pod is deployed.
 
-1. **Horizo​​ntal Pod Autoscaler** 再创建一个 Pod。
+您进一步将流量增加到 40 个并发请求并再次观察：
+1. **Horizontal Pod Autoscaler** 再创建一个 Pod。
 2. Pod 处于待定状态，无法部署。
 3. **Cluster Autoscaler** 触发创建新节点。
 4. 节点在 4 分钟内开通。之后，挂起的 Pod 被部署。
 
-- ![When you scale to four replicas, the fourth replicas isn't deployed in the first node.Instead, it stays "Pending".](https://learnk8s.io/a/1ffab2618c899dd9652e55ea8c973404.svg)
+![When you scale to four replicas, the fourth replicas isn't deployed in the first node.Instead, it stays "Pending".](https://learnk8s.io/a/1ffab2618c899dd9652e55ea8c973404.svg)
 
 相反，它保持“待定”。](https://learnk8s.io/a/1ffab2618c899dd9652e55ea8c973404.svg)
 
-  1/2 When you scale to four replicas, the fourth replicas isn't deployed in the first node. Instead, it stays *"Pending"*. Next
+1/2 When you scale to four replicas, the fourth replicas isn't deployed in the first node. Instead, it stays *"Pending"*. Next
 
 1/2 当您扩展到四个副本时，第四个副本不会部署在第一个节点中。相反，它保持*“待定”*。下一个
 
@@ -232,15 +205,14 @@ However, on the same node, **the operating system and the kubelet require memory
 
 In a Kubernetes worker node's memory and CPU are divided into:
 
-在 Kubernetes 工作节点中，内存和 CPU 分为：
-
 1. **Resources needed to run the operating system and system daemons** such as SSH, systemd, etc.
 2. **Resources necessary to run Kubernetes agents** such as the Kubelet, the container runtime, [node problem detector](https://github.com/kubernetes/node-problem-detector), etc.
 3. **Resources available to Pods.**
 4. **Resources reserved to the [eviction threshold](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#eviction-thresholds)**.
 
+在 Kubernetes 工作节点中，内存和 CPU 分为：
 1. **运行操作系统和系统守护进程所需的资源**如SSH、systemd等。
-2.**运行Kubernetes代理所需的资源**，如Kubelet、容器运行时、【节点问题检测器】(https://github.com/kubernetes/node-problem-detector)等。
+2. **运行Kubernetes代理所需的资源**，如Kubelet、容器运行时、【节点问题检测器】(https://github.com/kubernetes/node-problem-detector)等。
 3. **Pod 可用的资源。**
 4. **资源保留给[驱逐阈值](https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/#eviction-thresholds)**。
 
@@ -252,11 +224,11 @@ As you can guess, [all of those quotas are customisable](https://kubernetes.io/d
 
 In an 8GB and 2 vCPU virtual machine, you can expect:
 
-在 8GB 和 2 个 vCPU 虚拟机中，您可以预期：
-
 - 100MB of memory and 0.1 vCPU to be reserved for the operating system.
 - 1.8GB of memory and 0.07 vCPU to be reserved for the Kubelet.
 - 100MB of memory for the eviction threshold.
+
+在 8GB 和 2 个 vCPU 虚拟机中，您可以预期：
 
 - 为操作系统保留 100MB 内存和 0.1 个 vCPU。
 - 为 Kubelet 保留 1.8GB 内存和 0.07 个 vCPU。
@@ -283,7 +255,7 @@ After accounting for all the extra resources, you have space left for only three
 考虑到所有额外资源后，您只剩下三个 Pod 的空间。
 
 ```
-OS                  100MB, 0.1 vCPU   +
+ OS                  100MB, 0.1 vCPU   +
  Kubelet             1.8GB, 0.07 vCPU  +
  Eviction threshold  100MB, 0 vCPU     +
  Daemonsets          128MB, 0.1 vCPU   +
@@ -296,9 +268,9 @@ OS                  100MB, 0.1 vCPU   +
  Pod requests        1.5GB, 0.25 vCPU
  ======================================
  Total (4 Pods)        6GB, 1vCPU
- ```
+```
 
- 
+
 The fourth stays "Pending" unless it can be deployed on another node.
 
 第四个保持“待定”，除非它可以部署在另一个节点上。
@@ -317,7 +289,7 @@ The fourth stays "Pending" unless it can be deployed on another node.
 
 **The Cluster Autoscaler doesn't look at memory or CPU available when it triggers the autoscaling.**
 
-**集群自动缩放器在触发自动缩放时不会查看可用的内存或 CPU。**
+**集群自动伸缩在触发自动缩放时不会查看可用的内存或 CPU。**
 
 Instead, the Cluster Autoscaler reacts to events and checks for any unschedulable Pods every 10 seconds.
 
@@ -333,19 +305,20 @@ For example, when a Pod requests 1 vCPU but the cluster has only 0.5 vCPU  avail
 
 **That's when the Cluster Autoscaler initiates creating a new node.** 
 **那时 Cluster Autoscaler 开始创建新节点。**
-The Cluster Autoscaler scans the current cluster and [checks if any of the unschedulable pods would fit on in a new node.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md# what-are-expanders)
 
-Cluster Autoscaler 扫描当前集群并[检查任何不可调度的 pod 是否适合新节点。](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#什么是扩展器）
+The Cluster Autoscaler scans the current cluster and [checks if any of the unschedulable pods would fit on in a new node.](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+
+Cluster Autoscaler 扫描当前集群并[检查任何不可调度的 pod 是否适合新节点。](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#什么是扩展器)
 
 If you have a cluster with several node types (often also referred to as  node groups or node pools), the Cluster Autoscaler will pick one of them using the following strategies:
-
-如果您的集群具有多种节点类型（通常也称为节点组或节点池），则集群自动缩放器将使用以下策略选择其中一种：
 
 - **Random** — picks a node type at random. This is the default strategy.
 - **Most pods** — selects the node group that would schedule the most pods.
 - **Least waste** — selects the node group with the least idle CPU after scale-up.
 - **Price** — select the node group that will cost the least (only works for GCP at the moment).
 - **Priority** — selects the node group with the highest priority (and you manually assign priorities).
+
+如果您的集群具有多种节点类型（通常也称为节点组或节点池），则集群自动伸缩将使用以下策略选择其中一种：
 
 - **Random** — 随机选择一个节点类型。这是默认策略。
 - **大多数 pods** — 选择将调度最多 pod 的节点组。
@@ -359,7 +332,7 @@ Once the node type is identified, the Cluster Autoscaler will call the relevant 
 
 If you're using AWS, the Cluster Autoscaler will provision a new EC2 instance.
 
-如果您使用的是 AWS，集群自动缩放器将预置一个新的 EC2 实例。
+如果您使用的是 AWS，集群自动伸缩将预置一个新的 EC2 实例。
 
 On Azure, it will create a new Virtual Machine and on GCP, a new Compute Engine.
 
@@ -391,21 +364,21 @@ It might take several minutes to provision a new compute unit.
 
 The time it takes to create a new Pod on a new Node is determined by four major factors:
 
-在新节点上创建新 Pod 所需的时间由四个主要因素决定：
-
 1. **Horizontal Pod Autoscaler reaction time.**
 2. **Cluster Autoscaler reaction time.**
 3. **Node provisioning time.**
 4. **Pod creation time.**
 
-1. **Horizo​​ntal Pod Autoscaler 反应时间。**
+在新节点上创建新 Pod 所需的时间由四个主要因素决定：
+
+1. **Horizontal Pod Autoscaler 反应时间。**
 2. **Cluster Autoscaler 反应时间。**
 3. **节点配置时间。**
 4. **Pod 创建时间。**
 
 By default, [pods' CPU and memory usage is scraped by kubelet every 10 seconds.](https://github.com/kubernetes/kubernetes/blob/2da8d1c18fb9406bd8bb9a51da58d5f8108cb8f7/pkg/kubelet/kubelet.go#L1855)
 
-默认情况下，[pods 的 CPU 和内存使用情况每 10 秒被 kubelet 抓取一次。](https://github.com/kubernetes/kubernetes/blob/2da8d1c18fb9406bd8bb9a51da58d5f8108cb8f7/pkg/kubelet/kubelet.go)#L
+默认情况下，[pods 的 CPU 和内存使用情况每 10 秒被 kubelet 抓取一次。](https://github.com/kubernetes/kubernetes/blob/2da8d1c18fb9406bd8bb9a51da58d5f8108cb8f7/pkg/kubelet/kubelet.go)
 
 [Every minute, the Metrics Server will aggregate those metrics](https://github.com/kubernetes-sigs/metrics-server/blob/master/FAQ.md#how-often-metrics-are-scraped) and expose them to the rest of the Kubernetes API.
 
@@ -417,7 +390,7 @@ Horizo​​ntal Pod Autoscaler 控制器负责检查指标并决定扩大或缩
 
 By default, the [Horizontal Pod Autoscaler checks Pods metrics every 15 seconds.](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#how-does-the-horizontal-pod- autoscaler-work)
 
-默认情况下，[Horizo​​ntal Pod Autoscaler 每 15 秒检查一次 Pods 指标。](https://kubernetes.io/docs/tasks/run-application/horizo​​ntal-pod-autoscale/#how-does-the-horizo​​ntal-pod-自动缩放工作）
+默认情况下，[Horizo​​ntal Pod Autoscaler 每 15 秒检查一次 Pods 指标。](https://kubernetes.io/docs/tasks/run-application/horizo​​ntal-pod-autoscale/#how-does-the-horizo​​ntal-pod-自动缩放工作)
 
 ![The Horizontal Pod Autoscaler can take up to 1 minute and a half to trigger the autoscaling](https://learnk8s.io/a/f147f5a02119f3320d03c689397f3b48.svg)
 
@@ -473,16 +446,16 @@ If you're not caching your container images, downloading an image from the conta
 
 So the total timing for trigger the autoscaling when there is no space in the current cluster is:
 
-因此，当前集群中没有空间时触发自动缩放的总时间为：
-
 1. The Horizontal Pod Autoscaler might take up to 1m30s to increase the number of replicas.
 2. The Cluster Autoscaler should take less than 30 seconds for a cluster with  less than 100 nodes and less than a minute for a cluster with more than  100 nodes.
 3. The cloud provider might take 3 to 5 minutes to create the computer resource. 
+4. The container runtime could take up to 30 seconds to download the container image.
+
+因此，当前集群中没有空间时触发自动缩放的总时间为：
+
 1. Horizo​​ntal Pod Autoscaler 可能需要长达 1 分 30 秒来增加副本数量。
 2. 对于少于 100 个节点的集群，Cluster Autoscaler 应该花费不到 30 秒的时间，对于超过 100 个节点的集群，集群 Autoscaler 应该花费不到 1 分钟。
 3. 云提供商可能需要 3 到 5 分钟来创建计算机资源。
-4. The container runtime could take up to 30 seconds to download the container image.
-
 4. 容器运行时可能需要长达 30 秒才能下载容器映像。
 
 In the worse case, with a small cluster, you have:
@@ -490,15 +463,15 @@ In the worse case, with a small cluster, you have:
 在最坏的情况下，对于一个小集群，你有：
 
 ```
-HPA delay:          1m30s +
+ HPA delay:          1m30s +
  CA delay:           0m30s +
  Cloud provider:     4m    +
  Container runtime:  0m30s +
  =========================
  Total               6m30s
- ```
+```
 
- 
+
 With a cluster with more than 100 nodes, the total delay could be up to 7 minutes.
 
 对于超过 100 个节点的集群，总延迟可能高达 7 分钟。
@@ -513,16 +486,16 @@ With a cluster with more than 100 nodes, the total delay could be up to 7 minute
 
 You could change:
 
-你可以改变：
-
 - The refresh time for the Horizontal Pod Autoscaler (controlled by the `--horizontal-pod-autoscaler-sync-period` flag, default is 15 seconds).
 - The interval for metrics scraping in the Metrics Server (controlled by the `metric-resolution` flag, default 60 seconds).
 - How frequently the cluster autoscaler scans for unscheduled Pods (controlled by the `scan-interval` flag, default 10 seconds).
 - How you cache the image on the local node ([with a tool such as kube-fledged](https://github.com/senthilrch/kube-fledged)).
 
+你可以改变：
+
 - Horizo​​ntal Pod Autoscaler 的刷新时间（由 `--horizo​​ntal-pod-autoscaler-sync-period` 标志控制，默认为 15 秒）。
 - 指标服务器中指标抓取的间隔（由`metric-resolution` 标志控制，默认为 60 秒）。
-- 集群自动缩放器扫描未调度 Pod 的频率（由 `scan-interval` 标志控制，默认 10 秒）。
+- 集群自动伸缩扫描未调度 Pod 的频率（由 `scan-interval` 标志控制，默认 10 秒）。
 - 如何在本地节点上缓存图像（[使用 kube-fledged 等工具](https://github.com/senthilrch/kube-fledged)）。
 
 But even if you were to tune those settings to a tiny number, you will still be limited by the cloud provider provisioning time.
@@ -539,10 +512,10 @@ Since you can't change the provisioning time, you will need a workaround this ti
 
 You could try two things:
 
-你可以尝试两件事：
-
 1. **Avoid creating new nodes,** if possible.
 2. **Creating nodes proactively** so that they are already provisioned when you need them.
+
+你可以尝试两件事：
 
 1. **尽可能避免创建新节点**。
 2. **主动创建节点**，以便在您需要时已配置它们。
@@ -605,7 +578,7 @@ Also, every time a node is added to the cluster, several pods can be deployed.
 
 There is less chance to trigger *again* the Cluster Autoscaler (and provisioning new compute units on the cloud provider).
 
-很少有机会*再次*触发集群自动缩放器（并在云提供商上配置新的计算单元）。
+很少有机会*再次*触发集群自动伸缩（并在云提供商上配置新的计算单元）。
 
 Choosing large instance types also has another benefit.
 
@@ -651,10 +624,10 @@ Some cloud providers limit the number of Pods to 110 (i.e. GKE). Others have lim
 
 You should also consider:
 
-您还应该考虑：
-
 1. **Blast radius** — if you have only a few nodes, then the impact of a failing node is bigger than if you have many nodes.
 2. **Autoscaling is less cost-effective** as the next increment is a (very) large node.
+
+您还应该考虑：
 
 1. **爆炸半径**——如果你只有几个节点，那么一个失败节点的影响比你有很多节点的影响更大。
 2. **自动缩放的成本效益较低**，因为下一个增量是一个（非常）大的节点。
@@ -675,10 +648,10 @@ Assuming you have selected the right instance type for your cluster, you might  
 ## 在 Kubernetes 集群中过度配置节点
 If you can afford to have a spare node available at all times, you could:
 
-如果您可以负担得起随时可用的备用节点，您可以：
-
 1. Create a node and leave it empty.
 2. As soon as there's a Pod in the empty node, you create another empty node.
+
+如果您可以负担得起随时可用的备用节点，您可以：
 
 1. 创建一个节点并将其留空。
 2. 一旦空节点中有一个 Pod，你就创建另一个空节点。
@@ -733,19 +706,10 @@ As soon as a real Pod is created, you could evict the placeholder and deploy the
 
 一旦创建了真正的 Pod，您就可以驱逐占位符并部署 Pod。
 
-- ![In an overprovisioned cluster you have a Pod as a placeholder with low priority.](https://learnk8s.io/a/5297ee233777a99ef552f288299ffb80.svg)
+- ![In an overprovisioned cluster you have a Pod as a placeholder with low priority.](https://learnk8s.io/a/5297ee233777a99ef552f288299ffb80.svg)  In an overprovisioned cluster you have a Pod as a placeholder with low priority.
 
-  1/3
-
-1/3
-
-  In an overprovisioned cluster you have a Pod as a placeholder with low priority.
 
 在过度配置的集群中，您有一个 Pod 作为低优先级的占位符。
-
-  Next
-
-下一个
 
 Notice how this time, you still have to wait 5 minutes for the node to be  added to the cluster, but you can keep using the current node.
 
@@ -764,8 +728,6 @@ In the meantime, a new node is provisioned in the background.
 **可以使用运行永久休眠的 pod 的部署来配置过度配置。**
 
 overprovision.yaml
-
-过度配置.yaml
 
 ```
 apiVersion: apps/v1
@@ -789,9 +751,9 @@ apiVersion: apps/v1
              requests:
                cpu: '1739m'
                memory: '5.9G'
- ```
+```
 
- 
+
 **You should pay extra attention to the memory and CPU requests.**
 
 **您应该特别注意内存和 CPU 请求。**
@@ -836,8 +798,6 @@ You can configure Pod Priorities in your cluster with a PodPriorityClass:
 
 priority.yaml
 
-优先级.yaml
-
 ```
 apiVersion: scheduling.k8s.io/v1beta1
  kind: PriorityClass
@@ -846,19 +806,19 @@ apiVersion: scheduling.k8s.io/v1beta1
  value: -1
  globalDefault: false
  description: 'Priority class used by overprovisioning.'
- ```
+```
 
- 
+
 Since the default priority for a Pod is `0` and the `overprovisioning` PriorityClass has a value of `-1`, those Pods are the first to be evicted when the cluster runs out of space.
 
 由于 Pod 的默认优先级为 `0` 并且 `overprovisioning` PriorityClass 的值为 `-1`，当集群空间不足时，这些 Pod 将首先被驱逐。
 
 PriorityClass also has two optional fields: `globalDefault` and `description`.
 
-PriorityClass 还有两个可选字段：`globalDefault` 和 `description`。
-
 - The `description` is a human-readable memo of what the PriorityClass is about.
 - The `globalDefault` field indicates that the value of this PriorityClass should be used for Pods without a `priorityClassName`. Only one PriorityClass with `globalDefault` set to `true` can exist in the system.
+
+PriorityClass 还有两个可选字段：`globalDefault` 和 `description`。
 
 - `description` 是关于 PriorityClass 内容的可读备忘录。
 - `globalDefault` 字段表示这个 PriorityClass 的值应该用于没有 `priorityClassName` 的 Pod。系统中只能存在一个“globalDefault”设置为“true”的PriorityClass。
@@ -868,8 +828,6 @@ You can assign the priority to your sleep Pod with:
 您可以使用以下命令为 sleep Pod 分配优先级：
 
 overprovision.yaml
-
-过度配置.yaml
 
 ```
 apiVersion: apps/v1
@@ -894,18 +852,16 @@ apiVersion: apps/v1
              requests:
                cpu: '1739m'
                memory: '5.9G'
- ```
+```
 
- 
+
 *The setup is complete!*
 
 *设置完成！*
 
-When there are not enough resources in the cluster, the pause pod is preempted, and new pods take their place. 
-当集群中没有足够的资源时，暂停 Pod 会被抢占，并由新的 Pod 取而代之。
-Since the pause pod become unschedulable, it forces the Cluster Autoscaler to add more nodes to the cluster.
+When there are not enough resources in the cluster, the pause pod is preempted, and new pods take their place.  Since the pause pod become unschedulable, it forces the Cluster Autoscaler to add more nodes to the cluster.
 
-由于暂停 pod 变得不可调度，它会强制集群自动缩放器向集群添加更多节点。
+当集群中没有足够的资源时，暂停 Pod 会被抢占，并由新的 Pod 取而代之。由于暂停 pod 变得不可调度，它会强制集群自动伸缩向集群添加更多节点。
 
 *Now that you're ready to overprovision your cluster, it's worth having a look at optimising your applications for scaling.*
 
@@ -925,7 +881,7 @@ Kubernetes 调度程序根据节点的内存和 CPU 请求将 Pod 分配（或�
 
 Hence, it's essential to set the correct requests on your workloads, or you  might be triggering your autoscaler too late (or too early).
 
-因此，必须为您的工作负载设置正确的请求，否则您可能会过晚（或过早）触发自动缩放器。
+因此，必须为您的工作负载设置正确的请求，否则您可能会过晚（或过早）触发自动伸缩。
 
 *Let's have a look at an example.*
 
@@ -957,11 +913,11 @@ The scheduler uses the Pod's memory and CPU requests to select the best node bef
 
 So you could:
 
-所以你可以：
-
 1. **Set requests lower than the actual average usage.**
 2. Be conservative and **assign requests closer to the limit.**
 3. **Set requests to match the actual limits.**
+
+所以你可以：
 
 1. **设置低于实际平均使用量的请求。**
 2. 保守一点，**分配更接近限制的请求。**
@@ -969,17 +925,9 @@ So you could:
 
 - ![You could assign requests that are lower than the average app consumption.](https://learnk8s.io/a/27a58b9c37d2e1ba3386f02c85c110ab.svg)
 
-  1/3
-
-1/3
-
-  You could assign requests that are **lower** than the average app consumption.
+   You could assign requests that are **lower** than the average app consumption.
 
 您可以分配**低于**平均应用消耗的请求。
-
-  Next
-
-下一个
 
 **Defining requests lower than the actual usage is problematic since your nodes will be often overcommitted.**
 
@@ -1056,7 +1004,8 @@ When your requests match the app's actual usage, the scheduler will pack your po
 1. If there are resources in the Node, the app will use them before returning to the baseline consumption.
 2. If the node is low on resources, the pod will compete for resources (CPU), and the kubelet might try to evict the Pod (memory).
 
-1.如果Node中有资源，app会在回到基线消耗之前使用它们。
+1. 如果Node中有资源，app会在回到基线消耗之前使用它们。
+
 2. 如果节点资源不足，Pod 会争抢资源（CPU），kubelet 可能会尝试驱逐 Pod（内存）。
 
 *Should you use Guaranteed or Burstable quality of Service?*
@@ -1065,10 +1014,10 @@ When your requests match the app's actual usage, the scheduler will pack your po
 
 *It depends.*
 
-*这取决于。*
-
 1. **Use Guaranteed Quality of Service (requests equal to limits) when you want to minimise rescheduling and evictions for the Pod.** An excellent example is a Pod for a database.
 2. **Use Burstable Quality of Service (requests to match actual average usage)  when you want to optimise your cluster and use the resources wisely.** If you have a web application or a REST API, you might want to use a Burstable Quality of Service.
+
+*这取决于。*
 
 1. **当您想最小化 Pod 的重新调度和驱逐时，请使用有保证的服务质量（请求等于限制）。** 一个很好的例子是数据库的 Pod。
 2. **当您想要优化集群并明智地使用资源时，请使用 Burstable Quality of Service（请求匹配实际平均使用情况）。**如果您有 Web 应用程序或 REST API，您可能想要使用 Burstable服务质量。
@@ -1113,13 +1062,13 @@ If they are lower than half of the node's capacity, the Cluster Autoscaler will 
 
 Before the node is removed, the Cluster Autoscaler executes:
 
-在移除节点之前，Cluster Autoscaler 执行：
-
 - [Pods checks](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a- node) to make sure that the Pods can be moved to other nodes.
 - [Nodes checks](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#i-have-a-couple-of-nodes-with-low-utilization-but- they-are-not-scaled-down-why) to prevent nodes from being destroyed prematurely.
 
-- [Pods 检查](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-节点）以确保 Pod 可以移动到其他节点。
-- [节点检查](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#i-have-a-couple-of-nodes-with-low-utilization-but-它们不是按比例缩小的原因）以防止节点过早被破坏。
+在移除节点之前，Cluster Autoscaler 执行：
+
+- Pods 检查 以确保 Pod 可以移动到其他节点。
+- 节点检查 以防止节点过早被破坏。
 
 If the checks pass, the Cluster Autoscaler will remove the node from the cluster.
 
@@ -1131,11 +1080,11 @@ If the checks pass, the Cluster Autoscaler will remove the node from the cluster
 
 **CPU or memory-based cluster autoscalers don't care about pods when scaling up and down.**
 
-**CPU 或基于内存的集群自动缩放器在扩展和缩减时不关心 Pod。**
+**CPU 或基于内存的集群自动伸缩在扩展和缩减时不关心 Pod。**
 
 Imagine having a cluster with a single node and setting up the autoscaler to  add a new node with the CPU reaches 80% of the total capacity.
 
-想象一下，有一个只有一个节点的集群，并设置自动缩放器来添加一个新节点，CPU 达到总容量的 80%。
+想象一下，有一个只有一个节点的集群，并设置自动伸缩来添加一个新节点，CPU 达到总容量的 80%。
 
 You decide to create a Deployment with 3 replicas.
 
@@ -1159,21 +1108,21 @@ You have a full node idling — not great.
 
 **Usage of these type of autoscalers with Kubernetes is discouraged.**
 
-**不鼓励在 Kubernetes 中使用这些类型的自动缩放器。**
+**不鼓励在 Kubernetes 中使用这些类型的自动伸缩。**
 
 ## Summary
 
-＃＃ 概括
+## 概括
 
 Defining and implementing a successful scaling strategy in Kubernetes requires you to master several subjects:
-
-在 Kubernetes 中定义和实施成功的扩展策略需要您掌握几个主题：
 
 - Allocatable resources in Kubernetes nodes.
 - Fine-tuning refresh intervals for Metrics Server, Horizontal Pod Autoscaler and Cluster Autoscalers.
 - Architecting cluster and node instance sizes.
 - Container image caching.
 - Application benchmarking and profiling.
+
+在 Kubernetes 中定义和实施成功的扩展策略需要您掌握几个主题：
 
 - Kubernetes 节点中的可分配资源。
 - 微调 Metrics Server、Horizo​​ntal Pod Autoscaler 和 Cluster Autoscalers 的刷新间隔。
@@ -1182,4 +1131,6 @@ Defining and implementing a successful scaling strategy in Kubernetes requires y
 - 应用程序基准测试和分析。
 
 But with the proper monitoring tool, you can iteratively test your scaling  strategy and tune the speed and costs of your cluster. 
+
 但是使用适当的监控工具，您可以反复测试您的扩展策略并调整集群的速度和成本。
+

@@ -12,9 +12,9 @@ Kubernetes offers two convenient abstractions to deploy apps: Services and Deplo
 
 Kubernetes 提供了两个方便的抽象来部署应用程序：服务和部署。部署描述了在任何给定时间应该运行的应用程序的种类和数量的方法。每个应用程序都部署为一个 Pod，并为其分配一个 IP 地址。另一方面，服务类似于负载均衡器。它们旨在将流量分配到一组 Pod。
 
-- ![In this diagram you have three instances of a single app and a load balancer.](https://learnk8s.io/a/c62b844725054a789045193c5af5d245.svg)
+![In this diagram you have three instances of a single app and a load balancer.](https://learnk8s.io/a/c62b844725054a789045193c5af5d245.svg)
 
-  1/4 In this diagram you have three instances of a single app and a load balancer. Next
+1/4 In this diagram you have three instances of a single app and a load balancer. Next
 
 1/4 在此图中，您有单个应用程序和负载均衡器的三个实例。下一个
 
@@ -26,9 +26,9 @@ Every time you make a request to a Service, one of the IP addresses from that li
 
 每次向服务发出请求时，都会选择该列表中的一个 IP 地址并将其用作目标。
 
-- ![Imagine issuing a request such as curl 10.96.45.152 to the Service.](https://learnk8s.io/a/bfad9f818be47768e09e7e87aa9eafbe.svg)
+![Imagine issuing a request such as curl 10.96.45.152 to the Service.](https://learnk8s.io/a/bfad9f818be47768e09e7e87aa9eafbe.svg)
 
-  1/3 Imagine issuing a request such as `curl 10.96.45.152` to the Service. Next
+1/3 Imagine issuing a request such as `curl 10.96.45.152` to the Service. Next
 
 1/3 想象一下向 Service 发出一个诸如“curl 10.96.45.152”之类的请求。下一个
 
@@ -52,11 +52,11 @@ When it wants to make a request, that request is sent to the backend Service whi
 
 当它想要发出请求时，该请求被发送到具有不变 IP 地址的后端服务。
 
-- ![The red Pod issues a request to an internal (beige) component.Instead of choosing one of the Pod as the destination, the red Pod issues the request to the Service.](https://learnk8s.io/a/5a7c9a225135ac88cfa88fbb24b8745b.svg)
+![The red Pod issues a request to an internal (beige) component.Instead of choosing one of the Pod as the destination, the red Pod issues the request to the Service.](https://learnk8s.io/a/5a7c9a225135ac88cfa88fbb24b8745b.svg)
 
 红色 Pod 没有选择其中一个 Pod 作为目的地，而是向 Service 发出请求。](https://learnk8s.io/a/5a7c9a225135ac88cfa88fbb24b8745b.svg)
 
-  1/4 The red Pod issues a request to an internal (beige) component. Instead of  choosing one of the Pod as the destination, the red Pod issues the  request to the Service. Next
+1/4 The red Pod issues a request to an internal (beige) component. Instead of  choosing one of the Pod as the destination, the red Pod issues the  request to the Service. Next
 
 1/4 红色 Pod 向内部（米色）组件发出请求。红色 Pod 不是选择其中一个 Pod 作为目的地，而是向 Service 发出请求。下一个
 
@@ -112,11 +112,11 @@ The Service IP address is used only as a placeholder — that's why there is no 
 
 服务 IP 地址仅用作占位符 — 这就是为什么没有进程侦听 IP 地址或端口的原因。
 
-- ![Consider a cluster with three Nodes.Each Node has a Pod deployed.](https://learnk8s.io/a/a3e195d7ee05e50797e7444aacabc31d.svg)
+![Consider a cluster with three Nodes.Each Node has a Pod deployed.](https://learnk8s.io/a/a3e195d7ee05e50797e7444aacabc31d.svg)
 
 每个节点都部署了一个 Pod。](https://learnk8s.io/a/a3e195d7ee05e50797e7444aacabc31d.svg)
 
-  1/8 Consider a cluster with three Nodes. Each Node has a Pod deployed. Next
+1/8 Consider a cluster with three Nodes. Each Node has a Pod deployed. Next
 
 1/8 考虑一个具有三个节点的集群。每个节点都部署了一个 Pod。下一个
 
@@ -169,6 +169,7 @@ Now that you're familiar with how Services work let's have a look at more exciti
 
 ## Long-lived connections don't scale out of the box in Kubernetes 
 ## 长期连接不会在 Kubernetes 中开箱即用
+
 With every HTTP request started from the front-end to the backend, a new TCP connection is opened and closed.
 
 每个 HTTP 请求从前端开始到后端，都会打开和关闭一个新的 TCP 连接。
@@ -267,7 +268,7 @@ Since all subsequent requests are channelled through the same TCP connection, [i
 
 - ![The red Pod issues a request to the Service.](https://learnk8s.io/a/3d9434491906a7f16962b3ca12cf896e.svg)
 
-  1/5 The red Pod issues a request to the Service. Next
+1/5 The red Pod issues a request to the Service. Next
 
 1/5 红色 Pod 向 Service 发出请求。下一个
 
@@ -318,7 +319,7 @@ The client-side code that executes the load balancing should follow the logic be
 3. 当您需要提出请求时，选择其中一个打开的连接
 4. 定期刷新端点列表并删除或添加新连接
 
-- ![Instead of having the red Pod issuing a request to your Service, you could load balance the request client-side.](https://learnk8s.io/a/bd7b0d3f4b3d509a113719b1f5d12e48.svg)
+![Instead of having the red Pod issuing a request to your Service, you could load balance the request client-side.](https://learnk8s.io/a/bd7b0d3f4b3d509a113719b1f5d12e48.svg)
 
 1/4 Instead of having the red Pod issuing a request to your Service, you could load balance the request client-side. Next
 
@@ -485,7 +486,7 @@ ClusterIP 服务是具有一些额外功能的 Headless 服务：
 - 控制平面为其分配一个 IP 地址
 - kube-proxy 遍历所有 IP 地址并创建 iptables 规则
 
-So you could ignore kube-proxy all together and always use the list of  endpoints collected by the Headless Service to load balance requests  client-side.
+So you could ignore kube-proxy all together and always use the list of  endpoints collected by the Headless Service to load balance requests client-side.
 
 因此，您可以完全忽略 kube-proxy，并始终使用 Headless Service 收集的端点列表来负载平衡客户端请求。
 
