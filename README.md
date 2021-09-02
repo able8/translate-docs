@@ -60,7 +60,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Why you need a platform team for Kubernetes](docs/tr-81-why-you-need-a-platform-team-for-kubernetes)
 1. [A brief overview of the Container Network Interface (CNI) in Kubernetes](docs/tr-82-cni-kubernetes.md)
 1. [Six Strategies for Application Deployment](docs/tr-85-deployment-strategies.md)
-1. [](docs/)
+1. [Annotating Kubernetes Services for Humans](docs/tr-86-annotating-k8s-for-humans.md)
 1. [](docs/)
 1. [](docs/
 1. [](docs/
@@ -144,5 +144,13 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Slack Outage Monday January 4, 2021](docs/tr-66-slack-outage.md)
 1. [Preparing to Issue 200 Million Certificates in 24 Hours](docs/tr-74-200m-certs-24hrs.md)
 1. [Everything is broken, and it’s okay](docs/tr-76-failure-is-okay.md)
+1. [How to Successfully Hand Over Systems](docs/tr-87-how-to-successfully-hand-over-systems.md)
+1. [The Problem With Agile Scrum (And Why We Use Kanban Instead)](docs/tr-88-why-cloudzero-uses-kanban.md)
+1. [Enforcing Policy as Code using OPA and Gatekeeper in Kubernetes](docs/tr-enforcing-policy-as-code-using-opa-and-gatekeeper-in-kubernetes.md)
+1. [APIs Aren’t Just for Tech Companies](docs/tr-apis-arent-just-for-tech-companies.md)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
 1. [](docs/)
 1. [](docs/)
