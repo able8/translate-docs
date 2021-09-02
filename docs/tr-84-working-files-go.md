@@ -75,14 +75,14 @@
   - [Archive(Zip) Files](https://www.devdungeon.com/content/working-files-go#archive_create)
    - [Extract(Unzip) Archived Files](https://www.devdungeon.com/content/working-files-go#archive_extract)
 
-- [存档（Zip）文件]（https://www.devdungeon.com/content/working-files-go#archive_create）
-  - [提取（解压缩）存档文件]（https://www.devdungeon.com/content/working-files-go#archive_extract）
+- [存档（Zip）文件](https://www.devdungeon.com/content/working-files-go#archive_create)
+  - [提取（解压缩）存档文件](https://www.devdungeon.com/content/working-files-go#archive_extract)
 
 - **Compressing**
 
-   - **压缩**
+  - **压缩**
 
-  - [Compress a File](https://www.devdungeon.com/content/working-files-go#compress)
+ - [Compress a File](https://www.devdungeon.com/content/working-files-go#compress)
    - [Uncompress a File](https://www.devdungeon.com/content/working-files-go#uncompress)
 
 - [压缩文件](https://www.devdungeon.com/content/working-files-go#compress)
@@ -106,7 +106,7 @@
 
 ## Everything is a File
 
-##一切都是文件
+## 一切都是文件
 
 One of the fundamental aspects of UNIX is that everything is a file. We don't necessarily know what the file descriptor maps to, that is  abstracted by the operating system's device drivers. The operating  system provides us an interface to the device in the form of a file.
 
@@ -1278,7 +1278,7 @@ func main() {
 
 ## Uncompress a File
 
-##解压文件
+## 解压文件
 
 ```
 // This example uses gzip but standard library also
@@ -1507,9 +1507,9 @@ func main() {
 
 ## References
 
-＃＃ 参考
+##  参考
 
-​    [Go Standard Library Documentation](https://golang.org/pkg) 
+[Go Standard Library Documentation](https://golang.org/pkg) 
 
 [Go 标准库文档](https://golang.org/pkg)
 

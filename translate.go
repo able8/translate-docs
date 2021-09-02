@@ -16,10 +16,10 @@ import (
 	"time"
 )
 
-var outFile *os.File
+var outString string
 
 // Use google translate api
-func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
+func Translate(source, sourceLang, targetLang string) error {
 	queryURL := "https://translate.google.cn/translate_a/single?client=gtx&sl=" +
 		sourceLang + "&tl=" + targetLang + "&dt=t&q=" + url.QueryEscape(source)
 	// fmt.Println(queryURL)
@@ -62,7 +62,7 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 
 			if strings.Contains(sourceText, "```") && strings.Contains(input, "```") {
 				input = input + sourceText
-				fmt.Fprintf(outFile, "%s\n", input)
+				outString = outString + input + "\n"
 				input, output = "", ""
 				continue
 			}
@@ -80,13 +80,12 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			if strings.Contains(sourceText, "\n\n") && !strings.Contains(sourceText, ":\n") {
-
-				fmt.Fprintf(outFile, "%s%s", input, output)
+				outString = outString + input + output
 				input, output = "", ""
 			}
 		}
 
-		fmt.Fprintf(outFile, "%s\n\n%s\n\n", input, output)
+		outString = outString + input + "\n\n" + output + "\n\n"
 		return nil
 	} else {
 		return errors.New("no translated data in responce")
@@ -108,10 +107,6 @@ func main() {
 	} else {
 		log.Printf("Input file is %q\n", *inputFile)
 	}
-
-	outFile, err := os.Create("tr-" + *inputFile)
-	check(err)
-	defer outFile.Close()
 
 	file, err := os.Open(*inputFile)
 	if err != nil {
@@ -136,7 +131,7 @@ func main() {
 		// Do not break the code block
 		if count+len(line) > 4500 && strings.Count(strings.Join(translateLines, "\n"), "```")%2 == 0 {
 			log.Println("Translating ...")
-			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN", outFile)
+			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN")
 			check(err)
 			time.Sleep(1 * time.Second)
 			count = len(line)
@@ -147,12 +142,11 @@ func main() {
 		translateLines = append(translateLines, line)
 	}
 	log.Println("Translating ...")
-	err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN", outFile)
+	err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN")
 	check(err)
 
-	data, err := ioutil.ReadAll(outFile)
-	check(err)
-	s := string(data)
+	s := outString
+	// fmt.Println("s:", s)
 
 	// fix title in translatedText
 	s = strings.Replace(s, "＃＃＃＃", "#### ", -1)
@@ -171,6 +165,10 @@ func main() {
 	// fix url with space
 	s = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(s, "](http$1$2)")
 
-	fmt.Fprintf(outFile, s)
+	// a := "＃＃"
+	// a = strings.Replace(a, "＃＃", "##1 ", -1)
+	// fmt.Println(a)
+	err = os.WriteFile("tr-"+*inputFile, []byte(s), 0644)
+	check(err)
 	log.Println("Done. Generated output file: ", "tr-"+*inputFile)
 }

@@ -41,7 +41,7 @@
 
 - **Compressing**
 
-  - [Compress a File](https://www.devdungeon.com/content/working-files-go#compress)
+ - [Compress a File](https://www.devdungeon.com/content/working-files-go#compress)
   - [Uncompress a File](https://www.devdungeon.com/content/working-files-go#uncompress)
 
 - **Misc**
