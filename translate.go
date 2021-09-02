@@ -148,6 +148,7 @@ func main() {
 	s := outString
 	// fmt.Println("s:", s)
 
+	// Fix the outString
 	// fix title in translatedText
 	s = strings.Replace(s, "＃＃＃＃", "#### ", -1)
 	s = strings.Replace(s, "＃＃＃", "### ", -1)

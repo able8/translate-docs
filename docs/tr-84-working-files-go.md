@@ -14,69 +14,63 @@
 
 - **Basic Operations**
 
-   - **基本操作**
-
-  - [Create Empty File](https://www.devdungeon.com/content/working-files-go#create_empty_file)
-   - [Truncate a File](https://www.devdungeon.com/content/working-files-go#truncate_file)
-   - [Get File Info](https://www.devdungeon.com/content/working-files-go#get_file_info)
-   - [Rename and Move a File](https://www.devdungeon.com/content/working-files-go#rename_move)
-   - [Delete Files](https://www.devdungeon.com/content/working-files-go#delete)
-   - [Open and Close Files](https://www.devdungeon.com/content/working-files-go#open_close)
-   - [Check if File Exists](https://www.devdungeon.com/content/working-files-go#check_if_exists)
-   - [Check Read and Write Permissions](https://www.devdungeon.com/content/working-files-go#check_perms)
-   - [Change Permissions, Ownership, and Timestamps](https://www.devdungeon.com/content/working-files-go#change_metadata)
-   - [Create Hard Links and Symlinks](https://www.devdungeon.com/content/working-files-go#links)
-
-- [创建空文件](https://www.devdungeon.com/content/working-files-go#create_empty_file)
-  - [截断文件](https://www.devdungeon.com/content/working-files-go#truncate_file)
-  - [获取文件信息](https://www.devdungeon.com/content/working-files-go#get_file_info)
-  - [重命名和移动文件](https://www.devdungeon.com/content/working-files-go#rename_move)
-  - [删除文件](https://www.devdungeon.com/content/working-files-go#delete)
-  - [打开和关闭文件](https://www.devdungeon.com/content/working-files-go#open_close)
-  - [检查文件是否存在](https://www.devdungeon.com/content/working-files-go#check_if_exists)
-  - [检查读写权限](https://www.devdungeon.com/content/working-files-go#check_perms)
-  - [更改权限、所有权和时间戳](https://www.devdungeon.com/content/working-files-go#change_metadata)
-  - [创建硬链接和符号链接](https://www.devdungeon.com/content/working-files-go#links)
+- **基本操作**
+   - [Create Empty File](https://www.devdungeon.com/content/working-files-go#create_empty_file)
+    - [Truncate a File](https://www.devdungeon.com/content/working-files-go#truncate_file)
+    - [Get File Info](https://www.devdungeon.com/content/working-files-go#get_file_info)
+    - [Rename and Move a File](https://www.devdungeon.com/content/working-files-go#rename_move)
+    - [Delete Files](https://www.devdungeon.com/content/working-files-go#delete)
+    - [Open and Close Files](https://www.devdungeon.com/content/working-files-go#open_close)
+    - [Check if File Exists](https://www.devdungeon.com/content/working-files-go#check_if_exists)
+    - [Check Read and Write Permissions](https://www.devdungeon.com/content/working-files-go#check_perms)
+    - [Change Permissions, Ownership, and Timestamps](https://www.devdungeon.com/content/working-files-go#change_metadata)
+    - [Create Hard Links and Symlinks](https://www.devdungeon.com/content/working-files-go#links)
+   - [创建空文件](https://www.devdungeon.com/content/working-files-go#create_empty_file)
+   - [截断文件](https://www.devdungeon.com/content/working-files-go#truncate_file)
+   - [获取文件信息](https://www.devdungeon.com/content/working-files-go#get_file_info)
+   - [重命名和移动文件](https://www.devdungeon.com/content/working-files-go#rename_move)
+   - [删除文件](https://www.devdungeon.com/content/working-files-go#delete)
+   - [打开和关闭文件](https://www.devdungeon.com/content/working-files-go#open_close)
+   - [检查文件是否存在](https://www.devdungeon.com/content/working-files-go#check_if_exists)
+   - [检查读写权限](https://www.devdungeon.com/content/working-files-go#check_perms)
+   - [更改权限、所有权和时间戳](https://www.devdungeon.com/content/working-files-go#change_metadata)
+   - [创建硬链接和符号链接](https://www.devdungeon.com/content/working-files-go#links)
 
 - **Reading and Writing**
 
-   - **读写**
-
-  - [Copy a File](https://www.devdungeon.com/content/working-files-go#copy)
-   - [Seek Positions in File](https://www.devdungeon.com/content/working-files-go#seek)
-   - [Write Bytes to a File](https://www.devdungeon.com/content/working-files-go#write_bytes)
-   - [Quick Write to File](https://www.devdungeon.com/content/working-files-go#write_quick)
-   - [Use Buffered Writer](https://www.devdungeon.com/content/working-files-go#write_buffered)
-   - [Read up to n Bytes from File](https://www.devdungeon.com/content/working-files-go#read_up_to_n_bytes)
-   - [Read Exactly n Bytes](https://www.devdungeon.com/content/working-files-go#read_exactly_n_bytes)
-   - [Read At Least n Bytes](https://www.devdungeon.com/content/working-files-go#read_at_least_n_bytes)
-   - [Read All Bytes of File](https://www.devdungeon.com/content/working-files-go#read_all)
-   - [Quick Read Whole File to Memory](https://www.devdungeon.com/content/working-files-go#read_quick)
-   - [Use Buffered Reader](https://www.devdungeon.com/content/working-files-go#read_buffered)
-   - [Read with a Scanner](https://www.devdungeon.com/content/working-files-go#read_scanner)
-
-- [复制文件](https://www.devdungeon.com/content/working-files-go#copy)
-  - [在文件中查找位置](https://www.devdungeon.com/content/working-files-go#seek)
-  - [将字节写入文件](https://www.devdungeon.com/content/working-files-go#write_bytes)
-  - [快速写入文件](https://www.devdungeon.com/content/working-files-go#write_quick)
-  - [使用缓冲写入器](https://www.devdungeon.com/content/working-files-go#write_buffered)
-  - [从文件中最多读取 n 个字节](https://www.devdungeon.com/content/working-files-go#read_up_to_n_bytes)
-  - [准确读取 n 个字节](https://www.devdungeon.com/content/working-files-go#read_exactly_n_bytes)
-  - [读取至少 n 字节](https://www.devdungeon.com/content/working-files-go#read_at_least_n_bytes)
-  - [读取文件的所有字节](https://www.devdungeon.com/content/working-files-go#read_all)
-  - [快速读取整个文件到内存](https://www.devdungeon.com/content/working-files-go#read_quick)
-  - [使用缓冲阅读器](https://www.devdungeon.com/content/working-files-go#read_buffered)
-  - [使用扫描仪阅读](https://www.devdungeon.com/content/working-files-go#read_scanner)
+- **读写**
+   - [Copy a File](https://www.devdungeon.com/content/working-files-go#copy)
+    - [Seek Positions in File](https://www.devdungeon.com/content/working-files-go#seek)
+    - [Write Bytes to a File](https://www.devdungeon.com/content/working-files-go#write_bytes)
+    - [Quick Write to File](https://www.devdungeon.com/content/working-files-go#write_quick)
+    - [Use Buffered Writer](https://www.devdungeon.com/content/working-files-go#write_buffered)
+    - [Read up to n Bytes from File](https://www.devdungeon.com/content/working-files-go#read_up_to_n_bytes)
+    - [Read Exactly n Bytes](https://www.devdungeon.com/content/working-files-go#read_exactly_n_bytes)
+    - [Read At Least n Bytes](https://www.devdungeon.com/content/working-files-go#read_at_least_n_bytes)
+    - [Read All Bytes of File](https://www.devdungeon.com/content/working-files-go#read_all)
+    - [Quick Read Whole File to Memory](https://www.devdungeon.com/content/working-files-go#read_quick)
+    - [Use Buffered Reader](https://www.devdungeon.com/content/working-files-go#read_buffered)
+    - [Read with a Scanner](https://www.devdungeon.com/content/working-files-go#read_scanner)
+   - [复制文件](https://www.devdungeon.com/content/working-files-go#copy)
+   - [在文件中查找位置](https://www.devdungeon.com/content/working-files-go#seek)
+   - [将字节写入文件](https://www.devdungeon.com/content/working-files-go#write_bytes)
+   - [快速写入文件](https://www.devdungeon.com/content/working-files-go#write_quick)
+   - [使用缓冲写入器](https://www.devdungeon.com/content/working-files-go#write_buffered)
+   - [从文件中最多读取 n 个字节](https://www.devdungeon.com/content/working-files-go#read_up_to_n_bytes)
+   - [准确读取 n 个字节](https://www.devdungeon.com/content/working-files-go#read_exactly_n_bytes)
+   - [读取至少 n 字节](https://www.devdungeon.com/content/working-files-go#read_at_least_n_bytes)
+   - [读取文件的所有字节](https://www.devdungeon.com/content/working-files-go#read_all)
+   - [快速读取整个文件到内存](https://www.devdungeon.com/content/working-files-go#read_quick)
+   - [使用缓冲阅读器](https://www.devdungeon.com/content/working-files-go#read_buffered)
+   - [使用扫描仪阅读](https://www.devdungeon.com/content/working-files-go#read_scanner)
 
 - **Archiving(Zipping)**
 
-   - **存档（压缩）**
-
-  - [Archive(Zip) Files](https://www.devdungeon.com/content/working-files-go#archive_create)
-   - [Extract(Unzip) Archived Files](https://www.devdungeon.com/content/working-files-go#archive_extract)
-
-- [存档（Zip）文件](https://www.devdungeon.com/content/working-files-go#archive_create)
-  - [提取（解压缩）存档文件](https://www.devdungeon.com/content/working-files-go#archive_extract)
+- **存档（压缩）**
+   - [Archive(Zip) Files](https://www.devdungeon.com/content/working-files-go#archive_create)
+    - [Extract(Unzip) Archived Files](https://www.devdungeon.com/content/working-files-go#archive_extract)
+   - [存档（Zip）文件](https://www.devdungeon.com/content/working-files-go#archive_create)
+   - [提取（解压缩）存档文件](https://www.devdungeon.com/content/working-files-go#archive_extract)
 
 - **Compressing**
 
@@ -90,17 +84,14 @@
 
 - **Misc**
 
-   - **杂项**
+- **杂项**
+   - [Temporary Files and Directories](https://www.devdungeon.com/content/working-files-go#temp_files)
+    - [Downloading a File Over HTTP](https://www.devdungeon.com/content/working-files-go#http_download)
+    - [Hashing and Checksums](https://www.devdungeon.com/content/working-files-go#hashing)
 
-  - [Temporary Files and Directories](https://www.devdungeon.com/content/working-files-go#temp_files)
-   - [Downloading a File Over HTTP](https://www.devdungeon.com/content/working-files-go#http_download)
-   - [Hashing and Checksums](https://www.devdungeon.com/content/working-files-go#hashing)
-
-
-
-- [临时文件和目录](https://www.devdungeon.com/content/working-files-go#temp_files)
-  - [通过 HTTP 下载文件](https://www.devdungeon.com/content/working-files-go#http_download)
-  - [哈希和校验和](https://www.devdungeon.com/content/working-files-go#hashing)
+   - [临时文件和目录](https://www.devdungeon.com/content/working-files-go#temp_files)
+   - [通过 HTTP 下载文件](https://www.devdungeon.com/content/working-files-go#http_download)
+   - [哈希和校验和](https://www.devdungeon.com/content/working-files-go#hashing)
 
 
 
@@ -113,8 +104,6 @@ One of the fundamental aspects of UNIX is that everything is a file. We don't ne
 UNIX 的一个基本方面是一切都是文件。我们不一定知道文件描述符映射到什么，这是由操作系统的设备驱动程序抽象出来的。操作系统以文件的形式为我们提供了设备的接口。
 
 The reader and writer interfaces in Go are similar abstractions. We  simply read and write bytes, without the need to understand where or how the reader gets its data or where the writer is sending the data. Look  in **/dev** to find available devices. Some will require elevated privileges to access.
-
-
 
 Go 中的读写器接口是类似的抽象。我们只是读取和写入字节，而无需了解读取器从何处或如何获取其数据或写入器将数据发送到何处。在 **/dev** 中查找可用设备。有些需要提升权限才能访问。
 
@@ -280,7 +269,7 @@ import (
 )
 
 func main() {
-    // Simple read only open.We will cover actually reading
+    // Simple read only open. We will cover actually reading
     // and writing to files in examples further down the page
     file, err := os.Open("test.txt")
     if err != nil {
@@ -288,7 +277,7 @@ func main() {
     }
     file.Close()
 
-    // OpenFile with more options.Last param is the permission mode
+    // OpenFile with more options. Last param is the permission mode
     // Second param is the attributes when opening
     file, err = os.OpenFile("test.txt", os.O_APPEND, 0666)
     if err != nil {
@@ -331,7 +320,7 @@ var (
 )
 
 func main() {
-    // Stat returns file info.It will return
+    // Stat returns file info. It will return
     // an error if there is no file.
     fileInfo, err := os.Stat("test.txt")
     if err != nil {
@@ -360,7 +349,7 @@ import (
 )
 
 func main() {
-    // Test write permissions.It is possible the file
+    // Test write permissions. It is possible the file
     // does not exist and that will return a different
     // error that can be checked with os.IsNotExist(err)
     file, err := os.OpenFile("test.txt", os.O_WRONLY, 0666)
@@ -1512,4 +1501,5 @@ func main() {
 [Go Standard Library Documentation](https://golang.org/pkg) 
 
 [Go 标准库文档](https://golang.org/pkg)
+
 
