@@ -30,7 +30,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 # Translate docs & blogs
 
-## Kubernetes
+## Docker, Container, and Kubernetes
 
 1. [Handling Client Requests Properly with Kubernetes](docs/tr-1-Handling-Client-Requests-Properly-with-Kubernetes.md)
 1. [Zero Downtime Server Updates For Your Kubernetes Cluster Kubernetes](docs/tr-2-zero-downtime-server-updates-for-your-kubernetes-cluster.md)
@@ -50,10 +50,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [A CIOs Guide to Kubernetes Best Practices in Production](docs/tr-34-a-cios-guide-to-kubernetes-best-practices-in-production.md)
 1. [10 Kubernetes Operators Every DevOps needs to know about](docs/tr-31-10-kubernetes-operators-every-devops-needs-to-know-about.md)
 1. [Bad Pods: Kubernetes Pod Privilege Escalation](docs/tr-67-bad-pods-kubernetes-pod-privilege-escalation.md)
-1. [](docs/tr-69-introduction-to-ebpf.md)
 1. [Architecting Kubernetes clusters — choosing the best autoscaling strategy](docs/tr-70-kubernetes-autoscaling-strategies.md)
 1. [Load balancing and scaling long-lived connections in Kubernetes](docs/tr-71-kubernetes-long-lived-connections.md)
-1. [](docs/tr-72-kubernetes-operators-best-practices.md)
+1. [Kubernetes Operators Best Practices](docs/tr-72-kubernetes-operators-best-practices.md)
 1. [7 Principles of DevSecOps With Kubernetes](docs/tr-79-seven-principles-of-devsecops-with-kubernetes.md)
 1. [Kubernetes Is Not Your Platform, It's Just the Foundation](docs/tr-77-kubernetes-successful-adoption-foundation.md)
 1. [Moving k8s communication to gRPC](docs/tr-80-moving-k8s-communication-to-grpc.md)
@@ -61,16 +60,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [A brief overview of the Container Network Interface (CNI) in Kubernetes](docs/tr-82-cni-kubernetes.md)
 1. [Six Strategies for Application Deployment](docs/tr-85-deployment-strategies.md)
 1. [Annotating Kubernetes Services for Humans](docs/tr-86-annotating-k8s-for-humans.md)
-1. [](docs/)
-1. [](docs/
-1. [](docs/
-1. [](docs/
-1. [](docs/
-1. [](docs/
-
-
-## Docker and Container
-
 1. [Kubernetes vs Docker: Understanding Containers in 2021](docs/tr-8-kubernetes-vs-docker.md)
 1. [Learning Path: Basics of Container Runtimes](docs/tr-7-basics-of-container-runtimes.md)
 1. [Container Runtimes Part 1: An Introduction to Container Runtimes](docs/tr-9-container-runtimes-part-1-introduction-container-r.md)
@@ -81,6 +70,16 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Docker vs CRI-O vs Containerd](docs/tr-14-docker-vs-cri-o-vs-containerd.md)
 1. [Introducing Container Runtime Interface (CRI) in Kubernetes](docs/tr-15-container-runtime-interface-cri-in-kubernetes.md)
 1. [Understanding Docker Container Exit Codes](docs/tr-28-understanding-docker-container-exit-codes.md)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
 
 ## Golang
 
@@ -118,23 +117,46 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [The underutilized usefulness of sync.Once](docs/tr-83-synconce.md)
 1. [](docs/)
 1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
 
-
-## Cloud Native
+## DevOps and Cloud Native
 
 1. [A Comprehensive Guide to Cloud Native: Tools, Practices and Culture](docs/tr-32-a-comprehensive-guide-to-cloud-native-tools-practices-and-culture.md)
 1. [The State of Cloud Native: Challenges, Culture and Technology](docs/tr-30-the-state-of-cloud-native-challenges-culture-and-technology.md)
 1. [How was the world's largest cloud vendor, AWS, born?](docs/tr-35-how-aws-born.md)
 1. [Engineering dependability and fault tolerance in a distributed system](docs/tr-75-engineering-dependability-and-fault-tolerance-in-a-distributed-system.md)
-1. [](docs/)
-1. [](docs/)
-
-## DevOps
-
+1. [Introduction to eBPF](docs/tr-69-introduction-to-ebpf.md)
 1. [A Developer’s Guide to GitOps](docs/tr-62-gitops-developers-guide.md)
 1. [Maximizing Developer Effectiveness](docs/tr-63-developer-effectiveness.md)
 1. [DevOps engineer job interview questions](docs/tr-64-top-devops-engineer-interview-questions.md)
 1. [Podman and Buildah for Docker users](docs/tr-65-podman-and-buildah-for-docker-users.md)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
+1. [](docs/)
 
 
 ## Others

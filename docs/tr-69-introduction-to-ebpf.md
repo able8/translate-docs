@@ -90,7 +90,7 @@ eBPF 为我们提供了第四种选择。但在我们到达那里之前，我们
 
 ## Berkeley Packet Filter
 
-##伯克利数据包过滤器
+## 伯克利数据包过滤器
 
 The origin story of eBPF lies in it’s first, more narrowly-focused implementation known at the time as Berkeley Packet Filter. This was a new architecture that allowed systems to filter packets **well** before they were further received by the kernel - or worse - copied into userspace. In addition, this made use of a new register-based virtual machine, with a very limited set of instructions, that could be provided by a userspace process. This meant that utilities like `tcpdump` could compile very simple filtering programs (influenced by more human-readable filter strings provided by the user via command-line) that ran entirely in kernel space, without the need for kernel modules.
 
@@ -155,7 +155,7 @@ I’ve often seen eBPF and BPF used interchangeably, and in fact, when classic/l
 
 [![Credit: https://ebpf.io](https://oswalt.dev/assets/2021/01/loader-ebpf.png)](https://oswalt.dev/assets/2021/01/loader-ebpf.png "Credit: https://ebpf.io")
 
-loader-ebpf.png "来源：https://ebpf.io")
+
 
 When I think about eBPF, I like to break it down to the following three topic areas. Together, these provide a really valuable set of tools for anyone looking to add functionality on top of an existing Linux kernel.
 
@@ -217,7 +217,7 @@ So, while there are a lot more components that play a role in getting a BPF prog
 
 [![](https://oswalt.dev/assets/2021/01/bpf-program-lifecycle.png)](https://oswalt.dev/assets/2021/01/bpf-program-lifecycle.png)
 
-)
+
 
 ## Who Cares?
 
@@ -228,7 +228,9 @@ If you’re not a kernel developer (statistically speaking, most of you), you ma
 如果您不是内核开发人员（从统计上讲，你们中的大多数人），您可能会问为什么要关心 eBPF。这是一个合理的担忧，但我想提出一些重要的观点。
 
 I think a takeaway for the average infrastructure operator is that eBPF is one of those technologies that has significant trickle-down effects for your operations. You should care about the role eBPF plays in your infrastructure software in the same way you should care about where your food comes from. You don’t have to be a farmer to have a vested interest in knowing more about that supply chain and using that knowledge to drive decision-making. 
-我认为对于普通基础设施运营商来说，eBPF 是对您的运营具有显着涓滴效应的技术之一。你应该关心 eBPF 在你的基础设施软件中扮演的角色，就像关心食物的来源一样。您不必是农民，就可以在了解更多有关该供应链的信息并利用这些知识来推动决策方面拥有既得利益。
+
+我认为对于普通基础设施操作员来说，eBPF 是对您的运营具有显着涓滴效应的技术之一。你应该关心 eBPF 在你的基础设施软件中扮演的角色，就像关心食物的来源一样。您不必是农民，就可以在了解更多有关该供应链的信息并利用这些知识来推动决策方面拥有既得利益。
+
 Think about [how bugs in Linux are fixed today](https://ebpf.io/what-is-ebpf#ebpfs-impact-on-the-linux-kernel), and the weeks, months, or sometimes **years ** it takes for those fixes to make their way into your shop. Bugs like these have to get fixed in the kernel, which then has to get released, and then we have to wait for our operating system vendor to release a version of their own that uses this upgraded kernel (which for some vendors can take a long time). Once that’s all done, we **then** have to actually upgrade the thing, which has all kinds of operational considerations (2 AM Saturday maintenance windows anyone?).
 
 想想 [今天 Linux 中的错误是如何修复的](https://ebpf.io/what-is-ebpf#ebpfs-impact-on-the-linux-kernel)，以及数周、数月或有时是**年** 这些修复程序需要进入您的商店。像这样的错误必须在内核中修复，然后必须发布，然后我们必须等待我们的操作系统供应商发布他们自己的使用此升级内核的版本（对于某些供应商来说可能需要很长时间）时间）。一旦这一切都完成了，我们**那么**必须真正升级这个东西，它有各种操作考虑（周六凌晨 2 点维护窗口有人吗？）。
@@ -289,4 +291,5 @@ Some other super useful resources I didn’t link to above:
 - [LWN - eBPF 的全面介绍](https://lwn.net/Articles/740157/)
 - [XDP和eBPF简介](http://blogs.igalia.com/dpino/2019/01/07/a-brief-introduction-to-xdp-and-ebpf/)
 - [BPF、eBPF、XDP 和 Bpfilter……这些东西是什么，它们对企业意味着什么？](https://www.netronome.com/blog/bpf-ebpf-xdp-and-bpfilter-what-are -这些事情和他们的意思是企业/)
+
 

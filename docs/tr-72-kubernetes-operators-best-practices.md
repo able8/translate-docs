@@ -492,7 +492,12 @@ If you recall, if we are using a finalizer, the finalizer should be set up at in
 如果你还记得，如果我们使用终结器，终结器应该在初始化时设置。如果终结器是唯一被初始化的项目，因为它是元数据字段的一部分，_ResourceGeneration_ 将不会增加。考虑到该用例，以下是断言的修改版本：
 
 ```
-type resourceGenerationOrFinalizerChangedPredicate struct {	predicate.Funcs}// Update implements default UpdateEvent filter for validating resource version changefunc (resourceGenerationOrFinalizerChangedPredicate) Update(e event.UpdateEvent) bool {	if e.MetaNew.GetGeneration() == e.MetaOld.GetGeneration() && reflect.DeepEqual(e.MetaNew.GetFinalizers(), e.MetaOld.GetFinalizers()) {		return false	}	return true}
+type MyCRStatus struct {
+	// +kubebuilder:validation:Enum=Success,Failure
+	Status     string      `json:"status,omitempty"`
+	LastUpdate metav1.Time `json:"lastUpdate,omitempty"`
+	Reason     string      `json:"reason,omitempty"`
+}
 ```
 
 
@@ -510,7 +515,32 @@ You can write a function to manage the successful execution of a reconciliation 
 您可以编写一个函数来管理对帐周期的成功执行：
 
 ``` 
-func (r *ReconcilerBase) ManageSuccess(obj metav1.Object) (reconcile.Result, error) {	runtimeObj, ok := (obj).(runtime.Object)	if !ok {		log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)		return reconcile.Result{}, nil	}	if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {		status := apis.ReconcileStatus{			LastUpdate: metav1.Now(),			Reason:     "",			Status:     "Success",		}		reconcileStatusAware.SetReconcileStatus(status)		err := r.GetClient().Status().Update(context.Background(), runtimeObj)		if err != nil {			log.Error(err, "unable to update status")			return reconcile.Result{				RequeueAfter: time.Second,				Requeue:      true,			}, nil		}	} else {		log.Info("object is not RecocileStatusAware, not setting status")	}	return reconcile.Result{}, nil}
+func (r *ReconcilerBase) ManageSuccess(obj metav1.Object) (reconcile.Result, error) {
+	runtimeObj, ok := (obj).(runtime.Object)
+	if !ok {
+		log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)
+		return reconcile.Result{}, nil
+	}
+	if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {
+		status := apis.ReconcileStatus{
+			LastUpdate: metav1.Now(),
+			Reason:     "",
+			Status:     "Success",
+		}
+		reconcileStatusAware.SetReconcileStatus(status)
+		err := r.GetClient().Status().Update(context.Background(), runtimeObj)
+		if err != nil {
+			log.Error(err, "unable to update status")
+			return reconcile.Result{
+				RequeueAfter: time.Second,
+				Requeue:      true,
+			}, nil
+		}
+	} else {
+		log.Info("object is not RecocileStatusAware, not setting status")
+	}
+	return reconcile.Result{}, nil
+}
 ```
 
 ## Managing errors
@@ -540,7 +570,83 @@ We are going to build on top of status management to handle error conditions:
 我们将建立在状态管理之上来处理错误情况：
 
 ```
-func (r *ReconcilerBase) ManageError(obj metav1.Object, issue error) (reconcile.Result, error) {    runtimeObj, ok := (obj).(runtime.Object)    if !ok {        log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)        return reconcile.Result{}, nil    }    var retryInterval time.Duration    r.GetRecorder().Event(runtimeObj, "Warning", "ProcessingError", issue.Error())    if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {        lastUpdate := reconcileStatusAware.GetReconcileStatus().LastUpdate.Time        lastStatus := reconcileStatusAware.GetReconcileStatus().Status        status := apis.ReconcileStatus{            LastUpdate: metav1.Now(),            Reason:     issue.Error(),            Status:     "Failure",        }        reconcileStatusAware.SetReconcileStatus(status)        err := r.GetClient().Status().Update(context.Background(), runtimeObj)        if err != nil {            log.Error(err, "unable to update status")            return reconcile.Result{                RequeueAfter: time.Second,                Requeue:      true,            }, nil        }        if lastUpdate.IsZero() || lastStatus == "Success" {            retryInterval = time.Second        } else {            retryInterval = status.LastUpdate.Sub(lastUpdate).Round(time.Second)        }    } else {        log.Info("object is not RecocileStatusAware, not setting status")        retryInterval = time.Second    }    return reconcile.Result{        RequeueAfter: time.Duration(math.Min(float64(retryInterval.Nanoseconds()*2), float64(time.Hour.Nanoseconds()*6))),        Requeue:      true,    }, nil}
+func (r *ReconcilerBase) ManageError(obj metav1.Object, issue error) (reconcile.Result, error) {
+
+    runtimeObj, ok := (obj).(runtime.Object)
+
+    if !ok {
+
+        log.Error(errors.New("not a runtime.Object"), "passed object was not a runtime.Object", "object", obj)
+
+        return reconcile.Result{}, nil
+
+    }
+
+    var retryInterval time.Duration
+
+    r.GetRecorder().Event(runtimeObj, "Warning", "ProcessingError", issue.Error())
+
+    if reconcileStatusAware, updateStatus := (obj).(apis.ReconcileStatusAware); updateStatus {
+
+        lastUpdate := reconcileStatusAware.GetReconcileStatus().LastUpdate.Time
+
+        lastStatus := reconcileStatusAware.GetReconcileStatus().Status
+
+        status := apis.ReconcileStatus{
+
+            LastUpdate: metav1.Now(),
+
+            Reason:     issue.Error(),
+
+            Status:     "Failure",
+
+        }
+
+        reconcileStatusAware.SetReconcileStatus(status)
+
+        err := r.GetClient().Status().Update(context.Background(), runtimeObj)
+
+        if err != nil {
+
+            log.Error(err, "unable to update status")
+
+            return reconcile.Result{
+
+                RequeueAfter: time.Second,
+
+                Requeue:      true,
+
+            }, nil
+
+        }
+
+        if lastUpdate.IsZero() || lastStatus == "Success" {
+
+            retryInterval = time.Second
+
+        } else {
+
+            retryInterval = status.LastUpdate.Sub(lastUpdate).Round(time.Second)
+
+        }
+
+    } else {
+
+        log.Info("object is not RecocileStatusAware, not setting status")
+
+        retryInterval = time.Second
+
+    }
+
+    return reconcile.Result{
+
+        RequeueAfter: time.Duration(math.Min(float64(retryInterval.Nanoseconds()*2), float64(time.Hour.Nanoseconds()*6))),
+
+        Requeue:      true,
+
+    }, nil
+
+}
 ```
 
 Notice that this function immediately sends an event, then it updates the status with the error condition. Finally, a calculation is made as to when to reschedule the next attempt. The algorithm tries to double the time every loop, up to a maximum of six hours.
