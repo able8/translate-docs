@@ -115,6 +115,10 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Increasing http.Server boilerplate](docs/tr-60-increasing-http-server-boilerplate-go.md)
 1. [Developing price and currency handling for Go](docs/tr-61-price-currency-handling-go.md)
 1. [Rust vs. Go: Why They’re Better Together](docs/tr-78-rust-vs-go-why-theyre-better-together.md)
+1. [The underutilized usefulness of sync.Once](docs/tr-83-synconce.md)
+1. [](docs/)
+1. [](docs/)
+
 
 ## Cloud Native
 

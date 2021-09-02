@@ -170,8 +170,6 @@ func (c *QueryClient) DoQuery(name string) []byte {
 ```
 
 
-
-
 That's it. This achieves the same as the previous example, but is now much easier to understand (at least in my opinion). There is only a single return, and the code flows intuitively from top to bottom without having to read and understand what's going on with the `entry.wait` channel as before.
 
 就是这样。这与前面的示例实现相同，但现在更容易理解（至少在我看来）。只有一个返回，代码从上到下直观地流动，无需像以前一样阅读和理解 `entry.wait` 通道发生了什么。
@@ -182,7 +180,7 @@ That's it. This achieves the same as the previous example, but is now much easie
 
 Another mechanism similar to `sync.Once` is [golang.org/x/sync/singleflight](https://pkg.go.dev/golang.org/x/sync/singleflight). However `singleflight` only deduplicates requests that are in-flight (i.e. doesn't cache persistently). `singleflight` however may be cleaner to implement with contexts compared to `sync.Once` (through the use of a `select` and `ctx.Done()`), in production environments this may be important as to be able to cancel out with a context. The pattern with `singleflight` is quite similar to `sync.Once` but you would early return if a value is present inside the map.
 
-另一种类似于`sync.Once`的机制是[golang.org/x/sync/singleflight](https://pkg.go.dev/golang.org/x/sync/singleflight)。然而，`singleflight`只对进行中的请求进行重复数据删除（即不会持久缓存）。然而，与“sync.Once”（通过使用“select”和“ctx.Done()”)相比，“singleflight”可能更清晰地实现上下文，在生产环境中这可能很重要，因为能够取消有上下文。 `singleflight` 的模式与 `sync.Once` 非常相似，但如果地图中存在值，你会提前返回。
+另一种类似于`sync.Once`的机制是 [golang.org/x/sync/singleflight](https://pkg.go.dev/golang.org/x/sync/singleflight)。然而，`singleflight` 只对进行中的请求进行重复数据删除（即不会持久缓存）。然而，与“sync.Once”（通过使用“select”和“ctx.Done()”）相比，“singleflight”可能更清晰地实现上下文，在生产环境中这可能很重要，因为能够取消有上下文。 `singleflight` 的模式与 `sync.Once` 非常相似，但如果地图中存在值，你会提前返回。
 
 [ianlancetaylor](https://github.com/golang/go/issues/25312#issuecomment-387800105) suggested the following pattern to use `sync.Once` with contexts:
 
@@ -198,7 +196,3 @@ case <-ctxt.Done():
     return
 }
 ```
-
-
-
-

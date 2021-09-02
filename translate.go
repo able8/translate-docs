@@ -54,18 +54,6 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			resultSlice := slice.([]interface{})
 			translatedText, sourceText := resultSlice[0].(string), resultSlice[1].(string)
 
-			// fix title in translatedText
-			translatedText = regexp.MustCompile(`(#+)(\p{Han}+)`).ReplaceAllString(translatedText, "$1 $2")
-			translatedText = strings.Replace(translatedText, "＃＃＃＃", "#### ", -1)
-			translatedText = strings.Replace(translatedText, "＃＃＃", "### ", -1)
-			translatedText = strings.Replace(translatedText, "＃＃", "## ", -1)
-			translatedText = strings.Replace(translatedText, "＃", "# ", -1)
-			// fix Zero width space Unicode
-			translatedText = strings.Replace(translatedText, "\u200B", "", -1)
-			// fix
-			translatedText = strings.Replace(translatedText, "【", " [", -1)
-			translatedText = strings.Replace(translatedText, "】", "]", -1)
-
 			// Do not translate these lines
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") || strings.Contains(sourceText, "From: http") {
 				input = input + sourceText
@@ -92,25 +80,11 @@ func Translate(source, sourceLang, targetLang string, outFile *os.File) error {
 			}
 
 			if strings.Contains(sourceText, "\n\n") && !strings.Contains(sourceText, ":\n") {
-				// fix the Chinese （）
-				output = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(output, "]($1)")
-				output = regexp.MustCompile(`]\((.*)）`).ReplaceAllString(output, "]($1)")
-				output = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(output, "]($1)")
-				// remove space in urls
-				input = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(input, "](http$1$2)")
-				output = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(output, "](http$1$2)")
 
 				fmt.Fprintf(outFile, "%s%s", input, output)
 				input, output = "", ""
 			}
 		}
-
-		// fix the Chinese （）
-		output = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(output, "]($1)")
-		output = regexp.MustCompile(`]\((.*)）`).ReplaceAllString(output, "]($1)")
-		output = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(output, "]($1)")
-		input = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(input, "](http$1$2)")
-		output = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(output, "](http$1$2)")
 
 		fmt.Fprintf(outFile, "%s\n\n%s\n\n", input, output)
 		return nil
@@ -176,5 +150,27 @@ func main() {
 	err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN", outFile)
 	check(err)
 
+	data, err := ioutil.ReadAll(outFile)
+	check(err)
+	s := string(data)
+
+	// fix title in translatedText
+	s = regexp.MustCompile(`(#+)(\p{Han}+)`).ReplaceAllString(s, "$1 $2")
+	s = strings.Replace(s, "＃＃＃＃", "#### ", -1)
+	s = strings.Replace(s, "＃＃＃", "### ", -1)
+	s = strings.Replace(s, "＃＃", "## ", -1)
+	s = strings.Replace(s, "＃", "# ", -1)
+	// fix Zero width space Unicode
+	s = strings.Replace(s, "\u200B", "", -1)
+	// fix the Chinese char
+	s = strings.Replace(s, "【", " [", -1)
+	s = strings.Replace(s, "】", "]", -1)
+	s = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(s, "]($1)")
+	s = regexp.MustCompile(`]\((.*)）`).ReplaceAllString(s, "]($1)")
+	s = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(s, "]($1)")
+	// fix url with space
+	s = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(s, "](http$1$2)")
+
+	fmt.Fprintf(outFile, s)
 	log.Println("Done. Generated output file: ", "tr-"+*inputFile)
 }
