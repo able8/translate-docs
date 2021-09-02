@@ -155,11 +155,11 @@ func main() {
 	s := string(data)
 
 	// fix title in translatedText
-	s = regexp.MustCompile(`(#+)(\p{Han}+)`).ReplaceAllString(s, "$1 $2")
 	s = strings.Replace(s, "＃＃＃＃", "#### ", -1)
 	s = strings.Replace(s, "＃＃＃", "### ", -1)
 	s = strings.Replace(s, "＃＃", "## ", -1)
 	s = strings.Replace(s, "＃", "# ", -1)
+	s = regexp.MustCompile(`(#+)(\p{Han}+)`).ReplaceAllString(s, "$1 $2")
 	// fix Zero width space Unicode
 	s = strings.Replace(s, "\u200B", "", -1)
 	// fix the Chinese char
