@@ -71,7 +71,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Introducing Container Runtime Interface (CRI) in Kubernetes](docs/tr-15-container-runtime-interface-cri-in-kubernetes.md)
 1. [Understanding Docker Container Exit Codes](docs/tr-28-understanding-docker-container-exit-codes.md)
 1. [How to use CoreDNS Effectively with Kubernetes](docs/tr-using-coredns-effectively-kubernetes.md)
-1. [](docs/)
+1. [What’s new in Kubernetes 1.20?](docs/tr-whats-new-kubernetes-1-20.md)
 1. [](docs/)
 1. [](docs/)
 1. [](docs/)
