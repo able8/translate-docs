@@ -146,7 +146,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [ArgoCD: Okta integration, and user groups](docs/tr-argocd-okta-integration-and-user-groups.md)
 1. [Argo CD RBAC Configuration](docs/tr-argo-cd-rbac.md)
 1. [DevOps, SRE, and Platform Engineering](docs/tr-dev-devops-sre.md)
-1. [](docs/)
+1. [How to Keep Your Cloud-Native Apps Secure](docs/tr-How-to-Keep-Your-Cloud-Native-Apps-Secure.md)
 1. [](docs/)
 1. [](docs/)
 1. [](docs/)
