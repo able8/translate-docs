@@ -1,0 +1,100 @@
+# Writing a reverse proxy in Go
+
+Some time ago, I found a video called [Building a DIY proxy with the net package](https://www.youtube.com/watch?v=J4J-A9tcjcA). I recommend watching it. Filippo Valsorda builds a simple proxy using low-level packages. It’s fun to watch it but I think it’s a bit complicated. In Go, it has to be an easier way so I decided to continue writing series [Go In Practice](https://developer20.com/categories/GoInPractice/) by writing a simple but yet powerful reverse proxy as fast as it’s possible.
+
+The first step will be to create a proxy for a single host. The core of our code will be [ReversProxy](https://golang.org/pkg/net/http/httputil/#ReverseProxy) which does all the work for us. This is the magic of the rich standard library. The `RevewseProxy` is a struct for writing reverse proxies :) The only thing we have to do is to configure the director. The director modifies original requests which will be sent to proxied service.
+
+```go
+package main
+
+import (
+    "flag"
+    "fmt"
+    "net/http"
+    "net/http/httputil"
+)
+
+func main() {
+      url, err := url.Parse("http://localhost:8080")
+      if err != nil {
+          panic(err)
+      }
+
+    port := flag.Int("p", 80, "port")
+    flag.Parse()
+
+    director := func(req *http.Request) {
+        req.URL.Scheme = url.Scheme
+        req.URL.Host = url.Host
+    }
+
+    reverseProxy := &httputil.ReverseProxy{Director: director}
+      handler := handler{proxy: reverseProxy}
+    http.Handle("/", handler)
+
+    http.ListenAndServe(fmt.Sprintf(":%d", *port), nil)
+}
+
+type handler struct {
+    proxy *httputil.ReverseProxy
+}
+
+func (h handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    h.proxy.ServeHTTP(w, r)
+}
+```
+
+And that’s all! We have a fully functional proxy! Let’s check if it works. For the test, I wrote a simple server that returns the port it’s listening on.
+
+```go
+package main
+
+import (
+    "flag"
+    "fmt"
+    "net/http"
+)
+
+func main() {
+    var port = flag.Int("p", 8080, "port")
+    flag.Parse()
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        w.Write([]byte(fmt.Sprintf("hello on port %d", *port)))
+    })
+    err := http.ListenAndServe(fmt.Sprintf(":%d", *port), nil)
+    fmt.Print(err)
+}
+```
+
+Now, we can run the service which listens on port 8080 and the proxy which listens on port 80.
+
+![Working TCP proxy](http://developer20.com/images/proxy01.png)
+
+Our proxy works on HTTP only. To tweak it to support HTTPS we have to make a small change. The thing we need to do is to detect (in a very naive way) if the proxy is running using SSL or not. We’ll detect it based on the port it’s running on.
+
+```go
+if *port == 443 {
+    http.ListenAndServeTLS(fmt.Sprintf(":%d", *port), "localhost.pem", "localhost-key.pem", handler)
+} else {
+    http.ListenAndServe(fmt.Sprintf(":%d", *port), nil)
+}
+```
+
+To make it working, we need one more thing: a valid certyficate. You can generate it using [https://github.com/FiloSottile/mkcert](http://developer20.com/mkcert).
+
+```
+mkcert localhost
+```
+
+And… that’s all! We have a proxy that works on both HTTP/HTTPS.
+![Working TCP proxy](http://developer20.com/images/proxy02.png)
+
+As you can see, writing the new tool was extremely simple and all we need is the standard library. We didn’t have to write complicated code so we’ll can focus on our real goals. As usual, the source code is available on Github: [https://github.com/bkielbasa/go-proxy](https://github.com/bkielbasa/go-proxy). This project will be a starting point for other tools so keep in touch and don’t miss a post! If you have any questions, let me know in the comments section below.
+
+### See Also
+
+- [Writing TCP scanner in Go](http://developer20.com/tcp-scanner-in-go/)
+- [Golang Tips & Tricks #7 - private repository and proxy](http://developer20.com/golang-tips-and-trics-vii/)
+- [How I organize packages in Go](http://developer20.com/how-i-organize-packages-in-go/)
+- [Golang Tips & Tricks #6 - the \_test package](http://developer20.com/golang-tips-and-trics-vi/)
+- [Golang Tips & Tricks #5 - blank identifier in structs](http://developer20.com/golang-tips-and-trics-v/)
