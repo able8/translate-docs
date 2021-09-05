@@ -160,6 +160,7 @@ func main() {
 	// fix the Chinese char
 	s = strings.Replace(s, "【", " [", -1)
 	s = strings.Replace(s, "】", "]", -1)
+	s = strings.Replace(s, `\。`, ". ", -1)
 	s = regexp.MustCompile(`]（(.*)）`).ReplaceAllString(s, "]($1)")
 	s = regexp.MustCompile(`]\((.*)）`).ReplaceAllString(s, "]($1)")
 	s = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(s, "]($1)")
