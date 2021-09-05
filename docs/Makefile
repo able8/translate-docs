@@ -18,6 +18,6 @@ tr:
 ## add: add the tanslated file name and path to README
 .PHONY: add
 add: 
-	git status | grep "tr-" | while read line; do \
-	echo "1. [$(head -n 1 $${line}|sed 's/# //g')](docs/$${line})"\
+	git status | grep "tr-" | while read line; do  \
+	echo "1. [$$(head -n 1 $${line}|sed 's/# //g')](docs/$${line})"; \
 	done | pbcopy;pbpaste;pbpaste >> ../README.md
