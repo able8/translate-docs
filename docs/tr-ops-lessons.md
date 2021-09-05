@@ -44,7 +44,7 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 12. 对于任何 N 个应用程序，最多 N/2+1 个使用相同的证书包。
 13. 您正在排除故障的系统没有使用您正在排除故障的工具。
 14. [没有参考的 API](https://twitter.com/jschauma/status/1086305575443542017) 实现和命令行客户端称为灰盒。
-15.受限制的shell并没有你想象的那么受限制。
+15. 受限制的shell并没有你想象的那么受限制。
 
 16. Very few operations are truly idempotent.
 17. "Asserting state" beats "monitoring for compliance" any day.
@@ -53,10 +53,10 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 20. It's ok to use shell for complex stuff; it often times is easier, faster, and still less of a mess than juggling libraries and dependencies.
 
 16. 很少有操作是真正幂等的。
-17.“断言状态”胜过“监控合规性”。
+17. “断言状态”胜过“监控合规性”。
 18. [百万分之一是下周二。](https://docs.microsoft.com/en-us/archive/blogs/larryosterman/one-in-a-million-is-next-tuesday)
 19. 人们在会议上发表演讲不是为了让别人相信他们的工作很棒，完全值得他们投入的时间和精力，而是他们自己。
-20.复杂的东西可以用shell；与处理库和依赖项相比，它通常更容易、更快，而且还没有那么混乱。
+20. 复杂的东西可以用shell；与处理库和依赖项相比，它通常更容易、更快，而且还没有那么混乱。
 
 21. There's nothing wrong with Perl.
 22. Ok, we all at times keep adding `$`, `{`, `}`, and `@` in random places trying to make things work, but still.
@@ -69,7 +69,6 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 23. 无服务器不是。
 24. [Y38K](https://en.wikipedia.org/wiki/Year_2038_problem)[已经在这里](https://twitter.com/jxxf/status/1219009308438024200)，只是分布不均匀。
 25. 如果您确定“[人为错误](https://www.netmeister.org/blog/humanerrno.html)”是根本原因，那么您就做错了。
-
 26. Your network team has a way into the network that your security team doesn't know about.
 27. And don't even as much as *mention* the serial console and IPMI networks, but boy are you glad you have 'em.
 28. Blocking TCP port 53 traffic leads to very strange failures. Don't.
@@ -120,8 +119,8 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 50. `strace(1)`/`ktrace(1)` doesn't lie.
 
 41. 永久关闭是 [令人惊讶的困难](https://twitter.com/jschauma/status/1074684924588974080)。
-42.“*古代*”在软件和协议方面是一个非常相对的术语。
-43.“*Obsolete*”并不意味着它没有被使用和依赖。
+42. “*古代*”在软件和协议方面是一个非常相对的术语。
+43. “*Obsolete*”并不意味着它没有被使用和依赖。
 44. 数据中心停电前后在线的系统只有相交。一些旧系统上线会立即导致不同的中断。
 45. 你的一些最关键的服务是由少数人的工作描述根本没有提到这些服务的。
 46. 在最初的“每个人或我 ermahgehrd Slack 宕机”下降之后，生产力在整个停电期间呈线性增长。
@@ -149,7 +148,7 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 60. Your herculean efforts to upgrade the OS across your entire fleet completed just in time for the EOL announcement of the version you upgraded to.
 
 56. 调试任何足够复杂的开源产品与逆向工程黑盒没有区别。
-57.“我们一直都是这样做的。”本身不是一个很好的理由，但一定有一个原因。
+57. “我们一直都是这样做的。”本身不是一个很好的理由，但一定有一个原因。
 58. 然而，这个理由可能不再有效，也可能不再有效。
 59. 询问“为什么”并指出文档不反映现实的初级工程师至少与盲目依赖部落知识的高级工程师一样有价值。
 60. 您在整个机群中升级操作系统的艰巨努力在您升级到的版本的 EOL 公告之前及时完成。
@@ -176,7 +175,7 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 67. CAPEX 成本可以合理估算，OPEX 成本只能粗略估计。
 68. 将你的时间估计加倍以希望超出预期是行不通的，因为你的经理接受了你的估计，哈哈大笑，然后将它重新设置回他们已经承诺的上行链路。
 69. 你的季度计划意味着下一次重组来临时。
-70.你的[OKRs](https://www.netmeister.org/blog/okr-distractions.html)没有涵盖你的大部分实际工作。
+70. 你的[OKRs](https://www.netmeister.org/blog/okr-distractions.html)没有涵盖你的大部分实际工作。
 
 71. Recursively applying the [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle) is a surprisingly accurate way to gauge your low hanging fruit, determine your high impact objectives, and ballpark your required effort.
 72. Although, to be honest, it [only works in about 80% of cases](https://twitter.com/jschauma/status/962448995690967041).
@@ -202,7 +201,7 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 77. 强制[代码审查](https://twitter.com/jschauma/status/1019410471999467525) 不会自动提高代码质量，也不会降低事故频率。
 78. 每一种新范式都倾向于增加抽象层；切开它们并确定继续适用的基本原则是成功的一半。
 79. 真正的改变只能实现[第7层之上](https://en.wikipedia.org/wiki/Layer_8)。
-80.“Prod”只是“staging”的别称。
+80. “Prod”只是“staging”的别称。
 
 81. Your source of truth lies.
 82. Also: it's incomplete.
@@ -214,7 +213,7 @@ Nope, not another [Falsehoods](https://www.netmeister.org/blog/cs-falsehoods.htm
 88. Nobody knows what exactly it is you do.
 
 81. 你的真相之源在于。
-82.另外：它是不完整的。
+82. 另外：它是不完整的。
 83. `pcap` 或者它没有发生。
 84. `grep(1)` > Splunk（我说过了）
 85. 多线程很少值得增加复杂性。
