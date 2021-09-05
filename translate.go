@@ -79,7 +79,7 @@ func Translate(source, sourceLang, targetLang string) error {
 				input = input + sourceText + " "
 			}
 
-			if strings.Contains(sourceText, "\n\n") && !strings.Contains(sourceText, ":\n") {
+			if strings.Contains(sourceText, "\n\n") {
 				outString = outString + input + output
 				input, output = "", ""
 			}
