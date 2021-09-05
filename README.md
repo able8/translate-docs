@@ -1,24 +1,16 @@
 # translate-docs
 
-使用 [Google 翻译 API](https://translate.google.cn/)，将输入文档按段落生成 英文 - 中文 对照翻译。
+使用 [Google 翻译 API](https://translate.google.cn/)，将输入 **英文** (Markdown)文档按段落生成 **中英** 对照翻译文档。
 
-阅读英文文档，有时理解不准确，使用中英文对照理解更准确。在改进翻译中，加深理解。
+阅读英文文档，有时理解不准确；中英文对照阅读便于理解；边学技术边学英语。
 
-### 如何使用
+#### 如何使用
 
 ```
 ./translate_darwin_amd64 -f example-input.md
-
 ```
 
-Output:
-```
-2021/08/14 23:31:06 Input file is "example-input.md"
-2021/08/14 23:31:06 Translating ...
-2021/08/14 23:31:06 Done. Generated output file:  tr-example-input.md
-```
-
-### go build 生成 Mac、linux、Windows 平台可执行文件
+#### go build 生成 Mac、linux、Windows 平台可执行文件
 
 ```sh
 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o translate_darwin_amd64 translate.go
@@ -28,7 +20,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 
 ---
 
-# Translate docs & blogs
+# Translated docs & blogs
 
 ## Docker, Container, and Kubernetes
 
@@ -78,6 +70,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Liveness Probes are Dangerous](docs/tr-kubernetes-liveness-probes-are-dangerous.md)
 1. [Debugging network stalls on Kubernetes](docs/tr-2019-11-21-debugging-network-stalls-on-kubernetes.md)
 1. [Why Continuous Infrastructure Automation is no longer optional](docs/tr-why-continuous-infrastructure-automation-is-no-longer-optional-8b3e6bc8847.md)
+1. [Why you don't have to be afraid of Kubernetes](docs/tr-kubernetes-complex-business-problem.md)
+1. [Introduction to open source observability on Kubernetes](docs/tr-open-source-observability-kubernetes.md)
 1. [](docs/)
 1. [](docs/)
 1. [](docs/)
@@ -165,6 +159,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o translate_w
 1. [Extending cloud native principles to chaos engineering](docs/tr-cloud-native-chaos-engineering-enhancing-kubernetes-application-resiliency.md)
 1. [Debugging Software Deployments with strace](docs/tr-deployment_debugging_strace.md)
 1. [Gracefully shutting down a Nodejs HTTP server](docs/tr-gracefully-shutting-down-a-nodejs-http-server.md)
+1. [You can't buy DevOps](docs/tr-you-cant-buy-devops.md)
 1. [](docs/)
 1. [](docs/)
 1. [](docs/)
