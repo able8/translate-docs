@@ -58,14 +58,14 @@ Here is a short list of points worth mentioning:
 
 以下是值得一提的要点的简短列表：
 
-- You need a**steady** internet connection.
+- You need a **steady** internet connection.
 - You would need a**webcam** and a **microphone** which are required by the proctor.
 - You would need a government issued **ID**, or a passport.
-- The exam consists of**24 questions** that you can solve in no specific order.
-- The duration of the exam is**3 hours**.
+- The exam consists of **24 questions** that you can solve in no specific order.
+- The duration of the exam is **3 hours**.
 - The pass mark is**74%.**
 - You need to use the**Chrome browser**.
-- You have**one free retake** in case you don't pass on your first try 🎉
+- You have **one free retake** in case you don't pass on your first try 🎉
 
 - 您需要**稳定**的互联网连接。
 - 您需要监考人员要求的**网络摄像头**和**麦克风**。
@@ -107,6 +107,8 @@ CKA 考试涵盖以下主题：
 - Storage – 7%
 - Troubleshooting – 10%
 
+
+
 - 应用程序生命周期管理 - 8%
 - 安装、配置和验证 - 12%
 - 核心概念 - 19%
@@ -129,10 +131,6 @@ The day of the exam, you will have multiple cluster presented for you, and with 
 Below is the list of the clusters provided to the candidate from the latest [Exam Tips](http://training.linuxfoundation.org/go//Important-Tips-CKA-CKAD) document available at the CKA CNCF page at the time of writing this post:
 
 以下是当时在 CKA CNCF 页面上提供的最新 [Exam Tips](http://training.linuxfoundation.org/go//Important-Tips-CKA-CKAD) 文档中提供给考生的集群列表写这篇文章：
-
-**Cluster****Members****CNI****Description**k8s1 master, 2 workersflannelk8s clusterhk8s1 master, 2 workerscalicok8s clusterbk8s1 master, 1 workerflannelk8s clusterwk8s1 master, 2 workersflannelk8s clusterek8s1 master, 2 workersflannelk8s clusterik8s1 master, 1 base nodeloopbackk8s cluster - missing worker node
-
-**集群****成员****CNI****说明**k8s1 master, 2 workersflannelk8s clusterhk8s1 master, 2 workerscalicok8s clusterbk8s1 master, 1 workerflannelk8s clusterwk8s1 master, 2 workersflannelk8s clusterek8s1 master, 2 workers master cluster ikflannelk8s, base18s nodeloopbackk8s 集群 - 缺少工作节点
 
 The Kubernetes version running on the exam environment is currently **v1.16** at the time of writing this post, and the Linux distribution is **Ubuntu 16**.
 
@@ -199,8 +197,6 @@ In recent years, Linux distributions have increasingly migrated away from other 
 In this section, I am going to provide some tips on how to prepare for the exam and also list some useful resources that helped me and might help you get fit for the exam day.
 
 在本节中，我将提供一些有关如何准备考试的提示，并列出一些有用的资源，这些资源对我有帮助，可能会帮助您适应考试日。
-
-### kubectl
 
 ### kubectl
 

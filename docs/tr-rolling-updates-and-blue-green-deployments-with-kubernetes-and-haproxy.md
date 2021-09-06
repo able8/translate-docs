@@ -8,7 +8,7 @@ _The HAProxy Kubernetes Ingress Controller supports two popular deployment patte
 
 _HAProxy Kubernetes Ingress Controller 支持两种流行的部署模式来更新 Kubernetes 中的应用程序：滚动更新和蓝绿部署。_
 
-_This is the second post in a [series about HAProxy's role](https://www.haproxy.com/blog/building-blocks-of-a-modern-proxy/) in building a modern systems architecture that relies on cloud- native technology such-as Docker containers and Kubernetes. Containers have revolutionized how software is deployed, allowing the microservice pattern to flourish and enabling self-healing, autoscaling applications. HAProxy is an intelligent load balancer that adds high performance, observability, security, and many other features to the mix._
+_This is the second post in a [series about HAProxy's role](https://www.haproxy.com/blog/building-blocks-of-a-modern-proxy/) in building a modern systems architecture that relies on cloud-native technology such-as Docker containers and Kubernetes. Containers have revolutionized how software is deployed, allowing the microservice pattern to flourish and enabling self-healing, autoscaling applications. HAProxy is an intelligent load balancer that adds high performance, observability, security, and many other features to the mix._
 
 _这是 [关于 HAProxy 角色的系列](https://www.haproxy.com/blog/building-blocks-of-a-modern-proxy/) 在构建依赖于云的现代系统架构中的第二篇文章-本地技术，例如 Docker 容器和 Kubernetes。容器彻底改变了软件的部署方式，使微服务模式蓬勃发展，并支持自我修复、自动扩展的应用程序。 HAProxy 是一个智能负载均衡器，它增加了高性能、可观察性、安全性和许多其他特性。_
 
@@ -52,7 +52,7 @@ By default, the Ingress Controller assumes that you want to configure SSL. If yo
 
 haproxy-ingress.yaml
 
-haproxy-ingress.yaml
+
 
 ## Rolling Updates 
 
@@ -98,7 +98,7 @@ Kubernetes 默认启用滚动更新。当您更改 `Deployment` 资源的 YAML �
 
 app.yaml
 
-应用程序.yaml
+
 
 The `readinessProbe` section tells Kubernetes to send an HTTP request to the application five seconds after it has started, and then every five seconds thereafter. No traffic is sent to the pod until a successful response is returned. This is key to preventing downtime.
 
@@ -114,7 +114,7 @@ Next, define a `Service` object that will categorize the pods into a single grou
 
 app-service.yaml
 
-应用服务.yaml
+
 
 Next, define an `Ingress` object. This configures how the HAProxy Ingress Controller will route traffic to the pods:
 
@@ -122,7 +122,7 @@ Next, define an `Ingress` object. This configures how the HAProxy Ingress Contro
 
 ingress.yaml
 
-入口.yaml
+
 
 Use `kubectl apply` to deploy the pods, service and ingress:
 
@@ -156,7 +156,7 @@ After you have pushed a new version of your application to your container reposi
 
 app.yaml
 
-应用程序.yaml
+
 
 Then, use `kubectl apply` to start the rollout:
 
@@ -174,7 +174,7 @@ Once completed, you can access the application again at the same URL, **http://1
 
 Version 2 web page
 
-版本 2 网页
+
 
 If you decide that the new version is faulty, you can revert to the previous one by using the `kubectl rollout undo` command, like this:
 
@@ -234,7 +234,7 @@ Consider the following definition, which deploys version 1 of your application. 
 
 app-v1.yaml
 
-app-v1.yaml
+
 
 A `Deployment` object defines a `spec.selector` section that matches the `spec.template.metadata` section. This is how a Deployment tags pods and keeps track of them. This is the key to setting up a blue-green deployment. By using different labels, you can deploy multiple versions of the same application. Here, the `spec.selector.matchLabels` property is set to _run=app,version=0.0.1_. The version should match the version tag of your Docker image, for convenience and simplicity.
 
@@ -246,7 +246,7 @@ The following Service definition targets that same selector:
 
 app-service-bg.yaml
 
-app-service-bg.yaml
+
 
 Next, use the following `Ingress` definition to expose the version 1 pods to the world. It registers a route with the HAProxy Kubernetes Ingress Controller:
 
@@ -254,7 +254,7 @@ Next, use the following `Ingress` definition to expose the version 1 pods to the
 
 ingress.yaml
 
-入口.yaml
+
 
 Apply everything using `kubectl`: 
 
@@ -274,7 +274,7 @@ Now that the _blue_ version (ie version 1) is released, create a _green_ version
 
 app-v2.yaml
 
-app-v2.yaml
+
 
 Apply it with `kubectl`:
 
@@ -286,7 +286,7 @@ At this point, both blue (version 1) and green (version 2) are deployed. Only th
 
 app-service.yaml
 
-应用服务.yaml
+
 
 Apply it with `kubectl`:
 
@@ -306,7 +306,7 @@ You can also test the new version before it’s released by registering a differ
 
 test-service.yaml
 
-测试服务.yaml
+
 
 Note that we are including the path-rewrite annotation, which rewrites the URL **/test** to **/** before it reaches the pod. Then, add a new route to your existing `Ingress` object that exposes this service at the URL path **/test**, as shown:
 
@@ -314,7 +314,7 @@ Note that we are including the path-rewrite annotation, which rewrites the URL *
 
 ingress.yaml
 
-入口.yaml
+
 
 This lets you check your application by visiting **/test** in your browser.
 

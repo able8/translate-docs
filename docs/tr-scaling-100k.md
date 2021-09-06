@@ -4,8 +4,6 @@
 
 Feb 3, 2020  [Alex Pareto](https://alexpareto.com/)
 
-2020 年 2 月 3 日 [亚历克斯帕累托](https://alexpareto.com/)
-
 Many startups have been there - what feels like legions of  new users are signing up for accounts every day and the engineering team is scrambling to keep things running.
 
 许多初创公司都在那里 - 感觉就像每天都有大量新用户注册帐户，而工程团队正在争先恐后地保持运行。
@@ -86,7 +84,7 @@ Here’s what the system looks like now:
 
 ![/assets/Scaling%20to%20100k%20Users/Screen_Shot_2020-02-03_at_9.56.51_PM.png](https://alexpareto.com/assets/Scaling%20to%20100k%20Users/Screen_Shot_2020-02-03_at_9.56.51_PM.png)
 
-_PM.png)
+
 
 ## 1,000 Users: Add a Load Balancer.
 
@@ -94,9 +92,9 @@ _PM.png)
 
 Things are picking up at Graminsta. Users are uploading photos left  and right. We’re starting to get more sign ups. Our lonely API instance  is having trouble keeping up with all the traffic. We need more compute  power! 
 
-Graminsta 的情况正在好转。用户正在左右上传照片。我们开始获得更多注册。我们孤独的 API 实例无法跟上所有流量。我们需要更多的计算能力！
+Graminsta 的情况正在好转。用户正在到处上传照片。我们开始获得更多注册。我们孤独的 API 实例无法跟上所有流量。我们需要更多的计算能力！
 
-Load balancers are very powerful. The key idea is that we place a  load balancer in front of the API and it will route traffic to an  instance of that service. This allows for horizontal scaling (increasing the amount of requests we can handle by adding more servers running the same code).
+Load balancers are very powerful. The key idea is that we place a  load balancer in front of the API and it will route traffic to an instance of that service. This allows for horizontal scaling (increasing the amount of requests we can handle by adding more servers running the same code).
 
 负载均衡器非常强大。关键思想是我们在 API 前面放置一个负载均衡器，它将流量路由到该服务的一个实例。这允许水平扩展（通过添加更多运行相同代码的服务器来增加我们可以处理的请求量）。
 
@@ -207,7 +205,7 @@ Here’s our system now:
 
 ## Beyond
 
-##  超过
+##  更远
 
 As the app continues to scale, we’re going to want to focus on  splitting out services that can be scaled independently. For example, if we start to make use of websockets, it would make sense to pull out our websocket handling code. We can put this on new instaces behind their  own load balancer that can scale up and down based on how many websocket connections have been opened or closed, independently of how many HTTP  requests we have coming in.
 
@@ -259,7 +257,7 @@ I write here mostly about software and startups.
 嘿！我叫亚历克斯。我在 [Brex](https://brex.com) 从事工程工作。我在SF。
 我在这里写的主要是关于软件和初创公司。
 
-Previously I led engineering at    [NTWRK](https://thentwrk.com) and founded    [demeanor.co](https://www.demeanor.co) (Y    Combinator S18, acquired by NTWRK). Before that, I worked on the video    platform at [Facebook](http://facebook.com). I    studied at [USC](https://www.usc.edu) and    [Andover](http://www.andover.edu/).
+Previously I led engineering at  [NTWRK](https://thentwrk.com) and founded    [demeanor.co](https://www.demeanor.co) (Y    Combinator S18, acquired by NTWRK). Before that, I worked on the video    platform at [Facebook](http://facebook.com). I    studied at [USC](https://www.usc.edu) and    [Andover](http://www.andover.edu/).
 
 之前我在[NTWRK](https://thentwrk.com)领导工程并创立了[demeanor.co](https://www.demeanor.co)（Y Combinator S18，被NTWRK收购)。在此之前，我在 [Facebook](http://facebook.com) 的视频平台工作。我在 [USC](https://www.usc.edu) 和 [Andover](http://www.andover.edu/) 学习。
 

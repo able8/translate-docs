@@ -4,7 +4,7 @@
 
 #### 7 Jan 2020
 
-#### 2020 年 1 月 7 日
+#### 
 
 Now that organizations are starting to rely on Kubernetes and containers in general, performance becomes a major focus point for admins, particularly for public-facing high-use services, such as [Airbnb](https://www.airbnb.com/) . Engineers from the company shared some lessons learned on this topic at KubeCon+CloudNativeCon North America 2019.
 
@@ -32,7 +32,7 @@ Why do some pods have more latency than their peers in a cluster? One of the fir
 
 [![](https://cdn.thenewstack.io/media/2019/11/6809bec7-airbnb-noisu_neighbors.jpg)](https://static.sched.com/hosted_files/kccncna19/e1/%5Bkubecon%202019%5D%20Did%20Kubernetes%20make%20my%20p95s%20worse.pdf)
 
-202019%5D%20Did%20Kubernetes%20make%20my%20p95s%20worse.pdf)
+
 
 The “noisy neighbor problem” is not new to Kubernetes. It was first encountered, and mitigated against, when multiple virtual machines were first packed into servers, and a VM with a CPU-hungry app would hog all the resources, to the detriments of others. 
 

@@ -8,8 +8,6 @@ Is your team is creating a DevOps culture that can last – or one that is desti
 
 January 2, 2020
 
-2020 年 1 月 2 日
-
 At its core, [DevOps](https://enterprisersproject.com/tags/devops) is a marriage between culture and [automation](https://enterprisersproject.com/taxonomy/term/66) tools, helping teams release better software more quickly. While there are plenty of innovative tools fueling DevOps, those tools mean little if the culture doesn’t support the objectives of the team.
 
 [DevOps](https://enterprisersproject.com/tags/devops) 的核心是文化与 [自动化](https://enterprisersproject.com/taxonomy/term/66) 工具的结合，帮助团队更好地发布软件更快。虽然有很多创新工具推动了 DevOps，但如果文化不支持团队的目标，这些工具就毫无意义。
@@ -24,7 +22,7 @@ When evaluating your DevOps culture, it’s important to take an honest look at 
 
 ## 1\. Do team members respect one another?
 
-## 1\.团队成员互相尊重吗？
+## 1\. 团队成员互相尊重吗？
 
 It’s nearly impossible to build a healthy culture when team members don’t respect one another. A lack of respect is easy to spot. Do team members hold back their opinions because they are fearful of being belittled by others or know their ideas won’t be taken seriously?
 
@@ -44,7 +42,7 @@ Team members should be encouraged to speak freely. Everyone should have the oppo
 
 ## 2\. Are you fostering a culture of trust?
 
-## 2\.你在培养信任文化吗？
+## 2\. 你在培养信任文化吗？
 
 The dynamic of trust in DevOps teams exists between employees and their managers as well as between co-workers. No one is an island on a DevOps team. Co-workers must rely on one another to do their jobs effectively. If a member sets unrealistic estimates or doesn’t pull their weight, it can weaken the efforts of the entire team. Employees must work to establish that trust with their team members.
 

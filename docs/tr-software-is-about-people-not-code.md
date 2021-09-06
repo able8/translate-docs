@@ -4,8 +4,6 @@
 
 January 27, 2020
 
-2020 年 1 月 27 日
-
 Dear new developer,
 
 亲爱的新开发者，
@@ -51,8 +49,6 @@ Sincerely,
 真挚地，
 
 Dan
-
-担
 
 ### Share this:
 
