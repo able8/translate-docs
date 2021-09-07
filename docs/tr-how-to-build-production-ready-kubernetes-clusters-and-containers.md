@@ -4,7 +4,7 @@
 
 [Robert Stark](http://www.stackrox.com/authors/rstark/) May 09, 2019
 
-[罗伯特·斯塔克](http://www.stackrox.com/authors/rstark/) 2019 年 5 月 9 日
+
 
 Kubernetes is a powerful tool for building highly scalable systems. As a result, many companies have begun, or are planning, to use it to orchestrate production services. Unfortunately, like most powerful technologies, Kubernetes is complex. How do you know you’ve set things up correctly and it’s safe to flip the switch and open the network floodgates to your services? We’ve compiled the following checklist to help you prepare your containers and kube clusters for production traffic.
 
@@ -42,10 +42,6 @@ Follow these 9 practical recommendations today to enhance your Kubernetes securi
 
 立即遵循这 9 条实用建议来增强您的 Kubernetes 安全性
 
-[DOWNLOAD NOW](https://security.stackrox.com/9-kubernetes-settings-that-maximize-security.html?Source=Website&LSource=Website)
-
-[立即下载](https://security.stackrox.com/9-kubernetes-settings-that-maximize-security.html?Source=Website&LSource=Website)
-
 ##### Registries
 
 ##### 注册表
@@ -81,7 +77,7 @@ Do your homework, and choose a private registry that offers the best uptime. Sin
 
 ##### ImagePullSecrets
 
-##### ImagePullSecrets
+
 
 **What:** ImagePullSecrets are Kubernetes objects that let your cluster authenticate with your registry, so the registry can be selective about who is able to download your images.
 
@@ -140,7 +136,7 @@ Note that you should always create your own namespaces instead of relying on the
 
 ##### Labels
 
-#### #  标签
+##### 标签
 
 **What:** Labels are the most basic and extensible way to organize your cluster. They allow you to create arbitrary key:value pairs that separate your Kubernetes objects. For instance, you might create a label key which separates services that handle sensitive information from those that do not.
 
@@ -150,9 +146,9 @@ Note that you should always create your own namespaces instead of relying on the
 
 **原因：** 如前所述，Kubernetes 使用标签进行组织，但更具体地说，它们用于 _selection_。这意味着，当您想为 Kubernetes 对象提供对某个命名空间中的一组对象的引用时，例如告诉网络策略允许哪些服务相互通信，您可以使用它们的标签。由于它们代表了这种开放式组织类型，因此请尽量保持简单，并且仅在需要 _selection._ 功能的地方创建标签。
 
-**How:** Labels are a simple spec field you can add to your YAML files:
+**How:**  Labels are a simple spec field you can add to your YAML files:
 
-**如何：** 标签是一个简单的规范字段，您可以添加到您的 YAML 文件中：
+**如何：**标签是一个简单的规范字段，您可以添加到您的 YAML 文件中：
 
 ```
 apiVersion: v1
@@ -206,8 +202,6 @@ Alright, you’ve got a cluster set up and organized the way you want - now what
 
 ##### RBAC
 
-##### RBAC
-
 **What:** RBAC (Role Based Access Control) allows you to control who can view or modify different aspects of your cluster.
 
 **内容：** RBAC（基于角色的访问控制）允许您控制谁可以查看或修改集群的不同方面。
@@ -258,7 +252,7 @@ Once RBAC is turned on, you’ll need to change the default permissions to suit 
 
 ##### Secrets
 
-##### 秘密
+##### 
 
 **What:** Secrets are how you store sensitive data in Kubernetes, including passwords, certificates, and tokens.
 
@@ -274,7 +268,7 @@ Once RBAC is turned on, you’ll need to change the default permissions to suit 
 
 ##### Scanners
 
-##### 扫描仪
+##### 
 
 **What:** Scanners inspect the components installed in your images. Everything from the OS to your application stack. Scanners are super useful for finding out what vulnerabilities exist in the versions of software your image contains.
 
@@ -298,7 +292,7 @@ Kubernetes 代表了一个高大的堆栈。您的应用程序在内置内核上
 
 ##### CI/CD
 
-##### CI/CD
+##### 
 
 **What:** Continuous Integration/Continuous Deployment is a process philosophy. It is the belief that every modification committed to your codebase should add incremental value and be production ready. So, if something in your codebase changes, you probably want to launch a new version of your service, either to run tests or to update your exposed instances.
 

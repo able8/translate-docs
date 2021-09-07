@@ -8,11 +8,11 @@ Let’s examine key considerations for  building new applications specifically f
 
 March 2, 2020
 
-2020 年 3 月 2 日
+
 
 Don't let the growing popularity of [containers](https://enterprisersproject.com/tags/containers) and [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes?intcmp=701f2000000tjyaaaa&extidcarryover=true&sc_cid=70160000000h0axaaq) dupe you into thinking that you should use them to run any and every type of application. You need to distinguish between “can” and “should.”
 
-不要让[容器](https://enterprisersproject.com/tags/containers)和[Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes)的日益流行?intcmp=701f2000000tjyaaaa&extidcarryover=true&sc_cid=70160000000h0axaaq) 欺骗您认为您应该使用它们来运行任何类型的应用程序。你需要区分“可以”和“应该”。
+不要让[容器](https://enterprisersproject.com/tags/containers)和[Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes)的日益流行欺骗您认为您应该使用它们来运行任何类型的应用程序。你需要区分“可以”和“应该”。
 
 One basic example of this distinction is the difference between  building an app specifically to be run in containers and operated with  Kubernetes (some would refer to this as [cloud-native](https://www.redhat.com/en/topics/cloud-native-apps?intcmp=701f2000000tjyaAAA) development) and using these containers and orchestration for existing monolithic apps.
 
@@ -28,7 +28,7 @@ We’ll cover the latter scenario in an upcoming post. Today, we’re  focused o
 
 “Containers [and orchestration] are a technical vehicle for building, deploying, and running cloud-native applications,” says Rani Osnat, VP  of strategy at [Aqua Security](https://www.aquasec.com/). “I typically recommend to those starting their journey with containers  to use a new, simple greenfield application as their test case.”
 
-“容器 [和编排] 是构建、部署和运行云原生应用程序的技术工具，”[Aqua Security] (https://www.aquasec.com/) 战略副总裁 Rani Osnat 说。 “我通常建议那些开始使用容器的人使用一个新的、简单的绿地应用程序作为他们的测试用例。”
+“容器 [和编排] 是构建、部署和运行云原生应用程序的技术工具，”Aqua Security战略副总裁 Rani Osnat 说。 “我通常建议那些开始使用容器的人使用一个新的、简单的绿地应用程序作为他们的测试用例。”
 
 **[ Want to learn about building and deploying Kubernetes Operators? Get the free eBook: [O'Reilly: Kubernetes Operators: Automating the Container Orchestration Platform.](https://www.redhat.com/en/resources/oreilly-kubernetes-operators-automation-ebook?intcmp=701f2000000tjyaAAA) ] **
 
@@ -60,11 +60,7 @@ Ward 指出，虽然微服务和容器可以很好地协同工作，但配对实
 
 The same is true of twelve-factor: “Twelve-factor is a useful starting point, but its tenets aren’t necessarily law,” Ward says.
 
-
-
 十二因素也是如此：“十二因素是一个有用的起点，但它的原则不一定是法律，”沃德说。
-
-
 
 If you’re building an app from scratch, give strong consideration to the microservices approach.
 
@@ -110,11 +106,7 @@ Automation is a critical characteristic of container orchestration; it should be
 
 “Build applications and services with automation as minimum table stakes,” recommends Chander Damodaran, chief architect at [Brillio](https://www.brillio.com/). “With the proliferation of services and components, this can become an unmanageable issue.”
 
-
-
 [Brillio](https://www.brillio.com/) 的首席架构师 Chander Damodaran 建议：“以自动化为最低赌注构建应用程序和服务。” “随着服务和组件的激增，这可能成为一个无法管理的问题。”
-
-
 
 A well-conceived  CI/CD pipeline can bake automation into many phases of your development and deployment processes.
 
@@ -142,11 +134,7 @@ Harness 的 Lachhman 说：“使用任何新平台都需要进行大量的反�
 
 Another key principle when developing an application for containers  and Kubernetes: Keep your container images as small as possible for  performance, security, and other reasons.
 
-
-
 为容器和 Kubernetes 开发应用程序时的另一个关键原则：出于性能、安全性和其他原因，使容器映像尽可能小。
-
-
 
 Make sure to remove all other packages – including shell utilities – that are not required by the application. 
 
@@ -166,19 +154,15 @@ This is a good example of how building a containerized application  might requir
 
 Let’s examine four other best practices:
 
-  
-
-让我们来看看其他四个最佳实践：
+  让我们来看看其他四个最佳实践：
 
   
 
 ### 4. Don’t blindly trust images
 
-### 4. 不要盲目相信图片
+### 4. 不要盲目相信镜像
 
 As is common in software development, there’s a chance you can reuse  or repurpose existing components rather than build them from scratch. The same principle can apply to containers. Just don’t make the mistake  of having blind faith in container images, especially not from a  security perspective.
-
-
 
 正如软件开发中常见的那样，您可以重用或重新利用现有组件，而不是从头开始构建它们。同样的原则也适用于容器。只是不要犯对容器镜像盲目相信的错误，尤其是从安全角度来看。
 
@@ -186,19 +170,15 @@ As is common in software development, there’s a chance you can reuse  or repur
 
 “Far too many people choose an image from a repository with some sort of application stack already installed.”
 
-“太多人从已经安装了某种应用程序堆栈的存储库中选择图像。”
+“太多人从已经安装了某种应用程序堆栈的存储库中选择镜像。”
 
 “Far too many people choose an image from a repository with some sort of application stack already installed,” Mugrage says. “Often these  images are poorly built, and the risk of security issues can’t be  ignored. Any images you use, even ones in your own repositories, should  be scanned for vulnerabilities and compliance on every run of your  deployment pipeline.”
 
-“太多人从已经安装了某种应用程序堆栈的存储库中选择图像，”Mugrage 说。 “通常这些镜像构建得不好，安全问题的风险不容忽视。您使用的任何图像，即使是您自己存储库中的图像，都应在每次部署管道运行时扫描漏洞和合规性。”
+“太多人从已经安装了某种应用程序堆栈的存储库中选择镜像，”Mugrage 说。 “通常这些镜像构建得不好，安全问题的风险不容忽视。您使用的任何图像，即使是您自己存储库中的图像，都应在每次部署管道运行时扫描漏洞和合规性。”
 
 ### 5. Plan for observability, telemetry, and monitoring from the start
 
-
-
 ### 5. 从一开始就计划可观察性、遥测和监控
-
-
 
 Kubernetes' self-healing capabilities are a piece of the platform’s appeal, but they also  underscore the need for proper visibility.
 
@@ -275,8 +255,4 @@ MORE ON KUBERNETES
 “None of the abstractions that exist in Kubernetes today make the  underlying systems any easier to understand. They only make them easier  to use,” says Chris Short, Red Hat OpenShift principal technical  marketing manager. “If this were easy, everyone would be doing it  already. The industry would be moving on from the Kubernetes hype to the next big thing. This stuff is hard. We’re doing container orchestration while abstracting away the need to manage much other than the state of  the cluster and the infrastructure underneath it. [Etcd](https://etcd.io/) is a huge Kubernetes dependency that a lot of people have had nicely  tucked away from them. There is networking, security, and everything  else wrapped up in Kubernetes too. If your teams aren’t expecting  failure and ready to learn from mistakes, then I need to figure out how  you built the perfect Kubernetes environment.”
 
 “如今 Kubernetes 中存在的任何抽象都无法让底层系统更容易理解。它们只会让它们更易于使用，”红帽 OpenShift 首席技术营销经理 Chris Short 说。 “如果这很容易，那么每个人都会已经这样做了。该行业将从 Kubernetes 炒作转向下一件大事。这东西很难。我们在进行容器编排的同时，将管理除集群状态和其下的基础设施之外的其他管理需求抽象化。 [Etcd](https://etcd.io/) 是一个巨大的 Kubernetes 依赖项，很多人已经很好地避开了它们。 Kubernetes 中还包含网络、安全性和其他所有内容。如果您的团队没有预料到失败并准备从错误中吸取教训，那么我需要弄清楚您是如何构建完美的 Kubernetes 环境的。”
-
-**[ Kubernetes terminology, demystified: Get our [Kubernetes glossary](https://enterprisersproject.com/kubernetes-glossary?sc_cid=70160000000h0axaaq) cheat sheet for IT and business leaders. ]** 
-
-**[ Kubernetes 术语，揭秘：获取我们的 [Kubernetes 词汇表](https://enterprisersproject.com/kubernetes-glossary?sc_cid=70160000000h0axaaq) 供 IT 和业务领导者使用的备忘单。 ]**
 

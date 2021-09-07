@@ -6,7 +6,7 @@ Kubernetes isn't complex, your business problem is. Learn how operators make it 
 
 Kubernetes 并不复杂，您的业务问题才是。了解操作员如何使大规模运行复杂软件变得容易。
 
-March 2, 2020
+March 2, 2020 From: https://www.redhat.com/sysadmin/kubernetes-operators
 
 **Why use operators?** 
 
@@ -24,13 +24,10 @@ I often describe the Operator pattern as deploying a robot sysadmin next to the 
 
 我经常将 Operator 模式描述为在容器化应用程序旁边部署机器人系统管理员。但是，要真正了解 Operator 的工作原理，我们需要更深入地了解运行服务的历史，以及使这些服务具有弹性的艺术。从这里开始，我们将其称为运营知识或卓越运营。
 
-Image
+![](https://www.redhat.com/sysadmin/sites/default/files/styles/embed_large/public/2020-02/Kube%201.png?itok=MB_IOTbL)
 
-图片
 
-![Kubernetes flow chart](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201232%201579'%2F%3E)
 
-%200%201232%201579'%2F%3E)
 
 Traditionally, when new software was deployed, we also deployed a real, human Sysadmin to care and feed the application. This care and feeding included tasks like installation, upgrades, backups, & restores, troubleshooting, and return to service. If a service failed, we paged this Sysadmin, they logged into a server, would troubleshoot the application, and fix what was broken. To track this work, they would document their progress in a ticketing system.
 
@@ -60,7 +57,7 @@ Image
 
 图片
 
-![kubernetes operator flow chart](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%202624%20869'%2F%3E) 
+ 
 
 - **Operational excellence 1.0** \- One computer, multiple administrators. Back in years past, before most users of containers remember, there were large computers cared for, managed and operated by multiple systems administrators. This remained true all the way into the late 1990s with large Mainframes and Unix systems managed by multiple systems administrators. That’s right, there were multiple human beings assigned to one computer. These systems administrators automated operations on these systems, fixed services if they were broken, added/removed users, and even wrote device drivers themselves. The administrators were highly technical, and would be considered software engineers by modern definitions. They performed all software related tasks, maintaining uptime, reliability, and operational excellence. The cost was high, but the quality was also very high.
 
@@ -118,7 +115,7 @@ This fifth generation of operational excellence, using the Kubernetes Operator p
 
 **Credits**
 
-**学分**
+人员
 
 I want to give special thanks to Daniel Riek who presented this concept of Operational Excellence at FOSDEM 20 in Brussels, Belgium last week. If you didn’t have an opportunity to attend his talk, I recommend you watch it when the video goes live. Until then, see this interview with him: [How Containers and Kubernetes re-defined the GNU/Linux Operating System. A Greybeard's Worst Nightmare](https://fosdem.org/2020/interviews/daniel-riek/)
 

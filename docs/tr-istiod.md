@@ -8,8 +8,6 @@ Istiod 将 Istio 控制平面组件整合到一个二进制文件中。
 
 Mar 19, 2020 \| By Craig Box - Google
 
-2020 年 3 月 19 日 \|作者：Craig Box - Google
-
 Microservices are a great pattern when they map services to disparate teams that deliver them, or when the value of independent rollout and the value of independent scale are greater than the cost of orchestration. We regularly talk to customers and teams running Istio in the real world, and they told us that none of these were the case for the Istio control plane. So, in Istio 1.5, we’ve changed how Istio is packaged, consolidating the control plane functionality into a single binary called **istiod**.
 
 当微服务将服务映射到交付它们的不同团队时，或者当独立推出的价值和独立规模的价值大于编排成本时，微服务是一种很好的模式。我们定期与在现实世界中运行 Istio 的客户和团队交谈，他们告诉我们，这些都不是 Istio 控制平面的情况。因此，在 Istio 1.5 中，我们改变了 Istio 的打包方式，将控制平面功能整合到一个名为 **istiod** 的二进制文件中。
