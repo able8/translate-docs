@@ -233,3 +233,14 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Why I've Been Merging Microservices Back Into The Monolith At InVision](docs/tr-3944-why-ive-been-merging-microservices-back-into-the-monolith-at-invision.htm.md)
 1. [How to familiarize yourself with a new codebase](docs/tr-how-to-familiarize-yourself-with-a-new-codebase.md)
 1. [Recommended Engineering Management Books](docs/tr-recommended-engineering-management-books.md)
+1. [==> tr-how-gitops-improves-security-development-pipelines.md <==
+How GitOps Improves the Security of Your Development Pipelines](docs/modified:   tr-how-gitops-improves-security-development-pipelines.md)
+1. [==> tr-how-gitops-improves-security-development-pipelines.md <==
+How GitOps Improves the Security of Your Development Pipelines](docs/modified:   tr-how-gitops-improves-security-development-pipelines.md)
+1. [Advice for customers dealing with Docker Hub rate limits, and a Coming Soon announcement](docs/tr-advice-for-customers-dealing-with-docker-hub-rate-limits-and-a-coming-soon-announcement.md)
+1. [Managing cgroups with systemd](docs/tr-cgroups-part-four.md)
+1. [How eBPF Turns Linux into a Programmable Kernel](docs/tr-how-ebpf-turns-linux-into-a-programmable-kernel.md)
+1. [Millions of Remote Workers Are Now Thinking About Moving](docs/tr-millions-of-remote-workers-are-now-thinking-about-moving.md)
+1. [The Future of Cloud Native Security Is Self-Healing](docs/tr-the-future-of-cloud-native-security-is-self-healing.md)
+1. [What I Learned From Bombing a Technical Interview](docs/tr-what-i-learned-from-bombing-a-technical-interview.md)
+1. [Who Needs a Dashboard? Why the Kubernetes Command Line Is Not Enough](docs/tr-who-needs-a-dashboard-why-the-kubernetes-command-line-is-not-enough.md)
