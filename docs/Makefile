@@ -21,3 +21,8 @@ add:
 	git status | grep "tr-" | while read line; do  \
 	echo "1. [$$(head -n 1 $${line}|sed 's/# //g')](docs/$${line})"; \
 	done | pbcopy;pbpaste;pbpaste >> ../README.md
+
+## open: open the markdown file
+.PHONY: open
+open: 
+	git status -s | cut -d " " -f2 | grep ".md" | while read line; do open "$$line";done
