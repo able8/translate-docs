@@ -227,3 +227,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [OpenTelemetry Steps up to Manage the Mayhem of Microservices](docs/tr-opentelemetry-steps-up-to-manage-the-mayhem-of-microservices.md)
 1. [Ops by pull request: an Ansible GitOps story](docs/tr-ops-by-pull-request-an-ansible-gitops-story.md)
 1. [Patterns of Distributed Systems](docs/tr-patterns-of-distributed-systems.md)
+1. [#GitLab and Okta](docs/tr-gitlab-okta.md)
