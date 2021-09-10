@@ -4,11 +4,11 @@
 
 #### 17 Aug 2020 8:56am,   by [Rob Szumski](https://thenewstack.io/author/rob-szumski/ "Posts by Rob Szumski")
 
-#### 2020 年 8 月 17 日上午 8:56，作者 [Rob Szumski](https://thenewstack.io/author/rob-szumski/“Rob Szumski 的帖子”)
+#### 
 
 Rob is a Product Manager for OpenShift at Red Hat](https://www.linkedin.com/in/robszumski/)
 
-Rob 是 Red Hat 的 OpenShift 产品经理](https://www.linkedin.com/in/robszumski/)
+Rob 是 Red Hat 的 OpenShift 产品经理
 
 Kubernetes and the many projects under the Cloud Native Computing Foundation (CNCF) umbrella are advancing so quickly that it can sometimes feel as though the benefits of the open hybrid cloud are, perhaps, not yet evenly distributed. While systems administrators and operators are having a blast modernizing legacy applications and automating highly-scalable, container-based systems, sometimes developers can feel a bit left out in the cold.
 
@@ -50,7 +50,7 @@ For example, there isn’t a concept of data rebalancing in Kubernetes, but that
 
 [![](https://cdn.thenewstack.io/media/2020/08/ce7b9fcc-image3.png)](https://cdn.thenewstack.io/media/2020/08/ce7b9fcc-image3.png)
 
-)
+
 
 The Operator Framework comes with all the tools required for developers to build this software, and everything that cluster administrators need to safely install, upgrade and manage their Operators. These tools tie into other CNCF projects — like KubeBuilder, Helm, kuttl — and popular open source software like Ansible.
 
@@ -86,7 +86,7 @@ We’re deeply committed to Operators, and we have a lot planned for the future 
 
 [![](https://cdn.thenewstack.io/media/2020/08/39abe664-image2.png)](https://cdn.thenewstack.io/media/2020/08/39abe664-image2.png)
 
-)
+
 
 While much of the workaround setting up an Operator inside a cluster will be done by the IT staff, it is the developer who really benefits. For example, IT can use the [Crunchy Data PostgreSQL Operator](https://operatorhub.io/operator/postgresql) to pre-configure database RBAC and security controls, while also pre-wiring backup and replication services. After this is done, any blessed user of the cluster can then deploy a fresh instance of PostgreSQL on-demand, eliminating the time required to provision servers for new application development work.
 
@@ -109,8 +109,6 @@ The Cloud Native Computing Foundation is a sponsor of The New Stack.
 云原生计算基金会是 The New Stack 的赞助商。
 
 Feature image via [Pixabay](https://pixabay.com/illustrations/complex-fractal-chaos-grid-clock-664440/). 
-
-特征图片来自 [Pixabay](https://pixabay.com/illustrations/complex-fractal-chaos-grid-clock-664440/)。
 
 At this time, The New Stack does not allow comments directly on this website. We invite all readers who wish to discuss a story to visit us on [Twitter](https://twitter.com/thenewstack) or [Facebook](https://www.facebook.com/thenewstack/). We also welcome your news tips and feedback via email: [feedback@thenewstack.io](mailto:feedback@thenewstack.io). 
 

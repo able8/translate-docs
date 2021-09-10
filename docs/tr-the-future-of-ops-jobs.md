@@ -6,7 +6,7 @@
 
 Aug 17, 2020  12 Minute Read
 
-2020 年 8 月 17 日 12 分钟阅读
+
 
 Infrastructure, ops, devops, systems engineering, sysadmin, infraops, SRE, platform engineering. As long as I’ve been doing computers, these terms have been effectively synonymous. If I wanted to tell someone what my job was, I could throw out any one of them and expect to be understood.
 
@@ -60,9 +60,9 @@ Metric-based tools like Prometheus and DataDog are infrastructure monitoring too
 
 Prometheus 和 DataDog 等基于度量的工具是基础设施监控工具，在这方面非常出色。当您负责基础设施时，您关心的问题是聚合和趋势、阈值和容量。监控工具是适合这项工作的工具，因为这样您才能了解您的基础设施是否健康，以及采取哪些措施来使其保持健康。
 
-Observability tools\*, on the other hand, are for the people writing and shipping code to users every day, and trying to inspect and understand behavior at the nexus of users, production, and code. Observability tools preserve the full context of the request. This allows you to slice and dice and tease out new correlations, as well as view events in a waterfall by time (“tracing”). Observability is how you connect the dots between software and real business impact, and between your engineers’ experience and your users’ experience.
+Observability tools, on the other hand, are for the people writing and shipping code to users every day, and trying to inspect and understand behavior at the nexus of users, production, and code. Observability tools preserve the full context of the request. This allows you to slice and dice and tease out new correlations, as well as view events in a waterfall by time (“tracing”). Observability is how you connect the dots between software and real business impact, and between your engineers’ experience and your users’ experience.
 
-另一方面，可观察性工具\* 供人们每天编写代码并将其发送给用户，并尝试检查和了解用户、生产和代码之间的行为。可观察性工具保留请求的完整上下文。这允许您切片和切块并梳理出新的相关性，以及按时间查看瀑布中的事件（“跟踪”）。可观察性是您将软件与实际业务影响之间、工程师体验与用户体验之间的点联系起来的方式。
+另一方面，可观察性工具供人们每天编写代码并将其发送给用户，并尝试检查和了解用户、生产和代码之间的行为。可观察性工具保留请求的完整上下文。这允许您切片和切块并梳理出新的相关性，以及按时间查看瀑布中的事件（“跟踪”）。可观察性是您将软件与实际业务影响之间、工程师体验与用户体验之间的点联系起来的方式。
 
 _\*Caution: many monitoring tools are trying to rebrand themselves as observability tools without first building the necessary functionality. To tell the difference,_ [_see here_](https://www.honeycomb.io/blog/so-you-want-to-build-an-observability-tool/) _._
 
@@ -177,8 +177,3 @@ _Charity Majors 是 Honeycomb 的 CTO 和 Facebook 的前产品工程经理。_
 Get more insights, news, and assorted awesomeness around all things cloud learning.
 
 获取有关云学习所有事物的更多见解、新闻和各种精彩内容。
-
-[![kubernetes1](https://res.cloudinary.com/acloud-guru/image/fetch/c_thumb,f_auto,q_auto,w_465/https://acg-wordpress-content-production.s3.us-west-2.amazonaws.com/app/uploads/2021/03/k8s1.jpeg)](https://acloudguru.com/blog/engineering/whats-new-with-kubernetes-1-22) 
-
-2.amazonaws.com/app/uploads/2021/03/k8s1.jpeg)](https://acloudguru.com/blog/engineering/whats-new-with-kubernetes-1-22)
-

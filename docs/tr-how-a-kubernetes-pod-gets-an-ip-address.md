@@ -2,27 +2,18 @@
 
 # Kubernetes Pod 如何获取 IP 地址
 
-Aug 21, 20209 min read[Kubernetes](http://ronaknathani.com/category/kubernetes/)
+Aug 21, 20209 min read [Kubernetes](http://ronaknathani.com/category/kubernetes/)
 
-2020 年 8 月 21 日分钟阅读 [Kubernetes](http://ronaknathani.com/category/kubernetes/)
-
-One of the core requirements of the
-[Kubernetes networking model](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model) is that every pod should get its own IP address and that every pod in the cluster should be able to talk to it using this IP address. There are several network providers (flannel, calico, canal, etc.) that implement this networking model.
-
-的核心要求之一
-[Kubernetes 网络模型](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model) 是每个 pod 都应该有自己的 IP 地址，集群中的每个 pod应该能够使用这个 IP 地址与它交谈。有几个网络供应商（法兰绒、印花布、运河等)实现了这种网络模型。
+One of the core requirements of the [Kubernetes networking model](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model) is that every pod should get its own IP address and that every pod in the cluster should be able to talk to it using this IP address. There are several network providers (flannel, calico, canal, etc.) that implement this networking model.
+[Kubernetes 网络模型](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model) 的核心要求之一是每个 pod 都应该有自己的 IP 地址，集群中的每个 pod应该能够使用这个 IP 地址与它交谈。有几个网络供应商（法兰绒、印花布、运河等)实现了这种网络模型。
 
 As I started working on Kubernetes, it wasn’t completely clear to me how every pod is assigned an IP address. I understood how various components worked independently, however, it wasn’t clear how these components fit together. For instance, I understood what CNI plugins were, however, I didn’t know how they were invoked. So, I wanted to write this post to share what I have learned about various networking components and how they are stitched together in a kubernetes cluster for every pod to receive an IP address.
 
 当我开始研究 Kubernetes 时，我并不完全清楚每个 pod 是如何分配 IP 地址的。我了解各种组件如何独立工作，但是，不清楚这些组件如何组合在一起。比如我知道什么是CNI插件，但是不知道是怎么调用的。所以，我想写这篇文章来分享我对各种网络组件的了解，以及它们如何在 kubernetes 集群中拼接在一起，以便每个 pod 接收 IP 地址。
 
-There are various ways of setting up networking in kubernetes and various options for a container runtime. For this post, I will use
-[Flannel](https://github.com/coreos/flannel) as the network provider and
-[Containerd](https://github.com/containerd/containerd) as the container runtime. Also, I am going to assume that you know how container networking works and only share a very brief overview below for context.
+There are various ways of setting up networking in kubernetes and various options for a container runtime. For this post, I will use [Flannel](https://github.com/coreos/flannel) as the network provider and [Containerd](https://github.com/containerd/containerd) as the container runtime. Also, I am going to assume that you know how container networking works and only share a very brief overview below for context.
 
-在 kubernetes 中有多种设置网络的方法以及容器运行时的各种选项。对于这篇文章，我将使用
-[Flannel](https://github.com/coreos/flannel) 作为网络提供者和
-[Containerd](https://github.com/containerd/containerd) 作为容器运行时。此外，我将假设您知道容器网络的工作原理，并且仅在下面分享一个非常简短的概述以了解上下文。
+在 kubernetes 中有多种设置网络的方法以及容器运行时的各种选项。对于这篇文章，我将使用[Flannel](https://github.com/coreos/flannel) 作为网络提供者和[Containerd](https://github.com/containerd/containerd) 作为容器运行时。此外，我将假设您知道容器网络的工作原理，并且仅在下面分享一个非常简短的概述以了解上下文。
 
 ## Some Background Concepts
 
@@ -42,20 +33,15 @@ There are some really good posts explaining how container networking works. For 
 
 #### 容器在同一主机上
 
-One of the ways containers running on the same host can talk to each other via their IP addresses is through a linux bridge. In the kubernetes (and docker) world, a
-[veth (virtual ethernet)](https://man7.org/linux/man-pages/man4/veth.4.html) device is created to achieve this. One end of this veth device is inserted into the container network namespace and the other end is connected to a
-[linux bridge](https://wiki.archlinux.org/index.php/Network_bridge) on the host network. All containers on the same host have one end of this veth pair connected to the linux bridge and they can talk to each other using their IP addresses via the bridge. The linux bridge is also assigned an IP address and it acts as a gateway for egress traffic from pods destined to different nodes.
+One of the ways containers running on the same host can talk to each other via their IP addresses is through a linux bridge. In the kubernetes (and docker) world, a [veth (virtual ethernet)](https://man7.org/linux/man-pages/man4/veth.4.html) device is created to achieve this. One end of this veth device is inserted into the container network namespace and the other end is connected to a [linux bridge](https://wiki.archlinux.org/index.php/Network_bridge) on the host network. All containers on the same host have one end of this veth pair connected to the linux bridge and they can talk to each other using their IP addresses via the bridge. The linux bridge is also assigned an IP address and it acts as a gateway for egress traffic from pods destined to different nodes.
 ![bridge networking](http://ronaknathani.com/bridge-networking.png)
 
 #### Containers on different hosts
 
-运行在同一主机上的容器可以通过它们的 IP 地址相互通信的一种方式是通过 linux 网桥。在 kubernetes（和 docker）世界中，
-[veth（虚拟以太网）](https://man7.org/linux/man-pages/man4/veth.4.html) 设备就是为了实现这一点而创建的。这个 veth 设备的一端插入容器网络命名空间，另一端连接到一个
-[linux bridge](https://wiki.archlinux.org/index.php/Network_bridge) 在主机网络上。同一主机上的所有容器都将这个 veth 对的一端连接到 linux 网桥，它们可以通过网桥使用 IP 地址相互通信。 linux 网桥也被分配了一个 IP 地址，它充当从 pod 到不同节点的出口流量的网关。
+运行在同一主机上的容器可以通过它们的 IP 地址相互通信的一种方式是通过 linux 网桥。在 kubernetes（和 docker）世界中，[veth（虚拟以太网）](https://man7.org/linux/man-pages/man4/veth.4.html) 设备就是为了实现这一点而创建的。这个 veth 设备的一端插入容器网络命名空间，另一端连接到一个[linux bridge](https://wiki.archlinux.org/index.php/Network_bridge) 在主机网络上。同一主机上的所有容器都将这个 veth 对的一端连接到 linux 网桥，它们可以通过网桥使用 IP 地址相互通信。 linux 网桥也被分配了一个 IP 地址，它充当从 pod 到不同节点的出口流量的网关。
 #### 不同主机上的容器
 
-One of the ways containers running on different hosts can talk to each other via their IP addresses is by using packet encapsulation. Flannel supports this through
-[vxlan](https://vincent.bernat.ch/en/blog/2017-vxlan-linux) which wraps the original packet inside a UDP packet and sends it to the destination.
+One of the ways containers running on different hosts can talk to each other via their IP addresses is by using packet encapsulation. Flannel supports this through [vxlan](https://vincent.bernat.ch/en/blog/2017-vxlan-linux) which wraps the original packet inside a UDP packet and sends it to the destination.
 
 运行在不同主机上的容器可以通过它们的 IP 地址相互通信的一种方式是使用数据包封装。法兰绒支持这一点
 [vxlan](https://vincent.bernat.ch/en/blog/2017-vxlan-linux) 将原始数据包包装在 UDP 数据包中并将其发送到目的地。
@@ -80,15 +66,9 @@ _注意：这只是如何配置容器之间的网络的一种方式。_
 
 ### 什么是CNI？
 
-[CNI project](https://github.com/containernetworking/cni) includes a
-[spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) to provide a generic plugin-based networking solution for linux containers. It also consists of various 
+[CNI project](https://github.com/containernetworking/cni) includes a [spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) to provide a generic plugin-based networking solution for linux containers. It also consists of various [plugins](https://github.com/containernetworking/plugins) which perform different functions in configuring the pod network. A CNI plugin is an executable that follows the CNI spec and we’ll discuss some plugins in the post below.
 
-[CNI 项目](https://github.com/containernetworking/cni) 包括一个
-[spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) 为 linux 容器提供基于插件的通用网络解决方案。它还包括各种
-
-[plugins](https://github.com/containernetworking/plugins) which perform different functions in configuring the pod network. A CNI plugin is an executable that follows the CNI spec and we’ll discuss some plugins in the post below.
-
-[plugins](https://github.com/containernetworking/plugins) 在配置 pod 网络时执行不同的功能。 CNI 插件是一个遵循 CNI 规范的可执行文件，我们将在下面的帖子中讨论一些插件。
+[CNI 项目](https://github.com/containernetworking/cni) 包括一个 [spec](https://github.com/containernetworking/cni/blob/master/SPEC.md) 为 linux 容器提供基于插件的通用网络解决方案。它还包括各种[plugins](https://github.com/containernetworking/plugins) 在配置 pod 网络时执行不同的功能。 CNI 插件是一个遵循 CNI 规范的可执行文件，我们将在下面的帖子中讨论一些插件。
 
 ## Assigning Subnets To Nodes For Pod IP Addresses
 
@@ -102,11 +82,9 @@ If all pods are required to have an IP address, it’s important to ensure that 
 
 ### 节点 IPAM 控制器
 
-When `nodeipam` is passed as an option to the
-[kube-controller-manager's](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) `--controllers` command line flag, it allocates each node a dedicated subnet (podCIDR) from the cluster CIDR (IP range for the cluster network). Since these podCIDRs are disjoint subnets, it allows assigning each pod a unique IP address.
+When `nodeipam` is passed as an option to the [kube-controller-manager's](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) `--controllers` command line flag, it allocates each node a dedicated subnet (podCIDR) from the cluster CIDR (IP range for the cluster network). Since these podCIDRs are disjoint subnets, it allows assigning each pod a unique IP address.
 
-当 `nodeipam` 作为选项传递给
-[kube-controller-manager's](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) `--controllers` 命令行标志，它为每个节点分配一个专用的来自集群 CIDR（集群网络的 IP 范围)的子网 (podCIDR)。由于这些 podCIDR 是不相交的子网，它允许为每个 pod 分配一个唯一的 IP 地址。
+当 `nodeipam` 作为选项传递给 [kube-controller-manager's](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/) `--controllers` 命令行标志，它为每个节点分配一个专用的来自集群 CIDR（集群网络的 IP 范围)的子网 (podCIDR)。由于这些 podCIDR 是不相交的子网，它允许为每个 pod 分配一个唯一的 IP 地址。
 
 A kubernetes node is assigned a podCIDR when the node first registers with the cluster. To change the podCIDR allocated to nodes in a cluster, nodes need to be de-registered and then re-registered with any configuration changes first applied to the kubernetes control plane. `podCIDR` for a node can be listed using the following command.
 
@@ -141,30 +119,23 @@ Ref:
 
 ## 容器运行时和 CNI 插件之间的交互
 
-Every network provider has a CNI plugin which is invoked by the container runtime to configure network for a pod as it’s started. With containerd as the container runtime,
-[Containerd CRI plugin](https://github.com/containerd/cri) invokes the CNI plugin. Every network provider also has an agent that’s installed on each of the kubernetes node to configure pod networking. When the network provider agent is installed, it either ships with the CNI config or it creates one on the node which is then used by the CRI plugin to figure out which CNI plugin to call.
+Every network provider has a CNI plugin which is invoked by the container runtime to configure network for a pod as it’s started. With containerd as the container runtime, [Containerd CRI plugin](https://github.com/containerd/cri) invokes the CNI plugin. Every network provider also has an agent that’s installed on each of the kubernetes node to configure pod networking. When the network provider agent is installed, it either ships with the CNI config or it creates one on the node which is then used by the CRI plugin to figure out which CNI plugin to call.
 
-每个网络提供者都有一个 CNI 插件，容器运行时会调用该插件来为 pod 启动时配置网络。使用 containerd 作为容器运行时，
- [Containerd CRI插件](https://github.com/containerd/cri)调用CNI插件。每个网络提供商也有一个安装在每个 kubernetes 节点上的代理来配置 pod 网络。安装网络提供程序代理后，它要么随 CNI 配置一起提供，要么在节点上创建一个，然后 CRI 插件使用它来确定要调用哪个 CNI 插件。
+每个网络提供者都有一个 CNI 插件，容器运行时会调用该插件来为 pod 启动时配置网络。使用 containerd 作为容器运行时， [Containerd CRI插件](https://github.com/containerd/cri)调用CNI插件。每个网络提供商也有一个安装在每个 kubernetes 节点上的代理来配置 pod 网络。安装网络提供程序代理后，它要么随 CNI 配置一起提供，要么在节点上创建一个，然后 CRI 插件使用它来确定要调用哪个 CNI 插件。
 
 The location for the CNI config file is configurable and the default value is `/etc/cni/net.d/<config-file>`. CNI plugins need to be shipped on every node by the cluster administrators. The location for CNI plugins is configurable as well and the default value is `/opt/cni/bin`.
 
 CNI 配置文件的位置是可配置的，默认值为`/etc/cni/net.d/<config-file>`。 CNI 插件需要由集群管理员在每个节点上提供。 CNI 插件的位置也是可配置的，默认值为 `/opt/cni/bin`。
 
-In case of containerd as the container runtime, path for CNI configuration and CNI plugin binaries can be specified under `[plugins."io.containerd.grpc.v1.cri".cni]` section of the
-[containerd config](https://github.com/containerd/cri/blob/master/docs/config.md).
+In case of containerd as the container runtime, path for CNI configuration and CNI plugin binaries can be specified under `[plugins."io.containerd.grpc.v1.cri".cni]` section of the [containerd config](https://github.com/containerd/cri/blob/master/docs/config.md).
 
-如果使用 containerd 作为容器运行时，可以在 `[plugins."io.containerd.grpc.v1.cri".cni]` 部分指定 CNI 配置和 CNI 插件二进制文件的路径
-[容器配置](https://github.com/containerd/cri/blob/master/docs/config.md)。
+如果使用 containerd 作为容器运行时，可以在 `[plugins."io.containerd.grpc.v1.cri".cni]` 部分指定 CNI 配置和 CNI 插件二进制文件的路径[容器配置](https://github.com/containerd/cri/blob/master/docs/config.md)。
 
-Since we are referring to Flannel as the network provider here, I’ll talk a little about how Flannel is set up. Flanneld is the Flannel daemon and is typically installed on a kubernetes cluster as a daemonset with `install-cni` as an
-[init container](https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml#L172). The `install-cni` container creates the
-[CNI configuration file](https://gist.github.com/ronaknnathani/957a56210bd4fbd8e11120273c6b4ede) \- `/etc/cni/net.d/10-flannel.conflist` \- on each node. Flanneld creates a vxlan device, fetches networking metadata from the apiserver and watches for updates on pods. As pods are created, it distributes routes for all pods across the entire cluster and these routes allow pods to connect to each other via their IP addresses. For details on how flannel works, I recommend the
+Since we are referring to Flannel as the network provider here, I’ll talk a little about how Flannel is set up. Flanneld is the Flannel daemon and is typically installed on a kubernetes cluster as a daemonset with `install-cni` as an [init container](https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml#L172). The `install-cni` container creates the [CNI configuration file](https://gist.github.com/ronaknnathani/957a56210bd4fbd8e11120273c6b4ede) \- `/etc/cni/net.d/10-flannel.conflist` \- on each node. Flanneld creates a vxlan device, fetches networking metadata from the apiserver and watches for updates on pods. As pods are created, it distributes routes for all pods across the entire cluster and these routes allow pods to connect to each other via their IP addresses. For details on how flannel works, I recommend the
 [linked references below](http://ronaknathani.com#how-flannel-works).
 
 由于我们在这里将 Flannel 称为网络提供商，因此我将稍微谈谈 Flannel 是如何设置的。 Flanneld 是 Flannel 守护进程，通常作为守护进程安装在 kubernetes 集群上，使用 `install-cni` 作为
-[初始化容器](https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml#L172)。 `install-cni` 容器创建
-[CNI 配置文件](https://gist.github.com/ronaknnathani/957a56210bd4fbd8e11120273c6b4ede) \- `/etc/cni/net.d/10-flannel.conflist` \- 在每个节点上。 Flanneld 创建一个 vxlan 设备，从 apiserver 获取网络元数据并监视 pod 上的更新。创建 Pod 时，它会为整个集群中的所有 Pod 分配路由，这些路由允许 Pod 通过其 IP 地址相互连接。有关法兰绒工作原理的详细信息，我推荐
+[初始化容器](https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml#L172)。 `install-cni` 容器创建[CNI 配置文件](https://gist.github.com/ronaknnathani/957a56210bd4fbd8e11120273c6b4ede) \- `/etc/cni/net.d/10-flannel.conflist` \- 在每个节点上。 Flanneld 创建一个 vxlan 设备，从 apiserver 获取网络元数据并监视 pod 上的更新。创建 Pod 时，它会为整个集群中的所有 Pod 分配路由，这些路由允许 Pod 通过其 IP 地址相互连接。有关法兰绒工作原理的详细信息，我推荐
 [以下链接参考](http://ronaknathani.com#how-flannel-works)。
 
 The interactions between Containerd CRI Plugin and CNI plugins can be visualized as follows:

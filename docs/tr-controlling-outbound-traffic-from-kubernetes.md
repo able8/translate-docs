@@ -4,8 +4,6 @@
 
 [Read the article](http://monzo.com#article)
 
-[阅读文章](http://monzo.com#article)
-
 At Monzo, the Security Team's highest priority is to keep your money and data safe. And to achieve this, we're always adding and refining security controls across our banking platform.
 
 在 Monzo，安全团队的首要任务是确保您的资金和数据安全。为实现这一目标，我们始终在我们的银行平台上添加和完善安全控制。
@@ -91,10 +89,6 @@ The service will be able to reach any domain on that port, which isn't a very ti
 The way we implemented this was through a Kubernetes NetworkPolicy for each port that we needed to allow. If a pod of a service is labelled with `external-egress.monzo.com/443: true`, then it will match a policy which allows traffic to all public IPs on port 443. Any traffic not allowed by one of these policies is logged (a feature of Calico), then dropped.
 
 我们实现这一点的方式是通过 Kubernetes NetworkPolicy 为我们需要允许的每个端口。如果一个服务的 pod 被标记为“external-egress.monzo.com/443: true”，那么它将匹配一个策略，该策略允许端口 443 上的所有公共 IP 的流量。这些策略之一不允许的任何流量是记录（Calico 的一个功能），然后删除。
-
-![apiVersion: networking.k8s.io/v1 kind: NetworkPolicy metadata:   name: egress-external-tcp-443 spec:   egress:     - to:         - ipBlock:                 # allow the whole internet                 cidr: 0.0.0.0/0                 except: #private IP addresses         - 0.0.0.0/8         - 10.0.0.0/8         - ...         ports:             - port: 443   podSelector:          matchLabels:             external-egress.monzo.com/443: "true"   policyTypes:   - Egress](https://images.ctfassets.net/ro61k101ee59/FbZ4BTweom8d0ptxRbN5M/af6ef10de11bb4dc7bab4de25e78ea11/Screenshot_2020-04-06_at_12.16.34.png?w=1280&q=90)
-
-私有 IP 地址 - 0.0.0.0/8 - 10.0.0.0/8 - ... 端口： - 端口：443 podSelector：matchLabels：external-egress.monzo.com/443：“true” policyTypes：- Egress](https：//images.ctfassets.net/ro61k101ee59/FbZ4BTweom8d0ptxRbN5M/af6ef10de11bb4dc7bab4de25e78ea11/Screenshot_2020-04-06_at_12.16.34.png?w=190)
 
 To label pods, we used a similar approach to the one we used for internal network controls: 'rule files' which are part of a service's code. To start with, we added files like `service.github/manifests/egress/external/443.rule`, and updated our deployment pipeline to automatically convert these files into the right labels.
 
@@ -216,7 +210,7 @@ We manage each egress gateway in our cluster with some Kubernetes building block
 
 1. **A** [**Deployment**](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) **of** [**Envoy**](https://www.envoyproxy.io/) **pods.** We usually run three pods for high availability. The envoy pods use a local file to get their configuration. 
 
-1. **A** [**部署**](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) **of** [**Envoy**](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)/www.envoyproxy.io/) **pods.** 我们通常运行三个 pod 以实现高可用性。 Envoy Pod 使用本地文件来获取它们的配置。
+1. **A** [**部署**](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) **of** [**Envoy**](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) **pods.** 我们通常运行三个 pod 以实现高可用性。 Envoy Pod 使用本地文件来获取它们的配置。
 
 2. **A** [**ConfigMap**](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/) **to configure Envoy.** The config determines what ports the gateway listens on and what DNS name traffic is destined for (eg `github.com`).
 

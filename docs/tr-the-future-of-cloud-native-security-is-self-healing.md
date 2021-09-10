@@ -4,13 +4,13 @@
 
 #### 26 Oct 2020 9:29am,   by [Jon Jarboe](https://thenewstack.io/author/jonjarboe/ "Posts by Jon Jarboe")
 
-#### 2020 年 10 月 26 日上午 9:29，作者 [Jon Jarboe](https://thenewstack.io/author/jonjarboe/“Jon Jarboe 的帖子”)
+#### 
 
 ![](https://cdn.thenewstack.io/media/2020/10/98663b08-woman-3918661_1280-1024x646.jpg)
 
 Jon has been helping software development organizations improve processes and tools for over 20 years, in contexts ranging from embedded systems to complex distributed applications and roles including support, development, customer success, management, pre- and post-sales.](https://www.linkedin.com/in/jon-jarboe/)
 
-20 多年来，Jon 一直在帮助软件开发组织改进流程和工具，从嵌入式系统到复杂的分布式应用程序和角色，包括支持、开发、客户成功、管理、售前和售后。](https://www.linkedin.com/in/jon-jarboe/)
+20 多年来，Jon 一直在帮助软件开发组织改进流程和工具，从嵌入式系统到复杂的分布式应用程序和角色，包括支持、开发、客户成功、管理、售前和售后。
 
 Security has always been a concern in the cloud. Individuals and organizations alike have a vested interest in securing their private information. Given the constant barrage of breach announcements, organizations clearly struggle to meet their data security obligations. Some argue that it’s an issue of priorities or regulation, but I think they are missing the point: it is simply too easy to fail when it comes to securing data in the cloud.
 

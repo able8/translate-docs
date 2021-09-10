@@ -4,7 +4,7 @@
 
 #### 16 Oct 2020 12:26pm,   by [Emily Omier](https://thenewstack.io/author/emily-omier/ "Posts by Emily Omier")
 
-#### 2020 年 10 月 16 日下午 12:26，作者：[Emily Omier](https://thenewstack.io/author/emily-omier/“Emily Omier 的帖子”)
+
 
 ![](https://cdn.thenewstack.io/media/2020/10/4556424b-benjamin-child-igqmknl6lne-unsplash.jpg)
 
