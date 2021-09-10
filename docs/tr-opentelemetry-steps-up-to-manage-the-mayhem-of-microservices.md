@@ -4,7 +4,7 @@
 
 17 Apr 2020
 
-2020 年 4 月 17 日
+
 
 ![](https://cdn.thenewstack.io/media/2020/04/89962ad8-open-telemetry.jpg)
 
@@ -18,7 +18,7 @@ Bringing the work close to production-readiness the project has released a colle
 
 For end-users, the new release candidate offers end-users “confidence that OpenTelemetry is safe to evaluate because it is now at a place where it's nearing feature completion, runtime stability, and API stability,” wrote [Liz Fong-Jones]( https://twitter.com/lizthegrey), principal developer advocate for observability software provider and project contributor [Honeycomb](https://www.honeycomb.io/), in an e-mail.
 
-[Liz Fong-Jones] 写道，对于最终用户而言，新的候选版本让最终用户“相信 OpenTelemetry 可以安全地进行评估，因为它现在已接近功能完成、运行时稳定性和 API 稳定性”。 https://twitter.com/lizthegrey)，可观察性软件提供商和项目贡献者 [Honeycomb](https://www.honeycomb.io/) 的主要开发者倡导者，在一封电子邮件中。
+Liz Fong-Jones 写道，对于最终用户而言，新的候选版本让最终用户“相信 OpenTelemetry 可以安全地进行评估，因为它现在已接近功能完成、运行时稳定性和 API 稳定性”。可观察性软件提供商和项目贡献者 [Honeycomb](https://www.honeycomb.io/) 的主要开发者倡导者，在一封电子邮件中。
 
 She notes that the release signals to monitoring software and services providers that it is time to write their own exporters for the project, and it provides “a smoother and less friction path for users to get critical telemetry data into their app.”
 

@@ -5,14 +5,13 @@
 March 30, 2020
 by [Timothy Appnel](https://www.ansible.com/blog/author/timothy-appnel)
 
-2020 年 3 月 30 日
-作者：[Timothy Appnel](https://www.ansible.com/blog/author/timothy-appnel)
+
 
 ![ansible-blog_automated-webhooks-series](https://www.ansible.com/hs-fs/hubfs/Images/blog-social/ansible-blog_automated-webhooks-series.png?width=1035&name=ansible-blog_automated-webhooks-series.png)
 
--webhooks-series.png)
 
-In a [previous blog post](https://www.ansible.com/blog/intro-to-automation-webhooks-for-red-hat-ansible-automation-platform) I introduced Automation Webhooks and their uses with Infrastructure- as-Code (IaC) workflows and Red Hat Ansible Automation Platform. In this blog post, I’ll cover how those features can be applied to creating GitOps pipelines, a particular workflow gaining popularity in the cloud-native space, using Ansible and the unique benefits utilizing Ansible provides.
+
+In a [previous blog post](https://www.ansible.com/blog/intro-to-automation-webhooks-for-red-hat-ansible-automation-platform) I introduced Automation Webhooks and their uses with Infrastructure-as-Code (IaC) workflows and Red Hat Ansible Automation Platform. In this blog post, I’ll cover how those features can be applied to creating GitOps pipelines, a particular workflow gaining popularity in the cloud-native space, using Ansible and the unique benefits utilizing Ansible provides.
 
 在 [上一篇博文](https://www.ansible.com/blog/intro-to-automation-webhooks-for-red-hat-ansible-automation-platform) 中，我介绍了自动化 Webhooks 及其与基础设施的使用- as-Code (IaC) 工作流和红帽 Ansible 自动化平台。在这篇博文中，我将介绍如何将这些功能应用于创建 GitOps 管道、使用 Ansible 以及利用 Ansible 提供的独特优势在云原生空间中越来越受欢迎的特定工作流程。
 
@@ -54,7 +53,7 @@ This diagram shows what a typical GitOps workflow looks like from a conceptual l
 
 ![Screen Shot 2020-03-30 at 11.03.33 AM](https://www.ansible.com/hs-fs/hubfs/Screen%20Shot%202020-03-30%20at%2011.03.33%20AM.png?width=1584&name=Screen%20Shot%202020-03-30%20at%2011.03.33%20AM.png)
 
-png?width=1584&name=Screen%20Shot%202020-03-30%20at%2011.03.33%20AM.png)
+
 
 GitOps has been shown to increase productivity and velocity of deployments and development. Developers can use the tools and workflows they are already familiar with to manage deployments, allowing new developers to get up to speed faster. While Git has traditionally been a developer tool, operations staff benefit from the accumulated knowledge and experience of the Git community and the maturity of its ecosystem. There are a plethora of existing tools out there to make using Git more accessible and easier for those new to it.
 
@@ -78,7 +77,7 @@ With the defined state of your infrastructure under Git version control, complet
 
 ![Screen Shot 2020-03-30 at 11.03.54 AM](https://www.ansible.com/hs-fs/hubfs/Screen%20Shot%202020-03-30%20at%2011.03.54%20AM.png?width=1516&name=Screen%20Shot%202020-03-30%20at%2011.03.54%20AM.png)There are a few things to note about using Red Hat Ansible Automation Platform compared to the typical GitOps pipeline.
 
-png?width=1516&name=Screen%20Shot%202020-03-30%20at%2011.03.54%20AM.png)与典型的 GitOps 管道相比，使用红帽 Ansible 自动化平台有几点需要注意。
+与典型的 GitOps 管道相比，使用红帽 Ansible 自动化平台有几点需要注意。
 
 Here Ansible Tower replaces the GitOps “agent” (Operator) that runs on a given cluster and pulls in its configuration (state) from Git. Typically these are Kubernetes Operators like [Flux](https://github.com/fluxcd/flux) or [Eunomia](https://github.com/KohlsTechnology/eunomia).
 

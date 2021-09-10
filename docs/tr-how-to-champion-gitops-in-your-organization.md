@@ -4,17 +4,13 @@
 
 August 04, 2020
 
-2020 年 8 月 4 日
-
 By now you’ve heard all about GitOps and are convinced that GitOps is the most efficient way for development teams to go faster without them having to become Kubernetes gurus. However, making the switch to a cloud native technical solution may be the simplest part in your Kubernetes journey. Getting buy-in from your peers and championing GitOps throughout your organization could very well be the most challenging aspect of the cloud native transition.
 
 到目前为止，您已经听说了关于 GitOps 的所有信息，并且确信 GitOps 是开发团队无需成为 Kubernetes 专家即可加快速度的最有效方式。但是，切换到云原生技术解决方案可能是您 Kubernetes 旅程中最简单的部分。获得同行的认可并在整个组织中倡导 GitOps 很可能是云原生过渡中最具挑战性的方面。
 
 At a recent GitOps Days virtual event held earlier this spring, we hosted a roundtable discussion with four Kubernetes and GitOps hands-on practitioners. Most of our panelists had recently implemented GitOps and self-service development platforms for Kubernetes in their organizations. In this discussion, the panelists offer a lot of common sense advice on the pitfalls to avoid when engineering a platform, and more importantly, they dig down on some practical strategies to use when you're on-boarding and educating development teams who are adopting GitOps for self-service developer platforms in your own organization.
 
-
 在今年春季早些时候举行的最近 GitOps Days 虚拟活动中，我们与四位 Kubernetes 和 GitOps 实践从业者举行了圆桌讨论。我们的大多数小组成员最近都在他们的组织中为 Kubernetes 实施了 GitOps 和自助服务开发平台。在本次讨论中，小组成员提供了许多关于在设计平台时要避免的陷阱的常识性建议，更重要的是，他们深入研究了一些实用策略，以便在您入职和教育正在采用的开发团队时使用用于您自己组织中的自助开发人员平台的 GitOps。
-
 
 ## Our panel of GitOps and Kubernetes practitioners
 
@@ -34,9 +30,7 @@ Before we discuss how you go about championing GitOps in your own organization, 
 
 Platform teams in an organization are increasingly responsible for providing a set of developer services to developers. Developers on the other hand are responsible for delivering applications to the company’s end-consumers. And so, to a large extent what we’re exploring is the relationship between those teams within an organization.
 
-
 组织中的平台团队越来越负责向开发人员提供一组开发人员服务。另一方面，开发人员负责向公司的最终消费者交付应用程序。因此，在很大程度上，我们正在探索的是组织内这些团队之间的关系。
-
 
 ### Guardrails and security in place
 
@@ -44,41 +38,23 @@ Platform teams in an organization are increasingly responsible for providing a s
 
 At Fidelity, a dedicated platform team manages their Kubernetes implementation. As a platform team they serve the needs of developers. In particular their job is to get out of the way of the developer so they can do their job as efficiently as possible.
 
-
-
 在 Fidelity，一个专门的平台团队负责管理他们的 Kubernetes 实施。作为一个平台团队，他们满足开发人员的需求。特别是他们的工作是避开开发人员，以便他们尽可能高效地完成工作。
-
-
 
 Niraj clarified, “...when I talk about platforms, what we’re really talking about is the infrastructure component of things. Obviously both EKS and Kubernetes play a big role. We also have fifteen or sixteen different components like the ELB ingress controller, external DNS and other components that are open source, plus we provide the autoscalers to developers as well.”
 
-
-
 Niraj 澄清说：“……当我谈论平台时，我们真正谈论的是事物的基础设施组件。显然 EKS 和 Kubernetes 都发挥着重要作用。我们还有 15 到 16 个不同的组件，例如 ELB 入口控制器、外部 DNS 和其他开源组件，此外我们还向开发人员提供自动缩放器。”
-
-
 
 At Fidelity, GitOps allows for all platform configurations to be bundled and versioned in Git. Developers never have to worry about operational tasks, as upgrades are now automated. The result is a standard platform with guardrails and security in place that any development team can deploy to and from.
 
-
-
 在 Fidelity，GitOps 允许在 Git 中捆绑所有平台配置并对其进行版本控制。开发人员永远不必担心操作任务，因为升级现在是自动化的。结果是一个带有护栏和安全性的标准平台，任何开发团队都可以部署到位。
-
-
 
 Similarly at Palo Alto, Javeria Khan, Senior SRE says that “as platform builders we are trying to solve infrastructure issues and remove that burden from the developer. We especially want to ensure that they don’t inadvertently make a change that can cause harm to the entire system.“
 
-
-
 同样在帕洛阿尔托，高级 SRE 的 Javeria Khan 说：“作为平台构建者，我们正在努力解决基础设施问题并减轻开发人员的负担。我们特别希望确保他们不会无意中做出可能对整个系统造成损害的更改。”
-
-
 
 Steve Wade from Mettle says that implementing GitOps is a way of providing an abstraction layer on top of Kubernetes, “For us the platform needs to enable a self-service mechanism for developers. Essentially the platform is there for them to be able to bring business value to Mettle and our customers. We use GitOps as an abstraction layer for developers to onboard new microservices into the platform.”
 
-
 来自 Mettle 的 Steve Wade 表示，实施 GitOps 是在 Kubernetes 之上提供抽象层的一种方式，“对我们来说，平台需要为开发人员启用自助服务机制。从本质上讲，该平台可以让他们为 Mettle 和我们的客户带来商业价值。我们使用 GitOps 作为抽象层，让开发人员将新的微服务载入平台。”
-
 
 ## Balance between control and flexibility 
 
@@ -86,17 +62,11 @@ Steve Wade from Mettle says that implementing GitOps is a way of providing an ab
 
 When implementing a developer platform, there is tension between the need for control while at the same time providing some flexibility in tool choice and in certain cloud native patterns. Maintaining the balance between those two elements can be tricky but all participants agreed on the need for implementing constraints and guardrails.
 
-
-
 在实现开发人员平台时，控制需求与同时在工具选择和某些云原生模式中提供一些灵活性之间存在紧张关系。保持这两个要素之间的平衡可能很棘手，但所有参与者都同意实施约束和护栏的必要性。
-
-
 
 Throughout the discussion, the panelists boiled down their advice into these five practical tips for championing GitOps in your own organization:
 
-
 在整个讨论过程中，小组成员将他们的建议归结为以下五个实用技巧，以在您自己的组织中支持 GitOps：
-
 
 ### \#1 Define, collaborate and document common cloud native patterns
 
@@ -104,17 +74,11 @@ Throughout the discussion, the panelists boiled down their advice into these fiv
 
 At Fidelity the platform team is very transparent in terms of what security they have in place and why it needs to be there. To enforce those security requirements and to be more flexible, they need to support multiple cloud native patterns. For example, they document and provide support for numerous strategies on how to manage secrets and how you might go about using persistent data, among others.
 
-
-
 在 Fidelity，平台团队在他们拥有什么安全性以及为什么需要安全性方面非常透明。为了强制执行这些安全要求并更加灵活，他们需要支持多种云原生模式。例如，它们记录并支持有关如何管理机密以及如何使用持久数据等的众多策略。
-
-
 
 The Mettle platform team developed and documented a number of microservices patterns together with the development team as a way to illustrate the problems with doing things the old way vs the new way. To keep the information flowing, the platform team at Mettle created a wiki to document all of these patterns.
 
-
 Mettle 平台团队与开发团队一起开发并记录了许多微服务模式，以此来说明以旧方式与新方式做事的问题。为了保持信息畅通，Mettle 的平台团队创建了一个 wiki 来记录所有这些模式。
-
 
 ### \#2 Take small steps & iterate the process
 
@@ -122,11 +86,7 @@ Mettle 平台团队与开发团队一起开发并记录了许多微服务模式�
 
 One of the best ways to start according to Steve is with a component that you're familiar with and that has a small blast radius. In this way, if that one thing doesn't work out, then it's not going to be too difficult to regroup.
 
-
-
 根据 Steve 的说法，最好的开始方式之一是使用您熟悉且爆炸半径较小的组件。这样一来，如果那一件事没有解决，那么重组也不会太难。
-
-
 
 For [Mettle's GitOps journey](https://www.weave.works/blog/case-study-mettle-leverages-gitops-for-self-service-developer-platform), they began with the platform workload, leaving the developer workloads, and focused on how to update the platform itself. They iterated on a number of different approaches for different aspects: how to deploy the ingress controller; or how to deploy the Prometheus monitoring stack.
 
@@ -142,9 +102,7 @@ For [Mettle's GitOps journey](https://www.weave.works/blog/case-study-mettle-lev
 
 The other important part is to develop some sort of sandbox environment on developer machines so they can experiment with processes on their own. There are many different types of tools they can use such as [Kind](https://kind.sigs.k8s.io/), [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) and maybe even [Ignite](https://github.com/weaveworks/ignite). In addition to those tools, you can also take advantage of public Helm charts and public images for experimentation. Steve suggests to deploy an NGINX ingress controller in Minikube using [Flux](https://www.weave.works/oss/flux/). And once you’ve built the path, developers will understand the processes much better.
 
-
 另一个重要部分是在开发人员机器上开发某种沙箱环境，以便他们可以自己试验流程。他们可以使用许多不同类型的工具，例如 [Kind](https://kind.sigs.k8s.io/)、[Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) 甚至 [Ignite](https://github.com/weaveworks/ignite)。除了这些工具之外，您还可以利用公共 Helm 图表和公共图像进行实验。 Steve 建议使用 [Flux](https://www.weave.works/oss/flux/) 在 Minikube 中部署 NGINX 入口控制器。一旦你建立了路径，开发人员就会更好地理解流程。
-
 
 ### \#4 Host brown bag information sessions
 
@@ -152,9 +110,7 @@ The other important part is to develop some sort of sandbox environment on devel
 
 Javeria Khan, in addition to documenting cloud native patterns, took it one step further and suggests that people often learn in different ways. Javeria suggests organizing and recording brown bag sessions for any patterns and strategies you collaborate on and then saving those recordings so that people can view them in their own time.
 
-
 除了记录云原生模式之外，Javeria Khan 更进一步，并建议人们经常以不同的方式学习。 Javeria 建议为您合作的任何模式和策略组织和录制棕色包会话，然后保存这些录音，以便人们可以在自己的时间查看它们。
-
 
 ### \#5 Over communicate changes
 

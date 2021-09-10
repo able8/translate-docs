@@ -4,7 +4,7 @@
 
 March 30, 2020
 
-2020 年 3 月 30 日
+
 
 The reasons to move to Kubernetes are many and compelling. This post doesn’t make the case that you should migrate, but assumes you have already decided that you want to. When you’re clear on what you want to do and why you want to do it, the questions of “When?” and “How?” become your focus. What follows centers on the question of how to approach making Kubernetes the platform on which your workloads thrive.
 
