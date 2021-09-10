@@ -95,11 +95,7 @@ After identity is confirmed and the request is decrypted, the server verifies th
 
 Here is an example of Courier ACL/ratelimit configuration definition from our [Optical Character Recognition (OCR) service](https://blogs.dropbox.com/tech/2018/10/using-machine-learning-to-index-text-from-billions-of-images/):
 
-
-
 以下是我们的 [光学字符识别 (OCR) 服务](https://blogs.dropbox.com/tech/2018/10/using-machine-learning-to-index-text) 的 Courier ACL/ratelimit 配置定义示例-来自数十亿张图片/)：
-
-
 
 ```
 limits:
@@ -171,7 +167,7 @@ Courier 为所有客户端通用的功能的语言特定实现提供了一个集
 
 **Deadlines** Every [gRPC](https://grpc.io/blog/deadlines) [request includes a](https://grpc.io/blog/deadlines) [deadline](https://grpc.io/blog/deadlines), indicating how long the client will wait for a reply. Since Courier stubs automatically propagate known metadata, the deadline travels with the request even across API boundaries. Within a process, deadlines are converted into a native representation. For example, in Go they are represented by a `context.Context` result from the `WithDeadline` method.
 
-**截止日期** 每个 [gRPC](https://grpc.io/blog/deadlines)[请求包括](https://grpc.io/blog/deadlines) [deadline](https://grpc.io/blog/deadlines)io/blog/deadlines)，表示客户端等待回复的时间。由于 Courier 存根会自动传播已知元数据，因此即使跨越 API 边界，截止日期也会随着请求而变化。在流程中，截止日期被转换为本地表示。例如，在 Go 中，它们由 `WithDeadline` 方法的 `context.Context` 结果表示。
+**截止日期** 每个 [gRPC](https://grpc.io/blog/deadlines)[请求包括](https://grpc.io/blog/deadlines) [deadline](https://grpc.io/blog/deadlines)，表示客户端等待回复的时间。由于 Courier 存根会自动传播已知元数据，因此即使跨越 API 边界，截止日期也会随着请求而变化。在流程中，截止日期被转换为本地表示。例如，在 Go 中，它们由 `WithDeadline` 方法的 `context.Context` 结果表示。
 
 In practice, we have fixed whole classes of reliability problems by forcing engineers to define deadlines in their service definitions.
 
@@ -259,12 +255,6 @@ We switched from RSA 2048 keypairs to ECDSA P-256 to get better performance for 
 
 RSA:
 
-
-
-RSA：
-
-
-
 ```
 𝛌 ~/c0d3/boringssl bazel run -- //:bssl speed -filter 'RSA 2048'
 Did ... RSA 2048 signing operations in ..............  (1527.9 ops/sec)
@@ -275,12 +265,6 @@ Did ... RSA 2048 verify (fresh key) operations in ... (25887.6 ops/sec)
 
 
 ECDSA:
-
-
-
-ECDSA：
-
-
 
 ```
 𝛌 ~/c0d3/boringssl bazel run -- //:bssl speed -filter 'ECDSA P-256'
@@ -300,12 +284,6 @@ We also found that TLS library choice (and compilation flags) matter a lot for b
 
 LibreSSL 2.6.4:
 
-
-
-LibreSSL 2.6.4：
-
-
-
 ```
 𝛌 ~ openssl speed rsa2048
 LibreSSL 2.6.4
@@ -315,14 +293,7 @@ rsa 2048 bits 0.032491s 0.001505s     30.8    664.3
 
 ```
 
-
-OpenSSL 1.1.1a:
-
-
-
 OpenSSL 1.1.1a：
-
-
 
 ```
 𝛌 ~ openssl speed rsa2048
@@ -344,11 +315,7 @@ But the fastest way to do a TLS handshake is to not do it at all! [We’ve modif
 
 It is a common misconception that encryption is expensive. Symmetric encryption is actually blazingly fast on modern hardware. A desktop-grade processor is able to encrypt and authenticate data at 40Gbps rate on a single core:
 
-
-
 认为加密很昂贵是一种常见的误解。对称加密在现代硬件上实际上非常快。桌面级处理器能够在单核上以 40Gbps 的速率加密和验证数据：
-
-
 
 ```
 𝛌 ~/c0d3/boringssl bazel run -- //:bssl speed -filter 'AES'
@@ -383,8 +350,6 @@ In our Go code we initially supported both HTTP/1.1 and gRPC using the same [net
 
 ### golang/protobuf vs gogo/protobuf
 
-### golang/protobuf vs gogo/protobuf
-
 Marshaling and unmarshaling can be expensive when you switch to gRPC. For our Go code, we’ve switched to [gogo/protobuf](https://github.com/gogo/protobuf) which noticeably decreased CPU usage on our busiest Courier servers.
 
 当您切换到 gRPC 时，编组和解组可能会很昂贵。对于我们的 Go 代码，我们已切换到 [gogo/protobuf](https://github.com/gogo/protobuf)，这显着降低了我们最繁忙的 Courier 服务器上的 CPU 使用率。
@@ -409,11 +374,7 @@ Starting from here, we are going to dig way deeper into the guts of Courier, loo
 
 Let’s look at the snippet from the `Test` service definition:
 
-
-
 让我们看一下“Test”服务定义中的片段：
-
-
 
 ```
 service Test {
@@ -434,11 +395,7 @@ service Test {
 
 As was mentioned in the reliability section above, deadlines are mandatory for all Courier methods. They can be set for the whole service with the following protobuf option:
 
-
-
 正如上面可靠性部分所述，所有 Courier 方法都必须有截止日期。可以使用以下 protobuf 选项为整个服务设置它们：
-
-
 
 ```
 option (rpc_core.service_default_deadline_ms) = 1000;
@@ -448,11 +405,7 @@ option (rpc_core.service_default_deadline_ms) = 1000;
 
 Each method can also set its own deadline, overriding the service-wide one (if present).
 
-
-
 每种方法还可以设置自己的截止日期，覆盖服务范围的截止日期（如果存在）。
-
-
 
 ```
 option (rpc_core.method_default_deadline_ms) = 5000;
@@ -462,11 +415,7 @@ option (rpc_core.method_default_deadline_ms) = 5000;
 
 In rare cases where deadline doesn’t really make sense (such as a method to watch some resource), the developer is allowed to explicitly disable it:
 
-
-
 在截止日期没有真正意义的极少数情况下（例如观察某些资源的方法），开发人员可以明确禁用它：
-
-
 
 ```
 option (rpc_core.method_no_deadline) = true;
@@ -488,11 +437,7 @@ Courier 生成自己的存根而不是依赖拦截器（Java 情况除外，其�
 
 This is what default gRPC server stubs look like:
 
-
-
 这是默认的 gRPC 服务器存根的样子：
-
-
 
 ```
 func _Test_UnaryUnary_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -522,11 +467,7 @@ Here, all the processing happens inline: decoding the protobuf, running intercep
 
 Now let’s look at Courier stubs:
 
-
-
 现在让我们看看 Courier 存根：
-
-
 
 ```
 func _Test_UnaryUnary_dbxHandler(
@@ -568,23 +509,16 @@ func _Test_UnaryUnary_dbxHandler(
 ```
 
 
-
-
 That’s a lot of code, so let’s go over it line by line.
 
 这是很多代码，所以让我们一行一行地浏览一遍。
 
 First, we defer the panic handler that is responsible for automatic error collection. This allows us to send all uncaught exceptions to centralized storage for later aggregation and reporting:
 
-
-
 首先，我们推迟负责自动错误收集的恐慌处理程序。这允许我们将所有未捕获的异常发送到集中存储，以便以后聚合和报告：
-
-
 
 ```
 defer processor.PanicHandler()
-
 ```
 
 
@@ -594,11 +528,7 @@ defer processor.PanicHandler()
 
 Then we propagate context by overriding its values from the metadata of the incoming request:
 
-
-
 然后我们通过覆盖传入请求的元数据中的值来传播上下文：
-
-
 
 ```
 ctx = metadata.SetupContext(ctx)
@@ -609,11 +539,7 @@ clientId = client_info.ClientId(ctx)
 
 We also create (and cache for efficiency purposes) the per-client stats on the server side for more granular attribution:
 
-
-
 我们还在服务器端创建（并出于效率目的缓存）每个客户端的统计信息，以获得更精细的归因：
-
-
 
 ```
 stats := metadata.StatsMap.GetOrCreatePerClientStats(clientId)
@@ -627,11 +553,7 @@ stats := metadata.StatsMap.GetOrCreatePerClientStats(clientId)
 
 Then we create the request structure, pass it to the work pool, and wait for the completion:
 
-
-
 然后我们创建请求结构，传递给工作池，等待完成：
-
-
 
 ```
 req := &processor.UnaryUnaryRequest{
@@ -664,11 +586,7 @@ Note that almost no work has been done by this point: no protobuf decoding, no i
 
 Our stub generator also allows developers to define app-specific error codes through custom options:
 
-
-
 我们的存根生成器还允许开发人员通过自定义选项定义特定于应用程序的错误代码：
-
-
 
 ```
 enum ErrorCode {
@@ -695,11 +613,7 @@ Within the same service, both gRPC and app errors are propagated, while between 
 
 Our Python stubs add an explicit context parameter to all Courier handlers, e.g.:
 
-
-
 我们的 Python 存根为所有 Courier 处理程序添加了一个明确的上下文参数，例如：
-
-
 
 ```
 from dropbox.context import Context
@@ -731,11 +645,7 @@ Note that our stubs are also fully mypy-typed which pays off in full during larg
 
 Continuing the static typing trend, we also add mypy annotations to protos themselves:
 
-
-
 延续静态类型的趋势，我们还向 protos 本身添加了 mypy 注释：
-
-
 
 ```
 class TestMessage(Message):
@@ -780,11 +690,7 @@ Before we did anything, we froze the legacy RPC feature set so it’s no longer 
 
 We started by defining a common interface for both legacy RPC and Courier. Our code generation was responsible for producing both versions of the stubs that satisfy this interface:
 
-
-
 我们首先为旧版 RPC 和 Courier 定义了一个通用接口。我们的代码生成负责生成满足此接口的存根的两个版本：
-
-
 
 ```
 type TestServer interface {
@@ -807,11 +713,9 @@ Then we started switching each service to the new interface but continued using 
 
 然后我们开始将每个服务切换到新接口，但继续使用旧版 RPC。这通常是涉及服务及其客户中所有方法的巨大差异。由于这是最容易出错的步骤，我们希望通过一次更改一个变量来尽可能降低风险。
 
-> Low profile services with a small number of methods and
->  [spare error budget](https://landing.google.com/sre/sre-book/chapters/embracing-risk/) can do the migration in a single step and ignore this warning.
+> Low profile services with a small number of methods and [spare error budget](https://landing.google.com/sre/sre-book/chapters/embracing-risk/) can do the migration in a single step and ignore this warning.
 
-> 具有少量方法的低调服务和
-> [备用错误预算](https://landing.google.com/sre/sre-book/chapters/embracing-risk/) 可以一步完成迁移并忽略此警告。
+> 具有少量方法的低调服务和[备用错误预算](https://landing.google.com/sre/sre-book/chapters/embracing-risk/) 可以一步完成迁移并忽略此警告。
 
 ### Step 3: Switch clients to use Courier RPC
 
@@ -819,11 +723,7 @@ Then we started switching each service to the new interface but continued using 
 
 As part of the Courier migration, we also started running both legacy and Courier servers in the same binary on different ports. Now changing the RPC implementation is a one-line diff to the client:
 
-
-
 作为 Courier 迁移的一部分，我们还开始在不同端口上以相同的二进制文件运行旧服务器和 Courier 服务器。现在更改 RPC 实现是对客户端的一行差异：
-
-
 
 ```
 class MyClient(object):
