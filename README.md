@@ -251,3 +251,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [The Future of Ops Jobs](docs/tr-the-future-of-ops-jobs.md)
 1. [Things I Learned to Become a Senior Software Engineer](docs/tr-things-I-learned-to-become-a-senior-software-engineer.md)
 1. [Why Kubernetes Operators Will Unleash Your Developers by Reducing Complexity](docs/tr-why-kubernetes-operators-will-unleash-your-developers-by-reducing-complexity.md)
+1. [GitLab and Okta](docs/tr-gitlab-okta.md)
+1. [SAML SSO for GitLab.com groups](docs/tr-gitlab_saml_sso.md)
+1. [SCIM provisioning using SAML SSO for GitLab.com groups](docs/tr-gitlab_scim_setup.md)
