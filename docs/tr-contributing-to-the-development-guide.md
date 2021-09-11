@@ -5,13 +5,11 @@
 A new contributor describes the experience of writing and submitting changes to the Kubernetes Development Guide.
 
 一位新的贡献者描述了编写和提交 Kubernetes 开发指南更改的经验。
-
-By **Erik L. Arneson** \|
 Monday, September 28, 2020
 
 When most people think of contributing to an open source project, I suspect they probably think of contributing code changes, new features, and bug fixes. As a software engineer and a long-time open source user and contributor, that’s certainly what I thought. Although I have written a good quantity of documentation in different workflows, the massive size of the Kubernetes community was a new kind of “client.” I just didn’t know what to expect when Google asked my compatriots and me at [Lion’s Way](https://lionswaycontent.com/) to make much-needed updates to the Kubernetes Development Guide.
 
-当大多数人想到为开源项目做贡献时，我怀疑他们可能会想到 不同工作流中的文档，Kubernetes 社区的庞大规模是种新类型的“客户”。当 Google 询问我和我的同胞时，我只是不知道会发生什么 [Lion's Way](https://lionswaycontent.com/) 对 Kubernetes 开发指南进行急需的更新。
+当大多数人想到为开源项目做贡献时，我怀疑他们可能会想到不同工作流中的文档，Kubernetes 社区的庞大规模是种新类型的“客户”。当 Google 询问我和我的同胞时，我只是不知道会发生什么 [Lion's Way](https://lionswaycontent.com/) 对 Kubernetes 开发指南进行急需的更新。
 ## The Delights of Working With a Community
 
 ## 与社区合作的乐趣
@@ -30,7 +28,7 @@ I was surprised and delighted that all of the stress of client contact went out 
 
 “How delicate do I have to be? What if I screw up? What if I make a developer angry? What if I make enemies?” These were all questions that raced through my mind and made me feel like I was approaching a field of eggshells when I first joined the `#sig-contribex` channel on the Kubernetes Slack and announced that I would be working on the [Development Guide](https://git.k8s.io/community/contributors/devel/development.md).
 
-“我需要多娇气？如果我搞砸了怎么办？如果我让开发人员生气怎么办？如果我做 敌人？”这些都是我脑海中闪过的问题，让我觉得我是 当我第一次加入 Kubernetes 上的“#sig-contribex”频道时，我正在接近一个蛋壳领域 Slack 并宣布我将致力于 [开发指南](https://git.k8s.io/community/contributors/devel/development.md)。
+“我需要多娇气？如果我搞砸了怎么办？如果我让开发人员生气怎么办？如果我做敌人？”这些都是我脑海中闪过的问题，让我觉得我是 当我第一次加入 Kubernetes 上的“#sig-contribex”频道时，我正在接近一个蛋壳领域 Slack 并宣布我将致力于 [开发指南](https://git.k8s.io/community/contributors/devel/development.md)。
 
 ![](http://www.kubernetes.dev/blog/2020/09/28/contributing-to-the-development-guide/jorge-castro-code-of-conduct_hu5bc3c30874931ced96ecf71d135c93d2_143155_800x450_fit_q75_catmullrom.jpg)
 
@@ -86,13 +84,5 @@ Joel and I really enjoy interacting with the Kubernetes community and contributi
 
 Joel 和我真的很喜欢与 Kubernetes 社区互动并为 开发指南。我真的很期待继续不仅贡献更多，而且 继续建立我过去在这个庞大的开源社区中建立的新友谊 几个月。
 
-- [← Previous](http://www.kubernetes.dev/blog/2020/08/24/announcing-the-contributor-website/)
-[Next →](http://www.kubernetes.dev/blog/2021/05/14/contributor-stories-series/)
 
-- [← 上一页](http://www.kubernetes.dev/blog/2020/08/24/annoucing-the-contributor-website/)
-[下一步→](http://www.kubernetes.dev/blog/2021/05/14/contributor-stories-series/)
-
-© 2021 The Kubernetes Authors All Rights Reserved 
-
-© 2021 The Kubernetes Authors 版权所有
 

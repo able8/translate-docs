@@ -6,10 +6,6 @@ A few weeks ago, a tweet made me take a second and think about something that I'
 
 几周前，一条推文让我花点时间思考一些我以前从未有意识地考虑过的事情；你如何接近一个不熟悉的代码库并开始理解它？
 
-[https://twitter.com/d\_feldman/status/1336407539928477697?s=21](https://twitter.com/d_feldman/status/1336407539928477697?s=21)
-
-[https://twitter.com/d\_feldman/status/1336407539928477697?s=21](https://twitter.com/d_feldman/status/1336407539928477697?s=21)
-
 It got me thinking about how I would approach a new repo that I'd never seen before but needed to make a contribution against, like a bug fix. I remembered my early days of learning [Kubernetes](https://kubernetes.io/), and wanting to make requests to the its API (because using the command line wasn't good enough for me, apparently). I had been trying to work out how to automatically deploy a particular branch of a GitLab repo into a cluster every time someone pushed to it. I had big ideas about automating DNS, setting up automated certificates, and adding a Slackbot to notify you whenever a new deploy happened.
 
 这让我开始思考如何处理一个我以前从未见过但需要做出贡献的新仓库，比如修复错误。我记得我早期学习 [Kubernetes](https://kubernetes.io/)，并想向其 API 发出请求（因为显然使用命令行对我来说不够好)。我一直在尝试研究如何在每次有人推送时自动将 GitLab 存储库的特定分支部署到集群中。我对自动化 DNS、设置自动证书以及添加 Slackbot 以在发生新部署时通知您有很大的想法。
@@ -18,17 +14,13 @@ If I remember correctly, I got a proof of concept working, and then it never wen
 
 如果我没记错的话，我得到了一个概念证明工作，然后它再也没有超过那个。鉴于 [GitOps](https://www.cloudbees.com/gitops/what-is-gitops) 的流行程度，也许我应该坚持下去！当我开始深入研究项目的 Kuberenetes 方面时，我完全迷失了方向。文档没有太多关于 _how_ 使用 API 的方式（我相信现在情况好多了)，阅读 Kubernetes 源代码完全不是初学者，因为好吧，那东西是一个怪物。我记得我当时在想，我只需要复制 kubectl 正在做的事情来创建一个新的 Deployment。
 
-So I gave up trying to read Kubernetes' source, and moved over to the [source for kubectl](https://github.com/kubernetes/kubectl). This is where I started to make some headway! I was able to follow straight from the `main()` function to the `apply` command, down through the logic until it started making API requests. It felt so good to finally get an answer, and to just import some Go packages to make it all work in short order!\*
+So I gave up trying to read Kubernetes' source, and moved over to the [source for kubectl](https://github.com/kubernetes/kubectl). This is where I started to make some headway! I was able to follow straight from the `main()` function to the `apply` command, down through the logic until it started making API requests. It felt so good to finally get an answer, and to just import some Go packages to make it all work in short order!
 
-所以我放弃了阅读 Kubernetes 的源代码，转而使用 [kubectl 的源代码](https://github.com/kubernetes/kubectl)。这是我开始取得进展的地方！我能够直接从`main()` 函数到 `apply` 命令，一直到逻辑直到它开始发出 API 请求。终于得到答案的感觉真是太好了，只需导入一些 Go 包即可在短时间内完成所有工作！\*
+所以我放弃了阅读 Kubernetes 的源代码，转而使用 [kubectl 的源代码](https://github.com/kubernetes/kubectl)。这是我开始取得进展的地方！我能够直接从`main()` 函数到 `apply` 命令，一直到逻辑直到它开始发出 API 请求。终于得到答案的感觉真是太好了，只需导入一些 Go 包即可在短时间内完成所有工作！
 
 This is the background behind my answer to the tweet above:
 
 这是我对上述推文的回答背后的背景：
-
-[https://twitter.com/cohix/status/1336408360770531331?s=21](https://twitter.com/cohix/status/1336408360770531331?s=21)
-
-[https://twitter.com/cohix/status/1336408360770531331?s=21](https://twitter.com/cohix/status/1336408360770531331?s=21)
 
 Since that project years ago, I've sort of instinctively followed this strategy whenever I need to reason about a new codebase because well, it works! Only recently did this tweet make me think about it concretely, and I'm glad it did. I tried to replicate this purposefully to test my strategy. I went to a [large open-source repo](https://github.com/fluxcd/flux2) and tried to find the code where it installed itself into a cluster. Using this strategy, I started with the tool's `main()` and then was able to find my way to the `install` command, which led me down to where the installation happens (funnily enough, by calling `kubectl`).
 
@@ -53,4 +45,6 @@ Atmo 每周都在获得新功能。如果您想了解更多信息，请查看 [�
 Cover Photo by [Rafif Prawira](https://unsplash.com/@rafifatmaka) on [Unsplash](https://unsplash.com/s/photos/maze) 
 
 封面照片由 [Rafif Prawira](https://unsplash.com/@rafifatmaka) 在 [Unsplash](https://unsplash.com/s/photos/maze)
+
+
 

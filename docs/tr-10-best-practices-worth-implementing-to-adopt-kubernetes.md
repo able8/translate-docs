@@ -4,7 +4,7 @@
 
 September 25, 2020
 
-2020 年 9 月 25 日
+
 
 We already know that [Kubernetes](https://kubernetes.io/) is the No. 1 orchestration platform for container-based applications, automating the deployment and scaling of these apps and streamlining maintenance operations. However, Kubernetes comes with its own complexity challenges. So how can an enterprise take advantage of containerization to tackle complexity and not end up with even more complexity? This article provides some of the best practices that you can implement to adopt Kubernetes.
 
@@ -18,9 +18,9 @@ Define appropriate policies for cluster access controls, service access controls
 
 为集群访问控制、服务访问控制、资源利用控制和秘密访问控制定义适当的策略。默认情况下，容器在 Kubernetes 集群上以无限的计算资源运行。要限制或限制，您必须实施适当的政策。
 
-- Use_NetworkPolicy_ resources labels to select pods and define rules that specify what traffic is allowed to the selected pods.
-- Kubernetes scheduler has default limits on the number of volumes that can be attached to a Node. To define the maximum number of volumes that can be attached to a Node for various cloud providers, use_Node-specific Volume Limits_.
-- To enforce constraints on resource usage, use_Limit Range option_ for appropriate resource in the namespace.
+- Use NetworkPolicy resources labels to select pods and define rules that specify what traffic is allowed to the selected pods.
+- Kubernetes scheduler has default limits on the number of volumes that can be attached to a Node. To define the maximum number of volumes that can be attached to a Node for various cloud providers, use Node-specific Volume Limits.
+- To enforce constraints on resource usage, use Limit Range option for appropriate resource in the namespace.
 - To limit aggregate resource consumption per namespace, use the below Resource Quotas:
    - Compute Resource Quota
    - Storage Resource Quota
@@ -41,28 +41,7 @@ Define appropriate policies for cluster access controls, service access controls
    - AppArmor or seccomp or sysctl profile used by containers
 - Use any of the tools such as[Open Policy Agent Gatekeeper](https://www.upnxtblog.com/index.php/2019/12/09/implementing-policies-in-kubernetes/) policy engine to manage, author the policies.
 
-- 使用_NetworkPolicy_ 资源标签来选择 Pod 并定义规则来指定允许哪些流量进入所选 Pod。
-- Kubernetes 调度程序对可以附加到节点的卷数量有默认限制。要为各种云提供商定义可以附加到节点的最大卷数，请使用_Node-specific Volume Limits_。
-- 要强制限制资源使用，请对命名空间中的适当资源使用_限制范围选项_。
-- 要限制每个命名空间的总资源消耗，请使用以下资源配额：
-  - 计算资源配额
-  - 存储资源配额
-  - 对象计数配额
-  - 根据配额范围选项中定义的范围限制资源数量
-  - 请求 vs 限制——每个容器可以为 CPU 或内存指定一个请求和一个限制值
-  - 配额和集群容量 – 以绝对单位表示
-  - 默认限制优先级消费——例如，限制某些高优先级 pod 的使用
-- 要允许/拒绝细粒度权限，请使用 RBAC（基于角色的访问控制）并且可以定义规则以允许/拒绝细粒度权限。
-- 要定义和控制 Pod 的安全方面，请使用 Pod 安全策略（可从 v1.15 获得）启用对 Pod 创建和更新的细粒度授权。
-  - 运行特权容器
-  - 主机命名空间的使用
-  - 主机网络和端口的使用
-  - 卷类型的使用
-  - 主机文件系统的使用
-  - 限制升级到 root 权限
-  - 容器的用户和组 ID
-  - 容器使用的 AppArmor 或 seccomp 或 sysctl 配置文件
-- 使用任何工具如[Open Policy Agent Gatekeeper](https://www.upnxtblog.com/index.php/2019/12/09/implementing-policies-in-kubernetes/)策略引擎来管理，作者政策。
+
 
 ## Manage Resources Wisely
 
@@ -108,31 +87,25 @@ Below are the key metrics and alerts that are required to monitor your Kubernete
 
 以下是监控 Kubernetes 集群所需的关键指标和警报。
 
-**What to monitor?****Metrics to monitor****Alert Criteria****Cluster state**Monitor the aggregated resources usage across all nodes in your cluster.
+**What to monitor? **
+Monitor the aggregated resources usage across all nodes in your cluster.
 
-**监控什么？****监控指标****警报标准****集群状态**监控集群中所有节点的聚合资源使用情况。
+监控集群中所有节点的聚合资源使用情况。
 
 - Node status
 - Desired pods
 - Current pods
 - Available pods
 - Unavailable pods
-
-- 节点状态
-- 所需的豆荚
-- 当前的豆荚
-- 可用的豆荚
-- 不可用的豆荚
-
 - Node status
 - Desired vs. current pods
 - Available and unavailable pods
 
-- 节点状态
-- 所需的与当前的豆荚
-- 可用和不可用的豆荚
 
-**Node resources**For each of the node monitor :
+
+**Node resources**
+
+For each of the node monitor :
 
 **节点资源**对于每个节点监视器：
 
@@ -146,15 +119,6 @@ Below are the key metrics and alerts that are required to monitor your Kubernete
 - CPU utilization
 - Disk utilization
 
-- 内存请求
-- 内存限制
-- 可分配内存
-- 内存利用率
-- CPU 请求
-- CPU 限制
-- 可分配的 CPU
-- CPU 利用率
-- 磁盘利用率
 
 If the node’s CPU or memory usage drops below a desired threshold.
 
@@ -168,43 +132,61 @@ If the node’s CPU or memory usage drops below a desired threshold.
 - CPU limits per pod vs. CPU utilization per pod
 - CPU utilization
 
-- 每个 Pod 的内存限制与每个 Pod 的内存利用率
-- 内存利用率
-- 每个节点的内存请求与每个节点的可分配内存
-- 磁盘利用率
-- 每个节点的 CPU 请求与每个节点的可分配 CPU
-- 每个 Pod 的 CPU 限制与每个 Pod 的 CPU 利用率
-- CPU 利用率
 
-**Missing pod**Health and availability of your pod deployments.
+
+**Missing pod** Health and availability of your pod deployments.
 
 **缺少 Pod** Pod 部署的运行状况和可用性。
 
 - Available pods
 - Unavailable pods
 
-- 可用的豆荚
-- 不可用的豆荚
 
-If the number of available pods for a deployment falls below the number of pods you specified when you created the deployment.**Pods that are not running**If a pod isn't running or even scheduled, there could be an issue with either the pod or the cluster, or with your entire Kubernetes deployment.
+If the number of available pods for a deployment falls below the number of pods you specified when you created the deployment .
 
-如果部署的可用 Pod 数量低于您在创建部署时指定的 Pod 数量。**未运行的 Pod **如果 Pod 未运行或什至未安排，则可能存在问题Pod 或集群，或整个 Kubernetes 部署。
+如果部署的可用 Pod 数量低于您在创建部署时指定的 Pod 数量。
 
-- Pod status
 
-- Pod 状态
 
-Alerts should be based on the status of your pods (“Failed,” ”Pending,” or “Unknown” for the period of time you specify).**Container restarts**Container restarts could happen when you're hitting a memory limit (ex.Out of Memory kills) in your containers.
+**Pods that are not running**
 
-警报应基于 Pod 的状态（在您指定的时间段内为“失败”、“待处理”或“未知”）。**容器重新启动**当您达到内存限制时可能会发生容器重新启动(ex.Out of Memory kills) 在您的容器中。
+If a pod isn't running or even scheduled, there could be an issue with either the pod or the cluster, or with your entire Kubernetes deployment.
+
+**未运行的 Pod **
+
+如果 Pod 未运行或什至未安排，则可能存在问题Pod 或集群，或整个 Kubernetes 部署。
+
+Alerts should be based on the status of your pods (“Failed,” ”Pending,” or “Unknown” for the period of time you specify).
+
+警报应基于 Pod 的状态（在您指定的时间段内为“失败”、“待处理”或“未知”）。
+
+
+
+**Container restarts** 
+
+Container restarts could happen when you're hitting a memory limit (ex.Out of Memory kills) in your containers.
+
+**容器重新启动**
+
+当您达到内存限制时可能会发生容器重新启动(ex.Out of Memory kills) 在您的容器中。
 
 Also, there could be an issue with either the container itself or its host.
 
 此外，容器本身或其主机可能存在问题。
 
-Kubernetes automatically restarts containers,  but setting up an alert will give you an immediate notification later you can analyze and set the proper limits.**Container resource usage**Monitor container resource usage for containers in case you're hitting resource limits, spikes in resource consumption, Alerts to check if container CPU and memory usage and on limits are based on thresholds.**Storage volumes**Monitor storage to:
+Kubernetes automatically restarts containers,  but setting up an alert will give you an immediate notification later you can analyze and set the proper limits.
 
-Kubernetes 会自动重启容器，但设置警报后会立即通知您，您可以分析并设置适当的限制。**容器资源使用情况**监控容器的容器资源使用情况，以防您达到资源限制、峰值资源消耗，检查容器 CPU 和内存使用情况以及限制是否基于阈值的警报。**存储量**监控存储以：
+Kubernetes 会自动重启容器，但设置警报后会立即通知您，您可以分析并设置适当的限制。
+
+**Container resource usage**
+
+Monitor container resource usage for containers in case you're hitting resource limits, spikes in resource consumption, Alerts to check if container CPU and memory usage and on limits are based on thresholds.
+
+监控容器的容器资源使用情况，以防您达到资源限制、峰值资源消耗，检查容器 CPU 和内存使用情况以及限制是否基于阈值的警报。
+
+**Storage volumes **Monitor storage to:
+
+**容器资源使用情况** **存储量**监控存储以：
 
 - Ensure your application has enough disk space so pods don’t run out of space
 - Volume usage and adjust either the amount of data generated by the application or the size of the volume according to usage
@@ -220,9 +202,9 @@ Identify persistent volumes and apply a different alert threshold or notificatio
 
 识别持久卷并为这些可能包含重要应用程序数据的卷应用不同的警报阈值或通知。
 
-**Control Plane – Etcd**Monitor etcd for the below parameters:
+**Control Plane – Etcd** Monitor etcd for the below parameters:
 
-**控制平面 - Etcd**监控以下参数的 etcd：
+**控制平面 - Etcd **监控以下参数的 etcd：
 
 - Leader existence and change rate
 - Committed, applied, pending, and failed proposals
@@ -232,9 +214,15 @@ Identify persistent volumes and apply a different alert threshold or notificatio
 - 提交、应用、待定和失败的提案
 - gRPC 性能
 
-Alerts to check if any pending or failed proposals or reach inappropriate thresholds.**Control Plane – API Server**Monitor the API server for below parameters:
+Alerts to check if any pending or failed proposals or reach inappropriate thresholds.
 
-检查是否有任何未决或失败的提案或达到不适当的阈值的警报。**控制平面 – API 服务器**监控 API 服务器的以下参数：
+检查是否有任何未决或失败的提案或达到不适当的阈值的警报。
+
+
+
+**Control Plane – API Server** Monitor the API server for below parameters:
+
+**控制平面 – API 服务器**监控 API 服务器的以下参数：
 
 - Rate / number of HTTP requests
 - Rate/number of apiserver requests
@@ -242,9 +230,15 @@ Alerts to check if any pending or failed proposals or reach inappropriate thresh
 - HTTP请求的速率/数量
 - apiserver 请求的速率/数量
 
-Alerts to check if the rate or number of HTTP requests crosses a desired threshold.**Control Plane – Scheduler**Monitor the scheduler for the below parameters:
+Alerts to check if the rate or number of HTTP requests crosses a desired threshold.
 
-检查 HTTP 请求的速率或数量是否超过所需阈值的警报。**控制平面 – 调度程序**监控调度程序的以下参数：
+检查 HTTP 请求的速率或数量是否超过所需阈值的警报。
+
+
+
+**Control Plane – Scheduler** Monitor the scheduler for the below parameters:
+
+**控制平面 – 调度程序 **监控调度程序的以下参数：
 
 - Rate, number, and latency of HTTP requests
 - Scheduling latency
@@ -256,9 +250,19 @@ Alerts to check if the rate or number of HTTP requests crosses a desired thresho
 - 按结果安排尝试
 - 端到端调度延迟（调度总和）
 
-Alerts to check if the rate or number of HTTP requests crosses a desired threshold.**Control Plane – Controller Manager**Monitor the scheduler for the below parameters:
+Alerts to check if the rate or number of HTTP requests crosses a desired threshold.
 
-检查 HTTP 请求的速率或数量是否超过所需阈值的警报。**控制平面 - 控制器管理器**监控以下参数的调度程序：
+检查 HTTP 请求的速率或数量是否超过所需阈值的警报。
+
+
+
+**Control Plane – Controller Manager**
+
+Monitor the scheduler for the below parameters:
+
+**控制平面 - 控制器管理器**
+
+监控以下参数的调度程序：
 
 - Work queue depth
 - Number of retries handled by the work queue 
@@ -266,9 +270,19 @@ Alerts to check if the rate or number of HTTP requests crosses a desired thresho
 - 工作队列深度
 - 工作队列处理的重试次数
 
-Alerts to check if requests to the work queue exceed a maximum threshold.**Kubernetes Events**Collecting events from Kubernetes and from the container engine (such as Docker) allows you to see how pod creation, destruction, starting or stopping affects the performance of your infrastructure.Any failure or exception should need to be alerted.
+Alerts to check if requests to the work queue exceed a maximum threshold.
 
-用于检查对工作队列的请求是否超过最大阈值的警报。**Kubernetes 事件**从 Kubernetes 和容器引擎（例如 Docker）收集事件允许您查看 pod 创建、销毁、启动或停止如何影响性能您的基础设施。任何故障或异常都应该得到警告。
+用于检查对工作队列的请求是否超过最大阈值的警报。
+
+
+
+**Kubernetes Events**
+
+Collecting events from Kubernetes and from the container engine (such as Docker) allows you to see how pod creation, destruction, starting or stopping affects the performance of your infrastructure. Any failure or exception should need to be alerted.
+
+**Kubernetes 事件**
+
+从 Kubernetes 和容器引擎（例如 Docker）收集事件允许您查看 pod 创建、销毁、启动或停止如何影响性能您的基础设施。任何故障或异常都应该得到警告。
 
 Consider integrating with any of the commercial monitoring tools to consume probe-generated metrics and platform-generated metrics to have comprehensive observability of the cluster.
 
@@ -288,11 +302,6 @@ Continuous security must be included as part of the DevOps pipeline to ensure co
 - [Falco](https://github.com/falcosecurity/falco)
 - [Notary](https://github.com/theupdateframework/notary)
 
-- [克莱尔](https://github.com/quay/clair)
-- [琐事](https://github.com/aquasecurity/trivy)
-- [kube-bench](https://github.com/aquasecurity/kube-bench)
-- [Falco](https://github.com/falcosecurity/falco)
-- [公证人](https://github.com/theupdateframework/notary)
 
 ## Audit and Compliance Your Cluster Routinely
 
@@ -317,12 +326,6 @@ Proactively chaos tests your platform to ensure the robustness of the cluster. I
 - [Chaos Toolkit](https://github.com/chaostoolkit/chaostoolkit)
 - [Litmus](https://github.com/litmuschaos/litmus)
 
-- [Chaosblade](https://github.com/chaosblade-io/chaosblade)
-- [混沌网格](https://github.com/pingcap/chaos-mesh)
-- [PowerfulSeal](https://github.com/bloomberg/powerfulseal)
-- [chaoskube](https://github.com/linki/chaoskube)
-- [混沌工具包](https://github.com/chaostoolkit/chaostoolkit)
-- [石蕊](https://github.com/litmuschaos/litmus)
 
 ## Archive and Back Up Your Cluster
 
@@ -376,6 +379,8 @@ In the recent release of Helm, releases will be managed inside of Kubernetes usi
 - Service monitoring with automatic metrics, logs, and traces for all traffic
 - Secure service to service communication
 
+
+
 - 自动负载平衡
 - 通过路由规则、重试、故障转移等对流量行为进行细粒度控制。
 - 可插拔策略层
@@ -400,15 +405,7 @@ This article covers the key best practices that you can implement for Kubernetes
 
 本文介绍了您可以为采用 Kubernetes 实施的关键最佳实践。然而，运行 Kubernetes 集群并非没有挑战。
 
-- [Click to share on Twitter (Opens in new window)](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=twitter " Click to share on Twitter")
-- [Click to share on Facebook (Opens in new window)](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=facebook " Click to share on Facebook")
-- [Click to share on LinkedIn (Opens in new window)](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=linkedin " Click to share on LinkedIn")
-- [Click to share on Reddit (Opens in new window)](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=reddit " Click to share on Reddit")
 
-- [点击在 Twitter 上分享（在新窗口中打开）](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=twitter "单击以在 Twitter 上分享")
-- [点击在 Facebook 上分享（在新窗口中打开）](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=facebook "单击以在 Facebook 上分享”)
-- [点击在 LinkedIn 上分享 (在新窗口中打开)](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=linkedin "单击以在 LinkedIn 上分享")
-- [点击在 Reddit 上分享（在新窗口中打开）](https://containerjournal.com/topics/container-management/10-best-practices-worth-implementing-to-adopt-kubernetes/?share=reddit "单击以在 Reddit 上分享")
 
 ### _Related_
 

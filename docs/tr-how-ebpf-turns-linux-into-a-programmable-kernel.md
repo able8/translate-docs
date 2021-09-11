@@ -2,15 +2,11 @@
 
 # eBPF 如何将 Linux 变成可编程内核
 
-#### 8 Oct 2020 6:00am,   by [Joab Jackson](https://thenewstack.io/author/joab/ "Posts by Joab Jackson")
+#### 8 Oct 2020
 
-#### 2020 年 10 月 8 日上午 6:00，作者：[Joab Jackson](https://thenewstack.io/author/joab/“Joab Jackson 的帖子”)
+The Linux kernel could see a radical shift in how it operates, given the full promise of the [Extended Berkeley Packet Filter](https://ebpf.io/)(eBPF).
 
-![](https://cdn.thenewstack.io/media/2020/10/1d303ea9-sculpture-3170012_640.jpg)
-
-The Linux kernel could see a radical shift in how it operates, given the full promise of the [Extended Berkeley Packet Filter](https://ebpf.io/)(eBPF), argued [Daniel Borkmann](http://borkmann.ch/), Linux kernel engineer for [Cilium](https://cilium.io/), in a [technical session](https://www.youtube.com/watch?v=99jUcLt3rSk) during the recent [ KubeCon + CloudNativeCon EU](https://thenewstack.io/kubecon-eu-cloud-native-developers-now-an-army-6-5-million-strong/) virtual conference.
-
-[Daniel Borkmann](http://borkmann.ch/)，[Cilium](https://cilium.io/) 的 Linux 内核工程师，在 [技术会议](https://www.youtube.com/watch?v=99jUcLt3rSk) 期间 [ KubeCon + CloudNativeCon EU](https://thenewstack.io/kubecon-eu-cloud-native-developers-now-an-army-6-5-million-strong/) 虚拟会议。
+考虑到扩展伯克利数据包过滤器的全部承诺，Linux 内核的运行方式可能会发生根本性的转变。 
 
 Although originally targeted [for superior in-kernel monitoring](https://thenewstack.io/linux-technology-for-the-new-year-ebpf/), this memory-mapped extension of the original BPF can run any sandboxed programs within the kernel space, without changing kernel source code or loading modules. This represents a radically new, and potentially faster and safer way to use the Linux kernel. In effect, eBPF provides a way for developers to add their own programs into the kernel itself.
 

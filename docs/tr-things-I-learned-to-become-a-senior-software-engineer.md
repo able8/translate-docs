@@ -2,9 +2,11 @@
 
 # 成为高级软件工程师后我学到的东西
 
-      Sep 6, 2020                    •                   [Tech](https://neilkakkar.com/categories/#Tech)                In 2018, I started working at Bloomberg. Things have changed a  lot since. I’m not the most junior member in the company anymore and  I’ve mentored quite a few new engineers, which has been amazing. It  helped me observe how others differ from me, absorb their best  practices, and figure out things I’ve unconsciously been doing pretty  well.
+Sep 6, 2020
 
-2020 年 9 月 6 日 • [Tech](https://neilkakkar.com/categories/#Tech) 2018 年，我开始在彭博社工作。从那以后，情况发生了很大变化。我不再是公司里最年轻的成员了，我指导了很多新工程师，这真是太棒了。它帮助我观察其他人与我的不同之处，吸收他们的最佳实践，并找出我在不知不觉中做得很好的事情。
+In 2018, I started working at Bloomberg. Things have changed a  lot since. I’m not the most junior member in the company anymore and  I’ve mentored quite a few new engineers, which has been amazing. It  helped me observe how others differ from me, absorb their best  practices, and figure out things I’ve unconsciously been doing pretty  well.
+
+2018 年，我开始在彭博社工作。从那以后，情况发生了很大变化。我不再是公司里最年轻的成员了，我指导了很多新工程师，这真是太棒了。它帮助我观察其他人与我的不同之处，吸收他们的最佳实践，并找出我在不知不觉中做得很好的事情。
 
 Yearly work reviews are a good way to condense these lessons I’ve  learned. They’re valuable for pattern matching, too. Only when I zoom  out do certain patterns become visible. I can then [start tracking these patterns consciously](https://neilkakkar.com/the-human-log.html).
 
@@ -55,7 +57,7 @@ Most big companies aren’t doing just one thing, which means there are differen
 大多数大公司不只做一件事，这意味着在同一家公司有不同的赚钱途径。每个人都至少走一条路——如果没有，他们就不会在这里。
 
 
-  Tracking these paths, and the path I’m on was  pretty valuable. It helped me see how I matter, and what levers I can  pull to become more effective. Sometimes, it’s about making the sales  jobs easier, so they can make more sales. Other times, it’s about  building a new feature for clients. And some other times, it’s about  improving a feature that keeps breaking.
+Tracking these paths, and the path I’m on was  pretty valuable. It helped me see how I matter, and what levers I can  pull to become more effective. Sometimes, it’s about making the sales  jobs easier, so they can make more sales. Other times, it’s about  building a new feature for clients. And some other times, it’s about  improving a feature that keeps breaking.
 
 
  跟踪这些路径，以及我所走的路径非常有价值。它帮助我了解我的重要性，以及我可以拉动哪些杠杆来变得更有效。有时，这是为了让销售工作更轻松，以便他们可以进行更多的销售。其他时候，则是为客户构建新功能。有时，它是关于改进一个不断破坏的功能。
@@ -170,7 +172,7 @@ When memory management is in your control, you understand how  pointers and allo
 
 当内存管理在您的控制之下时，您就会了解指针和分配器的工作原理。当 Python 将其抽象出来时，您会欣赏到复杂性的降低。当函数式语言中的映射和过滤器出现时，您会欣赏如何改进 Python 的 for 循环。事实上，这就是列表推导式。然后您会注意到使用面向对象编程使某些事情变得更容易。没有一种神奇的工具可以适合所有情况。然后您就会明白，尽管如此，您不必切换工具。您可以将最佳实践从一种应用到另一种来解决您的问题：例如编写函数式 javascript。原则比表达更重要。
 
-        !Broadly, that’s all I did this year. What follow are insights that sprang forth thanks to zooming out.
+! Broadly, that’s all I did this year. What follow are insights that sprang forth thanks to zooming out.
 
 ！总的来说，这就是我今年所做的一切。接下来是由于缩小而产生的见解。
 
@@ -253,7 +255,7 @@ For example, here’s my journey learning about packaging software:
 例如，这是我学习打包软件的旅程：
 
 Q: What is a package?
-  A: It’s code wrapped together that can be installed on a system. 
+A: It’s code wrapped together that can be installed on a system. 
 
 问：什么是包裹？
  A：是打包在一起的代码，可以安装到系统上。
@@ -475,10 +477,6 @@ This meta skill of noticing what’s going on in the brain is a  powerful monito
 
 这种注意到大脑中发生的事情的元技能是一种强大的监控和诊断工具。就像定期检查系统健康状况的 cron 作业一样，[评论检查和改进](https://neilkakkar.com/year-in-review-2019.html) 你的健康：精神和身体。这也正是这篇文章的目的：这是我的年度工作回顾。
 
-        !## Adding nuance
-
-！## 添加细微差别
-
 This review wouldn’t be complete without adding nuance to last years sections. [You can see last year’s here.](https://neilkakkar.com/things-I-learnt-from-a-senior-dev.html)
 
 如果不对去年的部分添加细微差别，则此评论将是不完整的。 [你可以在这里看到去年的。](https://neilkakkar.com/things-I-learnt-from-a-senior-dev.html)
@@ -489,9 +487,7 @@ This review wouldn’t be complete without adding nuance to last years sections.
 
 ![img](https://neilkakkar.com/assets/images/SO_memes.jpg)
 
-[Source](https://programmercave0.github.io/blog/2019/11/28/Memes-on-copy-pasting-code-from-Stackoverflow)
 
-[来源](https://programmercave0.github.io/blog/2019/11/28/Memes-on-copy-pasting-code-from-Stackoverflow)
 
 There’s this funny meme in software engineering which reduces things  down to copying from Stack Overflow. It’s a dangerous pattern when new  engineers start believing the meme. There’s a lot of things happening,  the nuance of which is lost when we say “copy from SO”.
 
@@ -545,11 +541,11 @@ There are at least three different levels of understanding: you might understand
 
 至少有三个不同层次的理解：你可能确切地理解`itertools.permutations` 会产生什么，你可能理解它是如何做到的，或者在更深的层次上，你可能理解它为什么做出这些实现决策。
 
-Level 1 is understanding what the function or API does.
+  Level 1 is understanding what the function or API does.
   Level 2 is understanding how it does it (the code).
   Level 3 is understanding why it does it the way it does.
 
-级别 1 是了解函数或 API 的作用。
+ 级别 1 是了解函数或 API 的作用。
  第 2 级是理解它是如何做到的（代码）。
  第 3 级是理解为什么它会这样做。
 
@@ -565,21 +561,15 @@ Yes, there’s a trade-off. Level 0 is super quick, while getting to Level 3 tak
 
 是的，有一个权衡。级别 0 非常快，而达到级别 3 需要很多时间。
 
-I slow things down when I don’t copy paste existing templates. But when I have enough slack
+I slow things down when I don’t copy paste existing templates. But when I have enough slack, I choose to get a Level 1 understanding before I  write code. This usually means I’m slow the first time around, but over  time, I get much faster. I deepen my understanding a little bit every  time, and this helps me solve bugs quickly. I prioritise learning over  getting things done.
 
-当我不复制粘贴现有模板时，我会减慢速度。但是当我有足够的懈怠
-
-
-, I choose to get a Level 1 understanding before I  write code. This usually means I’m slow the first time around, but over  time, I get much faster. I deepen my understanding a little bit every  time, and this helps me solve bugs quickly. I prioritise learning over  getting things done.
-
-
-，我选择在写代码之前得到一个Level 1的理解。这通常意味着我第一次很慢，但随着时间的推移，我变得更快了。我每次都加深了一点理解，这有助于我快速解决错误。我优先考虑学习而不是完成任务。
+当我不复制粘贴现有模板时，我会减慢速度。但是当我有足够的懈怠，我选择在写代码之前得到一个Level 1的理解。这通常意味着我第一次很慢，但随着时间的推移，我变得更快了。我每次都加深了一点理解，这有助于我快速解决错误。我优先考虑学习而不是完成任务。
 
 And, yes, I do break the rule sometimes. Some situations demand a quick and easy hack.
 
 而且，是的，我有时确实违反了规则。有些情况需要快速简单的破解。
 
-        !Sometimes, open-source documentation sucks. When this happens, you  need a level 2 understanding to give you the level 1 understanding: you  go read the source code. Whenever I have to do this, I remember to **preserve context for future-me**. It’s hard work to understand someone else’s code, specially if it’s in a language you’re not familiar with. Optimise for not having to do this  hard work again and again. When you figure out something important,  write it down - that’s what comments are for. Plus, your team will thank you for it. It’s an easy way to build up the force multiplier.
+!Sometimes, open-source documentation sucks. When this happens, you  need a level 2 understanding to give you the level 1 understanding: you  go read the source code. Whenever I have to do this, I remember to **preserve context for future-me**. It’s hard work to understand someone else’s code, specially if it’s in a language you’re not familiar with. Optimise for not having to do this  hard work again and again. When you figure out something important,  write it down - that’s what comments are for. Plus, your team will thank you for it. It’s an easy way to build up the force multiplier.
 
 ！有时，开源文档很糟糕。发生这种情况时，您需要有 2 级理解才能获得 1 级理解：您可以阅读源代码。每当我必须这样做时，我记得**为未来的我保留上下文**。理解别人的代码是一项艰巨的工作，尤其是当它使用您不熟悉的语言时。优化不必一次又一次地完成这项艰苦的工作。当你发现一些重要的事情时，把它写下来——这就是评论的作用。另外，您的团队会为此感谢您。这是建立力乘数的简单方法。
 
@@ -604,10 +594,10 @@ Another reason to get a level 2-3 understanding is to seek  inspiration. When yo
 获得 2-3 级理解的另一个原因是寻求灵感。当你理解一个新系统的代码时，你就会弄清楚他们做了什么决定，以及为什么。这增加了您要处理的事物的曲目
 
 
-. This is one big reason why I dived into Unix, and [wrote about how it works](https://neilkakkar.com/unix.html). This is also a very good reason to understand the tools you use, which is why I [learned how Git works](https://neilkakkar.com/How-not-to-be-afraid-of-GIT-anymore.html)
+This is one big reason why I dived into Unix, and [wrote about how it works](https://neilkakkar.com/unix.html). This is also a very good reason to understand the tools you use, which is why I [learned how Git works](https://neilkakkar.com/How-not-to-be-afraid-of-GIT-anymore.html)
 
 
-.这是我深入研究 Unix 并[撰写有关其工作原理的文章](https://neilkakkar.com/unix.html) 的一大原因。这也是理解你使用的工具的一个很好的理由，这就是为什么我 [学习了 Git 是如何工作的](https://neilkakkar.com/How-not-to-be-afraid-of-GIT-anymore.html)
+这是我深入研究 Unix 并[撰写有关其工作原理的文章](https://neilkakkar.com/unix.html) 的一大原因。这也是理解你使用的工具的一个很好的理由，这就是为什么我 [学习了 Git 是如何工作的](https://neilkakkar.com/How-not-to-be-afraid-of-GIT-anymore.html)
 
 To summarize:
 
@@ -619,7 +609,8 @@ To summarize:
 4. Aim for a level 2-3 understanding of code your team owns
 5. Code reviews help keep your mental models up to date
 
-1.不要写你不懂的代码
+1. 不要写你不懂的代码
+
 2. 尽可能优先学习
 3. 为未来的你保留背景
 4. 力争对团队拥有的代码有 2-3 级的理解
@@ -649,7 +640,7 @@ I’ve tried going in guns blazing, optimising whatever looks  suboptimal to me,
 
 > 测量而不是假设。
 
-        !In last year’s review, I wrote:
+! In last year’s review, I wrote:
 
 ！在去年的评论中，我写道：
 
@@ -765,11 +756,13 @@ In summary:
 4. Preserve context when designing: write down your constraints and trade-offs.
 5. When replacing old systems, have a clear migration path.
 
+
+
 1. 每个系统设计都是权衡取舍。
 2. 每个设计都有有限的技术组件。
 3. 就像心智模型一样，人们有明确的视角来进行设计。
 4. 在设计时保留上下文：写下你的限制和权衡。
-5、更换旧系统时，要有清晰的迁移路径。
+  5. 更换旧系统时，要有清晰的迁移路径。
 
 #### Gathering Requirements
 
@@ -787,7 +780,7 @@ A checklist of questions works well here. [Here are some questions I ask frequen
 
 问题清单在这里很有效。 [这里有一些我经常问的问题](https://neilkakkar.com/requirements-checklist.html)
 
-        !This final section dives into a few gotchas, some things I did wrong, and a summary of everything that went right.
+ !This final section dives into a few gotchas, some things I did wrong, and a summary of everything that went right.
 
 ！这最后一部分深入探讨了一些问题，我做错了一些事情，以及所有正确的事情的总结。
 
@@ -831,17 +824,6 @@ Here are a few I’ve discovered, and possible quests to get them through.
 
 - 表达无知的信心 - 任务：克服成长中的第一个陷阱。
 
-- Defining my terms. Letting people know exactly what I’m talking about. Like I mentioned in an  Idea Muse
-
-    - 定义我的条款。让人们确切地知道我在说什么。就像我在 Idea Muse 中提到的
-
-   article a few weeks ago:  “Most of the time, most people don’t know what they’re talking about.”
-
-   几周前的文章：“大多数时候，大多数人不知道他们在说什么。”
-
-  - Quest: ???
-
-- 任务：？？？
 
 ## Some gotchas with growing
 
@@ -927,9 +909,9 @@ Adding a new technology to the team stack is a big decision, one not to be taken
 
 向团队堆栈添加一项新技术是一个重大决定，不能掉以轻心。
 
-        !## Questions
+## Questions
 
-！## 问题
+## 问题
 
 To extend last year’s list, there are a few questions I don’t yet have the answer to.
 
@@ -959,13 +941,16 @@ and some questions from last year that I’d still like to think about
 2. Explore De-risking further. What all strategies exist to de-risk projects?
 3. How to decrease rate of system degradation? 
 
-1. 如何处理代码和工作流的文档？
-2. 进一步探索去风险化。存在哪些降低项目风险的所有策略？
-3. 如何降低系统退化率？
 
-        !My first year was all about absorbing all I could. I didn’t know  enough to see the system, I could only see the parts. This year, I took a gods eye view to the system. I figured out places where I was  suboptimal and worked on those. I looked at other parts of the system,  absorbed their best practices, and become wary of practices that didn’t  work for me.
+4. 如何处理代码和工作流的文档？
+5. 进一步探索去风险化。存在哪些降低项目风险的所有策略？
+6. 如何降低系统退化率？
 
-！我的第一年就是吸收所有我能做的。我不太了解系统，我只能看到零件。今年，我对系统进行了上帝视角。我找出了我不理想的地方并进行了研究。我查看了系统的其他部分，吸收了他们的最佳实践，并对不适合我的实践保持警惕。
+    
+
+My first year was all about absorbing all I could. I didn’t know  enough to see the system, I could only see the parts. This year, I took a gods eye view to the system. I figured out places where I was  suboptimal and worked on those. I looked at other parts of the system,  absorbed their best practices, and become wary of practices that didn’t  work for me.
+
+我的第一年就是吸收所有我能做的。我不太了解系统，我只能看到零件。今年，我对系统进行了上帝视角。我找出了我不理想的地方并进行了研究。我查看了系统的其他部分，吸收了他们的最佳实践，并对不适合我的实践保持警惕。
 
 Over time I started looking inward for things I’m doing right, and  before I knew it, others started seeing me as a senior software  engineer.
 
@@ -977,7 +962,7 @@ Damn, I love engineering.
 
 该死的，我喜欢工程。
 
-        !If you’re looking for a summary to remember this post by, read [software engineering skills.](https://neilkakkar.com/senior-software-engineer-summary.html)
+ !If you’re looking for a summary to remember this post by, read [software engineering skills.](https://neilkakkar.com/senior-software-engineer-summary.html)
 
 ！如果您正在寻找总结来记住这篇文章，请阅读 [软件工程技能。](https://neilkakkar.com/senior-software-engineer-summary.html)
 
@@ -1003,23 +988,25 @@ Damn, I love engineering.
 16. After all, [questions are more important than answers](https://neilkakkar.com/year-in-review-2019.html#questions-are-more-important-than-answers).[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:20)
 17. No, I don’t have the title yet. [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:21)
 
+
+
 1. 另外，可能我今年学到的第一件事是使用“learned”（不是“learnt”）的美式拼写，因为大多数读者来自美国，其中一些人[对 HN 和 Reddit 感到害怕](https://news.ycombinator.com/item?id=20796159) 当他们看到 'learnt' 时。有趣的。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:2)
-2.我没有停止学习这些，我只是采取了不同的方法。在 [获取新的思考工具](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#acquiring-new-tools-for-thought--心理模型)。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:3)
-3. 我的解释，不代表我的雇主。整篇文章也一样。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:15)
-4. 除了少数系统效率低下。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:1)
-5. 附属链接 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:25)
-6. 就像你确切地知道自己在做什么并且之前已经做过几次一样。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:11)
-7. 在某些团队文化中，仅仅沟通可能是不够的。我还没有成为这样的人的一部分，所以我不知道如何在那里提供帮助。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:16)
-8. 再次提醒注意。例如，松懈并不是去修复那个让你恼火的该死的错误的借口——这是一个正确的故事/KTLO 项目。有好的和坏的方法来消耗你的余力。我更喜欢使用 slack 来理解当前问题/新技术等的深度[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:5)
-9. 阅读更多：Julia Evans 关于 [提出好的问题](https://jvns.ca/wizard-zine.pdf) [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:18)
-10. 解决这个问题的一种方法是开始害怕最小的事情，但我一直无法控制我害怕的东西，所以我认为我在这里很安全。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:9)
-11.阅读：我可以保护我的懈怠[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:8)
-12. 思考工具！ [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:19)
-13. 不是修辞，我很想听听你的意见！ [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:4)
-14. 无论如何，通常不会。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:7)
-15.你应该去跟随Shreyas！ [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:10)
-16. 毕竟，[问题比答案更重要](https://neilkakkar.com/year-in-review-2019.html#questions-are-more-important-than-answers)。[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:20)
-17. 不，我还没有头衔。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:21)
+2. 我没有停止学习这些，我只是采取了不同的方法。在 [获取新的思考工具](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#acquiring-new-tools-for-thought--心理模型)。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:3)
+2. 我的解释，不代表我的雇主。整篇文章也一样。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:15)
+3. 除了少数系统效率低下。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:1)
+4. 附属链接 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:25)
+5. 就像你确切地知道自己在做什么并且之前已经做过几次一样。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:11)
+6. 在某些团队文化中，仅仅沟通可能是不够的。我还没有成为这样的人的一部分，所以我不知道如何在那里提供帮助。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:16)
+7. 再次提醒注意。例如，松懈并不是去修复那个让你恼火的该死的错误的借口——这是一个正确的故事/KTLO 项目。有好的和坏的方法来消耗你的余力。我更喜欢使用 slack 来理解当前问题/新技术等的深度[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:5)
+8. 阅读更多：Julia Evans 关于 [提出好的问题](https://jvns.ca/wizard-zine.pdf) [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:18)
+9. 解决这个问题的一种方法是开始害怕最小的事情，但我一直无法控制我害怕的东西，所以我认为我在这里很安全。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:9)
+11. 阅读：我可以保护我的懈怠[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:8)
+10. 思考工具！ [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:19)
+11. 不是修辞，我很想听听你的意见！ [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:4)
+12. 无论如何，通常不会。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:7)
+15. 你应该去跟随Shreyas！ [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:10)
+13. 毕竟，[问题比答案更重要](https://neilkakkar.com/year-in-review-2019.html#questions-are-more-important-than-answers)。[↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:20)
+14. 不，我还没有头衔。 [↩](https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html#fnref:21)
 
 ### You might also like
 

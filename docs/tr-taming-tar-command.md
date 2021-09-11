@@ -9,30 +9,7 @@ Put tar to work creating and managing your backups smartly. Learn how tar can cr
 Posted:
 September 18, 2020
 
-发表：
-2020 年 9 月 18 日
 
-![newly constructed parking lot](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201000%20600'%2F%3E)
-
-0%200%201000%20600'%2F%3E)
-
-Photo by K HOWARD from Pexels
-
-Pexels 上的 K HOWARD 拍摄的照片
-
-## More Linux resources
-
-## 更多 Linux 资源
-
-- [Advanced Linux Commands Cheat Sheet for Developers](https://developers.redhat.com/cheat-sheets/advanced-linux-commands/?intcmp=701f20000012ngPAAQ)
-- [Get Started with Red Hat Insights](https://access.redhat.com/products/red-hat-insights/?intcmp=701f20000012ngPAAQ)
-- [Download Now: Basic Linux Commands Cheat Sheet](https://developers.redhat.com/cheat-sheets/linux-commands-cheat-sheet/?intcmp=701f20000012ngPAAQ)
-- [Linux System Administration Skills Assessment](https://rhtapps.redhat.com/assessment/?intcmp=701f20000012ngPAAQ)
-
-- [开发人员高级 Linux 命令备忘单](https://developers.redhat.com/cheat-sheets/advanced-linux-commands/?intcmp=701f20000012ngPAAQ)
-- [红帽洞察入门](https://access.redhat.com/products/red-hat-insights/?intcmp=701f20000012ngPAAQ)
-- [立即下载：基本 Linux 命令备忘单](https://developers.redhat.com/cheat-sheets/linux-commands-cheat-sheet/?intcmp=701f20000012ngPAAQ)
-- [Linux 系统管理技能测评](https://rhtapps.redhat.com/assessment/?intcmp=701f20000012ngPAAQ)
 
 Ever try something, it didn’t work, and you didn’t make a backup first?
 
@@ -302,8 +279,6 @@ To test the `tar` file content's integrity:
 
 OR
 
-或者
-
 ```shell
 #tar -tvWF backup.tar
 ```
@@ -353,7 +328,7 @@ You can also use the `zcat` command. This shows the content of the archive, then
 
 ## Wrap up
 
-##  包起来
+##  总结
 
 `Tar` has a lot of things you can do with it. It allows you to create the archive and manage it easily with the available tools in your terminal. If `tar` is not installed, you can do so depending on your operating system. `Tar` is useful in several different cases. As a system administrator, I created plenty of backups and recovered from some of them, too. It’s always safer to make a backup of a file or directory before making changes, in case you need to revert to the original setup. Having that security is something we all need.
 
@@ -367,9 +342,7 @@ _**[ 好的备份是任何安全和灾难恢复计划的重要组成部分。想
 
 ### 查看有关启用系统管理员的这些相关文章
 
-Image
 
-图片
 
 ![Backup tips from the trenches](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20700%20420'%2F%3E)
 
