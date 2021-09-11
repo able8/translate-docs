@@ -152,6 +152,10 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Panics, stack traces and how to recover [best practice]](docs/tr-recover-from-panic.md)
 1. [Why Go? – Key advantages you may have overlooked](docs/tr-go-advantages-over-java-python.md)
 1. [fmt.Printf formatting tutorial and cheat sheet](docs/tr-fmt-printf-reference-cheat-sheet.md)
+1. [Automate Chrome with Golang and ChromeDP](docs/tr-golang-chrome-automation.md)
+1. [Exploring Prometheus Go client metrics - Povilas Versockas](docs/tr-prometheus-go-metrics.md)
+1. [How A Tiny Go Microservice Coded In Hackathon Is Saving Us Thousands](docs/tr-saving-money-with-Hackathon-project.md)
+1. [Synchronization queues in Golang](docs/tr-synchronization-queues-in-golang-554f8e3a31a4.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -238,10 +242,3 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Recommended Engineering Management Books](docs/tr-recommended-engineering-management-books.md)
 1. [](docs/)
 1. [](docs/)
-
-1. [fmt.Printf formatting tutorial and cheat sheet](docs/tr-fmt-printf-reference-cheat-sheet.md)
-1. [Why Go? – Key advantages you may have overlooked](docs/tr-go-advantages-over-java-python.md)
-1. [Automate Chrome with Golang and ChromeDP](docs/tr-golang-chrome-automation.md)
-1. [Exploring Prometheus Go client metrics - Povilas Versockas](docs/tr-prometheus-go-metrics.md)
-1. [#How A Tiny Go Microservice Coded In Hackathon Is Saving Us Thousands](docs/tr-saving-money-with-Hackathon-project.md)
-1. [Synchronization queues in Golang](docs/tr-synchronization-queues-in-golang-554f8e3a31a4.md)
