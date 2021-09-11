@@ -8,10 +8,6 @@ It’s toxic and wrecks productivity.
 
 September 29, 2020
 
-2020 年 9 月 29 日
-
-![](http://hbr.org/resources/images/article_assets/2020/09/Sep20_29_MeaghanWay-1024x576.jpg)
-
 Summary.
 At home and at work, busy culture worsens the problems it promises to solve. We think that the busier we are, the bigger impact we’ll be able to make. But in reality, busy culture destroys productivity, while pulling us away from our families and coworkers alike. What can leaders do to dismantle a toxic culture of busyness? In this piece, the author shares three strategies to encourage healthier work-life boundaries, including instituting financial incentives for disconnecting from work, modeling focus on your primary goal, and leaning on peers within the organization to support a more positive company culture.
 
@@ -76,7 +72,7 @@ On this front, too, a radical approach is often the most effective. In his book 
 
 That's the approach that the co-founder of CD Baby, Derek Sivers, [has adopted](https://tim.blog/2018/06/20/the-tim-ferriss-show-transcripts-derek-sivers-distilled/). “If it’s not a ‘hell, yeah,’” he says, “it’s a ‘no.’” Sivers understands that it’s not bad opportunities that can kill his business but mediocre ones.
 
-这就是 CD Baby 的联合创始人 Derek Sivers [采用的] 方法(https://tim.blog/2018/06/20/the-tim-ferriss-show-transcripts-derek-sivers-distilled/ ）。 “如果这不是‘地狱，是的’，”他说，“那就是‘不’。”西弗斯明白，可以扼杀他的生意的不是坏机会，而是平庸的机会。
+这就是 CD Baby 的联合创始人 Derek Sivers 采用的方法。 “如果这不是‘地狱，是的’，”他说，“那就是‘不’。”西弗斯明白，可以扼杀他的生意的不是坏机会，而是平庸的机会。
 
 **Lean on lateral and external influencers.** Culture is built informally, interaction by interaction. But no single individual can change the culture of a large organization alone. What works to effect change is [positive peer pressure](http://hbr.org/2010/04/positive-peer-pressure-a-power), exerted by social connections rather than top-down directives. 
 

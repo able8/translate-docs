@@ -4,8 +4,6 @@
 
 August 10, 2020
 
-2020 年 8 月 10 日
-
 Whether you call it GitOps, infrastructure as code (IaC) or simply using a CI/CD pipeline to automatically deploy changes to an application, we can all agree that moving to a model where your application and resource configuration is defined as code is beneficial to everyone involved—particularly the business it supports. This code is usually saved in git, the most popular source version control system for cloud-native projects; provides an automatic and verifiable change capture process; and simplifies application rollout. More importantly, it also prevents “snowflakes,” wherein the configuration of a deployed application differs from the definition because of manual edits.
 
 无论您将其称为 GitOps、基础设施即代码 (IaC) 还是简单地使用 CI/CD 管道自动将更改部署到应用程序，我们都同意转移到将您的应用程序和资源配置定义为代码的模型有利于每个人都参与其中——尤其是它支持的业务。这段代码通常保存在 git 中，这是云原生项目最流行的源代码版本控制系统；提供自动且可验证的变更捕获过程；并简化应用程序部署。更重要的是，它还可以防止“雪花”，即由于手动编辑，已部署应用程序的配置与定义不同。

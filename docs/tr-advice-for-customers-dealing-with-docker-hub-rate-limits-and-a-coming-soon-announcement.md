@@ -2,17 +2,7 @@
 
 # 对处理 Docker Hub 速率限制的客户的建议，以及即将发布的公告
 
-by Omar Paul and Michael Hausenblas \| on
-02 NOV 2020 \| in
-[Amazon EC2 Container Registry](https://aws.amazon.com/blogs/containers/category/compute/amazon-ec2-container-registry/ "View all posts in Amazon EC2 Container Registry"), [Containers](https ://aws.amazon.com/blogs/containers/category/containers/ "View all posts in Containers") \|
-[Permalink](https://aws.amazon.com/blogs/containers/advice-for-customers-dealing-with-docker-hub-rate-limits-and-a-coming-soon-announcement/) \|
-Share
-
-作者：奥马尔·保罗和迈克尔·豪森布拉斯 \|在
-2020 年 11 月 2 日 \|在
-[Amazon EC2 Container Registry](https://aws.amazon.com/blogs/containers/category/compute/amazon-ec2-container-registry/“查看 Amazon EC2 Container Registry 中的所有帖子”)，[Containers](https://aws.amazon.com/blogs/containers/category/containers/“查看容器中的所有帖子”)\|
-[固定链接](https://aws.amazon.com/blogs/containers/advice-for-customers-dealing-with-docker-hub-rate-limits-and-a-coming-soon-announcement/) \|
-分享
+02 NOV 2020
 
 Many container customers building applications use common software packages (e.g. operating systems, databases, and application components) that are publicly distributed as container images on [Docker Hub](https://hub.docker.com/). Docker, Inc. has announced that the Hub service will begin [limiting](https://docs.docker.com/docker-hub/download-rate-limit/) the rate at which images are pulled under their anonymous and free plans . These limits will [progressively take effect](https://www.docker.com/increase-rate-limits) beginning November 2, 2020. Once fully in place, free plan anonymous use will be limited to 100 pulls per six hours, free plan authenticated accounts limited to 200 pulls per six hours, and Pro and Team accounts will not see any rate limits.
 
@@ -75,12 +65,9 @@ AWS customers will enjoy a smooth, dependable experience when working with publi
 在使用公共容器映像时，AWS 客户将享受流畅、可靠的体验，并且定价可提供附加价值。在 AWS 上共享公共图像的开发人员每月将获得 50 GB 的免费存储空间，之后将支付象征性费用。任何匿名拉取图像的人每月将获得 500 GB 的免费数据带宽，之后他们可以注册或登录 AWS 账户。从 Internet 提取图像时，只需使用 AWS 帐户进行身份验证，每月免费数据带宽就可增加多达 5 TB。最后，在 AWS 中运行的工作负载在提取托管在 AWS 上的公开共享图像时，将从任何区域获得无限的数据带宽。
 
 TAGS:
-[Containers](https://aws.amazon.com/blogs/containers/tag/containers/),[docker](https://aws.amazon.com/blogs/containers/tag/docker/), [Docker Hub](https://aws.amazon.com/blogs/containers/tag/docker-hub/),[ECR](https://aws.amazon.com/blogs/containers/tag/ecr/), [ ECS](https://aws.amazon.com/blogs/containers/tag/ecs/),[EKS](https://aws.amazon.com/blogs/containers/tag/eks/), [Kubernetes] (https://aws.amazon.com/blogs/containers/tag/kubernetes/)
+[Containers](https://aws.amazon.com/blogs/containers/tag/containers/),[docker](https://aws.amazon.com/blogs/containers/tag/docker/), [Docker Hub](https://aws.amazon.com/blogs/containers/tag/docker-hub/),[ECR](https://aws.amazon.com/blogs/containers/tag/ecr/), [ ECS](https://aws.amazon.com/blogs/containers/tag/ecs/),[EKS](https://aws.amazon.com/blogs/containers/tag/eks/), [Kubernetes](https://aws.amazon.com/blogs/containers/tag/kubernetes/)
 
-标签：
-[容器](https://aws.amazon.com/blogs/containers/tag/containers/),[docker](https://aws.amazon.com/blogs/containers/tag/docker/), [Docker集线器](https://aws.amazon.com/blogs/containers/tag/docker-hub/)、[ECR](https://aws.amazon.com/blogs/containers/tag/ecr/)、[ECS](https://aws.amazon.com/blogs/containers/tag/ecs/)、[EKS](https://aws.amazon.com/blogs/containers/tag/eks/)、[Kubernetes]（https://aws.amazon.com/blogs/containers/tag/kubernetes/)
 
-![Omar Paul](https://en.gravatar.com/userimage/26424230/14693d7b43017b8dfefdee24316b3fc8.jpg)
 
 ### Omar Paul
 
@@ -89,8 +76,6 @@ TAGS:
 Omar is a Product Manager in the AWS container services team. He focuses on all things container registry. Before AWS, Omar worked at API startups in Austin, TX and also spent a lot of time in the Washington DC area, going to GWU and working in telecom. He thinks AWS is like thousands of startups with a common set of principles.
 
 Omar 是 AWS 容器服务团队的产品经理。他专注于容器注册的所有事情。在加入 AWS 之前，Omar 曾在德克萨斯州奥斯汀的 API 初创公司工作，并在华盛顿特区度过了大量时间，去了 GWU 并在电信工作。他认为 AWS 就像成千上万家拥有一套共同原则的初创公司。
-
-![Michael Hausenblas](https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2019/06/12/mic_2013_07_bw.png)
 
 ### Michael Hausenblas
 

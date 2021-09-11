@@ -26,15 +26,19 @@ GitOps 可让您控制更改并允许您从单一来源验证它们：
 1. **配置为代码**
 
 Using Git to manage YAML files makes it simple to check if you’re meeting security requirements. With access policies declared in a config file, you know who has access to what – and can easily verify it in code.
-2. **Changes are** **auditable**
 
 使用 Git 管理 YAML 文件可以轻松检查您是否满足安全要求。通过在配置文件中声明的访问策略，您知道谁可以访问什么——并且可以轻松地在代码中验证它。
+
+2. **Changes are** **auditable**
+
 2. **变化是** **可审计**
 
 Version control means that you always know what you shipped and you can roll back at any time. Your commit history is an audit trail of comments, reviews, and a history of decisions that were made to your repo.
-3. **Production matches the desired state kept in Git**
 
 版本控制意味着您始终知道自己发布了什么，并且可以随时回滚。你的提交历史是对你的 repo 做出的评论、评论和决策历史的审计跟踪。
+
+3. **Production matches the desired state kept in Git**
+
 3. **生产与 Git 中保存的所需状态相匹配**
 
 A single source of truth, with a common workflow for both code and infrastructure changes coupled with automatic alerts on a drift from the desired states increases reliability and removes the risk of human error. A single set of tests, security scans, and permissions also help make changes secure and reliable.
@@ -102,8 +106,6 @@ View the full presentation:
 ## About
 
 ##  关于
-
-![ ](https://images.contentstack.io/v3/assets/blt300387d93dabf50e/blt1be4b5b42ea58cb4/58c02d7b48598d51743bf27e/weave-logo-512.png?format=webp&width=75)
 
 Weaveworks’ mission is to empower developers and DevOps teams to build better software faster. Our “GitOps” model strives to optimize operational workflows; to make operations for developers simpler, better and faster. 
 
