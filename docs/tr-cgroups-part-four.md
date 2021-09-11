@@ -9,16 +9,6 @@ Find out how much easier cgroup management is with systemd in this four-part ser
 Posted:
 October 9, 2020
 
-发表：
-2020 年 10 月 9 日
-
-![Managing cgroups with systemd](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201000%20600'%2F%3E)
-
-0%200%201000%20600'%2F%3E)
-
-Image by [R\_Winkelmann](https://pixabay.com/users/R_Winkelmann-6830448/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4567749) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4567749)
-
-图片由 [R\_Winkelmann](https://pixabay.com/users/R_Winkelmann-6830448/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4567749) 来自 [Pixabay](https://pixabay.com/?utm_source)=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4567749)
 
 In this final installment of my four-part cgroups article series, I cover cgroup integration with systemd. Be sure you also check out parts [one](https://redhat.com/sysadmin/cgroups-part-one),[two](https://redhat.com/sysadmin/cgroups-part-two), and [three](https://redhat.com/sysadmin/cgroups-part-three) in the series.
 
@@ -28,19 +18,7 @@ In this final installment of my four-part cgroups article series, I cover cgrou
 
 ## Cgroups 与 systemd
 
-## More Linux resources
 
-## 更多 Linux 资源
-
-- [Advanced Linux Commands Cheat Sheet for Developers](https://developers.redhat.com/cheat-sheets/advanced-linux-commands/?intcmp=701f20000012ngPAAQ)
-- [Get Started with Red Hat Insights](https://access.redhat.com/products/red-hat-insights/?intcmp=701f20000012ngPAAQ)
-- [Download Now: Basic Linux Commands Cheat Sheet](https://developers.redhat.com/cheat-sheets/linux-commands-cheat-sheet/?intcmp=701f20000012ngPAAQ)
-- [Linux System Administration Skills Assessment](https://rhtapps.redhat.com/assessment/?intcmp=701f20000012ngPAAQ)
-
-- [开发人员高级 Linux 命令备忘单](https://developers.redhat.com/cheat-sheets/advanced-linux-commands/?intcmp=701f20000012ngPAAQ)
-- [红帽洞察入门](https://access.redhat.com/products/red-hat-insights/?intcmp=701f20000012ngPAAQ)
-- [立即下载：基本 Linux 命令备忘单](https://developers.redhat.com/cheat-sheets/linux-commands-cheat-sheet/?intcmp=701f20000012ngPAAQ)
-- [Linux 系统管理技能测评](https://rhtapps.redhat.com/assessment/?intcmp=701f20000012ngPAAQ)
 
 By default, systemd creates a new cgroup under the `system.slice` for each service it monitors. Going back to our OpenShift Control Plane host, running `systemd-cgls` shows the following services under the `system.slice` (output is truncated for brevity):
 
@@ -249,13 +227,7 @@ Instead of showing you the output from `top`, now is a good time to introduce yo
 
 现在不是向您展示 `top` 的输出，而是向您介绍 `systemd-cgtop` 的好时机。它的工作方式与常规的“top”类似，除了它为您提供每个切片的细分，然后再按每个切片中的服务细分。这对于确定您是否在系统上充分利用了 cgroup 非常有帮助。如下所示，`systemd-cgtop` 显示了作为整个系统一部分的特定切片中所有服务的聚合以及切片中每个服务的资源利用率：
 
-Image
 
-图片
-
-![ctop showing aggregation of services in a slice and resource utilization](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201232%20297'%2F%3E)
-
-2Fsvg'%20viewBox%3D'0%200%201232%20297'%2F%3E)
 
 #### Using systemctl set-property
 
@@ -311,13 +283,7 @@ As you see in the screenshot below, the changes appear to be successful. `sha256
 
 正如您在下面的屏幕截图中看到的，更改似乎是成功的。 `sha256sum.service` 配置为 2048 个 CPUShares，而 `md5sum.service` 有 1024 个。最后，`cat.service` 有 256 个。
 
-Image
 
-图片
-
-![ctop displaying different CPUShare configurations for different processes](data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%201232%20165'%2F%3E)
-
-20viewBox%3D'0%200%201232%20165'%2F%3E)
 
 _**[ Thinking about security? [Check out this free guide to boosting hybrid cloud security and protecting your business.](https://www.redhat.com/en/resources/hybrid-cloud-security-ebook?intcmp=701f20000012ngPAAQ) ]**_
 
@@ -325,7 +291,7 @@ _**[ 考虑安全？ [查看此免费指南，以提高混合云安全性和保�
 
 ## Wrap up
 
-##  包起来
+##  总结
 
 Hopefully, you learned something new throughout our journey together. There was a lot to tackle, and we barely even scratched the surface on what is possible with cgroups. Aside from the role that cgroups play in keeping your system healthy, they also play a part in a "defense-in-depth" strategy. Additionally, cgroups are a critical component for modern Kubernetes workloads, where they aid in the proper running of containerized processes. Cgroups are responsible for so many things, including:
 

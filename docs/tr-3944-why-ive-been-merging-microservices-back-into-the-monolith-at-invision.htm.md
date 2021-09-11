@@ -4,11 +4,11 @@
 
 December 21, 2020
 
-2020 年 12 月 21 日
+
 
 If you follow me on Twitter, you may notice that every [now (1)](https://twitter.com/BenNadel/status/1097596366321303552) [and (2)](https://twitter.com/BenNadel/status/1321530362909044737) [then (3)](https://twitter.com/BenNadel/status/1338904547159379970) I post a celebratory tweet about merging one of our microservices **back into the monolith** at [InVision](http ://www.bennadel.com/invision/co-founder.htm?redirect=https%3A%2F%2Fwww%2Einvisionapp%2Ecom%2F%3Fsource%3Dbennadel%2Ecom "InVision is the digital product design platform used to make the world's best customer experiences."). My tweets are usually accompanied by a Thanos GIF in which Thanos is returning the last Infinity Stone to the Infinity Gauntlet. I find this GIF quite fitting as the reuniting of the stones gives Thanos immense power; much in the same way that _reuniting the microservices_ give _me and my team_ power. I've been asked several times as to why it is that I am killing-off my microservices. So, I wanted to share a bit more insight about this particular journey in the world of web application development.
 
-如果你在 Twitter 上关注我，你可能会注意到每个 [now (1)](https://twitter.com/BenNadel/status/1097596366321303552) [和 (2)](https://twitter.com/BenNadel/status/1321530362909044737) [then (3)](https://twitter.com/BenNadel/status/1338904547159379970) 我在 [InVision] 上发布了一条关于将我们的一个微服务 ** 重新整合到整体**中的庆祝推文（http ://www.bennadel.com/invision/co- Founder.htm?redirect=https%3A%2F%2Fwww%2Einvisionapp%2Ecom%2F%3Fsource%3Dbennadel%2Ecom "InVision 是数字产品设计平台，用于制作世界上最好的客户体验。”)。我的推文通常伴随着灭霸 GIF，其中灭霸将最后一颗无限宝石归还给无限手套。我发现这个 GIF 非常合适，因为石头的重聚赋予了灭霸巨大的力量；与_重新联合微服务_赋予_我和我的团队_权力的方式大致相同。我曾多次被问到为什么我要终止我的微服务。因此，我想分享更多有关 Web 应用程序开发世界中这段特殊旅程的见解。
+如果你在 Twitter 上关注我，你可能会注意到每个 [now (1)](https://twitter.com/BenNadel/status/1097596366321303552) [和 (2)](https://twitter.com/BenNadel/status/1321530362909044737) [then (3)](https://twitter.com/BenNadel/status/1338904547159379970) 我在 [InVision] 上发布了一条关于将我们的一个微服务 **重新整合到整体**中的庆祝推文。我的推文通常伴随着灭霸 GIF，其中灭霸将最后一颗无限宝石归还给无限手套。我发现这个 GIF 非常合适，因为石头的重聚赋予了灭霸巨大的力量；与_重新联合微服务_赋予_我和我的团队_权力的方式大致相同。我曾多次被问到为什么我要终止我的微服务。因此，我想分享更多有关 Web 应用程序开发世界中这段特殊旅程的见解。
 
 ![Thanos returning the last stone to the Infinity Gauntlet](https://bennadel-cdn.com/resources/uploads/2020/thanos-inserting-the-last-inifinity-stone.gif)
 
@@ -18,7 +18,7 @@ If you follow me on Twitter, you may notice that every [now (1)](https://twitter
 
 To be very clear, I wanted to start this post off by stating unequivocally that I am **not anti-microservices**. My merging of services back into the monolith is not some crusade to get microservices out of my life. This quest is intended to **"right size" the monolith**. What I am doing is _solving a pain-point_ for my team. If it weren't reducing friction, I wouldn't spend **so much time (and opportunity cost)** lifting, shifting, and refactoring old code.
 
-明确地说，我想通过明确声明我**不反对微服务**来开始这篇文章。我将服务合并回单体应用并不是为了让微服务脱离我的生活。这个任务的目的是**“合适的大小”巨石**。我正在做的是为我的团队_解决一个痛点_。如果不是减少摩擦，我就不会花费 ** 这么多时间（和机会成本）** 提升、转移和重构旧代码。
+明确地说，我想通过明确声明我**不反对微服务**来开始这篇文章。我将服务合并回单体应用并不是为了让微服务脱离我的生活。这个任务的目的是**“合适的大小”巨石**。我正在做的是为我的团队_解决一个痛点_。如果不是减少摩擦，我就不会花费 **这么多时间（和机会成本**) 提升、转移和重构旧代码。
 
 ![Tweet highlight: 3 weeks and about 40 JIRA tickets worth of effort.](https://bennadel-cdn.com/resources/uploads/2020/merging-microservices-effort-is-not-free.png)
 

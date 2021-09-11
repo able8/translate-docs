@@ -4,7 +4,7 @@
 
 12 Nov 2020
 
-2020 年 11 月 12 日
+
 
 So... I embarrassingly bombed a technical interview yesterday. It was... BAD. In all honesty, this interview had the potential to be great. Both people interviewing me were very calm and kind. And I had the opportunity to show off my own project and add a new feature to it. If you've ever done a technical interview before, you know this is one of the best case scenarios (aside from no technical interview at all). And yet, I totally blew it.
 

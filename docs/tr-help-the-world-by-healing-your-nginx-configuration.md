@@ -4,7 +4,6 @@
 
 April 21, 2020
 
-2020 年 4 月 21 日
 
 In [his famous speech](https://www.youtube.com/watch?v=pxBQLFLei70) at the University of Texas in 2014, Admiral William H. McRaven said that if you want to change the world, start off by making your bed. Sometimes small things can have a big impact – whether it’s making your bed in the morning or making few changes to your website’s HTTP server configuration.
 
@@ -242,8 +241,6 @@ location /download/ {
 ```
 
 
-
-
 You might also want to rate‑limit only larger files, which you can do with the [`limit_rate_after`](https://nginx.org/en/docs/http/ngx_http_core_module.html#limit_rate_after) directive. In this example the first 500 KB of every file (from any directory) is transferred without speed restrictions, with everything after that capped at 50 KB/s. This enables faster delivery of critical parts of the website while slowing down others.
 
 您可能还想仅对较大的文件进行速率限制，您可以使用 [`limit_rate_after`](https://nginx.org/en/docs/http/ngx_http_core_module.html#limit_rate_after)指令来完成。在此示例中，每个文件（来自任何目录)的前 500 KB 不受速度限制传输，之后的所有内容都以 50 KB/s 的速度传输。这可以加快网站关键部分的交付速度，同时减慢其他部分的速度。
@@ -292,7 +289,7 @@ Also check out that blog for a rundown of other [easy ways to improve website pe
 
 1Stack Overflow 是第三方网站，与 F5 无关。 Inc. F5 及其附属公司对 Stack Overflow 或任何其他第三方网站上发布的内容（包括一般信息和建议的问题解决方案）不承担任何责任。
 
-![Hero image](https://www.nginx.com/wp-content/uploads/2020/03/ebk-NGINX-Cookbook-ORM-ipad-350x500.png)
+
 
 Free O'Reilly Ebook: NGINX Cookbook, 2019 Edition
 

@@ -4,13 +4,13 @@
 
 #### 8 Nov 2020 6:00am,   by [David Cassel](https://thenewstack.io/author/destiny/ "Posts by David Cassel")
 
-#### 2020 年 11 月 8 日上午 6:00，作者：[David Cassel](https://thenewstack.io/author/destiny/“David Cassel 的帖子”)
+#### 
 
 ![](https://cdn.thenewstack.io/media/2020/11/0d5e526f-moving-1024x767.jpg)
 
 This year Facebook announced half its employees can now [permanently work from home](https://www.npr.org/sections/coronavirus-live-updates/2020/05/21/860382831/facebook-expects-half-its-employees-to-work-remotely-forever). And elsewhere in the Bay Area, local newspapers even reported that a regional government agency voted in September to “move forward” with a proposal to require large, office-based companies to implement working from home for employees at least 60% of each week by the year 2035. Though that proposal quickly [drew criticism from other local officials](https://www.nbcnews.com/tech/tech-news/california-s-bay-area-likes-telecommuting-so-much-it-might-n1240898), it points to something new: a widespread reappraisal of the possibilities of remote working.
 
-今年 Facebook 宣布其一半员工现在可以[永久在家工作](https://www.npr.org/sections/coronavirus-live-updates/2020/05/21/860382831/facebook-expects-half-its-员工永远远程工作）。在湾区的其他地方，当地报纸甚至报道说，一个地区政府机构在 9 月投票决定“向前推进”，提议要求大型办公室公司在每周至少 60% 的时间为员工实施在家工作。 2035 年。尽管该提议很快[引起了其他地方官员的批评](https://www.nbcnews.com/tech/tech-news/california-s-bay-area-likes-telecommuting-so-much-it-might-n1240898)，它指出了一些新的东西：对远程工作可能性的广泛重新评估。
+今年 Facebook 宣布其一半员工现在可以永久在家工作。在湾区的其他地方，当地报纸甚至报道说，一个地区政府机构在 9 月投票决定“向前推进”，提议要求大型办公室公司在每周至少 60% 的时间为员工实施在家工作。 2035 年。尽管该提议很快[引起了其他地方官员的批评](https://www.nbcnews.com/tech/tech-news/california-s-bay-area-likes-telecommuting-so-much-it-might-n1240898)，它指出了一些新的东西：对远程工作可能性的广泛重新评估。
 
 In fact, because of remote working, millions of teleworkers are now thinking about moving, according to a new survey by the freelancing platform Upwork. They suggest it could be “the [biggest, fastest transformation of the labor market since the World World II mobilization](https://www.upwork.com/press/releases/economist-report-remote-workers-on-the-move).”
 
@@ -30,7 +30,7 @@ Their results are based on a survey of 20,000 people conducted using Google Cons
 
 BLS is not the only one that has spotted the trend. NPR also [cites research from United Van Lines](https://www.npr.org/sections/coronavirus-live-updates/2020/10/30/929667563/now-that-more-americans-can-work-anywhere-many-are-planning-to-move-away) (conducted from March through August) which found Americans were 32% more interested in moving this year than the year before. It seems like those statistics could be influenced by the pandemic. One commonly cited reason was concern for personal health — and that survey also found people wanted to leave New York State at higher-than-average rates. But it also found the number of people who wanted to leave San Francisco was more than twice the national average — though that city has remained [one of the healthiest](https://www.sfchronicle.com/bayarea/article/Two-big-reasons-SF-has-the-lowest-death-rate-15597761.php) throughout the pandemic. 
 
-BLS 并不是唯一发现这一趋势的人。 NPR 还 [引用了 United Van Lines 的研究](https://www.npr.org/sections/coronavirus-live-updates/2020/10/30/929667563/now-that-more-americans-can-work-anywhere -many-are-planning-to-move-away）（从 3 月到 8 月进行）发现美国人今年对搬家的兴趣比前一年高出 32%。似乎这些统计数据可能会受到大流行的影响。一个普遍提到的原因是对个人健康的担忧——该调查还发现，人们想以高于平均水平的速度离开纽约州。但它也发现想要离开旧金山的人数是全国平均水平的两倍多——尽管该城市仍然是[最健康的城市之一](https://www.sfchronicle.com/bayarea/article/Two-big-reasons-SF-has-the-lowest-death-rate-15597761.php)在整个大流行期间。
+BLS 并不是唯一发现这一趋势的人。 NPR 还 引用了 United Van Lines 的研究，（从 3 月到 8 月进行）发现美国人今年对搬家的兴趣比前一年高出 32%。似乎这些统计数据可能会受到大流行的影响。一个普遍提到的原因是对个人健康的担忧——该调查还发现，人们想以高于平均水平的速度离开纽约州。但它也发现想要离开旧金山的人数是全国平均水平的两倍多——尽管该城市仍然是[最健康的城市之一](https://www.sfchronicle.com/bayarea/article/Two-big-reasons-SF-has-the-lowest-death-rate-15597761.php)在整个大流行期间。
 
 That suggests another possible reason: housing prices. And San Francisco's rental market remains the most expensive in all of America, according to stats from the real estate site Zumper [cited by the San Francisco Chronicle](https://www.sfchronicle.com/bayarea/article/Rent-prices-drop-again-in-SF-and-other-Bay-Area-15692584.php). In fact, Upwork's survey found that more than half of the respondents (52.5%) were specifically planning to move into housing that was “significantly more affordable” than their current homes (at least 10% cheaper) — while only 25% specified they' d be moving into a more expensive home. And the desire for cheaper housing was most pronounced among those who planned to move out of a major city.
 
@@ -38,7 +38,7 @@ That suggests another possible reason: housing prices. And San Francisco's renta
 
 ![Screenshot of upwork survey](https://cdn.thenewstack.io/media/2020/11/7e4b3b3f-screenshot-of-upwork-2020-survey-on-moving-percent-who-want-less-expensive-housing.png)
 
-住房.png)
+
 
 Citing data from [Apartments.com](https://www.apartments.com), Upwork also sees this migration reflected in rental prices. “The most expensive places have seen the biggest decline in demand, while lower cost of living places have seen stronger demand.”
 
@@ -103,34 +103,4 @@ What happens next is anyone’s guess. But Upwork’s announcement of their surv
 “But will professionals seize this moment as an opportunity to relocate?”
 
 “但专业人士会不会抓住这个时机搬迁？”
-
-* * *
-
-* * *
-
-# WebReduce
-
-# WebReduce
-
-- How 17 videoconferencing musicians in five states[improvised an ensemble composition](https://www.nytimes.com/2020/10/30/arts/music/tyshawn-sorey-alarm-will-sound-music.html).
-- Sysdig will stream another[“celebrity” game of “Cards Against Containers”](https://sysdig.com/resources/webinars/cards-against-containers-for-a-holiday-cause-2020/%20) this Thursday.
-- Panelists from telecom providers discuss “ [The Good, Bad and Ugly of Open Source](https://www.youtube.com/watch?v=DETAj_m44RQ).”
-- The discouraged people who[are “just done” with tech](https://news.ycombinator.com/item?id=24958214). 
-
-- 五个州的 17 位视频会议音乐家如何[即兴创作合奏曲](https://www.nytimes.com/2020/10/30/arts/music/tyshawn-sorey-alarm-will-sound-music.html)。
-- Sysdig 将播放另一个[“名人”游戏“卡片对抗容器”](https://sysdig.com/resources/webinars/cards-against-containers-for-a-holiday-cause-2020/%20)这个周四。
-- 来自电信供应商的小组成员讨论“[开源的好、坏和丑](https://www.youtube.com/watch?v=DETAj_m44RQ)。”
-- 气馁的人[对技术“刚刚完成”](https://news.ycombinator.com/item?id=24958214)。
-
-- When tech came to trick-or-treat:[robot-carved photorealistic pumpkins](https://www.youtube.com/watch?v=X9zXcnSXNF0&feature=youtu.be) and [handing out bitcoin](https://cointelegraph.com/news/i-got-bitcoin-trick-or-treaters-rewarded-with-crypto).
-- Why a self-driving racecar[drove straight into a wall](https://www.engadget.com/roborace-driverless-racecar-crash-155547270.html).
-- The history of[the PDF file format](https://www.vice.com/en/article/pam43n/why-the-pdf-is-secretly-the-worlds-most-important-file-format).
-
-- 当技术出现不给糖就捣蛋时：[机器人雕刻的逼真南瓜](https://www.youtube.com/watch?v=X9zXcnSXNF0&feature=youtu.be)和[分发比特币](https://www.youtube.com/watch?v=X9zXcnSXNF0&feature=youtu.be) cointelegraph.com/news/i-got-bitcoin-trick-or-treaters-rewarded-with-crypto)。
-- 为什么是自动驾驶赛车[直接撞墙](https://www.engadget.com/roborace-driverless-racecar-crash-155547270.html)。
-- [PDF 文件格式] 的历史（https://www.vice.com/en/article/pam43n/why-the-pdf-is-secretly-the-worlds-most-important-file-format）。
-
-Feature image: “Moving into the Boat,” Charles-François Daubigny, 1872, [New York Metropolitan Museum of Art](https://www.metmuseum.org/art/collection/search/336997). 
-
-特色图片：“搬进船”，Charles-François Daubigny，1872 年，[纽约大都会艺术博物馆](https://www.metmuseum.org/art/collection/search/336997)。
 

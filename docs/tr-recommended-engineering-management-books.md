@@ -2,11 +2,9 @@
 
 # 推荐的工程管理书籍
 
-[Dec 28 2020December 28, 2020](https://caitiem.com/2020/12/28/recommended-engineering-management-books/)
+[December 28, 2020](https://caitiem.com/2020/12/28/recommended-engineering-management-books/)
 
-[2020年12月28日2020年12月28日](https://caitiem.com/2020/12/28/recommended-engineering-management-books/)
 
-![](https://caitiem20.files.wordpress.com/2020/12/books20130912-1.jpg?w=1019)
 
 Over the past 3.5 years my career has grown and transformed from Individual Contributor (IC) to an Engineering Manager of multiple teams, and all the roles in between as I built the Azure Sphere Security Services (AS3) Team from 2 people to 20 people. I undertook this journey in the Summer of 2017 to help transform a [Microsoft Research project, Project Sopri](https://www.wired.com/story/project-sopris-iot-security/) s, into a Generally Available ( GA) product [Azure Sphere](https://azure.microsoft.com/en-us/services/azure-sphere/).
 
@@ -78,7 +76,7 @@ This idea that feedback serves a variety of different purposes was eye opening, 
 
 [![](https://caitiem20.files.wordpress.com/2020/12/image-1.jpeg?w=701)](https://caitiem20.files.wordpress.com/2020/12/image-1.jpeg)
 
--1.jpeg)
+
 
 The book starts off acknowledging a problem with most management books “they attempt to provide a recipe for challenges that have no recipes. There’s no recipe for really complicated, dynamic situations.” This instantly resonated with me as I was reading it in November 2019.  I had been a manager for about two years, and had grown the AS3 team from 2 to 15 people. We’d spent the past two years turning a research project into what would soon be a GA’d product in February 2020.  There is no recipe for how to do this, what I was doing was a hard thing.
 

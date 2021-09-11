@@ -8,12 +8,6 @@
 
 September 6, 2020 (Updated: August 7, 2021)
 
-2020 年 9 月 6 日（更新：2021 年 8 月 7 日）
-
-[Containers,](http://iximiuz.com/en/categories/?category=Containers)[Networking](http://iximiuz.com/en/categories/?category=Networking)
-
-[容器，](http://iximiuz.com/en/categories/?category=Containers)[网络](http://iximiuz.com/en/categories/?category=Networking)
-
 ## How services talk to each other?
 
 ## 服务如何相互通信？
@@ -253,13 +247,9 @@ RUN go build -o service-b
 
 # Run
 ENV ERROR_RATE=30
-
 ENV SERVICE_PORT=80
-
 ENV METRICS_PORT=8081
-
 CMD ["/app/service-b"]
-
 ```
 
 
@@ -315,8 +305,6 @@ $ sudo podman pod create --name service-a-pod \
     --add-host b.service:$POD_B_IP --publish 8080:80
 
 ```
-
-
 
 
 Notice how we injected a DNS record like `b.service 10.88.0.164`. Since both pods reside in the same podman network, they can reach each other using assigned IP addresses. However, as of the time of writing this, podman doesn't provide DNS support for pods (yet). So, we have to maintain the mappings manually. Of course, we could use the plain IP address of the _B_'s pod while accessing the upstream from the service _A_ code. However, it's always nice to have human-readable hostnames instead of raw IP addresses. We will also see how this technique comes in handy with the envoy proxy sidecar below.
@@ -383,7 +371,7 @@ $ echo $POD_A_IP
 ```
 
 
-Remember the diagram from the beginning of this section. At this part of the exercise service _A_ has to be directly exposed to the outside world (i.e. the host machine) and it has to communicate with the service _B_ directly as well. That's why we made service _A_ listening on the pod's external network interface using `-e SERVICE_HOST=0.0.0.0 -e SERVICE_PORT=80` and provided it with the knowledge how to reach the service _B_ `-e UPSTREAM_SERVICE=http://b .service:80`.
+Remember the diagram from the beginning of this section. At this part of the exercise service _A_ has to be directly exposed to the outside world (i.e. the host machine) and it has to communicate with the service _B_ directly as well. That's why we made service _A_ listening on the pod's external network interface using `-e SERVICE_HOST=0.0.0.0 -e SERVICE_PORT=80` and provided it with the knowledge how to reach the service _B_ `-e UPSTREAM_SERVICE=http://b.service:80`.
 
 记住本节开头的图表。在练习的这一部分，服务 _A_ 必须直接暴露给外部世界（即主机），并且它也必须直接与服务 _B_ 通信。这就是为什么我们使用 `-e SERVICE_HOST=0.0.0.0 -e SERVICE_PORT=80` 让服务 _A_ 监听 pod 的外部网络接口，并为它提供如何访问服务 _B_ `-e UPSTREAM_SERVICE=http://b 的知识.服务：80`。
 
@@ -447,13 +435,9 @@ Yay! 🎉 As expected, ca. 20% of the upstream requests failed with the HTTP 500
 
 _`service_a_requests_total`_
 
-_`service_a_requests_total`_
-
 ![Service B - 20% of incoming requests failed](http://iximiuz.com/service-proxy-pod-sidecar-oh-my/prom-service-b-direct.png)
 
 _`service_b_requests_total`_ 
-
-_`service_b_requests_total`_
 
 Well, I believe it's not a surprise that both services handled each 1000 of requests and the service _A_ failed as many requests as the service _B_.
 
@@ -489,7 +473,7 @@ Let's review two scenarios:
 
 Configuring envoy could quickly become tricky due to its huge set of capabilities. However, the [official documentation](https://www.envoyproxy.io/docs/envoy/latest/) is a great place to start. It not only describes the configuration format but also highlights some best practices and explains some concepts. In particular, I suggest these two articles ["Life of a Request"](https://www.envoyproxy.io/docs/envoy/v1.15.0/intro/life_of_A_request) and ["Service to service only"](https://www.envoyproxy.io/docs/envoy/v1.15.0/intro/deployment_types/service_to_service) for a better understanding of the material.
 
-由于其庞大的功能集，配置 envoy 很快就会变得棘手。然而，[官方文档](https://www.envoyproxy.io/docs/envoy/latest/) 是一个很好的起点。它不仅描述了配置格式，还突出了一些最佳实践并解释了一些概念。特别推荐这两篇文章 ["Life of a Request"](https://www.envoyproxy.io/docs/envoy/v1.15.0/intro/life_of_A_request)和["Service to service only"](https://www.envoyproxy.io/docs/envoy/v1.15.0/intro/life_of_A_request)://www.envoyproxy.io/docs/envoy/v1.15.0/intro/deployment_types/service_to_service)以更好地理解材料。
+由于其庞大的功能集，配置 envoy 很快就会变得棘手。然而，[官方文档](https://www.envoyproxy.io/docs/envoy/latest/) 是一个很好的起点。它不仅描述了配置格式，还突出了一些最佳实践并解释了一些概念。特别推荐这两篇文章 ["Life of a Request"](https://www.envoyproxy.io/docs/envoy/v1.15.0/intro/life_of_A_request)和["Service to service only"](https://www.envoyproxy.io/docs/envoy/v1.15.0/intro/life_of_A_request)以更好地理解材料。
 
 From a very high-level overview, Envoy could be seen as a bunch of pipelines. A pipeline starts from the listener and then connected through a set of filters to some number of clusters, where a cluster is just a logical group of network endpoints. Trying to be less abstract:
 
@@ -629,12 +613,7 @@ address:
 
 ```
 
-
-
-
 [source on GitHub](https://github.com/iximiuz/envoy-playground/blob/master/basics/service-a/envoy.yaml)
-
-[GitHub 上的来源](https://github.com/iximiuz/envoy-playground/blob/master/basics/service-a/envoy.yaml)
 
 Envoy is famous for its observability capabilities. It exposes various statistic information and luckily for us, it supports the prometheus metrics format out of the box. We can extend the prometheus scrape configs adding the following section:
 
@@ -716,8 +695,6 @@ Last but not least, let's check out the metrics. We will start from the familiar
 
 _`service_a_requests_total`_
 
-_`service_a_requests_total`_
-
 Well, seems like service _A_ again got 1000 requests, but this time it failed only a tiny fraction of it. What's up with service _B_?
 
 好吧，似乎 service _A_ 再次收到了 1000 个请求，但这次它只失败了其中的一小部分。服务_B_怎么了？
@@ -726,7 +703,7 @@ Well, seems like service _A_ again got 1000 requests, but this time it failed on
 
 _`service_b_requests_total`_
 
-_`service_b_requests_total`_
+
 
 Here we definitely can see the change. Instead of the original 1000, this time service _B_ got about 1250 requests in total. However, only about 1000 have been served successfully.
 
@@ -740,13 +717,13 @@ What can the envoy sidecar tell us?
 
 _`envoy_cluster_upstream_rq{envoy_cluster_name="local_service"}`_
 
-_`envoy_cluster_upstream_rq{envoy_cluster_name="local_service"}`_
+
 
 ![Envoy remote cluster stats](http://iximiuz.com/service-proxy-pod-sidecar-oh-my/prom-envoy-remote-service.png)
 
 _`envoy_cluster_upstream_rq{envoy_cluster_name="remote_service_b"}`_
 
-_`envoy_cluster_upstream_rq{envoy_cluster_name="remote_service_b"}`_
+
 
 While both `local_service` and `remote_service_b` clusters don't shed much light on the actual number of retries that were made, there is another metric we can check:
 
@@ -756,7 +733,7 @@ While both `local_service` and `remote_service_b` clusters don't shed much light
 
 _`envoy_cluster_retry_upstream_rq{envoy_cluster_name="remote_service_b"}`_
 
-_`envoy_cluster_retry_upstream_rq{envoy_cluster_name="remote_service_b"}`_
+
 
 Perfect, we managed to confirm that all those ~250 extra requests the service _B_ received are actually retries originated by the envoy sidecar!
 

@@ -4,11 +4,11 @@
 
 [Netflix Technology Blog](https://netflixtechblog.medium.com/?source=post_page-----78b8de7f758c--------------------------------)
 
-[Apr 20, 2020](http://netflixtechblog.com/how-netflix-brings-safer-and-faster-streaming-experience-to-the-living-room-on-crowded-networks-78b8de7f758c?source=post_page-----78b8de7f758c--------------------------------)·5 min read
+[Apr 20, 2020](http://netflixtechblog.com/how-netflix-brings-safer-and-faster-streaming-experience-to-the-living-room-on-crowded-networks-78b8de7f758c?source=post_page-----78b8de7f758c--------------------------------) 5 min read
 
 At Netflix, we are obsessed with the best streaming experiences. We want playback to start instantly and to never stop unexpectedly in any network environment. We are also committed to protecting users’ privacy and service security without sacrificing any part of the playback experience.
 
-[2020 年 4 月 20 日](http://netflixtechblog.com/how-netflix-brings-safer-and-faster-streaming-experience-to-the-living-room-on-crowded-networks-78b8de7f758c?source=post_page 在 Netflix，我们痴迷于最佳的流媒体体验。我们希望播放立即开始，并且在任何网络环境中都不会意外停止。我们还致力于在不牺牲任何部分播放体验的情况下保护用户的隐私和服务安全。
+在 Netflix，我们痴迷于最佳的流媒体体验。我们希望播放立即开始，并且在任何网络环境中都不会意外停止。我们还致力于在不牺牲任何部分播放体验的情况下保护用户的隐私和服务安全。
 
 To achieve that, we are efficiently using ABR (adaptive bitrate streaming) for a better playback experience, DRM (Digital Right Management) to protect our service and TLS (Transport Layer Security) to protect customer privacy and to create a safer streaming experience.
 
