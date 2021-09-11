@@ -189,6 +189,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Why I've Been Merging Microservices Back Into The Monolith At InVision](docs/tr-3944-why-ive-been-merging-microservices-back-into-the-monolith-at-invision.htm.md)
 1. [Help the World by Healing Your NGINX Configuration](docs/tr-help-the-world-by-healing-your-nginx-configuration.md)
 1. [](docs/)
+1. [Patterns of Distributed Systems](docs/tr-patterns-of-distributed--systems.md)
+1. [](docs/)
 1. [](docs/)
 
 ## Others
@@ -226,5 +228,3 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Recommended Engineering Management Books](docs/tr-recommended-engineering-management-books.md)
 1. [](docs/)
 1. [](docs/)
-1. [](docs/)
-1. [Patterns of Distributed Systems](docs/tr-patterns-of-distributed-systems.md)
