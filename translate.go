@@ -45,7 +45,8 @@ func Translate(source, sourceLang, targetLang string) error {
 	var result []interface{}
 	err = json.Unmarshal(body, &result)
 	if err != nil {
-		return errors.New("Error unmarshaling data")
+		fmt.Println(err, string(body))
+		return errors.New("Error unmarshaling data" + err.Error())
 	}
 
 	var input, output string
@@ -133,7 +134,7 @@ func main() {
 			log.Println("Translating ...")
 			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN")
 			check(err)
-			time.Sleep(1 * time.Second)
+			time.Sleep(2 * time.Second)
 			count = len(line)
 			translateLines = nil
 		}

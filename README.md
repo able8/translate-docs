@@ -99,6 +99,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [10 Best Practices Worth Implementing to Adopt Kubernetes](docs/tr-10-best-practices-worth-implementing-to-adopt-kubernetes.md)
 1. [Contributing to the Development Guide](docs/tr-contributing-to-the-development-guide.md)
 1. [Sidecar Proxy Pattern - The Basis Of Service Mesh](docs/tr-service-proxy-pod-sidecar-oh-my.md)
+1. [Open-sourcing gVisor, a sandboxed container runtime](docs/tr-open-sourcing-gvisor-a-sandboxed-container-runtime.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -156,6 +157,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Exploring Prometheus Go client metrics - Povilas Versockas](docs/tr-prometheus-go-metrics.md)
 1. [How A Tiny Go Microservice Coded In Hackathon Is Saving Us Thousands](docs/tr-saving-money-with-Hackathon-project.md)
 1. [Synchronization queues in Golang](docs/tr-synchronization-queues-in-golang-554f8e3a31a4.md)
+1. [Scraping the Web in Golang with Colly and Goquery](docs/tr-Scraping-the-Web-in-Golang-with-Colly-and-Goquery.md)
+1. [Writing a Web Crawler with Golang and Colly](docs/tr-writing-a-web-crawler-with-golang-and-colly.md)
+1. [Developing A RESTful API With Golang And A MongoDB NoSQL Database](docs/tr-developing-restful-api-golang-mongodb-nosql-database.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -210,6 +214,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 ## Others
 
 1. [Fix the Problem, Not the Symptoms](docs/tr-24-fix-problem-not-symptoms.md)
+1. [Talk, then code](docs/tr-talk-then-code.md)
 1. [Why do (some) engineers write bad code?](docs/tr-25-why-engineers-write-bad-code.md)
 1. [Slack Outage Monday January 4, 2021](docs/tr-66-slack-outage.md)
 1. [Preparing to Issue 200 Million Certificates in 24 Hours](docs/tr-74-200m-certs-24hrs.md)
@@ -242,3 +247,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Recommended Engineering Management Books](docs/tr-recommended-engineering-management-books.md)
 1. [](docs/)
 1. [](docs/)
+1. [Practical Go: Real world advice for writing maintainable Go programs](docs/tr-practical-go.md)
+1. [Learn Go by writing tests: Synchronising asynchronous processes](docs/tr-learn-go-by-writing-tests-synchronising-asynchronous-processes-1bo7.md)
+1. [Common Concurrent Programming Mistakes](docs/tr-concurrent-common-mistakes.md)
+1. [Writing Advanced Web Applications with Go](docs/tr-writing-advanced-web-applications-with-go.md)
