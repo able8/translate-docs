@@ -229,3 +229,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [](docs/)
 1. [](docs/)
 1. [Go string handling overview [cheat sheet]](docs/tr-string-functions-reference-cheat-sheet.md)
+1. [Get year, month, day from time](docs/tr-day-month-year-from-time.md)
+1. [Regexp tutorial and cheat sheet](docs/tr-regexp-cheat-sheet.md)
+1. [Get year, month, day from time](docs/tr-day-month-year-from-time.md)
+1. [Write log to file (or /dev/null)](docs/tr-log-to-file.md)
+1. [Regexp tutorial and cheat sheet](docs/tr-regexp-cheat-sheet.md)
