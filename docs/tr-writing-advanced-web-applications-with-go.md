@@ -2,9 +2,7 @@
 
 ## 使用 Go 编写高级 Web 应用程序
 
-    Last edited:      *Apr 19, 2018*
-
-最后编辑：*2018 年 4 月 19 日*
+Last edited:      *Apr 19, 2018*
 
 Web development in many programming environments often requires subscribing to some full framework ethos. With [Ruby](https://www.ruby-lang.org/), it's usually [Rails](http://rubyonrails.org/) but could be [Sinatra](http://www.sinatrarb.com/) or something else. With [Python](https://www.python.org/), it's often [Django](https://www.djangoproject.com/) or [Flask](http://flask.pocoo.org/) . With [Go](https://golang.org/), it’s…
 
@@ -44,7 +42,7 @@ If you’re new to Go web development, I suggest reading the Go documentation’
 
 A frequent design pattern for server-side web development is the concept of *middleware*, where some portion of the request handler wraps some other portion of the request handler and does some preprocessing or routing or something. This is a big component of how [Express](https://expressjs.com/) is organized on [Node](https://nodejs.org/en/), and how Express middleware and [Negroni](https://github.com/urfave/negroni) middleware works is almost line-for-line identical in design.
 
-服务器端 Web 开发的一个常见设计模式是 * 中间件 * 的概念，其中请求处理程序的某些部分包装请求处理程序的其他部分并执行一些预处理或路由或其他操作。这是 [Express](https://expressjs.com/) 在 [Node](https://nodejs.org/en/) 上的组织方式以及 Express 中间件和 [Negroni](https://github.com/urfave/negroni) 中间件在设计上几乎是逐行相同的。
+服务器端 Web 开发的一个常见设计模式是 *中间件* 的概念，其中请求处理程序的某些部分包装请求处理程序的其他部分并执行一些预处理或路由或其他操作。这是 [Express](https://expressjs.com/) 在 [Node](https://nodejs.org/en/) 上的组织方式以及 Express 中间件和 [Negroni](https://github.com/urfave/negroni) 中间件在设计上几乎是逐行相同的。
 
 Good use cases for middleware are things such as:
 
@@ -74,11 +72,7 @@ So, middleware is good. However, if Negroni or other frameworks are any indicati
 
 Here is a full middleware implementation for ensuring a user is logged in, assuming a `GetUser(*http.Request)` function but otherwise just using the standard library:
 
-
-
 这是一个完整的中间件实现，用于确保用户登录，假设有一个 GetUser(*http.Request) 函数，否则只使用标准库：
-
-
 
 ```
 func RequireUser(h http.Handler) http.Handler {
@@ -96,34 +90,18 @@ func RequireUser(h http.Handler) http.Handler {
   })
 }
 ```
-
-
-
-
 Here’s how it’s used (just wrap another handler!):
 
-
-
 这是它的使用方法（只需包装另一个处理程序！）：
-
-
 
 ```
 func main() {
   http.ListenAndServe(":8080", RequireUser(http.HandlerFunc(myHandler)))
 }
 ```
-
-
-
-
 Express, Negroni, and other frameworks expect this kind of signature for a middleware-supporting handler:
 
-
-
 Express、Negroni 和其他框架期待这种支持中间件的处理程序的签名：
-
-
 
 ```
 type Handler interface {
@@ -131,10 +109,6 @@ type Handler interface {
   ServeHTTP(rw http.ResponseWriter, req *http.Request, next http.HandlerFunc)
 }
 ```
-
-
-
-
 There’s really no reason for adding the `next` argument - it reduces cross-library compatibility. So I say, don’t use `negroni.Handler` (or similar). Just use `http.Handler`!
 
 真的没有理由添加 `next` 参数 - 它降低了跨库兼容性。所以我说，不要使用 `negroni.Handler`（或类似的）。只需使用`http.Handler`！
@@ -153,11 +127,7 @@ Probably the most commonly-used type of middleware is request routing, or muxing
 
 So! Let’s talk about request routing and consider the following problem. You, web developer extraordinaire, want to serve some HTML from your web server at `/hello/` but also want to serve some static assets from `/static/`. Let’s take a quick stab.
 
-
-
 所以！让我们谈谈请求路由并考虑以下问题。您，杰出的 Web 开发人员，希望从您的 Web 服务器在 `/hello/` 提供一些 HTML，但也希望从 `/static/` 提供一些静态资产。让我们快速尝试一下。
-
-
 
 ```
 package main
@@ -177,10 +147,6 @@ func main() {
   http.ListenAndServe(":8080", mux)
 }
 ```
-
-
-
-
 If you visit `http://localhost:8080/hello/`, you’ll be rewarded with a friendly “hello, world!” message.
 
 如果你访问`http://localhost:8080/hello/`，你会得到一个友好的“hello, world!”的奖励。信息。
@@ -191,19 +157,12 @@ If you visit `http://localhost:8080/static/` on the other hand (assuming you hav
 
 Okay, so this is why `http.StripPrefix` exists. Let’s fix it.
 
-
-
 好的，这就是`http.StripPrefix` 存在的原因。让我们修复它。
-
-
 
 ```
    mux.Handle("/static/", http.StripPrefix("/static",
     http.FileServer(http.Dir("./static-assets"))))
 ```
-
-
-
 
 `mux.Handle` combined with `http.StripPrefix` is such a common pattern that I think it should be the default. Whenever a request router processes a certain amount of URL elements, it should strip them off the request so the wrapped `http.Handler` doesn’t need to know its absolute URL and only needs to be concerned with its relative one. 
 
@@ -215,11 +174,7 @@ In [Russ Cox](https://swtch.com/~rsc/)'s recent [TiddlyWeb backend](https://gith
 
 I’d much rather have the default `mux` behavior work more like a directory of registered elements that by default strips off the ancestor directory before handing the request to the next middleware handler. It’s much more composable. To this end, I’ve written a simple muxer that works in this fashion called [whmux.Dir](https://godoc.org/gopkg.in/webhelp.v1/whmux#Dir). It is essentially `http.ServeMux` and `http.StripPrefix` combined. Here’s the previous example reworked to use it:
 
-
-
 我更希望默认的“mux”行为更像是一个注册元素的目录，默认情况下，在将请求交给下一个中间件处理程序之前，它会剥离祖先目录。它的可组合性要好得多。为此，我编写了一个以这种方式工作的简单复用器，称为 [whmux.Dir](https://godoc.org/gopkg.in/webhelp.v1/whmux#Dir)。它本质上是`http.ServeMux` 和`http.StripPrefix` 的组合。这是前面的示例重新设计以使用它：
-
-
 
 ```
 package main
@@ -242,10 +197,6 @@ func main() {
   http.ListenAndServe(":8080", mux)
 }
 ```
-
-
-
-
 There are other useful mux implementations inside the [whmux](https://godoc.org/gopkg.in/webhelp.v1/whmux) package that demultiplex on various aspects of the request path, request method, request host, or pull arguments out of the request and place them into the context, such as a [whmux.IntArg](https://godoc.org/gopkg.in/webhelp.v1/whmux#IntArg) or [whmux.StringArg](https://godoc.org/gopkg.in/webhelp.v1/whmux#StringArg). This brings us to [contexts](https://golang.org/pkg/context/).
 
 [whmux](https://godoc.org/gopkg.in/webhelp.v1/whmux) 包中还有其他有用的多路复用实现，可以在请求路径、请求方法、请求主机或拉参数的各个方面进行多路复用脱离请求并将它们放入上下文中，例如 [whmux.IntArg](https://godoc.org/gopkg.in/webhelp.v1/whmux#IntArg) 或 [whmux.StringArg](https://godoc.org/gopkg.in/webhelp.v1/whmux#IntArg)/godoc.org/gopkg.in/webhelp.v1/whmux#StringArg)。这将我们带到 [上下文](https://golang.org/pkg/context/)。
@@ -260,11 +211,7 @@ Request contexts are a recent addition to the Go 1.7 standard library, but the i
 
 First, here’s the definition of the `context.Context` type that `(*http.Request).Context()` returns:
 
-
-
 首先，这是 `(*http.Request).Context()` 返回的 `context.Context` 类型的定义：
-
-
 
 ```
 type Context interface {
@@ -275,10 +222,6 @@ type Context interface {
   Value(key interface{}) interface{}
 }
 ```
-
-
-
-
 Talking about `Done()`, `Err()`, and `Deadline()` are enough for an entirely different blog post, so I'm going to ignore them at least for now and focus on `Value(interface{} )`.
 
 对于完全不同的博客文章来说，谈论 `Done()`、`Err()` 和 `Deadline()` 就足够了，所以我至少现在将忽略它们并专注于 `Value(interface{} )`。
@@ -289,11 +232,7 @@ As a motivating problem, let’s say that the `GetUser(*http.Request)` method we
 
 Here’s the new middleware:
 
-
-
 这是新的中间件：
-
-
 
 ```
 type userKey int
@@ -315,27 +254,15 @@ func RequireUser(h http.Handler) http.Handler {
   })
 }
 ```
-
-
-
-
 Now, handlers that are protected by this `RequireUser` handler can load the previously computed `*User` value like this:
 
-
-
 现在，受此 `RequireUser` 处理程序保护的处理程序可以像这样加载先前计算的 `*User` 值：
-
-
 
 ```
 if user, ok := req.Context().Value(userKey(0)).(*User);ok {
   // there's a valid user!
 }
 ```
-
-
-
-
 Contexts allow us to pass optional values to handlers down the chain in a way that is relatively type-safe and flexible. None of the above context logic requires anything outside of the standard library.
 
 上下文允许我们以相对类型安全和灵活的方式将可选值传递给链中的处理程序。上述上下文逻辑都不需要标准库之外的任何东西。
@@ -366,11 +293,7 @@ If we used [GenSym()](https://godoc.org/gopkg.in/webhelp.v1#GenSym), then `type 
 
 Armed with this new context behavior, we can now present a `whmux.StringArg` example:
 
-
-
 有了这个新的上下文行为，我们现在可以展示一个 `whmux.StringArg` 示例：
-
-
 
 ```
 package main
@@ -402,10 +325,6 @@ func main() {
   })
 }
 ```
-
-
-
-
 ## Pre-Go-1.7 support
 
 ## Pre-Go-1.7 支持
@@ -452,28 +371,16 @@ In my opinion, the right thing to do is to have contextual error handlers, and l
 
 First, we need an error handler interface.
 
-
-
 首先，我们需要一个错误处理程序接口。
-
-
 
 ```
 type ErrHandler interface {
   HandleError(w http.ResponseWriter, req *http.Request, err error)
 }
 ```
-
-
-
-
 Next, let’s make a middleware that registers the error handler in the context:
 
-
-
 接下来，让我们制作一个在上下文中注册错误处理程序的中间件：
-
-
 
 ```
 var errHandler = webhelp.GenSym() // see the aside about context keys
@@ -485,17 +392,9 @@ func HandleErrWith(eh ErrHandler, h http.Handler) http.Handler {
   })
 }
 ```
-
-
-
-
 Last, let’s make a function that will use the registered error handler for errors:
 
-
-
 最后，让我们创建一个将使用注册的错误处理程序来处理错误的函数：
-
-
 
 ```
 func HandleErr(w http.ResponseWriter, req *http.Request, err error) {
@@ -507,10 +406,6 @@ func HandleErr(w http.ResponseWriter, req *http.Request, err error) {
   http.Error(w, "internal server error", http.StatusInternalServerError)
 }
 ```
-
-
-
-
 Now, as long as everything uses `HandleErr` to handle errors, our JSON API can handle errors with JSON responses, and our HTML endpoints can handle errors with HTML responses.
 
 现在，只要一切都使用 `HandleErr` 来处理错误，我们的 JSON API 就可以处理带有 JSON 响应的错误，而我们的 HTML 端点可以处理带有 HTML 响应的错误。
@@ -521,11 +416,7 @@ Of course, the [wherr](https://godoc.org/gopkg.in/webhelp.v1/wherr) package impl
 
 Here’s how you might use it:
 
-
-
 以下是您可以如何使用它：
-
-
 
 ```
 var userKey = webhelp.GenSym()
@@ -569,10 +460,6 @@ func main() {
   })
 }
 ```
-
-
-
-
 ### Aside about the spacemonkeygo/errors package
 
 ### 除了 spacemonkeygo/errors 包
@@ -619,11 +506,7 @@ The default cookie-based session store implements encryption and authentication 
 
 Usage is like this:
 
-
-
 用法是这样的：
-
-
 
 ```
 func handler(w http.ResponseWriter, req *http.Request) {
@@ -645,10 +528,6 @@ func main() {
     whsess.NewCookieStore(secret), http.HandlerFunc(handler)))
 }
 ```
-
-
-
-
 ## Logging 
 
 ## 记录
@@ -667,21 +546,13 @@ The [whlog](https://godoc.org/gopkg.in/webhelp.v1/whlog) package implements all 
 
 Usage is like this:
 
-
-
 用法是这样的：
-
-
 
 ```
 func main() {
   whlog.ListenAndServe(":8080", whlog.LogResponses(whlog.Default, handler))
 }
 ```
-
-
-
-
 ### App engine logging
 
 ### 应用引擎日志记录
@@ -721,8 +592,6 @@ Use of another template within a template might look like this:
   {{ end }}
 </ul>
 ```
-
-
 You’re now rendering the `list_element` template with the list element from `.List`. But what if you want to also pass the current user `.User`? Unfortunately, you can only pass one argument from one template to another. If you have two arguments you want to pass to another template, with the standard library, you’re out of luck.
 
 您现在正在使用`.List` 中的列表元素渲染`list_element` 模板。但是如果你还想传递当前用户 `.User` 怎么办？不幸的是，您只能将一个参数从一个模板传递到另一个模板。如果你有两个参数想要传递给另一个模板，使用标准库，那你就不走运了。
@@ -739,8 +608,6 @@ The [whtmpl](https://godoc.org/gopkg.in/webhelp.v1/whtmpl) package adds three he
   {{ end }}
 </ul>
 ```
-
-
 The second thing [whtmpl](https://godoc.org/gopkg.in/webhelp.v1/whtmpl) does is make defining lots of templates easy, by optionally automatically naming templates after the name of the file the template is defined in .
 
 [whtmpl](https://godoc.org/gopkg.in/webhelp.v1/whtmpl) 所做的第二件事是使定义大量模板变得容易，通过选择在定义模板的文件名后自动命名模板.
@@ -751,11 +618,7 @@ For example, say you have three files.
 
 Here’s `pkg.go`:
 
-
-
 这是`pkg.go`：
-
-
 
 ```
 package views
@@ -764,17 +627,9 @@ import "gopkg.in/webhelp.v1/whtmpl"
 
 var Templates = whtmpl.NewCollection()
 ```
-
-
-
-
 Here’s `landing.go`:
 
-
-
 这是`landing.go`：
-
-
 
 ```
 package views
@@ -783,44 +638,24 @@ var _ = Templates.MustParse(`{{ template "header" . }}
 
    <h1>Landing!</h1>`)
 ```
-
-
-
-
 And here’s `header.go`:
 
-
-
 这是`header.go`：
-
-
 
 ```
 package views
 
 var _ = Templates.MustParse(`<title>My website!</title>`)
 ```
-
-
-
-
 Now, you can import your new `views` package and render the `landing` template this easily:
 
-
-
 现在，您可以导入新的 `views` 包并轻松渲染 `landing` 模板：
-
-
 
 ```
 func handler(w http.ResponseWriter, req *http.Request) {
   views.Templates.Render(w, req, "landing", map[string]interface{}{})
 }
 ```
-
-
-
-
 ## User authentication
 
 ##  用户认证
@@ -847,11 +682,7 @@ Surprise! If you've used [webhelp](https://godoc.org/gopkg.in/webhelp.v1) based 
 
 My web serving code’s `main` method often has a form like this:
 
-
-
 我的网络服务代码的 main 方法通常有这样的形式：
-
-
 
 ```
 switch flag.Arg(0) {
@@ -863,10 +694,6 @@ default:
   fmt.Printf("Usage: %s <serve|routes>\n", os.Args[0])
 }
 ```
-
-
-
-
 Here’s some example output:
 
 下面是一些示例输出：
@@ -896,8 +723,6 @@ GET   /project/
  Redirect: /
 POST  /project/
 ```
-
-
 ## Other little things
 
 ## 其他小东西

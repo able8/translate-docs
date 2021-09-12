@@ -8,6 +8,7 @@ This is the 8th post taken from a WIP project called [Learn Go by writing Tests]
 
 这是 WIP 项目的第 8 篇文章[通过编写测试学习围棋](https://github.com/quii/learn-go-with-tests)，其目的是熟悉围棋并学习围绕 TDD 的技术
 
+
 - [The first post got you up to speed with TDD](https://dev.to/quii/learn-go-by-writing-tests--m63)
 - [The second post discusses arrays and slices](https://dev.to/quii/learn-go-by-writing-tests-arrays-and-slices-ahm)
 - [The third post teaches structs, methods, interfaces & table driven tests](https://dev.to/quii/learn-go-by-writing-tests-structs-methods-interfaces--table-driven-tests-1p01)
@@ -16,13 +17,6 @@ This is the 8th post taken from a WIP project called [Learn Go by writing Tests]
 - [The 6th post introduced concurrency](https://dev.to/gypsydave5/learn-go-by-writing-tests-concurrency--2ebk)
 - [The 7th post shows how and why to mock](https://dev.to/quii/learn-go-by-writing-tests-mocking-fl4)
 
-- [第一篇文章让你快速了解 TDD](https://dev.to/quii/learn-go-by-writing-tests--m63)
-- [第二篇文章讨论数组和切片](https://dev.to/quii/learn-go-by-writing-tests-arrays-and-slices-ahm)
-- [第三篇文章讲授结构、方法、接口和表驱动测试](https://dev.to/quii/learn-go-by-writing-tests-structs-methods-interfaces--table-driven-tests-1p01)
-- [第四篇文章展示了如何做错误以及为什么指针有用](https://dev.to/quii/learn-go-by-writing-tests-pointers-and-errors-2kp6)
-- [第五篇文章向你展示了如何以及为什么进行依赖注入](https://dev.to/quii/learn-go-by-writing-tests-dependency-injection-n7j)
-- [第六篇并发介绍](https://dev.to/gypsydave5/learn-go-by-writing-tests-concurrency--2ebk)
-- [第 7 篇文章展示了如何以及为什么要模拟](https://dev.to/quii/learn-go-by-writing-tests-mocking-fl4)
 
 This chapter is about synchronising asynchronous processes with `select`
 
@@ -54,9 +48,9 @@ For this we will be using
 - 协程。
 - `select` 来同步进程。
 
-## Write the test first
+### Write the test first
 
-## 先写测试
+### 先写测试
 
 Let's start with something naive to get us going.
 
@@ -76,25 +70,21 @@ func TestRacer(t *testing.T) {
 }
 ```
 
-
-
-
 We know this isn't perfect and has problems but it will get us going. It's important not to get too hung-up on getting things perfect first time.
 
 我们知道这并不完美并且有问题，但它会让我们继续前进。重要的是不要在第一次就让事情变得完美。
 
-## Try to run the test
+### Try to run the test
 
-## 尝试运行测试
+### 尝试运行测试
 
 ```
 ./racer_test.go:14:9: undefined: Racer
 ```
 
+### Write the minimal amount of code for the test to run and check the failing test output
 
-## Write the minimal amount of code for the test to run and check the failing test output
-
-## 为测试编写最少的代码以运行并检查失败的测试输出
+### 为测试编写最少的代码以运行并检查失败的测试输出
 
 ```
 func Racer(a, b string) (winner string) {
@@ -102,17 +92,13 @@ func Racer(a, b string) (winner string) {
 }
 ```
 
-
-
-
 ```
 racer_test.go:25: got '', want 'http://www.quii.co.uk'
 ```
 
+### Write enough code to make it pass
 
-## Write enough code to make it pass
-
-## 编写足够的代码使其通过
+### 编写足够的代码使其通过
 
 ```
 func Racer(a, b string) (winner string) {
@@ -131,9 +117,6 @@ func Racer(a, b string) (winner string) {
     return b
 }
 ```
-
-
-
 
 For each url:
 
@@ -210,9 +193,6 @@ func TestRacer(t *testing.T) {
 }
 ```
 
-
-
-
 The syntax may look a bit busy but just take your time.
 
 语法可能看起来有点忙，但请花点时间。
@@ -224,7 +204,6 @@ The syntax may look a bit busy but just take your time.
 ```
 http.HandlerFunc` is a type that looks like this: `type HandlerFunc func(ResponseWriter, *Request)
 ```
-
 
 All it's really saying is it needs a function that takes a `ResponseWriter` and a `Request`, which is not too surprising for a HTTP server
 
@@ -242,9 +221,9 @@ If you re-run the test it will definitely pass now and should be faster. Play wi
 
 如果您重新运行测试，它现在肯定会通过并且应该更快。玩这些睡眠故意打破测试。
 
-## Refactor
+### Refactor
 
-## 重构
+### 重构
 
 We have some duplication in both our production code and test code.
 
@@ -268,9 +247,6 @@ func measureResponseTime(url string) time.Duration {
     return time.Since(start)
 }
 ```
-
-
-
 
 This DRY-ing up makes our `Racer` code a lot easier to read.
 
@@ -304,16 +280,13 @@ func makeDelayedServer(delay time.Duration) *httptest.Server {
 }
 ```
 
-
-
-
 We've refactored creating our fake servers into a function called `makeDelayedServer` to move some uninteresting code out of the test and reduce repetition.
 
 我们已经将创建我们的假服务器重构为一个名为 `makeDelayedServer` 的函数，以将一些无趣的代码从测试中移出并减少重复。
 
 #### `defer`
 
-####`延迟`
+#### `延迟`
 
 By prefixing a function call with `defer` it will now call that function *at the end of the containing function*.
 
@@ -365,12 +338,9 @@ func ping(url string) chan bool {
 }
 ```
 
-
-
-
 #### `ping`
 
-####`ping`
+#### `ping`
 
 We have defined a function `ping` which creates a `chan bool` and returns it.
 
@@ -386,7 +356,7 @@ Inside the same function we start a goroutine which will send a signal into that
 
 #### `select`
 
-####`选择`
+#### `选择`
 
 If you recall from the concurrency chapter, you can wait for values to be sent to a channel with `myVar := <-ch`. This is a *blocking* call, as you're waiting for a value.
 
@@ -412,9 +382,9 @@ Our final requirement was to return an error if `Racer` takes longer than 10 sec
 
 我们的最终要求是如果“Racer”花费的时间超过 10 秒，则返回错误。
 
-## Write the test first
+### Write the test first
 
-## 先写测试
+### 先写测试
 
 ```
 t.Run("returns an error if a server doesn't respond within 10s", func(t *testing.T) {
@@ -432,25 +402,21 @@ t.Run("returns an error if a server doesn't respond within 10s", func(t *testing
 })
 ```
 
-
-
-
 We've made our test servers take longer than 10s to return to exercise this scenario and we are expecting `Racer` to return two values now, the winning URL (which we ignore in this test with `_`) and an `error` .
 
 我们已经让我们的测试服务器花费超过 10 秒的时间来返回来执行这个场景，我们现在期望 `Racer` 返回两个值，获胜的 URL（我们在这个测试中用 `_` 忽略）和一个 `error` .
 
-## Try to run the test
+### Try to run the test
 
-## 尝试运行测试
+### 尝试运行测试
 
 ```
 ./racer_test.go:37:10: assignment mismatch: 2 variables but 1 values
 ```
 
+### Write the minimal amount of code for the test to run and check the failing test output
 
-## Write the minimal amount of code for the test to run and check the failing test output
-
-## 为测试编写最少的代码以运行并检查失败的测试输出
+### 为测试编写最少的代码以运行并检查失败的测试输出
 
 ```
 func Racer(a, b string) (winner string, error error) {
@@ -462,9 +428,6 @@ func Racer(a, b string) (winner string, error error) {
     }
 }
 ```
-
-
-
 
 Change the signature of `Racer` to return the winner and an `error`. Return `nil` for our happy cases.
 
@@ -484,12 +447,9 @@ If you run it now after 11 seconds it will fail
         racer_test.go:40: expected an error but didn't get one
 ```
 
+### Write enough code to make it pass
 
-
-
-## Write enough code to make it pass
-
-## 编写足够的代码使其通过
+### 编写足够的代码使其通过
 
 ```
 func Racer(a, b string) (winner string, error error) {
@@ -503,9 +463,6 @@ func Racer(a, b string) (winner string, error error) {
     }
 }
 ```
-
-
-
 
 `time.After` is a very handy function when using `select`. Although it didn't happen in our case you can potentially write code that blocks forever if the channels you're listening on never return a value. `time.After` returns a `chan`(like `ping`) and will send a signal down it after the amount of time you define.
 
@@ -539,9 +496,6 @@ func Racer(a, b string, timeout time.Duration) (winner string, error error) {
     }
 }
 ```
-
-
-
 
 Our tests now wont compile because we're not supplying a timeout
 
@@ -579,9 +533,6 @@ func ConfigurableRacer(a, b string, timeout time.Duration) (winner string, error
     }
 }
 ```
-
-
-
 
 Our users and our first test can use `Racer` (which uses `ConfigurableRacer`under the hood) and our sad path test can use `ConfigurableRacer`.
 
@@ -626,20 +577,16 @@ func TestRacer(t *testing.T) {
 }
 ```
 
-
-
-
 I added one final check on the first test to verify we don't get an `error`
 
 我在第一次测试中添加了一个最终检查，以验证我们没有收到“错误”
 
-## Wrapping up
+### Wrapping up
 
-##  包起来
+###  总结
 
 ### `select`
 
-###`选择`
 
 - Helps you wait on multiple channels.
 - Sometimes you'll want to include `time.After` in one of your `cases` to prevent your system blocking forever.
@@ -648,8 +595,6 @@ I added one final check on the first test to verify we don't get an `error`
 - 有时你会想要在你的一个 `case` 中包含 `time.After` 以防止你的系统永远阻塞。
 
 ### `httptest`
-
-###`httptest`
 
 - Convenient way of creating test servers so you can have reliable and controllable tests.
 - Uses the same interfaces as the "real" `net/http` servers which is consistent and less for you to learn 

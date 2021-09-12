@@ -6,7 +6,7 @@ Go is a language supporting built-in concurrent programming. By using the `go` k
 
 Go 是一种支持内置并发编程的语言。通过使用 `go` 关键字创建 goroutines（轻量级线程）并通过 [using](https://go101.org/article/channel-use-cases.html) [channels](https://go101.org/article/channel.html) 和 [其他并发](https://go101.org/article/concurrent-atomic-operation.html) [同步技术](https://go101.org/article/concurrent-synchronization-more.html) 在 Go 中提供，并发编程变得简单、灵活和愉快。
 
-One the other hand, Go doesn't prevent Go programmers from making some concurrent programming mistakes which are caused by either carelessness or lacking of experience. The remaining of the current article will show some common mistakes in Go concurrent programming, to help Go programmers avoid making such mistakes.
+On the other hand, Go doesn't prevent Go programmers from making some concurrent programming mistakes which are caused by either carelessness or lacking of experience. The remaining of the current article will show some common mistakes in Go concurrent programming, to help Go programmers avoid making such mistakes.
 
 另一方面，Go 并不能阻止 Go 程序员犯一些由于粗心或缺乏经验而导致的并发编程错误。当前文章的剩余部分将展示 Go 并发编程中的一些常见错误，以帮助 Go 程序员避免犯此类错误。
 
@@ -80,8 +80,6 @@ func main() {
     a[0], a[1], a[2] = 0, 1, 2
 }
 ```
-
-
 
 
 
@@ -344,8 +342,6 @@ func main() {
 ```
 
 
-
-
 To make the program behave as expected, we should move the `Add` method calls out of the new goroutines created in the `for` loop, as the following code shown.
 
 为了使程序按预期运行，我们应该将 `Add` 方法调用移出 `for` 循环中创建的新 goroutine，如下面的代码所示。
@@ -449,8 +445,6 @@ func longRunning(messages <-chan string) {
     }
 }
 ```
-
-
 
 
 To avoid too many `Timer` values being created in the above code, we should use (and reuse) a single `Timer` value to do the same job.
@@ -562,20 +556,3 @@ We should not rely on the return value of a `Reset` method call. The return resu
 The ***Go 101\*** project is hosted on [Github](https://github.com/go101/go101). Welcome to improve ***Go 101\*** articles by submitting corrections for all kinds of mistakes, such as typos, grammar errors, wording inaccuracies, description flaws, code bugs and broken links. If you would like to learn some Go details and facts every serveral days, please follow Go 101's official Twitter account: [@go100and1](https://twitter.com/go100and1). 
 
 ***Go 101\*** 项目托管在 [Github](https://github.com/go101/go101) 上。欢迎改进 ***Go 101\*** 文章，提交各种错误的更正，例如拼写错误、语法错误、措辞不准确、描述缺陷、代码错误和断开的链接。如果你想每隔几天了解一些围棋的细节和事实，请关注围棋 101 的官方推特账号：[@go100and1](https://twitter.com/go100and1)。
-
-The digital versions of this book are available at the following places:  [Leanpub store](https://leanpub.com/go101), *$19.99+*, Leanpub gets 20%, Tapir gets 80%. [Apple Books store](https://books.apple.com/us/book/id1459984231), *$19.99*, Apple gets 30%, Tapir gets 70%. [Amazon Kindle store](https://www.amazon.com/dp/B07Q3HWZ98), *$39.99*, Amazon gets 65%, Tapir gets 35%. [Free ebooks](https://github.com/go101/go101/releases), including pdf, epub and azw3 formats. Tapir, the author of Go 101, has spent 4+ years on writing the Go 101 book and maintaining the go101.org website. New contents will continue being added to the book and the website from time to time. Tapir is also an indie game developer. You can also support Go 101 by playing [Tapir's games](https://www.tapirgames.com) (made for both Android and iPhone/iPad):  [Color Infection](https://www.tapirgames.com/App/Color-Infection) (★★★★★), a physics based original casual puzzle game. 140+ levels. [Rectangle Pushers](https://www.tapirgames.com/App/Rectangle-Pushers)(★★★★★), an original casual puzzle game. Two modes, 104+ levels. [Let's Play With Particles](https://www.tapirgames.com/App/Let-Us-Play-With-Particles), a casual action original game. Three mini games are included. Individual donations [via PayPal](https://paypal.me/tapirliu) are also welcome.
-
-本书的数字版本可在以下位置获得：[Leanpub 商店](https://leanpub.com/go101)，*$19.99+*，Leanpub 获得 20%，Tapir 获得 80%。 [Apple Books 商店](https://books.apple.com/us/book/id1459984231)，*$19.99*，Apple 获得 30%，Tapir 获得 70%。 [亚马逊 Kindle 商店](https://www.amazon.com/dp/B07Q3HWZ98)，*$39.99*，亚马逊获得 65%，貘获得 35%。 [免费电子书](https://github.com/go101/go101/releases)，包括pdf、epub和azw3格式。 Tapir 是 Go 101 的作者，在编写 Go 101 书籍和维护 go101.org 网站上花费了 4 年多的时间。本书和网站将不时添加新内容。 Tapir 也是独立游戏开发商。您还可以通过玩 [Tapir's games](https://www.tapirgames.com)（适用于 Android 和 iPhone/iPad）来支持 Go 101：[Color Infection](https://www.tapirgames.com/App/Color-Infection）（★★★★★)，一款基于物理的原创休闲益智游戏。 140 多个级别。  [矩形推手](https://www.tapirgames.com/App/Rectangle-Pushers)(★★★★★)，一款原创休闲益智游戏。两种模式，104+ 级。  [让我们玩粒子游戏](https://www.tapirgames.com/App/Let-Us-Play-With-Particles)，一款休闲动作原创游戏。包括三个小游戏。也欢迎个人捐款 [通过 PayPal](https://paypal.me/tapirliu)。
-
-------
-
-Index:
-
-指数：
-
-- [About Go 101](https://go101.org/article/101-about.html) - why this book is written.
-- [Acknowledgements](https://go101.org/article/acknowledgements.html) 
-
-- [关于 Go 101](https://go101.org/article/101-about.html) - 为什么写这本书。
-- [致谢](https://go101.org/article/acknowledgements.html)
-

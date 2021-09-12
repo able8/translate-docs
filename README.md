@@ -160,6 +160,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Scraping the Web in Golang with Colly and Goquery](docs/tr-Scraping-the-Web-in-Golang-with-Colly-and-Goquery.md)
 1. [Writing a Web Crawler with Golang and Colly](docs/tr-writing-a-web-crawler-with-golang-and-colly.md)
 1. [Developing A RESTful API With Golang And A MongoDB NoSQL Database](docs/tr-developing-restful-api-golang-mongodb-nosql-database.md)
+1. [Learn Go by writing tests: Synchronising asynchronous processes](docs/tr-learn-go-by-writing-tests-synchronising-asynchronous-processes-1bo7.md)
+1. [Common Concurrent Programming Mistakes](docs/tr-concurrent-common-mistakes.md)
+1. [Writing Advanced Web Applications with Go](docs/tr-writing-advanced-web-applications-with-go.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -248,6 +251,3 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [](docs/)
 1. [](docs/)
 1. [Practical Go: Real world advice for writing maintainable Go programs](docs/tr-practical-go.md)
-1. [Learn Go by writing tests: Synchronising asynchronous processes](docs/tr-learn-go-by-writing-tests-synchronising-asynchronous-processes-1bo7.md)
-1. [Common Concurrent Programming Mistakes](docs/tr-concurrent-common-mistakes.md)
-1. [Writing Advanced Web Applications with Go](docs/tr-writing-advanced-web-applications-with-go.md)

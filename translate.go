@@ -167,6 +167,8 @@ func main() {
 	s = regexp.MustCompile(`]（(.*)\)`).ReplaceAllString(s, "]($1)")
 	// fix url with space
 	s = regexp.MustCompile(`]\(http([^\s]*?) ([^\s]*?)\)`).ReplaceAllString(s, "](http$1$2)")
+	// Remove mutiple empty lines with one empty line.
+	s = regexp.MustCompile(`\n{3,}`).ReplaceAllString(s, "\n\n")
 
 	// a := "＃＃"
 	// a = strings.Replace(a, "＃＃", "##1 ", -1)
