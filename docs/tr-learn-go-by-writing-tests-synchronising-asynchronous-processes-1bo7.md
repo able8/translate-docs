@@ -6,7 +6,7 @@
 
 This is the 8th post taken from a WIP project called [Learn Go by writing Tests](https://github.com/quii/learn-go-with-tests)the aim of which is to get a familiarity with Go and learn techniques around TDD
 
-这是 WIP 项目的第 8 篇文章[通过编写测试学习围棋](https://github.com/quii/learn-go-with-tests)，其目的是熟悉围棋并学习围绕 TDD 的技术
+这是 WIP 项目的第 8 篇文章[通过编写测试学习 Go ](https://github.com/quii/learn-go-with-tests)，其目的是熟悉 Go 并学习围绕 TDD 的技术
 
 
 - [The first post got you up to speed with TDD](https://dev.to/quii/learn-go-by-writing-tests--m63)

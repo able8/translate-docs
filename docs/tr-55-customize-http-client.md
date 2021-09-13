@@ -385,7 +385,7 @@ We have learned today how to take advantage of Go's [http.Client](https://golang
 
 With the help of code snippets presented in this post, I hope you  have grasped the idea of how to customize HTTP client and apply custom,  service specific logic. If the API provider would return header with a  retry delay time would you be able to add rate limit logic? Try to do it yourself, if you need help leave a comment and lets play in Go’s  playground.
 
-借助本文中提供的代码片段，我希望您已经掌握了如何自定义 HTTP 客户端并应用自定义的服务特定逻辑的想法。如果 API 提供者将返回带有重试延迟时间的标头，您是否能够添加速率限制逻辑？尝试自己做，如果您需要帮助，请发表评论并让我们在围棋的操场上玩耍。
+借助本文中提供的代码片段，我希望您已经掌握了如何自定义 HTTP 客户端并应用自定义的服务特定逻辑的想法。如果 API 提供者将返回带有重试延迟时间的标头，您是否能够添加速率限制逻辑？尝试自己做，如果您需要帮助，请发表评论并让我们在 Go 的操场上玩耍。
 
  
 

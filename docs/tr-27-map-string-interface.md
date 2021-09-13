@@ -4,7 +4,7 @@ From: https://bitfieldconsulting.com/golang/map-string-interface
 
 What is a `map[string]interface{}` in Go, and why is it so useful? How do we deal with maps of `string` to `interface{}` in our programs? What the heck is an `interface{}`, anyway? Let's find out, with renowned Go teacher John Arundel, aka [@bitfield](https://twitter.com/bitfield), author of perhaps the friendliest and most helpful introductory Go book series, [For the Love of Go](https ://bitfieldconsulting.com/books).
 
-什么是 Go 中的“map[string]interface{}”，为什么它如此有用？我们如何处理程序中从 `string` 到 `interface{}` 的映射？无论如何，“interface{}”到底是什么？让我们和著名的 Go 老师约翰·阿伦德尔一起找出来，又名 [@bitfield](https://twitter.com/bitfield)，也许是最友好和最有帮助的围棋入门系列丛书 [For the Love of Go](https://twitter.com/bitfield) 的作者://bitfieldconsulting.com/books）。
+什么是 Go 中的“map[string]interface{}”，为什么它如此有用？我们如何处理程序中从 `string` 到 `interface{}` 的映射？无论如何，“interface{}”到底是什么？让我们和著名的 Go 老师约翰·阿伦德尔一起找出来，又名 [@bitfield](https://twitter.com/bitfield)，也许是最友好和最有帮助的 Go 入门系列丛书 [For the Love of Go](https://twitter.com/bitfield) 的作者://bitfieldconsulting.com/books）。
 
 ‘For the Love of Go’ is a series of fun, easy-to-follow ebooks introducing software engineering in Go.
 
