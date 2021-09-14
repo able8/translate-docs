@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"os"
@@ -134,7 +135,7 @@ func main() {
 			log.Println("Translating ...")
 			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN")
 			check(err)
-			time.Sleep(2 * time.Second)
+			time.Sleep(time.Duration(rand.Intn(2)) * time.Second)
 			count = len(line)
 			translateLines = nil
 		}
