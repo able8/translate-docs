@@ -4,11 +4,7 @@
 
 May 16, 2020 (Updated: August 7, 2021)
 
-2020 年 5 月 16 日（更新：2021 年 8 月 7 日）
-
 [Containers,](http://iximiuz.com/en/categories/?category=Containers) [Linux / Unix](http://iximiuz.com/en/categories/?category=Linux / Unix)
-
-[容器，](http://iximiuz.com/en/categories/?category=Containers)[Linux/Unix](http://iximiuz.com/en/categories/?category=Linux/Unix)
 
 As we already know, containers are just [isolated and restricted Linux processes](http://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/#container-is-just-a-processes). We also learned that it's fairly simple to [create a container with a single executable file inside](http://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/#container-without-distro-inside) starting from [_scratch_](https://hub.docker.com/_/scratch) image (ie without putting a full Linux distribution in there). This time we will go even further and demonstrate that containers don't require [images](https://github.com/opencontainers/image-spec) at all. And after that, we will try to justify the actual need for images and their place in the [_containerverse_](http://iximiuz.com/en/posts/journey-from-containerization-to-orchestration-and-beyond/) .
 
@@ -150,9 +146,9 @@ $ sudo runc run mycont2  # `run` is a combination of `create` and `start`
 
 ```
 
-**Well, I hope you noticed, that we haven't used any image-related facilities so far.** That's because we don't really need images to create and/or run containers with _runc_ or any other OCI-compliant runtime . And just to make it clear, when I say [_images_](https://github.com/opencontainers/image-spec) here I mean these layered beasts we build using _Dockerfiles_, push and pull from the registries like [Docker Hub] (https://hub.docker.com/), and base other images on.
+**Well, I hope you noticed, that we haven't used any image-related facilities so far.** That's because we don't really need images to create and/or run containers with _runc_ or any other OCI-compliant runtime . And just to make it clear, when I say [_images_](https://github.com/opencontainers/image-spec) here I mean these layered beasts we build using _Dockerfiles_, push and pull from the registries like [Docker Hub](https://hub.docker.com/), and base other images on.
 
-**好吧，我希望你注意到，到目前为止我们还没有使用任何与图像相关的工具。**那是因为我们真的不需要图像来使用 _runc_ 或任何其他 OCI 兼容的运行时来创建和/或运行容器.只是为了说明清楚，当我在这里说 [_images_](https://github.com/opencontainers/image-spec) 时，我的意思是我们使用 _Dockerfiles_ 构建的这些分层野兽，从 [Docker Hub] 之类的注册表中推送和拉取(https://hub.docker.com/)，并基于其他图像。
+**好吧，我希望你注意到，到目前为止我们还没有使用任何与图像相关的工具。**那是因为我们真的不需要图像来使用 _runc_ 或任何其他 OCI 兼容的运行时来创建和/或运行容器.只是为了说明清楚，当我在这里说 [_images_](https://github.com/opencontainers/image-spec) 时，我的意思是我们使用 _Dockerfiles_ 构建的这些分层野兽，从 [Docker Hub] 之类的注册表中推送和拉取，并基于其他图像。
 
 Reflecting on the exercise from above, we can say that _runc_ needs just a regular filesystem directory with at least one executable file inside and a `config.json`. This combination is called [a bundle](https://github.com/opencontainers/runtime-spec/blob/master/bundle.md).
 

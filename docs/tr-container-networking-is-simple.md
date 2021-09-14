@@ -4,8 +4,6 @@
 
 October 18, 2020 (Updated: August 4, 2021)
 
-2020 年 10 月 18 日（更新：2021 年 8 月 4 日）
-
 _**Just kidding, it's not... But fear not and read on!**_
 
 _**开个玩笑，这不是......但不要害怕，继续阅读！**_
@@ -16,7 +14,7 @@ _您可以在 [此处](https://habr.com/ru/company/timeweb/blog/558612/)_ 中找
 
 Working with containers always feels like magic. In a good way for those who understand the internals and in a terrifying - for those who don't. Luckily, we've been looking under the hood of the containerization technology for quite some time already and even managed to uncover that [containers are just isolated and restricted Linux processes](http://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/#container-is-just-a-processes), that [images aren't really needed to run containers](http://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/), and on the contrary - [to build an image we need to run some containers](http://iximiuz.com/en/posts/you-need-containers-to-build-an-image/).
 
-使用容器总是感觉像魔术一样。对于那些了解内部结构的人来说这是一种很好的方式，而对于那些不了解内部结构的人来说则是一种可怕的方式。幸运的是，我们已经研究了容器化技术的幕后很长一段时间，甚至设法发现 [容器只是隔离和受限制的 Linux 进程](http://iximiuz.com/en/posts/not- every-container-has-an-operating-system-inside/#container-is-just-a-processes），[运行容器并不真正需要图像](http://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/)，相反 - [要构建映像，我们需要运行一些容器](http://iximiuz.com/en/posts/you-need-containers-to-build-an-image/)。
+使用容器总是感觉像魔术一样。对于那些了解内部结构的人来说这是一种很好的方式，而对于那些不了解内部结构的人来说则是一种可怕的方式。幸运的是，我们已经研究了容器化技术的幕后很长一段时间，甚至设法发现 容器只是隔离和受限制的 Linux 进程，[运行容器并不真正需要图像](http://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/)，相反 - [要构建映像，我们需要运行一些容器](http://iximiuz.com/en/posts/you-need-containers-to-build-an-image/)。
 
 Now comes a time to tackle the container networking problem. Or, more precisely, a single-host container networking problem. In this article, we are going to answer the following questions:
 
@@ -147,7 +145,6 @@ One of the ways to create a network namespace is the `ip` tool - part of the de 
 $ sudo ip netns add netns0
 $ ip netns
 netns0
-
 ```
 
 How to start using the just created namespace? There is a lovely Linux command called `nsenter`. It enters one or more of the specified namespaces and then executes the given program:
@@ -196,7 +193,6 @@ Virtual Ethernet devices always go in pairs. No worries, it'll be clear when we 
 
 ```bash
 $ sudo ip link add veth0 type veth peer name ceth0
-
 ```
 
 With this single command, we just created a pair of _interconnected_ virtual Ethernet devices. The names `veth0` and `ceth0` have been chosen arbitrarily:
@@ -213,7 +209,6 @@ $ ip link
     link/ether 66:2d:24:e3:49:3f brd ff:ff:ff:ff:ff:ff
 6: veth0@ceth0: <BROADCAST,MULTICAST,M-DOWN> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
     link/ether 96:e8:de:1d:22:e0 brd ff:ff:ff:ff:ff:ff
-
 ```
 
 Both `veth0` and `ceth0` after creation resides on the host's network stack (also called root network namespace). To connect the root namespace with the `netns0` namespace, we need to keep one of the devices in the root namespace and move another one into the `netns0`:
@@ -533,7 +528,6 @@ Now, attach `veth0` and `veth1` ends to the bridge:
 ```bash
 $ sudo ip link set veth0 master br0
 $ sudo ip link set veth1 master br0
-
 ```
 
 ![Setting up routing between multiple network namespaces](http://iximiuz.com/container-networking-is-simple/bridge-4000-opt.png)
@@ -895,7 +889,6 @@ Testing time!
 curl 10.0.2.15:5000
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 # ... omitted lines ...
-
 ```
 
 ## Understanding Docker network drivers

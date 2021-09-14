@@ -4,8 +4,6 @@
 
 September 5, 2021
 
-2021 年 9 月 5 日
-
 [Containers](http://iximiuz.com/en/categories/?category=Containers)
 
 [容器](http://iximiuz.com/en/categories/?category=Containers)
@@ -32,7 +30,7 @@ There are many ways to create containers, especially on Linux and alike. Besides
 
 The general concept of the container is quite vague. What's true and what's not often depends on the context, but the context itself isn't always given explicitly. For instance, there is a common saying that [containers are Linux processes](https://www.redhat.com/en/blog/containers-are-linux) or that [containers aren't Virtual Machines](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/containers-vs-vm). However, the first statement is just an oversimplified attempt to explain Linux containers. And the second statement simply isn't always true.
 
-容器的一般概念是相当模糊的。什么是真的，什么不是，通常取决于上下文，但上下文本身并不总是明确给出。例如，有一句俗语说[容器是Linux进程](https://www.redhat.com/en/blog/containers-are-linux)或[容器不是虚拟机](https://www.redhat.com/en/blog/containers-are-linux)/docs.microsoft.com/en-us/virtualization/windowscontainers/about/containers-vs-vm)。然而，第一个陈述只是对解释 Linux 容器的过于简单化的尝试。第二个陈述并不总是正确的。
+容器的一般概念是相当模糊的。什么是真的，什么不是，通常取决于上下文，但上下文本身并不总是明确给出。例如，有一句俗语说[容器是Linux进程](https://www.redhat.com/en/blog/containers-are-linux)或[容器不是虚拟机](https://www.redhat.com/en/blog/containers-are-linux)。然而，第一个陈述只是对解释 Linux 容器的过于简单化的尝试。第二个陈述并不总是正确的。
 
 In this article, I'm not trying to review all possible ways of creating containers. Instead, the article is an analysis of the [OCI Runtime Specification](https://github.com/opencontainers/runtime-spec). The spec turned out to be an insightful read! For instance, it gives a definition of the _standard container_ (and no, it's not a process) and sheds some light on _when Virtual Machines can be considered containers_.
 
@@ -90,7 +88,7 @@ Ok, and [what can we do with containers?](https://github.com/opencontainers/runt
 
 _Operations on containers that OCI runtimes must support: [Create](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#create), [Start](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#start), [Kill](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#kill), [Delete]( https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#delete), and [Query State](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#query-state)._
 
-_OCI 运行时必须支持的容器操作：[创建](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#create)，[开始](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#start), [杀死](https://github.com/opencontainers/runtime-spec/blob/20a2d97827e0812ebe1515f73736c6a0c/runtime.md#start)https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#delete)，和[查询状态](https://github.com/opencontainers/runtime-spec/blob/2820a7370c7820c78c720c78c720c78c780c78c15c6a0c/runtime.md#delete).md#query-state)._
+_OCI 运行时必须支持的容器操作：[创建](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#create)，[开始](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/runtime.md#start), [杀死](https://github.com/opencontainers/runtime-spec/blob/20a2d97827e0812ebe1515f73736c6a0c/runtime.md#start)，和[查询状态](https://github.com/opencontainers/runtime-spec/blob/2820a7370c7820c78c720c78c720c78c780c78c15c6a0c/runtime.md#delete)._
 
 Well, makes sense. But... **a container cannot be a process** then! In accordance with the OCI Runtime Spec, it's more like _an isolated and restricted box_ for running one or more processes inside.
 
@@ -110,7 +108,7 @@ Per the OCI Runtime Spec, to create a container, one needs to provide a runtime 
 
 _**Off-topic**: A bundle is usually obtained by unpacking a container image, but images aren't a part of the Runtime Spec. Instead, they are subject to the dedicated [OCI Image Specification](https://github.com/opencontainers/image-spec)._
 
-_**Off-topic**：通常通过解包容器镜像获得包，但镜像不是运行时规范的一部分。相反，它们受专用的 [OCI 图像规范](https://github.com/opencontainers/image-spec)(https://github.com/opencontainers/image-spec)._
+_**Off-topic**：通常通过解包容器镜像获得包，但镜像不是运行时规范的一部分。相反，它们受专用的 [OCI 图像规范](https://github.com/opencontainers/image-spec)._
 
 `config.json` contains data necessary to implement standard operations against the container (Create, Start, Query State, Kill, and Delete). But things start getting really interesting when it comes to the actual structure of the `config.json` file.
 
@@ -120,7 +118,7 @@ The configuration consists of the _common_ and [_platform-specific_](https://git
 
 配置由 _common_ 和 [_platform-specific_](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config.md#platform-specific-configuration) 部分组成。公共部分包括`ociVersion`、包内的`root` 文件系统路径、`root` 之外的附加`mounts`、在容器中启动的`process`、`user` 和`hostname`。嗯...但是著名的命名空间和 cgroup 在哪里？
 
-By the time of writing this article, OCI Runtime Spec defines containers for the following platforms: [Linux](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-linux.md), [Solaris] (https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-solaris.md), [Windows](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-windows.md), [z/OS](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-zos.md), and [Virtual Machine](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-vm.md).
+By the time of writing this article, OCI Runtime Spec defines containers for the following platforms: [Linux](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-linux.md), [Solaris](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-solaris.md), [Windows](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-windows.md), [z/OS](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-zos.md), and [Virtual Machine](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-vm.md).
 
 在撰写本文时，OCI 运行时规范为以下平台定义了容器：[Linux](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-linux.md)、[Solaris](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-solaris.md), [Windows](https://github.com/opencontainers/runtime-spec/blob/202986ec2a7e0812ebe1515f73736c6a0c / windows.md)、[z/OS](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-zos.md)和[虚拟机](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/config-vm.md)。
 
@@ -170,7 +168,7 @@ Thus, VM-based containers is a thing!
 
 However, [the only non-deprecated implementation of OCI VM containers](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/implementations.md#runtime-virtual-machine), Kata containers, [has the following in its FAQ](https://katacontainers.io/learn/):
 
-然而，[OCI VM 容器的唯一未弃用的实现](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/implementations.md#runtime-virtual-machine)，Kata容器在其常见问题解答中关注](https://katacontainers.io/learn/)：
+然而，[OCI VM 容器的唯一未弃用的实现](https://github.com/opencontainers/runtime-spec/blob/20a2d9782986ec2a7e0812ebe1515f73736c6a0c/implementations.md#runtime-virtual-machine)，Kata容器在其常见问题解答中关注：
 
 > Kata Containers is still in its formational stages, but the technical basis for the project - Clear Containers and runV - are used globally at enterprise scale by organizations like JD.com, China's largest ecommerce company (by revenue).
 
