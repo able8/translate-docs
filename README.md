@@ -288,3 +288,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [What Is a Standard Container (2021 edition)](docs/tr-oci-containers.md)
 1. [How to Run a Container Without an Image](docs/tr-you-dont-need-an-image-to-run-a-container.md)
 1. [How Docker Build Works Internally](docs/tr-you-need-containers-to-build-an-image.md)
+1. [Job Description from WiredCraft](docs/tr-Job-Description-from-wiredcraft.md)
