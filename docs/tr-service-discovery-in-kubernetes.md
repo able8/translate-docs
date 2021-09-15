@@ -4,12 +4,6 @@
 
 December 6, 2020 (Updated: July 31, 2021)
 
-2020 年 12 月 6 日（更新：2021 年 7 月 31 日）
-
-[Kubernetes,](http://iximiuz.com/en/categories/?category=Kubernetes)[Networking](http://iximiuz.com/en/categories/?category=Networking)
-
-[Kubernetes,](http://iximiuz.com/en/categories/?category=Kubernetes)[网络](http://iximiuz.com/en/categories/?category=Networking)
-
 Before jumping to any Kubernetes specifics, let's talk about the service discovery problem in general.
 
 在跳到任何 Kubernetes 细节之前，让我们先谈谈服务发现问题。
@@ -70,7 +64,7 @@ The benefits of the client-side approach mostly come from the absence of the loa
 
 However, as with the server-side service discovery, there are some significant drawbacks as well. Client-side service discovery **couples clients with the _service registry_**. It **requires some integration code** to be written for every programming language or framework in your ecosystem. And obviously, this **extra logic complicates the clients**. There seem to be an effort to [offload the client-side service discovery logic to the service proxy sidecars](http://iximiuz.com/en/posts/service-proxy-pod-sidecar-oh-my/) but that's already a different story...
 
-但是，与服务器端服务发现一样，也存在一些明显的缺点。客户端服务发现**将客户端与 _service registry_** 结合起来。它**需要为生态系统中的每种编程语言或框架编写一些集成代码**。显然，这个 ** 额外的逻辑使客户端复杂化**。似乎有努力[将客户端服务发现逻辑卸载到服务代理边车](http://iximiuz.com/en/posts/service-proxy-pod-sidecar-oh-my/) 但就是这样已经是另一个故事了...
+但是，与服务器端服务发现一样，也存在一些明显的缺点。客户端服务发现**将客户端与 _service registry_** 结合起来。它**需要为生态系统中的每种编程语言或框架编写一些集成代码**。显然，这个额外的逻辑使客户端复杂化**。似乎有努力[将客户端服务发现逻辑卸载到服务代理边车](http://iximiuz.com/en/posts/service-proxy-pod-sidecar-oh-my/) 但就是这样已经是另一个故事了...
 
 ## DNS and Service Discovery
 
@@ -104,7 +98,7 @@ If I were to draw some analogies between Kubernetes and more traditional archite
 
 如果我要在 Kubernetes 和更传统的架构之间进行一些类比，我会将 Kubernetes [_Pods_](https://kubernetes.io/docs/concepts/workloads/pods/) 与服务实例进行比较。 _Pods_ 是 [许多东西](https://www.reddit.com/r/kubernetes/comments/k0zc0m/kubernetes_pods_are_logical_hosts_or_simply/?utm_source=share&utm_medium=web2x&context=3) 对 [许多人](https://twitter.com/iximiuz/status/1331630336707596288?s=20)，然而，当涉及到网络时[文档明确指出](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model) _"...从端口分配、命名、服务发现、负载均衡、应用程序配置和迁移的角度来看，Pods 可以像虚拟机或物理主机一样对待。"_
 
-If _Pods_ correspond to individual instances of a service, I'd expect a similar analogy for the _service_, as a logical grouping of instances, itself. And indeed there is a suitable concept in Kubernetes called... surprise, surprise, a [_Service_](https://kubernetes.io/docs/concepts/services-networking/service/). _"In Kubernetes, a Service is an abstraction which defines a logical set of Pods and a policy by which to access them (sometimes this pattern is called a micro-service)."_
+If _Pods_ correspond to individual instances of a service, I'd expect a similar analogy for the _service_, as a logical grouping of instances, itself. And indeed there is a suitable concept in Kubernetes called... surprise, surprise, a [_Service_](https://kubernetes.io/docs/concepts/services-networking/service/). _" In Kubernetes, a Service is an abstraction which defines a logical set of Pods and a policy by which to access them (sometimes this pattern is called a micro-service)."_
 
 如果 _Pods_ 对应于服务的单个实例，我希望 _service_ 有类似的类比，作为实例的逻辑分组本身。事实上，Kubernetes 中有一个合适的概念叫做...惊喜，惊喜，一个 [_Service_](https://kubernetes.io/docs/concepts/services-networking/service/)。 _“在 Kubernetes 中，服务是一种抽象，它定义了一组逻辑 Pod 和访问它们的策略（有时这种模式称为微服务)。”_
 
@@ -148,7 +142,7 @@ However, as we already know, DNS is often ill-suited for service discovery and [
 
 _NB: there is actually no hard dependency on DNS for Kubernetes applications. Clients can always learn a `clusterIP` of a service by inspecting their [environment variables](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables). Upon a pod startup **for every running service** Kubernetes injects a couple of env variables looking like `<service-name>_SERVICE_HOST` and `<service-name>_SERVICE_PORT`._
 
-_NB：Kubernetes 应用程序实际上没有对 DNS 的硬依赖。客户端总是可以通过检查他们的 [环境变量](https://kubernetes.io/docs/concepts/services-networking/service/#environment-variables) 来了解服务的 `clusterIP`。在 pod 启动时**对于每个正在运行的服务** Kubernetes 注入几个环境变量，看起来像 `<service-name>_SERVICE_HOST` 和 `<service-name>_SERVICE_PORT`。_
+_NB：Kubernetes 应用程序实际上没有对 DNS 的硬依赖。客户端总是可以通过检查他们的 [环境变量]来了解服务的 `clusterIP`。在 pod 启动时**对于每个正在运行的服务** Kubernetes 注入几个环境变量，看起来像 `<service-name>_SERVICE_HOST` 和 `<service-name>_SERVICE_PORT`。_
 
 Ok, here is one more analogy. The resulting (logical) setup looks much like a load balancer or reverse proxy sitting in front of the set of virtual machines.
 

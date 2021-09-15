@@ -4,8 +4,6 @@
 
 August 19, 2021
 
-2021 年 8 月 19 日
-
 [Go,](http://iximiuz.com/en/categories/?category=Go)[Programming](http://iximiuz.com/en/categories/?category=Programming)
 
 [Go,](http://iximiuz.com/en/categories/?category=Go)[编程](http://iximiuz.com/en/categories/?category=Programming)
@@ -152,9 +150,9 @@ func Serve(l net.Listener, handler Handler) error {
 
 ```
 
-Having access to the listener object could allow me to get to the socket file descriptor. `net.Listener` is a supertype, but it can be downcasted to [`net.TCPListener`](https://pkg.go.dev/net#TCPListener), and the later one has a handy [File()] (https://pkg.go.dev/net#TCPListener.File) method returning an `os.File` wrapper around the much-needed file descriptor. Should be safe enough for both HTTP/1.1 and HTTP/2.
+Having access to the listener object could allow me to get to the socket file descriptor. `net.Listener` is a supertype, but it can be downcasted to [`net.TCPListener`](https://pkg.go.dev/net#TCPListener), and the later one has a handy [File()](https://pkg.go.dev/net#TCPListener.File) method returning an `os.File` wrapper around the much-needed file descriptor. Should be safe enough for both HTTP/1.1 and HTTP/2.
 
-访问侦听器对象可以让我访问套接字文件描述符。 `net.Listener` 是一个超类型，但是可以向下转换为 [`net.TCPListener`](https://pkg.go.dev/net#TCPListener)，后面的有个方便的[File()] (https://pkg.go.dev/net#TCPListener.File) 方法返回一个围绕急需的文件描述符的 `os.File` 包装器。对于 HTTP/1.1 和 HTTP/2 来说应该足够安全。
+访问侦听器对象可以让我访问套接字文件描述符。 `net.Listener` 是一个超类型，但是可以向下转换为 [`net.TCPListener`](https://pkg.go.dev/net#TCPListener)，后面的有个方便的[File()](https://pkg.go.dev/net#TCPListener.File) 方法返回一个围绕急需的文件描述符的 `os.File` 包装器。对于 HTTP/1.1 和 HTTP/2 来说应该足够安全。
 
 **_Or so thought I..._**
 
@@ -344,8 +342,6 @@ func main() {
 Documentation is often boring while reading code is always fun! But don't forget to double-check your findings - by referring to the docs and, of course, by running code before putting it in production 😉
 
 文档通常很无聊，而阅读代码总是很有趣！但是不要忘记仔细检查您的发现 - 通过参考文档，当然，在将其投入生产之前运行代码😉
-
-[golang,](javascript: void 0) [socket,](javascript: void 0) [http,](javascript: void 0) [tcp,](javascript: void 0) [linux](javascript: void 0)
 
 [golang,](javascript: void 0) [socket,](javascript: void 0) [http,](javascript: void 0) [tcp,](javascript: void 0) [linux](javascript: void 0)
 

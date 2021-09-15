@@ -8,11 +8,9 @@
 
 March 21, 2021 (Updated: August 7, 2021)
 
-2021 年 3 月 21 日（更新：2021 年 8 月 7 日）
-
 [Networking,](http://iximiuz.com/en/categories/?category=Networking) [Linux / Unix](http://iximiuz.com/en/categories/?category=Linux / Unix)
 
-[网络](http://iximiuz.com/en/categories/?category=Networking)[Linux/Unix](http://iximiuz.com/en/categories/?category=Linux/Unix)
+
 
 As a software engineer, I need to deal with networking every now and then - be it configuring a [SOHO network](https://en.wikipedia.org/wiki/Small_office/home_office), setting up [container networking](http://iximiuz.com/en/posts/container-networking-is-simple/), or troubleshooting connectivity between servers in a data center. The domain is pretty broad, and the terminology can get quite confusing quickly. This article is my layman's attempt to sort the basic things out with the minimum words and maximum drawings. The primary focus will be on the Data link layer (OSI L2) of wired networks where the [Ethernet](https://en.wikipedia.org/wiki/Ethernet) is the king nowadays. But I'll slightly touch upon its neighboring layers too.
 
@@ -62,7 +60,7 @@ _10 万年前开始的以太网。_
 
 As an evolution of Ethernet technology, [**twisted-pair cables**](https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair) **connected to a common** [**repeater hub**](https://en.wikipedia.org/wiki/Ethernet_hub) replaced the shared coaxial cable (so-called [star topology](https://en.wikipedia.org/wiki/Star_network)). When a node on one of the hub's ports was transmitting frames, they were retransmitted from all the other ports of the hub. The retransmission of frames was _as-is_, i.e. no modification or filtration of frames was happening (hubs were pretty dumb devices). All the nodes connected to the hub still were forming a single L1 segment (hence, a single [**broadcast domain**](http://iximiuz.com#broadcast-domain) 👌, hence a single [**collision domain **](http://iximiuz.com#collision-domain)👎).
 
-作为以太网技术的演进，[**双绞线**](https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair) **连接到公共** [**中继集线器**](https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair)://en.wikipedia.org/wiki/Ethernet_hub）取代了共享同轴电缆（所谓的[星型拓扑](https://en.wikipedia.org/wiki/Star_network）)。当集线器端口之一上的节点正在传输帧时，它们会从集线器的所有其他端口重新传输。帧的重传是 _as-is_，即没有发生帧的修改或过滤（集线器是非常愚蠢的设备)。所有连接到集线器的节点仍然形成一个单一的 L1 段（因此，一个单一的 [**broadcast domain**](http://iximiuz.com#broadcast-domain) 👌，因此一个单一的 [**collision domain] **](http://iximiuz.com#collision-domain)👎)。
+作为以太网技术的演进，[**双绞线**](https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair) **连接到公共** [**中继集线器**](https://en.wikipedia.org/wiki/Ethernet_over_twisted_pair)取代了共享同轴电缆（所谓的[星型拓扑](https://en.wikipedia.org/wiki/Star_network）)。当集线器端口之一上的节点正在传输帧时，它们会从集线器的所有其他端口重新传输。帧的重传是 _as-is_，即没有发生帧的修改或过滤（集线器是非常愚蠢的设备)。所有连接到集线器的节点仍然形成一个单一的 L1 段（因此，一个单一的 [**broadcast domain**](http://iximiuz.com#broadcast-domain) 👌，因此一个单一的 [**collision domain] **](http://iximiuz.com#collision-domain)👎)。
 
 ![Evolution of Ethernet, 500 A.D.](http://iximiuz.com/computer-networking-101/l1-repeater-hub-2000-opt.png)
 

@@ -4,11 +4,7 @@
 
 June 21, 2019 (Updated: August 30, 2021)
 
-2019 年 6 月 21 日（更新：2021 年 8 月 30 日）
-
 [Networking,](http://iximiuz.com/en/categories/?category=Networking) [Linux / Unix](http://iximiuz.com/en/categories/?category=Linux / Unix)
-
-[网络](http://iximiuz.com/en/categories/?category=Networking)[Linux/Unix](http://iximiuz.com/en/categories/?category=Linux/Unix)
 
 ## Foreword
 

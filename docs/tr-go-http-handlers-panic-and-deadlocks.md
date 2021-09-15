@@ -4,8 +4,6 @@
 
 February 6, 2021 (Updated: February 8, 2021)
 
-2021 年 2 月 6 日（更新：2021 年 2 月 8 日）
-
 [Programming,](http://iximiuz.com/en/categories/?category=Programming)[Go](http://iximiuz.com/en/categories/?category=Go)
 
 [编程](http://iximiuz.com/en/categories/?category=Programming)[Go](http://iximiuz.com/en/categories/?category=Go)

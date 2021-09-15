@@ -4,8 +4,6 @@
 
 August 28, 2021
 
-2021 年 8 月 28 日
-
 [Containers,](http://iximiuz.com/en/categories/?category=Containers)[Networking,](http://iximiuz.com/en/categories/?category=Networking) [Linux / Unix]( http://iximiuz.com/en/categories/?category=Linux / Unix)
 
 [容器，](http://iximiuz.com/en/categories/?category=Containers)[网络，](http://iximiuz.com/en/categories/?category=Networking) [Linux / Unix]( http://iximiuz.com/en/categories/?category=Linux / Unix)
@@ -111,7 +109,7 @@ _**注意：** 我们刚刚在这里重新发明了 Kubernetes pod - 查看 [Kub
 
 ![Multiple Docker containers listening on the same port with SO_REUSEPORT and sandbox container network namespace](http://iximiuz.com/multiple-containers-same-port-reverse-proxy/multiple-containers-same-port-so_reuseport-netns-2000-opt.png)
 
--2000-opt.png)
+
 
 Of course, all the instances of the application server need to set the `SO_REUSEPORT` option, so there won't be a port conflict, and the incoming requests will be evenly distributed between the containers listening on the same port.
 
@@ -290,7 +288,7 @@ _**注意：** 当然，iptables 足够聪明，可以将 DNAT 仅应用于新�
 
 ![Multiple Docker containers exposed on the same port with iptables NAT rules](http://iximiuz.com/multiple-containers-same-port-reverse-proxy/multiple-containers-same-port-iptables-2000-opt.png)
 
-png)
+
 
 The huge advantage of this approach comparing to the `SO_REUSEPORT` option is that it's absolutely transparent to the application.
 
@@ -327,7 +325,6 @@ func main() {
         panic(err)
     }
 }
-
 ```
 
 And the simplified _Dockerfile_:
@@ -340,7 +337,6 @@ FROM golang:1.16
 COPY http_server.go .
 
 CMD ["go", "run", "http_server.go"]
-
 ```
 
 Build it with:
@@ -349,7 +345,6 @@ Build it with:
 
 ```bash
 $ docker build -t http_server .
-
 ```
 
 Run two application containers:

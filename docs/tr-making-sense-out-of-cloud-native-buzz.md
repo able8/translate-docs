@@ -4,10 +4,6 @@
 
 December 10, 2020 (Updated: August 14, 2021)
 
-2020 年 12 月 10 日（更新：2021 年 8 月 14 日）
-
-[Ranting](http://iximiuz.com/en/categories/?category=Ranting)
-
 [Ranting](http://iximiuz.com/en/categories/?category=Ranting)
 
 I've been trying to wrap my head around the tremendous growth of the [cloud-native zoo](https://landscape.cncf.io/) for quite some time. But recently I was listening to [a wonderful podcast episode](https://kubernetespodcast.com/episode/129-linkerd/) with the Linkerd creator [Thomas Rampelberg](https://twitter.com/grampelberg) and he kindly reminded me one thing about... **microservices**. Long story short, despite the common belief that microservices solve technical problems, the most appealing part of the microservice architecture apparently has something to do with **solving organisational problems** such as allocating teams to development areas or tackling software modernisation campaigns. And on the contrary, while helping with the org problems, **microservices rather create new technical challenges**!
