@@ -35,6 +35,8 @@ In this article, we’ll be examining ten common practices in Kubernetes  deploy
 9. Not having metrics in place to understand if a deployment was successful or not. (Your health checks need application support.)
 10. Cloud vendor lock-in: locking yourself into an IaaS provider’s Kubernetes or serverless computing services
 
+
+
 1. 将配置文件放在 Docker 镜像中/旁边
 2. 不使用 Helm 或其他类型的模板
 3. 以特定顺序部署事物。 （应用程序不应因为依赖项尚未准备好而崩溃。）
@@ -101,7 +103,7 @@ You can manage Kubernetes deployments by directly [updating YAML](https://stacko
 - Docker 镜像标签
 - 副本数量
 - 服务标签
-- 豆荚
+- Pods
 - 配置映射等
 
 This can get tedious if you’re managing multiple clusters and applying the  same updates across your development, staging, and production  environments. You are basically modifying the same files with minor  modifications across all your deployments. It’s a lot of copy-and-paste, or search-and-replace, while also staying aware of the environment for  which your deployment YAML is intended. There are a lot of opportunities for mistakes during this process:
@@ -116,9 +118,6 @@ This can get tedious if you’re managing multiple clusters and applying the  sa
 - 使用错误的更新修改 YAML（例如，连接到错误的数据库）
 - 缺少要更新的资源等。
 
-<iframe src="https://betterprogramming.pub/media/e3e8e1d8b404d7279f48d69344700e6c" allowfullscreen="" title="deployment.yaml" class="tuv lc aj" scrolling="auto" width="680" height="479" frameborder="0"></iframe>
-
-<iframe src="https://betterprogramming.pub/media/e3e8e1d8b404d7279f48d69344700e6c" allowfullscreen="" title="deployment.yaml" class="tuv lc aj" scrolling="auto" width="680" height="479" frameborder="0"></iframe>
 
 There might be a number of things you might need to change in the YAML, and  if you’re not paying close attention, one YAML could be easily mistaken  for another deployment’s YAML.
 
@@ -138,15 +137,11 @@ Another advantage we get with Helm is that it’s easy to roll back to a previou
 
 `helm rollback <RELEASE> [REVISION] [flags]` .
 
-`helm rollback <RELEASE> [REVISION] [flags]`。
-
 If you want to roll back to the immediate prior version, you can use:
 
 如果要回滚到之前的版本，可以使用：
 
 `helm rollback <RELEASE> 0` .
-
-`helm 回滚 <RELEASE> 0` 。
 
 So we’d see something like:
 
@@ -269,9 +264,8 @@ When the memory limit is not specified for a container, there are a couple  of s
 
 1. There is no upper bound on the amount of memory a container can use. Thus,  the container could use all of the available memory on its node,  possibly invoking the OOM (out of memory) Killer. An OOM Kill situation  has a greater chance of occurring for a container with no resource  limits.
 2. The default memory limit of the namespace (in which the container is  running) is assigned to the container. The cluster administrators can  use a [LimitRange](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#limitrange-v1-core) to specify a default value for the memory limit.
-
-1. 容器可以使用的内存量没有上限。因此，容器可以使用其节点上的所有可用内存，可能会调用 OOM（内存不足）Killer。对于没有资源限制的容器，OOM Kill 情况发生的可能性更大。
-2. 命名空间（容器在其中运行）的默认内存限制被分配给容器。集群管理员可以使用 [LimitRange](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#limitrange-v1-core) 来指定内存限制的默认值。
+3. 容器可以使用的内存量没有上限。因此，容器可以使用其节点上的所有可用内存，可能会调用 OOM（内存不足）Killer。对于没有资源限制的容器，OOM Kill 情况发生的可能性更大。
+4. 命名空间（容器在其中运行）的默认内存限制被分配给容器。集群管理员可以使用 [LimitRange](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#limitrange-v1-core) 来指定内存限制的默认值。
 
 Declaring memory and CPU limits for the containers in your cluster allows you to  make efficient use of the resources available on your cluster’s nodes. This helps the kube-scheduler determine on which node the pod should  reside for most efficient hardware utilization.
 
@@ -313,9 +307,9 @@ Setting hard resource limits might not be the best choice for your needs. Anothe
 
 设置硬资源限制可能不是满足您需求的最佳选择。另一种选择是使用 [Vertical Pod autoscaler ](https://cloud.google.com/kubernetes-engine/docs/concepts/verticalpodautoscaler) 资源中的推荐模式。
 
-## **5. Pulling the ‘**`**latest'** `**tag in containers in production** 
+## **5. Pulling the **`latest `**tag in containers in production** 
 
-## **5。在生产中的容器中提取“**`**最新”** `**标签**
+## **5。在生产中的容器中提取“**最新” `**标签**
 
 [Using the ](https://kubernetes.io/docs/concepts/containers/images/#image-names)`latest`[ tag](https://kubernetes.io/docs/concepts/containers/images/#image-names) is considered bad practice, especially in production. Pods unexpectedly crash for all sorts of reasons, so they can pull down images at any  time. Unfortunately, the `latest `tag is not very descriptive when it comes to determining when the build  broke. What version of the image was running? When was the last time it  was working? This is especially bad in production since you need to be  able to get things back up and running with minimal downtime.
 
@@ -443,13 +437,13 @@ and inspect the revision with:
 kubectl get replicaset app-6ff88c4474 -o yaml
 ```
 
-to find the revision number. This gets complicated because the rollout  history doesn’t keep a log unless you leave a note in the YAML resource  (which you could do with the `— record` flag:
+to find the revision number. This gets complicated because the rollout  history doesn’t keep a log unless you leave a note in the YAML resource  (which you could do with the `—record` flag:
 
 找到修订号。这变得很复杂，因为除非您在 YAML 资源中留下注释（您可以使用 `-record` 标志来完成），否则推出历史不会保留日志：
 
 ```
 $kubectl rollout history deployment/appREVISION CHANGE-CAUSE1 kubectl create — filename=deployment.yaml — record=true
-2 kubectl apply — filename=deployment.yaml — record=true
+2 kubectl apply — filename=deployment.yaml —record=true
 ```
 
 When you have dozens, hundreds, or even thousands of deployments all going  through updates simultaneously, it’s difficult to keep track of them all at once. And if your stored revisions all contain the same regression,  then your production environment is not going to be in good shape! You  can read more in detail about using rolling updates [in this article](https://learnk8s.io/kubernetes-rollbacks#:~:text=In Kubernetes%2C rolling updates are,bring newer Pod in incrementally.&text=You have a Service and,three replicas on version 1.0.).
@@ -502,13 +496,13 @@ Kubernetes does not include blue/green deployments as one of its native toolings
 
 Kubernetes 不包括蓝/绿部署作为其原生工具之一。你可以阅读更多关于如何在你的 CI/CD 自动化中实现蓝/绿 [在本教程中](https://codefresh.io/kubernetes-tutorial/fully-automated-blue-green-deployments-kubernetes-codefresh/) .
 
-**Canary Releases 
+### Canary Releases 
 
-**金丝雀发布
+###  金丝雀发布
 
-**Canary releases allow us to test for potential problems and meet key metrics  before impacting the entire production system/user base. We “test in  production” by deploying directly to the production environment, but  only to a small subset of users. You can choose routing to be  percentage-based or driven by region/user location, the type of client,  and billing properties. Even when deploying to a small subset, it’s  important to carefully monitor application performance and measure  errors — these metrics define a quality threshold. If the application  behaves as expected, we start transferring more of the new version  instances to support more traffic.
+**Canary** releases allow us to test for potential problems and meet key metrics  before impacting the entire production system/user base. We “test in  production” by deploying directly to the production environment, but  only to a small subset of users. You can choose routing to be  percentage-based or driven by region/user location, the type of client,  and billing properties. Even when deploying to a small subset, it’s  important to carefully monitor application performance and measure  errors — these metrics define a quality threshold. If the application  behaves as expected, we start transferring more of the new version  instances to support more traffic.
 
-**金丝雀版本允许我们在影响整个生产系统/用户群之前测试潜在问题并满足关键指标。我们通过直接部署到生产环境来“在生产中测试”，但只部署到一小部分用户。您可以选择基于百分比或由区域/用户位置、客户端类型和计费属性驱动的路由。即使在部署到一个小子集时，仔细监控应用程序性能和测量错误也很重要——这些指标定义了一个质量阈值。如果应用程序按预期运行，我们将开始传输更多新版本实例以支持更多流量。
+金丝雀版本允许我们在影响整个生产系统/用户群之前测试潜在问题并满足关键指标。我们通过直接部署到生产环境来“在生产中测试”，但只部署到一小部分用户。您可以选择基于百分比或由区域/用户位置、客户端类型和计费属性驱动的路由。即使在部署到一个小子集时，仔细监控应用程序性能和测量错误也很重要——这些指标定义了一个质量阈值。如果应用程序按预期运行，我们将开始传输更多新版本实例以支持更多流量。
 
 ![img](https://miro.medium.com/max/1400/0*pzALOq2I9-ws85X9)
 
@@ -564,7 +558,7 @@ Monitoring presents its own set of challenges: There are a lot of layers to watc
 
 Insights on your application behavior, like how an application performs, helps  you continuously improve. You also need a pretty holistic view of the  containers, pods, services, and the cluster as a whole. If you can  identify how an application is using its resources, then you can use  Kubernetes to better detect and remove bottlenecks. To get a full view  of the application, you would need to use an application performance  monitoring solution like [Prometheus](https://prometheus.io/),[Grafana](https://grafana.com/), [New Relic](https://newrelic.com/), or [Cisco AppDynamics](https://www.appdynamics.com/appd-campaigns/?utm_source=adwords&utm_medium=ppc&utm_campaign=brand&gclid=CjwKCAjwydP5BRBREiwA-qrCGo92C606PzpGx6nOZdhkIs8WcxHadyb-gYDCeUfofm3hBSgeTTAW8BoC7DQQAvD_BwE), among many others.
 
-洞察您的应用程序行为，例如应用程序的执行方式，可帮助您不断改进。您还需要对容器、pod、服务和整个集群有一个非常全面的了解。如果您可以确定应用程序如何使用其资源，那么您可以使用 Kubernetes 更好地检测和消除瓶颈。要全面了解应用程序，您需要使用应用程序性能监控解决方案，例如 [Prometheus](https://prometheus.io/)、[Grafana](https://grafana.com/)、[New遗迹（https://newrelic.com/)，或[思科AppDynamics](https://www.appdynamics.com/appd-campaigns/?utm_source=adwords&utm_medium=ppc&utm_campaign=brand&gclid=CjwKCAjwydP5BRBREiwA-qrCGo92C606PzpGx6nOZdhkIs8WcxHadyb-gYDCeUfofm3hBSgeTTAW8BoC7DQQAvD_BwE)，除很多其他的。
+洞察您的应用程序行为，例如应用程序的执行方式，可帮助您不断改进。您还需要对容器、pod、服务和整个集群有一个非常全面的了解。如果您可以确定应用程序如何使用其资源，那么您可以使用 Kubernetes 更好地检测和消除瓶颈。要全面了解应用程序，您需要使用应用程序性能监控解决方案，例如 [Prometheus](https://prometheus.io/)、[Grafana](https://grafana.com/)、[New Relic](https://newrelic.com/)，或[思科AppDynamics](https://www.appdynamics.com/appd-campaigns/?utm_source=adwords&utm_medium=ppc&utm_campaign=brand&gclid=CjwKCAjwydP5BRBREiwA-qrCGo92C606PzpGx6nOZdhkIs8WcxHadyb-gYDCeUfofm3hBSgeTTAW8BoC7DQQAvD_BwE)，除很多其他的。
 
 Whether or not you decide to use a monitoring solution, these are the key  metrics that the Kubernetes documentation recommends you track closely:
 
@@ -658,6 +652,8 @@ In this article, we’ve looked at:
 8. Not using blue/green or canaries for mission-critical deployments (the  default rolling update of Kubernetes is not always enough): **You should consider blue/green deployment or canary releases for less  stress in production and more meaningful production results. **
 9. Not having metrics in place to understand if a deployment was successful or not (your health checks need application support): **You should make sure to monitor your deployment to avoid any surprises. You could use a tool like Prometheus, Grafana, New Relic, or Cisco  AppDynamics to help you gain better insights on your deployments.** 
 
+
+
 1. 将配置文件放在 Docker 映像内部/旁边：**外部化您的配置数据。您可以使用 ConfigMaps 和 Secrets 或类似的东西。**
 2. 不使用 Helm 或其他类型的模板：**使用 Helm 或 Kustomize 来简化您的容器编排并减少人为错误。**
 3. 以特定顺序部署事物：**应用程序不应因为依赖项尚未准备好而崩溃。利用 Kubernetes 的自愈机制并实现重试和断路器。**
@@ -667,10 +663,8 @@ In this article, we’ve looked at:
 7. 在同一个集群中混合生产和非生产工作负载：**如果可以，在不同的集群中运行您的生产和非生产工作负载。这降低了资源争用和意外环境交叉对您的生产环境造成的风险。**
 8. 不使用蓝/绿或金丝雀进行关键任务部署（Kubernetes 的默认滚动更新并不总是足够）：**您应该考虑蓝/绿部署或金丝雀版本以减少生产压力和更有意义的生产结果。 **
 9. 没有适当的指标来了解部署是否成功（您的健康检查需要应用程序支持）：**您应该确保监控您的部署以避免任何意外。您可以使用 Prometheus、Grafana、New Relic 或 Cisco AppDynamics 等工具来帮助您更好地了解您的部署。**
-
 10. Cloud vendor lock-in: Locking yourself into an IaaS provider’s Kubernetes or serverless computing services: **Your business needs could change at any time. You shouldn’t unintentionally  lock yourself into a cloud provider since you can easily lift and shift  cloud-native applications.**
-
-10. 云供应商锁定：将自己锁定在 IaaS 提供商的 Kubernetes 或无服务器计算服务中：**您的业务需求随时可能发生变化。您不应无意中将自己锁定在云提供商中，因为您可以轻松提升和转移云原生应用程序。**
+11. 云供应商锁定：将自己锁定在 IaaS 提供商的 Kubernetes 或无服务器计算服务中：**您的业务需求随时可能发生变化。您不应无意中将自己锁定在云提供商中，因为您可以轻松提升和转移云原生应用程序。**
 
 Thanks for reading!
 

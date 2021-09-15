@@ -4,11 +4,7 @@
 
 July 28, 2021
 
-2021 年 7 月 28 日
 
-[Ranting,](http://iximiuz.com/en/categories/?category=Ranting)[Programming](http://iximiuz.com/en/categories/?category=Programming)
-
-[咆哮](http://iximiuz.com/en/categories/?category=Ranting)[编程](http://iximiuz.com/en/categories/?category=Programming)
 
 _It's a no holy war post! Any choice of languages cannot be 100% objective, and I'm just sharing my experience here._
 
@@ -30,7 +26,7 @@ Since the language is just a tool, my programming toolbox is defined by the task
 
 ## Python
 
-##  Python
+
 
 The most appealing thing for me in [Python](http://iximiuz.com/en/categories/?category=Python) is the tremendous pace of development this language can provide. It's easy to write code in Python. There is often one clear way to accomplish a task, and you don't have to think much about how to convince the language to do what you need. Instead, you can focus on the business logic. I use Python for **quick prototyping**, for the performance-tolerant **server-side code**, for **ad hoc scripting**, and of course, for **data analysis**. I started my Python journey in 2014 and, without any prior experience with the language, managed to single-handedly develop a service that quickly got thousands of active users a day and [survived the load without a lot of rewriting](http://iximiuz.com/en/posts/save-the-day-with-gevent/).
 
@@ -38,15 +34,15 @@ The most appealing thing for me in [Python](http://iximiuz.com/en/categories/?ca
 
 ## Go 
 
-##  走
 
-If I had to describe [Go](http://iximiuz.com/en/categories/?category=Go) using just one word, I'd be torn apart between _pragmatic_ and _boring_. But I guess those are synonyms. Go is the language that could have replaced all other languages in my toolbox. Well, maybe except JavaScript. The development in Go is not as fast as in Python, but you still can have decent productivity. And the resulting code is almost as fast as code in C/C++ or Java. I use Go for **performance-sensitive services**, **infrastructure components**, and **command-line tools**. Static linking makes it especially good for tool development because the distribution is simplified a lot. Another reason to pick Go for me is the availability of some packages. Most of the [Cloud Native](http://iximiuz.com/en/posts/making-sense-out-of-cloud-native-buzz/) projects is written in Go, so it often becomes a [default choice] (https://github.com/iximiuz/goimagego) for [certain kind of projects](https://github.com/iximiuz/conman). I have Go in my toolbox since 2016.
 
-如果我不得不用一个词来描述 [Go](http://iximiuz.com/en/categories/?category=Go)，我会在_pragmatic_ 和_boring_ 之间分崩离析。但我想这些是同义词。 Go 是一种可以取代我工具箱中所有其他语言的语言。好吧，也许除了 JavaScript。 Go 的开发速度没有 Python 快，但你仍然可以有不错的生产力。生成的代码几乎与 C/C++ 或 Java 中的代码一样快。我将 Go 用于**性能敏感服务**、**基础设施组件**和**命令行工具**。静态链接使得它特别适合工具开发，因为分发被简化了很多。为我选择 Go 的另一个原因是某些软件包的可用性。大部分 [云原生](http://iximiuz.com/en/posts/making-sense-out-of-cloud-native-buzz/)项目都是用Go写的，所以经常成为 [默认选择] （https://github.com/iximiuz/goimagego)用于[某些类型的项目](https://github.com/iximiuz/conman)。自 2016 年以来，我的工具箱中就有 Go。
+If I had to describe [Go](http://iximiuz.com/en/categories/?category=Go) using just one word, I'd be torn apart between _pragmatic_ and _boring_. But I guess those are synonyms. Go is the language that could have replaced all other languages in my toolbox. Well, maybe except JavaScript. The development in Go is not as fast as in Python, but you still can have decent productivity. And the resulting code is almost as fast as code in C/C++ or Java. I use Go for **performance-sensitive services**, **infrastructure components**, and **command-line tools**. Static linking makes it especially good for tool development because the distribution is simplified a lot. Another reason to pick Go for me is the availability of some packages. Most of the [Cloud Native](http://iximiuz.com/en/posts/making-sense-out-of-cloud-native-buzz/) projects is written in Go, so it often becomes a [default choice](https://github.com/iximiuz/goimagego) for [certain kind of projects](https://github.com/iximiuz/conman). I have Go in my toolbox since 2016.
+
+如果我不得不用一个词来描述 [Go](http://iximiuz.com/en/categories/?category=Go)，我会在_pragmatic_ 和_boring_ 之间分崩离析。但我想这些是同义词。 Go 是一种可以取代我工具箱中所有其他语言的语言。好吧，也许除了 JavaScript。 Go 的开发速度没有 Python 快，但你仍然可以有不错的生产力。生成的代码几乎与 C/C++ 或 Java 中的代码一样快。我将 Go 用于**性能敏感服务**、**基础设施组件**和**命令行工具**。静态链接使得它特别适合工具开发，因为分发被简化了很多。为我选择 Go 的另一个原因是某些软件包的可用性。大部分 [云原生](http://iximiuz.com/en/posts/making-sense-out-of-cloud-native-buzz/)项目都是用Go写的，所以经常成为 [默认选择](https://github.com/iximiuz/goimagego) 用于[某些类型的项目](https://github.com/iximiuz/conman)。自 2016 年以来，我的工具箱中就有 Go。
 
 ## Rust
 
-## 锈
+
 
 Unlike Python, you may need to fight the compiler to get things done with [Rust](http://iximiuz.com/en/categories/?category=Rust). But if you manage to compile your code, the result is guaranteed to be safe (well, unless you abuse `unsafe` blocks). And most of the time, the result is also quite performant. I personally find this dancing with compiler quite rewarding, but I have to admit that the development pace degrades a lot. That's why I use Rust only when it's really necessary - for **performance-critical tools** or **[systems](https://github.com/iximiuz/shimmy) [programming](https://github.com/iximiuz/reapme)**. I don't consider myself a knowledgeable Rust developer just yet. The language is in my toolbox only since 2020. But I hope with [pq](https://github.com/iximiuz/pq) I'll be spending more time writing Rust this year.
 
@@ -54,19 +50,15 @@ Unlike Python, you may need to fight the compiler to get things done with [Rust]
 
 # C
 
-#  C
-
 I [don't write code](https://github.com/iximiuz/golife.c) in [C](http://iximiuz.com/en/categories/?category=C). But I find the ability to read C code fluently a must-have in my domain. The Linux Kernel is written in C, and it makes it a native language for the whole family of operating systems. I always strive to **understand how things work one- or two layers of abstraction below my code**. Often it means I need to dig down to _libc_ calls and try to [reproduce snippets from man pages](https://github.com/iximiuz/ptyme) using bare C. Sometimes [reading the libc code itself](https://github.com/iximiuz/popen2) also helps. When I really have to wear a hat of a systems programmer, I [turn to Rust instead](http://iximiuz.com/en/posts/dealing-with-processes-termination-in-Linux/). My acquaintance with C lasts from 2006-2007.
 
 我 [不写代码](https://github.com/iximiuz/golife.c) 在 [C](http://iximiuz.com/en/categories/?category=C)。但我发现流利地阅读 C 代码的能力是我所在领域的必备条件。 Linux 内核是用 C 编写的，这使它成为整个操作系统系列的本地语言。我总是努力**在我的代码下面的一两层抽象中理解事情是如何工作的**。通常这意味着我需要深入研究 _libc_ 调用并尝试 [从手册页复制片段](https://github.com/iximiuz/ptyme) 使用裸 C。有时[阅读 libc 代码本身](https://github.com/iximiuz/popen2) 也有帮助。当我真的不得不戴上系统程序员的帽子时，我 [转而使用 Rust](http://iximiuz.com/en/posts/dealing-with-processes-termination-in-Linux/)。我与 C 的相识是从 2006 年到 2007 年。
 
 ## JavaScript
 
-## JavaScript
-
 To some extent, I use JavaScript since 2011. Most of the time, it's about **making UIs** (web, desktop, mobile). For a few years, I've been trying to avoid such kinds of tasks and focus more on the server-side and systems programming. But I find it extremely useful to have such a tool in the toolbox. For instance, when I needed to [**visualize some data**](http://iximiuz.com/en/posts/pq/) recently, I quickly hacked a simple [HTML page](https://github.com/iximiuz/pq/blob/be4751177f014dd60e3144c3170b17f8e8c5e0fc/graph.html) to plot my datasets with [chart.js](https://www.chartjs.org/). I'm not even trying to keep up with all the modern web and UI frameworks, although I've written a few applications in React 🙈
 
-在某种程度上，我从 2011 年开始使用 JavaScript。大多数时候，它是关于 **制作 UI**（网络、桌面、移动）。几年来，我一直在努力避免此类任务，而是更多地关注服务器端和系统编程。但我发现在工具箱中有这样一个工具非常有用。例如，最近我需要[**可视化一些数据**](http://iximiuz.com/en/posts/pq/)时，我很快就黑了一个简单的[HTML页面](https://github.com)。com/iximiuz/pq/blob/be4751177f014dd60e3144c3170b17f8e8c5e0fc/graph.html)用[chart.js](https://www.chartjs.org/)绘制我的数据集。我什至不想跟上所有现代 Web 和 UI 框架，尽管我已经用 React 编写了一些应用程序🙈
+在某种程度上，我从 2011 年开始使用 JavaScript。大多数时候，它是关于 **制作 UI**（网络、桌面、移动）。几年来，我一直在努力避免此类任务，而是更多地关注服务器端和系统编程。但我发现在工具箱中有这样一个工具非常有用。例如，最近我需要[**可视化一些数据**](http://iximiuz.com/en/posts/pq/)时，我很快就黑了一个简单的[HTML页面](https://github.com)。用[chart.js](https://www.chartjs.org/)绘制我的数据集。我什至不想跟上所有现代 Web 和 UI 框架，尽管我已经用 React 编写了一些应用程序🙈
 
 ## Other languages 
 
