@@ -4,8 +4,6 @@
 
 March 28, 2021 (Updated: August 4, 2021)
 
-2021 年 3 月 28 日（更新：2021 年 8 月 4 日）
-
 [Networking,](http://iximiuz.com/en/categories/?category=Networking) [Linux / Unix](http://iximiuz.com/en/categories/?category=Linux / Unix)
 
 [网络](http://iximiuz.com/en/categories/?category=Networking)[Linux/Unix](http://iximiuz.com/en/categories/?category=Linux/Unix)
