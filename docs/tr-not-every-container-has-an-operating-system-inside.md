@@ -4,23 +4,21 @@
 
 May 7, 2020 (Updated: August 7, 2021)
 
-2020 年 5 月 7 日（更新：2021 年 8 月 7 日）
-
 [Containers,](http://iximiuz.com/en/categories/?category=Containers) [Linux / Unix](http://iximiuz.com/en/categories/?category=Linux / Unix)
 
 [容器，](http://iximiuz.com/en/categories/?category=Containers)[Linux/Unix](http://iximiuz.com/en/categories/?category=Linux/Unix)
 
-_Not every container has an operating system inside, but every one of them needs your Linux kernel._
+Not every container has an operating system inside, but every one of them needs your Linux kernel.
 
-_不是每个容器内部都有操作系统，但每个容器都需要你的 Linux 内核。_
+不是每个容器内部都有操作系统，但每个容器都需要你的 Linux 内核。
 
-_**Disclaimer 1:** before going any further it's important to understand the difference between a kernel, an operating system, and a distribution._
+**Disclaimer 1:** before going any further it's important to understand the difference between a kernel, an operating system, and a distribution._
 
-_**免责声明 1：** 在进一步讨论之前，了解内核、操作系统和发行版之间的区别很重要。_
+**免责声明 1：** 在进一步讨论之前，了解内核、操作系统和发行版之间的区别很重要。
 
-_1. [Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel) is the core part of the Linux operating system. It's what originally Linus wrote.
+1. [Linux kernel](https://en.wikipedia.org/wiki/Linux_kernel) is the core part of the Linux operating system. It's what originally Linus wrote.
 
-_1.  [Linux内核](https://en.wikipedia.org/wiki/Linux_kernel)是Linux操作系统的核心部分。这就是 Linus 最初写的。
+1.  [Linux内核](https://en.wikipedia.org/wiki/Linux_kernel)是Linux操作系统的核心部分。这就是 Linus 最初写的。
 
 2. [Linux operating system](https://en.wikipedia.org/wiki/Linux) is a combination of the kernel and a user-land (libraries, GNU utilities, config files, etc)._ - _[Linux distribution](https://en.wikipedia.org/wiki/Linux_distribution) is a particular version of the Linux operating system like Debian, CentOS, or Alpine._
 
@@ -44,7 +42,6 @@ Running an interactive shell in the `debian jessie` distribution:
 
 ```bash
 $ docker run -it debian:jessie
-
 ```
 
 Running an `nginx` web-sever in a container and examine its config using `cat` utility:
@@ -54,7 +51,6 @@ Running an `nginx` web-sever in a container and examine its config using `cat` u
 ```bash
 $ docker run -d -P --name nginx nginx:latest
 $ docker exec -it nginx cat /etc/nginx/nginx.conf
-
 ```
 
 Building an image based on Alpine Linux:
@@ -85,7 +81,7 @@ At the same time, approaching the containerization topic from the theoretical si
 
 同时，从理论层面接近容器化话题（[1](https://techcrunch.com/2016/10/16/wtf-is-a-container/)、[2](https://www.docker.com/resources/what-container), [3](https://cloud.google.com/containers))可能会导致相反的印象，即容器（与传统虚拟机不同）应该打包只有应用程序（即您的代码）及其依赖项（即某些库)，而不是尝试发布完整的操作系统。
 
-As it usually happens, the truth lies somewhere in between both statements. From the implementation standpoint, **a container is indeed just a process (or a bunch of processes) running on the Linux host**. The container process is isolated ( [namespaces](https://docs.docker.com/engine/security/security/#kernel-namespaces)) from the rest of the system and restricted from both the resource consumption ( [cgroups]( https://docs.docker.com/engine/security/security/#control-groups)) and security ( [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html), [AppArmor](https://docs.docker.com/engine/security/apparmor/),[Seccomp](https://docs.docker.com/engine/security/seccomp/)) standpoints. But in the end, this is still a regular process, same as any other process on the host system.
+As it usually happens, the truth lies somewhere in between both statements. From the implementation standpoint, **a container is indeed just a process (or a bunch of processes) running on the Linux host**. The container process is isolated ( [namespaces](https://docs.docker.com/engine/security/security/#kernel-namespaces)) from the rest of the system and restricted from both the resource consumption ([cgroups]( https://docs.docker.com/engine/security/security/#control-groups)) and security ( [capabilities](http://man7.org/linux/man-pages/man7/capabilities.7.html), [AppArmor](https://docs.docker.com/engine/security/apparmor/),[Seccomp](https://docs.docker.com/engine/security/seccomp/)) standpoints. But in the end, this is still a regular process, same as any other process on the host system.
 
 正如通常发生的那样，真相介于两者之间。从实现的角度来看，**容器确实只是在 Linux 主机上运行的一个进程（或一堆进程）**。容器进程与系统的其余部分隔离 ( [namespaces](https://docs.docker.com/engine/security/security/#kernel-namespaces)) 并限制资源消耗 ( [cgroups]( https://docs.docker.com/engine/security/security/#control-groups))和安全性（[功能](http://man7.org/linux/man-pages/man7/capabilities.7.html)、[AppArmor](https://docs.docker.com/engine/security/apparmor/)、[Seccomp](https://docs.docker.com/engine/security/seccomp/)) 的立场。但最终，这仍然是一个常规进程，与主机系统上的任何其他进程一样。
 
@@ -120,8 +116,6 @@ _`systemctl status` 输出（摘录）_
 ![sudo lsns output](http://iximiuz.com/not-every-container-has-an-operating-system-inside/nginx-lsns2.png)
 
 _`sudo lsns` output_
-
-_`sudo lsns` 输出_
 
 Well, if a container is just a regular Linux process, we could try to run a single executable file inside of a container. I.e. instead of putting our application into a fully-featured Linux distribution, we will try to build a container image consisting of a folder with a single file inside. Upon the launch, this folder will become a root folder for the containerized environment.
 
@@ -218,8 +212,6 @@ If we now inspect the `hello` image with the wonderful [`dive`](https://github.c
 
 _`dive hello`_
 
-_`潜水你好`_
-
 This exercise is roughly what the Docker's [hello-world](https://github.com/docker-library/hello-world) example does. There are two key moments here. First, we based our image on a so-called [`scratch`](https://hub.docker.com/_/scratch) image. This is just an empty image, i.e. the building starts from the empty folder and then just copies the executable file `hello` into it. Second, we used a statically linked binary file. I.e. there is no dependency on some shared libraries from the system. So, a bare Linux kernel is enough to execute it.
 
 这个练习大致就是 Docker 的 [hello-world](https://github.com/docker-library/hello-world) 示例所做的。这里有两个关键时刻。首先，我们的图像基于所谓的 [`scratch`](https://hub.docker.com/_/scratch) 图像。这只是一个空图像，即建筑物从空文件夹开始，然后将可执行文件 `hello` 复制到其中。其次，我们使用了一个静态链接的二进制文件。 IE。不依赖于系统中的某些共享库。因此，一个裸 Linux 内核就足以执行它。
@@ -231,8 +223,6 @@ Now, what if we inspect the [`nginx`](https://hub.docker.com/_/nginx) image whic
 ![Inspecting nginx image with dive tool (screenshot)](http://iximiuz.com/not-every-container-has-an-operating-system-inside/dive-nginx2.png)
 
 _`dive nginx`_
-
-_`潜水nginx`_
 
 Well, the directory tree looks like a root filesystem of some Linux distribution. If we take a look at the [corresponding Dockerfile](https://github.com/nginxinc/docker-nginx/blob/594ce7a8bc26c85af88495ac94d5cd0096b306f7/mainline/buster/Dockerfile) we can notice that `nginx` image is based on [`debian `](https://hub.docker.com/_/debian):
 

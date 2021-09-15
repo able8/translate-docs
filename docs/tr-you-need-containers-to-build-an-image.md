@@ -4,8 +4,6 @@
 
 May 25, 2020 (Updated: August 7, 2021)
 
-2020 年 5 月 25 日（更新：2021 年 8 月 7 日）
-
 [Containers,](http://iximiuz.com/en/categories/?category=Containers) [Linux / Unix](http://iximiuz.com/en/categories/?category=Linux / Unix)
 
 [容器，](http://iximiuz.com/en/categories/?category=Containers)[Linux/Unix](http://iximiuz.com/en/categories/?category=Linux/Unix)
@@ -38,20 +36,11 @@ RUN sleep 2 && apt-get install -y uwsgi
 RUN sleep 2 && apt-get install -y python3
 
 COPY some_file /
-
 ```
 
 While building the image, try running `docker stats -a` in another terminal:
 
 在构建映像时，尝试在另一个终端中运行 `docker stats -a`：
-
-<img src="/you-need-containers-to-build-an-image/docker-build.gif" title="Your browser does not support the  tag" alt="Running docker build and docker stats in different terminals.
-
-<img src="/you-need-containers-to-build-an-image/docker-build.gif" title="您的浏览器不支持该标签" alt="在不同终端中运行 docker build 和 docker stats。
-
-">
-
-">
 
 _Running `docker build` and `docker stats` in different terminals._
 
@@ -63,7 +52,7 @@ Huh, we haven't been launching any containers ourselves, nevertheless, `docker s
 
 Simplifying a bit, [images](https://github.com/opencontainers/image-spec) can be seen as archives with a filesystem inside. Additionally, they may also contain some configurational data like a default command to be executed when a container starts, exposed ports, etc, but we will be mostly focusing on the filesystem part. Luckily, we already know, that technically [images aren't required to run containers](http://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/) . Unlike virtual machines, containers are just [isolated and restricted processes](http://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/) on your Linux host. They do form an isolated execution environment, including the personalized root filesystem, but the bare minimum to start a container is just a folder with a single executable file inside. So, when we are starting a container from an image, the image gets unpacked and its content is provided to the [container runtime](https://github.com/opencontainers/runtime-spec) in a form of a [filesystem bundle ](https://github.com/opencontainers/runtime-spec/blob/44341cdd36f6fee6ddd73e602f9e3eca1466052f/bundle.md), ie a regular directory containing the future root filesystem files and some configs (all those layers you may have started thinking about are abstracted away by a [union mount](https://en.wikipedia.org/wiki/Union_mount) driver like [overlay fs](https://dev.to/napicella/how-are-docker-images-built-a-look-into-the-linux-overlay-file-systems-and-the-oci-specification-175n)). Thus, if you don't have the image but you do need the `alpine` Linux distro as the execution environment, you always can grab Alpine's rootfs ( [2.6 MB](https://github.com/alpinelinux/docker-alpine/raw/c5510d5b1d2546d133f7b0938690c3c1e2cd9549/x86_64/alpine-minirootfs-3.11.6-x86_64.tar.gz)) and put it to a regular folder on your disk, then mix in your application files, feed it to the container runtime and call it a day.
 
-稍微简化一下，[图像](https://github.com/opencontainers/image-spec)可以被视为内部有文件系统的档案。此外，它们还可能包含一些配置数据，例如在容器启动时要执行的默认命令、暴露的端口等，但我们将主要关注文件系统部分。幸运的是，我们已经知道，从技术上讲[运行容器不需要图像](http://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/) .与虚拟机不同，容器只是 Linux 主机上的[隔离和受限进程](http://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/)。它们确实形成了一个隔离的执行环境，包括个性化的根文件系统，但启动容器的最低要求只是一个包含单个可执行文件的文件夹。所以，当我们从一个镜像启动一个容器时，镜像被解包，其内容以[文件系统包的形式提供给[容器运行时](https://github.com/opencontainers/runtime-spec)](https://github.com/opencontainers/runtime-spec/blob/44341cdd36f6fee6ddd73e602f9e3eca1466052f/bundle.md)，即包含未来根文件系统文件和一些配置的常规目录（您可能已经开始考虑的所有那些层都是抽象的通过 [union mount](https://en.wikipedia.org/wiki/Union_mount) 驱动程序，例如 [overlay fs](https://dev.to/napicella/how-are-docker-images-built-a-look-into-the-linux-overlay-file-systems-and-the-oci-specification-175n))。因此，如果您没有映像但确实需要 `alpine` Linux 发行版作为执行环境，您总是可以获取 Alpine 的 rootfs ( [2.6 MB](https://github.com/alpinelinux/docker-alpine/raw/c5510d5b1d2546d133f7b0938690c3c1e2cd9549/x86_64/alpine-minirootfs-3.11.6-x86_64.tar.gz)) 并将其放入磁盘上的常规文件夹中，然后将其混合到您的应用程序容器文件中，并提供给它日。
+稍微简化一下，[图像](https://github.com/opencontainers/image-spec)可以被视为内部有文件系统的档案。此外，它们还可能包含一些配置数据，例如在容器启动时要执行的默认命令、暴露的端口等，但我们将主要关注文件系统部分。幸运的是，我们已经知道，从技术上讲[运行容器不需要图像](http://iximiuz.com/en/posts/you-dont-need-an-image-to-run-a-container/) .与虚拟机不同，容器只是 Linux 主机上的[隔离和受限进程](http://iximiuz.com/en/posts/not-every-container-has-an-operating-system-inside/)。它们确实形成了一个隔离的执行环境，包括个性化的根文件系统，但启动容器的最低要求只是一个包含单个可执行文件的文件夹。所以，当我们从一个镜像启动一个容器时，镜像被解包，其内容以[文件系统包的形式提供给 容器运行时，即包含未来根文件系统文件和一些配置的常规目录（您可能已经开始考虑的所有那些层都是抽象的通过 [union mount](https://en.wikipedia.org/wiki/Union_mount) 驱动程序，例如 [overlay fs](https://dev.to/napicella/how-are-docker-images-built-a-look-into-the-linux-overlay-file-systems-and-the-oci-specification-175n))。因此，如果您没有映像但确实需要 `alpine` Linux 发行版作为执行环境，您总是可以获取 Alpine 的 rootfs ( [2.6 MB](https://github.com/alpinelinux/docker-alpine/raw/c5510d5b1d2546d133f7b0938690c3c1e2cd9549/x86_64/alpine-minirootfs-3.11.6-x86_64.tar.gz)) 并将其放入磁盘上的常规文件夹中，然后将其混合到您的应用程序容器文件中，并提供给它日。
 
 However, to unleash the full power of containers, we need handy image building facilities. Historically, Dockerfiles have been serving this purpose. Any Dockerfile must have the `FROM` instruction at the very beginning. This instruction specifies the base image while the rest of the Dockerfile describes the difference between the base and the derived (i.e. current) images.
 
@@ -83,7 +72,6 @@ Now, let's take a look at the beloved `alpine` image:
 FROM scratch
 ADD alpine-minirootfs-3.11.6-x86_64.tar.gz /
 CMD ["/bin/sh"]
-
 ```
 
 I.e. to make the Alpine Linux distro image we just need to copy its root filesystem to an empty folder ( _scratch_ image) and that's it! Well, I bet Dockerfiles you've seen so far a rarely that trivial. More often than not, we need to utilize distro's facilities to prepare the file system of the future container and one of the most common examples is probably when we need to pre-install some external packages using `yum`, `apt`, or ` apk`:

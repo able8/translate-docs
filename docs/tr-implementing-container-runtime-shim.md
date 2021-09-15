@@ -4,12 +4,6 @@
 
 December 15, 2019 (Updated: August 24, 2021)
 
-2019 年 12 月 15 日（更新：2021 年 8 月 24 日）
-
-[Containers,](http://iximiuz.com/en/categories/?category=Containers)[Conman](http://iximiuz.com/en/categories/?category=Conman)
-
-[容器，](http://iximiuz.com/en/categories/?category=Containers)[Conman](http://iximiuz.com/en/categories/?category=Conman)
-
 ## What is a shim?
 
 ## 什么是垫片？
@@ -20,7 +14,7 @@ December 15, 2019 (Updated: August 24, 2021)
 
 ![Layered Docker architecture: docker (cli) -> dockerd -> containerd -> containerd-shim -> runc](http://iximiuz.com/implementing-container-runtime-shim/docker-containerd-runc-2000-opt.png)
 
-选择.png）
+
 
 _Layered Docker architecture_
 

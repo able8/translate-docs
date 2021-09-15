@@ -4,12 +4,6 @@
 
 September 12, 2021
 
-2021 年 9 月 12 日
-
-[Containers](http://iximiuz.com/en/categories/?category=Containers)
-
-[容器](http://iximiuz.com/en/categories/?category=Containers)
-
 [containerd](https://github.com/containerd/containerd) is a [high-level container runtime](http://iximiuz.com/en/posts/journey-from-containerization-to-orchestration-and-beyond/#container-runtimes), _aka_ [container manager](http://iximiuz.com/en/posts/journey-from-containerization-to-orchestration-and-beyond/#container-management). To put it simply, it's a daemon that manages the complete container lifecycle on a single host: creates, starts, stops containers, pulls and stores images, configures mounts, networking, etc.
 
 [containerd](https://github.com/containerd/containerd) 是一个[高级容器运行时](http://iximiuz.com/en/posts/journey-from-containerization-to-orchestration-and-Beyond/#container-runtimes)、_aka_ [容器管理器](http://iximiuz.com/en/posts/journey-from-containerization-to-orchestration-and-beyond/#container-management)。简单来说，它是一个守护进程，在单个主机上管理完整的容器生命周期：创建、启动、停止容器、拉取和存储镜像、配置挂载、网络等。
@@ -278,7 +272,7 @@ Click here to learn more about Kubernetes Container Runtime Interface (CRI).
 
 _Kubernetes CRI._
 
-_Kubernetes CRI._
+
 
 Since version 1.1, containerd comes with a built-in CRI plugin. Hence, containerd is a CRI-compatible container runtime. Therefore, it can be used with `crictl`.
 
