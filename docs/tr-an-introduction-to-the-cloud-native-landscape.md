@@ -4,7 +4,7 @@
 
 #### 21 Jul 2020 9:52am,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini")
 
-#### 2020 年 7 月 21 日上午 9:52，作者 [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”)
+#### 
 
 If you’ve researched cloud native applications and technologies, you’ve probably come across the [Cloud Native Computing Foundation (CNCF)](https://landscape.cncf.io/) cloud native landscape map. Unsurprisingly, the sheer scale of it can be overwhelming. So many categories and so many technologies. How do you make sense of it?
 
@@ -212,9 +212,7 @@ We hope this quick overview was helpful. Stay tuned for our follow up articles t
 
 **_一如既往，感谢 [Oleg Chunihkin](https://www.linkedin.com/in/olegch/) 的所有投入以及 [Jason Morgan](https://www.linkedin.com/in)/jasonmorgan2/），我即将发表的更详细的景观文章的合著者（对此感到非常兴奋！)。非常特别感谢来自 CNCF 的 [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/)，他非常友好地审阅了文章以确保一切准确。_**
 
-Feature image by [Huper by Joshua Earle](https://unsplash.com/@huper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
-特征图片由 [Huper by Joshua Earle](https://unsplash.com/@huper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) 在 [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=referral&utm_content=)
 
 At this time, The New Stack does not allow comments directly on this website. We invite all readers who wish to discuss a story to visit us on [Twitter](https://twitter.com/thenewstack) or [Facebook](https://www.facebook.com/thenewstack/). We also welcome your news tips and feedback via email: [feedback@thenewstack.io](mailto:feedback@thenewstack.io).
 
