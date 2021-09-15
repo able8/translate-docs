@@ -168,10 +168,6 @@ Our Sysadmin/DevOps team helps us create and maintain  resilient cloud infrastru
 
 我们的系统管理员/DevOps 团队帮助我们在中国和国外创建和维护弹性云基础设施。您将直接与我们的工程和产品团队以及我们的客户合作，为数千万用户构建、创建和扩展平台。
 
-We take pride in great engineering and invest in forward thinking  technologies. We adopted Docker in 2013 and Ansible in 2012. We mostly  maintain micro-services architectures using Node.js, Python and Go. We’re the organizers of JSConf China and actively contribute to Open  Source projects.
-
-我们以伟大的工程为荣，并投资于前瞻性技术。我们在 2013 年采用了 Docker，在 2012 年采用了 Ansible。我们主要使用 Node.js、Python 和 Go 来维护微服务架构。我们是 JSConf China 的组织者，并积极为开源项目做出贡献。
-
 ## Responsibilities
 
 ## 职责
@@ -292,10 +288,6 @@ You will work directly with our tech, design, strategy and PM teams, as well as 
 
 您将直接与我们的技术、设计、战略和 PM 团队以及我们的客户合作，设计、构建和扩展被国内外数千万用户使用的 Web、移动和微信应用程序背后的微服务。
 
-We take pride in great engineering and invest in forward thinking  technologies. We adopted Docker and React in 2013, Node.js in 2010, and  we've also been very active contributors to the  Script community in China, single-handedly organizing [JSConf China](https://jsconfchina.com/) since 2013 .
-
-我们以伟大的工程为荣，并投资于前瞻性技术。我们在 2013 年采用了 Docker 和 React，在 2010 年采用了 Node.js，我们也一直是中国 Script 社区的非常积极的贡献者，自 2013 年以来，我们一手组织了 [JSConf China](https://jsconfchina.com/) .
-
 If you’re looking for a place where you can learn from world-class  software engineers while working on challenging projects (and not having to do 996), this is as good as it gets.
 
 如果您正在寻找一个可以在从事具有挑战性的项目（而不必做 996）的同时向世界一流的软件工程师学习的地方，这是最好的选择。
@@ -373,10 +365,6 @@ You will work directly with our tech, design, strategy and PM teams, as well as 
 **While we mostly work with JavaScript (Node.js, NestJS), we  also use Python, Go and Java. We will train you and give the resources  to level up your skills if JavaScript isn’t your specialty.**
 
 **虽然我们主要使用 JavaScript（Node.js、NestJS），但我们也使用 Python、Go 和 Java。如果 JavaScript 不是您的专长，我们将培训您并提供资源来提升您的技能。**
-
-We take pride in great engineering and invest in forward thinking  technologies. We adopted Docker and React in 2013, Node.js in 2010, and  we've also been very active contributors to the JavaScript community in  China, single-handedly organizing [JSConf China](https://jsconfchina.com/) since 2013 .
-
-我们以伟大的工程为荣，并投资于前瞻性技术。我们在 2013 年采用了 Docker 和 React，在 2010 年采用了 Node.js，并且我们也一直是中国 JavaScript 社区的非常积极的贡献者，自 2013 年以来，我们一手组织了 [JSConf China](https://jsconfchina.com/) .
 
 If you’re looking for a place where you can learn from world-class  software engineers while working on challenging projects (and not having to do 996), this is as good as it gets.
 

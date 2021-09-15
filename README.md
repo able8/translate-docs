@@ -286,6 +286,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Managing cgroups with systemd](docs/tr-cgroups-part-four.md)
 1. [Recommended Engineering Management Books](docs/tr-recommended-engineering-management-books.md)
 1. [My Choice of Programming Languages](docs/tr-my-choice-of-programming-languages.md)
+1. [Job Description from WiredCraft](docs/tr-Job-Description-from-wiredcraft.md)
 1. [](docs/)
 1. [Practical Go: Real world advice for writing maintainable Go programs](docs/tr-practical-go.md)
 1. [](docs/)
@@ -301,4 +302,3 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Prometheus Cheat Sheet - How to Join Multiple Metrics (Vector Matching)](docs/tr-prometheus-vector-matching.md)
 1. [Prometheus Cheat Sheet - Moving Average, Max, Min, etc (Aggregation Over Time)](docs/tr-prometheus-functions-agg-over-time.md)
 1. [Service Discovery in Kubernetes - Combining the Best of Two Worlds](docs/tr-service-discovery-in-kubernetes.md)
-1. [Job Description from WiredCraft](docs/tr-Job-Description-from-wiredcraft.md)
