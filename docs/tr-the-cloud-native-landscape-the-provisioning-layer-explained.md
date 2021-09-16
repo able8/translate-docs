@@ -2,21 +2,19 @@
 
 # 云原生景观：供应层解释
 
-#### 20 Aug 2020 12:13pm,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
-
-#### 2020 年 8 月 20 日下午 12:13，作者：[Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/“杰森摩根的帖子”)
+#### 20 Aug 2020 12:13pm, by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
 
 _This post is part of an ongoing series from [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/) and Jason Morgan that focuses on explaining each category of the cloud native landscape. Both are co-organizers of the [Kubernetes Community Days DC](https://kubernetescommunitydays.org/events/2021-washington-dc/) and the [DC Kubernetes meetup group](https://www.meetup.com/All-Things-Kubernetes-k8s-DC/)._
 
 _这篇文章是 [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/) 和 Jason Morgan 正在进行的系列文章的一部分，该系列专注于解释云原生景观的每个类别。两者都是 [Kubernetes Community Days DC](https://kubernetescommunitydays.org/events/2021-washington-dc/) 和 [DC Kubernetes meetup group](https://www.meetup.com/万事万物-Kubernetes-k8s-DC/)._
 
-Catherine is Head of Marketing at Buoyant, the creator of Linkerd. A marketing leader turned cloud native evangelist, Catherine is passionate about educating business leaders on the new stack and the critical flexibility it provides.](https://www.linkedin.com/in/catherinepaganini/en/)
+Catherine is Head of Marketing at Buoyant, the creator of Linkerd. A marketing leader turned cloud native evangelist, Catherine is passionate about educating business leaders on the new stack and the critical flexibility it provides.
 
-Catherine 是 Linkerd 的创建者 Buoyant 的营销主管。 Catherine 是一名营销领导者，后来成为云原生布道者，她热衷于就新堆栈及其提供的关键灵活性对业务领导者进行教育。](https://www.linkedin.com/in/catherinepaganini/en/)
+Catherine 是 Linkerd 的创建者 Buoyant 的营销主管。 Catherine 是一名营销领导者，后来成为云原生布道者，她热衷于就新堆栈及其提供的关键灵活性对业务领导者进行教育。
 
-In our [introduction to the cloud native landscape](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/), we provided a high-level overview of the [Cloud Native Computing Foundation] (https://www.cncf.io/)'s cloud native ecosystem. This article is the first in a series that examines each layer at the time. Non-technical readers will learn what the tools in each category are, what problem they solve, and how they address it. We also added a short technical 101 section for those engineers who are just getting started with cloud native.
+In our [introduction to the cloud native landscape](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/), we provided a high-level overview of the [Cloud Native Computing Foundation](https://www.cncf.io/)'s cloud native ecosystem. This article is the first in a series that examines each layer at the time. Non-technical readers will learn what the tools in each category are, what problem they solve, and how they address it. We also added a short technical 101 section for those engineers who are just getting started with cloud native.
 
-在我们的[云原生景观简介](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/)中，我们提供了[云原生计算基金会]的高级概述(https://www.cncf.io/) 的云原生生态系统。本文是当时检查每一层的系列文章中的第一篇。非技术读者将了解每个类别中的工具是什么、它们解决什么问题以及如何解决这些问题。我们还为刚开始使用云原生的工程师添加了一个简短的技术 101 部分。
+在我们的[云原生景观简介](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/)中，我们提供了云原生计算基金会的高级概述的云原生生态系统。本文是当时检查每一层的系列文章中的第一篇。非技术读者将了解每个类别中的工具是什么、它们解决什么问题以及如何解决这些问题。我们还为刚开始使用云原生的工程师添加了一个简短的技术 101 部分。
 
 The first layer in the cloud native landscape is provisioning. This encompasses the tools that are used to create and harden the foundation on which cloud native apps are built, including how the infrastructure is created, managed, and configured — automatically — as well as scanning, signing, and storing container images. The layer also extends to security with tools that enable policies to be set and enforced, authentication and authorization to be built into apps and platforms, and the handling of secrets distribution.
 
@@ -92,7 +90,7 @@ At the time of this writing, there are three CNCF projects in this space: KubeEd
 
 在撰写本文时，该领域有三个 CNCF 项目：KubeEdge，一个 Sandbox CNCF 项目，以及 Kubespray 和 Kops（后两个是 Kubernetes 子项目，因此属于 CNCF，尽管它们尚未在景观）。此类别中的大多数工具都提供开源和付费版本。
 
-BuzzwordsPopular Projects/Products
+Buzz words Popular Projects/Products
 
 流行语热门项目/产品
 

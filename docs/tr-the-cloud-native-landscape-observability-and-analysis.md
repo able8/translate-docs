@@ -1,4 +1,4 @@
-# TheCloudNativeLandscape:ObservabilityandAnalysis
+# The Cloud Native Landscape:Observability and Analysis
 
 # TheCloudNativeLandscape：可观察性和分析
 
