@@ -2,45 +2,17 @@
 
 # 云原生景观：编排和管理层
 
-#### 15 Dec 2020 11:54am,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
+#### 15 Dec 2020 11:54am,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack.io/author/jason-morgan/ "Posts by Jason Morgan")
 
-#### 2020 年 12 月 15 日上午 11:54，作者：[Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/“杰森摩根的帖子”)
-
-![](https://cdn.thenewstack.io/media/2020/12/57e7bc17-meteora-3717220_640.jpg)
 
 _This post is part of an ongoing series from_ [_CNCF Business Value Subcommittee_](https://lists.cncf.io/g/cncf-business-value) _co-chairs_ [_Catherine Paganini_](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) _and_ [_Jason Morgan_](https://thenewstack.io/author/jason-morgan/) _that focuses on explaining each category of the cloud native landscape to a non-technical audience as well as engineers just getting started with cloud native._
 
 _这篇文章是来自_[_CNCF商业价值小组委员会_](https://lists.cncf.io/g/cncf-business-value)_co-chairs_[_Catherine Paganini_](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) _and_ [_Jason Morgan_](https://thenewstack.io/author/jason-morgan/) _专注于向非技术受众解释云原生景观的每个类别以及刚刚开始使用云原生的工程师。_
 
-[![](https://cdn.thenewstack.io/media/2020/12/5984c027-screen-shot-2020-12-08-at-8.51.01-am.png)\
-\
-Catherine Paganini\
-\
-Catherine is Head of Marketing at Buoyant, the creator of Linkerd. A marketing leader turned cloud native evangelist, Catherine is passionate about educating business leaders on the new stack and the critical flexibility it provides.](https://www.linkedin.com/in/catherinepaganini/en/)
-
-\
-凯瑟琳·帕格尼尼\
-\
-Catherine 是 Linkerd 的创建者 Buoyant 的营销主管。 Catherine 是一名营销领导者，后来成为云原生布道者，她热衷于就新堆栈及其提供的关键灵活性对业务领导者进行教育。](https://www.linkedin.com/in/catherinepaganini/en/)
-
 The orchestration and management layer is the third layer in the [Cloud Native Computing Foundation’s cloud native landscape](https://landscape.cncf.io). Before tackling tools in this category, engineers have presumably already automated infrastructure provisioning following security and compliance standards ( [provisioning layer](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/)) and set up the runtime for the application ( [runtime layer](https://thenewstack.io/the-cloud-native-landscape-the-runtime-layer-explained/)). Now they must figure out how to orchestrate and manage all app components as a group. Components must identify one another to communicate and coordinate to accomplish a common goal. Inherently scalable, cloud native apps rely on automation and resilience, enabled by these tools.
 
 编排和管理层是 [云原生计算基金会云原生景观](https://landscape.cncf.io)中的第三层。在处理此类工具之前，工程师可能已经按照安全性和合规性标准自动进行基础设施配置（[配置层](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/)) 并为应用程序设置运行时 ([runtime layer](https://thenewstack.io/the-cloud-native-landscape-the-runtime-layer-explained/))。现在，他们必须弄清楚如何将所有应用程序组件作为一个组进行编排和管理。组件必须相互识别以进行通信和协调以实现共同目标。本质上可扩展的云原生应用依赖于这些工具所支持的自动化和弹性。
 
-### **_Sidenote:_**
-
-###  **_边注：_**
-
-[![](https://cdn.thenewstack.io/media/2020/08/572c2815-jason.png)\
-\
-Jason Morgan\
-\
-Jason Morgan, a Solutions Engineer with VMware, focuses on helping customers build and mature microservices platforms. Passionate about helping others on their cloud native journey, Jason enjoys sharing lessons learned with the broader developer community.](https://blog.59s.io/)
-
-\
-杰森摩根\
-\
-Jason Morgan 是 VMware 的解决方案工程师，专注于帮助客户构建和成熟的微服务平台。 Jason 热衷于在云原生之旅中帮助他人，他喜欢与更广泛的开发人员社区分享经验教训。](https://blog.59s.io/)
 
 When looking at the [Cloud Native Landscape](https://landscape.cncf.io), you’ll note a few distinctions:
 
@@ -126,17 +98,10 @@ Kubernetes 与其他容器编排器（如 Docker Swarm 和 Mesos）一起存在�
 - Scheduler
 - Orchestration
 
-- 簇
-- 调度程序
-- 编排
 
 - Kubernetes
 - Docker Swarm
 - Mesos
-
-- Kubernetes
-- Docker Swarm
-- 金币
 
 ![Scheduling and orchestration](https://cdn.thenewstack.io/media/2020/12/cf616dae-screen-shot-2020-12-08-at-8.21.04-am.png)
 
@@ -203,18 +168,10 @@ As distributed systems became more and more prevalent, traditional DNS processes
 - DNS
 - Service Discovery
 
-- DNS
-- 服务发现
-
 - CoreDNS
 - etcd
 - Zookeeper
 - Eureka
-
-- 核心DNS
-- etcd
-- 动物园管理员
-- 尤里卡
 
 ![Coordination and service discovery](https://cdn.thenewstack.io/media/2020/12/673ee53a-screen-shot-2020-12-08-at-8.23.02-am.png)
 
@@ -417,16 +374,10 @@ Like many categories in this layer, an API gateway takes custom code out of our 
 **热门项目/产品**
 
 - API gateway
-
-- API 网关
-
 - Kong
 - Mulesoft
 - Ambassador
 
-- 孔
-- Mulesoft
-- 大使
 
 ![API gateway](https://cdn.thenewstack.io/media/2020/12/0550d18a-screen-shot-2020-12-08-at-8.29.46-am.png)
 
@@ -520,10 +471,6 @@ Service meshes provide many useful features, including the ability to surface de
 - Consul
 - Istio
 
-- 链接器
-- 领事
-- Istio
-
 ![Service mesh](https://cdn.thenewstack.io/media/2020/12/458f49aa-screen-shot-2020-12-08-at-8.30.08-am.png)
 
 ## Conclusion 
@@ -542,11 +489,6 @@ The Cloud Native Computing Foundation and VMware are sponsors of The New Stack.
 
 云原生计算基金会和 VMware 是 The New Stack 的赞助商。
 
-Feature image [Antonios Ntoumas](https://pixabay.com/fr/users/atlantios-4957810/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3717220) de [Pixabay](https://pixabay.com/fr/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3717220).
-
-特色图片 [Antonios Ntoumas](https://pixabay.com/fr/users/atlantios-4957810/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3717220) de [Pixabay](https://pixabay)(https://pixabay)/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3717220)。
-
 The New Stack is a wholly owned subsidiary of Insight Partners. TNS owner Insight Partners is an investor in the following companies: MADE, Docker, Ambassador, Prevalent, Bit. 
 
 The New Stack 是 Insight Partners 的全资子公司。 TNS 所有者 Insight Partners 是以下公司的投资者：MADE、Docker、Ambassador、Prevalent、Bit。
-

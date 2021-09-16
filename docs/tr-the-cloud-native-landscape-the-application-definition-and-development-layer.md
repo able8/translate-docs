@@ -4,25 +4,11 @@
 
 #### 26 Jan 2021 6:00am,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
 
-#### 2021 年 1 月 26 日上午 6:00，作者：[Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/“杰森摩根的帖子”)
+#### 
 
 ![](https://cdn.thenewstack.io/media/2021/01/4fd4a803-cncf-landscape.png)
 
-_This post is part of an ongoing series from [Cloud Native Computing Foundation Business Value Subcommittee](https://lists.cncf.io/g/cncf-business-value) co-chairs [Catherine Paganini](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) and [Jason Morgan](https://thenewstack.io/author/jason-morgan/) that focuses on explaining each category of the cloud native landscape to a non -technical audience as well as engineers just getting started with cloud native computing._
 
-_这篇文章是 [云原生计算基金会商业价值小组委员会](https://lists.cncf.io/g/cncf-business-value) 联合主席 [Catherine Paganini](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/) 专注于向非- 刚开始使用云原生计算的技术受众和工程师。_
-
-When looking at the [Cloud Native Landscape](https://landscape.cncf.io/), you’ll note a few distinctions:
-
-在查看 [云原生景观](https://landscape.cncf.io/) 时，您会注意到一些区别：
-
-- Projects in large boxes are CNCF-hosted open source projects. Some are still in the incubation phase (light blue/purple frame), while others are graduated projects (dark blue frame).
-- Projects in small white boxes are open source projects.
-- Products in gray boxes are proprietary.
-
-- 大盒子中的项目是 CNCF 托管的开源项目。有的还在孵化阶段（浅蓝色/紫色框），有的则是毕业项目（深蓝色框）。
-- 小白盒中的项目是开源项目。
-- 灰色框中的产品是专有的。
 
 Please note that even during the time of this writing, we saw new projects becoming part of the CNCF so always refer to the actual landscape — things are moving fast!
 
@@ -30,7 +16,7 @@ Please note that even during the time of this writing, we saw new projects becom
 
 ## Database [![databases](https://cdn.thenewstack.io/media/2021/01/ef82aef4-screen-shot-2021-01-24-at-5.50.05-pm.png)](https://landscape.cncf.io/)
 
-://landscape.cncf.io/)
+
 
 ### What It Is
 
@@ -96,17 +82,10 @@ BuzzwordsPopular Projects
 - DB
 - Persistence
 
-- SQL
-- D B
-- 坚持
-
 - Postgres
 - MySQL
 - Redis
 
-- Postgres
-- MySQL
-- Redis
 
 ## Streaming and Messaging
 
@@ -114,7 +93,7 @@ BuzzwordsPopular Projects
 
 [![streaming and messaging ](https://cdn.thenewstack.io/media/2021/01/2d3a7aa5-screen-shot-2021-01-24-at-5.52.28-pm.png)](https://landscape.cncf.io/)
 
-//landscape.cncf.io/)
+
 
 ### What It Is
 
@@ -181,20 +160,12 @@ BuzzwordsPopular Projects
 - MQ
 - Message Bus
 
-- 编舞
-- 蒸
-- MQ
-- 消息总线
 
 - Spark
 - Kafka
 - RabbitMQ
 - Nats
 
-- 火花
-- 卡夫卡
-- RabbitMQ
-- 纳兹
 
 ## Application Definition and Image Build
 
@@ -202,7 +173,7 @@ BuzzwordsPopular Projects
 
 [![app definition and image build](https://cdn.thenewstack.io/media/2021/01/1165999f-screen-shot-2021-01-24-at-5.54.25-pm.png)](https://landscape.cncf.io/)
 
-https://landscape.cncf.io/)
+
 
 ### What It Is
 
@@ -260,19 +231,11 @@ BuzzwordsPopular Projects
 - Charts
 - Operators
 
-- 包管理
-- 图表
-- 运营商
-
 - Helm
 - Buildpacks
 - Tilt
 - Okteto
 
-- 头盔
-- 构建包
-- 倾斜
-- 奥克泰托
 
 ## Continuous Integration and Continuous Delivery
 
@@ -280,7 +243,7 @@ BuzzwordsPopular Projects
 
 [![CICD](https://cdn.thenewstack.io/media/2021/01/836e47cf-screen-shot-2021-01-24-at-5.55.02-pm.png)](https://landscape.cncf.io/)
 
-Landscape.cncf.io/)
+
 
 ### What It Is
 
@@ -351,10 +314,6 @@ BuzzwordsPopular Projects
 - Spinnaker
 - Jenkins
 
-- 阿尔戈
-- 旗手
-- 三角帆
-- 詹金斯
 
 ## Conclusion
 
@@ -368,9 +327,7 @@ This article concludes the layers of the CNCF landscape. In our next article, we
 
 本文总结了 CNCF 格局的各个层次。在我们的下一篇文章中，我们将重点关注云原生平台，这是贯穿所有这些层的第一列。到目前为止，我们讨论的跨层配置工具使它们能够很好地协同工作并不是一件容易的事。平台将它们捆绑在一起以简化采用，但更多内容将在我们的下一篇文章中介绍。
 
-_As always, a very special thanks to [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/) from the CNCF who was so kind as to review the article making sure it’s all accurate._
 
-_一如既往，非常感谢来自 CNCF 的 [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/)，他非常友好地审阅了这篇文章，以确保其准确无误。_
 
 The Cloud Native Computing Foundation is a sponsor of The New Stack.
 

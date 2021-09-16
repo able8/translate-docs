@@ -4,13 +4,7 @@
 
 #### 17 Mar 2021 12:08pm,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
 
-#### 2021 年 3 月 17 日下午 12:08，作者：[Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/“杰森摩根的帖子”)
 
-![](https://cdn.thenewstack.io/media/2021/03/2244406d-background-1126047_640.jpg)
-
-_This post is part of an ongoing series from the Cloud Native Computing Foundation's_ [_Business Value Subcommittee_](https://lists.cncf.io/g/cncf-business-value) _co-chairs_ [_Catherine Paganini_](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) _and_ [_Jason Morgan_](https://thenewstack.io/author/jason-morgan/) _that focuses on explaining each category of the [cloud native landscape](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/) to a non-technical audience as well as engineers just getting started with cloud native. See also installments on the layers for [application definition development](https://thenewstack.io/the-cloud-native-landscape-the-application-definition-and-development-layer/), the [runtime](https://thenewstack.io/the-cloud-native-landscape-the-runtime-layer-explained/), the [orchestration and management](https://thenewstack.io/the-cloud-native-landscape-the-orchestration-and-management-layer/), and the [provisioning.](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/)_
-
-_这篇文章是云原生计算基金会正在进行的系列文章的一部分_[_商业价值小组委员会_](https://lists.cncf.io/g/cncf-business-value)_co-chairs_[_Catherine Paganini_](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) _and_ [_Jason Morgan_](https://thenewstack.io/author/jason-morgan/)_重点讲解[云原生Landscape](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/) 面向非技术受众以及刚开始使用云原生的工程师。另请参阅有关[应用程序定义开发](https://thenewstack.io/the-cloud-native-landscape-the-application-definition-and-development-layer/)、[运行时](https://thenewstack.io/the-cloud-native-landscape-the-runtime-layer-explained/)，[编排和管理](https://thenewstack.io/the-cloud-native-landscape-the-orchestration-and-management-layer/) 和 [provisioning.](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/)_
 
 There isn’t anything inherently new in these platforms. Everything they do can be done by one of the tools in these layers or the observability and analysis column. You could certainly build your own platform, and in fact, many organizations do. However, configuring and fine-tuning the different modules reliably and securely while ensuring that all technologies are always updated and vulnerabilities patched is no easy task—you’ll need a dedicated team to build and maintain it. If you don’t have the required bandwidth and/or know-how, your team is likely better off with a platform. For some organizations, especially those with small engineering teams, platforms are the only way to adopt a cloud native approach.
 
@@ -19,26 +13,6 @@ There isn’t anything inherently new in these platforms. Everything they do can
 You'll probably notice, all platforms [revolve around Kubernetes](https://thenewstack.io/primer-how-kubernetes-came-to-be-what-it-is-and-why-you-should-care/). That’s because Kubernetes, is at the core of the cloud native stack.
 
 您可能会注意到，所有平台 [围绕 Kubernetes](https://thenewstack.io/primer-how-kubernetes-came-to-be-what-it-is-and-why-you-should-care/)。这是因为 Kubernetes 是云原生堆栈的核心。
-
-### Sidenote
-
-###  边注
-
-When looking at the [Cloud Native Landscape](https://landscape.cncf.io/), you’ll note a few distinctions:
-
-在查看 [云原生景观](https://landscape.cncf.io/) 时，您会注意到一些区别：
-
-- Projects in large boxes are Cloud Native Computing Foundation-hosted open source projects. Some are still in the incubation phase (light blue/purple frame), while others are graduated projects (dark blue frame).
-- Projects in small white boxes are open source projects.
-- Products in gray boxes are proprietary.
-
-- 大盒子中的项目是云原生计算基金会托管的开源项目。有的还在孵化阶段（浅蓝色/紫色框），有的则是毕业项目（深蓝色框）。
-- 小白盒中的项目是开源项目。
-- 灰色框中的产品是专有的。
-
-Please note that even during the time of this writing, we saw new projects becoming part of the Cloud Native Computing Foundation (CNCF) so always refer to the actual landscape — things are moving fast!
-
-请注意，即使在撰写本文时，我们也看到新项目成为云原生计算基金会 (CNCF) 的一部分，因此请始终参考实际情况——事情进展很快！
 
 ## Kubernetes Distributions
 
@@ -248,19 +222,5 @@ This concludes the platform “column” of the CNCF landscape. Next, we’ll ta
 
 CNCF 景观的平台“专栏”到此结束。接下来，我们将讨论本系列的最后一篇文章，即可观察性和分析“专栏”。
 
-_As always, a very special thanks to [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/) from the CNCF who was so kind as to review the article making sure it’s all accurate._
 
-_一如既往，非常感谢来自 CNCF 的 [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/)，他非常友好地审阅了这篇文章，以确保其准确无误。_
-
-The New Stack is a wholly owned subsidiary of Insight Partners. TNS owner Insight Partners is an investor in the following companies: Mirantis, Docker, Bit.
-
-The New Stack 是 Insight Partners 的全资子公司。 TNS 所有者 Insight Partners 是以下公司的投资者：Mirantis、Docker、Bit。
-
-Amazon Web Services, CNCF, Mirantis, Red Hat and VMware are sponsors of The New Stack.
-
-Amazon Web Services、CNCF、Mirantis、Red Hat 和 VMware 是 The New Stack 的赞助商。
-
-Image par [kalhh](https://pixabay.com/fr/users/kalhh-86169/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1126047) de [Pixabay](https://pixabay.com/fr/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1126047). 
-
-图片标准 [kalhh](https://pixabay.com/fr/users/kalhh-86169/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1126047) de [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1126047)。
 

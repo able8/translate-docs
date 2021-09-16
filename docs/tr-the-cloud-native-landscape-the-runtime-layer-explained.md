@@ -4,15 +4,13 @@
 
 #### 29 Sep 2020 1:24pm,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
 
-#### 2020 年 9 月 29 日下午 1:24，作者：[Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/“杰森摩根的帖子”)
-
 _This post is part of an ongoing series from_ [_Catherine Paganini_](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) _and_ [_Jason Morgan_](https://thenewstack.io/author/jason-morgan/) _that focuses on explaining each category of the cloud native landscape to a non-technical audience as well as engineers just getting started with cloud native._
 
 _这篇文章是来自_[_Catherine Paganini_](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category)_和_[_Jason Morgan_](https://thenewstack.io/author/jason-morgan/) _专注于向非技术受众以及刚刚开始使用云原生的工程师解释云原生环境的每个类别。_
 
-Jason Morgan, a Solutions Engineer with VMware, focuses on helping customers build and mature microservices platforms. Passionate about helping others on their cloud native journey, Jason enjoys sharing lessons learned with the broader developer community.](https://blog.59s.io/)
+Jason Morgan, a Solutions Engineer with VMware, focuses on helping customers build and mature microservices platforms. Passionate about helping others on their cloud native journey, Jason enjoys sharing lessons learned with the broader developer community.
 
-Jason Morgan 是 VMware 的解决方案工程师，专注于帮助客户构建和成熟的微服务平台。 Jason 热衷于在云原生之旅中帮助他人，他喜欢与更广泛的开发人员社区分享经验教训。](https://blog.59s.io/)
+Jason Morgan 是 VMware 的解决方案工程师，专注于帮助客户构建和成熟的微服务平台。 Jason 热衷于在云原生之旅中帮助他人，他喜欢与更广泛的开发人员社区分享经验教训。
 
 In our previous article, we explored the [provisioning layer of the Cloud Native Computing Foundation's cloud native landscape](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/) which focuses on building the foundation of your cloud native platforms and applications. This article zooms into the runtime layer encompassing everything a container needs in order to run in a cloud native environment. That means the code used to start a container, referred to as the runtime engine; the tools to make persistent storage available to containers; and those that manage the container environment networks.
 
@@ -271,10 +269,4 @@ The Cloud Native Computing Foundation and VMware are sponsors of The New Stack.
 云原生计算基金会和 VMware 是 The New Stack 的赞助商。
 
 Feature Image by [Candid\_Shots](https://pixabay.com/users/Candid_Shots-11873433/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5582775) from [Pixabay](https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5582775).
-
-[Candid\_Shots](https://pixabay.com/users/Candid_Shots-11873433/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5582775) 来自 https://pixabay. utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5582775)。
-
-The New Stack is a wholly owned subsidiary of Insight Partners. TNS owner Insight Partners is an investor in the following companies: MADE, Docker, Famous. 
-
-The New Stack 是 Insight Partners 的全资子公司。 TNS 所有者 Insight Partners 是以下公司的投资者：MADE、Docker、Famous。
 

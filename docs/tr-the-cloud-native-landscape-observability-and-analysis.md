@@ -4,12 +4,6 @@
 
 #### 17 May 2021 1:24pm,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
 
-#### 2021 年 5 月 17 日下午 1:24，作者：[Catherine Paganini](https://thenewstack.io/author/catherine-paganini/“Catherine Paganini 的帖子”) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/“杰森摩根的帖子”)
-
-This post is part of an ongoing series from [Cloud Native Computing Foundation Business Value Subcommittee](https://lists.cncf.io/g/cncf-business-value) co-chairs [Catherine Paganini](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) and [Jason Morgan](https://thenewstack.io/author/jason-morgan/) that focuses on explaining each category of the cloud native landscape to a non -technical audience as well as engineers just getting started with cloud native computing.
-
-这篇文章是 [云原生计算基金会商业价值小组委员会](https://lists.cncf.io/g/cncf-business-value) 联合主席 [Catherine Paganini](https://landscape.cncf.io/category=coordination-service-discovery&grouping=category) 和 [Jason Morgan](https://thenewstack.io/author/jason-morgan/) 专注于向非- 刚开始使用云原生计算的技术受众和工程师。
-
 We finally arrived at the last section of our [Cloud Native Computing Foundation](https://cncf.io/?utm_content=inline-mention)‘s Landscape series. If you missed our previous articles, we covered an [introduction](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/), and then the [provisioning](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/), [runtime](https://thenewstack.io/the-cloud-native-landscape-the-runtime-layer-explained/) , [orchestration and management layer](https://thenewstack.io/the-cloud-native-landscape-the-orchestration-and-management-layer/), and [platforms](https://thenewstack.io/the-cloud-native-landscape-platforms-explained/) each in a separate article. Today, we’ll discuss each category of the observability and analysis “column.”
 
 终于到了我们 [云原生计算基础](https://cncf.io/?utm_content=inline-mention) 景观系列的最后一部分。如果您错过了我们之前的文章，我们介绍了 [介绍](https://thenewstack.io/an-introduction-to-the-cloud-native-landscape/)，然后是 [provisioning](https://thenewstack.io/the-cloud-native-landscape-the-provisioning-layer-explained/), [运行时](https://thenewstack.io/the-cloud-native-landscape-the-runtime-layer-explained/)、[编排和管理层](https://thenewstack.io/the-cloud-native-landscape-the-orchestration-and-management-layer/)和[平台](https://thenewstack.io/the-cloud-native-landscape-platforms-explained/) 每个都在单独的文章中。今天，我们将讨论可观察性和分析“列”的每个类别。
@@ -71,14 +65,9 @@ Fluentd 是该领域唯一的 CNCF 项目。
 **流行语****热门项目**
 
 - Logging
-
-- 记录
-
 - Fluentd & Fluentbit
 - Elastic Logstash
 
-- Fluentd 和 Fluentbit
-- 弹性 Logstash
 
 ![logging ](https://cdn.thenewstack.io/media/2021/05/61f23a99-screen-shot-2021-05-13-at-8.17.44-am.png)
 
@@ -141,10 +130,6 @@ Monitoring in a cloud native context is generally similar to monitoring traditio
 - Thanos
 - Grafana
 
-- 普罗米修斯
-- 皮质
-- 灭霸
-- 格拉法纳
 
 ![monitoring ](https://cdn.thenewstack.io/media/2021/05/dc4db049-screen-shot-2021-05-13-at-8.16.16-am.png)
 
@@ -201,8 +186,6 @@ Tracing is a powerful debugging tool that allows you to troubleshoot and fine-tu
 - Jaeger
 - OpenTracing
 
-- 耶格
-- 开放追踪
 
 ![Tracing](https://cdn.thenewstack.io/media/2021/05/ea2aaf06-screen-shot-2021-05-13-at-8.28.38-am.png)
 
@@ -278,13 +261,7 @@ _This finally concludes our series on the CNCF landscape. We certainly learned a
 
 _这终于结束了我们关于 CNCF 景观的系列。我们在写这些文章的过程中当然学到了很多东西，希望你也这样做。_
 
-Feature image [via](https://pixabay.com/fr/photos/jumelles-%C3%A0-la-recherche-l-homme-1209011/) Pixabay.
 
-特色图片 [via](https://pixabay.com/fr/photos/jumelles-%C3%A0-la-recherche-l-homme-1209011/)
-
-The New Stack is a wholly owned subsidiary of Insight Partners. TNS owner Insight Partners is an investor in the following companies: Real.
-
-The New Stack 是 Insight Partners 的全资子公司。 TNS 所有者 Insight Partners 是以下公司的投资者：Real。
 
 This post is part of a larger story we're telling about Observability.
 
