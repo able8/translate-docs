@@ -310,3 +310,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Prometheus Cheat Sheet - How to Join Multiple Metrics (Vector Matching)](docs/tr-prometheus-vector-matching.md)
 1. [Prometheus Cheat Sheet - Moving Average, Max, Min, etc (Aggregation Over Time)](docs/tr-prometheus-functions-agg-over-time.md)
 1. [](docs/)
+1. [Clean Go Code](docs/tr-clean-go-code.md)
