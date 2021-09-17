@@ -4,7 +4,7 @@
 
 #### 26 Jan 2021 6:00am,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini") and [Jason Morgan](https://thenewstack. io/author/jason-morgan/ "Posts by Jason Morgan")
 
-#### 
+
 
 ![](https://cdn.thenewstack.io/media/2021/01/4fd4a803-cncf-landscape.png)
 

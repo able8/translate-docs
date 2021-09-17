@@ -4,8 +4,6 @@
 
 #### 21 Jul 2020 9:52am,   by [Catherine Paganini](https://thenewstack.io/author/catherine-paganini/ "Posts by Catherine Paganini")
 
-#### 
-
 If you’ve researched cloud native applications and technologies, you’ve probably come across the [Cloud Native Computing Foundation (CNCF)](https://landscape.cncf.io/) cloud native landscape map. Unsurprisingly, the sheer scale of it can be overwhelming. So many categories and so many technologies. How do you make sense of it?
 
 如果您研究过云原生应用程序和技术，您可能会遇到过[云原生计算基金会 (CNCF)](https://landscape.cncf.io/) 云原生景观图。不出所料，它的庞大规模可能是压倒性的。这么多类别和这么多技术。你怎么理解它？
@@ -210,7 +208,7 @@ We hope this quick overview was helpful. Stay tuned for our follow up articles t
 
 **_As always, thanks to [Oleg Chunihkin](https://www.linkedin.com/in/olegch/) for all his input and also to [Jason Morgan](https://www.linkedin.com/in/jasonmorgan2/), my co-author for the upcoming more detailed landscape articles (very excited about that!). And a very special thanks to [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/) from the CNCF who was so kind as to review the article making sure it’s all accurate._**
 
-**_一如既往，感谢 [Oleg Chunihkin](https://www.linkedin.com/in/olegch/) 的所有投入以及 [Jason Morgan](https://www.linkedin.com/in)/jasonmorgan2/），我即将发表的更详细的景观文章的合著者（对此感到非常兴奋！)。非常特别感谢来自 CNCF 的 [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/)，他非常友好地审阅了文章以确保一切准确。_**
+**_一如既往，感谢 [Oleg Chunihkin](https://www.linkedin.com/in/olegch/) 的所有投入以及 [Jason Morgan](https://www.linkedin.com/in)，我即将发表的更详细的景观文章的合著者（对此感到非常兴奋！)。非常特别感谢来自 CNCF 的 [Ihor Dvoretskyi](https://www.linkedin.com/in/idvoretskyi/)，他非常友好地审阅了文章以确保一切准确。_**
 
 
 

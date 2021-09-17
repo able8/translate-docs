@@ -100,9 +100,9 @@ Since the provider takes care of all management details, hosted Kubernetes is th
 
 由于提供商负责所有管理细节，托管 Kubernetes 是开始使用云原生的最简单方法。所有用户要做的就是开发他们的应用程序并将它们部署在托管的 Kubernetes 服务上——这非常方便。托管产品允许用户启动 Kubernetes 集群并立即开始，\* 同时对集群可用性承担一些责任。值得注意的是，随着这些服务的额外便利，灵活性有所降低。该产品与云提供商绑定，Kubernetes 用户无权访问 Kubernetes 控制平面，因此某些配置选项受到限制。
 
-_\\* Slight exception for EKS from AWS as it also requires users to take some additional steps to prepare their clusters._
+* Slight exception for EKS from AWS as it also requires users to take some additional steps to prepare their clusters._
 
-_\\* AWS EKS 的轻微例外，因为它还需要用户采取一些额外的步骤来准备他们的集群。_
+* AWS EKS 的轻微例外，因为它还需要用户采取一些额外的步骤来准备他们的集群。_
 
 ### Technical 101
 

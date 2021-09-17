@@ -1,4 +1,4 @@
-# The Cloud Native Landscape:Observability and Analysis
+# The Cloud Native Landscape: Observability and Analysis
 
 # TheCloudNativeLandscape：可观察性和分析
 
@@ -60,9 +60,9 @@ Fluentd is the only CNCF project in this space.
 
 Fluentd 是该领域唯一的 CNCF 项目。
 
-**Buzzwords****Popular Projects**
+**Buzzwords ** **Popular Projects**
 
-**流行语****热门项目**
+**流行语 ** **热门项目**
 
 - Logging
 - Fluentd & Fluentbit
