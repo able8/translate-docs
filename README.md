@@ -316,3 +316,11 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [How to collect, standardize, and centralize Golang logs](docs/tr-go-logging.md)
 1. [Integration Testing in Go: Part I - Executing Tests with Docker](docs/tr-integration-testing-in-go-executing-tests-with-docker.md)
 1. [Using Go as the Infrastructure Language at NodeSource](docs/tr-using-go-infrastructure-language.md)
+1. [Batching operations in Go.](docs/tr-batching-operations-in-go-by-mat-ryer.md)
+1. [Building containers without Docker](docs/tr-building-containers-without-docker.md)
+1. [If at first you don’t succeed  call it version 1.0](docs/tr-go-async-await.md)
+1. [Graceful shutdown of a TCP server in Go](docs/tr-graceful-shutdown-of-a-tcp-server-in-go.md)
+1. [The Zen of Go](docs/tr-the-zen-of-go.netlify.app.md)
+1. [Running Go CLI programs in the browser](docs/tr-wasm-cli.md)
+
+
