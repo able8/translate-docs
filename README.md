@@ -311,3 +311,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Prometheus Cheat Sheet - Moving Average, Max, Min, etc (Aggregation Over Time)](docs/tr-prometheus-functions-agg-over-time.md)
 1. [](docs/)
 1. [Clean Go Code](docs/tr-clean-go-code.md)
+1. [Better Error Handling, in Go](docs/tr-better-error-handling-in-go.md)
+1. [#Fixing Service Performance with PProf in Go](docs/tr-fixing-bugs-with-pprof.md)
+1. [How to collect, standardize, and centralize Golang logs](docs/tr-go-logging.md)
+1. [Integration Testing in Go: Part I - Executing Tests with Docker](docs/tr-integration-testing-in-go-executing-tests-with-docker.md)
+1. [Using Go as the Infrastructure Language at NodeSource](docs/tr-using-go-infrastructure-language.md)
