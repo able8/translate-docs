@@ -26,9 +26,12 @@ func Translate(source, sourceLang, targetLang string) error {
 	// fmt.Println(queryURL)
 	var resp *http.Response
 	var err error
+	client := http.Client{
+		Timeout: 3 * time.Second,
+	}
 	for try := 0; try < 3; try++ {
-		resp, err = http.Get(queryURL)
 		log.Println("Querying...")
+		resp, err = client.Get(queryURL)
 		if resp.StatusCode == http.StatusOK {
 			break
 		}

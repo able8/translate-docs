@@ -1,6 +1,6 @@
 # The Zen of Go
 
-# 围棋之禅
+# Go 之禅
 
 Ten engineering values for writing simple, readable, maintainable Go code. Presented at [GopherCon Israel 2020](http://gophercon.org.il).
 
@@ -8,7 +8,7 @@ Ten engineering values for writing simple, readable, maintainable Go code. Prese
 
 - Each package fulfils a single purpose
 
-   - 每个包裹都满足一个目的
+- 每个包裹都满足一个目的
 
   A well designed Go package provides a single idea, a set of related behaviours. A good Go package starts by choosing a good name. Think of your package’s name as an elevator pitch to describe what it provides, using just one word.
 
@@ -16,7 +16,7 @@ Ten engineering values for writing simple, readable, maintainable Go code. Prese
 
 - Handle errors explicitly
 
-   - 明确处理错误
+- 明确处理错误
 
   Robust programs are composed from pieces that handle the failure cases before they pat themselves on the back. The verbosity of `if err != nil { return err }` is outweighed by the value of deliberately handling each failure condition at the point at which they occur. Panic and recover are not exceptions, they aren’t intended to be used that way.
 
@@ -24,7 +24,7 @@ Ten engineering values for writing simple, readable, maintainable Go code. Prese
 
 - Return early rather than nesting deeply
 
-   - 尽早返回而不是深入嵌套
+- 尽早返回而不是深入嵌套
 
   Every time you indent you add another precondition to the  programmer’s stack consuming one of the 7 ±2 slots in their short term  memory. Avoid control flow that requires deep indentation. Rather than nesting deeply, keep the success path to the left using  guard clauses.
 
@@ -32,7 +32,7 @@ Ten engineering values for writing simple, readable, maintainable Go code. Prese
 
 - Leave concurrency to the caller
 
-   - 将并发留给调用者
+- 将并发留给调用者
 
   Let the caller choose if they want to run your library or function  asynchronously, don’t force it on them. If your library uses concurrency it should do so transparently.
 
@@ -40,7 +40,7 @@ Ten engineering values for writing simple, readable, maintainable Go code. Prese
 
 - Before you launch a goroutine, know when it will stop
 
-   - 在你启动一个 goroutine 之前，知道它什么时候会停止
+- 在你启动一个 goroutine 之前，知道它什么时候会停止
 
   Goroutines own resources; locks, variables, memory, etc. The sure fire way to free those resources is to stop the owning goroutine.
 
@@ -48,7 +48,7 @@ Goroutines 拥有资源；锁、变量、内存等。释放这些资源的可靠
 
 - Avoid package level state
 
-   - 避免包级状态
+- 避免包级状态
 
   Seek to be explicit, reduce coupling, and spooky action at a distance by providing the dependencies a type needs as fields on that type  rather than using package variables.
 
@@ -56,7 +56,7 @@ Goroutines 拥有资源；锁、变量、内存等。释放这些资源的可靠
 
 - Simplicity matters
 
-   - 简单很重要
+- 简单很重要
 
   Simplicity is not a synonym for unsophisticated. Simple doesn’t mean crude, it means *readable* and *maintainable*. When it is possible to choose, defer to the simpler solution.
 
@@ -64,7 +64,7 @@ Goroutines 拥有资源；锁、变量、内存等。释放这些资源的可靠
 
 - Write tests to lock in the behaviour of your package’s API
 
-   - 编写测试以锁定包的 API 的行为
+- 编写测试以锁定包的 API 的行为
 
   Test first or test later, if you shoot for 100% test coverage or are  happy with less, regardless your package’s API is your contract with its users. Tests are the guarantees that those contracts are written in. Make sure you test for the behaviour that users can observe and rely on.
 
@@ -72,7 +72,7 @@ Goroutines 拥有资源；锁、变量、内存等。释放这些资源的可靠
 
 - If you think it’s slow, first prove it with a benchmark
 
-   - 如果你认为它很慢，首先用一个基准来证明它
+- 如果你认为它很慢，首先用一个基准来证明它
 
   So many crimes against maintainability are committed in the name of performance. Optimisation tears down abstractions, exposes internals, and couples tightly. If you’re choosing to shoulder that cost, ensure it is done for good reason.
 
@@ -80,7 +80,7 @@ Goroutines 拥有资源；锁、变量、内存等。释放这些资源的可靠
 
 - Moderation is a virtue
 
-   - 适度是一种美德
+- 适度是一种美德
 
   Use goroutines, channels, locks, interfaces, embedding, in moderation.
 
@@ -88,7 +88,7 @@ Goroutines 拥有资源；锁、变量、内存等。释放这些资源的可靠
 
 - Maintainability counts
 
-   - 可维护性很重要
+- 可维护性很重要
 
   Clarity, readability, simplicity, are all aspects of maintainability. Can the thing you worked hard to build be maintained after you’re gone? What can you do today to make it easier for those that come after you?
 

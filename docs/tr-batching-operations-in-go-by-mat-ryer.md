@@ -1,10 +1,8 @@
 # Batching operations in Go.
 
-# Go 中的批处理操作。
+# Go 中的批处理操作
 
 13 Feb 2020
-
-2020 年 2 月 13 日
 
 ### The problem
 

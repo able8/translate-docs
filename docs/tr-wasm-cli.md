@@ -4,7 +4,7 @@
 
 Written on 5 Feb 2020
 
-写于 2020 年 2 月 5 日
+
 
 Turns out it’s almost shockingly easy to run Go CLI programs in the browser with WebAssembly (WASM); as an example I’ll use my [uni](https://github.com/arp242/uni) program. Building is as easy as:
 
@@ -22,7 +22,7 @@ We then need to load the `main.wasm` binary:
 
 然后我们需要加载 `main.wasm` 二进制文件：
 
-```
+```js
 <html>
 <head>
     <meta charset="utf-8">
@@ -68,7 +68,7 @@ As if we typed `uni` on the CLI. To give it some arguments set `go.argv`:
 
 就像我们在 CLI 上输入了 `uni` 一样。给它一些参数设置`go.argv`：
 
-```
+```js
 <script>
         const go = new Go();
         WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
@@ -94,7 +94,7 @@ Now it’s a simple matter of connecting an `input` element to `go.argv`; this a
 
 现在是将 `input` 元素连接到 `go.argv` 的简单问题；这也只获取一次 `main.wasm` 并重新运行它，而不是每次都重新获取它：
 
-```
+```html
 <input id="input" style="font: 16px monospace">
 <script src="wasm_exec.js"></script>
 <script>
@@ -120,7 +120,7 @@ Overwrite the `global.fs.writeSync` from `wasm_exec.js` to display the output in
 
 覆盖 `wasm_exec.js` 中的 `global.fs.writeSync` 以在 HTML 页面而不是控制台中显示输出：
 
-```
+```js
 <script>
     fetch('main.wasm').then(response => response.arrayBuffer()).then(function(bin) {
             input.addEventListener('keydown', function(e) {
