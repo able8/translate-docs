@@ -344,3 +344,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Understanding Package Visibility in Go](docs/tr-understanding-package-visibility-in-go.md)
 1. [Using Go instead of bash for scripts](docs/tr-using-go-instead-of-bash-for-scripts.md)
 1. [Why Go and not Rust?](docs/tr-why-go-and-not-rust.md)
+1. [Mocking gRPC in Go](docs/tr-mocking-grpc-in-go.md)
+1. [Programming with errors](docs/tr-programming-with-errors.md)
+1. [Using SO_PEERCRED in Go](docs/tr-using-so_peercred-in-go.md)
