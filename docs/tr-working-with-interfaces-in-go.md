@@ -2,11 +2,9 @@
 
 # [在 Go 中暴露接口](https://www.efekarakus.com/golang/2019/12/29/working-with-interfaces-in-go.html)
 
-      Published: Dec 29, 2019
+Published: Dec 29, 2019
 
-发布时间：2019 年 12 月 29 日
-
-[Interfaces](https://golang.org/doc/effective_go.html#interfaces_and_types) are my favorite feature in Go. An interface type represents a set of  methods. Unlike most other languages, you don’t have to explicitly  declare that a type *implements* an interface. A struct `S` implements the interface `I` *implicitly* if `S` defines the methods that `I` requires.
+[Interfaces](https://golang.org/doc/effective_go.html#interfaces_and_types) are my favorite feature in Go. An interface type represents a set of  methods. Unlike most other languages, you don’t have to explicitly declare that a type *implements* an interface. A struct `S` implements the interface `I` *implicitly* if `S` defines the methods that `I` requires.
 
 [接口](https://golang.org/doc/effective_go.html#interfaces_and_types) 是我最喜欢的 Go 功能。接口类型表示一组方法。与大多数其他语言不同，您不必显式声明类型*实现*一个接口。如果`S` 定义了`I` 所需的方法，则结构`S` 将*隐式* 实现接口`I`。
 
@@ -26,7 +24,7 @@ The [`io.Reader`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92
 
 [`io.Reader`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/io/io.go#L77-L92) 和 [`io.Writer`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/io/io.go#L77-L92) 接口是强大接口的常见示例。
 
-```
+```go
 type Reader interface {
     Read(p []byte) (n int, err error)
 }
@@ -36,7 +34,7 @@ After grepping the std lib, I found 81 structs across 30 packages that implement
 
 在对标准库进行 grep 之后，我发现 30 个包中的 81 个结构实现了 `io.Reader`，以及 99 个方法或函数在 39 个包中使用它。
 
-#### **[“Go interfaces \*generally\* belong in the package that uses values of the interface type, not the package that implements those values”](https://github.com/golang/go/wiki/CodeReviewComments#interfaces)**
+#### **[“Go interfaces generally belong in the package that uses values of the interface type, not the package that implements those values”](https://github.com/golang/go/wiki/CodeReviewComments#interfaces)**
 
 #### **[“Go 接口\*一般\*属于使用接口类型值的包，而不是实现这些值的包”](https://github.com/golang/go/wiki/CodeReviewComments#interfaces)**
 
@@ -80,9 +78,9 @@ Complementing it with the statement from [EffectiveGo](https://golang.org/doc/ef
 
 > 如果一个类型只是为了实现一个接口而存在，并且永远不会在该接口之外导出方法，那么就没有必要导出该类型本身。”
 
-An example is the [`rand.Source`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L23-L28) interface which is returned by [`rand .NewSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L41-L48). The underlying struct [`rngSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rng.go#L180) within the constructor only exports the methods needed for the `Source` and `Source64` interfaces so the type itself is not exposed.
+An example is the [`rand.Source`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L23-L28) interface which is returned by [`rand.NewSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L41-L48). The underlying struct [`rngSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rng.go#L180) within the constructor only exports the methods needed for the `Source` and `Source64` interfaces so the type itself is not exposed.
 
-一个例子是由 [`rand. .NewSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L41-L48)。构造函数中的底层结构[`rngSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rng.go#L180) 仅导出 `Source` 所需的方法和 `Source64` 接口，因此类型本身不会公开。
+一个例子是由 [`rand.NewSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L41-L48)。构造函数中的底层结构[`rngSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rng.go#L180) 仅导出 `Source` 所需的方法和 `Source64` 接口，因此类型本身不会公开。
 
 The `rand` package has two other types that implement the interface: [`lockedSource`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L382), and [`Rand`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/math/rand/rand.go#L51) (the latter is exposed because it has other public methods).
 
@@ -92,11 +90,11 @@ The `rand` package has two other types that implement the interface: [`lockedSou
 
 **无论如何通过具体类型返回接口有什么好处？**
 
-Returning an interface allows you to have functions that can return multiple concrete types. For example, the [`aes.NewCipher`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher.go#L32) constructor returns a [`cipher.Block`] (https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/cipher/cipher.go#L15) interface. If you look [within the constructor](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher_asm.go#L33-L54), you can see that two different structs are returned.
+Returning an interface allows you to have functions that can return multiple concrete types. For example, the [`aes.NewCipher`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher.go#L32) constructor returns a [`cipher.Block`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/cipher/cipher.go#L15) interface. If you look [within the constructor](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher_asm.go#L33-L54), you can see that two different structs are returned.
 
-返回接口允许您拥有可以返回多个具体类型的函数。例如，[`aes.NewCipher`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher.go#L32) 构造函数返回一个 [`cipher.Block`] （https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/cipher/cipher.go#L15)接口。如果您查看[在构造函数中](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher_asm.go#L33-L54)，您可以看到返回了两个不同的结构。
+返回接口允许您拥有可以返回多个具体类型的函数。例如，[`aes.NewCipher`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher.go#L32) 构造函数返回一个 [`cipher.Block`](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/cipher/cipher.go#L15)接口。如果您查看[在构造函数中](https://github.com/golang/go/blob/dcd3b2c173b77d93be1c391e3b5f932e0779fb1f/src/crypto/aes/cipher_asm.go#L33-L54)，您可以看到返回了两个不同的结构。
 
-```
+```go
 func newCipher(key []byte) (cipher.Block, error) {
   ...
   c := aesCipherAsm{aesCipher{make([]uint32, n), make([]uint32, n)}}
@@ -129,7 +127,8 @@ My hypothesis for the mechanics of this pattern is:
 1. The interface returned needs to be small so that there can be multiple implementations.
 2. Hold off on returning an interface until you have multiple types  in your package implementing only the interface. Multiple types with the same behavior signature gives confidence that you’ve the right  abstraction.
 
-1.返回的接口要小，这样才能有多个实现。
+1. 返回的接口要小，这样才能有多个实现。
+
 2. 推迟返回接口，直到您的包中有多个类型仅实现该接口。具有相同行为签名的多个类型让您确信您拥有正确的抽象。
 
 #### **Consider creating a separate interfaces-only package for namespacing and standardization**
@@ -138,13 +137,13 @@ My hypothesis for the mechanics of this pattern is:
 
 This is **not** an official guideline from the Go team,  it’s just an observation as having packages that contain only interfaces is a common pattern in the standard library.
 
-这 ** 不是 ** Go 团队的官方指南，这只是一种观察，因为仅包含接口的包是标准库中的常见模式。
+这 **不是** Go 团队的官方指南，这只是一种观察，因为仅包含接口的包是标准库中的常见模式。
 
 An example is the [`hash.Hash`](https://golang.org/pkg/hash/) interface that's implemented by the packages under the subdirectories of `hash/` such as [`hash/crc32` ](https://golang.org/pkg/hash/crc32/) and [`hash/adler32`](https://golang.org/pkg/hash/adler32/). The hash package only exposes interfaces.
 
 一个例子是 [`hash.Hash`](https://golang.org/pkg/hash/) 接口，它是由 `hash/` 子目录下的包实现的，例如 [`hash/crc32` ](https://golang.org/pkg/hash/crc32/) 和 [`hash/adler32`](https://golang.org/pkg/hash/adler32/)。 hash 包只暴露接口。
 
-```
+```go
 package hash
 
 type Hash interface {
@@ -176,7 +175,7 @@ Another package with only interfaces is [`encoding`](https://golang.org/pkg/enco
 
 另一个只有接口的包是 [`encoding`](https://golang.org/pkg/encoding/)。
 
-```
+```go
 package encoding
 
 type BinaryMarshaler interface {
@@ -208,7 +207,7 @@ I believe it’s because they want to hint to developers a standard  method sign
 
 我相信这是因为他们想向开发人员提示一个标准的方法签名，用于（取消）将二进制文件编组到对象中。如果新结构实现了该接口，则测试值是否实现了 `encoding.BinaryMarshaler` 接口的现有包不需要更改它们的实现。
 
-```
+```go
 if m, ok := v.(encoding.BinaryMarshaler);ok {
     return m.MarshalBinary()
 }
@@ -224,11 +223,11 @@ It's worth noting that this pattern is not followed with the `Resetter` interfac
 
 We can have larger interfaces such as [`gobType`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/encoding/gob/type.go#L167-L173) from the `encoding/gob` package without worrying about its contents. Interfaces can be duplicated across packages, such as the `timeout` interface that exists in both the [`os`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/os/error.go#L35-L37) and [`net`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/net/net.go#L494-L496) packages, without thinking about placing them in a separate location.
 
-我们可以有更大的接口，例如来自 `encoding/gob包而不必担心其内容。接口可以跨包复制，例如在 [`os`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/os/error.go#L35-L37) 和 [`net`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/net/net.go#L494-L496) 包，而不考虑将它们放在单独的位置。
+我们可以有更大的接口，例如来自encoding/gob包而不必担心其内容。接口可以跨包复制，例如在 `os` 和 [`net`](https://github.com/golang/go/blob/c170b14c2c1cfb2fd853a37add92a82fd6eb4318/src/net/net.go#L494-L496) 包，而不考虑将它们放在单独的位置。
 
 #### **Takeaways**
 
-#### **外卖**
+#### **要点**
 
 Defer, defer, and defer writing an interface to when you have a better understanding of the abstraction needed.
 
@@ -242,7 +241,5 @@ A good signal as a producer is when you have multiple types that  implements the
 
 *感谢 Nick Fischer 审阅这篇文章的早期草稿！*
 
-              Last modified: Dec 30, 2019 
-
-最后修改时间：2019 年 12 月 30 日
+Last modified: Dec 30, 2019 
 
