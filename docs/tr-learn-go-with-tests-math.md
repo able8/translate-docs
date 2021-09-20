@@ -2396,7 +2396,7 @@ Moreover, should we ever want to make some really, really WEIRD clocks - ones wi
 
 ## Wrapping up
 
-##  包起来
+##  总结
 
 Do we need to do anything else?
 

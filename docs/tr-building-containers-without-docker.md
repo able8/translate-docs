@@ -541,7 +541,7 @@ The way we used Kaniko still required Docker to be installed, but provided anoth
 
 ## Wrapping up
 
-##  包起来
+##  总结
 
 You can either use your normal container builder with OpenFaaS, or `faas-cli build --shrinkwrap` and pass the build-context along to your preferred tooling.
 
@@ -587,7 +587,7 @@ We did miss out one of the important parts of the workflow in this post, the dep
 
 ## Wrapping up
 
-##  包起来
+##  总结
 
 ### Get help with Cloud Native, Docker, Go, CI & CD, or Kubernetes
 

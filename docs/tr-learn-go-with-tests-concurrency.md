@@ -509,7 +509,7 @@ ok      github.com/gypsydave5/learn-go-with-tests/concurrency/v2        2.377s
 
 ## Wrapping up 
 
-##  包起来
+##  总结
 
 This exercise has been a little lighter on the TDD than usual. In a way we've been taking part in one long refactoring of the `CheckWebsites` function; the inputs and outputs never changed, it just got faster. But the tests we had in place, as well as the benchmark we wrote, allowed us to refactor `CheckWebsites` in a way that maintained confidence that the software was still working, while demonstrating that it had actually become faster.
 

@@ -4,8 +4,6 @@
 
 **2019 09 11**
 
-**2019 09 11**
-
 Go 1.13 introduces an enhanced [package errors](https://golang.org/pkg/errors) (née [xerrors](https://godoc.org/golang.org/x/xerrors)) which roughly standardizes programming with errors. Personally, I find the API confusing. This is a quick reference for how to use it effectively.
 
 Go 1.13 引入了增强的 [包错误](https://golang.org/pkg/errors) (née [xerrors](https://godoc.org/golang.org/x/xerrors))，它大致标准化了编程错误。就个人而言，我觉得 API 令人困惑。这是有关如何有效使用它的快速参考。
@@ -105,15 +103,12 @@ If you care about which error you received, you can check for sentinel errors wi
 ```go
 err := f()
 if errors.Is(err, ErrFoo) {
-    // you know you got an ErrFoo
-    // respond appropriately
+    // you know you got an ErrFoo respond appropriately
 }
 
 var bar *BarError
 if errors.As(err, &bar) {
-    // you know you got a BarError
-    // bar's fields are populated
-    // respond appropriately
+    // you know you got a BarError bar's fields are populated respond appropriately
 }
 ```
 

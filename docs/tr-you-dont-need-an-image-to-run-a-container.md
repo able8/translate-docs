@@ -210,7 +210,7 @@ Obviously, the pros of having images outweighed the negative impact of the layer
 
 ### Wrapping up
 
-###  包起来
+###  总结
 
 So, the moral may have sounded something like that: while the images aren't really needed to run containers, they have made the usage of the containers simple and handy and it contributed a lot to the containers' popularization.
 

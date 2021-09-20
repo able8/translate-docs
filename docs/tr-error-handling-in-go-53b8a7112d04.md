@@ -25,9 +25,7 @@ Go 的错误处理方法是其最具争议和滥用的功能之一。在本文�
 
 First thing’s first: Errors in Go are **not** Exceptions.
 
-第一件事是：Go 中的错误不是 ** 异常。
-
-[Dave Cheney](https://medium.com/u/b702737d9239?source=post_page-----53b8a7112d04--------------------------------)
+第一件事是：Go 中的错误不是 异常。
 
  wrote an [epic blog post](https://dave.cheney.net/2012/01/18/why-go-gets-exceptions-right) about it, so I'll refer you to it and summarise: In other languages,  you are uncertain if a function may throw an exception or not. Instead  of throwing exceptions, Go functions support **multiple return values**, and by convention, this ability is commonly used to return the function’s result along with an error variable.
 
@@ -55,7 +53,6 @@ Returning the error along with the results, along with Go’s strict type system
 
 将错误和结果一起返回，再加上 Go 的严格类型系统，使得编程错误更难编写。您应该始终假设函数的值已损坏，除非您已检查它返回的错误，并且通过将错误分配给空白标识符，您可以明确忽略您的函数值可能已损坏。
 
-![img](https://miro.medium.com/max/2000/1*jDw9aGCJZWQhN_mOWRINew.jpeg)
 
 The blank identifier is dark and full of terrors. 
 
@@ -83,9 +80,9 @@ Go 确实有一个 `panic` 和 `recover` 机制，这也在 [另一篇详细的 
 
 ## 错误接口
 
-Under the hood, the error type is a [simple single method interface](https://golang.org/ref/spec#Errors), and if you're not familiar with it, I highly recommend going over [this post] (https://blog.golang.org/error-handling-and-go) in the official Go Blog.
+Under the hood, the error type is a [simple single method interface](https://golang.org/ref/spec#Errors), and if you're not familiar with it, I highly recommend going over [this post](https://blog.golang.org/error-handling-and-go) in the official Go Blog.
 
-在幕后，错误类型是 [简单的单一方法接口](https://golang.org/ref/spec#Errors)，如果您不熟悉它，我强烈建议您阅读 [这篇文章] (https://blog.golang.org/error-handling-and-go) 在 Go 官方博客中。
+在幕后，错误类型是 [简单的单一方法接口](https://golang.org/ref/spec#Errors)，如果您不熟悉它，我强烈建议您阅读 [这篇文章](https://blog.golang.org/error-handling-and-go) 在 Go 官方博客中。
 
 ![img](https://miro.medium.com/max/1400/1*54Ys-4R9y3jV9ZHRNvyQUQ.png)
 
@@ -127,7 +124,7 @@ You can see its simplistic implementation [here](https://golang.org/src/errors/e
 
 ## `github.com/pkg/errors`
 
-## `github.com/pkg/errors`
+
 
 Another simple example is the `pkg/errors`[ package](https://github.com/pkg/errors/blob/master/errors.go). Not to be confused with the built-in `errors` package you learned about earlier, this package provides additional  important capabilities such as error wrapping, unwrapping, formatting  and stack trace recording. You can install the package by running `go get github.com/pkg/errors` .
 
@@ -229,13 +226,10 @@ The first one is the second kind of type assertion: Performing type assertion `x
 
 第一种是第二种类型断言：使用具体类型 `T` 执行类型断言 `x.(T)`。它断言 `x` 的值属于 `T` 类型，或者它可以转换为类型 `T`。
 
-![img]()
-
 The other one is the [Type Switch](https://golang.org/doc/effective_go.html#type_switch) pattern. Type switches combine a switch statement with type assertion, using the reserved `type` keyword. They are especially common in error handling, where knowing  the underlying type of an error variable can be very helpful.
 
 另一种是 [Type Switch](https://golang.org/doc/effective_go.html#type_switch) 模式。类型开关使用保留的 `type` 关键字将 switch 语句与类型断言结合起来。它们在错误处理中特别常见，在这种情况下，了解错误变量的基础类型会非常有帮助。
 
-![img]()
 
 The big drawback of both approaches is that they both lead to code coupling with their dependencies. Both examples need to be familiar with the `SomeErrorType` struct (which needs to be exported, obviously), and need to import the `mypkg` package.
 
@@ -245,17 +239,15 @@ In both approaches, when handling your errors, you must be familiar with  the ty
 
 在这两种方法中，在处理错误时，您必须熟悉类型并导入其包。当您处理包装错误时，情况会变得更糟，其中错误的原因可能是在您没有也不应该意识到的内部依赖项中创建的错误。
 
-![img]()
 
 Type switches differentiate between`*MyStruct` and `MyStruct`. So if you’re not sure if you are dealing with a pointer or an actual  instance of a struct, you’ll have to provide both. Moreover, just like  switches, cases in type switches do not fall through, but unlike  switches, usage of `fallthrough` is forbidden in type switches, so you’ll have to use comma and provide both options, which is easy to forget.
 
 类型开关区分`*MyStruct` 和`MyStruct`。因此，如果您不确定要处理的是指针还是结构的实际实例，则必须同时提供两者。而且，就像开关一样，类型开关中的cases不会落空，但与开关不同的是，类型开关中禁止使用`fallthrough`，所以你必须使用逗号并提供两个选项，这很容易忘记。
 
-![img]()
 
 # Wrapping up
 
-#  包起来
+#  总结
 
 That’s it! You’re now familiar with errors and should be ready to tackle any  errors your Go app may throw (or actually return) your way!
 

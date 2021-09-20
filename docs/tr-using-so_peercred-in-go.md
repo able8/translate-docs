@@ -342,7 +342,7 @@ All told, there are many interesting possibilities opened up with using `SO_PEER
 
 ## Wrapping Up
 
-##  包起来
+##  总结
 
 I hope this article proves useful in further understanding socket options in Go and the `SO_PEERCRED` option in particular.
 

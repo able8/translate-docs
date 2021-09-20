@@ -274,7 +274,7 @@ _`hello` 容器里面没有 `bash`。_
 
 ### Wrapping up
 
-###  包起来
+###  总结
 
 So, what should be the conclusion here? The [virtualization capabilities](https://en.wikipedia.org/wiki/OS-level_virtualization) of containers turned out to be so powerful that people started packing fully-featured user-lands like `debian` (or more lightweight alternatives like `alpine` or `busybox`) into containers. By virtue of this ability:
 
