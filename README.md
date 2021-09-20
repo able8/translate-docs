@@ -331,3 +331,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Top 6 security best practices for Go](docs/tr-top-6-security-best-practices-for-go.md)
 1. [Why we’re writing machine learning infrastructure in Go, not Python](docs/tr-why-were-writing-machine-learning-infrastructure-in-go-not-python-38d6a37e2d76.md)
 1. [[Exposing interfaces in Go](https://www.efekarakus.com/golang/2019/12/29/working-with-interfaces-in-go.html)](docs/tr-working-with-interfaces-in-go.md)
+1. [Fun with Concurrency in Golang](docs/tr-fun-with-concurrency-in-golang.md)
+1. [Handling Panics in Go](docs/tr-handling-panics-in-go.md)
+1. [How to Parse a JSON Request Body in Go](docs/tr-how-to-properly-parse-a-json-request-body.md)
+1. [Understanding Pointers in Go](docs/tr-understanding-pointers-in-go.md)
