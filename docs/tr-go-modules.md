@@ -8,8 +8,6 @@
 
 By Jai on August 26, 2019
 
-作者：Jai 2019 年 8 月 26 日
-
 Package management is one of the things Go has always missed. One of the major drawbacks of the previous (pre 1.11) `go get` was lack of support for managing dependency versions and enabling  reproducible builds. The community has developed package managers and  tools like Glide, dep and [many others](https://github.com/golang/go/wiki/PackageManagementTools) serving as de-facto solutions for versioning dependencies.
 
 包管理是 Go 一直错过的事情之一。之前（1.11 之前）`go get` 的主要缺点之一是缺乏对管理依赖项版本和启用可重复构建的支持。社区已经开发了包管理器和工具，如 Glide、dep 和 [许多其他](https://github.com/golang/go/wiki/PackageManagementTools) 作为版本控制依赖项的事实上的解决方案。
@@ -28,7 +26,7 @@ Go 的包管理实现可以追溯到谷歌（谷歌拥有一个巨大的单体�
 
 1. 版本依赖
 2. 供应商依赖
-3.`GOPATH`的必要性
+3. `GOPATH`的必要性
 
 ## Versioning dependencies
 
@@ -99,8 +97,8 @@ Go 模块带来了三个重要的内置特性，
 3. No more `GOPATH` limitation. Modules can be in any path.
 
 1. `go.mod` 文件类似于 `package.json` 或 `Pipfile`。
-2. 机器生成的传递依赖描述 - `go.sum`。
-3.不再有`GOPATH`限制。模块可以在任何路径中。
+5. 机器生成的传递依赖描述 - `go.sum`。
+6. 不再有`GOPATH`限制。模块可以在任何路径中。
 
 ```bash
 $ go help mod
@@ -298,7 +296,7 @@ This creates a directory named `vendor` in the root directory of the main module
 
 #### 不再需要`GOPATH`了吗？
 
-No. Farewell `GOPATH`.
+No.  Farewell `GOPATH`.
 
 不。再见`GOPATH`。
 
