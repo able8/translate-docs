@@ -90,7 +90,7 @@ Here are some of the reasons I enjoy programming in Go (and why you might like i
 
 ## 标准库
 
-Go’s [standard library](https://golang.org/pkg/)is  extensive, cross-platform, and well documented. Similar to Python, Go  comes with “batteries included”, so you can build useful servers and CLI tools right away, without any third party dependencies. Here are some  of the highlights (biased towards what I’ve used):
+Go’s [standard library](https://golang.org/pkg/)is  extensive, cross-platform, and well documented. Similar to Python, Go comes with “batteries included”, so you can build useful servers and CLI tools right away, without any third party dependencies. Here are some  of the highlights (biased towards what I’ve used):
 
 Go 的 [标准库](https://golang.org/pkg/) 是广泛的、跨平台的，并且有据可查。与 Python 类似，Go 带有“内置电池”，因此您可以立即构建有用的服务器和 CLI 工具，而无需任何第三方依赖。以下是一些亮点（偏向于我使用过的）：
 

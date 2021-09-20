@@ -361,7 +361,7 @@ The process of getting the container correctly configured can take multiple iter
 
 ### 缓存问题
 
-Go’s test command will use previous results where it can, by skipping all  checks against code that hasn’t changed. Unfortunately, with these  integration tests, external dependency could have changed, and the Go  toolchain has no way to know. To avoid this pitfall, force all tests to  run one time by adding `--count=1`.
+Go’s test command will use previous results where it can, by skipping all  checks against code that hasn’t changed. Unfortunately, with these  integration tests, external dependency could have changed, and the Go toolchain has no way to know. To avoid this pitfall, force all tests to  run one time by adding `--count=1`.
 
 Go 的 test 命令将尽可能使用以前的结果，跳过对未更改代码的所有检查。不幸的是，通过这些集成测试，外部依赖可能已经改变，Go 工具链无法知道。为了避免这个陷阱，通过添加 `--count=1` 强制所有测试运行一次。
 

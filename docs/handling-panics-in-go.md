@@ -51,7 +51,7 @@ main.main()
 
 The name of the panic’s output provides a hint: `panic: runtime error: index out of range`. We created a slice with three sea creatures. We then tried to get the  last element of the slice by indexing that slice with the length of the  slice using the `len` builtin function. Remember that slices  and arrays are zero-based; so the first element is zero and the last  element in this slice is at index `2`. Since we try to access the slice at the third index, `3`, there is no element in the slice to return because it is beyond the  bounds of the slice. The runtime has no option but to terminate and exit since we have asked it to do something impossible. Go also can’t prove  during compilation that this code will try to do this, so the compiler  cannot catch this.
 
-Notice also that the subsequent code did not run. This is because a  panic is an event that completely halts the execution of your Go  program. The message produced contains multiple pieces of information  helpful for diagnosing the cause of the panic.
+Notice also that the subsequent code did not run. This is because a  panic is an event that completely halts the execution of your Go program. The message produced contains multiple pieces of information  helpful for diagnosing the cause of the panic.
 
 ## Anatomy of a Panic
 

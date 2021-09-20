@@ -286,7 +286,7 @@ The process of getting the container correctly configured can take multiple iter
 
 ### Caching Issues
 
-Go’s test command will use previous results where it can, by skipping all  checks against code that hasn’t changed. Unfortunately, with these  integration tests, external dependency could have changed, and the Go  toolchain has no way to know. To avoid this pitfall, force all tests to  run one time by adding `--count=1`.
+Go’s test command will use previous results where it can, by skipping all  checks against code that hasn’t changed. Unfortunately, with these  integration tests, external dependency could have changed, and the Go toolchain has no way to know. To avoid this pitfall, force all tests to  run one time by adding `--count=1`.
 
 `go test ./... --tags integration --count=1`.
 

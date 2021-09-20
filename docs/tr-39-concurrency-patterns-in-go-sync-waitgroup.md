@@ -105,7 +105,7 @@ for _, service := range services {
 ```
 
  
-In either case, **I recommend calling Add() outside of the concurrent code to ensure it runs immediately**. If we were to instead place this inside of the goroutine it is possible that the program will get to the wg.Wait() line before the goroutine  has run, in which case wg.Wait() won't have anything to wait on and we  will be in the same position we were in before. This is shown on the Go  Playground here: https://play.golang.org/p/Yl4f_5We6s7
+In either case, **I recommend calling Add() outside of the concurrent code to ensure it runs immediately**. If we were to instead place this inside of the goroutine it is possible that the program will get to the wg.Wait() line before the goroutine  has run, in which case wg.Wait() won't have anything to wait on and we  will be in the same position we were in before. This is shown on the Go Playground here: https://play.golang.org/p/Yl4f_5We6s7
 
 无论哪种情况，**我建议在并发代码之外调用 Add() 以确保它立即运行**。如果我们将它放在 goroutine 中，那么程序可能会在 goroutine 运行之前到达 wg.Wait() 行，在这种情况下 wg.Wait() 将没有任何东西可以等待并且我们将处于与以前相同的位置。这显示在 Go Playground 上：https://play.golang.org/p/Yl4f_5We6s7
 

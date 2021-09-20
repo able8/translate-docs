@@ -205,7 +205,7 @@ Not sure what type item "hobbies" is, but I think it might be []interface {}
 
 ## 何时使用 `map[string]interface{}`
 
-As we've seen, the "map of string to empty interface" type is very  useful when we need to deal with data that comes from outside the Go  world; for example, arbitrary JSON data of unknown schema. Many web APIs return data like this, for example.
+As we've seen, the "map of string to empty interface" type is very  useful when we need to deal with data that comes from outside the Go world; for example, arbitrary JSON data of unknown schema. Many web APIs return data like this, for example.
 
 正如我们所见，当我们需要处理来自 Go 世界之外的数据时，“字符串到空接口的映射”类型非常有用；例如，未知模式的任意 JSON 数据。例如，许多 Web API 返回这样的数据。
 
@@ -266,7 +266,7 @@ To wrap up this series, we'll look at a bunch of [frequently asked questions abo
 
 ## 正在寻找 Go 方面的帮助？
 
-If you found this article useful, and you'd like to learn more about  Go, then I can help! I offer one-to-one or group mentoring in Go  development, for complete beginners through to experienced Gophers. Check out my [Learn Golang with mentoring](https://bitfieldconsulting.com/golang/learn) page to find out more, or email [go@bitfieldconsulting.com](mailto:go@bitfieldconsulting.com). I've also written a series of friendly little ebooks called [For the Love of Go](https://bitfieldconsulting.com/books) which are available to buy now.
+If you found this article useful, and you'd like to learn more about  Go, then I can help! I offer one-to-one or group mentoring in Go development, for complete beginners through to experienced Gophers. Check out my [Learn Golang with mentoring](https://bitfieldconsulting.com/golang/learn) page to find out more, or email [go@bitfieldconsulting.com](mailto:go@bitfieldconsulting.com). I've also written a series of friendly little ebooks called [For the Love of Go](https://bitfieldconsulting.com/books) which are available to buy now.
 
 如果你觉得这篇文章有用，并且你想了解更多关于 Go 的知识，那么我可以提供帮助！我在 Go 开发中提供一对一或小组指导，从初学者到经验丰富的 Gophers。查看我的 [通过指导学习 Golang](https://bitfieldconsulting.com/golang/learn) 页面以了解更多信息，或发送电子邮件至 [go@bitfieldconsulting.com](mailto:go@bitfieldconsulting.com)。我还编写了一系列名为 [For the Love of Go](https://bitfieldconsulting.com/books) 的友好小电子书，现在可以购买。
 

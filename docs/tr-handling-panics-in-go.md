@@ -77,7 +77,7 @@ The name of the panic’s output provides a hint: `panic: runtime error: index o
 
 恐慌输出的名称提供了一个提示：“恐慌：运行时错误：索引超出范围”。我们用三个海洋生物创建了一个切片。然后我们尝试通过使用 `len` 内置函数用切片的长度索引该切片来获取切片的最后一个元素。请记住，切片和数组是从零开始的；所以第一个元素为零，这个切片中的最后一个元素在索引“2”处。由于我们尝试访问位于第三个索引“3”处的切片，因此切片中没有要返回的元素，因为它超出了切片的边界。运行时别无选择，只能终止并退出，因为我们要求它做一些不可能的事情。 Go 也无法在编译期间证明这段代码会尝试这样做，因此编译器无法捕捉到这一点。
 
-Notice also that the subsequent code did not run. This is because a  panic is an event that completely halts the execution of your Go  program. The message produced contains multiple pieces of information  helpful for diagnosing the cause of the panic.
+Notice also that the subsequent code did not run. This is because a  panic is an event that completely halts the execution of your Go program. The message produced contains multiple pieces of information  helpful for diagnosing the cause of the panic.
 
 另请注意，后续代码没有运行。这是因为 panic 是一个完全停止 Go 程序执行的事件。生成的消息包含多条有助于诊断恐慌原因的信息。
 

@@ -1,4 +1,4 @@
-# How to Build a Custom Kubernetes Ingress Controller in Go  
+# How to Build a Custom Kubernetes Ingress Controller in Go 
 
 Oct 10, 2019 at 11:52AM
 

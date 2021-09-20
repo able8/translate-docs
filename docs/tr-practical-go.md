@@ -1639,7 +1639,7 @@ TODO: unused
 
 Unused local variables can be a source of errors and reduce  readability. Unused imports slow compilation and linking, even if that unused code is removed in the final binary the cost is still paid on every build.
 
-Language design is a trade off, as Pike and others have described Go  as "a language for programming in the large". Go achieves its goals of improved readability and efficient compilation. Making unused globals an error would push more burden onto programmers,  which is itself in conflict with the goal of reducing compiler  bureaucracy.
+Language design is a trade off, as Pike and others have described Go as "a language for programming in the large". Go achieves its goals of improved readability and efficient compilation. Making unused globals an error would push more burden onto programmers,  which is itself in conflict with the goal of reducing compiler  bureaucracy.
 
 Functional options let you write APIs that can grow over time. They enable the default use case to be the simplest. They provide meaningful configuration parameters. They give you access to the entire power of the language to initialize complex values.
 
@@ -2140,7 +2140,7 @@ Case sensitivity issues are still a signficant cross platform issue and will lim
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
-Just as I talked earlier about nameing variables, the name of a  package is very important. I start by asking myself questions like, "what is the purpose of this  package" or "what does service does package provide?". Hopefully the answer to that question is "this package let’s you speak  HTTP", not "this package provides the X type", otherwise its time to go  back to the drawing board.
+Just as I talked earlier about nameing variables, the name of a  package is very important. I start by asking myself questions like, "what is the purpose of this  package" or "what does service does package provide?". Hopefully the answer to that question is "this package let’s you speak  HTTP", not "this package provides the X type", otherwise its time to Go back to the drawing board.
 
 | Tip  | Name your package for what it *provides*, not what it *contains*. |
 | ---- | ------------------------------------------------------------ |

@@ -116,7 +116,7 @@ There are two reasons to avoid creating your own goroutines to handle writing lo
 
 ### [Write your logs to a file](https://www.datadoghq.com/blog/go-logging/#write-your-logs-to-a-file)
 
-Even if you’re shipping your logs to a central platform, we recommend  writing them to a file on your local machine first. You will want to  make sure your logs are always available locally and not lost in the  network. In addition, writing to a file means that you can decouple the  task of writing your logs from the task of sending them to a central  platform. Your applications themselves will not need to establish  connections or stream your logs, and you can leave these jobs to  specialized software like the Datadog Agent. If you’re running your Go  applications within a containerized infrastructure that does not already include persistent storage—e.g., containers running on [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-storage.html)—you may want to configure your log management tool to collect logs directly from your containers' STDOUT and STDERR streams (this is handled  differently in [Docker](https://docs.docker.com/config/containers/logging/configure/) and [Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/logging/)).
+Even if you’re shipping your logs to a central platform, we recommend  writing them to a file on your local machine first. You will want to  make sure your logs are always available locally and not lost in the  network. In addition, writing to a file means that you can decouple the  task of writing your logs from the task of sending them to a central  platform. Your applications themselves will not need to establish  connections or stream your logs, and you can leave these jobs to  specialized software like the Datadog Agent. If you’re running your Go applications within a containerized infrastructure that does not already include persistent storage—e.g., containers running on [AWS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-storage.html)—you may want to configure your log management tool to collect logs directly from your containers' STDOUT and STDERR streams (this is handled  differently in [Docker](https://docs.docker.com/config/containers/logging/configure/) and [Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/logging/)).
 
 ### [Implement a standard logging interface](https://www.datadoghq.com/blog/go-logging/#implement-a-standard-logging-interface)
 
@@ -303,7 +303,7 @@ If you want to dig more deeply into Golang tracing possibilities, you can use a 
 
 ## [Clean and comprehensive Golang logs](https://www.datadoghq.com/blog/go-logging/#clean-and-comprehensive-golang-logs)
 
-In this post, we’ve highlighted the benefits and tradeoffs of several Go  logging libraries. We’ve also recommended ways to ensure that your logs  are available and accessible when you need them, and that the  information they contain is consistent and easy to analyze.
+In this post, we’ve highlighted the benefits and tradeoffs of several Go logging libraries. We’ve also recommended ways to ensure that your logs  are available and accessible when you need them, and that the  information they contain is consistent and easy to analyze.
 
 To start analyzing all of your Go logs with Datadog, sign up for a [free trial](https://www.datadoghq.com/blog/go-logging/#).
 

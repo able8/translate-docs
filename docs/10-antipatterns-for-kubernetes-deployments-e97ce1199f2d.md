@@ -10,7 +10,7 @@ When you have containers running in production, you want your production  enviro
 
 Best practices evolve with time, so it’s always good to continuously  research and experiment for better ways for Kubernetes development. As  it is still a young technology, we are always looking to improve our  understanding and use of it.
 
-In this article, we’ll be examining ten common practices in Kubernetes  deployments that have better solutions at a high level. I will not go  into depth on the best practices since custom implementation might vary  among users.
+In this article, we’ll be examining ten common practices in Kubernetes  deployments that have better solutions at a high level. I will not Go into depth on the best practices since custom implementation might vary  among users.
 
 1. Putting the configuration file inside/alongside the Docker image
 2. Not using Helm or other kinds of templating

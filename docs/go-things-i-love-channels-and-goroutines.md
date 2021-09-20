@@ -18,7 +18,7 @@ Concurrency, in some form, is one of the most important building blocks of  perf
 
 ## First Class
 
-To be  first-class is to have full support and consideration in all things.  That means, to be first-class, concurrency must be a part of the Go  language itself. It cannot be a library bolted on the side.
+To be  first-class is to have full support and consideration in all things.  That means, to be first-class, concurrency must be a part of the Go language itself. It cannot be a library bolted on the side.
 
 A few type declarations will begin to show how concurrency is built into the language.
 
@@ -111,7 +111,7 @@ func main() {
 
 Now, only one goroutine can modify the `ints` slice while the rest communicate through a channel. They're sharing  memory by communicating through a channel instead of modifying shared  memory.
 
-The example here shows two important ways that concurrency (goroutines and channels) are first-class citizens of the Go  programming language. First, we used a write-only channel argument. This guaranteed that the method won't accidentally read from the channel,  unexpectedly altering the functionality. Second, we see that the `for range` loop works on channels.
+The example here shows two important ways that concurrency (goroutines and channels) are first-class citizens of the Go programming language. First, we used a write-only channel argument. This guaranteed that the method won't accidentally read from the channel,  unexpectedly altering the functionality. Second, we see that the `for range` loop works on channels.
 
 These are just a few ways that Go makes concurrency a first-class citizen.  Next, let's see what we can accomplish with goroutines and channels.
 

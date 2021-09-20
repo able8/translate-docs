@@ -4,7 +4,7 @@
 
 September 10, 2019 • 11 min read • by **Loris Cro**
 
-2019 年 9 月 10 日 • 阅读 11 分钟 • 作者：**Loris Cro**
+
 
 What's the role of Go in a universe where Rust exists?
 
@@ -12,7 +12,7 @@ What's the role of Go in a universe where Rust exists?
 
 Imagine you’re a developer who mainly works with Go. You go to an event and, while chatting with some people, you decide to share with them the news that you wrote a small tool that does _something_. You claim that since you wrote it in Go, it’s fairly fast, it’s a single binary, etc. The group seems pleased with your recount and you start feeling good, but then you notice a stranger approaching from behind. A bone-chilling wind blows and you hear: “Why Go and not Rust?”
 
-假设您是一名主要使用 Go 的开发人员。你去参加一个活动，在和一些人聊天时，你决定与他们分享你写了一个可以做_某事_的小工具的消息。你声称自从你用 Go 编写它以来，它相当快，它是一个单一的二进制文件，等等。小组似乎对你的叙述很满意，你开始感觉良好，但随后你注意到一个陌生人从后面接近。一阵刺骨的风吹来，你听到：“为什么去而不是锈？”
+假设您是一名主要使用 Go 的开发人员。你去参加一个活动，在和一些人聊天时，你决定与他们分享你写了一个可以做_某事_的小工具的消息。你声称自从你用 Go 编写它以来，它相当快，它是一个单一的二进制文件，等等。小组似乎对你的叙述很满意，你开始感觉良好，但随后你注意到一个陌生人从后面接近。一阵刺骨的风吹来，你听到：“为什么Go而不是Rust？”
 
 You start feeling less good. Well, you could answer that Go is what you know, so that’s what you used to solve your problem, but that’s probably not going to be a satisfactory answer. You were pridefully talking about how fast your tool was in the first place, and it’s obvious that the stranger is going to counter your simplistic excuse with all the great benefits that Rust brings over Go.
 
@@ -20,7 +20,7 @@ You start feeling less good. Well, you could answer that Go is what you know, so
 
 You start feeling bad. Why did you choose to learn Go in the first place? You were told that Go is fast and that it has great concurrency primitives, and now Rust comes along and everybody is saying that Rust is better in every aspect. Were they lying before or are they lying now? While there is no single language to rule them all, you know that it’s still possible to make bad choices and end up in a technological cul de sac. After all, you did choose Go over _that_ other language a few years ago and you were pretty pleased with the routine of joining circles to ask “Why _that_ and not Go?”
 
-你开始感觉不好。你当初为什么选择学习围棋？你被告知 Go 很快，并且它有很好的并发原语，现在 Rust 出现了，每个人都说 Rust 在各个方面都更好。他们以前撒谎还是现在撒谎？虽然没有一种语言可以统治所有这些，但您知道仍有可能做出错误的选择并最终陷入技术死胡同。毕竟，几年前你确实选择了 Go over _that_ 其他语言，而且你对加入圈子问“为什么 _that_ 而不是 Go？”的惯例感到非常满意。
+你开始感觉不好。你当初为什么选择学习 Go  ？你被告知 Go 很快，并且它有很好的并发原语，现在 Rust 出现了，每个人都说 Rust 在各个方面都更好。他们以前撒谎还是现在撒谎？虽然没有一种语言可以统治所有这些，但您知道仍有可能做出错误的选择并最终陷入技术死胡同。毕竟，几年前你确实选择了 Go over _that_ 其他语言，而且你对加入圈子问“为什么 _that_ 而不是 Go？”的惯例感到非常满意。
 
 * * *
 
@@ -52,7 +52,7 @@ If you’re a Go developer you might feel a bit cheated. In contrast, Python dev
 
 What about Go?
 
-去呢？
+Go？
 
 ## Go is very good for writing services
 
@@ -131,14 +131,11 @@ Because of the environment resulting from this general premise, a few well-known
 由于这个大前提所产生的环境，随着时间的推移，出现了一些著名的企业发展“怪癖”。我将说出与我的观点相关的三个。
 
 1. **There are a lot of junior developers** who learn on the job how to program and most are not lucky enough to find a job that will truly teach them anything. In some places, after you’re hired, you are stationed for one week in front of PluralSight and then you’re considered ready to go. 
-
-1. **有很多初级开发人员**在工作中学习如何编程，但大多数人都没有幸运地找到一份能真正教会他们任何东西的工作。在某些地方，在您被录用后，您会在 PluralSight 前驻扎一周，然后您就被认为准备好了。
-
+2. **有很多初级开发人员**在工作中学习如何编程，但大多数人都没有幸运地找到一份能真正教会他们任何东西的工作。在某些地方，在您被录用后，您会在 PluralSight 前驻扎一周，然后您就被认为准备好了。
 2. **Software projects quickly become huge and complex for all the wrong reasons.** Big projects take time to build and people (or whole teams) will come and go in the meantime. Constant refactoring is never an option so each will leave behind a lot of code written with very varying levels of quality. Multiple teams working in parallel will produce redundant code. The domain shifts over time, inevitably invalidating older assumptions and consequently causing abstractions to leak. The more sophisticated an abstraction is, the higher the risk that it will become a problem when business comes back with a serious change request.
-3. **The toolchain is very often lousy and/or dated.** This is pretty much the inevitable result of all that I described so far. Huge amounts of old code tie you down to a specific toolset, junior developers will learn the status-quo at best, and the people on top (managers and stakeholders) are extremely often not prepared for making technological decisions based on first-hand experience, the general nature of the endeavor makes them risk-averse, causing them to mainly mimic what other successful players in their space do or, more precisely, what analysts _claim_ other successful players do.
-
-2. **软件项目由于各种错误的原因而迅速变得庞大和复杂。** 大型项目需要时间来构建，同时人员（或整个团队）会来来去去。不断的重构从来都不是一种选择，所以每次重构都会留下大量质量参差不齐的代码。多个团队并行工作将产生冗余代码。领域随着时间的推移而变化，不可避免地使旧的假设无效，从而导致抽象泄漏。抽象越复杂，当业务带着严重的变更请求返回时，它成为问题的风险就越大。
-3. **工具链通常很糟糕和/或过时。** 这几乎是我到目前为止所描述的所有结果的必然结果。大量的旧代码将您束缚在特定的工具集上，初级开发人员最多只能了解现状，而高层人员（经理和利益相关者）通常没有准备好根据第一手经验做出技术决策，这种努力的一般性质使他们规避风险，导致他们主要模仿他们领域中其他成功的参与者所做的事情，或者更准确地说，是分析师_声称_其他成功参与者所做的事情。
+4. **软件项目由于各种错误的原因而迅速变得庞大和复杂。** 大型项目需要时间来构建，同时人员（或整个团队）会来来去去。不断的重构从来都不是一种选择，所以每次重构都会留下大量质量参差不齐的代码。多个团队并行工作将产生冗余代码。领域随着时间的推移而变化，不可避免地使旧的假设无效，从而导致抽象泄漏。抽象越复杂，当业务带着严重的变更请求返回时，它成为问题的风险就越大。
+5. **The toolchain is very often lousy and/or dated.** This is pretty much the inevitable result of all that I described so far. Huge amounts of old code tie you down to a specific toolset, junior developers will learn the status-quo at best, and the people on top (managers and stakeholders) are extremely often not prepared for making technological decisions based on first-hand experience, the general nature of the endeavor makes them risk-averse, causing them to mainly mimic what other successful players in their space do or, more precisely, what analysts _claim_ other successful players do.
+6. **工具链通常很糟糕和/或过时。** 这几乎是我到目前为止所描述的所有结果的必然结果。大量的旧代码将您束缚在特定的工具集上，初级开发人员最多只能了解现状，而高层人员（经理和利益相关者）通常没有准备好根据第一手经验做出技术决策，这种努力的一般性质使他们规避风险，导致他们主要模仿他们领域中其他成功的参与者所做的事情，或者更准确地说，是分析师_声称_其他成功参与者所做的事情。
 
 ####  Go is about suppressing complexity at scale
 
@@ -175,18 +172,6 @@ Go 并不是很快。 Go 的内存效率并不高。 Go 没有绝对最好的并
 Go is faster than Java / C#, more memory-efficient than Java / C#, and definitely has better concurrency than Java / C#. **Go is simple so that all of this can hold true when confronting the average Go program with the average Java / C# program.** It doesn’t matter whether Go is truly faster than C# or Java in an absolute sense. The average Java / C# application will be very different than the best theoretical program, and the amount of foot guns in those languages is huge compared to Go. If you want an example, [take a look at this talk on C# concurrency](https://www.youtube.com/watch?v=J0mcYVxJEl0), it's incredible in my opinion how the straightforward use of `await` is * *never** correct. Imagine how broken must be the average asynchronous C# application. Actually, ASP.NET applications deadlocking for no apparent reason are not uncommon.
 
 Go 比 Java / C# 更快，比 Java / C# 更节省内存，并且绝对比 Java / C# 具有更好的并发性。 **Go 很简单，所以当面对普通的 Go 程序和普通的 Java / C# 程序时，所有这些都可以成立。 ** Go 是否真正比 C# 或 Java 快并不重要。普通的 Java / C# 应用程序将与最好的理论程序大不相同，并且与 Go 相比，这些语言中的步数是巨大的。如果你想要一个例子，[看看这个关于 C# 并发的演讲](https://www.youtube.com/watch?v=J0mcYVxJEl0)，在我看来，`await` 的直接使用是多么令人难以置信* *从不**正确。想象一下普通的异步 C# 应用程序是多么的破碎。实际上，ASP.NET 应用程序无缘无故死锁的情况并不少见。
-
-[![deadlock table](http://kristoff.it/static/aa7feb8568c2376bb953e0d7383bfafc/c7805/1*JrvDmC-KS7iL2Aexb-lskA.png)](http://kristoff.it/static/aa7feb8568c2376bb953e0d7383bfafc/02da8/1*JrvDmC-KS7iL2Aexb-lskA.png)
-
--KS7iL2Aexb-lskA.png)
-
-Will it deadlock? (click to zoom)
-
-会死机吗？ （点击放大）
-
-This image was taken from [this blog post](https://medium.com/rubrikkgroup/understanding-async-avoiding-deadlocks-e41f8f2c6f5d) that tries to explain the innumerable ways of breaking concurrency in C#.
-
-这张图片取自 [这篇博文](https://medium.com/rubrikkgroup/understanding-async-avoiding-deadlocks-e41f8f2c6f5d)，试图解释在 C# 中破坏并发的无数方法。
 
 ## In conclusion
 

@@ -1,6 +1,6 @@
 # Go Operator Tutorial
 
-# Go  Operator 教程
+# Go Operator 教程
 
 From: https://sdk.operatorframework.io/docs/building-operators/golang/tutorial/
 

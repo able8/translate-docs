@@ -1,4 +1,4 @@
-# Let's Create a Simple Load Balancer With Go    
+# Let's Create a Simple Load Balancer With Go   
 
 Posted 8. November 2019.   **10 min read.**
 

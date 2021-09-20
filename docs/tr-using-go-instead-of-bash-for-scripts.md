@@ -88,13 +88,11 @@ The system I settled on is:
 
 我选择的系统是：
 
-- `do` directory contains a single, multiple-purpose Go program. A single program that does many things is better suited to Go  than multiple programs as it makes it easy to share helper functions
+- `do` directory contains a single, multiple-purpose Go program. A single program that does many things is better suited to Go than multiple programs as it makes it easy to share helper functions
 
 - `do` 目录包含一个单一的、多用途的 Go 程序。一个可以做很多事情的程序比多个程序更适合 Go，因为它可以很容易地共享辅助函数
 
 - to run it: `cd do; go run . ${flags}`
-
-- 运行它：`cd do;去跑步 。 ${flags}`
 
 - to make things easier to type, I have
 
@@ -105,10 +103,6 @@ The system I settled on is:
   ```
 
   
-:
-
-   ：
-
   ```
    #!/bin/bash
   
@@ -124,13 +118,9 @@ The system I settled on is:
    do\do.bat
   ```
 
-  
-:
-
-   ：
 
   ```
-   @cd do
+  @cd do
   @go run -race .%*
   ```
 
@@ -142,10 +132,8 @@ The system I settled on is:
    ~/.bash_profile
   ```
 
-   
-(on Mac):
 
-   （在 Mac 上）：
+(on Mac):
 
   ```
    function doit() {
@@ -159,7 +147,7 @@ The system I settled on is:
   }
   ```
 
-  
+
 I can then type `doit ${args}` to launch either `./do.sh` or `./do/do.sh` (whichever exists).
 
 然后我可以输入 `doit ${args}` 来启动 `./do.sh` 或 `./do/do.sh`（以存在者为准）。
@@ -182,7 +170,7 @@ If I forget which flags are available, `do` without arguments prints them all.
 
 ## A structure of `do` program
 
-##`do`程序的结构
+## `do`程序的结构
 
 Main function checks cmd-line arguments and calls the right function to perform a given command.
 
@@ -192,7 +180,7 @@ Here's an implementation of dispatching two commands: `-run` and `-deploy`.
 
 这是分派两个命令的实现：`-run` 和 `-deploy`。
 
-```
+```go
 func main() {
     cdToTopDir()
     fmt.Printf("topDir: '%s'\n", topDir())
@@ -256,7 +244,7 @@ func cdToTopDir() {
 
 This relies on knowledge that we execute the program with `cd do; go run . ${args}`.
 
-这依赖于我们使用 `cd do; 执行程序的知识；去跑步 。 ${args}`。
+这依赖于我们使用 `cd do; go run . ${args}`。
 
 I also print the absolute path of current directory at the beginning to make sure it is correct.
 
@@ -303,7 +291,7 @@ func readFile(path string) []byte {
 
 ## 执行程序
 
-A common thing to do is executing other programs. For example,  `do -run` would typically execute `go build . -o myapp` and `./myapp.`
+A common thing to do is executing other programs. For example,  `do -run` would typically execute `go build . -o myapp` and `./myapp`
 
 通常要做的事情是执行其他程序。例如，`do -run` 通常会执行 `go build 。 -o myapp` 和 `./myapp.`
 
@@ -330,7 +318,7 @@ Other useful things possible with `exec.Cmd`:
    - 设置执行程序的工作目录
 
   ```
-   cmd := exec.Command("./myapp")
+  cmd := exec.Command("./myapp")
   cmd.Dir = "working/directory"
   ```
 
@@ -339,7 +327,7 @@ Other useful things possible with `exec.Cmd`:
    - 设置环境变量
 
   ```
-   cmd.Env = os.Environ()
+  cmd.Env = os.Environ()
   cmd.Env = append(cmd.Env, "GOOS=linux", "GOARCH=amd64")
   ```
 
@@ -348,7 +336,7 @@ Other useful things possible with `exec.Cmd`:
    - 获取命令的输出
 
   ```
-   cmd := exec.Command("ls", "-lah")
+  cmd := exec.Command("ls", "-lah")
   // CombinedOutput() calls Run() and returns captured stdout / stderr as []byte
   out, err := cmd.CombinedOutput()
   must(err)
@@ -359,7 +347,7 @@ Other useful things possible with `exec.Cmd`:
 
    - 有时您不想阻塞等待程序完成。非常适合启动 Windows GUI 程序：
 
-  ```
+  ```go
    func openNotepadWithFile(path string) {
       cmd := exec.Command("notepad.exe", path)
       err := cmd.Start() // this starts the programs but doesn't wait for it to finish
@@ -369,18 +357,16 @@ Other useful things possible with `exec.Cmd`:
 
 - if you
 
-   - 如果你
-
   ```
-   Start()
+   Start() 
   ```
 
-   
+
 a process, you might want to ensure it's killed on exit:
 
    一个进程，您可能希望确保它在退出时被杀死：
 
-  ```
+  ```go
    func main() {
       // ...
       err := cmd.Start()
@@ -403,8 +389,8 @@ a process, you might want to ensure it's killed on exit:
 
    - 在程序执行时查看程序的 stdout 和 stderr
 
-  ```
-   // set program's stdout / stderr ot console's stdout/stderr to
+  ```go
+  // set program's stdout / stderr ot console's stdout/stderr to
   // see what it prints
   // incompatible with capturing stdout / stderr with `CombinedOutput()`
   cmd.Stdout = os.Stdout
@@ -472,7 +458,7 @@ When working on backends for web apps it's convenient to auto-open the web site 
 
 在处理 Web 应用程序的后端时，在本地启动应用程序时，可以方便地在浏览器中自动打开网站。
 
-```
+```go
 // openBrowsers open web browser with a given url
 // (can be http:// or file://)
 func openBrowser(url string) {
@@ -499,7 +485,7 @@ Reads all files in a zip file and returns them as a map from file name to conten
 
 读取 zip 文件中的所有文件，并将它们作为从文件名到内容的映射返回。
 
-```
+```go
 func readZipFile(path string) map[string][]byte {
     r, err := zip.OpenReader(path)
     must(err)
@@ -525,7 +511,7 @@ Shorter way to read / write files.
 
 更短的读/写文件的方法。
 
-```
+```go
 func readFile(path string) []byte {
     d, err := ioutil.ReadFile(path)
     must(err)
@@ -546,7 +532,7 @@ Returns a path of the user's home directory.
 
 返回用户主目录的路径。
 
-```
+```go
 func getHomeDir() string {
     s, err := os.UserHomeDir()
     must(err)
@@ -562,7 +548,7 @@ Equivalent of `cp` in bash.
 
 相当于 bash 中的 `cp`。
 
-```
+```go
 func cpFile(dstPath, srcPath string) {
     d, err := ioutil.ReadFile(srcPath)
     must(err)
@@ -573,13 +559,13 @@ func cpFile(dstPath, srcPath string) {
 
 ### checkGitClean
 
-### checkGitClean
+
 
 To prevent accidental deploys, my scripts use `checkGitClean` and refuse to deploy if there are un-commited changes to working directory:
 
 为了防止意外部署，我的脚本使用 `checkGitClean` 并在工作目录有未提交的更改时拒绝部署：
 
-```
+```go
 var (
     verbose bool
 )
@@ -625,15 +611,13 @@ func checkGitClean(dir string) {
 
 ### createZipFile
 
-### createZipFile
+
 
 This is a helper to create a .zip archive with the content of one or more directories or files.
 
 这是使用一个或多个目录或文件的内容创建 .zip 存档的助手。
 
 Example use: `createZipFile("archive.zip", ".", "myapp", "www")`
-
-使用示例：`createZipFile("archive.zip", ".", "myapp", "www")`
 
 This creates [`archive.zip`](http://archive.zip) with the content of `myapp` file and `www` directory. Those files are located in current (`.`) directory.
 
@@ -643,7 +627,7 @@ In fairness, would be shorter to sub-launch `zip` program, but I like the contro
 
 公平地说，子启动`zip`程序会更短，但我喜欢控件。
 
-```
+```go
 func zipAddFile(zw *zip.Writer, zipName string, path string) {
     zipName = filepath.ToSlash(zipName)
     d, err := ioutil.ReadFile(path)
@@ -708,15 +692,13 @@ func createZipFile(dst string, baseDir string, toZip ...string) {
 
 ### wc -l
 
-### wc -l
+
 
 I like to know how big my programs are as measured by lines of code.
 
 我想知道按代码行数衡量我的程序有多大。
 
 On Unix simple stats can be done with `find . -name "*.go" | xargs wc -l`
-
-在 Unix 上，可以使用 `find 完成简单的统计。 -name "*.go" | xargs wc -l`
 
 Similar  functionality in Go is significantly larger. The good thing is that it's cross-platform, more flexible and once written can be easily added to  more projects.
 
@@ -738,7 +720,7 @@ Here's how I use it in a [real project](https://github.com/kjk/notionapi/blob/ma
 
 `filter` 是一个文件过滤函数，它告诉我们计算所有子目录中的 `.go`、`.js`、`.html` 和 `.css` 文件，但排除 `node_modules` 和 `tmpdata` 目录，因为它们包含不是我写的文件：
 
-```
+```go
 package main
 
 import (
@@ -766,21 +748,11 @@ func doLineCount() int {
 
 # More Go resources
 
-# 更多围棋资源
+# 更多Go资源
 
 - [Essential Go](https://www.programming-books.io/essential/go/) is a free, comprehensive book about Go that I maintain 
 
-- [Essential Go](https://www.programming-books.io/essential/go/) 是我维护的一本关于围棋的免费、全面的书籍
+- [Essential Go](https://www.programming-books.io/essential/go/) 是我维护的一本关于Go的免费、全面的书籍
 
-                                                            Written on Aug 16 2021.                                        Topics: [go](https://blog.kowalczyk.info/tag/go).
-
-写于 2021 年 8 月 16 日。主题：[go](https://blog.kowalczyk.info/tag/go)。
-
-                                                            [home](https://blog.kowalczyk.info/)
-
-[主页](https://blog.kowalczyk.info/)
-
-                    Found a mistake, have a comment? [Let me know](https://blog.kowalczyk.info/article/4b1f9201181340099b698246857ea98d/using-go-instead-of-bash-for-scripts.html#). 
-
-发现错误，有意见？ [让我知道](https://blog.kowalczyk.info/article/4b1f9201181340099b698246857ea98d/using-go-instead-of-bash-for-scripts.html#)。
+                                                        Written on Aug 16 2021. 
 

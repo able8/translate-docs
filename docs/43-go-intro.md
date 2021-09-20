@@ -33,7 +33,7 @@ Here are some of the reasons I enjoy programming in Go (and why you might like i
 
 ## The standard library
 
-Go’s [standard library](https://golang.org/pkg/) is  extensive, cross-platform, and well documented. Similar to Python, Go  comes with “batteries included”, so you can build useful servers and CLI tools right away, without any third party dependencies. Here are some  of the highlights (biased towards what I’ve used):
+Go’s [standard library](https://golang.org/pkg/) is  extensive, cross-platform, and well documented. Similar to Python, Go comes with “batteries included”, so you can build useful servers and CLI tools right away, without any third party dependencies. Here are some  of the highlights (biased towards what I’ve used):
 
 - Input/output: [OS calls](https://golang.org/pkg/os/), files and directories, [buffered I/O](https://golang.org/pkg/bufio/).
 - HTTP: a production-ready [client and server](https://golang.org/pkg/net/http/), TLS, HTTP/2, simple routing, URL and cookie parsing.

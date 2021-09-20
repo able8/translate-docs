@@ -22,7 +22,7 @@ This article describes how I replaced bash scripts with a single, multiple-purpo
 
 You can see a full example at https://github.com/kjk/notionapi/tree/master/do  
 
-# Replacing bash with Go  
+# Replacing bash with Go 
 
 One day it hit me: I would rather write the helper scripts in Go.  
 
@@ -44,7 +44,7 @@ Establishing conventions to share between multiple projects frees mental energy 
 
 The system I settled on is:  
 
-- `do` directory contains a single, multiple-purpose Go program. A single program that does many things is better suited to Go  than multiple programs as it makes it easy to share helper functions    
+- `do` directory contains a single, multiple-purpose Go program. A single program that does many things is better suited to Go than multiple programs as it makes it easy to share helper functions    
 
 - to run it: `cd do; go run . ${flags}`    
 

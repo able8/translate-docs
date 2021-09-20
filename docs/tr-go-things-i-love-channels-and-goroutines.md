@@ -36,7 +36,7 @@ Concurrency, in some form, is one of the most important building blocks of  perf
 
 ## 头等舱
 
-To be  first-class is to have full support and consideration in all things. That means, to be first-class, concurrency must be a part of the Go  language itself. It cannot be a library bolted on the side.
+To be  first-class is to have full support and consideration in all things. That means, to be first-class, concurrency must be a part of the Go language itself. It cannot be a library bolted on the side.
 
 一流，就是凡事都有充分的支持和考虑。这意味着，要成为一流的，并发必须是 Go 语言本身的一部分。它不能是一个用螺栓固定在侧面的图书馆。
 
@@ -169,7 +169,7 @@ Now, only one goroutine can modify the `ints` slice while the rest communicate t
 
 现在，只有一个 goroutine 可以修改 `ints` 切片，而其余的则通过通道进行通信。它们通过通道通信而不是修改共享内存来共享内存。
 
-The example here shows two important ways that concurrency (goroutines and channels) are first-class citizens of the Go  programming language. First, we used a write-only channel argument. This guaranteed that the method won't accidentally read from the channel,  unexpectedly altering the functionality. Second, we see that the `for range` loop works on channels.
+The example here shows two important ways that concurrency (goroutines and channels) are first-class citizens of the Go programming language. First, we used a write-only channel argument. This guaranteed that the method won't accidentally read from the channel,  unexpectedly altering the functionality. Second, we see that the `for range` loop works on channels.
 
 这里的例子展示了并发（goroutines 和通道）是 Go 编程语言的一等公民的两种重要方式。首先，我们使用了只写通道参数。这保证了该方法不会意外地从通道读取，意外地改变功能。其次，我们看到 `for range` 循环适用于通道。
 

@@ -555,4 +555,4 @@ We should not rely on the return value of a `Reset` method call. The return resu
 
 The ***Go 101\*** project is hosted on [Github](https://github.com/go101/go101). Welcome to improve ***Go 101\*** articles by submitting corrections for all kinds of mistakes, such as typos, grammar errors, wording inaccuracies, description flaws, code bugs and broken links. If you would like to learn some Go details and facts every serveral days, please follow Go 101's official Twitter account: [@go100and1](https://twitter.com/go100and1). 
 
-***Go 101\*** 项目托管在 [Github](https://github.com/go101/go101) 上。欢迎改进 ***Go 101\*** 文章，提交各种错误的更正，例如拼写错误、语法错误、措辞不准确、描述缺陷、代码错误和断开的链接。如果你想每隔几天了解一些 Go 的细节和事实，请关注 Go  101 的官方推特账号：[@go100and1](https://twitter.com/go100and1)。
+***Go 101\*** 项目托管在 [Github](https://github.com/go101/go101) 上。欢迎改进 ***Go 101\*** 文章，提交各种错误的更正，例如拼写错误、语法错误、措辞不准确、描述缺陷、代码错误和断开的链接。如果你想每隔几天了解一些 Go 的细节和事实，请关注 Go 101 的官方推特账号：[@go100and1](https://twitter.com/go100and1)。

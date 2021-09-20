@@ -20,7 +20,7 @@ Best practices evolve with time, so it’s always good to continuously  research
 
 最佳实践会随着时间的推移而发展，因此不断研究和试验更好的 Kubernetes 开发方法总是好的。由于它仍然是一项年轻的技术，我们一直在寻求提高对它的理解和使用。
 
-In this article, we’ll be examining ten common practices in Kubernetes  deployments that have better solutions at a high level. I will not go  into depth on the best practices since custom implementation might vary  among users.
+In this article, we’ll be examining ten common practices in Kubernetes  deployments that have better solutions at a high level. I will not Go into depth on the best practices since custom implementation might vary  among users.
 
 在本文中，我们将研究 Kubernetes 部署中的 10 种常见做法，这些做法在较高层面上具有更好的解决方案。我不会深入探讨最佳实践，因为自定义实现可能因用户而异。
 
