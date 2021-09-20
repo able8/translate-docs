@@ -335,3 +335,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Handling Panics in Go](docs/tr-handling-panics-in-go.md)
 1. [How to Parse a JSON Request Body in Go](docs/tr-how-to-properly-parse-a-json-request-body.md)
 1. [Understanding Pointers in Go](docs/tr-understanding-pointers-in-go.md)
+1. [Bad Go: Adventures with JSON marshalling](docs/tr-badgo_json.md)
+1. [Go - graceful shutdown of worker goroutines](docs/tr-go-worker-cancellation.md)
+1. [How to Build a Custom Kubernetes Ingress Controller in Go](docs/tr-how-to-build-a-custom-kubernetes-ingress-controller-in-go.md)
+1. [Simple Go project layout with modules](docs/tr-simple-go-project-layout-with-modules.md)
