@@ -339,3 +339,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Go - graceful shutdown of worker goroutines](docs/tr-go-worker-cancellation.md)
 1. [How to Build a Custom Kubernetes Ingress Controller in Go](docs/tr-how-to-build-a-custom-kubernetes-ingress-controller-in-go.md)
 1. [Simple Go project layout with modules](docs/tr-simple-go-project-layout-with-modules.md)
+1. [12 factor configuration with Go's flag package](docs/tr-12-factor-golang-flag-package.md)
+1. [Package management in Go](docs/tr-go-modules.md)
+1. [Understanding Package Visibility in Go](docs/tr-understanding-package-visibility-in-go.md)
+1. [Using Go instead of bash for scripts](docs/tr-using-go-instead-of-bash-for-scripts.md)
+1. [Why Go and not Rust?](docs/tr-why-go-and-not-rust.md)

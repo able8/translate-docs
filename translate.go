@@ -27,7 +27,7 @@ func Translate(source, sourceLang, targetLang string) error {
 	var resp *http.Response
 	var err error
 	client := http.Client{
-		Timeout: 3 * time.Second,
+		Timeout: 5 * time.Second,
 	}
 	for try := 0; try < 3; try++ {
 		log.Println("Querying...")
