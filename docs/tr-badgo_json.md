@@ -117,9 +117,9 @@ If we run the benchmark under the profiler we discover the causes of the 4 alloc
 4. To access the Marshaler interface, json uses the reflect package, and in fact creates a new `interface{}` value pointing to the time value. This somehow causes an allocation. 
 
 1. 保存最终编组 JSON 的字节切片。
-2.强制生成字节切片Time.MarshalJSON。
+2. 强制生成字节切片Time.MarshalJSON。
 3. 将编组的 JSON 从 Time.MarshalJSON 复制到结果字节片的一些额外开销。这使用 json.Compact，它在进行复制时分配一个扫描器，因为它还会检查 JSON 是否有效并确保从 JSON 中删除无关紧要的空间。
-4.为了访问Marshaler接口，json使用了reflect包，实际上创建了一个指向时间值的新`interface{}`值。这以某种方式导致分配。
+4. 为了访问Marshaler接口，json使用了reflect包，实际上创建了一个指向时间值的新`interface{}`值。这以某种方式导致分配。
 
 As far as I can tell all 3 of these allocations are currently unavoidable if you use a custom JSON marshaler for a type.
 
@@ -163,7 +163,7 @@ MarshalAppender is perhaps a little more complicated than Marshaler. And simple 
 
 MarshalAppender 可能比 Marshaler 稍微复杂一些。简单的往往是最好的。但是，如果您的代码是一个基本构建块，无论是在您自己的项目中还是在世界各地的项目中，我认为值得付出额外的努力来提供高效的实现和可以高效使用的 API。
 
-Providing just the simple interface may seem simpler and clearer. But what happens when someone needs that greater efficiency? Either they’re stuck, or they create a whole new implementation, or they go to extreme lengths to deal with the garbage collector. You’ve not reduced the  complexity in the world - you’ve deferred it. And increased it.
+Providing just the simple interface may seem simpler and clearer. But what happens when someone needs that greater efficiency? Either they’re stuck, or they create a whole new implementation, or they go to extreme lengths to deal with the garbage collector. You’ve not reduced the complexity in the world - you’ve deferred it. And increased it.
 
 只提供简单的界面可能看起来更简单、更清晰。但是当有人需要更高的效率时会发生什么？要么他们被卡住了，要么他们创建了一个全新的实现，或者他们竭尽全力处理垃圾收集器。你并没有降低世界的复杂性——你已经推迟了它。并增加了它。
 

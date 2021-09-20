@@ -336,7 +336,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Running Go CLI programs in the browser](docs/tr-wasm-cli.md)
 1. [](docs/)
 1. [Go Things I Love: Channels and Goroutines](docs/tr-go-things-i-love-channels-and-goroutines.md)
-1. [How to Write Go Code](docs/tr-how-to-write-go-code.md)
 1. [Make resilient Go net/http servers using timeouts, deadlines and context cancellation](docs/tr-make-resilient-golang-net-http-servers-using-timeouts-deadlines-context-cancellation.md)
 1. [Top 6 security best practices for Go](docs/tr-top-6-security-best-practices-for-go.md)
 1. [Why we’re writing machine learning infrastructure in Go, not Python](docs/tr-why-were-writing-machine-learning-infrastructure-in-go-not-python-38d6a37e2d76.md)
@@ -351,3 +350,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Understanding Package Visibility in Go](docs/tr-understanding-package-visibility-in-go.md)
 1. [](docs/)
 1. [Bad Go: Adventures with JSON marshalling](docs/tr-badgo_json.md)
+1. [How to Write Go Code](docs/tr-how-to-write-go-code.md)
