@@ -3,12 +3,8 @@
 # Go 的 6 大安全最佳实践
 
 - December 19, 2019
-- 6 minute read
 
-- 2019 年 12 月 19 日
-- 6 分钟阅读
-
-Golang’s adoption has been increasing over the years. Successful projects like [Docker](https://blog.sqreen.com/docker-security/),[Kubernetes](https://blog.sqreen.com/kubernetes-security-best-practices/), and Terraform have bet heavily on this programming language. More recently, Go has been the de facto standard for building command-line tools. And for security matters, Go happens to be doing pretty well in their reports for vulnerabilities, with [only one CVE registry since 2002](https://www.cvedetails.com/vendor/1485/Golang.html).
+Golang’s adoption has been increasing over the years. Successful projects like [Docker](https://blog.sqreen.com/docker-security/), [Kubernetes](https://blog.sqreen.com/kubernetes-security-best-practices/), and Terraform have bet heavily on this programming language. More recently, Go has been the de facto standard for building command-line tools. And for security matters, Go happens to be doing pretty well in their reports for vulnerabilities, with [only one CVE registry since 2002](https://www.cvedetails.com/vendor/1485/Golang.html).
 
 多年来，Golang 的采用率一直在增加。 [Docker](https://blog.sqreen.com/docker-security/)、[Kubernetes](https://blog.sqreen.com/kubernetes-security-best-practices/)、Terraform等成功项目都有押注这种编程语言。最近，Go 已成为构建命令行工具的事实上的标准。在安全问题上，Go 恰好在他们的漏洞报告中做得很好，[自 2002 年以来只有一个 CVE 注册表](https://www.cvedetails.com/vendor/1485/Golang.html)。
 
@@ -18,7 +14,7 @@ However, not having vulnerabilities doesn’t mean that the programming language
 
 ## 1\. Validate input entries
 
-## 1\.验证输入条目
+## 1\. 验证输入条目
 
 Validating entries from the user is not only for functionality purposes, but also helps avoid attackers who send us intrusive data that could damage the system. Moreover, you help users to use the tool more confidently by preventing them from making silly and common mistakes. For instance, you could prevent a user from trying to delete several records at the same time.
 
@@ -27,6 +23,36 @@ Validating entries from the user is not only for functionality purposes, but als
 To validate user input, you can use native Go packages like `strconv` to handle string conversions to other data types. Go also has support for regular expressions with `regexp` for complex validations. Even though Go’s preference is to use native libraries, there are third-party packages like [validator](https://github.com/go-playground/validator). With validator, you can include validations for structs or individual fields more easily. For instance, the following code validates that the `User` struct contains a valid email address:
 
 要验证用户输入，您可以使用像 `strconv` 这样的原生 Go 包来处理字符串到其他数据类型的转换。 Go 还支持带有 `regexp` 的正则表达式，用于复杂的验证。尽管 Go 偏好使用原生库，但也有第三方包，如 [validator](https://github.com/go-playground/validator)。使用验证器，您可以更轻松地包含对结构或单个字段的验证。例如，以下代码验证 `User` 结构是否包含有效的电子邮件地址：
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"gopkg.in/go-playground/validator.v9"
+)
+
+type User struct {
+	Email string `json:"email" validate:"required,email"`
+	Name  string `json:"name" validate:"required"`
+}
+
+func main() {
+	v := validator.New()
+	a := User{
+		Email: "a",
+	}
+
+	err := v.Struct(a)
+
+	for _, e := range err.(validator.ValidationErrors) {
+		fmt.Println(e)
+	}
+}
+```
+
+
 
 ## 2\. Use HTML templates
 
@@ -39,6 +65,28 @@ One critical and common vulnerability is cross-site scripting or XSS. This explo
 Go has the package [html/template](https://golang.org/pkg/html/template/) to encode what the app will return to the user. So, instead of the browser executing an input like `<script>alert(‘You’ve Been Hacked!’);</script>`, popping up an alert message; you could encode the input, and the app will treat the input as a typical HTML code printed in the browser. An HTTP server that returns an HTML template will look like this:
 
 Go 有一个包 [html/template](https://golang.org/pkg/html/template/) 来编码应用程序将返回给用户的内容。因此，浏览器不会执行像 `<script>alert('Youve Being Hacked!');</script>` 这样的输入，而是弹出一条警告消息；您可以对输入进行编码，应用程序会将输入视为打印在浏览器中的典型 HTML 代码。返回 HTML 模板的 HTTP 服务器将如下所示：
+
+```go
+package main
+
+import (
+	"html/template"
+	"net/http"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	param1 := r.URL.Query().Get("param1")
+	tmpl := template.New("hello")
+	tmpl, _ = tmpl.Parse(`{{define "T"}}{{.}}{{end}}`)
+	tmpl.ExecuteTemplate(w, "T", param1)
+}
+func main() {
+	http.HandleFunc("/", handler)
+	http.ListenAndServe(":8080", nil)
+}
+```
+
+
 
 But there are also third-party libraries you can use when developing web apps in Go. For example, there’s [Gorilla web toolkit](https://www.gorillatoolkit.org/), which includes libraries to help developers to do things like encoding authentication cookie values. There's also [nosurf](https://github.com/justinas/nosurf), which is an HTTP package that helps with the prevention of cross-site request forgery ( [CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))).
 
@@ -55,6 +103,13 @@ If you've been a developer for a while, you might be aware of SQL injections, wh
 But, the most critical piece of code you’d need to include is the use of parameterized queries. In Go, you don’t prepare a statement in a connection; you prepare it on the DB. Here’s an example of how to use parameterized queries:
 
 但是，您需要包含的最关键的一段代码是使用参数化查询。在 Go 中，你不需要在连接中准备语句；你在数据库上准备它。以下是如何使用参数化查询的示例：
+
+```go
+customerName := r.URL.Query().Get("name")
+db.Exec("UPDATE creditcards SET name=? WHERE customerId=?", customerName, 233, 90)
+```
+
+
 
 However, what if the database engine doesn’t support the use of prepared statements? Or what if it affects the performance of queries? Well, you can use the `db.Query()` function, but make sure you sanitize the user’s input first, as seen in previous sections. There are also third-party libraries like [sqlmap](https://github.com/sqlmapproject/sqlmap) to prevent SQL injections.
 
@@ -76,6 +131,40 @@ OWASP has a few [recommendations](https://cheatsheetseries.owasp.org/cheatsheets
 
 OWASP 有一些[推荐](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#leverage-an-adaptive-one-way-function) 使用哪些加密算法，例如`bcrypt`、` PDKDF2`、`Argon2` **、** 或 `scrypt`。幸运的是，有一个 Go 包，其中包含用于加密信息的强大实现，例如 [crypto](https://godoc.org/golang.org/x/crypto)。例如，以下代码是如何使用 `bcrypt` 的示例：
 
+```go
+package main
+
+import (
+	"database/sql"
+	"context"
+	"fmt"
+
+	"golang.org/x/crypto/bcrypt"
+)
+
+func main() {
+	ctx := context.Background()
+	email := []byte("john.doe@somedomain.com")
+	password := []byte("47;u5:B(95m72;Xq")
+
+	hashedPassword, err := bcrypt.GenerateFromPassword(password, bcrypt.DefaultCost)
+	if err != nil {
+		panic(err)
+	}
+
+	stmt, err := db.PrepareContext(ctx, "INSERT INTO accounts SET hash=?, email=?")
+	if err != nil {
+		panic(err)
+	}
+	result, err := stmt.ExecContext(ctx, hashedPassword, email)
+	if err != nil {
+		panic(err)
+	}
+}
+```
+
+
+
 Notice that you still need to be careful about how you transmit the information between services. You wouldn’t like to send the user’s data in plain text. It doesn’t matter if the app encrypts users’ inputs before persisting the data. Assume that someone on the internet could be sniffing your traffic and keeping request logs of your system. An attacker might use this information to correlate it with other data from other systems.
 
 请注意，您仍然需要注意如何在服务之间传输信息。您不希望以纯文本形式发送用户数据。应用程序是否在保存数据之前加密用户的输入并不重要。假设互联网上的某个人可能正在嗅探您的流量并保留您系统的请求日志。攻击者可能会使用此信息将其与来自其他系统的其他数据相关联。
@@ -92,6 +181,44 @@ Here’s a code snippet for a web app that uses and enforces the HTTPS protocol:
 
 以下是使用和强制执行 HTTPS 协议的 Web 应用程序的代码片段：
 
+```go
+package main
+
+import (
+    "crypto/tls"
+    "log"
+    "net/http"
+)
+
+func main() {
+    mux := http.NewServeMux()
+    mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+        w.Header().Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains")
+        w.Write([]byte("This is an example server.\n"))
+    })
+    cfg := &tls.Config{
+        MinVersion:               tls.VersionTLS12,
+        CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
+        PreferServerCipherSuites: true,
+        CipherSuites: []uint16{
+            tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
+            tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
+            tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
+            tls.TLS_RSA_WITH_AES_256_CBC_SHA,
+        },
+    }
+    srv := &http.Server{
+        Addr:         ":443",
+        Handler:      mux,
+        TLSConfig:    cfg,
+        TLSNextProto: make(map[string]func(*http.Server, *tls.Conn, http.Handler), 0),
+    }
+    log.Fatal(srv.ListenAndServeTLS("tls.crt", "tls.key"))
+}
+```
+
+
+
 Notice that the app will be listening in port 443. The following line is the one enforcing the HTTPS configuration:
 
 请注意，该应用程序将侦听端口 443。以下行是强制执行 HTTPS 配置的行：
@@ -99,6 +226,12 @@ Notice that the app will be listening in port 443. The following line is the one
 You might also want to specify the server name in the TLS configuration, like this:
 
 您可能还想在 TLS 配置中指定服务器名称，如下所示：
+
+```go
+config := &tls.Config{ServerName: "yourSiteOrServiceName"}
+```
+
+
 
 It’s always a good practice to implement in-transit encryption even if your web app is only for internal communication. Imagine if, for some reason, an attacker could sniff your internal traffic. Whenever you can, it’s  always best to raise the difficulty bar for possible future attackers.
 
@@ -118,15 +251,67 @@ To successfully troubleshoot in production, you need to instrument your apps pro
 
 So, the first thing you need to know or remember is that Go doesn’t have exceptions. This means that you’d need to handle errors differently than with other languages. The standard looks like this:
 
-所以，你需要知道或记住的第一件事是 Go 没有例外。这意味着您需要以不同于其他语言的方式处理错误。该标准如下所示：
+所以，你需要知道或记住的第一件事是 Go 没有 异常。这意味着您需要以不同于其他语言的方式处理错误。该标准如下所示：
+
+```go
+if err != nil {
+    // handle the error
+}
+```
+
+
 
 Also, Go offers a native library to work with logs. The most simple code is like this:
 
 此外，Go 提供了一个本地库来处理日志。最简单的代码是这样的：
 
+```go
+package main
+
+import (
+	"log"
+)
+
+func main() {
+	log.Print("Logging in Go!")
+}
+```
+
+
+
 But there are third-party libraries for logging as well. A few of them are `logrus`, `glog`, and `loggo`. Here’s a small code snippet using `logrus`:
 
 但是也有用于日志记录的第三方库。其中一些是`logrus`、`glog`和`loggo`。这是一个使用 `logrus` 的小代码片段：
+
+```go
+package main
+
+import (
+	"os"
+
+	log "github.com/sirupsen/logrus"
+)
+
+func main() {
+	file, err := os.OpenFile("info.log", os.O_CREATE|os.O_APPEND, 0644)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer file.Close()
+
+	log.SetOutput(file)
+	log.SetFormatter(&log.JSONFormatter{})
+	log.SetLevel(log.WarnLevel)
+
+	log.WithFields(log.Fields{
+		"animal": "walrus",
+		"size":   10,
+	}).Info("A group of walrus emerges from the ocean")
+}
+```
+
+
 
 Finally, make sure you apply all the previous rules like encryption and sanitization of the data you put into the logs.
 

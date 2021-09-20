@@ -155,9 +155,7 @@ Overwrite the `global.fs.writeSync` from `wasm_exec.js` to display the output in
 </script>
 ```
 
-[📋 Copy](https://www.arp242.net/wasm-cli.html#)
 
-[📋 复制](https://www.arp242.net/wasm-cli.html#)
 
 And that’s pretty much it; 30 lines of JavaScript to run CLI applications in the browser :-) The only change I had to make to `uni` Go code was [adding a build tag](https://github.com/arp242/uni/commit/bfd9a565343bce6469c67ea2ae3accad597afcb4#diff-c5818bddd7e55bf1374be45465e95062).
 
@@ -176,12 +174,4 @@ There are plenty of other things that can be improved: some better styling, read
 - [WebAssembly on the Go wiki](https://github.com/golang/go/wiki/WebAssembly)
 
 - [Go wiki 上的 WebAssembly](https://github.com/golang/go/wiki/WebAssembly)
-
-**Feedback**
-
-**回馈**
-
-Contact me at                 [martin@arp242.net](mailto:martin@arp242.net),                 [GitHub](https://github.com/arp242/arp242.net/issues/new), or                 [@arp242_martin](https://twitter.com/arp242_martin)                 for feedback, questions, etc. 
-
-通过 [martin@arp242.net](mailto:martin@arp242.net)、[GitHub](https://github.com/arp242/arp242.net/issues/new) 或 [@arp242_martin](https)与我联系://twitter.com/arp242_martin) 以获取反馈、问题等。
 

@@ -10,17 +10,15 @@
 
 At this point, it should be a surprise to no one that Python is the [most popular](https://github.blog/2019-01-24-the-state-of-the-octoverse-machine-learning/) language for machine learning projects. While languages like R, C++, and Julia have their proponents—and use cases—Python remains the most universally embraced language, being used in every major machine learning framework.
 
-[2020 年 1 月 8 日·5 分钟阅读](http://medium.com/@calebkaiser/why-were-writing-machine-learning-infrastructure-in-go-not-python-38d6a37e2d76?source=post_page--- 在这一点上，Python 是 [最流行的](https://github.blog/2019-01-24-the-state-of-the-octoverse-machine-learning/)应该不会让任何人感到惊讶机器学习项目的语言。虽然像 R、C++ 和 Julia 等语言有他们的支持者和用例，但 Python 仍然是最普遍接受的语言，被用于每个主要的机器学习框架。
+在这一点上，Python 是 [最流行的](https://github.blog/2019-01-24-the-state-of-the-octoverse-machine-learning/)应该不会让任何人感到惊讶机器学习项目的语言。虽然像 R、C++ 和 Julia 等语言有他们的支持者和用例，但 Python 仍然是最普遍接受的语言，被用于每个主要的机器学习框架。
 
 So, naturally, our codebase at [Cortex](https://github.com/cortexlabs/cortex)—an open source platform for deploying machine learning models as APIs—is 87.5% Go.
 
 因此，很自然地，我们在 [Cortex](https://github.com/cortexlabs/cortex)（一个将机器学习模型部署为 API 的开源平台)的代码库是 87.5% 的 Go。
 
-![](https://miro.medium.com/max/60/1*jfWsTOsdPWlxjS4GuQkJLg.png?q=20)
-
 Source: [Cortex GitHub](https://github.com/cortexlabs/cortex)
 
-来源：[Cortex GitHub](https://github.com/cortexlabs/cortex)
+
 
 Machine learning algorithms, where Python shines, are just one component of a production machine learning system. To actually run a production machine learning API at scale, you need infrastructure that implements features like:
 
@@ -44,7 +42,7 @@ Go 是基于这些考虑构建软件的理想选择，原因如下：
 
 # 1\. Concurrency is crucial for machine learning infrastructure
 
-# 1\.并发对于机器学习基础设施至关重要
+# 1\. 并发对于机器学习基础设施至关重要
 
 A user can have many different models deployed as distinct APIs, all managed in the same Cortex cluster. In order for the Cortex Operator to manage these different deployments, it needs to wrangle a few different APIs. To name a couple:
 
@@ -92,7 +90,7 @@ Cortex CLI 是一个跨平台工具，允许用户直接从命令行部署模型
 
 Source: [Cortex GitHub](https://github.com/cortexlabs/cortex)
 
-来源：[Cortex GitHub](https://github.com/cortexlabs/cortex)
+
 
 Originally, we wrote the CLI in Python, but trying to distribute it across platforms proved to be too difficult. Because Go compiles down to a single binary—no dependency management required—it offered us a simple solution to distributing our CLI across platforms without requiring much extra engineering effort. 
 
