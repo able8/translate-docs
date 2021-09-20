@@ -14,7 +14,7 @@ From my experience, poor performance manifests in one of two ways:
 
 根据我的经验，性能不佳表现为以下两种方式之一：
 
-- Operations that performed well at small scale, but become unviable as the number of users grows. These are usually O(N) or O(N²) operations. When your user base is small, these perform just fine, and are often done in order to get a product to market. As your use base grows, you see more[pathological examples](https://theoutline.com/post/4147/in-twitters-early-days-only-one-celebrity-could-tweet-at-a-time?zd=1&zi=ivqvd4py) that you weren't expecting, and your service grinds to a halt.
+- Operations that performed well at small scale, but become unviable as the number of users grows. These are usually O(N) or O(N²) operations. When your user base is small, these perform just fine, and are often done in order to get a product to market. As your use base grows, you see more [pathological examples](https://theoutline.com/post/4147/in-twitters-early-days-only-one-celebrity-could-tweet-at-a-time?zd=1&zi=ivqvd4py) that you weren't expecting, and your service grinds to a halt.
 - Many individual sources of small optimisation - AKA 'death by a thousand crufts'.
 
 - 在小范围内表现良好的操作，但随着用户数量的增长变得不可行。这些通常是 O(N) 或 O(N²) 操作。当您的用户群很小时，这些表现很好，并且通常是为了将产品推向市场。随着您使用基础的增长，您会看到更多[病理示例](https://theoutline.com/post/4147/in-twitters-early-days-only-one-celebrity-could-tweet-at-a-time?zd=1&zi=ivqvd4py)，这是您没想到的，您的服务会停止。
@@ -92,7 +92,7 @@ If you don't do this, you can obtain a 'dirty' object from the pool that contain
 
 如果您不这样做，您可以从包含以前使用过的数据的池中获取一个“脏”对象。这可能是一个严重的安全风险！
 
-```
+```go
 type AuthenticationResponse {
     Token string
     UserID string
@@ -115,7 +115,7 @@ The safe way to ensure you always zero memory is to do so explicitly:
 
 确保始终为零内存的安全方法是明确这样做：
 
-```
+```go
 // reset resets all fields of the AuthenticationResponse before pooling it.
 func (a* AuthenticationResponse) reset() {
     a.Token = ""
@@ -134,7 +134,7 @@ The only case in which this is not an issue is when you use _exactly_ the memory
 
 这不是问题的唯一情况是当您_完全_使用您写入的内存时。例如：
 
-```
+```go
 var (
     r io.Reader
     w io.Writer
@@ -168,7 +168,7 @@ In this example, we write 10 million elements to a `map[string]int`, and time th
 
 在这个例子中，我们将 1000 万个元素写入 `map[string]int`，并对垃圾收集计时。我们在包范围内分配我们的映射以确保它是堆分配的。
 
-```
+```go
 package main
 
 import (
@@ -226,7 +226,7 @@ What could we do to improve it? Removing pointers wherever possible seems like a
 
 我们可以做些什么来改善它？尽可能删除指针似乎是个好主意——我们将减少垃圾收集器必须追逐的指针数量。 [字符串包含指针](https://www.reddit.com/r/golang/comments/4ologg/why_is_byte_used_as_a_string_type/d4e6gy8/);所以让我们将其实现为一个 `map[int]int`。
 
-```
+```go
 package main
 
 import (
@@ -299,7 +299,7 @@ However, it doesn't have to be this way. The mechanics of marshalling JSON goes 
 
 但是，不必如此。编组 JSON 的机制有点像这样：
 
-```
+```go
 package json
 
 // Marshal take an object and returns its representation in JSON.
@@ -326,7 +326,6 @@ Download the package, and run the following on your `$file.go` containing the st
 
 ```
 easyjson -all $file.go
-
 ```
 
 You should find a `$file_easyjson.go` file has been generated. As `easyjson` has implemented the `json.Marshaller` interface for you, these functions will be called instead of the reflection based default. Congratulations: you just sped up your JSON marshalling code by 3x. There's lots of things that you can twiddle to increase the performance even more.
@@ -357,7 +356,7 @@ Let's do a performance comparison to verify the two approaches:
 
 让我们做一个性能比较来验证这两种方法：
 
-```
+```go
 // main.go
 package main
 
@@ -401,7 +400,7 @@ func buildStrBuilder() string {
 
 ```
 
-```
+```go
 // main_test.go
 package main
 
@@ -467,7 +466,7 @@ The below program shows the difference in performance:
 
 以下程序显示了性能差异：
 
-```
+```go
 // main.go
 package main
 
@@ -488,7 +487,7 @@ func main() {}
 
 ```
 
-```
+```go
 // main_test.go
 package main
 
@@ -522,7 +521,7 @@ The benchmark results on a Macbook Pro:
 
 Macbook Pro 的基准测试结果：
 
-```
+```go
 🍎 strfmt → go test -bench=.-benchmem
 goos: darwin
 goarch: amd64
@@ -544,7 +543,7 @@ Before we get to performance improvements, let's take a quick refresher on slice
 
 在我们开始性能改进之前，让我们快速回顾一下切片。切片是 Go 中非常有用的构造。它提供了一个可重新调整大小的数组，能够在不重新分配的情况下对同一底层内存采取不同的观点。如果你在引擎盖下偷看，切片由三个元素组成：
 
-```
+```go
 type slice struct {
     // pointer to underlying data in the slice.
     data uintptr
@@ -555,7 +554,6 @@ type slice struct {
     // is allocated.
     cap int
 }
-
 ```
 
 What are these fields?
@@ -578,12 +576,11 @@ I often see code like the following that allocates a slice with zero capacity, w
 
 我经常看到类似下面的代码，当切片的容量预先知道时，它会分配一个容量为零的切片。
 
-```
+```go
 var userIDs []string
 for _, bar := range rsp.Users {
     userIDs = append(userIDs, bar.ID)
 }
-
 ```
 
 In this case, the slice starts off with zero length, and zero capacity. After receiving the response, we append the users to the slice. As we do so, we hit the capacity of the slice: a new underlying array is allocated that is double the capacity of the previous slice, and the data from the slice is copied into it. If we had 8 users in the response, this would result in 5 allocations.
@@ -594,7 +591,7 @@ A far more efficient way is to change it to the following:
 
 更有效的方法是将其更改为以下内容：
 
-```
+```go
 userIDs := make([]string, 0, len(rsp.Users)
 
 for _, bar := range rsp.Users {
@@ -611,11 +608,9 @@ If you don't know how much you should allocate because the capacity is dynamic o
 
 如果您不知道应该分配多少容量，因为容量是动态的或在程序稍后计算，请测量程序运行时最终得到的切片大小的分布。我通常取第 90 个或第 99 个百分位数，并在程序中硬编码该值。如果您有 RAM 来换取 CPU，请将此值设置为高于您认为需要的值。
 
-This advice is also applicable to maps: using `make(map[string]string, len(foo))` will allocate enough capacity under the hood to
-avoid re-allocation.
+This advice is also applicable to maps: using `make(map[string]string, len(foo))` will allocate enough capacity under the hood to avoid re-allocation.
 
-这个建议也适用于地图：使用 `make(map[string]string, len(foo))` 将在引擎盖下分配足够的容量来
-避免重新分配。
+这个建议也适用于地图：使用 `make(map[string]string, len(foo))` 将在引擎盖下分配足够的容量来避免重新分配。
 
 ℹ️ See [Go Slices: usage and internals](https://blog.golang.org/go-slices-usage-and-internals) for more information about how slices work under the hood.
 
@@ -631,7 +626,7 @@ When using packages, look to use methods that allow you to pass a byte slice: th
 
 [`time.Format`](https://golang.org/pkg/time/#Time.Format) vs. [`time.AppendFormat`](https://golang.org/pkg/time/#Time.AppendFormat) is a good example. `time.Format` returns a string. Under the hood, this allocates a new byte slice and calls `time.AppendFormat` on it. `time.AppendFormat` takes a byte buffer, writes the formatted representation of the time, and returns the extended byte slice. This is common in other packages in the standard library: see [`strconv.AppendFloat`](https://golang.org/pkg/strconv/#AppendFloat), or [`bytes.NewBuffer`](https://golang.org/pkg/bytes/#NewBuffer).
 
-[`time.Format`](https://golang.org/pkg/time/#Time.Format) 与 [`time.AppendFormat`](https://golang.org/pkg/time/#Time. AppendFormat）就是一个很好的例子。 `time.Format` 返回一个字符串。在幕后，这会分配一个新的字节切片并对其调用`time.AppendFormat`。 `time.AppendFormat` 接受一个字节缓冲区，写入时间的格式化表示，并返回扩展字节片。这在标准库中的其他包中很常见：请参阅 [`strconv.AppendFloat`](https://golang.org/pkg/strconv/#AppendFloat) 或 [`bytes.NewBuffer`](https://golang.org/pkg/bytes/#NewBuffer)。
+[`time.Format`](https://golang.org/pkg/time/#Time.Format) 与 [`time.AppendFormat`](https://golang.org/pkg/time/#Time.AppendFormat) 就是一个很好的例子。 `time.Format` 返回一个字符串。在幕后，这会分配一个新的字节切片并对其调用`time.AppendFormat`。 `time.AppendFormat` 接受一个字节缓冲区，写入时间的格式化表示，并返回扩展字节片。这在标准库中的其他包中很常见：请参阅 [`strconv.AppendFloat`](https://golang.org/pkg/strconv/#AppendFloat) 或 [`bytes.NewBuffer`](https://golang.org/pkg/bytes/#NewBuffer)。
 
 Why does this give you increased performance? Well, you can now pass byte slices that you've obtained from your `sync.Pool`, instead of allocating a new buffer every time. Or you can increase the initial buffer size to a value that you know is more suited to your program, to reduce slice re-copying.
 

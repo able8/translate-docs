@@ -4,7 +4,7 @@
 
 Mon, Sep 16, 2019
 
-2019 年 9 月 16 日，星期一
+
 
 Cost-effective way to have your app conform with [12 factor](https://12factor.net) methodology with [Go](https://golang.org)'s stock [`flag`](https://golang.org/pkg/flag/) package.
 
@@ -25,16 +25,16 @@ These days, with immutable infrastucture, separation of configuration and code i
 ```text
 III.Config
 Store config in the environment
-An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc).This includes:
+An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes:
 - Resource handles to the database, Memcached, and other backing services
 - Credentials to external services such as Amazon S3 or Twitter
 - Per-deploy values such as the canonical hostname for the deploy
-Apps sometimes store config as constants in the code.This is a violation of twelve-factor, which requires strict separation of config from code.Config varies substantially across deploys, code does not.
+Apps sometimes store config as constants in the code. This is a violation of twelve-factor, which requires strict separation of config from code.Config varies substantially across deploys, code does not.
 ```
 
 – https://12factor.net/config
 
-– https://12factor.net/config
+
 
 This means that the app’s context sets the configuration which enables the  app to run transparently as a serverless function, in a kubernetes pod,  in a cloud run, in a docker swarm, or your laptop.
 
@@ -44,9 +44,6 @@ This means that the app’s context sets the configuration which enables the  ap
 
 ## [¶ ](https://www.gmarik.info/blog/2019/12-factor-golang-flag-package/#problem)问题
 
-<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="" style="position: absolute; visibility: hidden; width: 0px; height: 0px; display : block; flex-grow: 1;" title="Twitter Tweet" src="https://platform.twitter.com/embed/Tweet.html?dnt=false&embedId=twitter-widget-0&features=eyJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdHdlZXRfZW1iZWRfOTU1NSI6eyJidWNrZXQiOiJodGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NwYWNlX2NhcmQiOnsiYnVja2V0Ijoib2ZmIiwidmVyc2lvbiI6bnVsbH19&frame=false&hideCard=false&hideThread=false&id=1166497222894055426&lang=en&origin=https%3A %2F%2Fwww.gmarik.info%2Fblog%2F2019%2F12-factor-golang-flag-package%2F&sessionId=63e2a4145f43d9416c3a9132d4d53ccb7d2a81d7&theme=light&widgetsVersion=1890d59c%3A1627936082797&width=550px" frameborder="0"></iframe>
-
-<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" allowfullscreen="true" class="" style="位置：绝对；可见性：隐藏；宽度：0px；高度：0px；显示: 块; flex-grow: 1;"标题= “微博资料Tweet” SRC =“https://platform.twitter.com/embed/Tweet.html?dnt=false&embedId=twitter-widget-0&features=eyJ0ZndfZXhwZXJpbWVudHNfY29va2llX2V4cGlyYXRpb24iOnsiYnVja2V0IjoxMjA5NjAwLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X2hvcml6b25fdHdlZXRfZW1iZWRfOTU1NSI6eyJidWNrZXQiOiJodGUiLCJ2ZXJzaW9uIjpudWxsfSwidGZ3X3NwYWNlX2NhcmQiOnsiYnVja2V0Ijoib2ZmIiwidmVyc2lvbiI6bnVsbH19&frame=false&hideCard=false&hideThread=false&id=1166497222894055426&lang=en&origin=https%3A %2F%2Fwww.gmarik.info%2Fblog%2F2019%2F12-factor-golang-flag-package%2F&sessionId=63e2a4145f43d9416c3a9132d4d53ccb7d2a81d7&theme=light&widgets%730x70x750x70x7500000帧
 
 > replaced `viper` with `flag` package and🤯.
 >
@@ -159,15 +156,11 @@ see it in action on [Playground](https://play.golang.org/p/CPstmhyrk47)
 
 ### [¶ ](https://www.gmarik.info/blog/2019/12-factor-golang-flag-package/#pros)Pros
 
-### [¶ ](https://www.gmarik.info/blog/2019/12-factor-golang-flag-package/#pros)
-
 - no dependencies other than standard library
 
 - 没有标准库以外的依赖项
 
 ### [¶ ](https://www.gmarik.info/blog/2019/12-factor-golang-flag-package/#cons)Cons
-
-### [¶ ](https://www.gmarik.info/blog/2019/12-factor-golang-flag-package/#cons)
 
 - a bit of plumbing code is required
 - defaults to environment var’s value if latter is set
@@ -189,7 +182,6 @@ see it in action on [Playground](https://play.golang.org/p/CPstmhyrk47)
 
 - [Simplicity Matters by Rich Hickey](https://www.youtube.com/watch?v=rI8tNMsozo0)
 
-- [Simplicity Matters by Rich Hickey](https://www.youtube.com/watch?v=rI8tNMsozo0)
 
 ##### Related Posts
 

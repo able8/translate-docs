@@ -4,8 +4,6 @@
 
 Wed, Sep 11, 2019
 
-2019 年 9 月 11 日，星期三
-
 At this year's [GopherCon](https://twitter.com/GopherCon), Gabbi Fisher ([@gabbifish](https://twitter.com/gabbifish/)) of CloudFlare made a great presentation introducing her audience to the complexities of network socket options in Go (archived video of her presentation [here](https://www.youtube.com/watch?v=pGR3r0UhoS8)). In her talk, Gabbi details how to use the network socket option `SO_REUSEADDR` to allow multiple processes on the same server to listen on the same network port. Gabbi closes by mentioning the breadth of socket options that are available beyond just her example. Inspired by her talk, I've decided to write about the `SO_PEERCRED` socket option and Go.
 
 在今年的 [GopherCon](https://twitter.com/GopherCon) 上，CloudFlare 的 Gabbi Fisher ([@gabbifish](https://twitter.com/gabbifish/)) 做了一个精彩的演讲，向她的观众介绍了复杂性Go 中的网络套接字选项（她的演示存档视频 [此处](https://www.youtube.com/watch?v=pGR3r0UhoS8))。在她的演讲中，Gabbi 详细介绍了如何使用网络套接字选项“SO_REUSEADDR”来允许同一服务器上的多个进程侦听同一网络端口。 Gabbi 最后提到了除她的示例之外可用的套接字选项的广度。受到她演讲的启发，我决定撰写有关“SO_PEERCRED”套接字选项和 Go 的文章。

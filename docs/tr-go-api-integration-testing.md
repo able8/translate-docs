@@ -4,8 +4,6 @@
 
  Tuesday. June 11, 2019 -  31 mins
 
-周二。 2019 年 6 月 11 日 - 31 分钟
-
 I’m learning Go by building a small API-backed web application, and wanted  to share the process in case it helps someone else. In this post, we'll  continue where we left off last time with the [Go web API](https://rshipp.com/go-web-api) for managing [GitHub stars](https://help.github.com/en/articles/about-stars), adding automated tests to ensure our code functions as expected. If  you'd like to follow along with this post without going through the  previous one, you can grab a copy of the API (`main.go`) from [this GitHub repo](https://github.com/rshipp/StarManager/tree/0d7cdd291711c7dd6a706bc38844f250343c7b1f).
 
 我正在通过构建一个由 API 支持的小型 Web 应用程序来学习 Go，并希望分享该过程以帮助其他人。在这篇文章中，我们将继续上次中断的地方，使用 [Go web API](https://rshipp.com/go-web-api) 来管理 [GitHub 星](https://help.github.com/en/articles/about-stars)，添加自动化测试以确保我们的代码按预期运行。如果您想在不阅读前一篇文章的情况下继续阅读这篇文章，您可以从 [this GitHub repo](https://github.com/rshipp/) 获取 API (`main.go`) 的副本StarManager/tree/0d7cdd291711c7dd6a706bc38844f250343c7b1f)。
@@ -78,7 +76,7 @@ Set up a basic outline for our first test in `main_test.go`:
 
 在 main_test.go 中为我们的第一个测试设置一个基本大纲：
 
-```gogo
+```go
 package main
 
 import (
@@ -176,7 +174,7 @@ The [url.Values.Encode()](https://golang.org/pkg/net/url/#Values) and [strings.N
 
 [url.Values.Encode()](https://golang.org/pkg/net/url/#Values) 和 [strings.NewReader](https://golang.org/pkg/strings/#NewReader)代码获取我们的 `testStar` 记录并将其转换为 [http.NewRequest](https://golang.org/pkg/net/http/#NewRequest) 期望的字符串格式。然后我们使用带有 `http.NewRequest` 的 `form` 字符串来设置对 `main.go`、`POST /stars` 中定义的 Create 端点的请求。请注意，我们实际上并不是在这里发出 HTTP 请求，只是准备一个。
 
-This is where Go's built-in `httptest` package comes in handy: we set up a [httptest.ResponseRecorder](https://golang.org/pkg/net/http/httptest/#ResponseRecorder), then pass it in to `http.HandlerFunc().ServeHTTP()`. With both this response record and the request we prepared earlier, we can test our `app.CreateHandler()` directly, without needing to set up a local HTTP server or client. In  essence, we’re passing variables around in Go’s internal functions  without using network requests or responses at all.
+This is where Go's built-in `httptest` package comes in handy: we set up a [httptest.ResponseRecorder](https://golang.org/pkg/net/http/httptest/#ResponseRecorder), then pass it in to `http.HandlerFunc().ServeHTTP()`. With both this response record and the request we prepared earlier, we can test our `app.CreateHandler()` directly, without needing to set up a local HTTP server or client. In essence, we’re passing variables around in Go’s internal functions  without using network requests or responses at all.
 
 这就是 Go 内置的 `httptest` 包派上用场的地方：我们设置了一个 [httptest.ResponseRecorder](https://golang.org/pkg/net/http/httptest/#ResponseRecorder)，然后将它传递给`http.HandlerFunc().ServeHTTP()`。有了这个响应记录和我们之前准备的请求，我们可以直接测试我们的`app.CreateHandler()`，不需要设置本地HTTP服务器或客户端。本质上，我们在 Go 的内部函数中传递变量，根本不使用网络请求或响应。
 
@@ -255,8 +253,8 @@ In the Create handler, remove the code we pulled out into `StarFormValues`, and 
 在 Create 处理程序中，删除我们提取到 `StarFormValues` 中的代码，并更新 `NewRequest` 调用：
 
 ```go
-     // Set up a new request.
-    req, err := http.NewRequest("POST", "/stars", StarFormValues(*testStar))
+ // Set up a new request.
+req, err := http.NewRequest("POST", "/stars", StarFormValues(*testStar))
 ```
 
 Now we can reuse that function in the Update handler too.
@@ -315,20 +313,20 @@ Applying this to our use case, back in `TestUpdateHandler` in `main_test.go`, we
 将此应用到我们的用例中，回到`main_test.go`中的`TestUpdateHandler`，我们可以设置一个星表：
 
 ```go
-     // Set up a test table.
-    starTests := []struct {
-        original Star
-        update   Star
-    }{
-        {original: *testStar,
-            update: Star{ID: 1, Name: "test/name", Description: "updated desc", URL: "test URL"},
-        },
-        {original: Star{ID: 1, Name: "test/name", Description: "updated desc", URL: "test URL"},
-            update: Star{ID: 1, Name: "updated name", Description: "updated desc", URL: "test URL"},
-        },
-    }
+ // Set up a test table.
+starTests := []struct {
+    original Star
+    update   Star
+}{
+    {original: *testStar,
+        update: Star{ID: 1, Name: "test/name", Description: "updated desc", URL: "test URL"},
+    },
+    {original: Star{ID: 1, Name: "test/name", Description: "updated desc", URL: "test URL"},
+        update: Star{ID: 1, Name: "updated name", Description: "updated desc", URL: "test URL"},
+    },
+}
 
-    for _, tt := range starTests {
+for _, tt := range starTests {
 ```
 
 The “original” star is what we know will be in the database when the test runs (note the second `original` is the same as the first `update`), and the “update” star is what we want to update it to .
@@ -340,20 +338,20 @@ Inside that loop, we send a PUT request to the update endpoint `/stars/{star.Nam
 在该循环中，我们向更新端点 `/stars/{star.Name}` 发送 PUT 请求，其中包含更新字段的内容：
 
 ```go
-         // Set up a new request.
-        req, err := http.NewRequest("PUT", fmt.Sprintf("/stars/%s", tt.original.Name), StarFormValues(tt.update))
-        if err != nil {
-            t.Fatal(err)
-        }
-        // Our API expects a form body, so set the content-type header appropriately.
-        req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
+ // Set up a new request.
+req, err := http.NewRequest("PUT", fmt.Sprintf("/stars/%s", tt.original.Name), StarFormValues(tt.update))
+if err != nil {
+    t.Fatal(err)
+}
+// Our API expects a form body, so set the content-type header appropriately.
+req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
-        rr := httptest.NewRecorder()
-        // We need a mux router in order to pass in the `name` variable.
-        r := mux.NewRouter()
+rr := httptest.NewRecorder()
+// We need a mux router in order to pass in the `name` variable.
+r := mux.NewRouter()
 
-        r.HandleFunc("/stars/{name:.*}", app.UpdateHandler).Methods("PUT")
-        r.ServeHTTP(rr, req)
+r.HandleFunc("/stars/{name:.*}", app.UpdateHandler).Methods("PUT")
+r.ServeHTTP(rr, req)
 ```
 
 One difference here from the Create test: we need a custom router, since the Update handler expects a `name` variable with the name of the star we want to update. We use the same `{name:.*}` pattern here as we do in the routes at the bottom of `main.go`.
@@ -369,22 +367,22 @@ The rest of the test function is about the same as it was for create; we check t
 测试函数的其余部分与用于创建的大致相同；我们检查返回码（`204 No Content`）并确保数据库更新成功：
 
 ```go
-         // Test that the status code is correct.
-        if status := rr.Code;status != http.StatusNoContent {
-            t.Errorf("Status code is invalid. Expected %d. Got %d instead", http.StatusNoContent, status)
-        }
-
-        // Test that the updated star is correct.
-        // Note: There is only one star in the database.
-        updatedStar := Star{}
-        app.DB.First(&updatedStar)
-        if updatedStar != tt.update {
-            t.Errorf("Updated star is invalid. Expected %+v. Got %+v instead", tt.update, updatedStar)
-        }
+     // Test that the status code is correct.
+    if status := rr.Code;status != http.StatusNoContent {
+        t.Errorf("Status code is invalid. Expected %d. Got %d instead", http.StatusNoContent, status)
     }
 
-    teardown(app)
+    // Test that the updated star is correct.
+    // Note: There is only one star in the database.
+    updatedStar := Star{}
+    app.DB.First(&updatedStar)
+    if updatedStar != tt.update {
+        t.Errorf("Updated star is invalid. Expected %+v. Got %+v instead", tt.update, updatedStar)
+    }
 }
+
+teardown(app)
+
 ```
 
 ## View Handler
@@ -396,7 +394,7 @@ In the View handler test, we’ll need a couple new techniques: reading the HTTP
 在视图处理程序测试中，我们需要一些新技术：读取 HTTP 响应正文和 [unmarshalling](https://en.wikipedia.org/wiki/Unmarshalling) JSON。让我们继续将我们将使用的导入添加到 `main_test.go` 顶部的列表中：
 
 ```go
-     "encoding/json"
+    "encoding/json"
     "io/ioutil"
 ```
 
@@ -689,7 +687,6 @@ GitHub 上还有一本免费的电子书“Learn Go With Tests”，看起来很
 
 - [quii/learn-go-with-tests](https://github.com/quii/learn-go-with-tests)
 
-- [quii/learn-go-with-tests](https://github.com/quii/learn-go-with-tests)
 
 Other references I used while researching, but didn’t mention in the post: 
 
