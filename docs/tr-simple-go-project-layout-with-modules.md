@@ -4,8 +4,6 @@
 
 October 01, 2019
 
-2019 年 10 月 1 日
-
 *[Updated and verified on 2020-10-21]*
 
 *[2020-10-21更新验证]*
@@ -120,7 +118,7 @@ Let's start with the files in the root directory.
 
 **config.go** 这是我们正在检查的第一个代码文件；它包含一个简单的函数 [[1\]](https://eli.thegreenplace.net/2019/simple-go-project-layout-with-modules/#id3)：
 
-```
+```go
 package modlib
 
 func Config() string {
@@ -132,7 +130,7 @@ The most important part here is the `package modlib`. Since this file is at the 
 
 这里最重要的部分是`package modlib`。由于这个文件在模块的顶层，它的包名被认为是模块名。这就是你导入 `github.com/eliben/modlib` 时得到的结果。用户代码可能如下所示（[Playground 链接](https://play.golang.org/p/tXawUZ9j502))：
 
-```
+```go
 package main
 
 import "fmt"
@@ -159,7 +157,7 @@ Now moving on to the **clientlib** directory.
 
 **clientlib/lib.go** 是我们模块的 `clientlib` 包中的一个文件。文件叫什么并不重要，许多包由多个文件组成。重要的是文件顶部的“package”声明是“clientlib”：
 
-```
+```go
 package clientlib
 
 func Hello() string {
@@ -171,7 +169,7 @@ User code will import this package with `github.com/eliben/modlib/clientlib`, as
 
 用户代码将使用 `github.com/eliben/modlib/clientlib` 导入这个包，如下（[Playground 链接](https://play.golang.org/p/pe_uAr52Kdy))：
 
-```
+```go
 package main
 
 import "fmt"
@@ -232,7 +230,7 @@ In fact, since modlib is a real repository, you can install and run these tools 
 
 事实上，由于 modlib 是一个真正的存储库，你可以在你的机器上安装和运行这些工具：
 
-```
+```go
 $ go get github.com/eliben/modlib/cmd/modlib-client
 $ modlib-client
 Running client
@@ -254,7 +252,7 @@ It's instructional to take a look at the [code of modlib-server](https://github.
 
 看看[modlib-server的代码](https://github.com/eliben/modlib/blob/master/cmd/modlib-server/main.go)是有指导意义的：
 
-```
+```go
 package main
 
 import (
@@ -327,7 +325,7 @@ That could certainly happen, but I'd argue that in such applications the code yo
 
 What about projects that truly contain only importable packages? Well, then you most likely don't need `pkg/` either, because it's just empty filling adding 4 characters to every import path using your project without any real benefit. If your project is an importable module, just follow the advice from the rest of this post. Many of the most popular Go modules like [gorilla/mux](https://github.com/gorilla/mux) and [cobra](https://github.com/spf13/cobra) do just fine without a `pkg /` directory.
 
-那些真正只包含可导入包的项目呢？好吧，那么您很可能也不需要`pkg/`，因为它只是空填充，使用您的项目向每个导入路径添加 4 个字符，没有任何实际好处。如果您的项目是可导入模块，只需遵循本文其余部分的建议即可。许多最流行的 Go 模块，如 [gorilla/mux](https://github.com/gorilla/mux) 和 [cobra](https://github.com/spf13/cobra) 在没有 `pkg 的情况下也能正常运行/` 目录。
+那些真正只包含可导入包的项目呢？好吧，那么您很可能也不需要`pkg/`，因为它只是空填充，使用您的项目向每个导入路径添加 4 个字符，没有任何实际好处。如果您的项目是可导入模块，只需遵循本文其余部分的建议即可。许多最流行的 Go 模块，如 [gorilla/mux](https://github.com/gorilla/mux) 和 [cobra](https://github.com/spf13/cobra) 在没有 pkg 的情况下也能正常运行 目录。
 
 To conclude, if you believe you need a `pkg/` directory, spend some time thinking whether you *really* need it. In my experience, 90% of Go projects don't need a separate directory for their packages at all; out of those that do need one, 90% should choose to place their packages in `internal/`. If your project is truly in the 1% that could benefit from `pkg/`, that's absolutely fine! Just keep in mind that the odds for this are low.
 
