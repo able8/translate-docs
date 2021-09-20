@@ -347,3 +347,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Mocking gRPC in Go](docs/tr-mocking-grpc-in-go.md)
 1. [Programming with errors](docs/tr-programming-with-errors.md)
 1. [Using SO_PEERCRED in Go](docs/tr-using-so_peercred-in-go.md)
+1. [Error Handling in Go](docs/tr-error-handling-in-go-53b8a7112d04.md)
+1. [Web API Integration Testing with Go](docs/tr-go-api-integration-testing.md)
+1. [ORMs and Query Building in Go](docs/tr-orms-and-query-building-in-go.md)
+1. [Simple techniques to optimise Go programs](docs/tr-quick-go-performance-improvements.md)
