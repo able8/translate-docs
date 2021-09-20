@@ -4,8 +4,6 @@
 
 October  3, 2019 40.2k views
 
-2019 年 10 月 3 日 40.2k 观看次数
-
 ### Introduction
 
 ###  介绍
@@ -259,7 +257,7 @@ The output produced from this example will look like:
 此示例产生的输出将如下所示：
 
 ```
-Outputhello from the deferred function!
+hello from the deferred function!
 panic: oh no!
 
 goroutine 1 [running]:
@@ -287,7 +285,7 @@ Since it is part of the `builtin` package, `recover` can be called without impor
 
 由于它是 `builtin` 包的一部分，`recover` 可以在不导入任何其他包的情况下调用：
 
-```
+```go
 package main
 
 import (
@@ -298,7 +296,6 @@ import (
 func main() {
     divideByZero()
     fmt.Println("we survived dividing by zero!")
-
 }
 
 func divideByZero() {
@@ -359,7 +356,6 @@ import (
 func main() {
     divideByZero()
     fmt.Println("we survived dividing by zero!")
-
 }
 
 func divideByZero() {
