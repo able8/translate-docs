@@ -2,9 +2,7 @@
 
    # 了解 Go 中的包可见性
 
-  September 24, 2019 43.6k views
-
-2019 年 9 月 24 日 43.6k 观看次数
+September 24, 2019 43.6k views
 
 ### Introduction
 
@@ -129,8 +127,6 @@ Place the following code in the `logging.go` file we just created:
 
 logging/logging.go
 
-日志记录/logging.go
-
 ```go
 package logging
 
@@ -153,8 +149,6 @@ func Log(statement string) {
     fmt.Printf("%s %s\n", time.Now().Format(time.RFC3339), statement)
 }
 ```
-
- 
 
 The first line of this code declared a package called `logging`. In this package, there are two `exported` functions: `Debug` and `Log`. These functions can be called by any other package that imports the `logging` package. There is also a private variable called `debug`. This variable is only accessible from within the `logging` package. It is important to note that while the function `Debug` and the variable `debug` both have the same spelling, the function is capitalized and the  variable is not. This makes them distinct declarations with different  scopes.
 
@@ -196,8 +190,6 @@ Now we can add the following code:
 
 cmd/main.go
 
-cmd/main.go
-
 ```go
 package main
 
@@ -232,8 +224,6 @@ Then place the following contents in the file:
 
 go.mod
 
-去.mod
-
 ```bash
 module github.com/gopherguides/cmd
 
@@ -263,8 +253,6 @@ Add the following contents to the file:
 
 go.mod
 
-去.mod
-
 ```bash
 module github.com/gopherguides/logging
 ```
@@ -274,8 +262,6 @@ module github.com/gopherguides/logging
 This tells the compiler that the `logging` package we created is actually the `github.com/gopherguides/logging` package. This makes it possible to import the package in our `main` package with the following line that we wrote earlier:
 
 这告诉编译器我们创建的 `logging` 包实际上是 `github.com/gopherguides/logging` 包。这使得可以使用我们之前编写的以下行将包导入到我们的 `main` 包中：
-
-cmd/main.go
 
 cmd/main.go
 
@@ -315,7 +301,7 @@ cd ../cmd
 go run main.go
 ```
 
- 
+
 
 You will get output similar to the following:
 
@@ -336,8 +322,6 @@ Because the `Debug` and `Log` functions are exported from the logging package, w
 Add the following highlighted line to `main.go`:
 
 将以下突出显示的行添加到`main.go`：
-
-cmd/main.go
 
 cmd/main.go
 
@@ -388,8 +372,6 @@ Change the `logging` package to the following to refactor the code and isolate t
 
 logging/logging.go
 
-日志记录/logging.go
-
 ```go
 package logging
 
@@ -418,8 +400,6 @@ func (l *Logger) Log(s string) {
 }
 ```
 
- 
-
 In this code, we created a `Logger` struct. This struct will house our unexported state, including the time format to print out and the `debug` variable setting of `true` or `false`. The `New` function sets the initial state to create the logger with, such as the  time format and debug state. It then stores the values we gave it  internally to the unexported variables `timeFormat` and `debug`. We also created a method called `Log` on the `Logger` type that takes a statement we want to print out. Within the `Log` method is a reference to its local method variable `l` to get access back to its internal fields such as `l.timeFormat` and `l.debug`.
 
 在这段代码中，我们创建了一个 `Logger` 结构。这个结构体将容纳我们未导出的状态，包括要打印的时间格式和 `true` 或 `false` 的 `debug` 变量设置。 `New` 函数设置用于创建记录器的初始状态，例如时间格式和调试状态。然后它将我们在内部给它的值存储到未导出的变量 `timeFormat` 和 `debug`。我们还在 `Logger` 类型上创建了一个名为 `Log` 的方法，它接受我们想要打印的语句。在`Log` 方法中是对其局部方法变量`l` 的引用，以访问其内部字段，例如`l.timeFormat` 和`l.debug`。
@@ -431,8 +411,6 @@ This approach will allow us to create a `Logger` in many different packages and 
 To use it in another package, let’s alter `cmd/main.go` to look like the following:
 
 要在另一个包中使用它，让我们将 `cmd/main.go` 更改为如下所示：
-
-cmd/main.go
 
 cmd/main.go
 
@@ -469,8 +447,6 @@ In this code, we created an instance of the logger by calling the exported funct
 If we try to reference an unexported field from the `Logger` such as the `timeFormat` field, we will receive a compile-time error. Try adding the following highlighted line and running `cmd/main.go`:
 
 如果我们尝试从 `Logger` 中引用未导出的字段，例如 `timeFormat` 字段，我们将收到编译时错误。尝试添加以下突出显示的行并运行`cmd/main.go`：
-
-cmd/main.go
 
 cmd/main.go
 
@@ -537,8 +513,6 @@ Add leveled logging by making the following changes to `logging/logging.go`:
 
 logging/logging.go
 
-日志记录/logging.go
-
 ```go
 package logging
 
@@ -593,8 +567,6 @@ We can now use this leveled logging in our other package by changing `cmd/main.g
 
 cmd/main.go
 
-cmd/main.go
-
 ```go
 package main
 
@@ -636,8 +608,6 @@ We can now pass in the `level` of each message by switching `debug` to `false`:
 
 main.go
 
-main.go
-
 ```go
 package main
 
@@ -670,8 +640,6 @@ Output[error] 2019-08-28T13:58:52-05:00 exiting: no work performed
 If we try to call the `write` method from outside the `logging` package, we will receive a compile-time error:
 
 如果我们尝试从 `logging` 包外部调用 `write` 方法，我们将收到编译时错误：
-
-main.go
 
 main.go
 
