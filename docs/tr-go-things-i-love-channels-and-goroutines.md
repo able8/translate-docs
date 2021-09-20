@@ -422,7 +422,7 @@ Whatever results are available, even if there are none, will be returned when th
 
 👋 Want to learn more about Go? [Subscribe to my newsletter](https://justindfuller.us4.list-manage.com/subscribe?u=d48d0debd8d0bce3b77572097&id=0c1e610cac) to get an update, once-per-month, about what I'm writing about.
 
-👋想了解更多关于围棋的知识吗？ [订阅我的时事通讯](https://justindfuller.us4.list-manage.com/subscribe?u=d48d0debd8d0bce3b77572097&id=0c1e610cac) 每月一次获取有关我正在撰写的内容的更新。
+👋想了解更多关于 Go 的知识吗？ [订阅我的时事通讯](https://justindfuller.us4.list-manage.com/subscribe?u=d48d0debd8d0bce3b77572097&id=0c1e610cac) 每月一次获取有关我正在撰写的内容的更新。
 
 ------
 

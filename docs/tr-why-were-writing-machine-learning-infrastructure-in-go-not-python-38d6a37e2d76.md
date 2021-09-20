@@ -168,7 +168,7 @@ If you’re interested in becoming a machine learning engineer, knowing Python i
 
 _Are you an engineer interested in Go and machine learning? If so, consider_ [_contributing to Cortex_](https://github.com/cortexlabs/cortex) _!_
 
-_你是对围棋和机器学习感兴趣的工程师吗？如果是这样，请考虑_[_contributing to Cortex_](https://github.com/cortexlabs/cortex)_!_
+_你是对 Go 和机器学习感兴趣的工程师吗？如果是这样，请考虑_[_contributing to Cortex_](https://github.com/cortexlabs/cortex)_!_
 
 [**Caleb Kaiser**](http://medium.com/@calebkaiser?source=post_sidebar--------------------------post_sidebar-----------)
 

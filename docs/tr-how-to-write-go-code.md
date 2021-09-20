@@ -566,7 +566,7 @@ to learn the language
 proper.
 
 拿
- [围棋之旅](http://tour.golang.org/)
+ [ Go 之旅](http://tour.golang.org/)
 学习语言
 恰当的。
 

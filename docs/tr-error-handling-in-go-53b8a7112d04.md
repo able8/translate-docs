@@ -11,7 +11,7 @@
 
 I assume you have at least some basic Go background, but if you feel at  any point you’re not familiar with the materials discussed, feel free to pause, research and come back.
 
-我假设你至少有一些基本的围棋背景，但如果你觉得在任何时候你对所讨论的材料不熟悉，请随时暂停，研究然后回来。
+我假设你至少有一些基本的 Go 背景，但如果你觉得在任何时候你对所讨论的材料不熟悉，请随时暂停，研究然后回来。
 
 Now that we got all of this out of the way, let’s Go!
 
@@ -60,7 +60,7 @@ The blank identifier is dark and full of terrors.
 
 Go does have a `panic` and `recover` mechanism, which is also described in [another detailed Go blog post](https://blog.golang.org/defer-panic-and-recover). But these are not meant to mimic exceptions. In the words of Dave, *“When you panic in Go, you’re freaking out, it’s not someone else’s problem, it’s game over man”.* They’re fatal, and lead to a crash in your program. Rob Pike coined the *“Don’t Panic”* proverb, which is self-explanatory: you should probably avoid it, and return errors instead.
 
-Go 确实有一个 `panic` 和 `recover` 机制，这也在 [另一篇详细的 Go 博客文章](https://blog.golang.org/defer-panic-and-recover) 中进行了描述。但这些并不意味着模仿异常。用 Dave 的话来说，*“当你在围棋中恐慌时，你会吓坏了，这不是别人的问题，而是人的问题”。* 它们是致命的，会导致你的程序崩溃。 Rob Pike 创造了 *“Don’t Panic”* 谚语，这是不言自明的：你应该避免它，而是返回错误。
+Go 确实有一个 `panic` 和 `recover` 机制，这也在 [另一篇详细的 Go 博客文章](https://blog.golang.org/defer-panic-and-recover) 中进行了描述。但这些并不意味着模仿异常。用 Dave 的话来说，*“当你在 Go 中恐慌时，你会吓坏了，这不是别人的问题，而是人的问题”。* 它们是致命的，会导致你的程序崩溃。 Rob Pike 创造了 *“Don’t Panic”* 谚语，这是不言自明的：你应该避免它，而是返回错误。
 
 > *“Errors are values.”
 > “Don’t just check errors, handle them gracefully”

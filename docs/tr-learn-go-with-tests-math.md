@@ -581,7 +581,7 @@ which is equivalent.
 
 In Go:
 
-在围棋中：
+在 Go 中：
 
 ```
 func secondsInRadians(t time.Time) float64 {

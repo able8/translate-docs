@@ -1442,7 +1442,7 @@ There's yet another method of trying to be more explicit about which interfaces 
 
 Let's rewind a bit before we dive deep into the forbidden forest of smelly Go. In Go, we can use embedded structs as a type of inheritance in our struct definitions. This is really nice, as we can decouple our code by defining reusable structs.
 
-在我们深入到恶臭的围棋禁林之前，让我们先倒退一下。在 Go 中，我们可以在结构定义中使用嵌入式结构作为继承类型。这真的很好，因为我们可以通过定义可重用的结构来解耦我们的代码。
+在我们深入到恶臭的 Go 禁林之前，让我们先倒退一下。在 Go 中，我们可以在结构定义中使用嵌入式结构作为继承类型。这真的很好，因为我们可以通过定义可重用的结构来解耦我们的代码。
 
 ```go
 type Metadata struct {

@@ -8,11 +8,11 @@ Adventures for the indoors
 
 Sat, Oct 5, 2019
 
-2019 年 10 月 5 日星期六
+
 
 This is a story about encoding/json in the Go standard library. I’m not going to say this is bad Go. That would be heresy. But there is an  aspect of marshalling that could be improved. Because it is in the  standard library it isn’t bad Go, but if you followed the pattern in  your own code then that would be a mistake. Outside of the standard  library it would lose its magical aura, and it would be bad Go.
 
-这是一个关于 Go 标准库中 encoding/json 的故事。我不会说这是不好的 Go。那将是异端邪说。但是编组的一个方面可以改进。因为它在标准库中，所以 Go 还不错，但是如果您在自己的代码中遵循该模式，那将是一个错误。在标准库之外，它将失去其神奇的光环，这将是糟糕的围棋。
+这是一个关于 Go 标准库中 encoding/json 的故事。我不会说这是不好的 Go。那将是异端邪说。但是编组的一个方面可以改进。因为它在标准库中，所以 Go 还不错，但是如果您在自己的代码中遵循该模式，那将是一个错误。在标准库之外，它将失去其神奇的光环，这将是糟糕的 Go 。
 
 My frustration is with the Marshaler interface and the MarshalJSON  method. This method makes it pretty much impossible for custom JSON  marshalling to be efficient. The inimitable Mr. Cheney has recently  warned us about this very issue [here](https://dave.cheney.net/2019/09/05/dont-force-allocations-on-the-callers-of-your-api).
 

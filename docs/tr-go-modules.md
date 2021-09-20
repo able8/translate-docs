@@ -84,7 +84,7 @@ What’s wrong with this?
 
 Go 1.11 introduces preliminary support for Go modules. From Go Wiki,
 
-Go 1.11 引入了对 Go 模块的初步支持。从围棋维基，
+Go 1.11 引入了对 Go 模块的初步支持。从 Go 维基，
 
 > A *module* is a collection of related Go packages that are versioned together as a single unit. Modules record precise dependency requirements and create  reproducible builds.
 
