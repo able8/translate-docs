@@ -4,7 +4,7 @@
 
 Mon Jan 06, 2020 by Justin Fuller
 
-贾斯汀富勒 2020 年 1 月 6 日星期一
+
 
 Justin Fuller is a Software Engineer at [The New York Times](https://open.nytimes.com). He works with Go, JavaScript, Node.js, and React.
 
@@ -21,8 +21,6 @@ In my last post [Go Things I Love: Methods On Any Type](https://www.justindfulle
 This post, *Channels and Goroutines*, will demonstrate a few neat concurrency patterns in Go.
 
 这篇文章 *Channels 和 Goroutines*，将演示 Go 中的一些简洁的并发模式。
-
-![Go Things I Love](https://www.justindfuller.com/go-things-i-love.png)
 
 First: to get the most out of this post you should familiarize yourself with  the fundamentals of Go concurrency. A great place to do that is [in the Go tour](https://tour.golang.org/concurrency/1). These patterns rely on goroutines and channels to accomplish their elegance.
 

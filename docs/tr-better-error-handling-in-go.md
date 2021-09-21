@@ -4,8 +4,6 @@
 
 Tuesday March 26th 2019
 
-2019 年 3 月 26 日星期二
-
 It’s no secret that we’re big golang fans at bet365. It has allowed us to create exciting new products, like Bet Builder and our custom sports search engine. Within the very near future, the majority of our sports website will be powered by _Go_.
 
 我们是 bet365 的 golang 忠实粉丝，这已经不是什么秘密了。它使我们能够创建令人兴奋的新产品，例如 Bet Builder 和我们的自定义体育搜索引擎。在不久的将来，我们的大部分体育网站都将由 _Go_ 提供支持。
@@ -46,83 +44,42 @@ Let’s take a look at a somewhat contrived example of what I’m talking about.
 
 让我们看一个有点人为的例子来说明我在说什么。我们将对某些上下文使用典型的 HTTP 处理程序
 
-``` js
-
-``` js
-
+``` go
 func myHandler(w http.Response, r *http.Request) {
 
-     func myHandler(w http.Response, r *http.Request) {
-
     err := validateRequest(r)
-     if err != nil {
-         log.Printf("error validating request to myHandler - err: %v", err)
-         w.WriteHeader(http.StatusInternalServerError)
-         return
-     }
-
-     错误:= 验证请求(r)
-    如果错误！= nil {
-        log.Printf("验证对 myHandler 的请求时出错 - err: %v", err)
+    if err != nil {
+        log.Printf("error validating request to myHandler - err: %v", err)
         w.WriteHeader(http.StatusInternalServerError)
-        返回
+        return
     }
 
     user, err := getUserFromRequest(r)
-     if err != nil {
-         log.Printf("error getting user from request in myHandler - err: %v", err)
-         w.WriteHeader(http.StatusInternalServerError)
-         return
-     }
-
-     用户，错误：= getUserFromRequest(r)
-    如果错误！= nil {
-        log.Printf("从 myHandler 中的请求获取用户时出错 - err: %v", err)
+    if err != nil {
+        log.Printf("error getting user from request in myHandler - err: %v", err)
         w.WriteHeader(http.StatusInternalServerError)
-        返回
+        return 
     }
 
     dataset, err := db.GetUserData(user)
-     if err != nil {
-         log.Printf("error retrieving user data in myHandler - err: %v", err)
-         w.WriteHeader(http.StatusInternalServerError)
-         return
-     }
-
-     数据集，错误：= db.GetUserData（用户）
-    如果错误！= nil {
-        log.Printf("在 myHandler 中检索用户数据时出错 - err: %v", err)
+    if err != nil {
+        log.Printf("error retrieving user data in myHandler - err: %v", err)
         w.WriteHeader(http.StatusInternalServerError)
-        返回
+        return
     }
 
     buffer := newBuffer()
-     err := serialize.UserData(dataset, &buffer)
-     if err != nil {
-         log.Printf("error serializing user data in myHandler - err %v", err)
-         w.WriteHeader(http.StatusInternalServerError)
-         return
-     }
-
-     缓冲区 := newBuffer()
-    错误 := serialize.UserData(dataset, &buffer)
-    如果错误！= nil {
-        log.Printf("在 myHandler 中序列化用户数据时出错 - err %v", err)
+    err := serialize.UserData(dataset, &buffer)
+    if err != nil {
+        log.Printf("error serializing user data in myHandler - err %v", err)
         w.WriteHeader(http.StatusInternalServerError)
-        返回
+        return
     }
 
     err := buffer.WriteTo(w);
-     if err != nil {
-         log.Printf("error writing buffer to response in myHandler - err %v", err)
-         return
-     }
-}
-
-错误：= buffer.WriteTo(w);
-    如果错误！= nil {
-        log.Printf("将缓冲区写入 myHandler 中的响应时出错 - err %v", err)
-        返回
+    if err != nil {
+        log.Printf("error writing buffer to response in myHandler - err %v", err)
+        return
     }
 }
 
@@ -174,70 +131,35 @@ This is the same code, but we’re going to switch out the error handling to use
 
 这是相同的代码，但我们将关闭错误处理以使用错误延迟。让我们来看看
 
-``` js
-
-``` js
-
+``` go
 func myHandler(w http.Response, r *http.Request) {
-
-     func myHandler(w http.Response, r *http.Request) {
-
     var err error
-     defer func() {
-         if err != nil {
-             log.Printf("error in myHandler - error: %v", err)
-             w.WriteHeader(http.StatusInternalServerErrror)
-         }
-     }()
-
-     变量错误
-    延迟功能（）{
-        如果错误！= nil {
-            log.Printf("myHandler 中的错误 - 错误：%v", err)
+    defer func() {
+        if err != nil {
+            log.Printf("error in myHandler - error: %v", err)
             w.WriteHeader(http.StatusInternalServerErrror)
         }
     }()
 
     err = validateRequest(r)
-     if err != nil { return }
-
-     错误 = 验证请求（r）
-    如果错误 != nil { 返回 }
+    if err != nil { return }
 
     user, err := getUserFromRequest(r)
-     if err != nil { return  }
-
-     用户，错误：= getUserFromRequest(r)
-    如果错误 != nil { 返回 }
+    if err != nil { return  }
 
     dataset, err := db.GetUserData(user)
-     if err != nil { return }
-
-     数据集，错误：= db.GetUserData（用户）
-    如果错误 != nil { 返回 }
+    if err != nil { return }
 
     buffer := newBuffer()
-     err = serialize.UserData(dataset, &buffer)
-     if err != nil { return }
-
-     缓冲区 := newBuffer()
     err = serialize.UserData(dataset, &buffer)
-    如果错误 != nil { 返回 }
+    if err != nil { return }
 
     err2 := buffer.WriteTo(w)
-     if err2 != nil {
-         log.Printf("error writing buffer to response in myHandler - error %v", err2)
-         return
-     }
-}
-
-err2 := buffer.WriteTo(w)
-    如果 err2 != nil {
-        log.Printf("将缓冲区写入 myHandler 中的响应时出错 - 错误 %v", err2)
-        返回
+    if err2 != nil {
+        log.Printf("error writing buffer to response in myHandler - error %v", err2)
+        return
     }
 }
-
 ```
 
 ``
@@ -258,21 +180,11 @@ Without wanting to bang on about errors too much more, there are also other opti
 
 不想过多地讨论错误，这种方法中还有其他选项，例如我们可以将更多信息标记到自定义 `error` 结构中，然后在 `defer func` 中检查它们的类型以提供额外的上下文或配置，同时仍将此处理代码保留在主执行路径之外，就像这样
 
-``` js
-
-``` js
-
+``` go
 if custom, ok := err.(CustomErrorType); ok {
-      /// handle the custom type
+     /// handle the custom type
 }
-
-如果自定义，好的 := err.(CustomErrorType);好的 {
-     /// 处理自定义类型
-}
-
 ```
-
-``
 
 ## Conclusion
 
@@ -283,8 +195,6 @@ Go is a fantastic language to work with, but like any tool it can easily become 
 Go 是一种非常适合使用的语言，但与任何工具一样，如果不注意如何使用它，它很容易变得笨拙。更广泛的社区认为错误处理有点麻烦，所以这就是我们以适合我们的方式解决该问题的方式。我们期待在 [check/handle](https://go.googlesource.com/proposal/+/master/design/go2draft-error-handling.md) 最终到达 golang 2.0 时使用它！
 
 #### Pete G
-
-#### 皮特G
 
 Senior Software Architect 
 

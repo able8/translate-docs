@@ -4,8 +4,6 @@
 
 Published: March 18, 2019
 
-发布时间：2019 年 3 月 18 日
-
 Organizations that depend on distributed systems often write their applications in Go to take advantage of concurrency features like channels and goroutines  (eg, [Heroku](https://blog.golang.org/go-at-heroku), [Basecamp]( https://signalvnoise.com/posts/3897-go-at-basecamp), [Cockroach Labs](https://www.cockroachlabs.com/blog/why-go-was-the-right-choice-for-cockroachdb/), and [Datadog](https://docs.datadoghq.com/agent/faq/upgrade-to-agent-v6/#what-is-the-agent-v6)). If you are responsible for building or supporting Go applications, a  well-considered logging strategy can help you understand user behavior,  localize errors, and monitor the performance of your applications.
 
 依赖分布式系统的组织通常用 Go 编写他们的应用程序以利用并发特性，如通道和 goroutines（例如，[Heroku](https://blog.golang.org/go-at-heroku)、[Basecamp](https://signalvnoise.com/posts/3897-go-at-basecamp), [Cockroach Labs](https://www.cockroachlabs.com/blog/why-go-was-the-right-choice-for-cockroachdb/) 和 [Datadog](https://docs.datadoghq.com/agent/faq/upgrade-to-agent-v6/#what-is-the-agent-v6))。如果您负责构建或支持 Go 应用程序，一个深思熟虑的日志记录策略可以帮助您了解用户行为、定位错误并监控应用程序的性能。
@@ -132,7 +130,7 @@ For example, you can use glog to write the same “Can’t divide by zero”  er
   }
 ```
 
-You can make your application less resource  intensive by logging only certain levels in production. At the same  time, if there’s no impact on users, it’s often a good idea to log as  many interactions with your application as possible, then use log  management software like Datadog to find the data you need for your  investigation
+You can make your application less resource  intensive by logging only certain levels in production. At the same  time, if there’s no impact on users, it’s often a good idea to log as  many interactions with your application as possible, then use log  management software like Datadog to find the data you need for your  investigation.
 
 您可以通过在生产中仅记录某些级别来减少应用程序的资源密集度。同时，如果对用户没有影响，通常最好记录尽可能多的与应用程序的交互，然后使用诸如 Datadog 之类的日志管理软件来查找调查所需的数据
 
@@ -180,13 +178,13 @@ When writing calls to loggers from within their code, teams teams often use  dif
 
 在从他们的代码中编写对记录器的调用时，团队团队经常使用不同的属性名称来描述同一件事。不一致的属性会使用户感到困惑，并且无法将应该构成同一图片一部分的日志相关联。例如，两个开发人员可能会以不同的方式记录相同的错误，即在处理上传时缺少客户端名称。
 
-![Golang logs for the same error with different messages from different locations.]()Golang logs for the same error with different messages from different locations.
+Golang logs for the same error with different messages from different locations.
 
 A good way to enforce standardization is to create an interface between  your application code and the logging library. The interface contains  predefined log messages that implement a certain format, making it  easier to investigate issues by ensuring that log messages can be  searched, grouped, and filtered.
 
 强制标准化的一个好方法是在您的应用程序代码和日志库之间创建一个接口。该界面包含实现某种格式的预定义日志消息，通过确保可以搜索、分组和过滤日志消息，使调查问题变得更加容易。
 
-![Golang logs for an error using a standard interface to create a consistent message.]()Golang logs for an error using a standard interface to create a consistent message.
+Golang logs for an error using a standard interface to create a consistent message.
 
 In this example, we’ll declare an `Event` type with a predefined message. Then we’ll use `Event` messages to make calls to a logger. Teammates can write Golang logs by  providing a minimal amount of custom information, letting the  application do the work of implementing a standard format.
 
@@ -217,7 +215,6 @@ type StandardLogger struct {
 // NewLogger initializes the standard logger
 func NewLogger() *StandardLogger {
     var baseLogger = logrus.New()
-
     var standardLogger = &StandardLogger{baseLogger}
 
     standardLogger.Formatter = &logrus.JSONFormatter{}
@@ -299,11 +296,6 @@ Another is to use a log management solution. Datadog, for example, can tail  you
 
 另一个是使用日志管理解决方案。例如，Datadog 可以跟踪您的日志文件并将日志转发到中央平台进行处理和分析。
 
-<video loop="" muted="muted" playsinline="" width="100%" height="auto">
-</video>
-
-<video loop="" muted="muted" playinline="" width="100%" height="auto">
-</视频>
 
 The Datadog Log Explorer view can show Golang logs from various sources.
 
@@ -313,7 +305,7 @@ You can use attributes to graph the values of certain log fields over time, sort
 
 您可以使用属性来绘制某些日志字段随时间变化的值，按组排序。例如，您可以通过“服务”跟踪错误数量，以让您知道您的一项服务是否发生了事件。仅显示来自 go-logging-demo 服务的日志，我们可以看到该服务在给定时间间隔内产生了多少错误日志。
 
-![Grouping Golang logs by status.]()
+Grouping Golang logs by status.
 
 You can also use attributes to drill down into possible causes, for  instance seeing if a spike in error logs belongs to a specific host. You can then create an automated alert based on the values of your logs.
 
@@ -331,7 +323,7 @@ In this example, one microservice receives a request and checks for a trace ID i
 
 在这个例子中，一个微服务收到一个请求并检查 `x-trace` 标头中的跟踪 ID，如果它不存在则生成一个。当向另一个微服务发出请求时，我们会为此和每个请求生成一个新的 spanID，并将其添加到标头“x-span”中。
 
-```fallback
+```go
 func microService1(w http.ResponseWriter, r *http.Request) {
   client := &http.Client{}
   trace := r.Header.Get("x-trace")
@@ -347,7 +339,6 @@ func microService1(w http.ResponseWriter, r *http.Request) {
   reqService2.Header.Add("x-trace", trace)
   reqService2.Header.Add("x-span", span)
   resService2, _ := client.Do(reqService2)
-
 }
 ```
 
@@ -355,7 +346,7 @@ Downstream microservices use the `x-span` headers of incoming requests to specif
 
 下游微服务使用传入请求的 `x-span` 标头来指定它们生成的跨度的父级，并将该信息作为 `x-parent` 标头发送到链中的下一个微服务。
 
-```fallback
+```go
 func microService2(w http.ResponseWriter, r *http.Request) {
 
   trace := r.Header.Get("x-trace")
@@ -402,7 +393,7 @@ If you want to dig more deeply into Golang tracing possibilities, you can use a 
 
 如果您想更深入地挖掘 Golang 跟踪的可能性，您可以使用跟踪库，例如 [OpenTracing](https://opentracing.io/) 或支持 Go 应用程序分布式跟踪的监控平台。例如，Datadog 可以使用其 [Golang 跟踪库](https://docs.datadoghq.com)中的数据[自动构建](https://www.datadoghq.com/blog/service-map/) 服务地图/tracing/languages/go/); [可视化趋势](https://www.datadoghq.com/blog/trace-search-high-cardinality-data/) 在您的跟踪中随时间推移；和 [让您知道](https://www.datadoghq.com/blog/watchdog/) 了解具有异常请求率、错误率或延迟的服务。
 
-![An example of a visualization showing traces of requests between microservices.]()An example of a visualization showing traces of requests between microservices.
+An example of a visualization showing traces of requests between microservices.
 
 ## [Clean and comprehensive Golang logs](https://www.datadoghq.com/blog/go-logging/#clean-and-comprehensive-golang-logs)
 

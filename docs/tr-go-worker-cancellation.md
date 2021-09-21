@@ -4,8 +4,6 @@
 
 ### 05 October 2019
 
-### 2019 年 10 月 5 日
-
 In this blog post we’ll take a look at gracefully shutting down a Go program having worker goroutines performing tasks that must be completed before allowing the program to shut down.
 
 在这篇博文中，我们将看看如何优雅地关闭 Go 程序，让工作程序 goroutine 执行必须在允许程序关闭之前完成的任务。
@@ -48,13 +46,12 @@ The worker-pool goroutines are fed with events to process using the standard “
 
 工作池 goroutine 被提供事件以使用标准的“通道范围”构造进行处理，例如：
 
-```
+```go
 func workerFunc() {
     for event := range jobsChan { // blocks until an event is received or channel is closed.
         // handle the event...
     }
 }
-
 ```
 
 Which means that the cleanest way to let a worker “finish” is to close that “jobsChan” channel.
@@ -71,18 +68,16 @@ One of the first things you first learn about closing channels in Go is that the
 
 ```
 "Always close a channel on the producer side"
-
 ```
 
 What’s the producer side anyway? Well, typically the _goroutine_ that is putting events on that channel:
 
 制片方到底是什么？好吧，通常是在该通道上放置事件的 _goroutine_：
 
-```
+```go
 func callbackFunc(event int) {
     jobsChan<-event
 }
-
 ```
 
 This is our callbackFunc that we’ve registered with the external library that passes events to us. _(To keep these examples simple, I’ve replaced the real events with a simple int as payload.)_
@@ -103,7 +98,7 @@ The consumer function looks like this:
 
 消费者函数如下所示：
 
-```
+```go
 func startConsumer(ctx context.Context) {
     // Loop until a ctx.Done() is received.Note that select{} blocks until either case happens
     for {
@@ -139,7 +134,7 @@ Closing the jobsChan means all workers will stop ranging on the jobsChan on the 
 
 关闭jobsChan 意味着所有worker 将停止在consumer 端的jobsChan 上运行：
 
-```
+```go
 for event := range jobsChan { // <- on the close(jobsChan), all goroutines waiting for jobs here will exit the for-loop
     // handle the event...
 }
@@ -154,7 +149,7 @@ Waiting for a Go program to terminate is a well-known pattern:
 
 等待 Go 程序终止是一个众所周知的模式：
 
-```
+```go
 func main() {
     ... rest of program ...
 
@@ -178,7 +173,7 @@ Somewhere in our _func main()_ we set up a root background context with cancella
 
 在我们 _func main()_ 的某个地方，我们设置了一个支持取消的根背景上下文：
 
-```
+```go
 func main() {
     ctx, cancelFunc := context.WithCancel(ctx.Background())
     // ... some omitted code ...
@@ -213,7 +208,7 @@ When starting our workers, we pass along a pointer to a WaitGroup created in _fu
 
 在启动我们的工作进程时，我们传递一个指向在 _func main()_ 中创建的 WaitGroup 的指针：
 
-```
+```go
 const numberOfWorkers = 4
 
 func main() {
@@ -240,7 +235,7 @@ This changes our worker startup function a little:
 
 这稍微改变了我们的工作启动函数：
 
-```
+```go
 func workerFunc(wg *sync.WaitGroup) {
     defer wg.Done() // Mark this goroutine as done!once the function exits
     for event := range jobsChan {
@@ -303,7 +298,6 @@ As one may observe that the point in time where the consumer receives _<-ctx.Don
 
 ```
 "If one or more of the communications can proceed, a single one that can proceed is chosen via a uniform pseudo-random selection."
-
 ```
 
 This is why jobs may be passed to the workers even after CTRL+C is pressed.
@@ -363,7 +357,7 @@ The snippets above are somewhat simplified to keep them as concise as possible. 
 
 上面的代码片段经过了一定程度的简化，以使其尽可能简洁。带有一些用于封装和模拟第 3 方生产者的结构的完整程序如下：
 
-```
+```go
 package main
 
 import (
@@ -423,7 +417,7 @@ The consumer struct:
 
 消费者结构：
 
-```
+```go
 // -- Consumer below here!
 type Consumer struct {
     ingestChan chan int
@@ -470,7 +464,7 @@ Finally, the Producer struct that simulates our external library:
 
 最后，模拟我们外部库的 Producer 结构：
 
-```
+```go
 // -- Producer simulates an external library that invokes the
 // registered callback when it has new data for us once per 100ms.
 type Producer struct {
@@ -494,8 +488,4 @@ func (p Producer) start() {
 I hope this little blog post have given a simple example of goroutine-based worker pools and how to gracefully shut them down using context-based cancellation, WaitGroups and producer-side closing of channels.
 
 我希望这篇小博文给出了一个简单的基于 goroutine 的工作池示例，以及如何使用基于上下文的取消、WaitGroups 和生产者端关闭通道来优雅地关闭它们。
-
-Tack för att du läser Callistas blogg. 
-
-关注 Callistas 博客。
 

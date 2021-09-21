@@ -4,8 +4,6 @@
 
 Posted on: 21st October 2019
 
-发表于：2019 年 10 月 21 日
-
 Let's say that you're building a JSON API with Go. And in some of the handlers — probably as part of a POST or PUT request — you want to read a JSON object from the request body and assign it to a struct in your code.
 
 假设您正在使用 Go 构建一个 JSON API。在某些处理程序中——可能作为 POST 或 PUT 请求的一部分——您希望从请求正文中读取 JSON 对象并将其分配给代码中的结构体。
@@ -14,7 +12,7 @@ After a bit of research, there's a good chance that you'll end up with some code
 
 经过一些研究，很有可能你最终会得到一些类似于这里的 `personCreate` 处理程序的代码：
 
-```
+```go
 // File: main.go
 
 package main
@@ -65,32 +63,22 @@ But if you're building an API for public use in production then there are a few 
 但是，如果您正在构建用于生产中公共使用的 API，那么需要注意一些问题，并且可以改进一些事情。
 
 1.  Not all errors returned by [`Decode()`](https://golang.org/pkg/encoding/json/#Decoder.Decode) are caused by a bad request from the client. Specifically, `Decode()` can return a [`json.InvalidUnmarshalError`](https://golang.org/pkg/encoding/json/#InvalidUnmarshalError) error — which is caused by an unmarshalable target destination being passed to `Decode ()`. If that happens, then it indicates a problem with our application — not the client request — so really the error should be logged and a `500 Internal Server Error` response sent to the client instead.
-    
-2.  The error messages returned by `Decode()` aren't ideal for sending to a client. Some are arguably too detailed and expose information about the underlying program (like `"json: cannot unmarshal number into Go struct field Person.Name of type string"`). Others aren't descriptive enough (like `"unexpected EOF"`) and some are just plain confusing (like `"invalid character 'A' looking for beginning of object key string"`). There also isn't consistency in the formatting or language used.
-    
-3.  A client can include extra unexpected fields in their JSON, and these fields will be silently ignored without the client receiving any error. We can fix this by using the decoder's [`DisallowUnknownFields()`](https://golang.org/pkg/encoding/json/#Decoder.DisallowUnknownFields) method.
-    
-4.  There's no upper limit on the size of the request body that will be read by the `Decode()` method. Limiting this would help prevent our server resources being wasted if a malcious client sends a very large request body, and it's something we can easily do by using the [`http.MaxBytesReader()`](https://golang.org/pkg/net/http/#MaxBytesReader) function.
-    
-5.  There's no check for a `Content-Type: application/json` header in the request. Of course, this header may not always be present, and mistakes and malicious clients mean that it isn't a guarantee of the _actual_ content type. But checking for an incorrect `Content-Type` header would allow us to 'fail fast' and send a helpful error message without spending unnecessary resources on parsing the body. 
-
-1. 并非所有 [`Decode()`](https://golang.org/pkg/encoding/json/#Decoder.Decode)返回的错误都是由客户端的错误请求引起的。具体来说，`Decode()` 可以返回 [`json.InvalidUnmarshalError`](https://golang.org/pkg/encoding/json/#InvalidUnmarshalError) 错误——这是由传递给 `Decode 的不可编组目标目的地引起的()`。如果发生这种情况，那么它表明我们的应用程序有问题——而不是客户端请求——所以实际上应该记录错误并将“500 Internal Server Error”响应发送到客户端。
-    
-2.`Decode()` 返回的错误消息不适合发送到客户端。有些可能太详细了，并且暴露了有关底层程序的信息（例如“json：无法将数字解组到 Go struct 字段 Person.Name 类型字符串”中）。其他的描述性不够（比如“意外的 EOF”），有些只是容易混淆（比如“无效字符 'A' 寻找对象键字符串的开头”`）。使用的格式或语言也不一致。
-    
-3. 客户端可以在其 JSON 中包含额外的意外字段，这些字段将被静默忽略，客户端不会收到任何错误。我们可以通过使用解码器的 [`DisallowUnknownFields()`](https://golang.org/pkg/encoding/json/#Decoder.DisallowUnknownFields) 方法来解决这个问题。
-    
-4. Decode() 方法读取的请求体的大小没有上限。如果恶意客户端发送非常大的请求主体，限制这将有助于防止我们的服务器资源被浪费，这是我们可以通过使用 [`http.MaxBytesReader()`](https://golang.org/pkg/net/http/#MaxBytesReader) 函数。
-    
-5. 请求中没有检查 `Content-Type: application/json` 标头。当然，这个标头可能并不总是存在，错误和恶意客户端意味着它不是 _actual_ 内容类型的保证。但是检查不正确的“Content-Type”标头将使我们能够“快速失败”并发送有用的错误消息，而无需花费不必要的资源来解析正文。
+2.  并非所有 [`Decode()`](https://golang.org/pkg/encoding/json/#Decoder.Decode)返回的错误都是由客户端的错误请求引起的。具体来说，`Decode()` 可以返回 [`json.InvalidUnmarshalError`](https://golang.org/pkg/encoding/json/#InvalidUnmarshalError) 错误——这是由传递给 Decode 的不可编组目标目的地引起的。如果发生这种情况，那么它表明我们的应用程序有问题——而不是客户端请求——所以实际上应该记录错误并将“500 Internal Server Error”响应发送到客户端。
+3.  The error messages returned by `Decode()` aren't ideal for sending to a client. Some are arguably too detailed and expose information about the underlying program (like `"json: cannot unmarshal number into Go struct field Person.Name of type string"`). Others aren't descriptive enough (like `"unexpected EOF"`) and some are just plain confusing (like `"invalid character 'A' looking for beginning of object key string"`). There also isn't consistency in the formatting or language used.
+4.  `Decode()` 返回的错误消息不适合发送到客户端。有些可能太详细了，并且暴露了有关底层程序的信息（例如“json：无法将数字解组到 Go struct 字段 Person.Name 类型字符串”中）。其他的描述性不够（比如“意外的 EOF”），有些只是容易混淆（比如“无效字符 'A' 寻找对象键字符串的开头”`）。使用的格式或语言也不一致。
+5.  A client can include extra unexpected fields in their JSON, and these fields will be silently ignored without the client receiving any error. We can fix this by using the decoder's [`DisallowUnknownFields()`](https://golang.org/pkg/encoding/json/#Decoder.DisallowUnknownFields) method.
+6.  客户端可以在其 JSON 中包含额外的意外字段，这些字段将被静默忽略，客户端不会收到任何错误。我们可以通过使用解码器的 [`DisallowUnknownFields()`](https://golang.org/pkg/encoding/json/#Decoder.DisallowUnknownFields) 方法来解决这个问题。
+7.  There's no upper limit on the size of the request body that will be read by the `Decode()` method. Limiting this would help prevent our server resources being wasted if a malcious client sends a very large request body, and it's something we can easily do by using the [`http.MaxBytesReader()`](https://golang.org/pkg/net/http/#MaxBytesReader) function.
+8.  Decode() 方法读取的请求体的大小没有上限。如果恶意客户端发送非常大的请求主体，限制这将有助于防止我们的服务器资源被浪费，这是我们可以通过使用 [`http.MaxBytesReader()`](https://golang.org/pkg/net/http/#MaxBytesReader) 函数。
+9.  There's no check for a `Content-Type: application/json` header in the request. Of course, this header may not always be present, and mistakes and malicious clients mean that it isn't a guarantee of the _actual_ content type. But checking for an incorrect `Content-Type` header would allow us to 'fail fast' and send a helpful error message without spending unnecessary resources on parsing the body. 
+10.  请求中没有检查 `Content-Type: application/json` 标头。当然，这个标头可能并不总是存在，错误和恶意客户端意味着它不是 _actual_ 内容类型的保证。但是检查不正确的“Content-Type”标头将使我们能够“快速失败”并发送有用的错误消息，而无需花费不必要的资源来解析正文。
 
 6.  The decoder that we create with `json.NewDecoder()` is designed to decode streams of JSON objects and considers a request body like `'{"Name": "Bob"}{"Name": "Carol": " Age": 54}'` or `'{"Name": "Dave"}{}'` to be valid. But in the code above only the first JSON object in the request body will actually be parsed. So if the client sends multiple JSON objects in the request body, we want to alert them to the fact that only a single object is supported.
     
-     There are two ways to achieve this. We can either call the decoder's `Decode()` method for a second time and make sure that it returns an `io.EOF` error (if it does, then we know there are not any additional JSON objects or other data in the request body). Or we could avoid using `Decode()` altogether and read the body into a byte slice and pass it to [](https://golang.org/pkg/encoding/json/#Unmarshal)`json.Unmarshal()` , which _would_ return an error if the body contains multiple JSON objects. The downside of using `json.Unmarshal()` is that there is no way to disallow extra unexpected fields in the JSON, so we can't address point 3 above.
+     There are two ways to achieve this. We can either call the decoder's `Decode()` method for a second time and make sure that it returns an `io.EOF` error (if it does, then we know there are not any additional JSON objects or other data in the request body). Or we could avoid using `Decode()` altogether and read the body into a byte slice and pass it to`json.Unmarshal()` , which _would_ return an error if the body contains multiple JSON objects. The downside of using `json.Unmarshal()` is that there is no way to disallow extra unexpected fields in the JSON, so we can't address point 3 above.
     
-
 6. 我们使用 `json.NewDecoder()` 创建的解码器旨在解码 JSON 对象流，并考虑像这样的请求主体 `'{"Name": "Bob"}{"Name": "Carol": " Age": 54}'` 或 `'{"Name": "Dave"}{}'` 才有效。但是在上面的代码中，实际上只会解析请求正文中的第一个 JSON 对象。因此，如果客户端在请求正文中发送多个 JSON 对象，我们希望提醒他们仅支持单个对象这一事实。
-    
+   
     有两种方法可以实现这一点。我们可以再次调用解码器的 `Decode()` 方法并确保它返回一个 `io.EOF` 错误（如果确实如此，那么我们知道请求中没有任何额外的 JSON 对象或其他数据）身体）。或者我们可以完全避免使用 `Decode()` 并将主体读入一个字节切片并将其传递给 [](https://golang.org/pkg/encoding/json/#Unmarshal)`json.Unmarshal()` ，如果正文包含多个 JSON 对象，则_将_返回错误。使用 `json.Unmarshal()` 的缺点是无法禁止 JSON 中额外的意外字段，因此我们无法解决上面的第 3 点。
     
 
@@ -106,7 +94,7 @@ You'll notice here that we're using the new [`errors.Is()`](https://golang.org/p
 
 您会在此处注意到我们使用了新的 [`errors.Is()`](https://golang.org/pkg/errors/#Is) 和 [`errors.As()`](https://golang.org/pkg/errors/#As) 函数，已在 Go 1.13 中引入，以帮助拦截来自 `Decode()` 的错误。
 
-```
+```go
 // File: main.go
 package main
 
@@ -270,9 +258,7 @@ A solution which I've found works well is to create a `decodeJSONBody()` helper 
 
 For example:
 
-例如：
-
-```
+```go
 // File: helpers.go
 package main
 
@@ -353,11 +339,13 @@ func decodeJSONBody(w http.ResponseWriter, r *http.Request, dst interface{}) err
     }
     
     return nil
-}`
+}
+```
 
 Once that's written, the code in your handlers can be kept really nice and compact:
 
-`// File: main.go
+```go
+// File: main.go
 package main
 
 import (

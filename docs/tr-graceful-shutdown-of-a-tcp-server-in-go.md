@@ -4,8 +4,6 @@
 
 January 21, 2020
 
-2020 年 1 月 21 日
-
 This post is going to discuss how to gracefully shut down a TCP server in Go. While servers typically never stop running (until the process is killed), in some scenarios - e.g. in tests - it's useful to shut them down in an orderly way.
 
 这篇文章将讨论如何在 Go 中优雅地关闭 TCP 服务器。虽然服务器通常永远不会停止运行（直到进程被终止），但在某些情况下 - 例如在测试中 - 以有序的方式关闭它们很有用。
@@ -18,7 +16,7 @@ Let's start with a quick review of the high-level structure of TCP servers imple
 
 让我们先快速回顾一下 Go 中实现的 TCP 服务器的高级结构。 Go 在套接字之上提供了一些方便的抽象。这是典型服务器的伪代码：
 
-```
+```go
 listener := net.Listen("tcp", ... address ...)
 for {
   conn := listener.Accept()
@@ -37,8 +35,8 @@ Given this structure, we should clarify what we mean by "shutting a server down"
 1. It listens for new connections
 2. It handles existing connections
 
-1. 监听新连接
-2.它处理现有的连接
+3. 监听新连接
+4. 它处理现有的连接
 
 It's clear that we can stop listening for new connections, thus handling (1); but what about existing connections?
 
@@ -60,7 +58,7 @@ I'll be presenting the code piece by piece, but the full runnable code sample is
 
 我将逐段呈现代码，但完整的可运行代码示例在 [此处可用](https://github.com/eliben/code-for-blog/blob/master/2020/tcp-server-shutdown/shutdown1/shutdown1.go)。让我们从服务器类型和构造函数开始：
 
-```
+```go
 type Server struct {
   listener net.Listener
   quit     chan interface{}
@@ -90,7 +88,7 @@ Here's the `serve` method the constructor invokes:
 
 这是构造函数调用的 `serve` 方法：
 
-```
+```go
 func (s *Server) serve() {
   defer s.wg.Done()
 
@@ -122,7 +120,7 @@ Here's the `Stop` method that tells the server to shut down gracefully:
 
 这是告诉服务器正常关闭的 `Stop` 方法：
 
-```
+```go
 func (s *Server) Stop() {
   close(s.quit)
   s.listener.Close()
@@ -142,7 +140,7 @@ For completeness, here's is `handleConnection`; the one here just reads client d
 
 为了完整起见，这里是`handleConnection`；这里的那个只是读取客户端数据并记录下来，不发回任何东西。自然，这部分代码对于每个服务器都会有所不同：
 
-```
+```go
 func (s *Server) handleConection(conn net.Conn) {
   defer conn.Close()
   buf := make([]byte, 2048)
@@ -164,7 +162,7 @@ Using this server is simple:
 
 使用这个服务器很简单：
 
-```
+```go
 s := NewServer(addr)
 // do whatever here...
 s.Stop()
@@ -192,7 +190,7 @@ The full code for this step is [available too](https://github.com/eliben/code-fo
 
 此步骤的完整代码[也可用](https://github.com/eliben/code-for-blog/blob/master/2020/tcp-server-shutdown/shutdown2/shutdown2.go)。除了`handleConection`的代码外，它与步骤1相同：
 
-```
+```go
 func (s *Server) handleConection(conn net.Conn) {
   defer conn.Close()
   buf := make([]byte, 2048)
