@@ -4,11 +4,7 @@
 
 Oct 10, 2019 at 11:52AM
 
-2019 年 10 月 10 日上午 11:52
 
-    Caleb Doxsey
-
-迦勒·多克西
 
 Recently I switched from GKE to Digital Ocean as my Managed  Kubernetes provider. As part of the switch I wanted to also start using a Kubernetes Ingress Controller to map incoming HTTP requests to specific services. After some frustration attempting to get the NGINX Ingress  Controller working, I ended up rolling my own in an afternoon. This blog post will explain how I did that.
 
@@ -197,7 +193,7 @@ A Kubernetes client can be created by getting a rest config and calling `NewForC
 
 Kubernetes 客户端可以通过获取休息配置并调用 `NewForConfig` 来创建：
 
-```
+```go
 config, err := rest.InClusterConfig()
 if err != nil {
     log.Fatal().Err(err).Msg("failed to get kubernetes configuration")
@@ -212,7 +208,7 @@ From there we create a `Watcher` and `Payload`. The `Watcher` is responsible for
 
 从那里我们创建了一个 `Watcher` 和 `Payload`。 `Watcher` 负责查询 Kubernetes 并创建 `Payload`。 `Payload` 包含完成 HTTP 请求所需的所有 Kubernetes 数据：
 
-```
+```go
 // A Payload is a collection of Kubernetes data loaded by the watcher.
 type Payload struct {
     Ingresses       []IngressPayload
@@ -234,7 +230,7 @@ The `Watcher` has a single `Run(ctx context.Context) error` method and contains 
 
 `Watcher` 有一个 `Run(ctx context.Context) error` 方法并包含两个字段：
 
-```
+```go
 // A Watcher watches for ingresses in the kubernetes cluster
 type Watcher struct {
     client   kubernetes.Interface
@@ -267,11 +263,10 @@ With this approach the `onChange` function will be called anytime we detect that
    ```
 
    
+
 Used like:
 
-    像这样使用：
-
-   ```
+   ```go
     for watcher.OnUpdate() {
        // ...
    }
@@ -285,7 +280,7 @@ To implement `Run` we use the `k8s.io/client-go/informers`package. This package 
 
 为了实现 `Run`，我们使用 `k8s.io/client-go/informers` 包。该包提供了一种类型安全、高效的检索、列出和监视 Kubernetes 对象的机制。我们为我们感兴趣的每个对象创建一个 `SharedInformerFactory` 和 `Lister`s：
 
-```
+```go
 func (w *Watcher) Run(ctx context.Context) error {
     factory := informers.NewSharedInformerFactory(w.client, time.Minute)
     secretLister := factory.Core().V1().Secrets().Lister()
@@ -301,7 +296,7 @@ We start by listing the ingresses:
 
 我们首先列出入口：
 
-```
+```go
 ingresses, err := ingressLister.List(labels.Everything())
 if err != nil {
     log.Error().Err(err).Msg("failed to list ingresses")
@@ -313,7 +308,7 @@ Then for each ingress, if there's one or more TLS rules, we load those from the 
 
 然后对于每个入口，如果有一个或多个 TLS 规则，我们从秘密加载这些规则：
 
-```
+```go
 for _, rec := range ingress.Spec.TLS {
     if rec.SecretName != "" {
         secret, err := secretLister.Secrets(ingress.Namespace).Get(rec.SecretName)
@@ -335,7 +330,7 @@ Go has excellent support for cryptography built-in, which makes this code very s
 
 Go 对内置的密码学有很好的支持，这使得这段代码非常简单。对于实际的 HTTP 规则，我创建了一个 `addBackend` 辅助函数：
 
-```
+```go
 addBackend := func(ingressPayload *IngressPayload, backend extensionsv1beta1.IngressBackend) {
     svc, err := serviceLister.Services(ingressPayload.Ingress.Namespace).Get(backend.ServiceName)
     if err != nil {
@@ -354,7 +349,7 @@ This gets called for each HTTP rule, as well as the optional default rule:
 
 这会为每个 HTTP 规则以及可选的默认规则调用：
 
-```
+```go
 if ingress.Spec.Backend != nil {
     addBackend(&ingressPayload, *ingress.Spec.Backend)
 }
@@ -372,7 +367,7 @@ And then we call the `onChange` callback:
 
 然后我们调用 `onChange` 回调：
 
-```
+```go
 w.onChange(payload)
 ```
 
@@ -380,7 +375,7 @@ The local `onChange` function is invoked any time something changes, so the fina
 
 本地 `onChange` 函数会在任何事情发生变化时被调用，所以最后一步是启动我们的 Informers：
 
-```
+```go
 var wg sync.WaitGroup
 wg.Add(1)
 go func() {
@@ -413,7 +408,7 @@ The same handler is used for each informer:
 
 每个通知者使用相同的处理程序：
 
-```
+```go
 debounced := debounce.New(time.Second)
 handler := cache.ResourceEventHandlerFuncs{
     AddFunc: func(obj interface{}) {
@@ -452,7 +447,7 @@ A routing table consists of two maps:
 
 路由表由两个映射组成：
 
-```
+```go
 type RoutingTable struct {
     certificatesByHost map[string]map[string]*tls.Certificate
     backendsByHost     map[string][]routingTableBackend
@@ -473,7 +468,7 @@ These correspond to two methods:
 
 这些对应于两种方法：
 
-```
+```go
 // GetCertificate gets a certificate.
 func (rt *RoutingTable) GetCertificate(sni string) (*tls.Certificate, error) {
     hostCerts, ok := rt.certificatesByHost[sni]
@@ -507,7 +502,7 @@ func (rt *RoutingTable) GetBackend(host, path string) (*url.URL, error) {
 
 `GetCertificate` 用于获取用于安全连接的 TLS 证书。 HTTP 处理程序使用`GetBackend` 将请求代理到后端。对于 TLS 证书，我们有一个 `matches` 方法来处理通配符证书：
 
-```
+```go
 func (rt *RoutingTable) matches(sni string, certHost string) bool {
     for strings.HasPrefix(certHost, "*.") {
         if idx := strings.IndexByte(sni, '.');idx >= 0 {
@@ -525,7 +520,7 @@ For the backend the `matches` method is actually a regular expression (because t
 
 对于后端，matches 方法实际上是一个正则表达式（因为 Ingress 路径的定义是一个正则表达式）：
 
-```
+```go
 type routingTableBackend struct {
     pathRE *regexp.Regexp
     url    *url.URL
@@ -572,7 +567,7 @@ And functions to set the options. Like `WithHost`:
 
 以及设置选项的功能。像`WithHost`：
 
-```
+```go
 // WithHost sets the host to bind in the config.
 func WithHost(host string) Option {
     return func(cfg *config) {
@@ -585,7 +580,7 @@ Our server struct and constructor look like this:
 
 我们的服务器结构和构造函数如下所示：
 
-```
+```go
 // A Server serves HTTP pages.
 type Server struct {
     cfg          *config
@@ -622,38 +617,39 @@ Go 程序不是线程安全的。如果我们的路由表在 HTTP 处理程序�
 
 1. The way I opted to go was to use an `atomic.Value`. This type provides a `Load` and `Store` method which allows you to atomically read/write the value. Since we  rebuild the routing table on every change we can safely swap the old and new routing tables in a single operation. This is quite similar to the `ReadMostly` example from the [documentation](https://godoc.org/sync/atomic#Value):
 
-    1. 我选择的方式是使用 `atomic.Value`。这种类型提供了一个 `Load` 和 `Store` 方法，允许你原子地读/写值。由于我们在每次更改时都重建路由表，因此我们可以在一次操作中安全地交换旧路由表和新路由表。这与 [文档](https://godoc.org/sync/atomic#Value) 中的“ReadMostly”示例非常相似：
+2. 我选择的方式是使用 `atomic.Value`。这种类型提供了一个 `Load` 和 `Store` 方法，允许你原子地读/写值。由于我们在每次更改时都重建路由表，因此我们可以在一次操作中安全地交换旧路由表和新路由表。这与 [文档](https://godoc.org/sync/atomic#Value) 中的“ReadMostly”示例非常相似：
 
-   > The following example shows how to maintain a scalable frequently  read, but infrequently updated data structure using copy-on-write idiom.
+    > The following example shows how to maintain a scalable frequently  read, but infrequently updated data structure using copy-on-write idiom.
 
-    > 以下示例展示了如何使用写时复制习语来维护可扩展的频繁读取但不频繁更新的数据结构。
+     > 以下示例展示了如何使用写时复制习语来维护可扩展的频繁读取但不频繁更新的数据结构。
 
-   One downside to this approach is that the type of the value stored has to be asserted at runtime:
+    One downside to this approach is that the type of the value stored has to be asserted at runtime:
 
-    这种方法的一个缺点是必须在运行时断言存储的值的类型：
+     这种方法的一个缺点是必须在运行时断言存储的值的类型：
 
-   ```
-    s.routingTable.Load().(*RoutingTable).GetBackend(r.Host, r.URL.Path)
-   ```
+    ```
+     s.routingTable.Load().(*RoutingTable).GetBackend(r.Host, r.URL.Path)
+    ```
 
-2. We could use a `Mutex` or `RWMutex` instead to control access to the critical region:
+3. We could use a `Mutex` or `RWMutex` instead to control access to the critical region:
 
-    2. 我们可以使用 `Mutex` 或 `RWMutex` 代替来控制对关键区域的访问：
+4. 我们可以使用 `Mutex` 或 `RWMutex` 代替来控制对关键区域的访问：
 
-   ```
-    // read
-   s.mu.RLock()
-   backendURL, err := s.routingTable.GetBackend(r.Host, r.URL.Path)
-   s.mu.RUnlock()
-   
-   // write
-   rt := NewRoutingTable(payload)
-   s.mu.Lock()
-   s.routingTable = rt
-   s.mu.Unlock()
-   ```
+    ```go
+     // read
+    s.mu.RLock()
+    backendURL, err := s.routingTable.GetBackend(r.Host, r.URL.Path)
+    s.mu.RUnlock()
+    
+    // write
+    rt := NewRoutingTable(payload)
+    s.mu.Lock()
+    s.routingTable = rt
+    s.mu.Unlock()
+    ```
 
-   
+    
+
 This approach is very similar to the `atomic.Value`, but `RWMutex`s don't scale as well as the `atomic.Value`. With a large number of goroutines / CPU cores you may have issues with [thread contention](https://github.com/golang/go/issues/17973).
 
 这种方法与 `atomic.Value` 非常相似，但 `RWMutex` 的伸缩性不如 `atomic.Value`。使用大量 goroutine/CPU 内核时，您可能会遇到 [线程争用](https://github.com/golang/go/issues/17973) 的问题。
@@ -674,7 +670,7 @@ The actual Server `ServeHTTP` method looks like this:
 
 实际的服务器 `ServeHTTP` 方法如下所示：
 
-```
+```go
 // ServeHTTP serves an HTTP request.
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     backendURL, err := s.routingTable.Load().(*RoutingTable).GetBackend(r.Host, r.URL.Path)
@@ -705,7 +701,7 @@ Stitching all the components together, our `main` function looks like this:
 
 将所有组件拼接在一起，我们的 main 函数如下所示：
 
-```
+```go
 func main() {
     flag.StringVar(&host, "host", "0.0.0.0", "the host to bind")
     flag.IntVar(&port, "port", 80, "the insecure http port")
@@ -743,7 +739,7 @@ With the server code in place we can set it up in Kubernetes as a DaemonControll
 
 有了服务器代码，我们可以在 Kubernetes 中将其设置为在每个节点上运行的 DaemonController：
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
