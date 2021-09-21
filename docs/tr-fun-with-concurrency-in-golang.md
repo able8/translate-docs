@@ -4,8 +4,6 @@
 
 October 19, 2019
 
-2019 年 10 月 19 日
-
 > NOTE: The source for this post [is on Gitlab](https://gitlab.com/searsaw/funwithconcurrency).
 
 > 注意：这篇文章的来源 [在 Gitlab 上](https://gitlab.com/searsaw/funwithconcurrency)。
@@ -204,7 +202,7 @@ func getHelloWorldServer() {
 
 For the sake of brevity, I’ve only shown how I updated the `getHelloWorldServer` function. I have moved the starting of the server into this function. I have also started *another* goroutine in this function that will shutdown the server. We are  creating a context that will automatically timeout and force the  shutdown after five seconds.
 
-为简洁起见，我只展示了如何更新 `getHelloWorldServer` 函数。我已将服务器的启动移动到此功能中。我还在这个函数中启动了 *另一个 * goroutine，它将关闭服务器。我们正在创建一个上下文，该上下文将在五秒后自动超时并强制关闭。
+为简洁起见，我只展示了如何更新 `getHelloWorldServer` 函数。我已将服务器的启动移动到此功能中。我还在这个函数中启动了 *另一个* goroutine，它将关闭服务器。我们正在创建一个上下文，该上下文将在五秒后自动超时并强制关闭。
 
 We need to update our main function like so:
 
