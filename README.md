@@ -232,6 +232,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Go Things I Love: Channels and Goroutines](docs/tr-go-things-i-love-channels-and-goroutines.md)
 1. [Go - graceful shutdown of worker goroutines](docs/tr-go-worker-cancellation.md)
 1. [Fun with Concurrency in Golang](docs/tr-fun-with-concurrency-in-golang.md)
+1. [How to Build a Custom Kubernetes Ingress Controller in Go](docs/tr-how-to-build-a-custom-kubernetes-ingress-controller-in-go.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -344,7 +345,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Building containers without Docker](docs/tr-building-containers-without-docker.md)
 1. [If at first you don’t succeed  call it version 1.0](docs/tr-go-async-await.md)
 1. [Make resilient Go net/http servers using timeouts, deadlines and context cancellation](docs/tr-make-resilient-golang-net-http-servers-using-timeouts-deadlines-context-cancellation.md)
-1. [How to Build a Custom Kubernetes Ingress Controller in Go](docs/tr-how-to-build-a-custom-kubernetes-ingress-controller-in-go.md)
 1. [Understanding Pointers in Go](docs/tr-understanding-pointers-in-go.md)
 1. [Clean Go Code](docs/tr-clean-go-code.md)
 1. [](docs/)
