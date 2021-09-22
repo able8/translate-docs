@@ -4,8 +4,6 @@
 
 January 5, 2020 · 15 min · Ilija
 
-2020 年 1 月 5 日 · 15 分钟 · 伊利亚
-
 When it comes to timeouts, there are two types of people: those who know how tricky they can be, and those who are yet to find out.
 
 说到超时，有两种人：知道自己有多棘手的人，以及尚未发现的人。
@@ -588,13 +586,8 @@ To read more on the topic:
 - “So you want to expose Go on the Internet” on [Cloudflare’s blog](https://blog.cloudflare.com/exposing-go-on-the-internet/)
 - “Use http.TimeoutHandler or ReadTimeout/WriteTimeout?” on [Stackoverflow](https://stackoverflow.com/questions/51258952/use-http-timeouthandler-or-readtimeout-writetimeout) 
 
-- [Cloudflare 的博客](https://blog.cloudflare.com/the-complete-guide-to-golang-net-http-timeouts/) 上的“Go net/http 超时的完整指南”
-- [Cloudflare 的博客](https://blog.cloudflare.com/exposing-go-on-the-internet/) 上的“所以你想在互联网上公开 Go”
-- “使用 http.TimeoutHandler 还是 ReadTimeout/WriteTimeout？”在 [Stackoverflow](https://stackoverflow.com/questions/51258952/use-http-timeouthandler-or-readtimeout-writetimeout)
-
 - “Standard net/http config will break your production environment” on [Simon Frey's blog](https://blog.simon-frey.eu/go-as-in-golang-standard-net-http-config-will-break-your-production)
 
-- [Simon Frey 的博客](https://blog.simon-frey.eu/go-as-in-golang-standard-net-http-config-will-) 上的“标准网络/http 配置将破坏您的生产环境”打破你的生产)
 
 **Liked this article?** Subscribe to my newsletter and get future articles in your inbox. It's a short and sweet read, going out to +1000 of other engineers.
 

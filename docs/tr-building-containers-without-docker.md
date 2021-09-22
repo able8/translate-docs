@@ -4,15 +4,11 @@
 
 25 January 2020
 
-2020 年 1 月 25 日
-
 In this post I'll outline several ways to build containers without the need for Docker itself. I'll use [OpenFaaS](https://github.com/openfaas/) as the case-study, which uses OCI-format container images for its workloads. The easiest way to think about OpenFaaS is as a CaaS platform for [Kubernetes](https://kubernetes.io) which can run microservices, and add in FaaS and event-driven tooling for free.
 
 在这篇文章中，我将概述几种无需 Docker 本身即可构建容器的方法。我将使用 [OpenFaaS](https://github.com/openfaas/) 作为案例研究，它使用 OCI 格式的容器映像来处理其工作负载。考虑 OpenFaaS 的最简单方法是作为 [Kubernetes](https://kubernetes.io) 的 CaaS 平台，它可以运行微服务，并免费添加 FaaS 和事件驱动工具。
 
 See also [OpenFaaS.com](https://openfaas.com/)
-
-另见 [OpenFaaS.com](https://openfaas.com/)
 
 The first option in the post will show how to use the built-in buildkit option for Docker's CLI, then [buildkit](https://github.com/moby/buildkit) stand-alone (on Linux only), followed by Google's container builder, [Kaniko](https://github.com/GoogleContainerTools/kaniko).
 
@@ -86,9 +82,6 @@ So since we are focusing on the "build" piece here and want to look at relativel
 - buildkit stand-alone
 - and kaniko.
 
-- Docker 中的 buildkit，
-- buildkit 独立
-- 和卡尼科。
 
 All of the above and more are now possible since the OpenFaaS CLI can output a standard "build context" that any builder can work with.
 
@@ -172,7 +165,6 @@ The normal way to build this app would be:
 
 ```sh
 faas-cli build -f build-test.yml
-
 ```
 
 A local cache of the template and Dockerfile is also available at `./template/golang-middleware/Dockerfile`
@@ -187,7 +179,6 @@ There are three images that are pulled in for this template:
 FROM openfaas/of-watchdog:0.7.3 as watchdog
 FROM golang:1.13-alpine3.11 as build
 FROM alpine:3.12
-
 ```
 
 With the traditional builder, each of the images will be pulled in sequentially.
@@ -214,7 +205,6 @@ This is the easiest change of all to make, and gives a fast build too.
 
 ```sh
 DOCKER_BUILDKIT=1 faas-cli build -f build-test.yml
-
 ```
 
 We'll see that with this approach, the Docker daemon automatically switches out its builder for buildkit.
@@ -241,7 +231,6 @@ With buildkit, all of the base images can be pulled in to our local library at o
 FROM openfaas/of-watchdog:0.7.3 as watchdog
 FROM golang:1.13-alpine3.11 as build
 FROM alpine:3.11
-
 ```
 
 This option works even on a Mac, since buildkit is proxied via the Docker daemon running in the VM.
@@ -519,13 +508,9 @@ This option is great for in-cluster builds, or a system that doesn't need Docker
 
 此选项非常适合集群内构建，或不需要 Docker 的系统，例如 CI 盒或运行器。它确实需要一个 Linux 主机，但在 MacOS 上使用它没有很好的经验，也许是通过运行额外的 VM 或主机并通过 TCP 访问？
 
-I also wanted to include a presentation by [Akihiro Suda]( [https://twitter.com/@](https://twitter.com/@) _AkihiroSuda_ /), a buildkit maintainer from NTT, Japan. This information is around 2 years old but provides another high-level overview from the landscape in 2018 [Comparing Next-Generation\
-\
-Container Image Building Tools](https://events19.linuxfoundation.org/wp-content/uploads/2017/11/Comparing-Next-Generation-Container-Image-Building-Tools-OSS-Akihiro-Suda.pdf)
+I also wanted to include a presentation by [Akihiro Suda]( [https://twitter.com/@](https://twitter.com/@) _AkihiroSuda_ /), a buildkit maintainer from NTT, Japan. This information is around 2 years old but provides another high-level overview from the landscape in 2018 [Comparing Next-Generation Container Image Building Tools](https://events19.linuxfoundation.org/wp-content/uploads/2017/11/Comparing-Next-Generation-Container-Image-Building-Tools-OSS-Akihiro-Suda.pdf)
 
-我还想包括 [Akihiro Suda]( [https://twitter.com/@](https://twitter.com/@) _AkihiroSuda_ /) 的演讲，他是来自日本 NTT 的 buildkit 维护者。此信息已有大约 2 年的历史，但提供了 2018 年景观的另一个高级概述 [比较下一代\
-\
-容器镜像构建工具](https://events19.linuxfoundation.org/wp-content/uploads/2017/11/Comparing-Next-Generation-Container-Image-Building-Tools-OSS-Akihiro-Suda.pdf)
+我还想包括 [Akihiro Suda]( [https://twitter.com/@](https://twitter.com/@) _AkihiroSuda_ /) 的演讲，他是来自日本 NTT 的 buildkit 维护者。此信息已有大约 2 年的历史，但提供了 2018 年景观的另一个高级概述 [比较下一代 容器镜像构建工具](https://events19.linuxfoundation.org/wp-content/uploads/2017/11/Comparing-Next-Generation-Container-Image-Building-Tools-OSS-Akihiro-Suda.pdf)
 
 This is the best option for [faasd users](https://github.com/alexellis/faasd), where users rely only on containerd and CNI, rather than Docker or Kubernetes.
 
@@ -556,10 +541,6 @@ Here's examples for the following tools for building OpenFaaS containers:
 - [Jenkins](https://docs.openfaas.com/reference/cicd/jenkins/) and
 - [GitLab CI](https://docs.openfaas.com/reference/cicd/gitlab/). 
 
-- [谷歌云构建](https://www.openfaas.com/blog/openfaas-cloudrun/)
-- [GitHub 操作](https://lucasroesler.com/2019/09/action-packed-functions/)
-- [詹金斯](https://docs.openfaas.com/reference/cicd/jenkins/) 和
-- [GitLab CI](https://docs.openfaas.com/reference/cicd/gitlab/)。
 
 In [OpenFaaS Cloud](https://docs.openfaas.com/openfaas-cloud/architecture/). we provide a complete hands-off CI/CD experience using the shrinkwrap approach outlined in this post and the buildkit daemon. For all other users I would recommend using Docker, or Docker with buildkit.
 
@@ -579,7 +560,6 @@ If you are interested in what Serverless Functions are and what they can do for 
 
 - [Checkout Serverless For Everyone](https://gumroad.com/l/serverless-for-everyone-else)
 
-- [Checkout Serverless For Everyone](https://gumroad.com/l/serverless-for-everyone-else)
 
 We did miss out one of the important parts of the workflow in this post, the deployment. Any OCI container can be deployed to the OpenFaaS control-plane on top of Kubernetes as long as its [conforms to the serverless workload definition](https://docs.openfaas.com/reference/workloads/). If you'd like to see the full experience of build, push and deploy, check out the [OpenFaaS workshop](https://github.com/openfaas/workshop/).
 
