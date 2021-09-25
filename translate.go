@@ -2,10 +2,12 @@ package main
 
 import (
 	"bufio"
+	"context"
 	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -19,46 +21,90 @@ import (
 
 var outString string
 
-// Use google translate api
-func Translate(source, sourceLang, targetLang string) error {
-	queryURL := "https://translate.google.cn/translate_a/single?client=gtx&sl=" +
-		sourceLang + "&tl=" + targetLang + "&dt=t&q=" + url.QueryEscape(source)
-	// fmt.Println(queryURL)
-	var resp *http.Response
-	var err error
-	client := http.Client{
-		Timeout: 5 * time.Second,
+const UserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:92.0) Gecko/20100101 Firefox/92.0"
+
+func sendRequest(ctx context.Context, method, urlStr string, body io.Reader, f func(*http.Request) error) (*http.Response, []byte, error) {
+	req, err := http.NewRequest(method, urlStr, body)
+	if err != nil {
+		return nil, nil, fmt.Errorf("http.NewRequest error: %v", err)
 	}
-	for try := 0; try < 3; try++ {
-		log.Println("Querying...")
-		resp, err = client.Get(queryURL)
-		if resp.StatusCode == http.StatusOK {
-			break
+	req = req.WithContext(ctx)
+	if f != nil {
+		if err := f(req); err != nil {
+			return nil, nil, fmt.Errorf("f error: %v", err)
 		}
 	}
+
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("failed to get translation result from translate.google.cn, err: %s", resp.Status)
+		return nil, nil, fmt.Errorf("http request error: %v", err)
+	}
+	defer resp.Body.Close()
+	respBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, nil, fmt.Errorf("ioutil.ReadAll error: %v", err)
+	}
+	return resp, respBody, nil
+}
+
+// Use google translate api
+func Translate(source, sourceLang, targetLang string) error {
+
+	// [[["MkEWBc","[[\"asdfasd\\nadsfasd\\nasdfas\\nasdasd\\ndsfasd\\n\\n\\nadsfasd\\nasdf\\ndsf\\n\\n\\n\\n\\n\\n\\nasd\\n\\nafasd\",\"en\",\"zh-CN\",true],[null]]",null,"generic"]]]
+	reqStr := fmt.Sprintf(`[[["MkEWBc","[[\"%s\",\"%s\",\"%s\",true],[null]]",null,"generic"]]]`, source, sourceLang, "zh")
+	reqStr = strings.Replace(reqStr, "\n", `\\n`, -1)
+	param := url.Values{
+		"f.req": {reqStr},
+	}
+	log.Println(reqStr)
+	body := strings.NewReader(param.Encode())
+
+	log.Println(body)
+
+	req, err := http.NewRequest("POST", "https://translate.google.cn/_/TranslateWebserverUi/data/batchexecute", body)
+	req.Header.Set("User-Agent", UserAgent)
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded;charset=utf-8")
+	req.Header.Set("Referer", "https://translate.google.cn/")
+
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		fmt.Errorf("http request error: %v", err)
+	}
+	defer resp.Body.Close()
+
+	respBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		fmt.Errorf("ioutil.ReadAll error: %v", err)
 	}
 
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(respBody))
+	// os.Exit(1)
+
 	if err != nil {
 		return errors.New("failed to read response body")
 	}
 
-	// fmt.Println(string(body))
 	var result []interface{}
-	err = json.Unmarshal(body, &result)
+	err = json.Unmarshal(respBody, &result)
 	if err != nil {
-		fmt.Println(err, string(body))
+		// fmt.Println(err, string(respBody))
 		return errors.New("Error unmarshaling data" + err.Error())
 	}
+
+	t := result[0].([]interface{})
+	t1 := t[2].([]interface{})
+
+	log.Println(t1)
+
+	os.Exit(0)
 
 	var input, output string
 	if len(result) > 0 {
 		for _, slice := range result[0].([]interface{}) {
 			resultSlice := slice.([]interface{})
 			translatedText, sourceText := resultSlice[0].(string), resultSlice[1].(string)
+
+			log.Println(translatedText)
 
 			// Do not translate these lines
 			if strings.Contains(sourceText, "![") || strings.Contains(sourceText, "----") || strings.Contains(sourceText, "From: http") {

@@ -1,3 +1,5 @@
-There are good reasons for keeping all the software involved up to date: Kubernetes clusters have a lot of potential for attacks due to their complex and distributed nature. On top of that, they make for attractive targets if looking for computing power. One example of attacks against Kubernetes is cryptojacking where attackers hijack clusters to mine cryptocurrency. [Tesla famously fell victim to such an attack a couple of years ago](https://redlock.io/blog/cryptojacking-tesla) and recently such attacks have become more sophisticated as evidenced by the [Hildegard malware](https://unit42.paloaltonetworks.com/hildegard-malware-teamtnt/).
+There are good reasons for keeping all the software involved up to date: Kubernetes clusters have a lot of potential for attacks due to their complex and distributed nature.
+
+On top of that, they make for attractive targets if looking for computing power. One example of attacks against Kubernetes is cryptojacking where attackers hijack clusters to mine cryptocurrency. [Tesla famously fell victim to such an attack a couple of years ago](https://redlock.io/blog/cryptojacking-tesla) and recently such attacks have become more sophisticated as evidenced by the [Hildegard malware](https://unit42.paloaltonetworks.com/hildegard-malware-teamtnt/).
 
 ## The human aspect
