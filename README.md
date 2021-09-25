@@ -360,3 +360,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [The Next Generation of Kubernetes Native Postgres](docs/tr-the-next-generation-of-kubernetes-native-postgres.md)
 1. [Using WireGuard on macOS via the CLI](docs/tr-using-wireguard-on-mac-via-cli.md)
 1. [Writing a Controller for Pod Labels](docs/tr-writing-a-controller-for-pod-labels.md)
+1. [DevOps and Kubernetes: A Perfect Match?](docs/tr-devops-and-kubernetes-a-perfect-match.md)
+1. [Goodbye minikube](docs/tr-goodbye-minikube.md)
+1. [How to Prepare Your Organization for the Next Big Thing](docs/tr-how-to-prepare-your-organization-for-the-next-big-thing.md)
+1. [Kubernetes configuration patterns, Part 2: Patterns for Kubernetes controllers](docs/tr-kubernetes-configuration-patterns-part-2-patterns-for-kubernetes-controllers.md)
+1. [Tiny Container Challenge: Building a 6kB Containerized HTTP Server!](docs/tr-tiny-container-image.md)
