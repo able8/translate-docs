@@ -372,3 +372,8 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Introduction to GitOps on Kubernetes with Flux v2](docs/tr-introduction-to-gitops-on-kubernetes-with-flux-v2.md)
 1. [Kubernetes cron jobs: a hands-on guide to optimally configured crons](docs/tr-kubernetes-cron-job.md)
 1. [Getting up and running with multi-arch Kubernetes clusters](docs/tr-managing-multi-arch-kubernetes-clusters.md)
+1. [#Cloud Native Predictions for 2021 and Beyond](docs/tr-cloud-native-predictions-for-2021-and-beyond.md)
+1. [How to implement a DevOps toolchain](docs/tr-devops-tool-chain.md)
+1. [GitOps-based Policy Management: How to Scale in a Multi-Node, Multicloud World](docs/tr-gitops-based-policy-management-multicloud.md)
+1. [A Developer’s Guide to GitOps](docs/tr-gitops-developers-guide.md)
+1. [#HR is not your friend, and other things I think you should know](docs/tr-woe.md)
