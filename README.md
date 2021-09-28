@@ -387,3 +387,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Evolving DevOps towards performance optimization](docs/tr-evolving-devops-towards-performance-optimization.md)
 1. [Horizontal Pod Autoscaler](docs/tr-horizontal-pod-autoscale.md)
 1. [Kubernetes Autoscaling – The HPA](docs/tr-kubernetes-autoscaling-the-hpa.md)
+1. [Linux Is Generic; Your Application Isn’t](docs/tr-linux-is-generic-your-application-isnt.md)
