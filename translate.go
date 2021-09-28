@@ -139,7 +139,7 @@ func main() {
 			log.Println("Translating ...")
 			err = Translate(strings.Join(translateLines, "\n"), "en", "zh-CN")
 			check(err)
-			time.Sleep(time.Duration(rand.Intn(2)) * time.Second)
+			time.Sleep(time.Duration(rand.Intn(10)) * time.Second)
 			count = len(line)
 			translateLines = nil
 		}

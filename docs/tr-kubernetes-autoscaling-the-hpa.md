@@ -1,0 +1,242 @@
+# Kubernetes Autoscaling – The HPA
+
+# Kubernetes 自动缩放——HPA
+
+## Making the Most of Kubernetes’ Horizontal Pod Autoscaler
+
+## 充分利用 Kubernetes 的 Horizontal Pod Autoscaler
+
+Kubernetes is used to orchestrate container workloads in scalable infrastructure. The open-source platform enables customers to respond to user requests quickly and deploy software updates faster and with greater resilience than ever before.
+
+Kubernetes 用于在可扩展的基础架构中编排容器工作负载。开源平台使客户能够快速响应用户请求，并以前所未有的速度和更大的弹性部署软件更新。
+
+Imagine a scenario where an application you deploy has more traffic than you had anticipated, and you are struggling with the provisioned compute resources. You can solve this by scaling your infrastructure. If your application has more traffic during the day, and less traffic during night and weekend hours, it doesn’t make sense to underutilize compute resources during off-peak hours. By using autoscaling, you can easily and dynamically provision more compute power when you need it.
+
+想象一个场景，您部署的应用程序的流量比您预期的要多，并且您正在为预配的计算资源苦苦挣扎。您可以通过扩展基础设施来解决这个问题。如果您的应用程序在白天有较多流量，而在夜间和周末时间较少流量，那么在非高峰时段未充分利用计算资源是没有意义的。通过使用自动缩放，您可以在需要时轻松、动态地配置更多计算能力。
+
+Before diving deep into Kubernetes autoscaling, it’s important to understand two key Kubernetes concepts: nodes and pods. A Kubernetes cluster is made up of one or more virtual machines called nodes. In Kubernetes, a pod is the smallest resource in the hierarchy and your application containers are deployed as pods. A pod is a logical construct in Kubernetes and requires a node to run, and a node can have one or more pods running inside of it. An [overview of nodes and pods](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/) is available on the Kubernetes website.
+
+在深入研究 Kubernetes 自动缩放之前，了解两个关键的 Kubernetes 概念很重要：节点和 Pod。 Kubernetes 集群由一个或多个称为节点的虚拟机组成。在 Kubernetes 中，pod 是层次结构中最小的资源，您的应用程序容器部署为 pod。 Pod 是 Kubernetes 中的一种逻辑结构，需要一个节点来运行，并且一个节点内部可以运行一个或多个 Pod。 Kubernetes 网站上提供了 [节点和 Pod 概述](https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/)。
+
+Figure 1: The relationship between nodes and pods.
+
+图 1：节点和 Pod 之间的关系。
+
+There are three main autoscaling options available in Kubernetes. They are as follows:
+
+Kubernetes 中提供了三个主要的自动缩放选项。它们如下：
+
+- **Cluster autoscaling: This refers to scaling Kubernetes resources at the infrastructure level according to a given set of scaling rules. This is implemented by deploying [Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)—a standalone application that runs in the cluster—constantly monitoring cluster status, and making infrastructure-level scaling decisions. With the pay-as-you-go model implemented in cloud computing, cluster autoscaling has become widely popular due to its efficiency. In Cluster Autoscaler, infrastructure-level scaling is triggered when one of the following events occur:**
+   - Kubernetes pods go into a pending state in the cluster without being able to be scheduled into a node due to insufficient memory or CPU. This triggers scaling up with new nodes being provisioned.
+   - Kubernetes nodes are underutilized and the workloads running in those nodes can be safely rescheduled into another existing node. This triggers scaling down and removing provisioned nodes.
+
+- **集群自动扩展：这是指根据一组给定的扩展规则在基础设施级别扩展 Kubernetes 资源。这是通过部署[Cluster Autoscaler](https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler)——一个运行在集群中的独立应用——持续监控集群状态，并使基础设施级缩放决策。随着云计算中实施的即用即付模型，集群自动缩放因其效率而变得广泛流行。在 Cluster Autoscaler 中，当发生以下事件之一时，会触发基础架构级别的扩展：**
+  - 由于内存或 CPU 不足，Kubernetes pod 在集群中进入挂起状态而无法调度到节点中。这会触发扩展新节点的配置。
+  - Kubernetes 节点未得到充分利用，在这些节点中运行的工作负载可以安全地重新安排到另一个现有节点中。这会触发缩减和删除已配置的节点。
+
+Figure 2: A diagram of Cluster Autoscaler provisioning new nodes.
+
+图 2：集群自动缩放器配置新节点的示意图。
+
+- **Horizontal pod autoscaling:** The Horizontal Pod Autoscaler is responsible for scaling containers running as pods horizontally in the Kubernetes cluster. It increases or decreases the number of replicas running for each application according to a given number of metric thresholds, as defined by the user.
+
+- **Horizontal Pod Autoscaling：** Horizontal Pod Autoscaler 负责扩展在 Kubernetes 集群中作为 Pod 水平运行的容器。它根据用户定义的给定数量的度量阈值增加或减少为每个应用程序运行的副本数量。
+
+Figure 3: Overview of the Horizontal Pod Autoscaler
+
+图 3：Horizontal Pod Autoscaler 概述
+
+- **Vertical pod autoscaling:** The Vertical Pod Autoscaler (VPA) constantly monitors CPU and memory usage of running applications. It provides recommendations for the ideal number of resources that should be dedicated to a given application and scales the application vertically as needed.
+
+- **垂直 Pod 自动缩放：** Vertical Pod Autoscaler (VPA) 持续监控正在运行的应用程序的 CPU 和内存使用情况。它为应专用于给定应用程序的理想资源数量提供建议，并根据需要垂直扩展应用程序。
+
+![](https://lh6.googleusercontent.com/cBjUiDqlrolcCdYgrcAZtSHEQy7yQNEXXTDY_SiOj29M6aUAdLkE8iSl7zbQdekyqCyI9uQGMBaq6lb9tOOjeNWRU3Cj8cZ1nD7lvjgB_iMGkTk2gmEbh1ypruEsku66A2dcdqB6)
+
+Figure 4: Overview of the Vertical Autoscaler
+
+图 4：垂直自动缩放器概述
+
+## Getting Started with the Horizontal Pod Autoscaler 
+
+## Horizontal Pod Autoscaler 入门
+
+As discussed above, the Horizontal Pod Autoscaler (HPA) enables horizontal scaling of container workloads running in Kubernetes. In order for HPA to work, the Kubernetes cluster needs to have metrics enabled. Metrics can be enabled by following the installation guide in the [Kubernetes metrics server tool](https://github.com/kubernetes-sigs/metrics-server) available at GitHub. At the time this article was written, both a stable and a beta version of HPA are shipped with Kubernetes. These versions include:
+
+如上所述，Horizontal Pod Autoscaler (HPA) 支持在 Kubernetes 中运行的容器工作负载的水平扩展。为了让 HPA 工作，Kubernetes 集群需要启用指标。可以按照 GitHub 上提供的 [Kubernetes 指标服务器工具](https://github.com/kubernetes-sigs/metrics-server) 中的安装指南启用指标。在撰写本文时，Kubernetes 附带了稳定版和测试版的 HPA。这些版本包括：
+
+- **Autoscaling/v1:** This is the stable version available with most clusters. It only supports scaling by monitoring CPU usage against given CPU thresholds.
+- **Autoscaling/v2beta1: This beta version supports both CPU and memory thresholds for scaling. This has been deprecated in Kubernetes version 1.19.**
+- **Autoscaling/v2beta2**: This is the beta version that supports CPU, memory, and external metric thresholds for scaling. This is the recommended API to use if you need autoscaling support for metrics other than CPU utilization.
+
+- **Autoscaling/v1:** 这是大多数集群可用的稳定版本。它仅通过根据给定的 CPU 阈值监控 CPU 使用情况来支持扩展。
+- **Autoscaling/v2beta1：此测试版支持 CPU 和内存阈值进行缩放。这已在 Kubernetes 1.19 版中弃用。**
+- **Autoscaling/v2beta2**：这是支持 CPU、内存和外部度量阈值进行缩放的测试版。如果您需要对 CPU 利用率以外的指标进行自动缩放支持，则推荐使用此 API。
+
+The remainder of this article will focus on Autoscaling/v2beta2, the latest version of the HPA. HPA allows users to set different metric thresholds to manipulate scaling pods in Kubernetes. Kubernetes HPA supports four kinds of metrics as described below.
+
+本文的其余部分将重点介绍最新版本的 HPA Autoscaling/v2beta2。 HPA 允许用户设置不同的指标阈值来操作 Kubernetes 中的伸缩 pod。 Kubernetes HPA 支持四种指标，如下所述。
+
+#### Resource Metric
+
+#### 资源指标
+
+Resource metrics refer to CPU and memory utilization of Kubernetes pods against the values provided in the limits and requests of the pod spec. These metrics are natively known to Kubernetes through the metrics server. The values are averaged together before comparing them with the target values. That is, if three replicas are running for your application, the utilization values will be averaged and compared against the CPU and memory requests defined in your deployment spec.
+
+资源指标是指 Kubernetes pod 的 CPU 和内存利用率与 pod 规范的限制和请求中提供的值相比。这些指标通过指标服务器为 Kubernetes 本地所知。在将这些值与目标值进行比较之前，将这些值一起平均。也就是说，如果您的应用程序正在运行三个副本，则将平均利用率值并与部署规范中定义的 CPU 和内存请求进行比较。
+
+#### Object Metric
+
+#### 对象指标
+
+Object metrics describe the information available in a single Kubernetes resource. An example of this would be hits per second for an ingress object.
+
+对象指标描述了单个 Kubernetes 资源中可用的信息。一个例子是入口对象的每秒点击次数。
+
+#### Pod Metric
+
+#### Pod 指标
+
+Pod metrics (referred to as PodsMetricSource)references pod-based metric information at runtime and can be collected in Kubernetes. An example would be transactions processed per second in a pod. If there are multiple pods for a given PodsMetricSource, the values will be collected and averaged together before being compared against the target threshold values.
+
+Pod 指标（简称 PodsMetricSource）在运行时引用了基于 Pod 的指标信息，可以在 Kubernetes 中收集。一个例子是 pod 中每秒处理的事务。如果给定的 PodsMetricSource 有多个 Pod，则在与目标阈值进行比较之前，这些值将被收集并平均在一起。
+
+#### External Metrics
+
+#### 外部指标
+
+External metrics are metrics gathered from sources running outside the scope of a Kubernetes cluster. For example, metrics from Prometheus can be queried for the length of a queue in a cloud messaging service, or QPS from a load balancer running outside of the cluster.
+
+外部指标是从 Kubernetes 集群范围之外运行的来源收集的指标。例如，可以从 Prometheus 的指标中查询云消息服务中队列的长度，或者来自集群外运行的负载均衡器的 QPS。
+
+The following is an example of scaling a deployment by CPU and memory. For CPU, the average utilization of 50% is taken as the target, and for memory, an average usage value of 500 Mi is taken. In addition, there is an object metric that monitors the incoming requests per second in ingress and scales the application accordingly.
+
+以下是按 CPU 和内存扩展部署的示例。 CPU 以 50% 的平均利用率为目标，内存以 500 Mi 的平均利用率为目标。此外，还有一个对象指标，用于监控入口中每秒传入的请求并相应地扩展应用程序。
+
+```
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+name: sample-app-hpa
+namespace: default
+spec:
+scaleTargetRef:
+  apiVersion: apps/v1
+  kind: Deployment
+  name: sample-app
+minReplicas: 1
+maxReplicas: 10
+metrics:
+- type: Resource
+  resource:
+    name: cpu
+    target:
+      type: Utilization
+      averageUtilization: 50
+- type: Resource
+  resource:
+    name: memory
+    target:
+      type: AverageValue
+      averageValue: 500Mi
+- type: Object
+  object:
+      metric:
+        name: requests-per-second
+      describedObject:
+        apiVersion: networking.k8s.io/v1beta1
+        kind: Ingress
+        name: main-route
+      target:
+        type: Value
+        value: 10k
+```
+
+The HPA autoscaling/v2beta2 ships with additional features, such as scaling behavior tuning and a stabilization window. Either a single scaling behavior policy or more than one can be attached to an HPA, and the policy that results in the highest amount of change for a given instance is automatically selected.
+
+HPA 自动缩放/v2beta2 附带附加功能，例如缩放行为调整和稳定窗口。可以将单个或多个扩展行为策略附加到 HPA，并且会自动选择导致给定实例的最大更改量的策略。
+
+```
+behavior:
+  scaleDown:
+    policies:
+    - type: Pods
+      value: 4
+      periodSeconds: 60
+    - type: Percent
+      value: 10
+      periodSeconds: 60
+```
+
+In the above example, if there are 100 replicas running, the HPA will look at the two policies available. The first policy tells the autoscaler to remove 4 pods at a time in a period of 60 seconds. The second policy tells the autoscaler to remove 10% of the current replica number in 60 seconds. The second policy has the highest impact, as it would remove 10 pods in the first 60 second window. In the next 60 second window, 9 pods (10%) would be removed from the remaining 90. In the third iteration, 9 will be removed again, as 9 is the ceiling value of 81 multiplied by 0.10. When it reaches 40 replicas, the first policy will take over, as the second policy would have a lower impact than 4 pods. Therefore, from 40 pods onward the autoscaler will continually remove 4 pods at each iteration.
+
+在上面的例子中，如果有 100 个副本在运行，HPA 将查看两个可用的策略。第一个策略告诉自动缩放器在 60 秒内一次删除 4 个 pod。第二个策略告诉自动缩放器在 60 秒内删除当前副本数的 10%。第二个策略影响最大，因为它将在第一个 60 秒窗口中删除 10 个 pod。在接下来的 60 秒窗口中，将从剩余的 90 个中移除 9 个（10%）。在第三次迭代中，将再次移除 9，因为 9 是 81 乘以 0.10 的上限值。当它达到 40 个副本时，第一个策略将接管，因为第二个策略的影响低于 4 个 pod。因此，从 40 个 pod 开始，自动缩放器将在每次迭代中不断删除 4 个 pod。
+
+The stabilization window is another important configuration that needs to be set with behavior policies. A stabilization window is used to restrict scaling decisions by observing historical data for a designated time period. This keeps the number of replicas constant in the event of fluctuating metrics, which could result in the replica count going up and down in a short period of time. For example, if a scaling threshold is reached within 60 seconds, then suddenly drops and rises again, the replica count will remain consistent until the stabilization window is reached.
+
+稳定窗口是另一个需要设置行为策略的重要配置。稳定窗口用于通过观察指定时间段的历史数据来限制缩放决策。这可以在指标波动的情况下保持副本数量不变，这可能导致副本数量在短时间内上下波动。例如，如果在 60 秒内达到缩放阈值，然后突然下降并再次上升，则副本计数将保持一致，直到达到稳定窗口。
+
+The following snippet shows how to fine-tune the stabilization period.
+
+以下代码段显示了如何微调稳定期。
+
+```
+scaleDown:
+  stabilizationWindowSeconds: 300
+```
+
+The following shows the default values for HPA when it comes to scaling policies. Unless you have specific requirements, you don’t have to change these.
+
+下面显示了在扩展策略方面 HPA 的默认值。除非您有特定要求，否则您不必更改这些。
+
+```
+behavior:
+  scaleDown:
+    stabilizationWindowSeconds: 300
+    policies:
+    - type: Percent
+      value: 100
+      periodSeconds: 15
+  scaleUp:
+    stabilizationWindowSeconds: 0
+    policies:
+    - type: Percent
+      value: 100
+      periodSeconds: 15
+    - type: Pods
+      value: 4
+      periodSeconds: 15
+    selectPolicy: Max
+```
+
+Best Practices
+
+最佳实践
+
+When running production workloads with autoscaling enabled, there are a few best practices to keep in mind.
+
+在启用自动缩放的情况下运行生产工作负载时，需要牢记一些最佳实践。
+
+- **Install a metric server:** Kubernetes requires a metrics server be installed in order for autoscaling to work. The metrics server enables the Kubernetes metric APIs, which the autoscaling algorithms utilize, to make scaling decisions.
+- **Define pod requests and limits:** A Kubernetes scheduler makes scheduling decisions according to the requests and limits set in the pod. If not set properly, Kubernetes will be unable to make an informed scheduling decision, and pods will not go into a pending state due to lack of resources. Instead, they will go into a CrashLoopBackOff, and Cluster Autoscaler won’t kick in to scale the nodes. Furthermore, with HPA, if initial requests are not set to retrieve the current utilization percentages, scaling decisions will not have a proper base to match resource utilization policies as a percentage.
+- **Specify PodDisruptionBudgets for mission-critical applications:** [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) avoids disruption of critical pods running in the Kubernetes Cluster. When a PodDisruptionBudget is defined for a certain application, autoscaler will avoid scaling down replicas beyond the minimum value configured in the disruption budget.
+- **Resource requests should be close to the average usage of the pods:** Sometimes an appropriate resource request can be hard to determine for new applications, as they have no previous resource utilization data. However, with Vertical Pod Autoscaler, you can easily run it in recommendation mode. Recommendations for the best values for CPU and memory requests for your pods are based on short-term observations of your application’s usage. 
+
+- **安装度量服务器：** Kubernetes 需要安装度量服务器才能进行自动缩放。指标服务器启用自动缩放算法使用的 Kubernetes 指标 API 来做出缩放决策。
+- **定义 pod 请求和限制：** Kubernetes 调度程序根据 pod 中设置的请求和限制做出调度决策。如果设置不正确，Kubernetes 将无法做出明智的调度决策，并且 Pod 不会因为缺乏资源而进入待处理状态。相反，它们将进入 CrashLoopBackOff，并且 Cluster Autoscaler 不会启动以扩展节点。此外，对于 HPA，如果初始请求未设置为检索当前利用率百分比，则扩展决策将没有适当的基础来匹配资源利用率策略作为百分比。
+- **为关键任务应用程序指定 PodDisruptionBudgets：** [PodDisruptionBudget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) 避免了在 Kubernetes 集群中运行的关键 Pod 的中断。当为某个应用程序定义了 PodDisruptionBudget 时，自动缩放器将避免将副本缩减到超出中断预算中配置的最小值。
+- **资源请求应该接近 Pod 的平均使用情况：** 有时，对于新应用程序来说，合适的资源请求很难确定，因为它们没有以前的资源利用率数据。但是，使用 Vertical Pod Autoscaler，您可以轻松地在推荐模式下运行它。 Pod 的 CPU 和内存请求的最佳值的建议基于对应用程序使用情况的短期观察。
+
+- **Increase CPU limits for slow starting applications: Some applications (ex: Java Spring) require an initial CPU burst to get the application up and running. At runtime the application would typically use a small amount of CPU compared to the initial load. To mitigate this, it is recommended to limit CPU to a higher level. This will allow these containers to start up quickly and to add lower request levels that match the typical runtime request usage of these applications.**
+- **Don’t mix HPA with VPA:** Horizontal Pod Autoscaler and Vertical Pod Autoscaler should not be run together. It is recommended to run Vertical Pod Autoscaler first, to get the proper values for CPU and memory as recommendations, and then to run HPA to handle traffic spikes.
+
+- **为启动缓慢的应用程序增加 CPU 限制：某些应用程序（例如：Java Spring）需要初始 CPU 爆发才能启动和运行应用程序。在运行时，与初始负载相比，应用程序通常会使用少量 CPU。为了缓解这种情况，建议将 CPU 限制为更高级别。这将允许这些容器快速启动并添加与这些应用程序的典型运行时请求使用相匹配的较低请求级别。**
+- **不要将 HPA 与 VPA 混合使用：** Horizontal Pod Autoscaler 和 Vertical Pod Autoscaler 不应一起运行。建议先运行 Vertical Pod Autoscaler，根据建议获取合适的 CPU 和内存值，然后运行 HPA 来处理流量高峰。
+
+### Conclusion
+
+###  结论
+
+The Horizontal Pod Autoscaler is the most widely used and stable version available in Kubernetes for horizontally scaling workloads. However, this may not be suitable for every type of workload. HPA works best when combined with Cluster Autoscaler to get your compute resources scaled in tandem with the pods within the cluster. These guidelines and insights can help you optimize your resources as you begin your journey with autoscaling on Kubernetes. 
+
+Horizontal Pod Autoscaler 是 Kubernetes 中使用最广泛且最稳定的版本，可用于水平扩展工作负载。但是，这可能不适用于每种类型的工作负载。 HPA 与 Cluster Autoscaler 结合使用时效果最佳，可让您的计算资源与集群内的 Pod 同步扩展。这些指南和见解可以帮助您在开始使用 Kubernetes 自动扩展的旅程时优化资源。
+
