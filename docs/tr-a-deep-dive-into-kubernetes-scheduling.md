@@ -2,11 +2,9 @@
 
 # 深入研究 Kubernetes 调度
 
-                    February 8, 2021
+February 8, 2021
 
-2021 年 2 月 8 日
-
-Kubernetes Scheduler is one of the core components of the Kubernetes control plane. It runs on the control plane, and its  default behavior assigns pods to nodes while balancing resource  utilization among them. When the pods are assigned to a new node, the  kubelet running on the node retrieves the pod definition from the  Kubernetes API. Then, the kubelet creates the resources and containers  according to the pod specification on the node. In other words, the  scheduler runs inside the control plane and distributes the workload to  the Kubernetes cluster. It’s possible that you’ve never checked  Kubernetes Scheduler’s logs or configuration parameters because, for the most part, the tool works well for the majority of development,  testing, and production cases.
+Kubernetes Scheduler is one of the core components of the Kubernetes control plane. It runs on the control plane, and its default behavior assigns pods to nodes while balancing resource  utilization among them. When the pods are assigned to a new node, the  kubelet running on the node retrieves the pod definition from the  Kubernetes API. Then, the kubelet creates the resources and containers  according to the pod specification on the node. In other words, the  scheduler runs inside the control plane and distributes the workload to  the Kubernetes cluster. It’s possible that you’ve never checked  Kubernetes Scheduler’s logs or configuration parameters because, for the most part, the tool works well for the majority of development,  testing, and production cases.
 
 Kubernetes Scheduler 是 Kubernetes 控制平面的核心组件之一。它运行在控制平面上，其默认行为将 pod 分配给节点，同时平衡它们之间的资源利用率。当 pod 被分配到一个新节点时，在该节点上运行的 kubelet 会从 Kubernetes API 中检索 pod 定义。然后，kubelet 根据节点上的 pod 规范创建资源和容器。换句话说，调度程序在控制平面内运行，并将工作负载分配给 Kubernetes 集群。您可能从未检查过 Kubernetes Scheduler 的日志或配置参数，因为在大多数情况下，该工具适用于大多数开发、测试和生产案例。
 
@@ -28,21 +26,13 @@ The simplest configuration option is setting the **nodeName** field in `podspec`
 
 ```
 apiVersion: v1
-
 kind: Pod
-
 metadata:
-
   name: nginx
-
 spec:
-
   containers:
-
   - name: nginx
-
     image: nginx
-
   nodeName: node-0
 ```
 
@@ -56,23 +46,14 @@ If you want to run your pods on a specific set of nodes, use **nodeSelector** to
 
 ```
 apiVersion: v1
-
 kind: Pod
-
 metadata:
-
   name: nginx
-
 spec:
-
   containers:
-
   - name: nginx
-
     image: nginx
-
   nodeSelector:
-
     disktype: ssd
 ```
 
@@ -101,10 +82,6 @@ There are four affinity rules you can add to `podspec`:
 - **preferredDuringSchedulingIgnoredDuringExecution**
 - **preferredDuringSchedulingRequiredDuringExecution** 
 
-- **requiredDuringSchedulingIgnoredDuringExecution**
-- **requiredDuringSchedulingRequiredDuringExecution**
-- **preferredDuringSchedulingIgnoredDuringExecution**
-- **preferredDuringSchedulingRequiredDuringExecution**
 
 These four rules consist of two criteria: required or preferred, and  two stages: Scheduling and Execution. Rules starting with required  describe hard requirements that must be met. Rules beginning with  preferred are soft requirements that will be enforced but not  guaranteed. The Scheduling stage refers to the first assignment of the  pod to the nodes. The Execution stage applies to situations where node  labels change after the scheduling assignment.
 
@@ -121,10 +98,8 @@ Check out the following example to help you grasp these affinities:
 ```
 apiVersion: v1
 kind: Pod
-
 metadata:
   name: nginx
-
 spec:
   affinity:
     nodeAffinity:
@@ -135,7 +110,6 @@ spec:
             operator: In
             values:
             - us-east
-
       preferredDuringSchedulingIgnoredDuringExecution:
       - weight: 1
         preference:

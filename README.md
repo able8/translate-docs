@@ -380,7 +380,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [How to implement a DevOps toolchain](docs/tr-devops-tool-chain.md)
 1. [GitOps-based Policy Management: How to Scale in a Multi-Node, Multicloud World](docs/tr-gitops-based-policy-management-multicloud.md)
 1. [A Developer’s Guide to GitOps](docs/tr-gitops-developers-guide.md)
-1. [#HR is not your friend, and other things I think you should know](docs/tr-hr-is-not-friend.md)
+1. [HR is not your friend, and other things I think you should know](docs/tr-hr-is-not-friend.md)
 1. [A Deep Dive into Kubernetes Scheduling](docs/tr-a-deep-dive-into-kubernetes-scheduling.md)
 1. [How CI/CD is Sidetracking Optimization, and What You Can Do About It](docs/tr-cloud-optimization-taking-the-bottom-up-approach-test.md)
 1. [Deep Dive into Golang Performance](docs/tr-deep-dive-into-golang-performance.md)
