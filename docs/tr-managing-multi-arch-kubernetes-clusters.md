@@ -4,7 +4,7 @@
 
 *February 20, 2021*
 
-*2021 年 2 月 20 日*
+
 
 The world of ARM processors has been getting very interesting over the last few years. Until fairly recently, for most people, ARM CPUs were reserved for their phone or maybe a [Raspberry Pi running their home DNS](https://pi-hole.net/). However now the Raspberry Pi 4 has a pretty decent quad-core CPU and up to 8GB RAM, Apple have blown away the industry with the M1 chips and AWS have launched [Graviton2](https://aws.amazon.com/ec2/graviton/) instances which depending on who you ask have 20-40% better price/performance than the Intel equivalents.
 
@@ -35,7 +35,7 @@ However some don’t make it obvious at all! The easiest way I've found so far t
 然而，有些根本不明显！到目前为止，我发现确定图像是否为多架构的最简单方法是使用实验性的 [docker manifest 命令](https://docs.docker.com/engine/reference/commandline/manifest/)最新的 Docker 版本。正如文档中所说，您必须在`~/.docker/config.json` 中启用实验性功能，然后您将能够运行如下命令：
 
 ```
-[~]$ docker manifest inspect nginx:alpine
+$ docker manifest inspect nginx:alpine
 {
    "schemaVersion": 2,
    "mediaType": "application/vnd.docker.distribution.manifest.list.v2+json",
@@ -66,7 +66,7 @@ As you can see the nginx:alpine image is a “manifest list” rather than a pla
 正如你所看到的 nginx:alpine 图像是一个“清单列表”而不是一个普通的旧清单，并支持我们所追求的两种架构。伟大的！然而 distroless-java 仍然是单一架构：
 
 ```
-[~]$ docker manifest inspect gcr.io/distroless/java
+$ docker manifest inspect gcr.io/distroless/java
 {
     "schemaVersion": 2,
     "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
@@ -84,11 +84,9 @@ As you can see the nginx:alpine image is a “manifest list” rather than a pla
 ...
 ```
 
-I won’t go into building these multi-architecture manifest lists here, as it very much depends on which tool you’re using. If you’re using Docker to build your images you can use the [docker buildx](https://docs.docker.com/buildx/working-with-buildx/)experimental feature. We're currently using the [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#extended-usage) for our Java-based apps, which has recently added the `platforms` feature. There are many other ways to do it and GitHub actions you can use, so it’s not too hard, and you don’t need an arm64 machine to build an arm64-compatible image anymore thanks to integration with QEMU.
+I won’t go into building these multi-architecture manifest lists here, as it very much depends on which tool you’re using. If you’re using Docker to build your images you can use the [docker buildx](https://docs.docker.com/buildx/working-with-buildx/) experimental feature. We're currently using the [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#extended-usage) for our Java-based apps, which has recently added the `platforms` feature. There are many other ways to do it and GitHub actions you can use, so it’s not too hard, and you don’t need an arm64 machine to build an arm64-compatible image anymore thanks to integration with QEMU.
 
 我不会在这里构建这些多架构清单列表，因为这在很大程度上取决于您使用的工具。如果您使用 Docker 构建镜像，您可以使用 [docker buildx](https://docs.docker.com/buildx/working-with-buildx/) 实验功能。我们目前正在为基于 Java 的应用程序使用 [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin#extended-usage)，最近添加了“平台”功能。还有很多其他方法可以做到这一点，并且您可以使用 GitHub 操作，所以这并不太难，而且由于与 QEMU 集成，您不再需要 arm64 机器来构建与 arm64 兼容的映像。
-
-## Kubernetes
 
 ## Kubernetes
 
@@ -109,7 +107,7 @@ The node affinity rule option requires no configuration of the nodes themselves 
 节点关联规则选项不需要对节点本身进行配置，因为最近的 Kubernetes 版本有一个标准的 `kubernetes.io/arch` 节点标签；这应该设置为 arm64 或 amd64。但是，如果您有大量尚未在 arm64 上工作的工作负载，则需要付出很多努力。
 
 ```
-[~]$ kubectl describe no myarmnode
+$ kubectl describe no myarmnode
 Name:               myarmnode
 Roles:              control-plane,etcd,master
 Labels:             kubernetes.io/arch=arm64
@@ -195,7 +193,7 @@ This will (on Linux at least) list out all the arm64 compatible images running i
 这将（至少在 Linux 上）列出在您的 Kubernetes 集群中运行的所有 arm64 兼容镜像：
 
 ```
-1 kubectl get po -A -o yaml |grep 'image:' |cut -f2- -d':' |sed 's/^[[:space:]]*//g' |grep '/' |sort -u |xargs -I{} bash -c "docker manifest inspect {} | grep -q arm64 && echo {}"
+kubectl get po -A -o yaml |grep 'image:' |cut -f2- -d':' |sed 's/^[[:space:]]*//g' |grep '/' |sort -u |xargs -I{} bash -c "docker manifest inspect {} | grep -q arm64 && echo {}"
 ```
 
 Change `grep -q` to `grep -vq` to invert the logic and return images which won’t work on arm64 nodes.

@@ -4,8 +4,6 @@
 
 Posted at 20-Feb-2021 | (about a 11 minute read)
 
-发表于 20-Feb-2021 | （阅读约 11 分钟）
-
 Kubernetes is super effective on running cron jobs as well as other web  application workloads. Kubernetes cron job is a special kind of  Kubernetes job that runs on a time-based schedule. In this post, we will focus on how to run optimally configured cron jobs on Kubernetes.
 
 Kubernetes 在运行 cron 作业以及其他 Web 应用程序工作负载方面非常有效。 Kubernetes cron 作业是一种特殊的 Kubernetes 作业，它按基于时间的计划运行。在这篇文章中，我们将重点介绍如何在 Kubernetes 上运行优化配置的 cron 作业。
@@ -94,7 +92,7 @@ Even though Kubernetes is flexible, powerful, and ultra-popular. There are some 
 
 I have been part of a team that used Kubernetes in Production in [2016](https://www.slideshare.net/geshan/embrace-chatops-stop-installing-deployment-software-larcon-eu-2016/54). Kubernetes is great at managing long-running workloads like web servers or queue consumers. They roughly translate to [Service](https://kubernetes.io/docs/concepts/services-networking/service/), and [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) artifact in Kubernetes lingo. In addition to being great for  long-running workloads, Kubernetes does an amazing job in managing Cron  Jobs too.
 
-我曾在 [2016] (https://www.slideshare.net/geshan/embrace-chatops-stop-installing-deployment-software-larcon-eu-2016/54) 加入一个在生产环境中使用 Kubernetes 的团队。 Kubernetes 非常擅长管理长时间运行的工作负载，例如 Web 服务器或队列使用者。它们大致翻译为 [Service](https://kubernetes.io/docs/concepts/services-networking/service/) 和 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) Kubernetes 术语中的工件。除了非常适合长时间运行的工作负载之外，Kubernetes 在管理 Cron 作业方面也做得非常出色。
+我曾在 [2016](https://www.slideshare.net/geshan/embrace-chatops-stop-installing-deployment-software-larcon-eu-2016/54) 加入一个在生产环境中使用 Kubernetes 的团队。 Kubernetes 非常擅长管理长时间运行的工作负载，例如 Web 服务器或队列使用者。它们大致翻译为 [Service](https://kubernetes.io/docs/concepts/services-networking/service/) 和 [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) Kubernetes 术语中的工件。除了非常适合长时间运行的工作负载之外，Kubernetes 在管理 Cron 作业方面也做得非常出色。
 
 If we look at a bit of Kubernetes history, Kubernetes Cron Job was called `ScheduledJob`. In [version 1.5](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.5.md#action-required-before-upgrading) it was renamed to be called Cron Job. In Kubernetes, [Cron Job](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) is a special kind of a [Job](https://kubernetes.io/docs/concepts/workloads/controllers/job/) that runs on a repeating schedule. The frequency of the Kubernetes Cron Job is written in the familiar [Cron](https://crontab.guru/) format. For example `0 4 * * *` in the cron format means at 4:00 AM every morning. You can read more about the [cron schedule syntax](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#cron-schedule-syntax) if you want.
 
@@ -254,10 +252,11 @@ In the above simple example, let’s scrutinize some things:
 4. We want to temporarily stop the cron job for the time being.
 5. We want to see logs of some older cron job runs even if they have failed or succeeded.
 
-1、如果命令有错误，Kubernetes会不会多次尝试调度cron job pod？
-2、如何清理已经完成工作的pod？
+1. 如果命令有错误，Kubernetes会不会多次尝试调度cron job pod？
+2. 如何清理已经完成工作的pod？
+
 3. 如果我们的 cron 作业还没有完成，是时候运行下一个了怎么办。我们只想跳过下一次运行，因为当前作业尚未完成。
-4.我们想暂时停止cron作业。
+4. 我们想暂时停止cron作业。
 5. 我们希望查看一些旧的 cron 作业运行的日志，即使它们失败或成功。
 
 The answers to above questions and more lies in the cron job configuration below:
@@ -300,8 +299,9 @@ Let’s analyze some of the new configurations we have added and what do they do
 2. To lessen the pressure on  Kubernetes, we can specify TTL seconds after finished. Where the TTL  controller cleans up the job and deletes the job in a [cascading manner](https://kubernetes.io/docs/concepts/workloads/controllers/job/#ttl-mechanism-for-finished-jobs)
 3. The `parallelism` and `completions` are by default 1, It can be used to have only 1 pod running in [parallel](https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling-parallelism). 
 
-1.在这个定义中`backoffLimit`用于指定在将作业标记为[失败]之前的重试次数(https://kubernetes.io/docs/concepts/workloads/controllers/job/#pod-backoff-failure-政策）。例如，如果容器没有启动或命令有错误，我们指定它应该在回退之前重试 5 次（将作业标记为失败）。
-2.为了减轻Kubernetes的压力，我们可以指定完成后的TTL秒。 TTL控制器以[级联方式]清理作业并删除作业的地方（https://kubernetes.io/docs/concepts/workloads/controllers/job/#ttl-mechanism-for-finished-jobs）
+1. 在这个定义中`backoffLimit`用于指定在将作业标记为失败之前的重试次数。例如，如果容器没有启动或命令有错误，我们指定它应该在回退之前重试 5 次（将作业标记为失败）。
+2. 为了减轻Kubernetes的压力，我们可以指定完成后的TTL秒。 TTL控制器以级联方式清理作业并删除作业
+
 3. `parallelism` 和 `completions` 默认为 1，可用于在 [parallel](https://kubernetes.io/docs/concepts/workloads/controllers/job/#controlling) 中只运行 1 个 pod -并行性)。
 
 4. Use of `concurrencyPolicy` is very handy if you want to skip the next run if the current cron job pod is still active. Setting it to `Forbid` can enable this. If your job demands that on the next run the current run should be canceled, it can be set to replace [Concurrency Policy](https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/#concurrency-policy).
@@ -372,9 +372,9 @@ Kubernetes cron jobs are very useful as we have seen. In addition to being great
 
 Even modern applications have tasks that need to be done with Cron jobs and  Kubernetes cron jobs can be exploited for such tasks.
 
-  即使是现代应用程序也有需要使用 Cron 作业完成的任务，而 Kubernetes cron 作业可以用于此类任务。
+即使是现代应用程序也有需要使用 Cron 作业完成的任务，而 Kubernetes cron 作业可以用于此类任务。
 
- Posted By Geshan Manandhar | Posted at 20-Feb-2021 Please share:
+Posted By Geshan Manandhar | Posted at 20-Feb-2021 Please share:
 
 格山·马南达尔发表 |发表于 20-Feb-2021 请分享：
 

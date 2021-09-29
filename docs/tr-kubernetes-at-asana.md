@@ -2,13 +2,8 @@
 
 # 我们如何在 Asana 使用 Kubernetes
 
-By
-[Tony Liang](https://blog.asana.com/author/tonyliangasana-com/ "Posts by Tony Liang")
+By [Tony Liang](https://blog.asana.com/author/tonyliangasana-com/ "Posts by Tony Liang")
 Feb 11, 2021
-
-经过
-[Tony Liang](https://blog.asana.com/author/tonyliangasana-com/ “Tony Liang 的帖子”)
-2021 年 2 月 11 日
 
 At Asana, we use Kubernetes to deploy and manage services independently from our monolith infrastructure. We encountered a few pain points when initially using Kubernetes, and built a framework to standardize the creation and maintenance of Kubernetes applications, aptly named KubeApps. Over the last two years, the Infrastructure Platform team has been making improvements to the KubeApps framework to make deploying services easier at Asana. In this post, we’ll explore the problems we aimed to solve in Kubernetes and the ways we did that with the KubeApp framework.
 
@@ -20,7 +15,7 @@ At Asana, we use Kubernetes to deploy and manage services independently from our
 
 In an early blog post about Asana's [legacy deployment system](https://blog.asana.com/2017/06/asana-server-deployment-pragmatic-approach-maintaining-legacy-deployment-system/), we discussed how our core infrastructure runs as a monolith of AWS EC2 instances with custom configuration scripts for each service. This system was not scalable: Pushing new code to the monolith required all hosts to be reconfigured; adding new services required a new set of custom configuration scripts that were difficult to maintain and carried a risk of adding instability to deployments to the monolith.
 
-在一篇关于 Asana 的 [遗留部署系统] (https://blog.asana.com/2017/06/asana-server-deployment-pragmatic-approach-maintaining-legacy-deployment-system/) 的早期博客文章中，我们讨论了如何我们的核心基础设施作为 AWS EC2 实例的整体运行，每个服务都有自定义配置脚本。该系统不可扩展：将新代码推送到单体应用需要重新配置所有主机；添加新服务需要一组新的自定义配置脚本，这些脚本难以维护，并且存在增加整体部署不稳定的风险。
+在一篇关于 Asana 的 [遗留部署系统](https://blog.asana.com/2017/06/asana-server-deployment-pragmatic-approach-maintaining-legacy-deployment-system/) 的早期博客文章中，我们讨论了如何我们的核心基础设施作为 AWS EC2 实例的整体运行，每个服务都有自定义配置脚本。该系统不可扩展：将新代码推送到单体应用需要重新配置所有主机；添加新服务需要一组新的自定义配置脚本，这些脚本难以维护，并且存在增加整体部署不稳定的风险。
 
 When we considered how we wanted to build out the infrastructure behind [Luna2](https://blog.asana.com/2017/08/performance-asana-app-rewrite/), we decided to use Kubernetes to enable us to deploy and manage services independently from the monolith. The container orchestration solution worked well for us, and our broader Engineering team expressed enough interest in using Kubernetes for other systems at Asana that we generalized these tools to allow other teams to build and deploy containerized services.
 
@@ -150,13 +145,6 @@ Special thanks to
 
 Eldar Bogdanov, Tony Liang, Kriti Singh, Natan Dubitski, Ashley Waxman, Steve Landey, Misha Kestler, Susan Thomakos
 
-埃尔达·博格丹诺夫、托尼·梁、克里蒂·辛格、纳坦·杜比茨基、阿什利·瓦克斯曼、史蒂夫·兰迪、米莎·凯斯特勒、苏珊·托马斯
-
 Would you recommend this article?
-Yes /
-No 
 
-你会推荐这篇文章吗？
-是的 /
-不
 

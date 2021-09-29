@@ -2,9 +2,7 @@
 
 ## Kubernetes Ingress（和网络）的原因和方式
 
-[Saaras Inc.](http://getenroute.io/author/saaras-inc.)August 07, 2021
-
-[Saaras Inc.](http://getenroute.io/author/saaras-inc.)2021 年 8 月 7 日
+[Saaras Inc.](http://getenroute.io/author/saaras-inc.) August 07, 2021
 
 ![Why and How of Kubernetes Ingress (and Networking)](https://getenroute.io/img/EnrouteIngressDetail.jpeg)
 

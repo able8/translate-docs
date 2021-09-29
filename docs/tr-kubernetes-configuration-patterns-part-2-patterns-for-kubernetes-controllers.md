@@ -4,8 +4,6 @@
 
 May 5, 2021
 
-2021 年 5 月 5 日
-
 Senior Software Engineer
 
 高级软件工程师
@@ -76,12 +74,6 @@ In this example, imagine there is a central log collector system, as shown in Fi
 
 [![In this Kubernetes controller pattern, different containers in different namespaces retrieve their configuration by reading from a centralized ConfigMap.](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_1.png?itok=ElnioakN)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_1.png)
 
-2020/11/advanced_1.png?itok=ElnioakN)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_1.png)
-
-Figure 1:
-
-图1：
-
 Figure 1: Different containers read from a centralized ConfigMap.
 
 图 1：从集中式 ConfigMap 读取的不同容器。
@@ -92,7 +84,6 @@ In the log collector agents within each namespace, the agent application reads t
 
 ```
 package main
-
 import ...
 
 func main(){
@@ -130,12 +121,6 @@ This pattern uses a _namespaced configuration_ in addition to the central config
 除了中央配置之外，此模式还使用_命名空间配置_。代码中命名空间`ConfigMap` 需要一个单独的监视，如图 2 所示。
 
 [![Alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_2.png?itok=CazTkG4O)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_2.png)
-
-redhat.com/sites/default/files/blog/2020/11/advanced_2.png)
-
-Figure 2:
-
-图 2：
 
 Figure 2: Each container takes its config from a centralized configuration and a local ConfigMap.
 
@@ -312,12 +297,6 @@ Custom resources can be used as configurations to be read by the Kubernetes cont
 
 [![alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_3_a.png?itok=pxfgtNOq)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_3_a.png)
 
-redhat.com/sites/default/files/blog/2020/11/advanced_3_a.png)
-
-Figure 3:
-
-图 3：
-
 Figure 3: The controller reads each custom resource.
 
 图 3：控制器读取每个自定义资源。
@@ -327,12 +306,6 @@ Figure 4 shows that after the controller reads and processes the custom resource
 图 4 显示，在控制器读取和处理自定义资源后，它会为每个自定义资源创建一个事件使用者应用程序实例。
 
 [![alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_3_b.png?itok=7OdGHTYE)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_3_b.png)
-
-redhat.com/sites/default/files/blog/2020/11/advanced_3_b.png)
-
-Figure 4:
-
-图 4：
 
 Figure 4: The controller creates event consumer application instances for each custom resource.
 
@@ -380,11 +353,7 @@ In this pattern, configuration options that cannot be used in every scenario are
 
 [![alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_4_a.png?itok=oD14StZ_)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_4_a.png)
 
-redhat.com/sites/default/files/blog/2020/11/advanced_4_a.png)
 
-Figure 5:
-
-图 5：
 
 Figure 5: The controller creates the application landscape based on custom resources and ConfigMaps.
 
@@ -395,12 +364,6 @@ Figure 6 shows the application landscape created by the controller for the confi
 图 6 显示了控制器为图 5 中给出的配置创建的应用程序环境。
 
 [![alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_4_b.png?itok=Ax6jgcYC)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_4_b.png)
-
-redhat.com/sites/default/files/blog/2020/11/advanced_4_b.png)
-
-Figure 6:
-
-图 6：
 
 Figure 6: The configuration relies first on custom resources, falling back to ConfigMaps.
 
@@ -522,12 +485,6 @@ We can remedy that issue with this pattern, which keeps the long and complicated
 
 [![alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_5_a.png?itok=6UI9aVFQ)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_5_a.png)
 
-redhat.com/sites/default/files/blog/2020/11/advanced_5_a.png)
-
-Figure 7:
-
-图 7：
-
 Figure 7: Custom resources refer to a ConfigMap for part of their configuration.
 
 图 7：自定义资源引用 ConfigMap 以获取其部分配置。
@@ -537,12 +494,6 @@ Figure 8 shows the application landscape created by the controller for the confi
 图 8 显示了控制器为上图中给出的配置创建的应用程序环境。
 
 [![alt](http://developers.redhat.com/sites/default/files/styles/article_floated/public/blog/2020/11/advanced_5_b.png?itok=xlfnbzrb)](https://developers.redhat.com/sites/default/files/blog/2020/11/advanced_5_b.png)
-
-redhat.com/sites/default/files/blog/2020/11/advanced_5_b.png)
-
-Figure 8:
-
-图 8：
 
 Figure 8: The controller uses custom resources referring to a ConfigMap to create the application landscape.
 
