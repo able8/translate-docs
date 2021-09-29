@@ -26,9 +26,9 @@ During each period, the controller manager queries the resource utilization agai
 
 - For per-pod resource metrics (like CPU), the controller fetches the metrics from the resource metrics API for each Pod targeted by the HorizontalPodAutoscaler. Then, if a target utilization value is set, the controller calculates the utilization value as a percentage of the equivalent resource request on the containers in each Pod. If a target raw value is set, the raw metric values are used directly. The controller then takes the mean of the utilization or the raw value (depending on the type of target specified) across all targeted Pods, and produces a ratio used to scale the number of desired replicas.
 
-   - 对于每个 Pod 的资源指标（如 CPU），控制器从 HorizontalPodAutoscaler 所针对的每个 Pod 的资源指标 API 中获取指标。然后，如果设置了目标利用率值，则控制器将利用率值计算为每个 Pod 中容器上的等效资源请求的百分比。如果设置了目标原始值，则直接使用原始度量值。然后，控制器取所有目标 Pod 的利用率或原始值（取决于指定的目标类型）的平均值，并生成用于扩展所需副本数量的比率。
+- 对于每个 Pod 的资源指标（如 CPU），控制器从 HorizontalPodAutoscaler 所针对的每个 Pod 的资源指标 API 中获取指标。然后，如果设置了目标利用率值，则控制器将利用率值计算为每个 Pod 中容器上的等效资源请求的百分比。如果设置了目标原始值，则直接使用原始度量值。然后，控制器取所有目标 Pod 的利用率或原始值（取决于指定的目标类型）的平均值，并生成用于扩展所需副本数量的比率。
 
-  Please note that if some of the Pod's containers do not have the relevant resource request set, CPU utilization for the Pod will not be defined and the autoscaler will not take any action for that metric. See the [algorithm details](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#algorithm-details) section below for more information about how the autoscaling algorithm works.
+Please note that if some of the Pod's containers do not have the relevant resource request set, CPU utilization for the Pod will not be defined and the autoscaler will not take any action for that metric. See the [algorithm details](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#algorithm-details) section below for more information about how the autoscaling algorithm works.
 
 请注意，如果 Pod 的某些容器没有设置相关的资源请求，则不会定义 Pod 的 CPU 利用率，并且自动缩放器不会针对该指标采取任何行动。有关自动缩放算法如何工作的更多信息，请参阅下面的 [算法详细信息](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#algorithm-details) 部分。
 

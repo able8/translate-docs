@@ -50,7 +50,7 @@ Figure 3: Overview of the Horizontal Pod Autoscaler
 
 - **垂直 Pod 自动缩放：** Vertical Pod Autoscaler (VPA) 持续监控正在运行的应用程序的 CPU 和内存使用情况。它为应专用于给定应用程序的理想资源数量提供建议，并根据需要垂直扩展应用程序。
 
-![](https://lh6.googleusercontent.com/cBjUiDqlrolcCdYgrcAZtSHEQy7yQNEXXTDY_SiOj29M6aUAdLkE8iSl7zbQdekyqCyI9uQGMBaq6lb9tOOjeNWRU3Cj8cZ1nD7lvjgB_iMGkTk2gmEbh1ypruEsku66A2dcdqB6)
+
 
 Figure 4: Overview of the Vertical Autoscaler
 
@@ -155,7 +155,7 @@ The HPA autoscaling/v2beta2 ships with additional features, such as scaling beha
 
 HPA 自动缩放/v2beta2 附带附加功能，例如缩放行为调整和稳定窗口。可以将单个或多个扩展行为策略附加到 HPA，并且会自动选择导致给定实例的最大更改量的策略。
 
-```
+```yaml
 behavior:
   scaleDown:
     policies:

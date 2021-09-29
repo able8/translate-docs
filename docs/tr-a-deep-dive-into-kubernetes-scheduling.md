@@ -346,13 +346,9 @@ In the example below, you can see how to set the threshold manually by performan
 
 ```
 apiVersion: kubescheduler.config.k8s.io/v1alpha1
-
 kind: KubeSchedulerConfiguration
-
 algorithmSource:
-
   provider: DefaultProvider
-
 percentageOfNodesToScore: 50
 ```
 
