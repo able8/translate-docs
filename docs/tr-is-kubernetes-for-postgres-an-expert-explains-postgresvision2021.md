@@ -4,8 +4,6 @@
 
 by [Patrick Nelson](https://siliconangle.com/author/patricknelson/)
 
-作者：[帕特里克·纳尔逊](https://siliconangle.com/author/patricknelson/)
-
 A database’s level of simplicity is the most important consideration for assessing when it’s worth shifting it to an advanced, sophisticated infrastructure platform, according to a Kubernetes application development specialist who works closely with PostgreSQL, an open-source relational database management system.
 
 一位与开源关系数据库管理系统 PostgreSQL 密切合作的 Kubernetes 应用程序开发专家表示，在评估何时值得将其转移到先进、复杂的基础设施平台时，数据库的简单程度是最重要的考虑因素。
@@ -18,7 +16,7 @@ Berkus, however, is not simply talking about levels of complication that might h
 
 然而，Berkus 并不是简单地谈论可能阻碍迁移的复杂程度，而是在某些情况下进行迁移所带来的收益较少。 “将东西转移到 Kubernetes 的真正优势在于你能够实现自动化，”他解释道。
 
-Berkus spoke with [Dave Vellante](https://twitter.com/dvellante), host of theCUBE, SiliconANGLE Media's livestreaming studio, during [Postgres Vision 2021](https://www.thecube.net/postgres-vision-2021). They discussed just how appropriate Kubernetes is for Postgres data. _(\\* Disclosure below.)_
+Berkus spoke with [Dave Vellante](https://twitter.com/dvellante), host of theCUBE, SiliconANGLE Media's livestreaming studio, during [Postgres Vision 2021](https://www.thecube.net/postgres-vision-2021). They discussed just how appropriate Kubernetes is for Postgres data. _( Disclosure below.)_
 
 Berkus 在 [Postgres Vision 2021](https://www.thecube.net/postgres-vision-2021) 期间与 SiliconANGLE Media 直播工作室 theCUBE 的主持人 [Dave Vellante](https://twitter.com/dvellante)进行了交谈)。他们讨论了 Kubernetes 对 Postgres 数据的适用性。 _(\\* 下面披露。)_
 
@@ -42,7 +40,7 @@ Less appropriate are databases that are so complicated it gets hard, or even imp
 
 “我曾与拥有一个大数据库的人一起工作，其中数据库大小为 3 TB。它为他们的报告系统、客户系统、门户网站以及一个数据库中的所有其他内容提供支持，”伯库斯说。 “这真的是一个艰难的决定，事实上，你可能永远不会物理迁移到 Kubernetes。”
 
-Equally, databases that aren’t going to be taking advantage of automation are less optimal candidates. Berkus advises that one should assess whether application workflow and team organization can handle the new setup. If that’s in place, and particularly if development is unified, along with an infra team that owns everything, “then those people are going to be a really good candidate for moving that stack to Kubernetes.”
+fEqually, databases that aren’t going to be taking advantage of automation are less optimal candidates. Berkus advises that one should assess whether application workflow and team organization can handle the new setup. If that’s in place, and particularly if development is unified, along with an infra team that owns everything, “then those people are going to be a really good candidate for moving that stack to Kubernetes.”
 
 同样，不会利用自动化的数据库不是最佳候选者。 Berkus 建议应该评估应用程序工作流和团队组织是否可以处理新设置。如果这一点到位，特别是如果开发是统一的，以及拥有一切的基础设施团队，“那么这些人将成为将该堆栈迁移到 Kubernetes 的非常好的候选人。”
 
@@ -70,7 +68,7 @@ Don’t expect substantial performance differences by moving to Kubernetes if yo
 
 “总体而言，迁移到 Kubernetes 的重点将是：利用自动化，”Berkus 总结道。
 
-Watch the complete video interview below, and be sure to check out more of SiliconANGLE’s and theCUBE’s coverage of [Postgres Vision 2021](https://www.thecube.net/postgres-vision-2021). _(\\* Disclosure: TheCUBE is a paid media partner for the Postgres Vision event. Neither EnterpriseDB Corp., the sponsor for theCUBE’s event coverage, nor other sponsors have editorial control over content on theCUBE or SiliconANGLE.)_ 
+Watch the complete video interview below, and be sure to check out more of SiliconANGLE’s and theCUBE’s coverage of [Postgres Vision 2021](https://www.thecube.net/postgres-vision-2021). _( Disclosure: TheCUBE is a paid media partner for the Postgres Vision event. Neither EnterpriseDB Corp., the sponsor for theCUBE’s event coverage, nor other sponsors have editorial control over content on theCUBE or SiliconANGLE.)_ 
 
 观看下面的完整视频采访，一定要查看更多 SiliconANGLE 和 theCUBE 对 [Postgres Vision 2021](https://www.thecube.net/postgres-vision-2021) 的报道。 _（\\* 披露：TheCUBE 是 Postgres Vision 活动的付费媒体合作伙伴。CUBE 活动报道的赞助商 EnterpriseDB Corp. 和其他赞助商都没有对 CUBE 或 SiliconANGLE 上的内容进行编辑控制。)_
 

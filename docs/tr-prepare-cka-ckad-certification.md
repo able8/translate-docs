@@ -4,11 +4,7 @@
 
 InfraCloud Team
 
-InfraCloud 团队
-
 Jun 10th, 2021
-
-2021 年 6 月 10 日
 
 While preparing for the CNCF's CKAD or CKA certification, there could be numerous doubts, which exam to appear first, what resources to refer to, what are common mistakes to avoid, etc.. Especially, if you  don't have previous knowledge or hands -on experience with Kubernetes,  this could be a tough situation to be in. At InfraCloud, engineers are  highly encouraged to appear for these exams and get certified. This blog post is a collaborative effort from the recently certified Infranauts  to share all the insights straight from - before registering for the  exam to the next steps after clearing the exam successfully.
 
@@ -147,7 +143,7 @@ At the end of the day, what matters the most is how much time you spend **practi
    - 以下是设置自动完成的方法：
 
   ```
-   $ alias k='kubectl'
+  $ alias k='kubectl'
   
   $ source <(kubectl completion bash)
   $ echo "source <(kubectl completion bash)" >> ~/.bashrc
@@ -248,7 +244,7 @@ On the exam day, try to log in 15 minutes before the exam. Proctor  will make su
 
 ### CKA exam experience 
 
-###CKA考试经验
+### CKA考试经验
 
 The exam experience was a little rollercoaster ride for some of us,  as we lost internet connection almost 4-5 times during the exam. Each  time after the connection reset, we made sure that previous work is not  lost by checking answers of some of the previously solved questions. Proctor typically makes sure to hold your exam (to avoid time loss) and  stop the timer and resume it once your connection is restored. But this  whole experience can make you nervous during and after the exam (with a  nightmare of all work might be lost, resulting in failure). Few of us  had practiced enough, so we were able to solve 14-15 out of 17 questions in 1.5 hours and spend the rest of almost 30 minutes to try to solve  the 2-3 questions which we initially found challenging and had marked  (and parked) to solve later.
 
@@ -423,8 +419,6 @@ We hope the article was useful. Feel free to drop us a line or share your exam e
 我们希望这篇文章有用。请随时给我们留言或与任何一位作者分享您的考试经验：
 
 [Ninad Desai](https://www.linkedin.com/in/ninad-desai/), Gaurav Gahlot, [Yatish Sharma](https://www.linkedin.com/in/baba230896/), [Jaiganesh Karthikeyan ](https://www.linkedin.com/in/jaiganesh-karthikeyan/), and [Dhruv Mewada](https://www.linkedin.com/in/dhruvmewada/).
-
-[Ninad Desai](https://www.linkedin.com/in/ninad-desai/), Gaurav Gahlot, [Yatish Sharma](https://www.linkedin.com/in/baba230896/), [Jaiganesh Karthikeyan ](https://www.linkedin.com/in/jaiganesh-karthikeyan/) 和 [Dhruv Mewada](https://www.linkedin.com/in/dhruvmewada/)。
 
 All the very best folks :)
 

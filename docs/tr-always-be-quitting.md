@@ -1,20 +1,16 @@
 # Always be quitting
 
-# 一直在戒烟
+# 时刻准备离职
 
 April 12, 2021 ·
-About 4 minutes
-
-2021 年 4 月 12 日 ·
-约4分钟
 
 A good philosophy to live by at work is to “always be quitting”. No, don’t be constantly thinking of leaving your job 😱. But act as if you might leave on short notice 😎. Counterintuitively, this will make you a better engineer and open up growth opportunities. A thread 👇.
 
-在工作中生活的一个好哲学是“永远戒烟”。不，不要一直想着离开你的工作😱。但是表现得好像你可能会在短时间内离开一样😎。与直觉相反，这将使您成为更好的工程师并开辟增长机会。一个线程👇。
+在工作中生活的一个好哲学是“always be quitting”。不，不要一直想着离开你的工作😱。但是表现得好像你可能会在短时间内离开一样😎。与直觉相反，这将使您成为更好的工程师并开辟增长机会。一个线程👇。
 
 So what does it mean to always be quitting? It means “making yourself replaceable”; “deprecating yourself”; “automating yourself out of your job”. You might have heard these more-popular names (which you’ll need to do your own research) and they hint at how to act.
 
-那么总是戒烟是什么意思呢？意思是“让自己成为可替代的”； “贬低自己”； “让自己从工作中自动化”。你可能听说过这些更受欢迎的名字（你需要自己研究），它们暗示了如何采取行动。
+那么总是准备离职是什么意思呢？意思是“让自己成为可替代的”； “贬低自己”； “让自己从工作中自动化”。你可能听说过这些更受欢迎的名字（你需要自己研究），它们暗示了如何采取行动。
 
 The key lies in NOT being indispensable. If you are, you’ll be stuck at your specific job for as long as that job is relevant with little chance to disconnect (no vacations, no growth). And when (not if) the job becomes unnecessary, so will your position.
 

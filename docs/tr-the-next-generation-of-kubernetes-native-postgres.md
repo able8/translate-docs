@@ -4,8 +4,6 @@
 
 July 07, 2021 [Jonathan S. Katz](https://blog.crunchydata.com/blog/author/jonathan-s-katz)
 
-2021 年 7 月 7 日 [Jonathan S. Katz](https://blog.crunchydata.com/blog/author/jonathan-s-katz)
-
 We're excited to announce the release of [PGO](https://github.com/CrunchyData/postgres-operator) 5.0, the open source [Postgres Operator](https://github.com/CrunchyData/postgres-operator) from [Crunchy Data](https://www.crunchydata.com/). While I'm very excited for you to [try out PGO 5.0](https://access.crunchydata.com/documentation/postgres-operator/v5/quickstart/) and provide feedback, I also want to provide some background on this release.
 
 我们很高兴地宣布发布 [PGO](https://github.com/CrunchyData/postgres-operator) 5.0，开源 [Postgres Operator](https://github.com/CrunchyData/postgres-operator) 来自 [Crunchy Data](https://www.crunchydata.com/)。虽然我很高兴您[试用 PGO 5.0](https://access.crunchydata.com/documentation/postgres-operator/v5/quickstart/) 并提供反馈，但我也想提供一些关于此的背景释放。
@@ -26,13 +24,13 @@ Along with this shift in discussion is a shift in expectation for how databases 
 
 ## 云原生声明性 Postgres
 
-[PGO](https://github.com/CrunchyData/postgres-operator), the open source [Postgres Operator from Crunchy Data](https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes/), was initially designed for running cloud native Postgres using an imperative workflow. Many operations required the use of a command-line utility called "pgo". For convenience, "pgo" follows  the conventions of the Kubernetes " [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)" command line tool. "pgo" includes many conveniences for managing Postgres on Kubernetes, including:
+[PGO](https://github.com/CrunchyData/postgres-operator), the open source [Postgres Operator from Crunchy Data](https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes/), was initially designed for running cloud native Postgres using an imperative workflow. Many operations required the use of a command-line utility called "pgo". For convenience, "pgo" follows  the conventions of the Kubernetes "[kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)" command line tool. "pgo" includes many conveniences for managing Postgres on Kubernetes, including:
 
 [PGO](https://github.com/CrunchyData/postgres-operator)，开源的 [来自 Crunchy Data 的 Postgres Operator](https://www.crunchydata.com/products/crunchy-postgresql-for-kubernetes/)，最初设计用于使用命令式工作流运行云原生 Postgres。许多操作需要使用名为“pgo”的命令行实用程序。为方便起见，“pgo”遵循 Kubernetes“[kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)”命令行工具的约定。 “pgo”包括许多在 Kubernetes 上管理 Postgres 的便利，包括：
 
 - Creating databases:pgo create cluster hippo
 - Maintenance operations:pgo update cluster hippo --memory=2Gi
-- Backups:pgo backup hippo
+- Backups: pgo backup hippo
 - Cloning clusters:pgo create cluster rhino --restore-from=hippo
 
 - 创建数据库：pgo 创建集群河马
@@ -49,7 +47,7 @@ A declarative workflow is one where you describe what you want, and your applica
 声明式工作流是您描述您想要什么，并且您的应用程序“让它发生”的工作流。这方面的一个例子是 SQL：您编写一个查询，例如：
 
 ```
-<span>SELECT</span> <span>*</span> <span>FROM</span> animals <span>WHERE</span> animal_type <span>=</span> <span>'hippo'</span>;
+SELECT * FROM animals WHERE animal_type = 'hippo';
 ```
 
 You are asking your database "Find me all the animals that are hippos". You don't care how the database actually does this: it could search over an index or perform a sequential scan. You know that for your end result, you want all the hippos.
@@ -92,7 +90,7 @@ There is an ongoing push to use [infrastructure as code](https://en.wikipedia.or
 
 一直在推动使用 [基础设施即代码](https://en.wikipedia.org/wiki/Infrastructure_as_code)([IAC](https://en.wikipedia.org/wiki/Infrastructure_as_code)) 方法，例如[GitOps](https://www.gitops.tech/) 与 Kubernetes。正因为如此，我们希望 PGO 能够与 [Kustomize](https://kustomize.io/)、[Helm](https://helm.sh/) 和 [OLM](https://olm.operatorframework.io/) 贯穿 Postgres 集群的整个生命周期。
 
-We took Kelsey Hightower's " [Stop scripting and start shipping](https://twitter.com/kelseyhightower/status/953638870888849408)" to heart. We made a simple, one-step operation to create your Postgres database and connect your application in a safe and secure way. We also allowed for everything to be modifiable through a declarative workflow. We fine-tuned the experience by running lots of tests through [ArgoCD](https://argoproj.github.io/argo-cd/). We also created a series of [examples for deploying Postgres clusters in various Kubernetes scenarios](https://github.com/CrunchyData/postgres-operator-examples).
+We took Kelsey Hightower's "[Stop scripting and start shipping](https://twitter.com/kelseyhightower/status/953638870888849408)" to heart. We made a simple, one-step operation to create your Postgres database and connect your application in a safe and secure way. We also allowed for everything to be modifiable through a declarative workflow. We fine-tuned the experience by running lots of tests through [ArgoCD](https://argoproj.github.io/argo-cd/). We also created a series of [examples for deploying Postgres clusters in various Kubernetes scenarios](https://github.com/CrunchyData/postgres-operator-examples).
 
 我们将 Kelsey Hightower 的“[停止编写脚本并开始发货](https://twitter.com/kelseyhightower/status/953638870888849408)”铭记于心。我们做了一个简单的一步操作来创建您的 Postgres 数据库并以安全可靠的方式连接您的应用程序。我们还允许通过声明性工作流程修改所有内容。我们通过 [ArgoCD](https://argoproj.github.io/argo-cd/) 运行大量测试来微调体验。我们还创建了一系列 [在各种 Kubernetes 场景中部署 Postgres 集群的示例](https://github.com/CrunchyData/postgres-operator-examples)。
 
