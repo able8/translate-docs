@@ -4,8 +4,6 @@
 
 *[Stuart Harris](https://awesome.red-badger.com/stuartharris/) — 14th January 2021*
 
-*[斯图尔特·哈里斯](https://awesome.red-badger.com/stuartharris/)——2021 年 1 月 14 日*
-
 Some *good* things came out of 2020! An exciting one, for me,  was the progress that the global collective of open source software  engineers has been making towards the future of services in the Cloud.
 
 2020 年发生了一些*好的*事情！对我来说，令人兴奋的是，全球开源软件工程师集体朝着云服务的未来所取得的进展。

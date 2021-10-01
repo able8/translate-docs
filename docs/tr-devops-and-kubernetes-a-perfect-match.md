@@ -4,8 +4,6 @@
 
 April 5, 2021
 
-2021 年 4 月 5 日
-
 DevOps is a software development strategy that combines development and operations teams into a single unit. Kubernetes is an open source orchestration platform designed to help you manage container deployments at scale. On the surface, it is not entirely clear where these two meet, why and whether this union produces the desired results.
 
 DevOps 是一种软件开发策略，它将开发和运营团队合并为一个单元。 Kubernetes 是一个开源编排平台，旨在帮助您大规模管理容器部署。从表面上看，这两者在哪里相遇，为什么以及这种结合是否会产生预期的结果并不完全清楚。

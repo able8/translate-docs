@@ -4,8 +4,6 @@
 
 August 3, 2020
 
-2020 年 8 月 3 日
-
 Imagine you’re a software reliability engineer with your service-level objectives clearly laid out on your Grafana dashboard. Suddenly, an alert appears: Your 99th percentile latency is going through the roof!
 
 想象一下，您是一名软件可靠性工程师，您的服务级别目标清楚地列在您的 Grafana 仪表板上。突然，一条警报出现：您的第 99 个百分位数的延迟正在飙升！

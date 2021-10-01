@@ -2,13 +2,7 @@
 
 # 为 Pod 标签编写控制器
 
-             Monday, June 21, 2021
-
-2021 年 6 月 21 日，星期一
-
-**Authors**: Arthur Busser (Padok)
-
-**作者**：Arthur Busser（Padok）
+Monday, June 21, 2021
 
 [Operators](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) are proving to be an excellent solution to running stateful distributed applications in Kubernetes. Open source tools like the [Operator SDK](https://sdk.operatorframework.io/) provide ways to build reliable and maintainable operators, making it easier to extend Kubernetes and implement custom scheduling.
 
