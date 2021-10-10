@@ -393,3 +393,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Deep Dive into Golang Performance](docs/tr-deep-dive-into-golang-performance.md)
 1. [Evolving DevOps towards performance optimization](docs/tr-evolving-devops-towards-performance-optimization.md)
 1. [](docs/)
+1. [Choosing a Local Dev Cluster](docs/tr-choosing_clusters.md)
+1. [How to Create a Kubernetes Cluster Locally - Simple Tutorial](docs/tr-create-and-deploy-kubernetes-clusters.md)
+1. [Protecting Kubernetes Secrets: A Practical Guide](docs/tr-managing-kubernetes-secrets.md)
+1. [Minikube vs. kind vs. k3s - What should I use?](docs/tr-minikube-vs-kind-vs-k3s.md)
