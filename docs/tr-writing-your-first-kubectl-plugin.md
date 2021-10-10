@@ -4,8 +4,6 @@
 
 https://bmuschko.com/blog/writing-your-first-kubectl-plugin/
 
-https://bmuschko.com/blog/writing-your-first-kubectl-plugin/
-
 June 20, 2019
 
 2019 年 6 月 20 日
@@ -92,8 +90,6 @@ The Go Modules file below shows my final list of dependencies. As you can see, w
 
 *go.mod*
 
-*go.mod*
-
 ```
 module github.com/bmuschko/kubectl-server-version
 
@@ -144,8 +140,6 @@ Not surprisingly, we will start by filling the `main.go` with life. The implemen
 
 *main.go*
 
-*main.go*
-
 ```go
 package main
 
@@ -174,8 +168,6 @@ The value of the variable `version` can be injected at build-time and represents
 Let’s have a look at the meat of the plugin functionality, the  command that communicates with the API server and renders the returned  Kubernetes server version. I split up the code into multiple,  digestiable pieces. The code block below uses the [Cobra library](https://github.com/spf13/cobra) to create the new command. Apart from the Kubernetes package imports,  there’s nothing special about this implementation. You can easily  imagine similar code as part of any other CLI tool written in Go.
 
 让我们来看看插件功能的核心，即与 API 服务器通信并呈现返回的 Kubernetes 服务器版本的命令。我将代码分成多个可消化的部分。下面的代码块使用 [Cobra 库](https://github.com/spf13/cobra) 创建新命令。除了 Kubernetes 包导入之外，这个实现没有什么特别之处。您可以轻松地将类似的代码想象为任何其他用 Go 编写的 CLI 工具的一部分。
-
-*cmd/server_version.go*
 
 *cmd/server_version.go*
 
@@ -244,8 +236,6 @@ The function below retrieves the `DiscoveryClient` which can discover server-sup
 
 *cmd/server_version.go*
 
-*cmd/server_version.go*
-
 ```go
 func getServerVersion() (string, error) {
     loadingRules := clientcmd.NewDefaultClientConfigLoadingRules()
@@ -288,9 +278,11 @@ There are a couple of requirements for installing `kubectl` plugins on a machine
 3. The portion of the plugin name after `kubectl-` represents the command name.
 4. A dash character in the command name has to be changed to an underscore.
 
+
+
 1. 插件可以安装为 bash 脚本或二进制文件。
-2.插件名称必须有前缀`kubectl-`。
-3.插件名中`kubectl-`后面的部分代表命令名。
+2. 插件名称必须有前缀`kubectl-`。
+3. 插件名中`kubectl-`后面的部分代表命令名。
 4. 命令名称中的破折号字符必须更改为下划线。
 
 In this post, we didn’t even talk about the option of writing a plugin as bash script. For more information, see the [Kubernetes documentation](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/#example-plugin). Our plugin has been written in Go so we’ll have to build the binary first. The easiest option is to use the `go build` command. The "installation process" isn’t complicated at all. You simply copy the binary into the `PATH`, as described [here](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/#installing-kubectl-plugins).
@@ -310,7 +302,7 @@ The following kubectl-compatible plugins are available:
 /usr/local/bin/kubectl-server_version
 ```
 
-Awesome, the plugin has been installed. We can now go ahead and  execute it as described earlier. As you can see, the development and  installation process is not very burdensome. But what if you wanted to  share the plugin with the team or the Kubernetes community? Let’s talk  about distribution the plugin in the next section.
+Awesome, the plugin has been installed. We can now go ahead and  execute it as described earlier. As you can see, the development and  installation process is not very burdensome. But what if you wanted to  share the plugin with the team or the Kubernetes community? Let’s talk about distribution the plugin in the next section.
 
 太好了，插件已经安装了。我们现在可以继续执行它，如前所述。可以看到，开发安装过程并不是很繁琐。但是，如果您想与团队或 Kubernetes 社区共享插件怎么办？让我们在下一节中讨论分发插件。
 
