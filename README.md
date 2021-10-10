@@ -402,3 +402,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Kubernetes Backup vs Disaster Recovery](docs/tr-kubernetes-backup-vs-kubernetes-dr.md)
 1. [Tutorial: Kubernetes-Native Backup and Recovery With Stash](docs/tr-kubernetes-native-backup-and-recovery-with-stash.md)
 1. [What Is Argo CD?](docs/tr-what-is-argo-cd.md)
+1. [3 Years of Kubernetes in Production–Here’s What We Learned](docs/tr-3-years-of-kubernetes-in-production-heres-what-we-learned-44e77e1749c8.md)
+1. [Lessons Learned From Two Years Of Kubernetes](docs/tr-lessons-learned.md)
+1. [One year using Kubernetes in production: Lessons learned](docs/tr-one-year-using-kubernetes-production-lessons-learned.md)
+1. [What we learned after a year of GitLab.com on Kubernetes](docs/tr-year-of-kubernetes.md)
