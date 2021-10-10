@@ -89,23 +89,20 @@ There are two primary ways of creating Kubernetes secrets:
 
 - **自动——** 使用 kubectl create secret **——** 指定一个或多个包含敏感数据的文件，然后将这些文件打包为机密。
 
-kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
-
-kubectl 创建秘密通用 db-user-pass --from-file=./username.txt --from-file=./password.txt
+`kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt`
 
 - **Manually**—create a secret in a JSON or YAML file, then write the code of the object and create a secret from it using kubectl apply
 
 - **手动**——在 JSON 或 YAML 文件中创建一个秘密，然后编写对象的代码并使用 kubectl apply 从中创建一个秘密
 
-kubectl get secret mysecret -o yaml
+`kubectl get secret mysecret -o yaml`
 
-kubectl 获取秘密 mysecret -o yaml
+
 
 **To decode a secret** from Base64 encoding to plaintext, use kubectl get secret to view the content of the secret. Then decode the sensitive data like this:
-echo 'MWYyZDFlMmU2N2Rm' \| base64 --decode
+`echo 'MWYyZDFlMmU2N2Rm' \| base64 --decode`
 
 **要将秘密**从 Base64 编码解码为明文，请使用 kubectl get secret 查看秘密的内容。然后像这样解码敏感数据：
-回声'MWYyZDFlMmU2N2Rm' \| base64 --解码
 
 ### Problems with the Built-in Secrets Mechanism in Kubernetes
 
@@ -131,7 +128,7 @@ Kubernetes 项目[文档化](https://kubernetes.io/docs/concepts/configuration/s
 
 In addition, Kubernetes secrets have some important usability issues, pointed out in the excellent post by [Omer Levi Hevroni](https://itnext.io/can-kubernetes-keep-a-secret-it-all-depends-what-tool-youre-using-498e5dee9c25):
 
-此外，Kubernetes Secrets 有一些重要的可用性问题，在 [Omer Levi Hevroni] 的优秀帖子中指出(https://itnext.io/can-kubernetes-keep-a-secret-it-all-depends-what- tool-youre-using-498e5dee9c25）：
+此外，Kubernetes Secrets 有一些重要的可用性问题.
 
 - **No visibility or change management**—secrets are critical to the operation of many services and can break a service in production (e.g., if credentials are missing or wrong). In order to manage a development pipeline and troubleshoot production issues, you need to track changes to secrets. Kubernetes provides an audit mechanism but it’s not straightforward, and there is no way to track changes to secrets using version control.
 - **Secrets mounted as volumes are unwieldy**—secrets can be stored as environment variables or mounted as a volume. The former technique is widely agreed to be less secure. If you opt for volumes, things quickly get complex when you have a large number of keys. Kubernetes creates one file per key, and you need to read all these files from within the application. There are workarounds, but they can be equally complex.

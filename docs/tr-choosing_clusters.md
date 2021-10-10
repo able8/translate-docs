@@ -18,9 +18,6 @@ Beginner Level:
 - [Docker for Desktop](https://docs.tilt.dev/choosing_clusters.html#docker-for-desktop)
 - [Microk8s](https://docs.tilt.dev/choosing_clusters.html#microk8s)
 
-- [种类](https://docs.tilt.dev/choosing_clusters.html#kind)
-- [桌面Docker](https://docs.tilt.dev/choosing_clusters.html#docker-for-desktop)
-- [Microk8s](https://docs.tilt.dev/choosing_clusters.html#microk8s)
 
 Intermediate Level:
 
@@ -29,8 +26,6 @@ Intermediate Level:
 - [Minikube](https://docs.tilt.dev/choosing_clusters.html#minikube)
 - [k3d](https://docs.tilt.dev/choosing_clusters.html#k3d)
 
-- [Minikube](https://docs.tilt.dev/choosing_clusters.html#minikube)
-- [k3d](https://docs.tilt.dev/choosing_clusters.html#k3d)
 
 Advanced Level:
 
@@ -41,16 +36,10 @@ Advanced Level:
 - [Google Kubernetes Engine](https://docs.tilt.dev/choosing_clusters.html#remote)
 - [Custom Clusters](https://docs.tilt.dev/choosing_clusters.html#custom-clusters)
 
-- [亚马逊弹性 Kubernetes 服务](https://docs.tilt.dev/choosing_clusters.html#remote)
-- [Azure Kubernetes 服务](https://docs.tilt.dev/choosing_clusters.html#remote)
-- [谷歌 Kubernetes 引擎](https://docs.tilt.dev/choosing_clusters.html#remote)
-- [自定义集群](https://docs.tilt.dev/choosing_clusters.html#custom-clusters)
 
 ------
 
 ## [Kind](https://docs.tilt.dev/choosing_clusters.html#kind)
-
-## [种类](https://docs.tilt.dev/choosing_clusters.html#kind)
 
 [Kind](https://kind.sigs.k8s.io/) runs Kubernetes inside a Docker container.
 
@@ -61,8 +50,6 @@ The Kubernetes team uses Kind to test Kubernetes itself. But its fast startup ti
 Kubernetes 团队使用 Kind 来测试 Kubernetes 本身。但它的快速启动时间也使它成为本地开发人员的一个很好的解决方案。使用 `ctlptl` 使用注册表设置 Kind：
 
 [**Kind Setup**](https://github.com/tilt-dev/ctlptl#kind-with-a-built-in-registry-at-a-random-port)
-
-[**种类设置**](https://github.com/tilt-dev/ctlptl#kind-with-a-built-in-registry-at-a-random-port)
 
 ### [Pros](https://docs.tilt.dev/choosing_clusters.html#pros)
 
@@ -140,8 +127,6 @@ In the Docker For Mac preferences, click [Enable Kubernetes](https://docs.docker
 
 Install:
 
-安装：
-
 ```
 sudo snap install microk8s --classic && \
 sudo microk8s.enable dns && \
@@ -187,8 +172,6 @@ kubectl config use-context microk8s
 
 ## [Minikube](https://docs.tilt.dev/choosing_clusters.html#minikube)
 
-## [Minikube](https://docs.tilt.dev/choosing_clusters.html#minikube)
-
 [Minikube](https://github.com/kubernetes/minikube) is what we recommend when you’re willing to pay some overhead for a more high-fidelity cluster.
 
 [Minikube](https://github.com/kubernetes/minikube) 当您愿意为更高保真度的集群支付一些开销时，我们推荐您这样做。
@@ -202,8 +185,6 @@ Follow these instructions to set up Minikube for use with Tilt:
 按照以下说明设置 Minikube 以与 Tilt 一起使用：
 
 [**Minikube Setup**](https://github.com/tilt-dev/ctlptl#minikube-with-a-built-in-registry)
-
-[**Minikube 设置**](https://github.com/tilt-dev/ctlptl#minikube-with-a-built-in-registry)
 
 ### [Pros](https://docs.tilt.dev/choosing_clusters.html#pros-3)
 
@@ -230,8 +211,6 @@ Follow these instructions to set up Minikube for use with Tilt:
 - 如果使用 VM 而不是 Docker 容器来运行集群，请注意。由于 VM 耗尽了您的资源，您通常希望在完成后关闭 Minikube。
 
 ------
-
-## [k3d](https://docs.tilt.dev/choosing_clusters.html#k3d)
 
 ## [k3d](https://docs.tilt.dev/choosing_clusters.html#k3d)
 

@@ -47,10 +47,8 @@ The below diagram depicts what we are going to achieve today, where we will crea
 3. Node & NPM (Only if you want to run the applications stand alone)
 4. YAML
 
-1. [桌面Docker](https://www.docker.com/products/docker-desktop)（最新版本)
-2. [Kubernetes](https://kubernetes.io/docs/setup/learning-environment/minikube/) 或 [Docker Kubernetes](https://www.docker.com/products/kubernetes)
-3. Node & NPM（仅当您想独立运行应用程序时）
-4. YAML
+   
+
 
 **_NOTE:_** _This tutorial requires basic/working knowledge on Docker, Node, & NPM._
 
@@ -126,12 +124,6 @@ Please follow the below steps to setup the project and start the Kubernetes clus
 - **_kubectl apply -f frontend.deploy.yml_**
 - **_kubectl apply -f frontend.service.yml_**
 
-- _cd 客户端_
-- _npm 安装_
-- _npm 运行构建_
-- **_docker build -t 前端：1.0 ._**
-- **_kubectl apply -f frontend.deploy.yml_**
-- **_kubectl apply -f frontend.service.yml_**
 
 #### **Backend**
 
@@ -143,21 +135,14 @@ Please follow the below steps to setup the project and start the Kubernetes clus
 - **_kubectl apply -f backend.deploy.yml_**
 - **_kubectl apply -f backend.service.yml_**
 
-- _cd 服务器_
-- _npm 安装_
-- **_docker build -t 后端：1.0 ._**
-- **_kubectl apply -f backend.deploy.yml_**
-- **_kubectl apply -f backend.service.yml_**
 
-Go to the browser, type **localhost**and hit enter, you should see the application loaded.
+Go to the browser, type **localhost** and hit enter, you should see the application loaded.
 
 转到浏览器，输入 **localhost** 并按 Enter，您应该会看到应用程序已加载。
 
 ## Bringing It Down Further
 
 ## 进一步降低
-
-#### **Kubernetes Pods**
 
 #### **Kubernetes Pods**
 
@@ -241,7 +226,7 @@ The above commands open a shell inside a container to interact.
 
 上述命令在容器内打开一个 shell 进行交互。
 
-Before we jump on to the next topic -deployments - it’s crucial that you understand metadata in a YAML file. Metadata is data about the containers. You can add labels and key-values to the metadata. You can also use the labels or key-values as selectors to identify a pod which will be used by deployments/services later.
+Before we jump on to the next topic - deployments - it’s crucial that you understand metadata in a YAML file. Metadata is data about the containers. You can add labels and key-values to the metadata. You can also use the labels or key-values as selectors to identify a pod which will be used by deployments/services later.
 
 在我们进入下一个主题 - 部署之前 - 了解 YAML 文件中的元数据至关重要。元数据是关于容器的数据。您可以向元数据添加标签和键值。您还可以使用标签或键值作为选择器来标识稍后将被部署/服务使用的 pod。
 
@@ -284,10 +269,6 @@ Let’s say replicas is set to two and there are four pods already running with 
 **Template:** It specifies the tags to be used for the newly created pods via the spec.
 
 **模板：** 它通过规范指定用于新创建的 pod 的标签。
-
-**\\*\\*\\***
-
-**\\*\\***\\***
 
 To create a deployment run the below command:
 
@@ -380,10 +361,6 @@ We have looked at how to create a Kubernetets cluster and deploy a simple front 
 **有用的链接：**
 
 [https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/)
-
-[https://kubernetes.io/docs/concepts/](https://kubernetes.io/docs/concepts/)
-
-[https://docs.docker.com/](https://docs.docker.com/)
 
 [https://docs.docker.com/](https://docs.docker.com/)
 

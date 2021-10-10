@@ -4,8 +4,6 @@
 
 http://brennerm.github.io/posts/minikube-vs-kind-vs-k3s.html
 
-http://brennerm.github.io/posts/minikube-vs-kind-vs-k3s.html
-
 December 5, 2019
 
 2019 年 12 月 5 日
@@ -13,8 +11,6 @@ December 5, 2019
 These days there are a few tools that claim to (partially) replace a fully fledged Kubernetes cluster. Using them allows e.g. every developer to have their own local cluster instance running to play around with it, deploy their application or execute tests against applications running in K8s during CI/CD. In this post we’ll have a look at three of them, compare their pros and cons and identify use cases for each of them.
 
 如今，有一些工具声称（部分）取代了成熟的 Kubernetes 集群。使用它们允许例如每个开发人员都可以运行自己的本地集群实例来使用它，部署他们的应用程序或在 CI/CD 期间针对在 K8s 中运行的应用程序执行测试。在这篇文章中，我们将看看其中的三个，比较它们的优缺点并确定每个用例的用例。
-
-## [minikube](http://brennerm.github.io\#minikube)
 
 ## [minikube](http://brennerm.github.io\#minikube)
 
@@ -32,8 +28,6 @@ If you are new to Kubernetes the first class support for its dashboard that mini
 
 ## [kind](http://brennerm.github.io\#kind)
 
-## [kind](http://brennerm.github.io\#kind)
-
 Kind is another Kubernetes SIGs project but is quite different compared to minikube. As the name suggests it moves the cluster into Docker containers. This leads to a significantly faster startup speed compared to spawning VM.
 
 Kind 是另一个 Kubernetes SIG 项目，但与 minikube 相比有很大不同。顾名思义，它将集群移动到 Docker 容器中。与生成 VM 相比，这导致启动速度明显更快。
@@ -46,11 +40,9 @@ One feature that I personally enjoy is the ability to load my local images direc
 
 我个人喜欢的一项功能是能够将我的本地图像直接加载到集群中。这为我节省了设置注册表和每次我想尝试更改时推送我的图像的一些额外步骤。通过简单的“kind load docker-image my-app:latest”，该图像可用于我的集群。非常好！
 
-If you are looking for a way to programmatically create a Kubernetes cluster, kind kindly (you have been for waiting for this, don’t you :P) publishes its Go packages that are used under the hood. If you want to get to know more have a look at the [GoDocs](https://godoc.org/sigs.k8s.io/kind/pkg/cluster) and check out how [KUDO uses kind for their integration tests] (https://github.com/kudobuilder/kudo/blob/f7b09025f5c2faf5492624facc1dc4c5c7a5ccad/pkg/test/harness.go#L105).
+If you are looking for a way to programmatically create a Kubernetes cluster, kind kindly (you have been for waiting for this, don’t you :P) publishes its Go packages that are used under the hood. If you want to get to know more have a look at the [GoDocs](https://godoc.org/sigs.k8s.io/kind/pkg/cluster) and check out how [KUDO uses kind for their integration tests](https://github.com/kudobuilder/kudo/blob/f7b09025f5c2faf5492624facc1dc4c5c7a5ccad/pkg/test/harness.go#L105).
 
-如果您正在寻找一种以编程方式创建 Kubernetes 集群的方法，请善待（您一直在等待，不是吗:P）发布其在后台使用的 Go 包。如果您想了解更多信息，请查看 [GoDocs](https://godoc.org/sigs.k8s.io/kind/pkg/cluster) 并查看 [KUDO 如何使用 kind 进行集成测试] （https://github.com/kudobuilder/kudo/blob/f7b09025f5c2faf5492624facc1dc4c5c7a5ccad/pkg/test/harness.go#L105)。
-
-## [k3s](http://brennerm.github.io\#k3s)
+如果您正在寻找一种以编程方式创建 Kubernetes 集群的方法，请善待（您一直在等待，不是吗:P）发布其在后台使用的 Go 包。如果您想了解更多信息，请查看 [GoDocs](https://godoc.org/sigs.k8s.io/kind/pkg/cluster) 并查看 KUDO 如何使用 kind 进行集成测试。
 
 ## [k3s](http://brennerm.github.io\#k3s)
 
@@ -81,8 +73,6 @@ All in all these three tools are doing the job while using different approaches 
 Below you can find a table that lists a few key facts of each tool.
 
 您可以在下面找到一个表格，其中列出了每个工具的一些关键事实。
-
-* * *
 
 * * *
 
