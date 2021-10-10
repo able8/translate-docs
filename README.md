@@ -397,3 +397,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [How to Create a Kubernetes Cluster Locally - Simple Tutorial](docs/tr-create-and-deploy-kubernetes-clusters.md)
 1. [Protecting Kubernetes Secrets: A Practical Guide](docs/tr-managing-kubernetes-secrets.md)
 1. [Minikube vs. kind vs. k3s - What should I use?](docs/tr-minikube-vs-kind-vs-k3s.md)
+1. [Implementing SLI/SLO based Continuous Delivery Quality Gates using Prometheus](docs/tr-implementing-sli-slo-based-continuous-delivery-quality-gates-using-prometheus-9e17ec18ca36.md)
+1. [Kubernetes Backup vs Disaster Recovery](docs/tr-kubernetes-backup-vs-kubernetes-dr.md)
+1. [Tutorial: Kubernetes-Native Backup and Recovery With Stash](docs/tr-kubernetes-native-backup-and-recovery-with-stash.md)
+1. [Writing your first kubectl plugin with Go](docs/tr-writing-your-first-kubectl-plugin.md)
