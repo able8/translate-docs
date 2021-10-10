@@ -401,3 +401,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Implementing SLI/SLO based Continuous Delivery Quality Gates using Prometheus](docs/tr-implementing-sli-slo-based-continuous-delivery-quality-gates-using-prometheus-9e17ec18ca36.md)
 1. [Kubernetes Backup vs Disaster Recovery](docs/tr-kubernetes-backup-vs-kubernetes-dr.md)
 1. [Tutorial: Kubernetes-Native Backup and Recovery With Stash](docs/tr-kubernetes-native-backup-and-recovery-with-stash.md)
+1. [What Is Argo CD?](docs/tr-what-is-argo-cd.md)
