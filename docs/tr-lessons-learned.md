@@ -4,8 +4,6 @@
 
 2020-06-05
 
-2020-06-05
-
 As I come up for air after a few years of running an infrastructure team at Ridecell, I wanted to record some thoughts and lessons I’ve learned.
 
 在 Ridecell 运营基础设施团队几年后，当我上台时，我想记录一些我学到的想法和经验教训。
@@ -17,6 +15,8 @@ As I come up for air after a few years of running an infrastructure team at Ride
 5. [You Should Write More Operators](http://coderanger.net#you-should-write-more-operators)
 6. [Secrets Management Is Still Hard](http://coderanger.net#secrets-management-is-still-hard)
 7. [Native CI And Log Analysis Are Still Open Questions](http://coderanger.net#native-ci-and-log-analysis-are-still-open-questions)
+
+
 
 1. [Kubernetes 不只是炒作](http://coderanger.net#kubernetes-is-not-just-hype)
 2. [Traefik + Cert-Manager + Ext-DNS 很棒](http://coderanger.net#traefik--cert-manager--ext-dns-is-great)
