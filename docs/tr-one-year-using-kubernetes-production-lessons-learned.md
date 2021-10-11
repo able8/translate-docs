@@ -5,9 +5,6 @@
 [Paul Bakker](http://techbeacon.com/contributors/paul-bakker)
 Software architect, Netflix
 
-[保罗·巴克](http://techbeacon.com/contributors/paul-bakker)
-软件架构师，Netflix
-
 ![A wheel of containers](http://techbeacon.scdn7.secure.raxcdn.com/sites/default/files/styles/article_hero_image/public/field/image/fineas-anton-141927.jpg?itok=QrFQCRoA)
 
 In early 2015, after years of running deployments on Amazon EC2, my team at [Luminis Technologies](http://luminis-technologies.com/) was tasked with building a new deployment platform for all our development teams. The AWS-based setup had worked very well for [deploying new releases](https://content.microfocus.com/continuous-delivery-release-automation-tb/effective-product-release?lx=-DC2cJ&custom_url=continuous-delivery-release-automation-tb?utm_source=techbeacon&utm_medium=referral&utm_campaign=7014J000000dVOkQAM) over the years, but the deployment setup, with custom scripts and tooling to automate deployments, wasn't very easy for teams outside of operations to use—especially small teams that didn't have the resources to learn all of the details about these scripts and tools. The main issue was that there was no “unit-of-deployment,” and without one, there was a gap between development and operations. The [containerization trend](http://techbeacon.com/essential-guide-software-containers-application-development) was clearly going to change that.

@@ -16,7 +16,7 @@ Today, our Kubernetes infrastructure fleet consists of over 400 virtual  machine
 
 今天，我们的 Kubernetes 基础设施群由分布在多个数据中心的 400 多台虚拟机组成。该平台托管高度可用的关键任务软件应用程序和系统，以管理具有近 400 万台活动设备的大型实时网络。
 
-Kubernetes eventually made our lives easier, but the journey was a hard one, a  paradigm shift. There was a complete transformation in not just our  skillset and tools, but also our design and thinking. We had to embrace  multiple new technologies and invest massively to upscale and upskill  our teams and infrastructure.
+Kubernetes eventually made our lives easier, but the journey was a hard one, a  paradigm shift. There was a complete transformation in not just our skillset and tools, but also our design and thinking. We had to embrace  multiple new technologies and invest massively to upscale and upskill  our teams and infrastructure.
 
 Kubernetes 最终让我们的生活变得更轻松，但旅程是艰难的，是范式转变。不仅我们的技能和工具发生了彻底的转变，我们的设计和思维也发生了彻底的转变。我们必须采用多种新技术并进行大量投资，以提升我们的团队和基础设施的规模和技能。
 
@@ -62,9 +62,9 @@ Today, if we *have* to choose Java, we ensure that it’s version 11 or above. A
 
 Kubernetes lifecycle management such as upgrades or enhancements is cumbersome, especially if you've built your own cluster on [bare metal or VMs](https://platform9.com/blog/where-to-install-kubernetes-bare-metal-vs-vms-vs-cloud/). For upgrades, we’ve realized that the easiest way is to build a new  cluster with the latest version and transition workloads from old to  new. The effort and the planning that goes into in-place node upgrades  are just not worth it.
 
-Kubernetes 生命周期管理（例如升级或增强）很麻烦，尤其是如果您在 [裸机或 VM] 上构建了自己的集群（https://platform9.com/blog/where-to-install-kubernetes-bare-metal- vs-vms-vs-cloud/)。对于升级，我们意识到最简单的方法是构建一个具有最新版本的新集群，并将工作负载从旧的过渡到新的。就地节点升级所付出的努力和规划是不值得的。
+Kubernetes 生命周期管理（例如升级或增强）很麻烦，尤其是如果您在 [裸机或 VM](https://platform9.com/blog/where-to-install-kubernetes-bare-metal-vs-vms-vs-cloud/)上构建了自己的集群。对于升级，我们意识到最简单的方法是构建一个具有最新版本的新集群，并将工作负载从旧的过渡到新的。就地节点升级所付出的努力和规划是不值得的。
 
-Kubernetes has multiple moving parts that need to align with an upgrade. From  Docker to CNI plugins like Calico or Flannel, you need to carefully  piece it all together for it to work. Although projects like Kubespray,  Kubeone, Kops, and Kubeaws make it easier, they all come with  shortcomings. 
+Kubernetes has multiple moving parts that need to align with an upgrade. From  Docker to CNI plugins like Calico or Flannel, you need to carefully piece it all together for it to work. Although projects like Kubespray,  Kubeone, Kops, and Kubeaws make it easier, they all come with  shortcomings. 
 
 Kubernetes 有多个需要与升级保持一致的移动部件。从 Docker 到 Calico 或 Flannel 等 CNI 插件，您需要小心地将它们拼凑在一起才能工作。尽管 Kubespray、Kubeone、Kops 和 Kubeaws 之类的项目使它变得更容易，但它们都有缺点。
 
@@ -104,7 +104,7 @@ After several iterations, we settled on the following design.
 
 # 4. 活力和准备探针（双刃剑）
 
-Kubernetes’ liveliness and readiness probes are excellent features to combat system problems autonomously. They can restart containers on failures and  divert traffic away from unhealthy instances. But in certain failure  conditions, these probes can become a double-edged sword and affect your application’s startup and recovery, particularly, stateful applications like messaging platforms or databases.
+Kubernetes’ liveliness and readiness probes are excellent features to combat system problems autonomously. They can restart containers on failures and divert traffic away from unhealthy instances. But in certain failure  conditions, these probes can become a double-edged sword and affect your application’s startup and recovery, particularly, stateful applications like messaging platforms or databases.
 
 Kubernetes 的活跃度和就绪度探测器是自主解决系统问题的出色功能。他们可以在出现故障时重新启动容器，并将流量从不健康的实例转移。但在某些故障情况下，这些探测可能会成为一把双刃剑，并影响应用程序的启动和恢复，尤其是消息平台或数据库等有状态应用程序。
 
@@ -112,19 +112,19 @@ Our Kafka system was a victim of this. We ran a `3 Broker 3 Zookeeper` stateful 
 
 我们的 Kafka 系统就是这种情况的受害者。我们运行了一个 `3 Broker 3 Zookeeper` 状态集，`replicationFactor 为 3`，`minInSyncReplica 为 2`。当 Kafka 在意外系统故障或崩溃后启动时出现问题。这导致它在启动期间运行额外的脚本来修复损坏的索引，根据严重程度，这需要 10 到 30 分钟之间的任何时间。由于这个额外的时间，活跃度探测器会不断失败，向 Kafka 发出终止信号以重新启动。这阻止了 Kafka 修复索引并完全启动。
 
-The only solution is to configure `**initialDelaySeconds**` in liveliness probe settings to delay probe evaluations after the  container startup. But the problem, of course, is that its hard to put a number to this. Some recoveries even take even an hour, and we need to  provide enough headroom to account for this. But the more you increase `**initialDelaySeconds**` , the slower your resilience, as it would take longer for Kubernetes to restart your container during startup failures.
+The only solution is to configure `initialDelaySeconds` in liveliness probe settings to delay probe evaluations after the  container startup. But the problem, of course, is that its hard to put a number to this. Some recoveries even take even an hour, and we need to  provide enough headroom to account for this. But the more you increase `initialDelaySeconds` , the slower your resilience, as it would take longer for Kubernetes to restart your container during startup failures.
 
-唯一的解决方案是在活跃度探测器设置中配置`**initialDelaySeconds**`，以在容器启动后延迟探测器评估。但是，当然，问题是很难给出一个数字。有些恢复甚至需要一个小时，我们需要提供足够的空间来解决这个问题。但是，`**initialDelaySeconds**` 增加得越多，你的弹性就越慢，因为在启动失败期间 Kubernetes 需要更长的时间来重启你的容器。
+唯一的解决方案是在活跃度探测器设置中配置`initialDelaySeconds`，以在容器启动后延迟探测器评估。但是，当然，问题是很难给出一个数字。有些恢复甚至需要一个小时，我们需要提供足够的空间来解决这个问题。但是，`initialDelaySeconds` 增加得越多，你的弹性就越慢，因为在启动失败期间 Kubernetes 需要更长的时间来重启你的容器。
 
-So the middle ground is to assess a value for the `**initialDelaySeconds**` field such that it better balances between the resilience you seek in  Kubernetes and the time taken by the app to successfully start in all  fault conditions (disk failures, network failures, system crashes, etc.) 
+So the middle ground is to assess a value for the `initialDelaySeconds` field such that it better balances between the resilience you seek in  Kubernetes and the time taken by the app to successfully start in all  fault conditions (disk failures, network failures, system crashes, etc.) 
 
-因此，中间立场是评估 `**initialDelaySeconds**` 字段的值，以便更好地平衡您在 Kubernetes 中寻求的弹性和应用程序在所有故障情况下（磁盘故障、网络故障）成功启动所花费的时间故障、系统崩溃等）
+因此，中间立场是评估 `initialDelaySeconds` 字段的值，以便更好地平衡您在 Kubernetes 中寻求的弹性和应用程序在所有故障情况下（磁盘故障、网络故障）成功启动所花费的时间故障、系统崩溃等）
 
-> ***Update\****: If you are on the last few latest releases,* [*Kubernetes has introduced a third probe-type called, 'Startup Probe,' to tackle this problem*](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)*. It is available in* `*alpha from 1.16* `*and* `*beta from 1.18*` *onwards.*
+> *Update\: If you are on the last few latest releases,* [*Kubernetes has introduced a third probe-type called, 'Startup Probe,' to tackle this problem*](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)*. It is available in* `*alpha from 1.16* `*and* `*beta from 1.18*` *onwards.*
 >
 > *A startup probe disables readiness and liveliness checks until the  container has started up, making sure the application’s startup isn’t  interrupted.*
 
-> ***更新\****：如果您使用的是最近几个最新版本，* [*Kubernetes 引入了第三种探针类型，称为“启动探针”，以解决此问题*](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)*。它可用于* `*alpha from 1.16* `* and* `*beta from 1.18*` *onwards.*
+> *更新\：如果您使用的是最近几个最新版本，* [*Kubernetes 引入了第三种探针类型，称为“启动探针”，以解决此问题*](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)*。它可用于* `*alpha from 1.16* `* and* `*beta from 1.18*` *onwards.*
 >
 > *启动探测器禁用准备和活跃度检查，直到容器启动，确保应用程序的启动不被中断。*
 
