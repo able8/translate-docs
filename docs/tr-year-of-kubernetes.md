@@ -8,10 +8,6 @@ John Jarvis
 
 Sep 16, 2020·10 min read· [Leave a comment](http://about.gitlab.com#disqus_thread)
 
-2020 年 9 月 16 日·10 分钟阅读· [发表评论](http://about.gitlab.com#disqus_thread)
-
-* * *
-
 * * *
 
 ![](http://about.gitlab.com/images/blogimages/a_year_of_k8s/nico-e-AAbjUJsgjvE-unsplash.jpg)
