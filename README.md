@@ -408,3 +408,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [What Is Argo CD?](docs/tr-what-is-argo-cd.md)
 1. [Auto-labeling Kubernetes resources with Kyverno](docs/tr-auto-labeling-kubernetes-resources-with-kyverno.md)
 1. [Exploring Kyverno: Introduction](docs/tr-exploring-kyverno-intro.md)
+1. [Build Your Kubernetes Operator with the Right Tool](docs/tr-build-your-kubernetes-operator-with-the-right-tool.md)
+1. [Continuous Blue-Green Deployments With Kubernetes](docs/tr-continuous-blue-green-deployments-with-kubernetes.md)
+1. [Deep dive into Kubernetes CronJob](docs/tr-deep-dive-kubernetes-cronjob.md)
+1. [The Istio service mesh](docs/tr-service-mesh.md)
