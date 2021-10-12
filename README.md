@@ -416,3 +416,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
 1. [Running CockroachDB on Kubernetes](docs/tr-running-cockroachdb-on-kubernetes.md)
 1. [To run or not to run a database on Kubernetes: What to consider](docs/tr-to-run-or-not-to-run-a-database-on-kubernetes-what-to-consider.md)
+1. [Helm Charts Tutorial: The Kubernetes Package Manager Explained](docs/tr-helm-charts-tutorial-the-kubernetes-package-manager-explained.md)
+1. [Introducing Tobs: Deploy a full observability suite for Kubernetes in two minutes](docs/tr-introducing-tobs-deploy-a-full-observability-suite-for-kubernetes-in-two-minutes.md)
+1. [Introduction to k3d: Run K3s in Docker](docs/tr-introduction-k3d-run-k3s-docker-src.md)
+1. [Kubernetes and container management on the desktop](docs/tr-rancherdesktop.md)
