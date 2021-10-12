@@ -412,3 +412,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Continuous Blue-Green Deployments With Kubernetes](docs/tr-continuous-blue-green-deployments-with-kubernetes.md)
 1. [Deep dive into Kubernetes CronJob](docs/tr-deep-dive-kubernetes-cronjob.md)
 1. [The Istio service mesh](docs/tr-service-mesh.md)
+1. [Using GitOps to Self-Manage Postgres in Kubernetes](docs/tr-gitops-postgres-kubernetes.md)
+1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
+1. [Running CockroachDB on Kubernetes](docs/tr-running-cockroachdb-on-kubernetes.md)
+1. [To run or not to run a database on Kubernetes: What to consider](docs/tr-to-run-or-not-to-run-a-database-on-kubernetes-what-to-consider.md)
