@@ -4,8 +4,6 @@
 
 https://argo-cd.readthedocs.io/en/stable/#what-is-argo-cd
 
-https://argo-cd.readthedocs.io/en/stable/#what-is-argo-cd
-
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 
 Argo CD 是 Kubernetes 的声明性 GitOps 持续交付工具。
@@ -52,10 +50,6 @@ Argo CD 遵循 **GitOps** 模式，使用 Git 存储库作为定义所需应用�
 - Plain directory of YAML/json manifests
 - Any custom config management tool configured as a config management plugin
 
-- [kustomize](https://kustomize.io) 应用程序
-- [helm](https://helm.sh) 图表
-- [ksonnet](https://ksonnet.io) 应用
-- [jsonnet](https://jsonnet.org) 文件
 - YAML/json 清单的普通目录
 - 配置为配置管理插件的任何自定义配置管理工具
 

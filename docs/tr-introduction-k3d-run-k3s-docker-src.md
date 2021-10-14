@@ -3,14 +3,6 @@
 # k3d 介绍：在 Docker 中运行 K3s
 
 March 1, 2021
-\|
-By:
-[Thorsten Klein](https://www.suse.com/c/author/thorsten-klein-95googlemail-com/ "View all posts by Thorsten Klein")
-
-2021 年 3 月 1 日
-\|
-经过：
-[Thorsten Klein](https://www.suse.com/c/author/thorsten-klein-95googlemail-com/“查看 Thorsten Klein 的所有帖子”)
 
 In this blog post, we’re going to talk about k3d, a tool that allows you to run throwaway Kubernetes clusters anywhere you have Docker installed. I’ve anticipated your questions — so let’s go!
 
@@ -244,7 +236,7 @@ You can use k3d in even more ways, including:
 您可以通过更多方式使用 k3d，包括：
 
 - Create a cluster together with a k3d-managed container**registry**
-- Use the cluster for fast development with**hot code reloading**
+- Use the cluster for fast development with **hot code reloading**
 - Use k3d in combination with other development tools like`Tilt` or `Skaffold` ``
    - both can leverage the power of importing images via`k3d image import`
    - both can alternatively make use of a k3d-managed registry to speed up your development loop

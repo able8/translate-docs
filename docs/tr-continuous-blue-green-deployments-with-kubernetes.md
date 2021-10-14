@@ -4,8 +4,6 @@
 
 8 Sep 2020 · [Software Engineering](https://semaphoreci.com/category/engineering)
 
-2020 年 9 月 8 日 · [软件工程](https://semaphoreci.com/category/engineering)
-
 You can also download this article as a PDF and read it on the couch.
 
 您还可以将本文下载为 PDF 文件并在沙发上阅读。
@@ -102,7 +100,7 @@ That being said, we’ll need to define some common ground. You’ll need:
 
 话虽如此，我们需要定义一些共同点。你需要：
 
-- A Kubernetes cluster running with[Istio](https://istio.io/). Istio is a service mesh that adds many features to Kubernetes.
+- A Kubernetes cluster running with [Istio](https://istio.io/). Istio is a service mesh that adds many features to Kubernetes.
 - A Docker registry to store the container images. We’ll use[Docker Hub](https://hub.docker.com/) because it’s the default. Most cloud providers also offer private registries that may be more convenient for you.
 - An application and its associated Dockerfile. We’ll use the[semaphore-demo-cicd-kubernetes](https://github.com/semaphoreci-demos/semaphore-demo-cicd-kubernetes) demo project. You’re welcome to **fork** it and play with it.
 - The[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLI and your cluster's [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) (plus any other tools needed to manage it).
@@ -681,8 +679,8 @@ kubectl exec -it -c myapp $(kubectl get pod -l app=myapp,color=$COLOR_TEST -o na
 ### 添加烟雾测试
 
 - Create a third block called “Smoke Tests”.
-- Repeat the**prologue** and **environment variables** from the last block.
-- Import the**kubeconfig** secret. 
+- Repeat the **prologue** and **environment variables** from the last block.
+- Import the **kubeconfig** secret. 
 
 - 创建名为“烟雾测试”的第三个块。
 - 从最后一个块重复**序言**和**环境变量**。

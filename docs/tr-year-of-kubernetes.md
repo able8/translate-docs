@@ -6,7 +6,7 @@ John Jarvis
 
 约翰·贾维斯
 
-Sep 16, 2020·10 min read· [Leave a comment](http://about.gitlab.com#disqus_thread)
+Sep 16, 2020
 
 * * *
 
