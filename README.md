@@ -136,6 +136,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Kubernetes and container management on the desktop](docs/tr-rancherdesktop.md)
 1. [What we learned after a year of GitLab.com on Kubernetes](docs/tr-year-of-kubernetes.md)
 1. [Continuous Blue-Green Deployments With Kubernetes](docs/tr-continuous-blue-green-deployments-with-kubernetes.md)
+1. [Writing a Kubernetes Operator: From Zero to He](docs/tr-writing-a-kubernetes-operator-from-zero-to-hero-8ca5dc2462b7.md)
 1. [](docs/)
 1. [](docs/)
 
