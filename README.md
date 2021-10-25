@@ -421,3 +421,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [What Got You Here Won’t Get You There by Marshall Goldsmith](docs/tr-what-got-you-here-wont-get-you-there.md)
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
 1. [Using GitOps to Self-Manage Postgres in Kubernetes](docs/tr-gitops-postgres-kubernetes.md)1. [How Many People Can Someone Lead?](docs/tr-how-many-people-can-someone-lead.md)
+1. [Come Go With Me](docs/tr-2021-10-13-why-network-engineers-should-learn-go.md)
