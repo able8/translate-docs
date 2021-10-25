@@ -262,6 +262,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Batching operations in Go](docs/tr-batching-operations-in-go-by-mat-ryer.md)
 1. [Building containers without Docker](docs/tr-building-containers-without-docker.md)
 1. [Make resilient Go net/http servers using timeouts, deadlines and context cancellation](docs/tr-make-resilient-golang-net-http-servers-using-timeouts-deadlines-context-cancellation.md)
+1. [Come Go With Me](docs/tr-2021-10-13-why-network-engineers-should-learn-go.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -369,6 +370,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Facebook outage More details about the October 4 outage](docs/tr-facebook-outage-details.md)
 1. [A Tale of DNS & BGP: The Facebook Outage, October 2021](docs/tr-facebook-outage-oct.md)
 1. [Understanding How Facebook Disappeared from the Internet](docs/tr-october-2021-facebook-outage.md)
+1. [Using GitOps to Self-Manage Postgres in Kubernetes](docs/tr-gitops-postgres-kubernetes.md)1. [How Many People Can Someone Lead?](docs/tr-how-many-people-can-someone-lead.md)
 1. [](docs/)
 1. [Practical Go: Real world advice for writing maintainable Go programs](docs/tr-practical-go.md)
 1. [](docs/)
@@ -420,5 +422,3 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Introducing Tobs: Deploy a full observability suite for Kubernetes in two minutes](docs/tr-introducing-tobs-deploy-a-full-observability-suite-for-kubernetes-in-two-minutes.md)
 1. [What Got You Here Won’t Get You There by Marshall Goldsmith](docs/tr-what-got-you-here-wont-get-you-there.md)
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
-1. [Using GitOps to Self-Manage Postgres in Kubernetes](docs/tr-gitops-postgres-kubernetes.md)1. [How Many People Can Someone Lead?](docs/tr-how-many-people-can-someone-lead.md)
-1. [Come Go With Me](docs/tr-2021-10-13-why-network-engineers-should-learn-go.md)
