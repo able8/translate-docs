@@ -5,9 +5,6 @@
 [Rafal Leszko](https://hazelcast.com/blog/author/rafal-leszko/ "Posts by Rafal Leszko")
 November 23, 2020
 
-[Rafal Leszko](https://hazelcast.com/blog/author/rafal-leszko/“Rafal Leszko 的帖子”)
-2020 年 11 月 23 日
-
 You want to build a Kubernetes Operator for your software. Which tool to choose from? Operator SDK with Helm, Ansible, or Go? Or maybe start from scratch with Python, Java, or any other programming language? In this blog post, I discuss different approaches to writing Kubernetes Operators and list each solution’s pros and cons. All that to help you decide which tool is the right one for you!
 
 您想为您的软件构建一个 Kubernetes Operator。选择哪种工具？带 Helm、Ansible 或 Go 的 Operator SDK？或者从头开始使用 Python、Java 或任何其他编程语言？在这篇博文中，我讨论了编写 Kubernetes Operator 的不同方法，并列出了每种解决方案的优缺点。所有这些都可以帮助您决定哪种工具适合您！
@@ -202,12 +199,12 @@ Note that you need to change `leszko` to your Docker Hub account name and make y
 
 A few **comments about the “Operator SDK: Helm”** approach:
 
-关于“Operator SDK: Helm”** 方法的一些**评论：
+关于“Operator SDK: Helm”**方法的一些**评论：
 
 - Operator implementation is **declarative** and therefore **simple; it** requires no more knowledge than the standard Kubernetes configurations
-- If you**already have a Helm chart** for your software, then creating an operator requires **no work** at all
-- Your operator functionality is**limited to the features available in Helm**
-- All operator configuration files (hazelcast.crd.yaml, role.yaml, role\_binding.yaml, operator.yaml hazelcast.yaml) are**automatically generated**, so you don’t need to maintain them separately
+- If you **already have a Helm chart** for your software, then creating an operator requires **no work** at all
+- Your operator functionality is **limited to the features available in Helm**
+- All operator configuration files (hazelcast.crd.yaml, role.yaml, role\_binding.yaml, operator.yaml hazelcast.yaml) are **automatically generated**, so you don’t need to maintain them separately
 
 - 运算符实现是**声明性**，因此**简单；它**不需要比标准 Kubernetes 配置更多的知识
 - 如果您**已经为您的软件准备了 Helm 图表**，那么创建操作符**无需工作**
