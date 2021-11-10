@@ -136,6 +136,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Kubernetes and container management on the desktop](docs/tr-rancherdesktop.md)
 1. [What we learned after a year of GitLab.com on Kubernetes](docs/tr-year-of-kubernetes.md)
 1. [Continuous Blue-Green Deployments With Kubernetes](docs/tr-continuous-blue-green-deployments-with-kubernetes.md)
+1. [Writing a Kubernetes Operator: From Zero to He](docs/tr-writing-a-kubernetes-operator-from-zero-to-hero-8ca5dc2462b7.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -262,6 +263,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Batching operations in Go](docs/tr-batching-operations-in-go-by-mat-ryer.md)
 1. [Building containers without Docker](docs/tr-building-containers-without-docker.md)
 1. [Make resilient Go net/http servers using timeouts, deadlines and context cancellation](docs/tr-make-resilient-golang-net-http-servers-using-timeouts-deadlines-context-cancellation.md)
+1. [Come Go With Me](docs/tr-2021-10-13-why-network-engineers-should-learn-go.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -370,6 +372,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [A Tale of DNS & BGP: The Facebook Outage, October 2021](docs/tr-facebook-outage-oct.md)
 1. [Understanding How Facebook Disappeared from the Internet](docs/tr-october-2021-facebook-outage.md)
 1. [What Got You Here Won’t Get You There by Marshall Goldsmith](docs/tr-what-got-you-here-wont-get-you-there.md)
+1. [Using GitOps to Self-Manage Postgres in Kubernetes](docs/tr-gitops-postgres-kubernetes.md)
+1. [How Many People Can Someone Lead?](docs/tr-how-many-people-can-someone-lead.md)
+1. [What is Developer Experience and why should we care?](docs/tr-what-is-developer-experience-and-why-should-we-care-1k9i.md)
 1. [](docs/)
 1. [Practical Go: Real world advice for writing maintainable Go programs](docs/tr-practical-go.md)
 1. [](docs/)
@@ -413,7 +418,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Tutorial: Kubernetes-Native Backup and Recovery With Stash](docs/tr-kubernetes-native-backup-and-recovery-with-stash.md)
 1. [Auto-labeling Kubernetes resources with Kyverno](docs/tr-auto-labeling-kubernetes-resources-with-kyverno.md)
 1. [Exploring Kyverno: Introduction](docs/tr-exploring-kyverno-intro.md)
-
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
 1. [Using GitOps to Self-Manage Postgres in Kubernetes](docs/tr-gitops-postgres-kubernetes.md)
 1. [To run or not to run a database on Kubernetes: What to consider](docs/tr-to-run-or-not-to-run-a-database-on-kubernetes-what-to-consider.md)
@@ -422,3 +426,7 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Deep dive into Kubernetes CronJob](docs/tr-deep-dive-kubernetes-cronjob.md)
 1. [Helm Charts Tutorial: The Kubernetes Package Manager Explained](docs/tr-helm-charts-tutorial-the-kubernetes-package-manager-explained.md)
 1. [Build Your Kubernetes Operator with the Right Tool](docs/tr-build-your-kubernetes-operator-with-the-right-tool.md)
+1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
+1. [Kubernetes jobs market (Q1 2021)](docs/tr-k8s-job-report-2021-q1.md)
+1. [Kubernetes jobs market (Q2 2021)](docs/tr-k8s-jobs-market-report-2021-q2.md)
+1. [Kubernetes jobs in Remote](docs/tr-kube-careers-jb.md)
