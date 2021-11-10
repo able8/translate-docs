@@ -2,19 +2,16 @@
 
 # 在 Kubernetes 上运行 CockroachDB
 
--  on Mar 3, 2021
+- on Mar 3, 2021
 
-- 2021 年 3 月 3 日
+  
+
 
 ![Running CockroachDB on Kubernetes](https://crl2020.imgix.net/img/crl-solutions-diagram-kubernetes_1020x475@2X.jpg?auto=format,compress&q=60&w=1185)
 
 _Since this post was originally published in 2017, StatefulSets have become common and allow a wide array of stateful workloads to run on Kubernetes. In this post,  we'll quickly walk through the history of StatefulSets, and how they fit with [CockroachDB and Kubernetes](https://www.cockroachlabs.com/product/kubernetes/), before jumping into a tutorial for running CockroachDB on Kubernetes._
 
 _自从这篇文章最初于 2017 年发布以来，StatefulSets 已经变得很普遍，并允许在 Kubernetes 上运行各种有状态的工作负载。在这篇文章中，我们将快速浏览 StatefulSets 的历史，以及它们如何与 [CockroachDB 和 Kubernetes](https://www.cockroachlabs.com/product/kubernetes/) 配合，然后再进入运行 CockroachDB 的教程在 Kubernetes 上。_
-
--–
-
-————
 
 Managing resilience, scale, and ease of operations in a containerized world is largely what Kubernetes is all about—and one of the reasons platform adoption has doubled since 2017.  And as container orchestration continues to become a dominant DevOps paradigm, the ecosystem has continued to mature with better tools for replication, management, and monitoring of our workloads.
 

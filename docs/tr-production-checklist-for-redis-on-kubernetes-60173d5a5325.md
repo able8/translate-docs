@@ -4,8 +4,6 @@
 
 [Jun 29, 2020](https://medium.com/swlh/production-checklist-for-redis-on-kubernetes-60173d5a5325?source=post_page-----60173d5a5325--------------------------------) · 7 min read
 
-![img](https://miro.medium.com/max/1400/1*cKRFZsFXbyrOyKNB5MLn9A.png)
-
 Redis is a popular open-source in-memory data store and cache that has become an integral part of building a scalable microservice system. While all  the major cloud providers offer a fully-managed Redis service ([Amazon ElastiCache](https://aws.amazon.com/elasticache/), [Azure Cache for Redis](https://azure.microsoft.com/en-us/services/cache/), and [GCP Memorystore](https://cloud.google.com/memorystore)), it can also be easily deployed in Kubernetes if you need more control  over the Redis configurations. Redis provides decent performance out of  the box, but if you are preparing to run a production workload, make  sure to go over this checklist before you go live.
 
 Redis 是一种流行的开源内存数据存储和缓存，已成为构建可扩展微服务系统不可或缺的一部分。虽然所有主要的云提供商都提供完全托管的 Redis 服务 ([Amazon ElastiCache](https://aws.amazon.com/elasticache/)，[Azure Cache for Redis](https://azure.microsoft.com/en-us/services/cache/) 和 [GCP Memorystore](https://cloud.google.com/memorystore))，如果您需要更多地控制 Redis 配置，它也可以轻松部署在 Kubernetes 中。 Redis 提供了开箱即用的良好性能，但如果您准备运行生产工作负载，请确保在上线之前查看此清单。
@@ -31,8 +29,6 @@ To deploy a Redis cluster on Kubernetes, you can either use [Bitnami’s Redis H
 ![img](https://miro.medium.com/max/1400/0*gegAWGzw5szaUykG)
 
 Redis Enterprise vs. Redis Open-Source — Image Credit: [Redis Labs](https://redislabs.com/redis-enterprise/technology/redis-enterprise-cluster-architecture/)
-
-Redis 企业与 Redis 开源 — 图片来源：[Redis Labs](https://redislabs.com/redis-enterprise/technology/redis-enterprise-cluster-architecture/)
 
 Bitnami supports two deployment options for Redis: a **master-slave cluster with Redis Sentinel** and a **Redis cluster** topology with sharding. If you have a high read throughput, using the  master-slave cluster helps offload the read operations to the slave  pods. The sentinels are configured to promote a slave pod to a master in the case of a failure. On the other hand, Redis cluster shards data  across multiple instances and is a great fit when memory requirements  exceed the limits for a single master with CPU becoming the bottleneck  (>100GB). Redis cluster also supports high availability with each  master connected to one or more slave pods. When the master pod crashes, one of the slaves will be promoted to master.
 

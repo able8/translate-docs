@@ -2,9 +2,7 @@
 
 # Helm Charts 教程：解释 Kubernetes 包管理器
 
-![Sebastian Sigl](http://www.freecodecamp.org/news/content/images/size/w100/2020/01/profile_photo_edited.png)[SebastianSigl](http://www.freecodecamp.org/news/author/sesigl/)
 
-/作者/sesigl/)
 
 ![Helm Charts Tutorial: The Kubernetes Package Manager Explained](http://www.freecodecamp.org/news/content/images/size/w2000/2020/12/helm-blog-logo.jpg)
 
