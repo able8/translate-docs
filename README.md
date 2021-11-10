@@ -425,3 +425,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Introducing Tobs: Deploy a full observability suite for Kubernetes in two minutes](docs/tr-introducing-tobs-deploy-a-full-observability-suite-for-kubernetes-in-two-minutes.md)
 1. [What Got You Here Won’t Get You There by Marshall Goldsmith](docs/tr-what-got-you-here-wont-get-you-there.md)
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
+1. [Kubernetes jobs market (Q1 2021)](docs/tr-k8s-job-report-2021-q1.md)
+1. [Kubernetes jobs market (Q2 2021)](docs/tr-k8s-jobs-market-report-2021-q2.md)
+1. [Kubernetes jobs in Remote](docs/tr-kube-careers-jb.md)
