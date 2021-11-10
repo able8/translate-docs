@@ -4,8 +4,6 @@
 
 Published in July 2021
 
-2021 年 7 月出版
-
 ------
 
 *What are the latest trends in the Kubernetes job market?*
@@ -30,10 +28,12 @@ The job descriptions that we collected are slightly skewed:
 4. We analysed listings on platforms used by European and American audiences.
 5. **The dataset is small** — only 113 job descriptions from April, May and June 2021.
 
+
+
 1. **在 Kube 职业，我们只关注 Kubernetes 工作。**
 2. 如果一份工作没有明确的薪资范围，我们将其丢弃。许多工作offer没有指明薪资范围，我们认为这对找工作的工程师不利。
 3. 我们放弃了招聘机构的工作机会。
-4.我们分析了欧美受众使用的平台上的listing。
+4. 我们分析了欧美受众使用的平台上的listing。
 5. **数据集很小**——2021 年 4 月、5 月和 6 月只有 113 个职位描述。
 
 Keep these factors in mind while we dive into the numbers.
@@ -82,7 +82,7 @@ However, the percentage of jobs that are remote-only actually fell.
 
 **The minimum USD salary offered for a Kubernetes engineer, on average, in  our dataset, is $119,438. The maximum offered on average is $163,688.**
 
-**在我们的数据集中，Kubernetes 工程师的最低美元工资平均为 119,438 美元。平均提供的最高金额为 163,688 美元。**
+**在我们的数据集中，Kubernetes 工程师的最低美元工资平均为 12w 美元。平均提供的最高金额为 16w 美元。**
 
 These represent a modest increase of about $3,500 each since last quarter.
 
@@ -262,7 +262,23 @@ The most popular choices of technology among Kubernetes engineers are:
 
 Kubernetes 工程师中最流行的技术选择是：
 
-• Programming languages: **Python, Go and Java**. • Cloud platforms: **AWS, GCP and Azure** (in that order). • Containers: **Docker**. • Operating systems: **Linux**. • Infrastructure as Code: **Terraform**. • Database management: **PostgreSQL**. • Configuration management: **Ansible**. • CI/CD: **Jenkins**.
+• Programming languages: **Python, Go and Java**.
+
+ • Cloud platforms: **AWS, GCP and Azure** (in that order). 
+
+• Containers: **Docker**.
+
+ • Operating systems: **Linux**. 
+
+• Infrastructure as Code: **Terraform**. 
+
+• Database management: **PostgreSQL**. 
+
+• Configuration management: **Ansible**. 
+
+• CI/CD: **Jenkins**.
+
+
 
 • 编程语言：**Python、Go 和 Java**。 • 云平台：**AWS、GCP 和 Azure**（按此顺序）。 • 容器：**Docker**。 • 操作系统：**Linux**。 • 基础设施即代码：**Terraform**。 • 数据库管理：**PostgreSQL**。 • 配置管理：**Ansible**。 • CI/CD：**Jenkins**。
 
