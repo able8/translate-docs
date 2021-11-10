@@ -1,12 +1,8 @@
 # Kubernetes jobs in Remote
 
-# Kubernetes 远程作业
-
-from https://kube.careers/remote-kubernetes-jobs
-
 来自 https://kube.careers/remote-kubernetes-jobs
 
-Browse 100+ Kubernetes jobs (2 new this week) in Remote at companies like Zeet, Nira and Uizard with salaries from $24,000 to $210,000 working as a Infrastructure Engineer, Backend Engineer and DevOps Engineer.
+Browse 100+ Kubernetes jobs (2 new this week) in Remote at companies like Zeet, Nira and Uizard with salaries from $24,000   to  $210,000 working as a Infrastructure Engineer, Backend Engineer and DevOps Engineer.
 
 在 Zeet、Nira 和 Uizard 等公司的 Remote 浏览 100 多个 Kubernetes 工作（本周新增 2 个），作为基础架构工程师、后端工程师和 DevOps 工程师，薪水从 24,000 美元到 210,000 美元不等。
 
@@ -18,7 +14,7 @@ Remote (US)  $100K - 180K a year
 
 远程（美国）$100K - 180K 一年
 
-Zeet operates your cloud account, giving you the best setup so you can focus on shipping product.
+Zeet operates your cloud account, giving you themm best setup so you can focus on shipping product.
 
 Zeet 操作您的云帐户，为您提供最佳设置，以便您可以专注于运输产品。
 
@@ -286,7 +282,7 @@ Coral 的用户包括《华盛顿邮报》、《华尔街日报》、《金融�
 
 ## 关于角色
 
-Under general supervision of Coral's SRE Engineering Manager, the Senior Site Reliability Engineer is responsible for the scaling, performance,  availability and security of Coral's hosted client platform, websites,  applications and services. The Senior SRE is also responsible for  managing the tools and infrastructure that support the above. They will  have a primary role in the leadership and execution of infrastructure  initiatives from conception to production.
+
 
 在 Coral 的 SRE 工程经理的一般监督下，高级站点可靠性工程师负责 Coral 托管客户端平台、网站、应用程序和服务的扩展、性能、可用性和安全性。高级 SRE 还负责管理支持上述工作的工具和基础设施。他们将在从概念到生产的基础设施计划的领导和执行中发挥主要作用。
 
@@ -888,7 +884,7 @@ Bring your real self. Celebrate what makes you unique. Part of our commitment to
 
 带上真实的自己。庆祝什么让你与众不同。我们对包容性和多样性的部分承诺包括深化我们与员工资源团体（女性、有色人种和 LGBTQ+）的关系。我们的 ERG 定期与执行团队和人员体验团队合作，让 TeamSnap 负责建立一个让每个人都感到受到重视的环境。我们是平等就业机会的雇主。
 
---- 
+---
 
 ---
 

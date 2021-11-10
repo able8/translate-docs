@@ -4,8 +4,6 @@
 
 Published in April 2021
 
-2021 年 4 月出版
-
 ------
 
 *What is the average salary for a Kubernetes engineer?*

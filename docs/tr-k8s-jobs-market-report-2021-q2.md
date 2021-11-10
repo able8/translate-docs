@@ -4,8 +4,6 @@
 
 Published in July 2021
 
-2021 年 7 月出版
-
 ------
 
 *What are the latest trends in the Kubernetes job market?*
@@ -30,10 +28,12 @@ The job descriptions that we collected are slightly skewed:
 4. We analysed listings on platforms used by European and American audiences.
 5. **The dataset is small** — only 113 job descriptions from April, May and June 2021.
 
+
+
 1. **在 Kube 职业，我们只关注 Kubernetes 工作。**
 2. 如果一份工作没有明确的薪资范围，我们将其丢弃。许多工作offer没有指明薪资范围，我们认为这对找工作的工程师不利。
 3. 我们放弃了招聘机构的工作机会。
-4.我们分析了欧美受众使用的平台上的listing。
+4. 我们分析了欧美受众使用的平台上的listing。
 5. **数据集很小**——2021 年 4 月、5 月和 6 月只有 113 个职位描述。
 
 Keep these factors in mind while we dive into the numbers.
