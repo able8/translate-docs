@@ -6,9 +6,7 @@ Solutions Architect, Google Cloud
 
 解决方案架构师，谷歌云
 
-July 3, 2019
-
-2019 年 7 月 3 日
+July 3, 2019 
 
 #### Gartner Cloud DBMS MQ Report
 

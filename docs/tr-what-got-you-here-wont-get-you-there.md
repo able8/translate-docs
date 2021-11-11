@@ -4,8 +4,6 @@
 
 summarized by [James Clear](https://jamesclear.com/about)
 
-[James Clear] (https://jamesclear.com/about) 总结
-
 ## The Book in Three Sentences
 
 ## 三句话的书

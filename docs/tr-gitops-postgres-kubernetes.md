@@ -4,10 +4,6 @@
 
 February 01, 2021 [Jonathan S. Katz](https://blog.crunchydata.com/blog/author/jonathan-s-katz)
 
-2021 年 2 月 1 日 [Jonathan S. Katz](https://blog.crunchydata.com/blog/author/jonathan-s-katz)
-
-[PostgreSQL](https://blog.crunchydata.com/blog/topic/postgresql)[Kubernetes](https://blog.crunchydata.com/blog/topic/kubernetes) [PostgreSQL Operator](https://blog.crunchydata.com/blog/topic/postgresql-operator) [GitOps](https://blog.crunchydata.com/blog/topic/gitops)
-
 [PostgreSQL](https://blog.crunchydata.com/blog/topic/postgresql)[Kubernetes](https://blog.crunchydata.com/blog/topic/kubernetes) [PostgreSQL Operator](https://blog.crunchydata.com/blog/topic/postgresql-operator) [GitOps](https://blog.crunchydata.com/blog/topic/gitops)
 
 " [GitOps](https://www.gitops.tech/)" is a term that I've been seeing come up more and more. The concept was first put forward by the team at [Weaveworks](https://www.weave.works/technologies/gitops/) as a way to consolidate thought around deploying applications. In essence: your deployment topology lives in your git repository. You can update your deployment information by adding a new commit. Likewise, if you need to revert your system's state, you can rollback to the commit that you want to represent your production environment. Any changes to your deployment topology should be reconciled in your production environment.

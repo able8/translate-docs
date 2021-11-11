@@ -8,8 +8,6 @@ Kubernetes cron 调度
 
 Published on 2021/01/05
 
-发表于 2021/01/05
-
 Kubernetes **CronJob** are very useful, but can but hard to work with: parallelism, failure, timeout, etc. The [official documentation](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) and [API reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#cronjob-v1beta1-batch) are quite complete, I'll try below to give real -world examples on how to fine-tune your CronJobs and follow best practices.
 
 Kubernetes **CronJob** 非常有用，但很难使用：并行、失败、超时等。 [官方文档](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) 和 [API 参考](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#cronjob-v1beta1-batch) 已经很完整了，我会在下面尝试给出真实的-有关如何微调 CronJobs 和遵循最佳实践的世界示例。
@@ -94,7 +92,7 @@ Among others, the following ones may especially be useful:
    - Kubernetes 尝试停止作业之前的最长作业持续时间
   - 这个deadline是和Job创建相关的，Pod可能需要一些时间来启动，比如需要拉镜像的时候
   - 仅当您知道自己在做什么时才设置此值
--`spec.jobTemplate.spec.backoffLimit`：
+  -`spec.jobTemplate.spec.backoffLimit`：
 
   - Maximum number of retries before marking this Job as failed when Pod fails (exit code > 0) or Pod deadline exceeded
    - Defaults to 6, set to 0 for no retry possible
