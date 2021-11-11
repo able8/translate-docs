@@ -455,12 +455,9 @@ Do you want to become part of a fun team with a company wide impact, and shape a
 **技术栈**
 
 - AWS 
-
-- AWS
-
 - Kubernetes (or equivalent deployment or orchestration automation)
 - Terraform (or equivalent infrastructure as code tool)
-
+- 
 - Kubernetes（或等效的部署或编排自动化）
 - Terraform（或等效的基础设施作为代码工具）
 
@@ -532,8 +529,6 @@ If you're living with a disability, illness, and/or neurodiversity or are  prima
 
 Remote $120K - 127K a year
 
-远程 $120K - 127K 一年
-
 Here at Pex, we're on a mission to democratize digital rights for everyone.
 
 在 Pex，我们的使命是让每个人的数字权利民主化。
@@ -555,12 +550,13 @@ Pex 的许可团队是一个完全远程的团队，由工程师、产品设计�
 ##  角色：
 
 - Create scalable, performant Go applications leveraging SQL (PostgreSQL)
-- FoundationDB and KubernetesWrite clean, tested, efficient, maintainable code
+- FoundationDB and Kubernetes 
+- Write clean, tested, efficient, maintainable code
 - Collaborate with other engineers, a product manager, and a product designer in autonomous teams
 - Contribute to product design and architecture decisions
-
 - 利用 SQL (PostgreSQL) 创建可扩展的高性能 Go 应用程序
-- FoundationDB 和 Kubernetes 编写干净、经过测试、高效、可维护的代码
+- FoundationDB 和 Kubernetes 
+- 编写干净、经过测试、高效、可维护的代码
 - 在自治团队中与其他工程师、产品经理和产品设计师合作
 - 为产品设计和架构决策做出贡献
 
@@ -726,8 +722,6 @@ A Remote-First AngelList：AngelList 是一家远程优先的公司——您可�
 
 Remote $24K - 60K a year
 
-远程 $24K - 60K 一年
-
 You'll be working with our clients to ensure their cloud infrastructure and  kubernetes clusters are kept up to date and well-maintained. We help  with deployments, troubleshoot infra issues, help debug applications,  upgrade clusters, and more. You'll be working with:
 
 您将与我们的客户合作，确保他们的云基础设施和 kubernetes 集群保持最新并得到良好维护。我们帮助部署、解决基础设施问题、帮助调试应用程序、升级集群等等。您将与：
@@ -739,12 +733,6 @@ You'll be working with our clients to ensure their cloud infrastructure and  kub
 - Grafana / Prometheus
 - Python and Golang (preferred)
 
-- AWS 和 GCP
-- Kubernetes
-- 地形
-- ArgoCD 和 Helm
-- 格拉法纳/普罗米修斯
-- Python 和 Golang（首选）
 
 We'll provide all the training necessary to do well and obtain certifications on GCP, AWS, and CKA.
 
@@ -758,21 +746,13 @@ Full-time position, 100% remote (we currently have folks in the US, Mexico,  Nig
 
 全职职位，100% 远程（我们目前在美国、墨西哥、尼日利亚、肯尼亚、土耳其和菲律宾都有员工），并且能够在 UTC-6 到 UTC+3 时区工作。
 
---
-
 ——
 
 # Senior Site Reliability Engineer with Team Snap
 
 # Team Snap 的高级站点可靠性工程师
 
-Remote (US only)
-
-远程（仅限美国）
-
-$125K - 170K a year
-
-每年 12.5 万美元 - 17 万美元
+Remote (US only) $125K - 170K a year
 
 TeamSnap is a sports and communication platform dedicated to empowering play in  youth sports. We value trust, communication, and fun more than big  company policies. We empower our people to bring big ideas and tiny egos which lands us on Outside Magazine's list of **“Best Places to Work”** on the regular.
 
