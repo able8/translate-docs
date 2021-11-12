@@ -430,3 +430,4 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Kubernetes jobs market (Q1 2021)](docs/tr-k8s-job-report-2021-q1.md)
 1. [Kubernetes jobs market (Q2 2021)](docs/tr-k8s-jobs-market-report-2021-q2.md)
 1. [Kubernetes jobs in Remote](docs/tr-kube-careers-jb.md)
+1. [Service Ownership: What It Really Means and How to Achieve It](docs/tr-service-ownership-what-it-really-means-and-how-to-achieve-it.md)
