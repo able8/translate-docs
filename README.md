@@ -18,6 +18,21 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags "-s -w" -o bin/translate
 CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/translate_windows_amd64.exe translate.go
 ```
 
+#### How to fetch and translate blogs
+
+```
+# generate markdown file from blog URLs
+cd docs
+pbpaste | sed 's#/$##g' | grep http | while read line; do html2md -i ${line} --opt-code-block-style fenced > ${line##*/}.md; echo "\n\n$line" >> ${line##*/}.md ;done
+
+# translate
+git status | grep ".md" | grep -v README.md | grep -v "tr-"  | while read line; do go run ../translate.go -f $line; done
+
+# update README.md
+git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed 's/# //g')](docs/$line)";done | pbcopy;pbpaste >> ../README.md
+
+```
+
 ---
 
 # Translated docs & blogs
@@ -267,6 +282,9 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Building containers without Docker](docs/tr-building-containers-without-docker.md)
 1. [Make resilient Go net/http servers using timeouts, deadlines and context cancellation](docs/tr-make-resilient-golang-net-http-servers-using-timeouts-deadlines-context-cancellation.md)
 1. [Come Go With Me](docs/tr-2021-10-13-why-network-engineers-should-learn-go.md)
+1. [Go Concurrency Patterns: Context](docs/tr-go-concurrecny-pattern-contex.md)
+1. [Implementing Graceful Shutdown in Go](docs/tr-implementing-graceful-shutdown-in-go.md)
+1. [Go 1.18 and Google Cloud: Go now with Google Cloud](docs/tr-go-1-18-and-google-cloud-go-now-with-google-cloud.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -432,5 +450,6 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Helm Charts Tutorial: The Kubernetes Package Manager Explained](docs/tr-helm-charts-tutorial-the-kubernetes-package-manager-explained.md)
 1. [Build Your Kubernetes Operator with the Right Tool](docs/tr-build-your-kubernetes-operator-with-the-right-tool.md)
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
-1. [Go Concurrency Patterns: Context](docs/tr-go-concurrecny-pattern-contex.md)
-1. [Implementing Graceful Shutdown in Go](docs/tr-implementing-graceful-shutdown-in-go.md)
+1. [](docs/)
+1. [](docs/)
+
