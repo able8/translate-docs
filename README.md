@@ -432,3 +432,5 @@ CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags "-s -w" -o bin/transla
 1. [Helm Charts Tutorial: The Kubernetes Package Manager Explained](docs/tr-helm-charts-tutorial-the-kubernetes-package-manager-explained.md)
 1. [Build Your Kubernetes Operator with the Right Tool](docs/tr-build-your-kubernetes-operator-with-the-right-tool.md)
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
+1. [Go Concurrency Patterns: Context](docs/tr-go-concurrecny-pattern-contex.md)
+1. [Implementing Graceful Shutdown in Go](docs/tr-implementing-graceful-shutdown-in-go.md)
