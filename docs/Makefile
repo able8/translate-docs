@@ -1,28 +1,10 @@
-## help: print this help message
-help:
-	@echo "Usage:"
-	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ":" | sed -e 's/^/  /'
+# generate markdown file from blog URLs
+get:
+	pbpaste | sed 's#/$$##g' | grep http | while read line; do html2md -i $${line} --opt-code-block-style fenced > $${line##*/}.md; echo "\n\n$$line" >> $${line##*/}.md ;done
 
-## get: get URLs and generate Markdown file
-.PHONY: get
-get: 
-	pbpaste | sed 's#/$$##g' | sed 's/.html//g' | grep http | while read line; do \
-	html2md -i $${line} --opt-code-block-style fenced > $${line##*/}.md;done
+translate:
+	git status | grep ".md" | grep -v README.md | grep -v "tr-"  | while read line; do go run ../translate.go -f $$line; done
 
-## tr: translate Markdown file
-.PHONY: tr
-tr: 
-	git status | grep ".md" | grep -v "tr-" | while read line; do  \
-	echo $${line};go run ../translate.go -f "$${line}"; done
-
-## add: add the tanslated file name and path to README
-.PHONY: add
-add: 
-	git status | grep "tr-" | while read line; do  \
-	echo "1. [$$(head -n 1 $${line}|sed 's/# //g')](docs/$${line})"; \
-	done | pbcopy;pbpaste;pbpaste >> ../README.md
-
-## open: open the markdown file
-.PHONY: open
-open: 
-	git status -s | cut -d " " -f2 | grep ".md" | while read line; do open "$$line";done
+# update README.md
+update:
+	git status  | grep "tr-" | while read line; do echo "1. [$$(head -n 1 $$line|sed 's/# //g')](docs/$$line)";done | pbcopy;pbpaste >> ../README.md

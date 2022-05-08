@@ -155,6 +155,12 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Kubernetes jobs market (Q1 2021)](docs/tr-k8s-job-report-2021-q1.md)
 1. [Kubernetes jobs market (Q2 2021)](docs/tr-k8s-jobs-market-report-2021-q2.md)
 1. [Kubernetes jobs in Remote](docs/tr-kube-careers-jb.md)
+1. [Best practices for deploying highly available apps in Kubernetes. Part 1](docs/tr-best-practices-for-deploying-highly-available-apps-in-kubernetes-part-1.md)
+1. [Best practices for deploying highly available apps in Kubernetes. Part 2](docs/tr-best-practices-for-deploying-highly-available-apps-in-kubernetes-part-2.md)
+1. [Dive Deep Into Resource Requests and Limits in Kubernetes](docs/tr-dive-deep-into-resource-requests-and-limits-in-kub.md)
+1. [Kubernetes best practices: Resource requests and limits](docs/tr-kubernetes-best-practices-resource-requests-and-limits.md)
+1. [A Practical Guide to Setting Kubernetes Requests and Limits](docs/tr-requests-and-limits.md)
+1. [Setting and Rightsizing Kubernetes Resource Limits \| Best Practices](docs/tr-setting-and-rightsizing-kubernetes-resource-limits.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -452,6 +458,3 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
 1. [](docs/)
 1. [](docs/)
-
-1. [Best practices for deploying highly available apps in Kubernetes. Part 1](docs/tr-best-practices-for-deploying-highly-available-apps-in-kubernetes-part-1.md)
-1. [Best practices for deploying highly available apps in Kubernetes. Part 2](docs/tr-best-practices-for-deploying-highly-available-apps-in-kubernetes-part-2.md)
