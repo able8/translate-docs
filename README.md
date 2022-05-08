@@ -453,3 +453,5 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [](docs/)
 1. [](docs/)
 
+1. [Best practices for deploying highly available apps in Kubernetes. Part 1](docs/tr-best-practices-for-deploying-highly-available-apps-in-kubernetes-part-1.md)
+1. [Best practices for deploying highly available apps in Kubernetes. Part 2](docs/tr-best-practices-for-deploying-highly-available-apps-in-kubernetes-part-2.md)
