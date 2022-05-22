@@ -458,3 +458,4 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Production Checklist for Redis on Kubernetes](docs/tr-production-checklist-for-redis-on-kubernetes-60173d5a5325.md)
 1. [](docs/)
 1. [](docs/)
+1. [A tour of the Kubernetes source code](docs/tr-a-tour-of-the-kubernetes-source-code.md)
