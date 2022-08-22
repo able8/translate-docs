@@ -469,3 +469,6 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [The USA TODAY NETWORK’s SRE team’s journey into Docker and Kubernetes. Was it worth it?](docs/tr-the-usa-today-networks-sre-team-s-journey-into-docker-and-kubernetes-was-it-worth-it-d20840757f05.md)
 1. [SaaS: Single Tenant vs Multi-Tenant - What's the Difference?](docs/tr-saas-single-tenant-vs-multi-tenant-whats-difference.md)
 1. [Single-Tenant Vs. Multi-Tenant Cloud: Which Should You Use?](docs/tr-single-tenant-vs-multi-tenant.md)
+1. [How a simple admission webhook lead to a cluster outage](docs/tr-gke-webhook-outage.md)
+1. [How to setup a multi-tenant cluster with GKE](docs/tr-how-to-setup-a-multi-tenant-cluster-with-gke.md)
+1. [Choosing Single-Tenancy or Multi-Tenancy Kubernetes Clusters](docs/tr-single-tenancy-or-multi-tenancy-kubernetes-clusters.md)
