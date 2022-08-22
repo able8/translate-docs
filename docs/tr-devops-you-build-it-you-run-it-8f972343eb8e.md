@@ -4,10 +4,6 @@
 
 Jun 27, 2019
 
-2019 年 6 月 27 日
-
-https://medium.com/usa-today-network/devops-you-build-it-you-run-it-8f972343eb8e
-
 https://medium.com/usa-today-network/devops-you-build-it-you-run-it-8f972343eb8e
 
 We know DevOps is a paradigm shift for software development. But the wide range of DevOps definitions and processes make it difficult, especially across organizations, to define what DevOps is in practice. Is it a development team working well with an operations team? Or is it a third team connecting the others? The API Services team at USA TODAY NETWORK doesn’t fit either of those scenarios. Our approach can be summed up by the slogan, “You Build It, You Run It.”
@@ -26,9 +22,7 @@ DevOps 的核心是将运行服务的责任与改进服务的权限保持一致�
 
 #  好处
 
-**Organizational Benefits**
-
-**组织利益**
+**Organizational Benefits** **组织利益**
 
 Maintaining a single team with aligned responsibility and authority means we don’t need cross-team communication. Instead, we can rely on much easier intra-team communication. Individual skillsets still vary, but the goals and responsibilities are shared by the team as a whole. Everyone becomes more aligned. Also, cross-team communication is no longer tied up with service level concerns and becomes freed up for discussions regarding composition of services and other higher-level concerns.
 

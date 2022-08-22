@@ -4,8 +4,6 @@
 
 by [Chris Brook](https://digitalguardian.com/author/chris-brook) on Tuesday December 1, 2020
 
-作者：[Chris Brook](https://digitalguardian.com/author/chris-brook)，2020 年 12 月 1 日，星期二
-
 What are the advantages of a multi-tenancy SaaS architecture? How does it differ from single tenant instances? We break down the differences and highlight the benefits of implementing a SaaS solution for data protection in this blog.
 
 多租户 SaaS 架构有哪些优势？它与单租户实例有何不同？我们在此博客中分解差异并强调实施 SaaS 解决方案以保护数据的好处。
@@ -82,17 +80,7 @@ Potential drawbacks of multi-tenant:
 - 安全性：其他租户不会看到您的数据。但是，同一数据库允许多个用户（与您的组织无关）。这种更广泛的访问减少了对安全性的控制。
 - 更新/更改：如果您依赖与其他 SaaS 产品的集成并且其中一个更新了他们的系统，则可能会导致连接应用程序出现问题。
 
-datasheets
 
-数据表
-
-Digital Guardian SaaS Solution Sheet
-
-Digital Guardian SaaS 解决方案表
-
-[VIEW RESOURCE](https://info.digitalguardian.com/rs/768-OQW-145/images/DG-saas-solution-sheet.pdf)
-
-[查看资源](https://info.digitalguardian.com/rs/768-OQW-145/images/DG-saas-solution-sheet.pdf)
 
 ### Benefits of SaaS Multi-Tenant Architecture
 
@@ -134,15 +122,5 @@ Multi-tenancy is just one of multiple benefits of SaaS. Download this white pape
 - 如何使用最新的工具和方法构建 Digital Guardian 的云架构
 - 我们如何通过我们的托管安全计划帮助抵消资源限制
 
-To learn more about the benefits of SaaS, watch the clip below from our webinar, [Benefits of Implementing a SaaS Cybersecurity Solution](https://info.digitalguardian.com/on-demand-webinar-implementing-saas-cybersecurity-solution.html), which is presented by Andras Cser, VP Principal Analyst at Forrester. You can watch the full webinar [here](https://info.digitalguardian.com/on-demand-webinar-implementing-saas-cybersecurity-solution.html).
 
-要了解有关 SaaS 优势的更多信息，请观看我们网络研讨会的以下剪辑，[实施 SaaS 网络安全解决方案的优势](https://info.digitalguardian.com/on-demand-webinar-implementing-saas-cybersecurity-solution.html)，由 Forrester 副首席分析师 Andras Cser 提出。您可以观看完整的网络研讨会 [此处](https://info.digitalguardian.com/on-demand-webinar-implementing-saas-cybersecurity-solution.html)。
-
-Tags: [Data Protection](http://digitalguardian.com/blog/search/data-protection), [Company Information](http://digitalguardian.com/blog/search/company-information)
-
-标签：[数据保护](http://digitalguardian.com/blog/search/data-protection)、[公司信息](http://digitalguardian.com/blog/search/company-information)
-
-[Whitepaper **Considering SaaS Data Protection?** Learn why you should move to SaaS for superior security and reduced overhead. READ NOW](https://info.digitalguardian.com/whitepaper-seven-reasons-to-move-to-saas-data-protection.html?utm_source=blog) 
-
-[白皮书**考虑 SaaS 数据保护？** 了解为什么应该迁移到 SaaS 以获得卓越的安全性并减少开销。立即阅读](https://info.digitalguardian.com/whitepaper-seven-reasons-to-move-to-saas-data-protection.html?utm_source=blog)
 

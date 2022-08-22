@@ -52,9 +52,9 @@ The best practices in this guide are based on a multi-tenant use case for an ent
 
 This setup will serve as a model from which we can demonstrate multi-tenant best practices. While this setup might not perfectly describe all enterprise organizations, it can be easily extended to cover similar scenarios.
 
-   这个设置将作为一个模型，我们可以从中展示多租户的最佳实践。虽然此设置可能无法完美地描述所有企业组织，但它可以轻松扩展以涵盖类似的场景。
+这个设置将作为一个模型，我们可以从中展示多租户的最佳实践。虽然此设置可能无法完美地描述所有企业组织，但它可以轻松扩展以涵盖类似的场景。
 
-  **Note:** For Terraform modules and sample deployments, see the  [GoogleCloudPlatform/gke-enterprise-mt](https://github.com/GoogleCloudPlatform/gke-enterprise-mt)  GitHub repository.
+**Note:** For Terraform modules and sample deployments, see the  [GoogleCloudPlatform/gke-enterprise-mt](https://github.com/GoogleCloudPlatform/gke-enterprise-mt)  GitHub repository.
 
 **注意：** 对于 Terraform 模块和示例部署，请参阅 [GoogleCloudPlatform/gke-enterprise-mt](https://github.com/GoogleCloudPlatform/gke-enterprise-mt) GitHub 存储库。
 
@@ -94,7 +94,7 @@ This setup will serve as a model from which we can demonstrate multi-tenant best
 
 To capture how your organization manages Google Cloud resources and to enforce a separation of concerns, use [folders](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#folders) and [ projects](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#projects). Folders allow different teams to set policies that cascade across multiple projects, while projects can be used to segregate environments (for example, production vs. staging) and teams from each other. For example, most organizations have a team to manage network infrastructure and a different team to manage clusters. Each technology is considered a separate piece of the stack requiring its own level of expertise, troubleshooting and access.
 
-要了解您的组织如何管理 Google Cloud 资源并强制执行关注点分离，请使用 [folders](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#folders) 和 [项目](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#projects)。文件夹允许不同的团队设置跨多个项目级联的策略，而项目可用于将环境（例如，生产与暂存)和团队相互隔离。例如，大多数组织都有一个团队来管理网络基础设施，而另一个团队来管理集群。每种技术都被视为堆栈的一个单独部分，需要其自身的专业知识水平、故障排除和访问权限。
+要了解您的组织如何管理 Google Cloud 资源并强制执行关注点分离，请使用 [folders](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#folders) 和 [项目](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#projects)。文件夹允许不同的团队设置跨多个项目级联的策略，而项目可用于将环境（例如，生产与暂存）和团队相互隔离。例如，大多数组织都有一个团队来管理网络基础设施，而另一个团队来管理集群。每种技术都被视为堆栈的一个单独部分，需要其自身的专业知识水平、故障排除和访问权限。
 
 A parent folder can contain up to 300 folders, and you can nest folders up to 10 levels deep. If you have over 300 tenants, you can arrange the tenants into nested hierarchies to stay within the limit. For more information about folders, see [Creating and Managing Folders](https://cloud.google.com/resource-manager/docs/creating-managing-folders).
 
@@ -108,24 +108,25 @@ For our enterprise environment, we created three top-level folders dedicated to 
 
 对于我们的企业环境，我们为以下每个团队创建了三个专用于资源的顶级文件夹：
 
-- **Network Team**: A folder dedicated for the network team to    manage network resources. This folder contains subfolders for the tenant    network and the cluster network(s), which we discuss further in the    [Centralize network control](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-control) section. Each    subfolder contains one project per environment (development, staging, and    production) to host the virtual private clouds (VPCs) that    provide all network connectivity in the organization.
+- **Network Team**: A folder dedicated for the network team to  manage network resources. This folder contains subfolders for the tenant  network and the cluster network(s), which we discuss further in the    [Centralize network control](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-control) section. Each subfolder contains one project per environment (development, staging, and    production) to host the virtual private clouds (VPCs) that    provide all network connectivity in the organization.
 - **Cluster Team**: A folder dedicated for the platform team to    manage clusters per environment. This folder contains a subfolder for each    environment (development, staging, and production), each of which contains    one or more projects to accommodate the clusters.
 - **Tenants**: A folder dedicated for managing tenants. This    folder contains a subfolder for each tenant to host their non-cluster    resources, each of which may contain one or more projects (or even    subfolders) as required by the individual tenant.
 
-   - **Network Team**：专用于网络团队管理网络资源的文件夹。此文件夹包含租户网络和集群网络的子文件夹，我们将在 [集中网络控制] (https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-) 中进一步讨论多租户#network-control) 部分。每个子文件夹包含每个环境（开发、暂存和生产）的一个项目，用于托管提供组织中所有网络连接的虚拟私有云 (VPC)。
+- **Network Team**：专用于网络团队管理网络资源的文件夹。此文件夹包含租户网络和集群网络的子文件夹，我们将在 [集中网络控制](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-control) 中进一步讨论多租户部分。每个子文件夹包含每个环境（开发、暂存和生产）的一个项目，用于托管提供组织中所有网络连接的虚拟私有云 (VPC)。
+
 - **Cluster Team**：专门供平台团队管理每个环境的集群的文件夹。此文件夹包含每个环境（开发、登台和生产）的子文件夹，每个环境都包含一个或多个项目以容纳集群。
 - **Tenants**：专门用于管理租户的文件夹。此文件夹包含一个子文件夹，供每个租户托管他们的非集群资源，每个租户可能包含一个或多个项目（甚至是子文件夹），以满足单个租户的要求。
 
   [     ![Folder hierarchy](https://cloud.google.com/static/kubernetes-engine/images/enterprise-folder-hierarchy.svg)   ](https://cloud.google.com/static/kubernetes-engine/images/enterprise-folder-hierarchy.svg)  **Figure 1:** Folder hierarchy
 
-/images/enterprise-folder-hierarchy.svg) **图 1：** 文件夹层次结构
+​	 **图 1：** 文件夹层次结构
 
 Note that we recommend per-environment projects for the network and tenant teams, but per-environment folders for the cluster team, where each folder groups projects for each environment (for example, the production folder contains production projects). The reason for this configuration is that the cluster team has specialized segregation needs, and projects are the primary method for segregating resources in Google Cloud. For example, the cluster team might choose to host only one cluster in each project for the following reasons:
 
 请注意，我们建议为网络和租户团队使用每个环境的项目，但为集群团队推荐每个环境的文件夹，其中每个文件夹对每个环境的项目进行分组（例如，生产文件夹包含生产项目）。这种配置的原因是集群团队有专门的隔离需求，而项目是 GCP 中隔离资源的主要方法。例如，集群团队可能出于以下原因选择在每个项目中仅托管一个集群：
 
 - *Cluster configuration*: Some configurations, such as Identity and Access Management (IAM),    are per-project. Placing different clusters in different projects ensures    that a misconfiguration in one project will not affect all clusters in an    environment simultaneously, and allows you to progressively roll out and    validate changes to your configuration.
-- *Workload security*: By default, workloads running in different    projects are far more segregated from one another than workloads in the    same project. Hosting clusters in dedicated projects ensures that a    compromised, misbehaving or malicious workload in one cluster has limited    impact.
+- *Workload security*: By default, workloads running in different projects are far more segregated from one another than workloads in the  same project. Hosting clusters in dedicated projects ensures that a    compromised, misbehaving or malicious workload in one cluster has limited impact.
 - *Resource quota*: Quotas are established and enforced per-project. Spreading clusters across projects limits the impact of a single    workload (for example, in an autoscaled cluster) from exhausting the entire    environment's limits. 
 
 - *集群配置*：某些配置，例如身份和访问管理 (IAM)，是每个项目的。将不同的集群放置在不同的项目中可确保一个项目中的错误配置不会同时影响环境中的所有集群，并允许您逐步推出和验证对配置的更改。
@@ -157,25 +158,15 @@ For our enterprise environment, we defined the following groups and role assignm
 对于我们的企业环境，我们定义了以下组和角色分配：
 
 | Group                                                        | Function                                                     | IAM roles                                                    |
-| ------------------------------------------------------------ |------------------------------------------------------------ |------------------------------------------------------------ |
-| Org Admin                                                    | Organizes the structure of the resources used by the organization. | Organization Administrator, Billing Account Creator, Billing Account        User, Shared VPC Admin, Project Creator |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Org Admin                                                    | Organizes the structure of the resources used by the organization. | Organization Administrator, Billing Account Creator, Billing Account  User, Shared VPC Admin, Project Creator |
 | Folder Admin                                                 | Creates and manages folders and projects in the organization's        folders. | Folder Admin, Project Creator, Billing Account User          |
-| Network Admin                                                | Creates networks, VPCs, subnets, firewall rules, and        IP Address Management (IPAM). | Compute Network Admin                                        |
+| Network Admin                                                | Creates networks, VPCs, subnets, firewall rules, and IP Address Management (IPAM). | Compute Network Admin                                        |
 | Security Admin                                               | Manages all logs (and audit logs), secret management, isolation and        incident response. | Compute Security Admin                                       |
-| Auditor                                                      | Reviews security events logs and system configurations. | Private Logs Viewer                                          |
+| Auditor                                                      | Reviews security events logs and system configurations.      | Private Logs Viewer                                          |
 | Cluster Admin                                                | Manages all clusters, including node pools, instances and system        workloads. | Kubernetes Engine Admin                                      |
-| Tenant Admin[1](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#fn1) | Manages all tenant namespaces and tenant users. | Kubernetes Engine Viewer                                     |
+| Tenant Admin[1](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#fn1) | Manages all tenant namespaces and tenant users.              | Kubernetes Engine Viewer                                     |
 | Tenant Developer[1](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#fn1) | Manages and troubleshoots workloads in the tenant namespaces. | Kubernetes Engine Viewer                                     |
-
-|集团 |功能 | IAM 角色 |
-| |组织管理员 |组织组织使用的资源的结构。 |组织管理员、计费帐户创建者、计费帐户用户、共享 VPC 管理员、项目创建者 |
-|文件夹管理员 |创建和管理组织文件夹中的文件夹和项目。 |文件夹管理员、项目创建者、计费帐户用户 |
-|网络管理员 |创建网络、VPC、子网、防火墙规则和 IP 地址管理 (IPAM)。 |计算网络管理员 |
-|安全管理员 |管理所有日志（和审计日志）、秘密管理、隔离和事件响应。 |计算安全管理员 |
-|审计员 |查看安全事件日志和系统配置。 |私人日志查看器 |
-|集群管理员 |管理所有集群，包括节点池、实例和系统工作负载。 | Kubernetes 引擎管理员 |
-|租户管理员[1](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#fn1) |管理所有租户命名空间和租户用户。 | Kubernetes 引擎查看器 |
-|租户开发者[1](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#fn1) |管理租户命名空间中的工作负载并对其进行故障排除。 | Kubernetes 引擎查看器 |
 
 1Tenant groups require additional access control in  [Kubernetes RBAC](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-rbac).[↩](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#fnref1)
 
@@ -235,9 +226,9 @@ The Tenant Network folder also contains a host project per environment, and each
 
   [     ![Folder hierarchy](https://cloud.google.com/static/kubernetes-engine/images/enterprise-project-architecture.svg)   ](https://cloud.google.com/static/kubernetes-engine/images/enterprise-project-architecture.svg)  **Figure 2:** Project architecture for    Shared VPC networks
 
-  /images/enterprise-project-architecture.svg) **图 2：** 共享 VPC 网络的项目架构
+**图 2：** 共享 VPC 网络的项目架构
 
- To accommodate each cluster's potential future growth, we created the following CIDR ranges for our networks:
+To accommodate each cluster's potential future growth, we created the following CIDR ranges for our networks:
 
 为了适应每个集群的潜在未来增长，我们为我们的网络创建了以下 CIDR 范围：
 
@@ -258,21 +249,7 @@ The Tenant Network folder also contains a host project per environment, and each
 | Service secondary IP range  | `10.50.0.0/16`     | 65,536         | |
 | Control plane IP range      | `10.51.0.0/28`     | 16             | |
 
-|网络 |子网 | CIDR 范围 |地址数 |
-| |租户网络 |租户子网 | `10.0.0.0/16` | 65,536 |
-|每个环境的每个租户 | `/22-/25` | 1024 - 128 | |
-|发展网络 |开发子网 | `10.17.0.0/16` | 65,536 |
-| Pod 次要 IP 范围 | `10.16.0.0/16` | 65,536 | |
-|服务二级IP范围| `10.18.0.0/16` | 65,536 | |
-|控制平面 IP 范围 | `10.19.0.0/28` | 16 | |
-|分期网络 |暂存子网 | `10.33.0.0/16` | 65,536 |
-| Pod 次要 IP 范围 | `10.32.0.0/16` | 65,536 | |
-|服务二级IP范围| `10.34.0.0/16` | 65,536 | |
-|控制平面 IP 范围 | `10.35.0.0/28` | 16 | |
-|生产网络 |生产子网 | `10.49.0.0/16` | 65,536 |
-| Pod 次要 IP 范围 | `10.48.0.0/16` | 65,536 | |
-|服务二级IP范围| `10.50.0.0/16` | 65,536 | |
-|控制平面 IP 范围 | `10.51.0.0/28` | 16 | |
+
 
 ### Creating reliable and highly available clusters
 
@@ -291,12 +268,13 @@ Design your cluster architecture for high availability and reliability by implem
 - Ensure the control plane for the cluster is [regional](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters) to provide high availability for multi-tenancy; any disruptions to the control plane will impact tenants. Please note, there are [cost implications](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters#pricing) with running regional clusters. [Autopilot clusters](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) are pre-configured as regional clusters.
 - Ensure the nodes in your cluster span at least three zones to achieve zonal reliability. For information about the cost of egress between zones in the same region, see the [network pricing](https://cloud.google.com/vpc/network-pricing#general) documentation.
 
-   - 确保集群的控制平面是 [regional](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters) 以提供多租户的高可用性；控制平面的任何中断都会影响租户。请注意，运行区域集群会产生 [成本影响](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters#pricing)。 [Autopilot 集群](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) 预配置为区域集群。
+- 确保集群的控制平面是 [regional](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters) 以提供多租户的高可用性；控制平面的任何中断都会影响租户。请注意，运行区域集群会产生 [成本影响](https://cloud.google.com/kubernetes-engine/docs/concepts/regional-clusters#pricing)。 [Autopilot 集群](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) 预配置为区域集群。
+
 - 确保集群中的节点至少跨越三个区域以实现区域可靠性。有关同一区域中可用区之间的出口成本的信息，请参阅 [网络定价](https://cloud.google.com/vpc/network-pricing#general) 文档。
 
-  [     ![A private regional cluster with a regional control plane running in three zones](https://cloud.google.com/static/kubernetes-engine/images/enterprise-regional-cluster-and-planes.svg)   ](https://cloud.google.com/static/kubernetes-engine/images/enterprise-regional-cluster-and-planes.svg)  **Figure 3:** A private regional cluster with a    regional control plane running in three zones .
+  [     ![A private regional cluster with a regional control plane running in three zones](https://cloud.google.com/static/kubernetes-engine/images/enterprise-regional-cluster-and-planes.svg)   ](https://cloud.google.com/static/kubernetes-engine/images/enterprise-regional-cluster-and-planes.svg)  **Figure 3:** A private regional cluster with a regional control plane running in three zones
 
-https://cloud.google.com/static/kubernetes-engine/images/enterprise-regional-cluster-and-planes.svg) **图 3：** 具有在三个区域中运行的区域控制平面的私有区域集群.
+​     **图 3：** 具有在三个区域中运行的区域控制平面的私有区域集群.
 
 #### Autoscale cluster nodes and resources
 
@@ -391,7 +369,6 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-
   ingress:
   - from:
     - podSelector: {}
@@ -560,9 +537,7 @@ Earlier we identified two tenant groups: tenant admins and tenant developers. Fo
 | Tenant Admin     | namespace admin                   | Grants access to list and watch deployments in their namespace. Grants access to add and remove users in the tenant group. |
 | Tenant Developer | namespace admin, namespace viewer | Grants access to create/edit/delete Pods, deployments, Services,        configmaps in their namespace. |
 
-|集团 | Kubernetes RBAC 角色 |说明 |
-| |租户管理员 |命名空间管理员 |授予访问其命名空间中列出和监视部署的权限。授予在租户组中添加和删除用户的访问权限。 |
-|租户开发商 |命名空间管理员，命名空间查看器 |授予在其命名空间中创建/编辑/删除 Pod、部署、服务、配置映射的权限。 |
+
 
 In addition to creating RBAC roles and bindings that assign Google Workspace or Cloud Identity groups various permissions inside their namespace, Tenant admins often require the ability to manage users in each of those groups. Based on your organization's requirements, this can be handled by either delegating Google Workspace or Cloud Identity permissions to the Tenant admin to manage their own group membership or by the Tenant admin engaging with a team in your organization that has Google Workspace or Cloud Identity permissions to handle those changes.
 
@@ -741,24 +716,7 @@ The following table summarizes the tasks that are recommended for creating multi
 
 下表总结了建议在企业组织中创建多租户集群的任务：
 
-| Area                              | Tasks                                                        |
-| --------------------------------- |------------------------------------------------------------ |
-| Organizational setup              | [Define your             resource hierarchy.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#folder-hierarchy)          [Create folders             based on your organizational hierarchy and environmental needs.]( https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#folder-hierarchy)          [Create host and             service projects for your clusters and tenants.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#folder-hierarchy) |
-| Identity and access management    | [Identify and             create a set of Google Groups for your organization.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#assign-iam-roles)          [Assign users             and IAM policies to the groups.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#assign-iam-roles)          [Refine tenant access             with namespace-scoped roles and role bindings. ](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-rbac)          [Grant tenant admin             access to manage tenant users.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-rbac) |
-| Networking                        | [Create             per-environment Shared VPC networks for the tenant and             cluster networks.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-control) | 
-
-|面积 |任务 |
-| |组织机构 | [定义您的资源层次结构。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#folder-hierarchy) [根据您的组织层次结构和环境需求创建文件夹。]( https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#folder-hierarchy) [为您的集群和租户创建主机和服务项目。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#folder-hierarchy) |
-|身份和访问管理 | [为您的组织识别并创建一组 Google 群组。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#assign-iam-roles) [分配用户和 IAM组策略。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#assign-iam-roles) [使用命名空间范围的角色和角色绑定优化租户访问。 ](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-rbac) [授予租户管理员访问权限以管理租户用户。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-rbac) |
-|网络 | [为租户和集群网络创建每个环境的共享 VPC 网络。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-control) |
-
-| High availability and reliability | [Create one             cluster admin project per cluster to reduce any adverse impacts to clusters.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster)          [Create the             cluster as a private cluster.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster)          [Ensure the             control plane for the cluster is regional.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster)          [Span nodes for             the cluster over at least three zones.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster)          [Enable cluster             autoscaling and Pod autoscaling.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#autoscale-cluster)          [Specify             maintenance windows to occur during off-peak hours.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#maintenance-window)          [Create an             HTTP(s) load balancer to allow a single ingress per multi-tenant             cluster.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#load-balancing) |
-| Security                          | [Create             namespaces to provide isolation between tenants that are on the same             cluster.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-namespaces)          [Create network             policies to restrict communication between Pods.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-policies)          [Mitigate threats by             running workloads on GKE Sandbox.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#gke-sandbox)          [Create Pod Security             Policies to constrain how Pods operate on your cluster.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#psps)          [Enable             Workload Identity to manage Kubernetes service accounts and access.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#workload-identity)          [Enable a uthorized             networks to restrict access to the control plane.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#control-plane) |
-| Logging and monitoring            | [Enforce resource             quotas for each namespace.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#resource-quotas)          [Track usage             metrics with GKE usage metering.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#usage-metrics)          [Set up             tenant-specific logging.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-logs)          [Set up             tenant-specific monitoring.](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-monitoring) |
-
-|高可用性和可靠性 | [为每个集群创建一个集群管理项目，以减少对集群的任何不利影响。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster)[创建集群作为私有集群。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster)[确保集群的控制平面是区域性的。](https：//cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster) [将集群的节点跨越至少三个区域。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-cluster) [启用集群自动伸缩和 Pod 自动伸缩。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#autoscale-cluster) [指定在非高峰时段发生的维护窗口。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#maintenance-window)[创建一个 HTTP(s) 负载平衡器以允许每个多租户集群有一个入口。]（https:// cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#load-balancing) |
-|安全 | [创建命名空间以在同一集群上的租户之间提供隔离。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#create-namespaces) [创建网络策略以限制 Pod 之间的通信。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#network-policies) [通过在 GKE Sandbox 上运行工作负载来缓解威胁。](https:///cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#gke-sandbox)[创建 Pod 安全策略以限制 Pod 在集群上的运行方式。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#psps) [启用 Workload Identity 以管理 Kubernetes 服务帐户和访问权限。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#workload-identity) [启用授权网络限制对控制平面的访问。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#control-plane) |
-|记录和监控 | [对每个命名空间实施资源配额。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#resource-quotas) [使用 GKE 使用计量跟踪使用指标。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#usage-metrics) [设置特定于租户的日志记录。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-logs) [设置特定于租户的监控。](https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#tenant-监控)|
+https://cloud.google.com/kubernetes-engine/docs/best-practices/enterprise-multitenancy#checklist
 
 ## What's next
 

@@ -464,8 +464,8 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 ## K8s Cluster Multi-tenancy
 1. [Cluster multi-tenancy](docs/tr-multitenancy-overview.md)
 1. [There and Back Again — Scaling Multi-Tenant Kubernetes Cluster(s)](docs/tr-there-and-back-again-scaling-multi-tenant-kubernetes-cluster-s-67afb437716c.md)
-1. [DevOps — You Build It, You Run It](docs/tr-devops-you-build-it-you-run-it-8f972343eb8e.md)
 1. [Best practices for enterprise multi-tenancy](docs/tr-enterprise-multitenancy.md)
+1. [DevOps — You Build It, You Run It](docs/tr-devops-you-build-it-you-run-it-8f972343eb8e.md)
+1. [The USA TODAY NETWORK’s SRE team’s journey into Docker and Kubernetes. Was it worth it?](docs/tr-the-usa-today-networks-sre-team-s-journey-into-docker-and-kubernetes-was-it-worth-it-d20840757f05.md)
 1. [SaaS: Single Tenant vs Multi-Tenant - What's the Difference?](docs/tr-saas-single-tenant-vs-multi-tenant-whats-difference.md)
 1. [Single-Tenant Vs. Multi-Tenant Cloud: Which Should You Use?](docs/tr-single-tenant-vs-multi-tenant.md)
-1. [**The USA TODAY NETWORK’s SRE team’s journey into Docker and Kubernetes. Was it worth it?**](docs/tr-the-usa-today-networks-sre-team-s-journey-into-docker-and-kubernetes-was-it-worth-it-d20840757f05.md)

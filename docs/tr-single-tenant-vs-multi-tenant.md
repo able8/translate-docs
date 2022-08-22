@@ -8,9 +8,7 @@ Understand the differences between single-tenant versus multi-tenant cloud archi
 
 June 11, 2021 From: https://www.cloudzero.com/blog/single-tenant-vs-multi-tenant
 
-[Cloud Cost Optimization](https://www.cloudzero.com/blog/tag/cloud-cost-optimization)
-
-[云成本优化](https://www.cloudzero.com/blog/tag/cloud-cost-optimization)
+[Cloud Cost Optimization](https://www.cloudzero.com/blog/tag/cloud-cost-optimization) [云成本优化](https://www.cloudzero.com/blog/tag/cloud-cost-optimization)
 
 Is your current cloud cost tool giving you the cost intelligence you need? Most tools are manual, clunky, and inexact. Discover how CloudZero takes a new  approach to organizing your cloud spend. Click here to learn more.
 
@@ -27,10 +25,6 @@ Single-tenant and multi-tenant cloud environments are the options to consider. B
 In this article, we’ll compare multi-tenant vs. single-tenant cloud architecture and how to build more cost-effective applications irrespective of the model you operate.
 
 在本文中，我们将比较多租户与单租户云架构，以及如何构建更具成本效益的应用程序，而不管您运营的模型如何。
-
-[![Related Article: The 11 Best Cloud Cost Management Tools In 2022](https://no-cache.hubspot.com/cta/default/2983524/2ea8634d-2f73-45cc-b72b-32b354bc0790.png)](https://cta-redirect.hubspot.com/cta/redirect/2983524/2ea8634d-2f73-45cc-b72b-32b354bc0790)
-
-://cta-redirect.hubspot.com/cta/redirect/2983524/2ea8634d-2f73-45cc-b72b-32b354bc0790)
 
 ## **Defining Multi-Tenant Vs. Single-Tenant Cloud Architecture**
 
@@ -124,12 +118,6 @@ While multi-tenant cloud architecture is usually the best approach for most cons
 - **更大的安全风险** \- 在多租户系统中，风险更高，因为资源由多个客户共享。如果一个客户的数据被泄露，它更有可能影响其他客户，这与将安全事件隔离到单个客户的单租户云不同。
 - **缺乏成本可见性**\- 与每个客户都有自己的数据库的单租户系统相比，在多租户系统中分离成本要困难得多。
 
-[You Might Also Like: The Definitive DevOps Tools List: 55 Tools For 2022](https://cta-redirect.hubspot.com/cta/redirect/2983524/8d3f05b2-9b44-42f4-b4b5-ed6f9ce2d436)
-
-[您可能还喜欢：权威 DevOps 工具列表：2022 年的 55 种工具](https://cta-redirect.hubspot.com/cta/redirect/2983524/8d3f05b2-9b44-42f4-b4b5-ed6f9ce2d436)
-
-## **When To Use Single-tenant Vs. Multi-tenant Architecture**
-
 ## **何时使用单租户与。多租户架构**
 
 A single tenant architecture may be suited for specific industries or sectors where there are strong privacy and security concerns around customer data. Good examples are the healthcare and finance industries.
@@ -164,25 +152,9 @@ CloudZero’s cloud cost intelligence platform lets you have the best of both wo
 
 CloudZero 的云成本智能平台可让您在多租户环境中管理客户数据时两全其美。您不必单独管理所有客户，但您仍然可以破译每位客户的成本。
 
-[![CloudZero aligns cloud costs to key business metrics, such as cost per  customer or product feature.Our Cost Per Customer report allows teams to see  how individual customers drive their cloud spend and how much specific  customers cost their business. With cloud cost intelligence, companies can make  informed engineering, business, and pricing that ensure profitability.Click  here to learn more.](https://no-cache.hubspot.com/cta/default/2983524/690c9dfe-5370-428d-84f3-46586422d4d0.png)](https://cta-redirect.hubspot.com/cta/redirect/2983524/690c9dfe-5370-428d-84f3-46586422d4d0)
-
-我们的每客户成本报告允许团队查看单个客户如何推动他们的云支出以及特定客户的业务成本。借助云成本智能，公司可以制定明智的工程、业务和定价，以确保盈利。单击此处了解更多信息。](https://no-cache.hubspot.com/cta/default/2983524/690c9dfe-5370-428d-84f3-46586422d4d0.png)](https://cta-redirect.hubspot.com/cta/redirect/2983524/690c9dfe-5370-428d-84f3-46586422d4d0)
-
 CloudZero automatically allocates cost per tenant and delivers granular metrics for your SaaS business. CloudZero pulls in your AWS events, normalizes the data, and allows you to correlate cost with other types of metrics.
 
 CloudZero 自动为每个租户分配成本，并为您的 SaaS 业务提供精细的指标。 CloudZero 提取您的 AWS 事件，标准化数据，并允许您将成本与其他类型的指标相关联。
-
-[Request a demo](https://www.cloudzero.com/demo) to see how CloudZero helps you break down costs in a multi-tenant architecture, giving you the insight you need to run your business better.
-
-[请求演示](https://www.cloudzero.com/demo) 了解 CloudZero 如何帮助您在多租户架构中分解成本，为您提供更好地运营业务所需的洞察力。
-
-[![](https://no-cache.hubspot.com/cta/default/2983524/ef571aa9-fdfe-408e-9d42-0aa3a43dcdef.png)](https://cta-redirect.hubspot.com/cta/redirect/2983524/ef571aa9-fdfe-408e-9d42-0aa3a43dcdef)
-
-/redirect/2983524/ef571aa9-fdfe-408e-9d42-0aa3a43dcdef)
-
-#### STAY IN THE LOOP
-
-#### 留在循环中
 
 ### Join thousands of engineers who already receive the best AWS and cloud cost intelligence content. 
 
