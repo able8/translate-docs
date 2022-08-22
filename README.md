@@ -463,3 +463,4 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 
 ## K8s Cluster Multi-tenancy
 1. [Cluster multi-tenancy](docs/tr-multitenancy-overview.md)
+1. [There and Back Again — Scaling Multi-Tenant Kubernetes Cluster(s)](docs/tr-there-and-back-again-scaling-multi-tenant-kubernetes-cluster-s-67afb437716c.md)
