@@ -2,13 +2,13 @@
 
 # 多集群、多主机、多租户和联合 Kubernetes 之间的区别
 
-Last updated June 9, 2021 https://platform9.com/blog/difference-between-multi-cluster-multi-master-multi-tenant-federated-kubernetes
+Last updated June 9, 2021
 
-最后更新于 2021 年 6 月 9 日 https://platform9.com/blog/difference-between-multi-cluster-multi-master-multi-tenant-federated-kubernetes
+https://platform9.com/blog/difference-between-multi-cluster-multi-master-multi-tenant-federated-kubernetes
 
 Just as there are many parts that comprise Kubernetes, there are multiple ways to go about [Kubernetes deployment](https://platform9.com/docs/deploy-kubernetes-the-ultimate-guide/). The best approach for your needs depends on your team’s technical expertise, your infrastructure availability (or lack thereof), your capital expenditure and ROI goals, and more.
 
-正如 Kubernetes 的组成部分很多一样，[Kubernetes 部署] 也有多种方法（https://platform9.com/docs/deploy-kubernetes-the-ultimate-guide/）。满足您需求的最佳方法取决于您团队的技术专长、您的基础设施可用性（或缺乏）、您的资本支出和 ROI 目标等等。
+正如 Kubernetes 的组成部分很多一样，Kubernetes 部署 也有多种方法。满足您需求的最佳方法取决于您团队的技术专长、您的基础设施可用性（或缺乏）、您的资本支出和 ROI 目标等等。
 
 There are multiple ways to scale a Kubernetes environment to meet the needs of your organization’s requirements and manage the infrastructure as it grows. While they have similar-sounding names, they have very different applications in the real world. Read on to see how multi-tenant, multi-cluster, multi-master, and Federation fit into the mix.
 
@@ -44,8 +44,6 @@ These single-server single-tenant deployments run everything, not only on the sa
 
 [![](https://platform9.com/wp-content/uploads/2020/01/Single-Server-Single-Tenant-300x279.jpeg)](https://platform9.com/wp-content/uploads/2020/01/Single-Server-Single-Tenant.jpeg)
 
-/2020/01/Single-Server-Single-Tenant.jpeg)
-
 ## Multi-tenant
 
 ##  多租户
@@ -68,8 +66,6 @@ Additional technology, called Service Meshes, can be added to environments that 
 
 [![](https://platform9.com/wp-content/uploads/2020/01/Single-Server-Multi-tenant-300x279.jpeg)](https://platform9.com/wp-content/uploads/2020/01/Single-Server-Multi-tenant.jpeg)
 
-/2020/01/Single-Server-Multi-tenant.jpeg)
-
 ## Multi-master
 
 ## 多主
@@ -83,8 +79,6 @@ Special consideration needs to be paid to etcd, which is the most commonly-used 
 需要特别考虑 etcd，它是 Kubernetes 集群最常用的数据存储。由于 etcd 需要一个仲裁来支持读写操作，因此它需要至少三个节点才能具有高可用性，并且建议使用一个奇数，该奇数会根据集群中工作节点的数量而增加。当您达到大约 100 个工作节点时，您将拥有 5 到 7 个 etcd 服务器来处理负载。一些 Kubernetes 发行版的 etcd 与主控制平面容器共享相同的服务器，只要各个节点的大小合适，它就可以很好地工作。
 
 [![](https://platform9.com/wp-content/uploads/2020/01/Multi-Master-Multi-Tenant-300x279.jpeg)](https://platform9.com/wp-content/uploads/2020/01/Multi-Master-Multi-Tenant.jpeg)
-
-/2020/01/Multi-Master-Multi-Tenant.jpeg)
 
 ## Multi-cluster
 
@@ -104,8 +98,6 @@ Reasons you would get into a multi-cluster scenario is separation of development
 
 [![](https://platform9.com/wp-content/uploads/2020/01/Multi-Cluster-300x279.jpeg)](https://platform9.com/wp-content/uploads/2020/01/Multi-Cluster.jpeg)
 
-/Multi-Cluster.jpeg)
-
 ## Federation
 
 ## 联邦
@@ -120,8 +112,6 @@ By having these applications managed through Federation, the CI/CD or another de
 
 [![](https://platform9.com/wp-content/uploads/2020/01/Federated-Clusters-300x279.jpeg)](https://platform9.com/wp-content/uploads/2020/01/Federated-Clusters.jpeg)
 
-/Federated-Clusters.jpeg)
-
 ## Conclusion
 
 ##  结论
@@ -130,17 +120,9 @@ Kubernetes has a deployment model to meet the needs of any organization regardle
 
 Kubernetes 有一个部署模型，可以满足任何组织的需求，无论他们的运营规模如何，或者他们的个人需求如何。在许多组织中，经常使用多种不同的部署模型来支持应用程序生命周期的不同阶段以及不同业务部门的需求。从 CTO 办公室只需要一个开阔的游乐场来尝试事物，到购物车需要真正隔离的服务才能符合 PCI 标准。
 
-- [Author](http://platform9.com#abh_about)
-- [Recent Posts](http://platform9.com#abh_posts)
+Platform9 is the world’s #1 open distributed cloud service, offering the power of the public cloud on infrastructure of customers’ choice — powered by Kubernetes and cloud-native technologies. Public clouds are walled gardens, and DIY is difficult and time consuming. Platform9 offers a third option — an open and faster option — enabling a better way to go cloud-native. Platform9's service powers 40K+ nodes across private, public, and edge clouds. Innovative enterprises like Juniper, Kingfisher Plc, Mavenir, Redfin, and Cloudera achieve 4x faster time-to-market, up to 90% reduction in operational costs, and 99.9% uptime . Platform9 is an inclusive, globally distributed company backed by leading investors.
 
-- [作者](http://platform9.com#abh_about)
-- [最近的帖子](http://platform9.com#abh_posts)
-
-Platform9 is the world’s #1 open distributed cloud service, offering the power of the public cloud on infrastructure of customers’ choice — powered by Kubernetes and cloud-native technologies.Public clouds are walled gardens, and DIY is difficult and time consuming. Platform9 offers a third option — an open and faster option — enabling a better way to go cloud-native. Platform9's service powers 40K+ nodes across private, public, and edge clouds.Innovative enterprises like Juniper, Kingfisher Plc, Mavenir, Redfin, and Cloudera achieve 4x faster time-to-market, up to 90% reduction in operational costs, and 99.9% uptime . Platform9 is an inclusive, globally distributed company backed by leading investors.
-
-Platform9 是世界排名第一的开放分布式云服务，在客户选择的基础设施上提供公共云的强大功能——由 Kubernetes 和云原生技术提供支持。公共云是有围墙的花园，DIY 既困难又耗时。 Platform9 提供了第三种选择——一种开放且更快的选择——为实现云原生提供了一种更好的方式。 Platform9 的服务为私有云、公共云和边缘云中的 40K+ 节点提供支持。Juniper、Kingfisher Plc、Mavenir、Redfin 和 Cloudera 等创新企业实现了 4 倍的上市时间、高达 90% 的运营成本降低和 99.9% 的正常运行时间. Platform9 是一家由领先投资者支持的包容性、全球分布的公司。
+Platform9 是世界排名第一的开放分布式云服务，在客户选择的基础设施上提供公共云的强大功能——由 Kubernetes 和云原生技术提供支持。公共云是有围墙的花园，DIY 既困难又耗时。 Platform9 提供了第三种选择——一种开放且更快的选择——为实现云原生提供了一种更好的方式。 Platform9 的服务为私有云、公共云和边缘云中的 40K+ 节点提供支持。Juniper、Kingfisher Plc、Mavenir、Redfin 和 Cloudera 等创新企业实现了 4 倍的上市时间、高达 90% 的运营成本降低和 99.9% 的正常运行时间。Platform9 是一家由领先投资者支持的包容性、全球分布的公司。
 
 Latest posts by Platform9 ( [see all](https://platform9.com/blog/author/platform9/)) 
-
-Platform9 的最新帖子（[查看全部](https://platform9.com/blog/author/platform9/))
 

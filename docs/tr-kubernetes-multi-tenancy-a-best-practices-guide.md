@@ -5,12 +5,7 @@
 Sep 21, 2020
 https://loft.sh/blog/kubernetes-multi-tenancy-a-best-practices-guide
 
-2020 年 9 月 21 日
-https://loft.sh/blog/kubernetes-multi-tenancy-a-best-practices-guide
-
 Table of Contents
-
-目录
 
 - [What Is Kubernetes Multi-Tenancy](http://loft.sh#what-is-kubernetes-multi-tenancy)
    - [Soft Multi-Tenancy](http://loft.sh#soft-multi-tenancy)
@@ -26,21 +21,6 @@ Table of Contents
    - [kiosk](http://loft.sh#kiosk)
    - [Loft](http://loft.sh#loft)
 - [Conclusion](http://loft.sh#conclusion)
-
-- [什么是 Kubernetes 多租户](http://loft.sh#what-is-kubernetes-multi-tenancy)
-  - [软多租户](http://loft.sh#soft-multi-tenancy)
-  - [硬多租户](http://loft.sh#hard-multi-tenancy)
-  - [软与硬多租户](http://loft.sh#soft-vs-hard-multi-tenancy)
-- [多租户Kubernetes的局限性](http://loft.sh#limitations-of-multi-tenant-kubernetes)
-- [Kubernetes 多租户的原因](http://loft.sh#reasons-for-kubernetes-multi-tenancy)
-- [Kubernetes 多租户实施挑战](http://loft.sh#kubernetes-multi-tenancy-implementation-challenges)
-  - [用户管理](http://loft.sh#user-management)
-  - [公平资源共享](http://loft.sh#fair-resource-sharing)
-  - [隔离](http://loft.sh#isolation)
-- [可用的多租户解决方案](http://loft.sh#available-multi-tenancy-solutions)
-  - [信息亭](http://loft.sh#kiosk)
-  - [阁楼](http://loft.sh#loft)
-- [结论](http://loft.sh#conclusion)
 
 Kubernetes multi-tenancy is a topic that more and more organizations are interested in as their Kubernetes usage spreads out. However, since Kubernetes is not a multi-tenant system per se, getting multi-tenancy right comes with some challenges.
 
@@ -84,7 +64,7 @@ Hard multi-tenancy enforces stricter isolation of tenants and so also prevents n
 
 To implement hard multi-tenancy in Kubernetes, you need a more advanced configuration for namespaces or [virtual Clusters (vClusters)](http://loft.sh/blog/introduction-into-virtual-clusters-in-kubernetes/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide).
 
-要在 Kubernetes 中实现硬多租户，您需要对命名空间或 [虚拟集群 (vClusters)] 进行更高级的配置 (http://loft.sh/blog/introduction-into-virtual-clusters-in-kubernetes/?utm_medium =reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide)。
+要在 Kubernetes 中实现硬多租户，您需要对命名空间或 虚拟集群 (vClusters) 进行更高级的配置 。
 
 ### [\#](http://loft.sh\#soft-vs-hard-multi-tenancy) Soft vs. Hard Multi-Tenancy
 
@@ -128,7 +108,7 @@ Theoretically, it is possible to use many single-tenant clusters instead of a sh
 
 This is something that many organizations realize now when their [adoption of Kubernetes spreads within their organization](http://loft.sh/blog/why-adopting-kubernetes-is-not-the-solution/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide) and more engineers get Kubernetes access: While it is very simple and not so costly to create one cluster per tenant/user during the initial experimentation phase with Kubernetes, it becomes a huge problem if (almost) every developer in an organization gets an own cluster during the later stages of [the cloud-native adoption journey](http://loft.sh/blog/the-journey-of-adopting-cloud-native-development/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide). Suddenly, you end up with dozens, hundreds, or even thousands of clusters that all cost money (the cluster management fees of public cloud providers also start to matter a lot now) and need to be efficiently managed, which is far from trivial.
 
-当 [Kubernetes 的采用在他们的组织内传播] 时，许多组织现在都意识到了这一点（http://loft.sh/blog/why-adopting-kubernetes-is-not-the-solution/?utm_medium=reader&utm_source=other&utm_campaign =blog_kubernetes-multi-tenancy-a-best-practices-guide) 和更多工程师获得 Kubernetes 访问权限：虽然在 Kubernetes 的初始试验阶段为每个租户/用户创建一个集群非常简单且成本不高，但它变成了一个如果（几乎）组织中的每个开发人员在 [云原生采用之旅] 的后期阶段都拥有自己的集群，这将是一个巨大的问题（http://loft.sh/blog/the-journey-of-adopting-cloud-native -development/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide)。突然之间，你最终会拥有数十个、数百个甚至数千个集群，这些集群都需要花钱（公共云提供商的集群管理费用现在也开始变得很重要）并且需要进行有效管理，这绝非易事。
+当 Kubernetes 的采用在他们的组织内传播 时，许多组织现在都意识到了这一点和更多工程师获得 Kubernetes 访问权限：虽然在 Kubernetes 的初始试验阶段为每个租户/用户创建一个集群非常简单且成本不高，但它变成了一个如果（几乎）组织中的每个开发人员在 [云原生采用之旅] 的后期阶段都拥有自己的集群，这将是一个巨大的问题。突然之间，你最终会拥有数十个、数百个甚至数千个集群，这些集群都需要花钱（公共云提供商的集群管理费用现在也开始变得很重要）并且需要进行有效管理，这绝非易事。
 
 At this stage, the benefits of having a multi-tenant system outweigh the additional complications of it. It is simply much easier to manage a Kubernetes system with one or just a few clusters and sharing a cluster is also more efficient in terms of resource utilization as redundancies can be reduced.
 
@@ -136,7 +116,7 @@ At this stage, the benefits of having a multi-tenant system outweigh the additio
 
 > For more information about this topic, also take a look at my article about [a comparison of individual clusters and shared clusters](http://loft.sh/blog/individual_kubernetes_clusters_vs-_shared_kubernetes_clusters_for_development/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide).
 
-> 关于这个话题的更多信息，也可以看看我关于 [单个集群和共享集群的比较]的文章（http://loft.sh/blog/individual_kubernetes_clusters_vs-_shared_kubernetes_clusters_for_development/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-多租户最佳实践指南）。
+> 关于这个话题的更多信息，也可以看看我关于 [单个集群和共享集群的比较]的文章。
 
 ## [\#](http://loft.sh\#kubernetes-multi-tenancy-implementation-challenges) Kubernetes Multi-Tenancy Implementation Challenges
 
@@ -186,7 +166,7 @@ There are three major challenges that you will face when implementing Kubernetes
 
 ## [\#](http://loft.sh\#available-multi-tenancy-solutions) 可用的多租户解决方案
 
-Some useful solutions exist already that help you to implement multi-tenancy with Kubernetes. Besides the previously mentioned [dex](https://github.com/dexidp/dex),[kiosk](https://github.com/kiosk-sh/kiosk) and [loft](https://loft.sh/features/kubernetes-multi-tenancy?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide) are worth mentioning here.
+Some useful solutions exist already that help you to implement multi-tenancy with Kubernetes. Besides the previously mentioned [dex](https://github.com/dexidp/dex), [kiosk](https://github.com/kiosk-sh/kiosk) and [loft](https://loft.sh/features/kubernetes-multi-tenancy?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide) are worth mentioning here.
 
 一些有用的解决方案已经存在，可以帮助您使用 Kubernetes 实现多租户。除了前面提到的[dex](https://github.com/dexidp/dex)、[kiosk](https://github.com/kiosk-sh/kiosk)和[loft](https://loft.sh/features/kubernetes-multi-tenancy?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-multi-tenancy-a-best-practices-guide)在这里值得一提。
 
@@ -225,12 +205,4 @@ Kubernetes 多租户是许多组织目前面临的挑战之一，因为他们的
 When implementing multi-tenancy with Kubernetes, you need to decide if you need hard multi-tenancy or if soft multi-tenancy is enough. In any case, you need to solve three major problems: How to manage the users/tenants, how to limit their resource usage, and how to isolate them from each other. Here, several tools such as dex, kiosk, and loft can help you so you get multi-tenancy with Kubernetes right more easily.
 
 在使用 Kubernetes 实现多租户时，您需要决定是需要硬多租户还是软多租户就足够了。无论如何，您需要解决三个主要问题：如何管理用户/租户，如何限制他们的资源使用，以及如何相互隔离。在这里，dex、kiosk 和 loft 等多种工具可以帮助您更轻松地使用 Kubernetes 进行多租户。
-
-[Multi-Tenancy](http://loft.sh/blog/tags/multi-tenancy/)[Guides](http://loft.sh/blog/tags/guides/) [vcluster](http://loft.sh/blog/tags/vcluster/)
-
-[多租户](http://loft.sh/blog/tags/multi-tenancy/)[指南](http://loft.sh/blog/tags/guides/) [vcluster](http://loft.sh/blog/tags/vcluster/)
-
-[Share on Twitter](https://twitter.com/intent/tweet?text=Kubernetes%20Multi-Tenancy%20%e2%80%93%20A%20Best%20Practices%20Guide&hashtags=kubernetes%2Cloft%2Ccontainers%2Cdevops&url=https%3a%2f%2floft.sh%2fblog%2fkubernetes-multi-tenancy-a-best-practices-guide%2f%3Futm_source=social%26utm_medium=twitter%26utm_content=blog-share) [Share on Linkedin](https: //www.linkedin.com/sharing/share-offsite/?title=Kubernetes%20Multi-Tenancy%20%e2%80%93%20A%20Best%20Practices%20Guide&url=https%3a%2f%2floft.sh%2fblog %2fkubernetes-multi-tenancy-a-best-practices-guide%2f%3Futm_source=social%26utm_medium=linkedin%26utm_content=blog-share&via=loft_sh) [Share on Facebook](https://facebook.com/sharer.php?u=https%3a%2f%2floft.sh%2fblog%2fkubernetes-multi-tenancy-a-best-practices-guide%2f%3Futm_source=social%26utm_medium=fb%26utm_content=blog-share) 
-
-[分享到 Twitter](https://twitter.com/intent/tweet?text=Kubernetes%20Multi-Tenancy%20%e2%80%93%20A%20Best%20Practices%20Guide&hashtags=kubernetes%2Cloft%2Ccontainers%2Cdevops&url=https%3a%2f%2floft.sh%2fblog%2fkubernetes-multi-tenancy-a-best-practices-guide%2f%3Futm_source=social%26utm_medium=twitter%26utm_content=blog-share) [在Linkedin上分享](https: //www.linkedin.com/sharing/share-offsite/?title=Kubernetes%20Multi-Tenancy%20%e2%80%93%20A%20Best%20Practices%20Guide&url=https%3a%2f%2floft.sh%2fblog %2fkubernetes-multi-tenancy-a-best-practices-guide%2f%3Futm_source=social%26utm_medium=linkedin%26utm_content=blog-share&via=loft_sh) [在 Facebook 上分享](https://facebook.com/sharer.php?u=https%3a%2f%2floft.sh%2fblog%2fkubernetes-multi-tenancy-a-best-practices-guide%2f%3Futm_source=social%26utm_medium=fb%26utm_content=blog-share)
 

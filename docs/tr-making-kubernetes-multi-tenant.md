@@ -4,8 +4,6 @@
 
 -  January  6, 2022
 
-- 2022 年 1 月 6 日
-
 # Making Kubernetes Multi-Tenant
 
 # 制作 Kubernetes 多租户
@@ -253,7 +251,7 @@ To allow teams to troubleshoot and debug issues, we provide the  ability for the
 
 为了让团队能够解决和调试问题，我们为他们提供了以只读方式查询其资源的能力。我们目前正在使用以下工具来实现它：
 
-- [Dex](https://dexido.io) - a Federated OpenID Provider  that performs authentication of users. We have this configured as an  OAuth client to our central VT Gateway service, ensuring all auth is  two-factored and backed by our VT identity systems
+- [Dex](https://dexido.io) - a Federated OpenID Provider  that performs authentication of users. We have this configured as an  OAuth client to our central VT Gateway service, ensuring all auth is two-factored and backed by our VT identity systems
 - [Kube OIDC Proxy](https://github.com/jetstack/kube-oidc-proxy) - this serves as an API proxy that uses the tokens issues by Dex as  authentication. It then impersonates the requests to the underlying k8s  API, passing along the user's username and group memberships.
 
 - [Dex](https://dexido.io) - 执行用户身份验证的联合 OpenID 提供程序。我们已将其配置为中央 VT 网关服务的 OAuth 客户端，确保所有身份验证都是双重因素并由我们的 VT 身份系统提供支持

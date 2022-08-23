@@ -5,12 +5,7 @@
 Thursday, April 15, 2021
 https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes
 
-2021 年 4 月 15 日星期四
-https://kubernetes.io/blog/2021/04/15/three-tenancy-models-for-kubernetes
-
 **Authors:** Ryan Bezdicek (Medtronic), Jim Bugwadia (Nirmata), Tasha Drew (VMware), Fei Guo (Alibaba), Adrian Ludwin (Google)
-
-**作者：** Ryan Bezdicek (Medtronic)、Jim Bugwadia (Nirmata)、Tasha Drew (VMware)、Fei Guo (阿里巴巴)、Adrian Ludwin (Google)
 
 Kubernetes clusters are typically used by several teams in an organization. In other cases, Kubernetes may be used to deliver applications to end users requiring segmentation and isolation of resources across users from different organizations. Secure sharing of Kubernetes control plane and worker node resources allows maximizing productivity and saving costs in both cases.
 
@@ -106,6 +101,8 @@ At a minimum, the following security measures are required:
 - [Kubernetes Pod Security Standards](http://kubernetes.io/docs/concepts/security/pod-security-standards/): to enforce Pod hardening best practices the `Restricted` policy is recommended as the default for tenant workloads with exclusions configured only as needed.
 - [CIS Benchmarks for Kubernetes](https://www.cisecurity.org/benchmark/kubernetes/): the CIS Benchmarks for Kubernetes guidelines should be used to properly configure Kubernetes control-plane and worker node components.
 
+
+
 - 镜像扫描：容器镜像漏洞可以被利用来执行命令和访问额外的资源。
 - [RBAC](http://kubernetes.io/docs/reference/access-authn-authz/rbac/)：对于_namespaces-as-a-service_，必须在每个命名空间级别正确配置用户角色和权限；对于其他模型，可能需要限制租户访问集中管理的附加服务和其他集群范围的资源。
 - [网络策略](http://kubernetes.io/docs/concepts/services-networking/network-policies/)：对于_namespaces-as-a-service_默认网络策略，建议拒绝所有入口和出口流量，以防止跨租户网络流量，也可用作其他租户模型的最佳实践。
@@ -114,11 +111,11 @@ At a minimum, the following security measures are required:
 
 Additional recommendations include using:
 
-其他建议包括使用：
-
 - policy engines: for configuration security best practices, such as only allowing trusted registries.
 - runtime scanners: to detect and report runtime security events.
 - VM-based container sandboxing: for stronger data plane isolation.
+
+其他建议包括使用：
 
 - 策略引擎：用于配置安全最佳实践，例如仅允许受信任的注册表。
 - 运行时扫描器：检测和报告运行时安全事件。
@@ -158,5 +155,5 @@ The [Kubernetes Multi-Tenancy Working Group](https://github.com/kubernetes-sigs/
 
 If you are interested in multi-tenancy topics, or would like to share your use cases, please join us in an upcoming [community meeting](https://github.com/kubernetes/community/blob/master/wg-multitenancy/README.md) or reach out on the _wg-multitenancy channel_ on the [Kubernetes slack](https://slack.k8s.io/). 
 
-如果您对多租户主题感兴趣，或者想分享您的用例，请加入我们即将举行的 [社区会议](https://github.com/kubernetes/community/blob/master/wg-multitenancy/README.md) 或联系 [Kubernetes slack] (https://slack.k8s.io/) 上的 _wg-multitenancy 频道_。
+如果您对多租户主题感兴趣，或者想分享您的用例，请加入我们即将举行的 [社区会议](https://github.com/kubernetes/community/blob/master/wg-multitenancy/README.md) 或联系 Kubernetes slack上的 _wg-multitenancy 频道_。
 
