@@ -1,7 +1,6 @@
 # Difference Between multi-cluster, multi-master, multi-tenant & federated Kubernetes
 
-Last updated June 9, 2021
-https://platform9.com/blog/difference-between-multi-cluster-multi-master-multi-tenant-federated-kubernetes
+Last updated June 9, 2021 https://platform9.com/blog/difference-between-multi-cluster-multi-master-multi-tenant-federated-kubernetes
 
 Just as there are many parts that comprise Kubernetes, there are multiple ways to go about [Kubernetes deployment](https://platform9.com/docs/deploy-kubernetes-the-ultimate-guide/). The best approach for your needs depends on your team’s technical expertise, your infrastructure availability (or lack thereof), your capital expenditure and ROI goals, and more.
 

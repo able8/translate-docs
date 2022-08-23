@@ -476,3 +476,4 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Kubernetes Multi-Tenancy – A Best Practices Guide](docs/tr-kubernetes-multi-tenancy-a-best-practices-guide.md)
 1. [Making Kubernetes Multi-tenant](docs/tr-making-kubernetes-multi-tenant.md)
 1. [Three Tenancy Models For Kubernetes](docs/tr-three-tenancy-models-for-kubernetes.md)
+1. [Difference Between multi-cluster, multi-master, multi-tenant & federated Kubernetes](docs/tr-difference-between-multi-cluster-multi-master-multi-tenant-federated-kubernetes.md)
