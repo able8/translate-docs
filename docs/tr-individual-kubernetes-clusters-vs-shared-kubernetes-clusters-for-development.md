@@ -18,23 +18,13 @@ Table of Contents
 - [Use Cases](http://loft.sh#use-cases-1)
 - [Conclusion](http://loft.sh#conclusion)
 
-- [每个开发者的个人集群](http://loft.sh#individual-clusters-for-every-developer)
-  - [优势](http://loft.sh#advantages)
-- [缺点](http://loft.sh#disadvantages)
-  - [用例](http://loft.sh#use-cases)
-- [共享集群](http://loft.sh#shared-cluster)
-  - [优势](http://loft.sh#advantages-1)
-  - [缺点](http://loft.sh#disadvantages-1)
-- [用例](http://loft.sh#use-cases-1)
-- [结论](http://loft.sh#conclusion)
-
 If you are on a higher level of cloud-native development (level 2 or higher according to [this article about the typical cloud-native journey of companies](http://loft.sh/blog/the-journey-of-adopting-cloud-native-development/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development)), the developers in your team need to have a direct access to Kubernetes. The first decision you have to make is if you want to use a local environment (rather level 2) or a remote environment in the cloud (level 3).
 
 如果您处于更高级别的云原生开发（根据[这篇关于公司典型云原生旅程的文章](http://loft.sh/blog/the-journey-of-adopting）的级别 2 或更高级别） -cloud-native-development/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development))，您团队中的开发人员需要直接访问 Kubernetes。您必须做出的第一个决定是要使用本地环境（相当级别 2)还是云中的远程环境（级别 3)。
 
 While this is not a trivial decision with many pros and cons for either method (as described in my previous post about [local vs. remote clusters for development](http://loft.sh/blog/local-cluster-vs-remote-cluster-for-kubernetes-based-development/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development)), the advantages of the cloud as [Kubernetes development environment]( http://loft.sh/blog/kubernetes-development-environments-comparison/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development) are quite compelling: It is a highly realistic environment for all applications that eventually run in the cloud; it allows for easy replicability of processes and errors; a central control of the dev system is possible; you can use basically infinite computing resources and run even very complex software.
 
-虽然这不是一个微不足道的决定，这两种方法都有很多优点和缺点（如我之前关于 [本地与远程集群开发] 的文章中所述（http://loft.sh/blog/local-cluster-vs-remote -cluster-for-kubernetes-based-development/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development))，云作为 [Kubernetes开发环境]的优势（ http://loft.sh/blog/kubernetes-development-environments-comparison/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development）非常引人注目：这是一个为最终在云中运行的所有应用程序提供高度逼真的环境；它允许轻松复制过程和错误；开发系统的中央控制是可能的；您可以使用基本上无限的计算资源，甚至可以运行非常复杂的软件。
+虽然这不是一个微不足道的决定，这两种方法都有很多优点和缺点（如我之前关于 [本地与远程集群开发] 的文章中所述，云作为 [Kubernetes开发环境]的优势非常引人注目：这是一个为最终在云中运行的所有应用程序提供高度逼真的环境；它允许轻松复制过程和错误；开发系统的中央控制是可能的；您可以使用基本上无限的计算资源，甚至可以运行非常复杂的软件。
 
 However, after you chose the cloud environment, you are confronted with the next fundamental decision: Should every developer get an own cluster or should one cluster be shared among the developers.
 
@@ -194,7 +184,7 @@ For this, the cluster needs to be prepared in a way that it securely supports mu
 
 > The limited flexibility issue could be resolved by using [virtual Kubernetes clusters](http://loft.sh/blog/introduction-into-virtual-clusters-in-kubernetes/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development) instead of namespaces. If every developer had a virtual cluster, it would be possible to even change cluster-wide resources in that virtual cluster and still not interfere with other tenants. There are some open-source concepts for virtual clusters, e.g. by [Alibaba](https://www.cncf.io/blog/2019/06/20/virtual-cluster-extending-namespace-based-multi-tenancy-with-a-cluster-view/) or by [Darren Shepherd](https://github.com/ibuildthecloud/k3v). Additionally, [Loft](https://loft.sh) has alread integrated virtual clusters as alternative to namespaces into its Kubernetes platform.
 
-> 有限的灵活性问题可以通过使用[虚拟 Kubernetes 集群](http://loft.sh/blog/introduction-into-virtual-clusters-in-kubernetes/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters)来解决-vs-shared-kubernetes-clusters-for-development)而不是命名空间。如果每个开发人员都有一个虚拟集群，甚至可以在该虚拟集群中更改集群范围的资源，并且仍然不会干扰其他租户。虚拟集群有一些开源概念，例如[阿里巴巴](https://www.cncf.io/blog/2019/06/20/virtual-cluster-extending-namespace-based-multi-tenancy-with-a-cluster-view/) 或 [Darren牧羊人](https://github.com/ibuildthecloud/k3v)。此外，[Loft](https://loft.sh) 已将虚拟集群作为命名空间的替代方案集成到其 Kubernetes 平台中。
+> 有限的灵活性问题可以通过使用[虚拟 Kubernetes 集群](http://loft.sh/blog/introduction-into-virtual-clusters-in-kubernetes/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters)来解决而不是命名空间。如果每个开发人员都有一个虚拟集群，甚至可以在该虚拟集群中更改集群范围的资源，并且仍然不会干扰其他租户。虚拟集群有一些开源概念，例如[阿里巴巴](https://www.cncf.io/blog/2019/06/20/virtual-cluster-extending-namespace-based-multi-tenancy-with-a-cluster-view/) 或 [Darren牧羊人](https://github.com/ibuildthecloud/k3v)。此外，[Loft](https://loft.sh) 已将虚拟集群作为命名空间的替代方案集成到其 Kubernetes 平台中。
 
 ## [\#](http://loft.sh\#use-cases-1) Use Cases
 
@@ -226,7 +216,7 @@ From my perspective, it looks like many professional teams that have decided to 
 
 If you also plan to go this way, you should take a look at open source solutions such as [kiosk](https://github.com/kiosk-sh/kiosk) that solve many issues regarding [Kubernetes multi-tenancy]( http://loft.sh/blog/kubernetes-multi-tenancy-best-practices-guide/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development) and can be used as building block for more comprehensive solutions, such as [self-service namespace platforms](http://loft.sh/blog/self-service-kubernetes-namespaces-are-a-game-changer/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development) (kiosk, for example, does not provide a user management).
 
-如果你也打算这样做，你应该看看开源解决方案，例如 [kiosk](https://github.com/kiosk-sh/kiosk)，它解决了许多关于 [Kubernetes 多租户] 的问题（ http://loft.sh/blog/kubernetes-multi-tenancy-best-practices-guide/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development）并且可以用作更全面解决方案的构建块，例如 [自助命名空间平台](http://loft.sh/blog/self-service-kubernetes-namespaces-are-a-game-changer/?utm_medium=reader&utm_source= other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development）（例如，kiosk 不提供用户管理)。
+如果你也打算这样做，你应该看看开源解决方案，例如 [kiosk](https://github.com/kiosk-sh/kiosk)，它解决了许多关于 [Kubernetes 多租户] 的问题并且可以用作更全面解决方案的构建块，例如 [自助命名空间平台](http://loft.sh/blog/self-service-kubernetes-namespaces-are-a-game-changer/?utm_medium=reader&utm_source= other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development）（例如，kiosk 不提供用户管理)。
 
 However, there are also commercial, off-the-shelf solutions such as [Loft](https://loft.sh) that transform any Kubernetes cluster into a multi-tenancy enabled development platform with integrated user management, extensive user limit settings and an automatic computing resource saving sleep-mode for namespace.
 
@@ -246,5 +236,5 @@ To get the benefits of a real Kubernetes environment in the cloud for developmen
 
 Overall, you often do not have to make a strict decision between the solutions. So, it might be possible that some engineers working on a specific task get their own cluster while the rest of the team works in a shared cluster environment. You might even include local environments in [the Kubernetes development workflow](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs-shared-kubernetes-clusters-for-development) and use a shared cluster in the cloud only for testing and staging. As you can see, the opportunities seem endless, but I hope that this post was helpful to give you some guidance on what is possible and when to use which solution for truly cloud-native development. 
 
-总体而言，您通常不必在解决方案之间做出严格的决定。因此，一些从事特定任务的工程师可能拥有自己的集群，而团队的其他成员则在共享集群环境中工作。您甚至可以在 [Kubernetes 开发工作流程](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs)中包含本地环境-shared-kubernetes-clusters-for-development)并在云中使用共享集群仅用于测试和登台。正如您所看到的，机会似乎无穷无尽，但我希望这篇文章能够为您提供一些指导，帮助您了解什么是可能的以及何时使用哪种解决方案进行真正的云原生开发。
+总体而言，您通常不必在解决方案之间做出严格的决定。因此，一些从事特定任务的工程师可能拥有自己的集群，而团队的其他成员则在共享集群环境中工作。您甚至可以在 [Kubernetes 开发工作流程](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_individual-kubernetes-clusters-vs)中包含本地环境并在云中使用共享集群仅用于测试和登台。正如您所看到的，机会似乎无穷无尽，但我希望这篇文章能够为您提供一些指导，帮助您了解什么是可能的以及何时使用哪种解决方案进行真正的云原生开发。
 
