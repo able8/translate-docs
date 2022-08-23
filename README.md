@@ -472,3 +472,7 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [How a simple admission webhook lead to a cluster outage](docs/tr-gke-webhook-outage.md)
 1. [How to setup a multi-tenant cluster with GKE](docs/tr-how-to-setup-a-multi-tenant-cluster-with-gke.md)
 1. [Choosing Single-Tenancy or Multi-Tenancy Kubernetes Clusters](docs/tr-single-tenancy-or-multi-tenancy-kubernetes-clusters.md)
+1. [Approaches to implementing multi-tenancy in SaaS applications](docs/tr-approaches-implementing-multi-tenancy-saas-applications#.md)
+1. [Kubernetes Multi-Tenancy – A Best Practices Guide](docs/tr-kubernetes-multi-tenancy-a-best-practices-guide.md)
+1. [Making Kubernetes Multi-tenant](docs/tr-making-kubernetes-multi-tenant.md)
+1. [Three Tenancy Models For Kubernetes](docs/tr-three-tenancy-models-for-kubernetes.md)
