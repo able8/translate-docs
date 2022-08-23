@@ -2,15 +2,11 @@
 
 # 一个简单的 admission webhook 如何导致集群中断
 
-5/Sep2019 https://www.jetstack.io/blog/gke-webhook-outage/
+5/Sep 2019 https://www.jetstack.io/blog/gke-webhook-outage/
 
-2019 年 9 月 5 日 https://www.jetstack.io/blog/gke-webhook-outage/
+Jetstack often works with customers to provision multi-tenant platforms on Kubernetes. Sometimes special requirements arise that we cannot control with stock Kubernetes configuration. In order to implement such requirements, we’ve recently started making use of the [Open Policy Agent](https://www.openpolicyagent.org/) project as an admission controller to enforce custom policies.
 
-Jetstack often works with customers to provision multi-tenant platforms on Kubernetes. Sometimes special requirements arise that we cannot control with stock Kubernetes configuration. In order to implement such requirements, we’ve recently started making use of the [Open Policy
-Agent](https://www.openpolicyagent.org/) project as an admission controller to enforce custom policies.
-
-Jetstack 经常与客户合作，在 Kubernetes 上配置多租户平台。有时会出现我们无法通过库存 Kubernetes 配置控制的特殊要求。为了实现这些要求，我们最近开始使用 [Open Policy
-Agent](https://www.openpolicyagent.org/) 项目作为准入控制器来执行自定义策略。
+Jetstack 经常与客户合作，在 Kubernetes 上配置多租户平台。有时会出现我们无法通过库存 Kubernetes 配置控制的特殊要求。为了实现这些要求，我们最近开始使用 [Open Policy Agent](https://www.openpolicyagent.org/) 项目作为准入控制器来执行自定义策略。
 
 This post is a write up of an incident caused by misconfiguration of this integration.
 
@@ -63,8 +59,10 @@ With the help of Google Support we identified the sequence of events that lead t
 3. While running this hook, the API server attempted to update a`ConfigMap` called `extension-apiserver-authentication` in `kube-system`. This operation timed out as the backend for the validating Open Policy Agent (OPA) webhook we had configured was not responding.
 4. This operation must complete for a master to pass a health check, because it continuously failed the second master entered a crash loop and halted the upgrade.
 
+
+
 1. GKE完成了一个master实例的升级，随着以下master的升级，开始接收所有的API server流量。
-2.第二个master实例升级过程中，API服务器无法运行[`PostStartHook`](https://github.com/kubernetes/kubernetes/blob/e09f5c40b55c91f681a46ee17f9bc447eeacee57/pkg/master/client_ca_hook.go#L43)对于[`ca-registration`](https://github.com/kubernetes/kubernetes/blob/e09f5c40b55c91f681a46ee17f9bc447eeacee57/pkg/master/client_ca_hook.go#L121)。
+2. 第二个master实例升级过程中，API服务器无法运行[`PostStartHook`](https://github.com/kubernetes/kubernetes/blob/e09f5c40b55c91f681a46ee17f9bc447eeacee57/pkg/master/client_ca_hook.go#L43)对于[`ca-registration`](https://github.com/kubernetes/kubernetes/blob/e09f5c40b55c91f681a46ee17f9bc447eeacee57/pkg/master/client_ca_hook.go#L121)。
 3. 在运行此钩子时，API 服务器尝试更新 `kube-system` 中名为 `extension-apiserver-authentication` 的`ConfigMap`。此操作超时，因为我们配置的验证开放策略代理 (OPA) webhook 的后端没有响应。
 4. 这个操作必须完成，master 才能通过健康检查，因为它连续失败，第二个 master 进入崩溃循环并停止升级。
 
@@ -78,7 +76,7 @@ This had the knock on effect of intermittent API downtime which caused kubelets 
 
 ## Resolution
 
-##  解析度
+解决
 
 Once we had identified the webhook as the cause of the issue, with intermittent API server access, we were able to delete this `ValidatingAdmissionWebhook` resource to restore the cluster service.
 
@@ -92,21 +90,17 @@ Since we first deployed OPA, the documentation has been [updated](https://github
 
 自从我们首次部署 OPA 以来，文档已经 [更新](https://github.com/open-policy-agent/opa/pull/1435) 以反映这一变化。
 
-We have also added a liveness probe to ensure OPA is restarted when it becomes unresponsive and have [updated the
-documentation](https://github.com/open-policy-agent/opa/pull/1605).
+We have also added a liveness probe to ensure OPA is restarted when it becomes unresponsive and have [updated the documentation](https://github.com/open-policy-agent/opa/pull/1605).
 
-我们还添加了一个活性探针，以确保 OPA 在无响应时重新启动，并 [更新了
-文档](https://github.com/open-policy-agent/opa/pull/1605)。
+我们还添加了一个活性探针，以确保 OPA 在无响应时重新启动，并 [更新了文档](https://github.com/open-policy-agent/opa/pull/1605)。
 
-We also considered but decided against disabling [GKE node
-auto-repair](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair).
+We also considered but decided against disabling [GKE node auto-repair](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair).
 
-我们也考虑过但决定不禁用 [GKE 节点
-自动修复](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair)。
+我们也考虑过但决定不禁用 [GKE 节点 自动修复](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair)。
 
 ## Takeaways 
 
-## 外卖
+## 要点
 
 If we had alerting on API server response times we might have noticed these increase across the board for all `CREATE` and `UPDATE` requests after deploying the OPA-backed webhook initially.
 

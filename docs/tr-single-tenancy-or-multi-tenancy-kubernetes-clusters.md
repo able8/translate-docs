@@ -4,10 +4,6 @@
 
 29 July 2020 by [Yassine Jaffoo](http://www.appvia.io#author)
 
-2020 年 7 月 29 日，作者 [Yassine Jaffo](http://www.appvia.io#author)
-
-https://www.appvia.io/blog/single-tenancy-or-multi-tenancy-kubernetes-clusters
-
 https://www.appvia.io/blog/single-tenancy-or-multi-tenancy-kubernetes-clusters
 
 You reach a fork in the road when setting up the architecture for your Kubernetes workloads: Do you want to operate with **many** individualized clusters or **one** large one? It’s an important decision because the direction that you go will define how your teams work, how you allocate budget and how customer data is managed.
@@ -24,8 +20,6 @@ You reach a fork in the road when setting up the architecture for your Kubernete
 
 ![](https://www.appvia.io/media/pages/blog/single-tenancy-or-multi-tenancy-kubernetes-clusters/4e8a267748-1629216749/single-tenancy-v-multi-tenancy-04-640x.jpg)
 
-640x.jpg)
-
 Single-tenancy is when a single application or workload, dedicated to a single tenant, lives on a single cluster. Emphasis on singularity. In this model, every cluster is purpose-built, and there is a high-degree of separation: workloads, data and teams are all separated. Within the single-tenancy structure, there are tweaks and variations that you can make to your clusters to best suit your customers and your team. More on those later.
 
 单租户是指专用于单个租户的单个应用程序或工作负载位于单个集群上。强调单一性。在这个模型中，每个集群都是专门构建的，并且存在高度的分离：工作负载、数据和团队都是分离的。在单租户结构中，您可以对集群进行调整和变化，以最适合您的客户和团队。稍后再谈。
@@ -35,8 +29,6 @@ Single-tenancy is when a single application or workload, dedicated to a single t
 ### 什么是多租户？
 
 ![](https://www.appvia.io/media/pages/blog/single-tenancy-or-multi-tenancy-kubernetes-clusters/8fd9d8faaa-1629216810/single-tenancy-v-multi-tenancy-05-640x.jpg)
-
-640x.jpg)
 
 Multi-tenancy, on the other hand, is when _multiple_ tenants operate on a single cluster. A tenant could be defined as users, clients and/or workloads, but the important distinction of this model is that all of the tenants share the cluster’s resources. It’s best-practice to isolate tenants as much as possible within a multi-tenant cluster so that one tenant can’t attack others or monopolise the shared resources.
 
@@ -51,8 +43,6 @@ When looking at the different architectures, consider these five core components
 在查看不同的架构时，请考虑以下五个核心组件：**成本**、**安全性**、**可靠性**和**运营开销**。您可能会看到明显的领先者通过将一个模型的优势与您的业务的优先级和能力相匹配，让我们根据这些考虑中的每一个并排确定单租户和多租户的范围。
 
 ![](https://www.appvia.io/media/pages/blog/single-tenancy-or-multi-tenancy-kubernetes-clusters/7421f8f7ca-1629216832/single-tenancy-v-multi-tenancy-06-640x.jpg)
-
-640x.jpg)
 
 ### 1\. How much is it going to cost?
 
@@ -133,6 +123,8 @@ From a reliability standpoint, there are a few things to consider with a single-
 1. If a cluster breaks, it only affects that workload. You can mitigate the risk of multiple things failing at the same time.
 2. You’ll likely have fewer users tinkering with things and making changes, and that controlled access naturally lowers the risk of something breaking in the first place.
 
+
+
 1. 如果集群中断，它只会影响该工作负载。您可以降低多件事情同时失败的风险。
 2. 修补和更改的用户可能会减少，而受控访问自然会降低首先出现问题的风险。
 
@@ -156,9 +148,9 @@ It’s also important for you to realize before committing to a multi-tenant clu
 
 #### 单租
 
-There are certain complexities to managing many clusters, involving the set-up and maintenance of authentication, authorization and other frameworks. If you go this route, it's in your best interest to adopt automation that makes these processes faster and less prone to error, whether the automation is set up by your team or [t](https://www.appvia.io/solutions/kore) [hrough a product/service](https://www.appvia.io/solutions/kore).
+There are certain complexities to managing many clusters, involving the set-up and maintenance of authentication, authorization and other frameworks. If you go this route, it's in your best interest to adopt automation that makes these processes faster and less prone to error, whether the automation is set up by your team or [t](https://www.appvia.io/solutions/kore)[hrough a product/service](https://www.appvia.io/solutions/kore).
 
-管理许多集群存在一定的复杂性，涉及身份验证、授权和其他框架的设置和维护。如果您走这条路，那么采用自动化使这些流程更快、更不容易出错符合您的最大利益，无论自动化是由您的团队设置还是 [t](https://www.appvia.io/solutions/kore) [通过产品/服务](https://www.appvia.io/solutions/kore)。
+管理许多集群存在一定的复杂性，涉及身份验证、授权和其他框架的设置和维护。如果您走这条路，那么采用自动化使这些流程更快、更不容易出错符合您的最大利益，无论自动化是由您的团队设置还是 [通过产品/服务](https://www.appvia.io/solutions/kore)。
 
 You can manage the operational overhead by configuring your single-tenancy clusters in a more efficient way. A single tenant cluster can either be based on team structure, application stack, or deployment environment.
 

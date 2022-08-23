@@ -4,8 +4,6 @@
 
 https://cloudsolutions.academy/solution/how-to-setup-a-multi-tenant-cluster-with-gke/
 
-https://cloudsolutions.academy/solution/how-to-setup-a-multi-tenant-cluster-with-gke/
-
 One of the best practices around development environment is to have one large Kubernetes cluster in a multi-tenant mode for your developers. This brings in cost saving specially when you have many small teams divided along the lines of microservices. Before we dive into understanding how we can setup a cluster in a multi-tenant mode, lets understand pros and cons of not having a single cluster for development:
 
 围绕开发环境的最佳实践之一是为您的开发人员在多租户模式下拥有一个大型 Kubernetes 集群。当您有许多按照微服务划分的小团队时，这尤其会节省成本。在深入了解如何在多租户模式下设置集群之前，让我们先了解一下没有单个集群进行开发的利弊：
@@ -69,10 +67,10 @@ As part of the solution, you will perform the following steps:
 3. Allocate resources to the team namespace
 4. Monitor the resource utilisation
 
-1.基于开发团队的分区集群（使用命名空间）
+1. 基于开发团队的分区集群（使用命名空间）
 2. 为该命名空间中的团队提供访问控制
 3. 为团队命名空间分配资源
-4.监控资源利用率
+4. 监控资源利用率
 
 > The article assumes you have basic knowledge of configuring Google Cloud project and fair understanding of Google Kubernetes Engine (GKE) service.
 
@@ -94,39 +92,11 @@ By default, kubernetes cluster will have a default namespace. For our developmen
 
 默认情况下，kubernetes 集群会有一个默认的命名空间。对于我们的开发团队，我们将创建两个新的命名空间，即。团队帐户和团队小时。
 
-```
-
-```
-
-kubectl create namespace team-accounts
-kubectl create namespace team-hr
-
-kubectl 创建命名空间团队帐户
-kubectl 创建命名空间 team-hr
-
-```
-
-```
-
 Now you will create a sample application in each of these namespaces. You will deploy a simple nginx pod in each namespace. The below command will deploy a nginx pod in team-accounts and team-hr namespaces.
 
 现在，您将在每个命名空间中创建一个示例应用程序。您将在每个命名空间中部署一个简单的 nginx pod。下面的命令将在 team-accounts 和 team-hr 命名空间中部署一个 nginx pod。
 
-```
-
-```
-
-kubectl run app-acct --image=nginx --namespace=team-accounts
-kubectl run app-hr --image=nginx --namespace=team-hr
-
-kubectl 运行 app-acct --image=nginx --namespace=team-accounts
-kubectl 运行 app-hr --image=nginx --namespace=team-hr
-
-```
-
-```
-
-Now that the namespaces and its application are ready, let’s setup an access control using Google IAM and Kubernetes based RBAC
+Now that the namespaces and its application are ready, let’s setup an access control using Google IAM and Kubernetes based RBAC.
 
 现在命名空间及其应用程序已准备就绪，让我们使用基于 Google IAM 和 Kubernetes 的 RBAC 设置访问控制
 
@@ -139,30 +109,14 @@ You will first create a service account that will act as a ‘developer’ for t
 您将首先创建一个服务帐户，该帐户将充当团队的“开发人员”，并为其分配“集群查看器”IAM 角色。所述角色将有权访问集群和命名空间资源。
 
 ```
-
-```
-
 gcloud iam service-accounts create team-accounts-developer \
 --description="Developer for team accounts" \
 --display-name="accts-developer"
 ```
 
-gcloud iam 服务帐户创建团队帐户开发者\
---description="团队帐户开发人员" \
---display-name="账户开发者"
 ```
-
-```
-
-```
-
 gcloud projects add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} \
 --member=serviceAccount:team-accounts-developer@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com  \
---role=roles/container.clusterViewer
-```
-
-gcloud 项目 add-iam-policy-binding ${GOOGLE_CLOUD_PROJECT} \
---member=serviceAccount:team-accounts-developer@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com \
 --role=roles/container.clusterViewer
 ```
 
@@ -170,81 +124,9 @@ As a next step, you will create a Kubernetes role that will have basic CRUD oper
 
 下一步，您将创建一个 Kubernetes 角色，该角色将具有对 pod 和部署的基本 CRUD 操作权限。您将将此角色绑定到已创建的 IAM 服务账户。您可以使用以下 YAML (developer-role.yaml) 创建角色
 
-```
-
-```
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-namespace: team-accounts
-name: developer
-rules:
-- apiGroups: [""]
-resources: ["pods", "services", "serviceaccounts"]
-verbs: ["update", "create", "delete", "get", "watch", "list"]
-- apiGroups:["apps"]
-resources: ["deployments"]
-verbs: ["update", "create", "delete", "get", "watch", "list"]
-
-api版本：rbac.authorization.k8s.io/v1
-种类：角色
-元数据：
-命名空间：团队帐户
-名称：开发者
-规则：
-- apiGroups：[“”]
-资源：[“pods”、“服务”、“服务帐户”]
-动词：[“更新”、“创建”、“删除”、“获取”、“监视”、“列表”]
-- apiGroups：[“应用程序”]
-资源：[“部署”]
-动词：[“更新”、“创建”、“删除”、“获取”、“监视”、“列表”]
-
-```
-
-```
-
-```
-
-```
-
-kubectl create -f developer-role.yaml
-
-kubectl create -f developer-role.yaml
-
-```
-
-```
-
-```
-
-```
-
-kubectl create rolebinding team-accounts-developer -n team-accounts \
---role=developer --user=team-accounts-developer@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com
-
-kubectl 创建角色绑定团队帐户开发者 -n 团队帐户\
---role=developer --user=team-accounts-developer@${GOOGLE_CLOUD_PROJECT}.iam.gserviceaccount.com
-
-``` 
-
-```
-
 To test the access, you have to download the json key of the created service account and login as that service account. Once you are logged with the ‘team-accounts-developer’ service account, try to access the application in team-accounts namespace.
 
 要测试访问，您必须下载创建的服务帐户的 json 密钥并以该服务帐户的身份登录。使用“team-accounts-developer”服务帐户登录后，尝试访问 team-accounts 命名空间中的应用程序。
-
-```
-
-```
-
-kubectl get pods --namespace=team-accounts
-
-kubectl 获取 pod --namespace=team-accounts
-
-```
-
-```
 
 You will able to view the pods in the team-accounts namespace.
 
@@ -275,9 +157,6 @@ For this use case you will configure a ResourceQuota with the cap of 2 cpu and 8
 对于这个用例，您将配置一个 ResourceQuota，其上限为 2 cpu 和 8 Gi 内存。应用以下 yaml (quota.yaml)
 
 ```
-
-```
-
 apiVersion: v1
 kind: ResourceQuota
 metadata:
@@ -289,21 +168,6 @@ hard:
      limits.memory: "12Gi"
      requests.cpu: "2"
      requests.memory: "8Gi"
-
-api版本：v1
-种类：资源配额
-元数据：
-名称：计算配额
-命名空间：团队帐户
-规格：
-难的：
-    限制.cpu：“4”
-    限制。内存：“12Gi”
-    请求.cpu：“2”
-    requests.memory：“8Gi”
-
-```
-
 ```
 
 The above code indicates you can have max quota of upto 4 cpus and 16G memory. In this way you can restrict compute usage depending on the size of workloads per team in a namespace. You now go ahead and allocate resource to your pods in the team-accounts namespace within the above specified limits.
