@@ -4,8 +4,6 @@
 
 Jul 7, 2020
 
-2020 年 7 月 7 日
-
 Table of Contents
 
 目录

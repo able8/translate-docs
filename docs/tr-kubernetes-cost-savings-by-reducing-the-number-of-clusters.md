@@ -2,9 +2,7 @@
 
 # Kubernetes 通过减少集群数量来节省成本
 
-Oct 5, 2020
-
-2020 年 10 月 5 日
+Oct 5, 2020  https://loft.sh/blog/kubernetes-cost-savings-by-reducing-the-number-of-clusters 
 
 Table of Contents
 
@@ -54,7 +52,7 @@ However, your answer to this question also determines how much you will have to 
 
 > Cluster sharing, which leads to fewer clusters, is also the basis for an [internal Kubernetes platform](http://loft.sh/blog/building-an-internal-kubernetes-platform/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters) that provides the engineers with [self-service namespaces](http://loft.sh/blog/self-service-kubernetes-namespaces-are-a-game-changer/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters) improving the [Kubernetes development workflow](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters). This illustrates that a reduction of the number of clusters can also be a positive side-effect of improvements on other parts of your Kubernetes system.
 
-> 集群共享，导致集群更少，也是[内部Kubernetes平台]的基础(http://loft.sh/blog/building-an-internal-kubernetes-platform/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes -cost-savings-by-reducing-the-number-of-clusters) 为工程师提供[自助服务命名空间](http://loft.sh/blog/self-service-kubernetes-namespaces-are-a-game-changer/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters) 改进 [Kubernetes 开发工作流程](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters)。这说明集群数量的减少也可能是改进 Kubernetes 系统其他部分的积极副作用。
+> 集群共享，导致集群更少，也是[内部Kubernetes平台]的基础为工程师提供[自助服务命名空间](http://loft.sh/blog/self-service-kubernetes-namespaces-are-a-game-changer/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters) 改进 [Kubernetes 开发工作流程](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_kubernetes-cost-savings-by-reducing-the-number-of-clusters)。这说明集群数量的减少也可能是改进 Kubernetes 系统其他部分的积极副作用。
 
 ## [\#](http://loft.sh\#disadvantages-of-fewer-clusters) Disadvantages of fewer clusters
 
@@ -160,7 +158,5 @@ This will allow you to improve the cost-efficiency of your Kubernetes system wit
 
 这将使您能够提高 Kubernetes 系统的成本效益，而不会对其稳定性产生负面影响。
 
-https://loft.sh/blog/kubernetes-cost-savings-by-reducing-the-number-of-clusters 
 
-https://loft.sh/blog/kubernetes-cost-savings-by-reducing-the-number-of-clusters
 

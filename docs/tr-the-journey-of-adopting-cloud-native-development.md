@@ -4,16 +4,6 @@
 
 Jul 2, 2020
 
-2020 年 7 月 2 日
-
-11 Minute Read
-
-11 分钟阅读
-
-Table of Contents
-
-目录
-
 - [Level 0 – Traditional Development - Kubernetes is an ops topic](http://loft.sh#level-0--traditional-development---kubernetes-is-an-ops-topic)
    - [Advantages](http://loft.sh#advantages)
    - [Disadvantages](http://loft.sh#disadvantages)
@@ -44,7 +34,7 @@ Table of Contents
 -  [深入了解 Kubernetes 的访问](http://loft.sh#a-closer-look-at-the-access-to-kubernetes)
 - [结论](http://loft.sh#conclusion)
 
-Adopting Kubernetes is a process that many companies are currently going through. The introduction of Kubernetes as infrastructure technology can take some time. ( [It took almost 2 years for Tinder to complete its migration to Kubernetes](https://medium.com/tinder-engineering/tinders-move-to-kubernetes-cda2a6372f44).) The transition of development processes to fully cloud- native development is often an even longer process that comprises several incremental steps.
+Adopting Kubernetes is a process that many companies are currently going through. The introduction of Kubernetes as infrastructure technology can take some time. ( [It took almost 2 years for Tinder to complete its migration to Kubernetes](https://medium.com/tinder-engineering/tinders-move-to-kubernetes-cda2a6372f44).) The transition of development processes to fully cloud-native development is often an even longer process that comprises several incremental steps.
 
 采用 Kubernetes 是许多公司目前正在经历的过程。将 Kubernetes 作为基础设施技术引入可能需要一些时间。 （[Tinder 花了将近 2 年时间完成向 Kubernetes 的迁移](https://medium.com/tinder-engineering/tinders-move-to-kubernetes-cda2a6372f44)。)开发流程向完全云的过渡-原生开发通常是一个更长的过程，包括几个增量步骤。
 
@@ -54,7 +44,7 @@ To illustrate the different stages of transition, I want to use the analogy of [
 
 By looking at the following description of the different cloud-native levels, you can classify your current [development workflow with Kubernetes](http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development) and even see what is ahead of you and what your next possible steps might be.
 
-通过查看以下对不同云原生级别的描述，您可以对当前 [使用 Kubernetes 的开发工作流] 进行分类（http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium =reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development），甚至可以查看您前面的内容以及您接下来可能采取的步骤。
+通过查看以下对不同云原生级别的描述，您可以对当前 使用 Kubernetes 的开发工作流 进行分类（http://loft.sh/blog/kubernetes-development-workflow-3-critical-steps/?utm_medium =reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development），甚至可以查看您前面的内容以及您接下来可能采取的步骤。
 
 ## [\#](http://loft.sh\#level-0--traditional-development---kubernetes-is-an-ops-topic) Level 0 – Traditional Development - Kubernetes is an ops topic
 
@@ -162,7 +152,7 @@ Finally, in spite of the general flexibility of the runtime in terms of scale, t
 
 ## [\#](http://loft.sh\#level-2--cloud-native-cd--specialized-cd-tools-run-pipelines-to-kubernetes-automatically) 级别 2 – 云原生CD – 专门的 CD 工具自动运行到 Kubernetes 的管道
 
-The development concept at level 2 is essentially the same as at level 1. The code is deployed via a pipeline to a Kubernetes cluster. However, at this stage, developers are using special CLI tools, such as [Skaffold](https://github.com/GoogleContainerTools/skaffold),[Draft](https://github.com/Azure/draft), or [Tilt](https://github.com/tilt-dev/tilt) that detect the file changes by the developer and then automatically trigger the pipelines.
+The development concept at level 2 is essentially the same as at level 1. The code is deployed via a pipeline to a Kubernetes cluster. However, at this stage, developers are using special CLI tools, such as [Skaffold](https://github.com/GoogleContainerTools/skaffold), [Draft](https://github.com/Azure/draft), or [Tilt](https://github.com/tilt-dev/tilt) that detect the file changes by the developer and then automatically trigger the pipelines.
 
 级别 2 的开发概念与级别 1 基本相同。代码通过管道部署到 Kubernetes 集群。但是，在这个阶段，开发人员正在使用特殊的 CLI 工具，例如 [Skaffold](https://github.com/GoogleContainerTools/skaffold)、[Draft](https://github.com/Azure/draft)或[Tilt](https://github.com/tilt-dev/tilt) 由开发人员检测文件更改，然后自动触发管道。
 
@@ -224,7 +214,7 @@ Besides this hot reloading feature, the cloud-native development tools provide a
 
 Another important aspect of level 3 development is that the developers have direct access to a remote [Kubernetes dev environment](http://loft.sh/blog/kubernetes-development-environments-comparison/?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development) and do not use a local Kubernetes cluster anymore. To enable this access without having a cluster for each developer, tools such as [Loft](https://loft.sh) provide a centrally managed, [multi-tenancy Kubernetes platform](https://loft.sh/features/kubernetes-multi-tenancy?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development) for the developers.
 
-3 级开发的另一个重要方面是开发人员可以直接访问远程 [Kubernetes 开发环境](http://loft.sh/blog/kubernetes-development-environments-comparison/?utm_medium=reader&utm_source=other&utm_campaign=blog_the- Journey-of-adopting-cloud-native-development），并且不再使用本地 Kubernetes 集群。为了在不为每个开发人员使用集群的情况下启用此访问权限，[Loft](https://loft.sh) 等工具提供了一个集中管理的 [多租户 Kubernetes 平台](https://loft.sh/features/kubernetes-multi-tenancy?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development)供开发人员使用。
+3 级开发的另一个重要方面是开发人员可以直接访问远程 Kubernetes 开发环境，并且不再使用本地 Kubernetes 集群。为了在不为每个开发人员使用集群的情况下启用此访问权限，[Loft](https://loft.sh) 等工具提供了一个集中管理的 [多租户 Kubernetes 平台](https://loft.sh/features/kubernetes-multi-tenancy?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development)供开发人员使用。
 
 ### [\#](http://loft.sh\#advantages-3) Advantages
 
@@ -274,13 +264,9 @@ At level 1, Kubernetes is still an ops topic, but the developers have indirect a
 
 在级别 1，Kubernetes 仍然是一个 ops 主题，但开发人员可以在开发过程中通过 CD 管道间接访问它。但是，他们仍然不需要管理任何东西，也没有配置任何东西的权利。
 
-Starting from level 2, Kubernetes becomes a development topic. That means that the developers also need to get direct access to it. In level 2, this usually means that they start and manage their own local Kubernetes clusters while in level 3, they get access to a shared cluster via specific tools such as [Loft](https://loft.sh) or [kiosk] (https://github.com/kiosk-sh/kiosk). 
+Starting from level 2, Kubernetes becomes a development topic. That means that the developers also need to get direct access to it. In level 2, this usually means that they start and manage their own local Kubernetes clusters while in level 3, they get access to a shared cluster via specific tools such as [Loft](https://loft.sh) or [kiosk](https://github.com/kiosk-sh/kiosk). 
 
 从第 2 级开始，Kubernetes 成为一个开发主题。这意味着开发人员还需要直接访问它。在级别 2 中，这通常意味着他们启动和管理自己的本地 Kubernetes 集群，而在级别 3 中，他们可以通过 [Loft](https://loft.sh) 或 [kiosk] 等特定工具访问共享集群（https://github.com/kiosk-sh/kiosk)。
-
-> _In separate posts, [I compare local and remote environments for development](https://medium.com/swlh/local-cluster-vs-remote-cluster-for-kubernetes-based-development-6efe2d9be202) and [the different methods for providing direct access to Kubernetes for developers in the cloud](http://loft.sh/blog/individual_kubernetes_clusters_vs-_shared_kubernetes_clusters_for_development/?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development). _
-
-> _在单独的帖子中，[我比较了本地和远程开发环境](https://medium.com/swlh/local-cluster-vs-remote-cluster-for-kubernetes-based-development-6efe2d9be202)和[不同的为云中的开发人员提供对 Kubernetes 的直接访问的方法](http://loft.sh/blog/individual_kubernetes_clusters_vs-_shared_kubernetes_clusters_for_development/?utm_medium=reader&utm_source=other&utm_campaign=blog_the-journey-of-adopting-cloud-native-development)。 _
 
 ## [\#](http://loft.sh\#conclusion) Conclusion
 
@@ -301,6 +287,4 @@ At the moment, I believe level 3 is the highest level on the cloud-native journe
 目前，我相信第 3 级是软件开发中云原生之旅的最高级别，但是随着技术的进步，如果我不得不添加第 4 级或第 5 级，我不会感到惊讶。所以，让我们对什么感到兴奋在这个快节奏的生态系统中，接下来的步骤即将到来。
 
 https://loft.sh/blog/the-journey-of-adopting-cloud-native-development 
-
-https://loft.sh/blog/the-journey-of-adopting-cloud-native-development
 
