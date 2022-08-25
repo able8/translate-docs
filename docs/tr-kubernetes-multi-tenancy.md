@@ -4,8 +4,6 @@
 
 https://www.thinksys.com/devops/kubernetes-multi-tenancy/
 
-https://www.thinksys.com/devops/kubernetes-multi-tenancy/
-
 A [**container orchestration**](http://www.thinksys.com/devops/all-about-containers/) system is one of the most widely used automating software scaling, deployment, and management. Created by Google and managed by **Cloud Native Computing** Foundation, **[Kubernetes](http://www.thinksys.com/devops/understanding-kubernetes-architecture/)** is an **open-source container orchestration system** used by legions of organizations. Container orchestration helps in operational tasks like networking, provisioning, and deploying in containerized workloads. Several organizations can use multiple workloads in a **single Kubernetes cluster** that shares the same infrastructure. This strategy used by enterprises is called multi-tenancy. This article is all about **understanding multi-tenancy in Kubernetes**, including its use cases, best practices, and how it helps organizations in the cloud-native space.
 
 [**容器编排**](http://www.thinksys.com/devops/all-about-containers/) 系统是使用最广泛的自动化软件扩展、部署和管理系统之一。由 Google 创建并由 **Cloud Native Computing** Foundation 管理，**[Kubernetes](http://www.thinksys.com/devops/understanding-kubernetes-architecture/)** 是一个**开源容器大量组织使用的编排系统**。容器编排有助于在容器化工作负载中完成网络、配置和部署等操作任务。多个组织可以在共享相同基础架构的**单个 Kubernetes 集群**中使用多个工作负载。企业使用的这种策略称为多租户。本文全部是关于**了解 Kubernetes 中的多租户**，包括它的用例、最佳实践以及它如何帮助云原生空间中的组织。
@@ -66,6 +64,8 @@ Kubernetes 多租户模型有助于使其用例更容易和简单。根据组织
 2. **Clusters as a Service:** In clusters as a service multi-tenancy model, every tenant is given a cluster where they can use cluster-wide resources. Moreover, they can have a Kubernetes control plane with complete isolation where management cluster projects are used to provision multiple workload clusters. Furthermore, the tenants are provided with a workload cluster that provides complete control of the cluster resources. The central platform teams manage add-on services like security, monitoring, upgrading, patching, and cluster lifestyle management services. However, certain limitations exist for the tenant admin to modify the services above.
 3. **Control Planes as a Service:** The control planes as a service variant of the earlier mentioned CaaS model. However, a tenant may be assigned a virtual cluster where they will be given an exclusive control plane. This model is applicable when the virtual cluster’s users cannot determine the differences between a Kubernetes cluster and a virtual cluster. Even though a virtual cluster is allocated to tenants, they still have to share worker node resources and certain control plane components. This model is implemented by a virtual cluster project where several VCs share a super-cluster.
 
+
+
 1. **命名空间即服务：** 在此模型中，每个租户共享一个集群，其中他们的工作负载仅限于分配给特定租户的一组命名空间。但是，集群中的所有租户都可以访问所有控制平面资源，包括调度程序和 AP 服务器、CPU 和内存。命名空间即服务模型允许租户共享所有集群资源，阻止集群更新或创建任何此类资源。隔离租户工作负载时，其命名空间应包含角色绑定、资源配额和网络策略。将这些添加到命名空间是必要的，因为它们有助于控制对命名空间的访问，限制租户的使用，并防止所有租户的网络流量。
 2. **集群即服务：** 在集群即服务多租户模型中，每个租户都被分配了一个集群，他们可以在其中使用集群范围的资源。此外，他们可以拥有一个完全隔离的 Kubernetes 控制平面，其中管理集群项目用于配置多个工作负载集群。此外，为租户提供了一个工作负载集群，该集群提供对集群资源的完全控制。中央平台团队管理附加服务，如安全、监控、升级、修补和集群生活方式管理服务。但是，租户管理员修改上述服务存在某些限制。
 3. **控制平面即服务：** 控制平面即前面提到的 CaaS 模型的服务变体。但是，可以为租户分配一个虚拟集群，在那里他们将获得一个独占的控制平面。该模型适用于虚拟集群的用户无法确定 Kubernetes 集群和虚拟集群之间的差异的情况。即使将虚拟集群分配给租户，他们仍然必须共享工作节点资源和某些控制平面组件。该模型由多个 VC 共享一个超级集群的虚拟集群项目实现。
@@ -80,6 +80,8 @@ Here are the most frequently use cases of the **Kubernetes multi-tenancy models*
 
 1. **SaaS Provider Multi-Tenancy:** The Software-as-a-Service control plane and the customer instance are the tenants of a SaaS provider’s cluster. Every application instance is organized with its namespaces and the SaaS control plane components to take full leverage of the namespace policies. Every end-user has to use the interface provided by SaaS, which communicates with the Kubernetes control plane. This process has to be followed by every user as they cannot communicate with the control plane directly. The biggest example of SaaS provider multi-tenancy is a blogging platform running on a multi-tenant cluster. Here, the platform gives them a control plane, and their user’s blog will have a separate namespace. The users can use all the services through its interface without viewing the operation of the cluster.
 2. **Enterprise Multi-Tenancy:** When it comes to tenants in an enterprise, they are mainly different teams of the same organization that comes with a namespace. However, managing these tenants per cluster in an alternative multi-tenancy model is complicated. Furthermore, the network traffic between tenants should be defined correctly. This task in multi-tenancy can be accomplished through Kubernetes network policy where the cluster users can be categorized into cluster-admin, namespace admin, and developer.
+
+
 
 1. **SaaS 提供商多租户：** 软件即服务控制平面和客户实例是 SaaS 提供商集群的租户。每个应用程序实例都使用其命名空间和 SaaS 控制平面组件进行组织，以充分利用命名空间策略。每个最终用户都必须使用 SaaS 提供的接口，该接口与 Kubernetes 控制平面进行通信。每个用户都必须遵循此过程，因为他们无法直接与控制平面通信。 SaaS 提供商多租户的最大例子是在多租户集群上运行的博客平台。在这里，平台为他们提供了一个控制平面，他们的用户的博客将有一个单独的命名空间。用户可以通过其界面使用所有服务，而无需查看集群的运行情况。
 2. **Enterprise Multi-Tenancy：**企业中的租户，主要是同一个组织的不同团队，带有一个命名空间。但是，在另一种多租户模型中管理每个集群的这些租户很复杂。此外，应正确定义租户之间的网络流量。多租户中的这项任务可以通过 Kubernetes 网络策略来完成，其中集群用户可以分为集群管理员、命名空间管理员和开发人员。
@@ -110,6 +112,8 @@ Kubernetes 多租户可用于许多不同的用例。但是，必须遵循正确
 - **Use Network Policy:** In a multi-tenant environment, it is essential to isolate tenant namespaces. This can be done by using network policies that let the cluster admins control the communication of group pods. Admins should use network policy resources to isolate tenant namespaces.
 - **Limit Shared Resource Usage:** When multiple tenants exist in a cluster, they are bound to use shared resources. Sometimes, these resources can be wasted by a tenant, reducing the outcome for other tenants. A great way to eradicate this issue is by limiting the shared resource usage by implementing Kubernetes namespace resource quotas. Through this quota, you can control the total resource usage by a single tenant.
 
+
+
 - **基于角色的访问控制 (RBAC)：** 无论请求来自何处，每次创建、读取、删除和更新操作都是通过多租户的 Kubernetes API 服务器完成的。当集群中有多个租户时，必须尽可能保证其安全。在 API 服务器中启用 Kubernetes 多租户 RBAC 将有助于更好地控制集群中的应用程序和用户。每个 RBAC 都有四个 API 对象：Role、RoleBinding、ClusterRole 和 ClusterRoleBinding。此外，还建议禁用基于属性的访问控制。
 - **命名空间分类：** 在多租户 Kubernetes 环境中，命名空间是最关键的方面之一。关于命名空间的最佳实践之一是将其分类为不同的组。最常用的组是系统、服务和租户命名空间。系统命名空间是系统 pod 专有的，而服务命名空间应该运行集群中其他命名空间需要访问的应用程序。但是，租户命名空间是用于运行不需要从任何其他命名空间访问的服务和应用程序的组。
 - **标签命名空间：** 多租户中另一个优秀但被低估的做法是标签命名空间。这种做法有助于元数据应用程序了解使用资源的原因。标记命名空间将有助于在必要时了解指标或轻松过滤应用程序的数据。
@@ -135,22 +139,10 @@ The first step is to set up a cluster based on the development workload requirem
 > _kubectl create namespace team-leadership_
 >
 > _kubectl create namespace team-virtual_
->
-> Furthermore, creating a sample application in these namespaces is also part of this step. This process will guide you in deploying an Nginx pod in the created namespaces using the below-mentioned command.
->
-> _kubectl run app-leadership–image=nginx –namespace=team-leadership_
->
-> _kubectl run app-virtual –image=nginx –namespace=team-virtual_
 
-> _kubectl 创建命名空间团队领导_
->
-> _kubectl 创建命名空间团队-虚拟_
->
-> 此外，在这些命名空间中创建示例应用程序也是此步骤的一部分。此过程将指导您使用下面提到的命令在创建的命名空间中部署 Nginx pod。
->
-> _kubectl run app-leadership–image=nginx –namespace=team-leadership_
->
-> _kubectl run app-virtual –image=nginx –namespace=team-virtual_
+
+
+Furthermore, creating a sample application in these namespaces is also part of this step. This process will guide you in deploying an Nginx pod in the created namespaces using the below-mentioned command.
 
 ### **Step 2: Grant access control to the teams:**
 

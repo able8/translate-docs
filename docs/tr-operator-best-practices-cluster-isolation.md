@@ -4,8 +4,6 @@
 
 - 08/22/2022  https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation
 
-- 2022 年 8 月 22 日 https://docs.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-isolation
-
 ### In this article
 
 ###  在本文中
@@ -120,7 +118,7 @@ With logical isolation, a single AKS cluster can be used for multiple workloads,
 
 通过逻辑隔离，单个 AKS 群集可用于多个工作负载、团队或环境。 Kubernetes [命名空间](http://docs.microsoft.com/concepts-clusters-workloads#namespaces) 形成了工作负载和资源的逻辑隔离边界。
 
-![Logical isolation of a Kubernetes cluster in AKS](http://docs.microsoft.com/media/operator-best-practices-cluster-isolation/logical-isolation.png)
+![Logical isolation of a Kubernetes cluster in AKS](https://docs.microsoft.com/en-us/azure/aks/media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
 Logical separation of clusters usually provides a higher pod density than physically isolated clusters, with less excess compute capacity sitting idle in the cluster. When combined with the Kubernetes cluster autoscaler, you can scale the number of nodes up or down to meet demands. This best practice approach to autoscaling minimizes costs by running only the number of nodes required.
 
@@ -156,7 +154,7 @@ Physically separating AKS clusters is a common approach to cluster isolation. In
 
 物理分离 AKS 群集是群集隔离的常用方法。在此隔离模型中，为团队或工作负载分配了自己的 AKS 群集。虽然物理隔离可能看起来是隔离工作负载或团队的最简单方法，但它会增加管理和财务开销。现在，您必须维护这些多个集群并单独提供访问和分配权限。您还将为每个单独的节点付费。
 
-![Physical isolation of individual Kubernetes clusters in AKS](http://docs.microsoft.com/media/operator-best-practices-cluster-isolation/physical-isolation.png)
+![Physical isolation of individual Kubernetes clusters in AKS](https://docs.microsoft.com/en-us/azure/aks/media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
 Physically separate clusters usually have a low pod density. Since each team or workload has their own AKS cluster, the cluster is often over-provisioned with compute resources. Often, a small number of pods are scheduled on those nodes. Unclaimed node capacity can't be used for applications or services in development by other teams. These excess resources contribute to the additional costs in physically separate clusters. 
 
