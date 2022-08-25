@@ -476,3 +476,5 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [How to Save More Than 2/3 of Engineers’ Kubernetes Cost](docs/tr-how-to-save-more-than-2-3-of-engineers-kubernetes-cost.md)
 1. [Kubernetes Cost Savings By Reducing The Number Of Clusters](docs/tr-kubernetes-cost-savings-by-reducing-the-number-of-clusters.md)
 1. [The Journey of Adopting Cloud-Native Development](docs/tr-the-journey-of-adopting-cloud-native-development.md)
+1. [Understanding Multi-Tenancy in Kubernetes](docs/tr-kubernetes-multi-tenancy.md)
+1. [Best practices for cluster isolation in Azure Kubernetes Service (AKS)](docs/tr-operator-best-practices-cluster-isolation.md)
