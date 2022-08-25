@@ -67,6 +67,8 @@ As part of the solution, you will perform the following steps:
 3. Allocate resources to the team namespace
 4. Monitor the resource utilisation
 
+
+
 1. 基于开发团队的分区集群（使用命名空间）
 2. 为该命名空间中的团队提供访问控制
 3. 为团队命名空间分配资源
