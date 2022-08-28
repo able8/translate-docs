@@ -478,3 +478,6 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [The Journey of Adopting Cloud-Native Development](docs/tr-the-journey-of-adopting-cloud-native-development.md)
 1. [Understanding Multi-Tenancy in Kubernetes](docs/tr-kubernetes-multi-tenancy.md)
 1. [Best practices for cluster isolation in Azure Kubernetes Service (AKS)](docs/tr-operator-best-practices-cluster-isolation.md)
+
+# [DevOps capabilities](https://cloud.google.com/architecture/devops)
+1. [DevOps capabilities](docs/tr-devops.md)
