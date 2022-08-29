@@ -483,3 +483,4 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [DevOps capabilities](docs/tr-devops.md)
 1. [DevOps culture: How to transform](docs/tr-devops-culture-transform.md)
 1. [DevOps culture: Transformational leadership](docs/tr-devops-culture-transformational-leadership.md)
+1. [What are DORA (DevOps Research and Assessments) Metrics?](docs/tr-devops-research-and-assessment-metrics.md)
