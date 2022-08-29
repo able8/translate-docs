@@ -32,6 +32,9 @@ func Translate(source, sourceLang, targetLang string) error {
 	for try := 0; try < 3; try++ {
 		log.Println("Querying...")
 		resp, err = client.Get(queryURL)
+		if err != nil {
+			continue
+		}
 		if resp.StatusCode == http.StatusOK {
 			break
 		}
