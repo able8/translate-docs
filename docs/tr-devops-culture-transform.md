@@ -46,7 +46,7 @@ Source: Reproduced by permission of Mike Rother, from [*Toyota Kata Practice Gui
 
 All of the frameworks start with a direction (a "true north") at the organizational or division level. This is an aspirational, system-level business goal set by [leadership](https://cloud.google.com/architecture/devops/devops-culture-transformational-leadership). It could be an ideal that can't be achieved, such as zero injuries (the [goal](https://hbswk.hbs.edu/archive/paul-o-neill-values-into-action)  chosen by Alcoa's CEO Paul O'Neill). Or it could be a tough goal that is one to three years out, such as a tenfold increase in productivity (the [goal](https://continuousdelivery.com/evidence-case-studies/#the-hp-futuresmart-case-study)  chosen by Gary Gruver, when he was Director of Engineering of HP's LaserJet Firmware division).
 
-所有框架都以组织或部门级别的方向（“真正的北方”）开始。这是由 [leadership](https://cloud.google.com/architecture/devops/devops-culture-transformional-leadership)设定的雄心勃勃的系统级业务目标。这可能是一个无法实现的理想，例如美铝首席执行官选择的零伤害（[目标](https://hbswk.hbs.edu/archive/paul-o-neill-values-into-action)保罗奥尼尔）。或者，这可能是一到三年后的艰难目标，例如将生产力提高十倍（[目标](https://continuousdelivery.com/evidence-case-studies/#the-hp-futuresmart-case -研究）由 Gary Gruver 选择，当时他是惠普 LaserJet 固件部门的工程总监)。
+所有框架都以组织或部门级别的方向（“真正的北方”）开始。这是由 [leadership](https://cloud.google.com/architecture/devops/devops-culture-transformional-leadership)设定的雄心勃勃的系统级业务目标。这可能是一个无法实现的理想，例如美铝首席执行官选择的零伤害（[目标](https://hbswk.hbs.edu/archive/paul-o-neill-values-into-action)保罗奥尼尔）。或者，这可能是一到三年后的艰难目标，例如将生产力提高十倍。
 
 The next step is to understand the current condition. The [DORA quick check](https://devops-research.com/quickcheck.html)  can help you understand how you're doing in terms of your software development capabilities and outcomes. Another analysis approach is to perform exercises like [value stream mapping](https://www.google.com/books/edition/Value_Stream_Mapping_How_to_Visualize_Wo/MeFrAAAAQBAJ), or activity accounting. The point is to understand where the organization is in measurable terms. 
 
@@ -80,6 +80,8 @@ Teams should be running experiments on a daily basis to try to move towards the 
 4. What is your next step? What outcome do you expect?
 5. When can the results be evaluated to see what can be learned from taking that step?
 
+
+
 1. 目标条件是什么？
 2. 目前情况如何？
 3. 您认为哪些障碍阻碍您达到目标条件？你现在针对的是哪一个？
@@ -95,8 +97,6 @@ Because the process is performed under conditions of uncertainty, it's not alway
 由于该过程是在不确定的条件下进行的，因此并不总是很清楚如何获得结果。因此，进度往往是非线性的，如下图所示：
 
 ![Graph showing nonlinear progress mapping performance against iterations;the performance line is spiky but overall goes up.](https://cloud.google.com/static/architecture/devops/images/devops-culture-transform-non-linear-progress.png)
-
-性能线是尖峰，但整体上升。](https://cloud.google.com/static/architecture/devops/images/devops-culture-transform-non-linear-progress.png)
 
 Source: CC-BY: [*Lean Enterprise: How High Performance Organizations Innovate at Scale*](https://www.google.com/books/edition/Lean_Enterprise/G_ixBQAAQBAJ)  by Jez Humble, Joanne Molesky, and Barry O' Reilly (O'Reilly, 2014).
 
@@ -150,9 +150,9 @@ After teams have discovered better ways of working, the next task is to spread l
 - 自下而上或基层
 - 混搭
 
-Analysis shows that high performers favor strategies that create community structures at both low and high levels in the organization, likely making them more sustainable and resilient to re-organizations and product changes. The top two strategies employed are communities of practice and grassroots, followed by proof of concept as a template (a pattern where the proof of concept gets reproduced elsewhere in the organization), and proof of concept as a seed. For an example of how a [community of practice](https://www.youtube.com/watch?v=S4-huVFeQXg)  works, [read about how Google's culture of comprehensive unit testing was driven by a group of volunteers] (https://martinfowler.com/articles/testing-culture.html#google).
+Analysis shows that high performers favor strategies that create community structures at both low and high levels in the organization, likely making them more sustainable and resilient to re-organizations and product changes. The top two strategies employed are communities of practice and grassroots, followed by proof of concept as a template (a pattern where the proof of concept gets reproduced elsewhere in the organization), and proof of concept as a seed. For an example of how a [community of practice](https://www.youtube.com/watch?v=S4-huVFeQXg)  works, [read about how Google's culture of comprehensive unit testing was driven by a group of volunteers](https://martinfowler.com/articles/testing-culture.html#google).
 
-分析表明，高绩效者倾向于在组织的低层和高层创建社区结构的策略，这可能使它们对重组和产品变化更具可持续性和弹性。采用的前两种策略是实践社区和草根社区，其次是作为模板的概念证明（概念证明在组织的其他地方被复制的模式），以及作为种子的概念证明。有关 [实践社区](https://www.youtube.com/watch?v=S4-huVFeQXg) 工作方式的示例，[了解 Google 的综合单元测试文化是如何由一群志愿者推动的] （https://martinfowler.com/articles/testing-culture.html#google)。
+分析表明，高绩效者倾向于在组织的低层和高层创建社区结构的策略，这可能使它们对重组和产品变化更具可持续性和弹性。采用的前两种策略是实践社区和草根社区，其次是作为模板的概念证明（概念证明在组织的其他地方被复制的模式），以及作为种子的概念证明。有关 [实践社区](https://www.youtube.com/watch?v=S4-huVFeQXg) 工作方式的示例，[了解 Google 的综合单元测试文化是如何由一群志愿者推动的](https://martinfowler.com/articles/testing-culture.html#google)。
 
 Low performers tend to favor training centers and centers of excellence: strategies that create more silos and isolated expertise. They also attempt proofs of concept, but these generally stall and don't see success. Why might these strategies fail to deliver effective change?
 
