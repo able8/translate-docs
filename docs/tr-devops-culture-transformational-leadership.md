@@ -4,8 +4,6 @@
 
 https://cloud.google.com/architecture/devops/devops-culture-transformational-leadership
 
-https://cloud.google.com/architecture/devops/devops-culture-transformional-leadership
-
 **Note:** *Transformational leadership* is one of a set of capabilities that drive higher software delivery and organizational performance. These capabilities were discovered by the [DORA State of DevOps research program](https://www.devops-research.com/research.html), an independent, academically rigorous investigation into the practices and capabilities that drive high performance. To learn more, read our [DevOps resources](https://cloud.google.com/devops).
 
 **注意：** *变革型领导*是推动更高软件交付和组织绩效的一系列能力之一。这些能力是由 [DORA State of DevOps 研究计划](https://www.devops-research.com/research.html) 发现的，该计划是对推动高性能的实践和能力进行独立的、学术上严谨的调查。要了解更多信息，请阅读我们的 [DevOps 资源](https://cloud.google.com/devops)。
@@ -14,9 +12,9 @@ https://cloud.google.com/architecture/devops/devops-culture-transformional-leade
 
 [DevOps 研究与评估 (DORA)](https://cloud.google.com/devops) 研究表明，有效的领导力对软件交付成果具有可衡量的显着影响。然而，有效的转型领导者不是直接推动这些成果，而是通过让从业者采用技术和产品管理能力和实践来影响软件交付绩效，这反过来又推动了领导者关心的成果。
 
-To study the role of leadership in DevOps transformations, DORA used a measure of transformational leadership that includes five dimensions. According to this model, validated in [Dimensions of transformational leadership: Conceptual and empirical extensions](https://www.sciencedirect.com/science/article/pii/S1048984304000207)  (Rafferty, A. E., & Griffin, M. A.), the five characteristics of a transformational leader are the following:
+To study the role of leadership in DevOps transformations, DORA used a measure of transformational leadership that includes five dimensions. According to this model, validated in [Dimensions of transformational leadership: Conceptual and empirical extensions](https://www.sciencedirect.com/science/article/pii/S1048984304000207) , the five characteristics of a transformational leader are the following:
 
-为了研究领导力在 DevOps 转型中的作用，DORA 使用了包括五个维度的转型领导力度量。根据这个模型，在[变革型领导的维度：概念和经验扩展](https://www.sciencedirect.com/science/article/pii/S1048984304000207)（Rafferty, A. E., & Griffin, M. A.)中得到验证，五个变革型领导者的特征如下：
+为了研究领导力在 DevOps 转型中的作用，DORA 使用了包括五个维度的转型领导力度量。根据这个模型，在[变革型领导的维度：概念和经验扩展](https://www.sciencedirect.com/science/article/pii/S1048984304000207)中得到验证，五个变革型领导者的特征如下：
 
 - **Vision**: Understands clearly where their team and the organization are going, and where they want the team to be in five years.
 - **Inspirational communication**: Says positive things about the team; says things that make employees proud to be a part of their organization; encourages people to see changing conditions as situations full of opportunities.
@@ -40,7 +38,7 @@ What was most striking, however, was that teams with the least transformative le
 
 Moving beyond correlation to look at *how* effective transformational leaders achieve results, the results are interesting. The DORA team created a predictive model using a technique called [structural equation modeling](https://wikipedia.org/wiki/Partial_least_squares_path_modeling)  to test the relationships between transformational leadership, a number of technical and product management practices, and software delivery and organizational performance. The validated model is shown in the following diagram. You can read the arrows as *driving* or *impacting* the capabilities and outcomes to which they point.
 
-超越相关性，看看*有效的变革型领导者如何*取得成果，结果很有趣。 DORA 团队使用称为 [结构方程建模] (https://wikipedia.org/wiki/Partial_least_squares_path_modeling) 的技术创建了一个预测模型，以测试变革型领导、许多技术和产品管理实践以及软件交付和组织绩效。验证模型如下图所示。您可以将箭头解读为*驱动*或*影响*它们指向的能力和结果。
+超越相关性，看看*有效的变革型领导者如何*取得成果，结果很有趣。 DORA 团队使用称为 [结构方程建模](https://wikipedia.org/wiki/Partial_least_squares_path_modeling) 的技术创建了一个预测模型，以测试变革型领导、许多技术和产品管理实践以及软件交付和组织绩效。验证模型如下图所示。您可以将箭头解读为*驱动*或*影响*它们指向的能力和结果。
 
 ![Flowchart shows impact of leadership on practices and performance.](https://cloud.google.com/static/architecture/devops/images/transformational-leadership-validated-model.png)
 
@@ -70,7 +68,7 @@ This result can be explained by the observation that leaders cannot achieve high
 
 Take vision as an example. One way to create a clear vision for a software delivery team is to set measurable relative goals for [software delivery performance](https://www.devops-research.com/quickcheck.html). [For example](https://www.linkedin.com/pulse/double-half-quarter-lesson-from-book-richard-david-knott/)  Richard Herbert, CIO for Global Banking at Markets of HSBC, set every team the goal to "double the frequency of releases, half the number of low impact incidents, and quarter the number of high impact incidents."
 
-以视觉为例。为软件交付团队创建清晰愿景的一种方法是为 [软件交付绩效] (https://www.devops-research.com/quickcheck.html) 设定可衡量的相对目标。 [例如](https://www.linkedin.com/pulse/double-half-quarter-lesson-from-book-richard-david-knott/) 汇丰全球银行业务首席信息官 Richard Herbert团队的目标是“发布频率加倍，低影响事件数量减半，高影响事件数量减半”。
+以视觉为例。为软件交付团队创建清晰愿景的一种方法是为 [软件交付绩效](https://www.devops-research.com/quickcheck.html) 设定可衡量的相对目标。 [例如](https://www.linkedin.com/pulse/double-half-quarter-lesson-from-book-richard-david-knott/) 汇丰全球银行业务首席信息官 Richard Herbert团队的目标是“发布频率加倍，低影响事件数量减半，高影响事件数量减半”。
 
 There may be significant obstacles to achieving goals like the ones set by Richard Herbert. Again, leaders can use intellectual stimulation to help teams identify and remove obstacles to achieving higher performance. Perhaps team members believe that implementing [continuous testing](https://cloud.google.com/architecture/devops/devops-tech-test-automation) will help them, but they've tried before and failed. Leaders can ask teams questions such as: "Why did it fail last time?", "What lessons did you learn?", "What would you do differently this time?", "What ideas would you like to try this time?" . 
 
@@ -78,7 +76,7 @@ There may be significant obstacles to achieving goals like the ones set by Richa
 
 Personal recognition is also important, and must be directed such that it reinforces behaviors that help teams improve. Examples include trying experiments even if they don't work, or taking time to help other teams implement new ideas. Another example of effective personal recognition is e-commerce company Etsy, which at its annual engineering conference [gives an award](https://www.infoq.com/articles/crafting-resilient-culture/)  "to the engineer who inadvertently causes the most interesting or most learning-filled incident."
 
-个人认可也很重要，必须加以引导，以加强有助于团队改进的行为。示例包括尝试实验，即使它们不起作用，或者花时间帮助其他团队实施新想法。另一个有效的个人认可的例子是电子商务公司 Etsy，它在其年度工程会议上[授予奖项](https://www.infoq.com/articles/crafting-resilient-culture/)“给那些不经意间引发最有趣或最有学问的事件。”
+个人认可也很重要，必须加以引导，以加强有助于团队改进的行为。示例包括尝试实验，即使它们不起作用，或者花时间帮助其他团队实施新想法。另一个有效的个人认可的例子是电子商务公司 Etsy，它在其年度工程会议上[授予奖项](https://www.infoq.com/articles/crafting-resilient-culture/) “给那些不经意间引发最有趣或最有学问的事件。”
 
 It's crucial that these behaviors are demonstrated consistently, and particularly when the team is under stress.
 
