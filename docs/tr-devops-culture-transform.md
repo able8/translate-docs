@@ -4,8 +4,6 @@
 
 https://cloud.google.com/architecture/devops/devops-culture-transform
 
-https://cloud.google.com/architecture/devops/devops-culture-transform
-
 Every organization is constantly undergoing change. Therefore, some questions to ask are:
 
 每个组织都在不断地发生变化。因此，要问的一些问题是：
