@@ -494,3 +494,5 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [DevOps culture: Job satisfaction](docs/tr-devops-culture-job-satisfaction.md)
 1. [DevOps culture: Learning culture](docs/tr-devops-culture-learning-culture.md)
 1. [DevOps culture: Westrum organizational culture](docs/tr-devops-culture-westrum-organizational-culture.md)
+1. [DevOps measurement: Monitoring systems to inform business decisions](docs/tr-devops-measurement-monitoring-systems.md)
+1. [DevOps process: Working in small batches](docs/tr-devops-process-working-in-small-batches.md)
