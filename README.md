@@ -352,6 +352,9 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Service Ownership: What It Really Means and How to Achieve It](docs/tr-service-ownership-what-it-really-means-and-how-to-achieve-it.md)
 1. [Accelerate Developer Teams with Platform Engineering](docs/tr-what-is-platform-engineering.md)
 1. [](docs/)
+1. [Monitoring and Observability With USE and RED](docs/tr-monitoring-and-observability-with-use-and-red.md)
+1. [Making the USE method of monitoring useful](docs/tr-making-the-use-method-of-monitoring-useful.html.md)
+1. [The RED method: A new strategy for monitoring microservices](docs/tr-the-red-method-a-new-strategy-for-monitoring-microservices.html.md)
 1. [](docs/)
 1. [](docs/)
 
@@ -479,6 +482,7 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Understanding Multi-Tenancy in Kubernetes](docs/tr-kubernetes-multi-tenancy.md)
 1. [Best practices for cluster isolation in Azure Kubernetes Service (AKS)](docs/tr-operator-best-practices-cluster-isolation.md)
 
+
 # [DevOps capabilities](https://cloud.google.com/architecture/devops)
 1. [What are DORA (DevOps Research and Assessments) Metrics?](docs/tr-devops-research-and-assessment-metrics.md)
 1. [DevOps capabilities](docs/tr-devops.md)
@@ -490,6 +494,3 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [DevOps culture: Job satisfaction](docs/tr-devops-culture-job-satisfaction.md)
 1. [DevOps culture: Learning culture](docs/tr-devops-culture-learning-culture.md)
 1. [DevOps culture: Westrum organizational culture](docs/tr-devops-culture-westrum-organizational-culture.md)
-1. [Making the USE method of monitoring useful](docs/tr-making-the-use-method-of-monitoring-useful.html.md)
-1. [The RED method: A new strategy for monitoring microservices](docs/tr-the-red-method-a-new-strategy-for-monitoring-microservices.html.md)
-1. [Monitoring and Observability With USE and RED](docs/tr-monitoring-and-observability-with-use-and-red.md)
