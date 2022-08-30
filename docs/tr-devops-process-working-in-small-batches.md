@@ -4,8 +4,6 @@
 
 https://cloud.google.com/architecture/devops/devops-process-working-in-small-batches
 
-https://cloud.google.com/architecture/devops/devops-process-working-in-small-batches
-
 **Note:** *Working in small batches* is one of a set of capabilities that drive higher software delivery and organizational performance. These capabilities were discovered by the [DORA State of DevOps research program](https://www.devops-research.com/research.html), an independent, academically rigorous investigation into the practices and capabilities that drive high performance. To learn more, read our [DevOps resources](https://cloud.google.com/devops).
 
 **注意：** *小批量工作*是推动更高软件交付和组织绩效的一组功能之一。这些能力是由 [DORA State of DevOps 研究计划](https://www.devops-research.com/research.html) 发现的，该计划是对推动高性能的实践和能力进行独立的、学术上严谨的调查。要了解更多信息，请阅读我们的 [DevOps 资源](https://cloud.google.com/devops)。
@@ -78,7 +76,7 @@ The key is to start development at the service or API layer, not at the UI layer
 
 You can also dark launch changes by using a [feature toggle](https://martinfowler.com/bliki/FeatureToggle.html), which is a conditional statement based on configuration settings. For example, you can make UI elements visible or invisible, or you can enable or disable service logic. Feature-toggle configuration might be read either at deploy time or runtime. You can use these configuration settings to switch the behavior of new code further down the stack. You can also use similar technique known as [branch by abstraction](https://continuousdelivery.com/2011/05/make-large-scale-changes-incrementally-with-branch-by-abstraction/)  to make larger-scale changes to the system while continuing to develop and release off-trunk without the use of long-lived feature branches.
 
-您还可以使用 [功能切换] (https://martinfowler.com/bliki/FeatureToggle.html) 隐藏启动更改，这是基于配置设置的条件语句。例如，您可以使 UI 元素可见或不可见，或者您可以启用或禁用服务逻辑。可以在部署时或运行时读取功能切换配置。您可以使用这些配置设置将新代码的行为进一步切换到堆栈中。您还可以使用称为 [branch by abstraction](https://continuousdelivery.com/2011/05/make-large-scale-changes-incrementally-with-branch-by-abstraction/) 的类似技术来进行更大规模在不使用长期存在的特性分支的情况下继续开发和发布非主干系统的同时更改系统。
+您还可以使用 [功能切换](https://martinfowler.com/bliki/FeatureToggle.html) 隐藏启动更改，这是基于配置设置的条件语句。例如，您可以使 UI 元素可见或不可见，或者您可以启用或禁用服务逻辑。可以在部署时或运行时读取功能切换配置。您可以使用这些配置设置将新代码的行为进一步切换到堆栈中。您还可以使用称为 [branch by abstraction](https://continuousdelivery.com/2011/05/make-large-scale-changes-incrementally-with-branch-by-abstraction/) 的类似技术来进行更大规模在不使用长期存在的特性分支的情况下继续开发和发布非主干系统的同时更改系统。
 
 In this approach, batches of work aren't complete until they're deployed to production and the feedback process has begun to validate the changes. Feedback comes from many sources and in many forms, including users, system monitoring, quality assurance, and automated tests. Your goal is to optimize for speed so that you reduce the cycle time to get changes into the hands of users. This way, you can validate your hypothesis as quickly as possible.
 
