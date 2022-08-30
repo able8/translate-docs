@@ -14,8 +14,10 @@ Westrum 在从事这些高风险、高度复杂领域的工作时指出，这种
 2. It is timely.
 3. It is presented in such a way that the receiver can use it effectively.
 
+
+
 1. 它为接收者需要回答的问题提供答案。
-2、及时。
+2. 及时。
 3. 以接收者可以有效使用的方式呈现。
 
 In his research, he developed the following typology of organizational cultures.
@@ -32,14 +34,7 @@ In his research, he developed the following typology of organizational cultures.
 | Failure leads to scapegoating | Failure leads to justice  | Failure leads to inquiry |
 | Novelty crushed               | Novelty leads to problems | Novelty implemented      |
 
-|病理 |官僚主义 |生成 |
-| | **以权力为导向** | **以规则为导向** | **以性能为导向** |
-|低合作 |适度合作 |高度合作 |
-|使者“出手” |被忽视的使者|训练有素的使者 |
-|推卸责任 |狭窄的职责 |风险共担 |
-|不鼓励桥接 |桥接容忍 |鼓励桥接 |
-|失败导致替罪羊 |失败导致正义|失败导致询价 |
-|新奇粉碎 |新奇导致问题 |新奇实施 |
+
 
 **Table 1**: The Westrum organizational typology model: How organizations process information (Source: Ron Westrum, "[A typology of organisation culture](https://qualitysafety.bmj.com/content/13/suppl_2/ii22.short))," BMJ Quality & Safety 13, no. 2 (2004), doi:10.1136/qshc.2003.009522.)
 

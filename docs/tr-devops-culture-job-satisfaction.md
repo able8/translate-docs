@@ -4,8 +4,6 @@
 
 https://cloud.google.com/architecture/devops/devops-culture-job-satisfaction
 
-https://cloud.google.com/architecture/devops/devops-culture-job-satisfaction
-
 Early analysis performed by [DevOps Research and Assessment (DORA)](https://cloud.google.com/devops)  found that job satisfaction is a predictor of organizational performance. Having engaged employees doing meaningful work drives business value.
 
 [DevOps Research and Assessment (DORA)](https://cloud.google.com/devops) 进行的早期分析发现，工作满意度是组织绩效的预测指标。让员工参与到有意义的工作中来推动业务价值。
@@ -28,10 +26,10 @@ This cycle of continuous improvement and learning is what sets successful compan
 
 The following pitfalls are commonly related to job satisfaction:
 
-以下陷阱通常与工作满意度有关：
-
 - Not giving people the [tools](https://cloud.google.com/architecture/devops/devops-tech-teams-empowered-to-choose-tools)  they need to be successful.
 - Not giving people meaningful work.
+
+以下陷阱通常与工作满意度有关：
 
 - 不给人们成功所需的 [工具](https://cloud.google.com/architecture/devops/devops-tech-teams-empowered-to-choose-tools)。
 - 不给人们有意义的工作。
@@ -50,21 +48,21 @@ DORA 对工作满意度的研究建议采取以下关键行动：
 
 - **Give employees the tools and resources needed to do their work.**
 
-   - **为员工提供完成工作所需的工具和资源。**
+- **为员工提供完成工作所需的工具和资源。**
 
-  Employees must have the tools necessary to get their work done, and [teams that can decide which tools they use](https://cloud.google.com/architecture/devops/devops-tech-teams-empowered-to-choose-tools)  do better at continuous delivery. Teams that can choose their own tools make these choices based on how they work, and on the tasks they need to perform. No one knows better than practitioners what they need to be effective, so it's not surprising that practitioner tool choice helps to drive better outcomes.
+   Employees must have the tools necessary to get their work done, and [teams that can decide which tools they use](https://cloud.google.com/architecture/devops/devops-tech-teams-empowered-to-choose-tools)  do better at continuous delivery. Teams that can choose their own tools make these choices based on how they work, and on the tasks they need to perform. No one knows better than practitioners what they need to be effective, so it's not surprising that practitioner tool choice helps to drive better outcomes.
 
-   员工必须拥有完成工作所需的工具，并且[团队可以决定他们使用哪些工具](https://cloud.google.com/architecture/devops/devops-tech-teams-empowered-to-choose-工具)在持续交付方面做得更好。可以选择自己的工具的团队会根据他们的工作方式以及他们需要执行的任务来做出这些选择。没有人比从业者更了解他们需要什么才能有效，因此从业者工具的选择有助于推动更好的结果也就不足为奇了。
+    员工必须拥有完成工作所需的工具，并且[团队可以决定他们使用哪些工具](https://cloud.google.com/architecture/devops/devops-tech-teams-empowered-to-choose-工具)在持续交付方面做得更好。可以选择自己的工具的团队会根据他们的工作方式以及他们需要执行的任务来做出这些选择。没有人比从业者更了解他们需要什么才能有效，因此从业者工具的选择有助于推动更好的结果也就不足为奇了。
 
-  Employees must also have the resources necessary to do their work. Those might be technical resources, such as access to servers or environments necessary to develop and test, or resources needed to learn and develop new skills, such as access to course materials and budget to attend trainings or technical conferences.
+   Employees must also have the resources necessary to do their work. Those might be technical resources, such as access to servers or environments necessary to develop and test, or resources needed to learn and develop new skills, such as access to course materials and budget to attend trainings or technical conferences.
 
 员工还必须拥有完成工作所需的资源。这些可能是技术资源，例如访问开发和测试所需的服务器或环境，或学习和发展新技能所需的资源，例如访问课程材料和参加培训或技术会议的预算。
 
 - **Give employees meaningful work that leverages their expertise.**
 
-   - **利用他们的专业知识为员工提供有意义的工作。**
+- **利用他们的专业知识为员工提供有意义的工作。**
 
-  The importance of meaningful work can't be overstated. In some studies, employees have rated the importance of meaningful work just as highly as the importance of salary. Meaningful work makes a difference and is often very personal.
+   The importance of meaningful work can't be overstated. In some studies, employees have rated the importance of meaningful work just as highly as the importance of salary. Meaningful work makes a difference and is often very personal.
 
 有意义的工作的重要性怎么强调都不为过。在一些研究中，员工对有意义工作的重要性与薪水的重要性一样高。有意义的工作会有所作为，而且通常非常个人化。
 

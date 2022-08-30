@@ -72,7 +72,7 @@ Continuing to build a climate for learning is directly related to how an organiz
 
 The most effective way to measure your climate for learning is to survey your employees. Use well-designed items and constructs that are rigorous and show good [psychometric properties](https://wikipedia.org/wiki/Psychometrics)  of [discriminant](https://wikipedia.org/wiki/Discriminant_validity)  and [convergent ](https://wikipedia.org/wiki/Convergent_validity)  validity and reliability (all statistical measures). The goal is for teams to feel that learning is encouraged and supported throughout the organization.
 
-衡量您的学习氛围的最有效方法是调查您的员工。使用精心设计的项目和结构，这些项目和结构严格并显示出 [discriminant](https://wikipedia.org/wiki/Discriminant_validity) 和 [convergent] 的良好 [心理测量特性](https://wikipedia.org/wiki/Psychometrics)](https://wikipedia.org/wiki/Convergent_validity)有效性和可靠性（所有统计测量)。目标是让团队感到整个组织都鼓励和支持学习。
+衡量您的学习氛围的最有效方法是调查您的员工。使用精心设计的项目和结构，这些项目和结构严格并显示出 [discriminant](https://wikipedia.org/wiki/Discriminant_validity) 和 convergent 的良好 [心理测量特性](https://wikipedia.org/wiki/Psychometrics)有效性和可靠性（所有统计测量)。目标是让团队感到整个组织都鼓励和支持学习。
 
 Research presented in the article [An empirical analysis of the levers of control framework](https://www.sciencedirect.com/science/article/pii/S0361368207000049)  shows that you can measure learning culture based on the extent to which people agree or disagree with the following statements about their organization:
 
