@@ -21,7 +21,7 @@ var outString string
 
 // Use google translate api
 func Translate(source, sourceLang, targetLang string) error {
-	queryURL := "https://translate.google.cn/translate_a/single?client=gtx&sl=" +
+	queryURL := "https://translate.google.com.hk/translate_a/single?client=gtx&sl=" +
 		sourceLang + "&tl=" + targetLang + "&dt=t&q=" + url.QueryEscape(source)
 	// fmt.Println(queryURL)
 	var resp *http.Response
