@@ -500,3 +500,7 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [ Professional Cloud Architect](docs/tr-cloud-architect.md)
 1. [ Professional Cloud Architect](docs/tr-professional-cloud-architect.md)
 1. [Case Study Review: EHR Healthcare](docs/tr-case-study-review-ehr-healthcare.md)
+1. [Case Study Review: Helicopter Racing League](docs/tr-case-study-review-helicopter-racing-league.md)
+1. [Case Study Review: Mountkirk Games](docs/tr-case-study-review-mountkirk-games.md)
+1. [Case Study Review: TerramEarth](docs/tr-case-study-review-terramearth.md)
+1. [How to pass the Google Cloud Professional Cloud Architect exam in 30 days or less!](docs/tr-how-to-pass-the-google-cloud-professional-cloud-architect-exam-in-30-days.md)
