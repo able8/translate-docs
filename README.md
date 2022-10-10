@@ -498,7 +498,7 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [DevOps process: Working in small batches](docs/tr-devops-process-working-in-small-batches.md)
 1. [How to Ask for Help on Slack](docs/tr-how-to-ask-for-help-on-slack.md)
 
-# [GCP Professional Cloud Architect Certification exam] 
+# GCP Professional Cloud Architect Certification Exam
 1. [Professional Cloud Architect](docs/tr-cloud-architect.md)
 1. [Professional Cloud Architect Certification exam guide](docs/tr-professional-cloud-architect.md)
 1. [Case Study Review: EHR Healthcare](docs/tr-case-study-review-ehr-healthcare.md)
