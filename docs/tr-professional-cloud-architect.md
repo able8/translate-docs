@@ -2,8 +2,6 @@
 https://cloud.google.com/certification/guides/professional-cloud-architect
 
 # 专业云架构师 认证考试指南
-https://cloud.google.com/certification/guides/professional-cloud-architect
-
 
 A Google Cloud Certified Professional Cloud Architect enables organizations to leverage Google Cloud technologies. Through an understanding of cloud architecture and Google technology, this individual designs, develops, and manages robust, secure, scalable, highly available, and dynamic solutions to drive business objectives. The Cloud Architect should be proficient in all aspects of enterprise cloud strategy, solution design, and architectural best practices. The Cloud Architect should also be experienced in software development methodologies and approaches including multi-tiered distributed applications which span multicloud or hybrid environments.
 
@@ -31,6 +29,7 @@ During the exam for the Cloud Architect Certification, some of the questions may
 #### 第 1 部分：设计和规划云解决方案架构
 
 1.1 Designing a solution infrastructure that meets business requirements. Considerations include:
+
   -  Business use cases and product strategy
   -  Cost optimization
   -  Supporting the application design
@@ -42,6 +41,7 @@ During the exam for the Cloud Architect Certification, some of the questions may
   -  Compliance and observability
 
 1.1 设计满足业务需求的解决方案基础架构。考虑因素包括：
+
  - 业务用例和产品策略
  - 成本优化
  - 支持应用程序设计
@@ -53,6 +53,7 @@ During the exam for the Cloud Architect Certification, some of the questions may
  - 合规性和可观察性
 
 1.2 Designing a solution infrastructure that meets technical requirements. Considerations include:
+
   -  High availability and failover design
   -  Elasticity of cloud resources with respect to quotas and limits
   -  Scalability to meet growth requirements
@@ -83,6 +84,7 @@ During the exam for the Cloud Architect Certification, some of the questions may
  - 将计算需求映射到平台产品
 
 1.4 Creating a migration plan (i.e., documents and architectural diagrams). Considerations include:
+
   -  Integrating solutions with existing systems
   -  Migrating systems and data to support the solution
   -  Software license mapping
@@ -153,13 +155,10 @@ During the exam for the Cloud Architect Certification, some of the questions may
  - 基础架构编排、资源配置和补丁管理
  - 容器编排
 
-#### Section 3: Designing for  security and compliance
+#### Section 3: Designing for security and compliance
 
-#### 第 3 部分：安全性和合规性设计
+ 3.1 Designing for security. Considerations include:
 
- 
-
-3.1 Designing for security. Considerations include:
   -  Identity and access management (IAM)
   -  Resource hierarchy (organizations, folders, projects)
   -  Data security (key management, encryption, secret management)
@@ -168,7 +167,10 @@ During the exam for the Cloud Architect Certification, some of the questions may
   -  Managing customer-managed encryption keys with Cloud Key Management Service
   - Remote access
 
+#### 第 3 部分：安全性和合规性设计
+
 3.1 安全设计。考虑因素包括：
+
  - 身份和访问管理 (IAM)
  - 资源层次结构（组织、文件夹、项目）
  - 数据安全（密钥管理、加密、秘密管理）
@@ -232,7 +234,7 @@ During the exam for the Cloud Architect Certification, some of the questions may
 
 #### Section 5: Managing  implementation
 
-#### 第 5 部分：管理实施
+第 5 部分：管理实施
 
 5.1 Advising development/operation teams to ensure successful deployment of the solution. Considerations include:
 
@@ -249,17 +251,17 @@ During the exam for the Cloud Architect Certification, some of the questions may
  - 数据和系统迁移和管理工具
 
 5.2 Interacting with Google Cloud programmatically. Considerations include:
+
   -  Google Cloud Shell
   -  Google Cloud SDK (gcloud, gsutil and bq)
   -  Cloud Emulators (e.g. Cloud Bigtable, Datastore, Spanner, Pub/Sub, Firestore)
 
-
-
 5.2 以编程方式与 Google Cloud 交互。考虑因素包括：
+
  - 谷歌云壳
  - 谷歌云 SDK（gcloud、gsutil 和 bq）
  - 云模拟器（例如 Cloud Bigtable、Datastore、Spanner、Pub/Sub、Firestore）
-#### Section 6: Ensuring  solution and operations reliability
+#### Section 6: Ensuring solution and operations reliability
 
 6.1 Monitoring/logging/profiling/alerting solution
 
@@ -268,8 +270,6 @@ During the exam for the Cloud Architect Certification, some of the questions may
 6.3 Assisting with the support of deployed solutions
 
 6.4 Evaluating quality control measures 
-
-
 
 #### 第 6 部分：确保解决方案和操作的可靠性
 6.1 监控/记录/分析/警报解决方案

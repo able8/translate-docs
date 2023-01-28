@@ -300,7 +300,7 @@ Be curious, search, connect, and ask!
 
 # 3\. Exam Strategies
 
-#3. 考试策略
+考试策略
 
 You would be surprised to know that just studying for your test adequately isn’t always enough to pass. There are some really easy tips and tricks that you can implement leading up to and on your test day for your mind to be working at its best. Remember, your brain is not a binary device that is either on or off -- it’s a highly sophisticated complex machine that operates its best when it’s treated it’s best. Follow these test-taking tips to increase your chances of success.
 
@@ -610,7 +610,7 @@ There are various other online testing questions you can use, but just remember,
 
 # 6\. Concepts to prepare for the exam
 
-#6. 准备考试的概念
+准备考试的概念
 
 This section is basically a very rough write-up of things I’ve seen on the exam. This is way less organized and thorough than the book, but just some key points that I’ve added myself for now and will crowdsource the remainder through you all. So, add comments below to recommend changes.
 
@@ -1044,7 +1044,7 @@ Billing dives into how to manage your billing accounts for large multinational o
 
 # 7\. Help someone with your new knowledge
 
-#7. 用你的新知识帮助别人
+7. 用你的新知识帮助别人
 
 Folks. 
 
