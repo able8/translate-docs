@@ -508,8 +508,10 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [The USA TODAY NETWORK’s SRE team’s journey into Docker and Kubernetes. Was it worth it?](docs/tr-the-usa-today-networks-sre-team-s-journey-into-docker-and-kubernetes-was-it-worth-it-d20840757f05.md)
 
 1. [The TIME Project](docs/tr-the-time-project.md)
+
+## IaC - Crossplane - AWS Controllers - GCP Config Connector
 1. [Playing with Crossplane, for real](docs/tr-playing-with-crossplane-for-real.md)
-1. [Introducing the AWS Controllers for Kubernetes (ACK)](docs/tr-aws-controllers-for-kubernetes-ack.md)
-1. [Config Connector, a new approach to Infrastructure as Code](docs/tr-config-connector-a-new-approach-to-infrastructure-as-code.md)
-1. [Config Connector overview](docs/tr-config-connector-overview.md)
 1. [aws-controllers-k8s Code Generation](docs/tr-aws-controllers-k8s-code-generation.md)
+1. [Introducing the AWS Controllers for Kubernetes (ACK)](docs/tr-aws-controllers-for-kubernetes-ack.md)
+1. [Config Connector overview](docs/tr-config-connector-overview.md)
+1. [Config Connector, a new approach to Infrastructure as Code](docs/tr-config-connector-a-new-approach-to-infrastructure-as-code.md)
