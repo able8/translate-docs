@@ -508,3 +508,4 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [The USA TODAY NETWORK’s SRE team’s journey into Docker and Kubernetes. Was it worth it?](docs/tr-the-usa-today-networks-sre-team-s-journey-into-docker-and-kubernetes-was-it-worth-it-d20840757f05.md)
 
 1. [The TIME Project](docs/tr-the-time-project.md)
+1. [Playing with Crossplane, for real](docs/tr-playing-with-crossplane-for-real.md)
