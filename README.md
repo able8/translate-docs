@@ -515,3 +515,9 @@ git status  | grep "tr-" | while read line; do echo "1. [$(head -n 1 $line|sed '
 1. [Introducing the AWS Controllers for Kubernetes (ACK)](docs/tr-aws-controllers-for-kubernetes-ack.md)
 1. [Config Connector overview](docs/tr-config-connector-overview.md)
 1. [Config Connector, a new approach to Infrastructure as Code](docs/tr-config-connector-a-new-approach-to-infrastructure-as-code.md)
+
+
+
+## 
+1. [Reverse Proxy, HTTP Keep-Alive Timeout, and sporadic HTTP 502s](docs/tr-reverse-proxy-http-keep-alive-and-502s.md)
+1. [A Solution to HTTP 502 Errors with AWS ALB](docs/tr-how-to-fix-http-502-errors.md)

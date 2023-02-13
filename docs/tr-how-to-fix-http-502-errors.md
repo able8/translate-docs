@@ -1,18 +1,15 @@
 # A Solution to HTTP 502 Errors with AWS ALB
 
-# 使用 AWS ALB 解决 HTTP 502 错误
 
-https://www.tessian.com/blog/how-to-fix-http-502-errors/
+# 使用 AWS ALB 解决 HTTP 502 错误
 
 https://www.tessian.com/blog/how-to-fix-http-502-errors/
 
 by Samson DanzigerFriday, October 1st, 2021
 
-作者：Samson Danziger 2021 年 10 月 1 日，星期五
-
 At Tessian, we have many applications that interact with each other using [REST APIs](https://www.redhat.com/en/topics/api/what-is-a-rest-api). We noticed in the logs that at random times, uncorrelated with traffic, and seemingly unrelated to any code we had actually written, we were getting a lot of HTTP 502 “Bad Gateway” errors.
 
-在 Tessian，我们有许多使用 [REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api) 相互交互的应用程序。我们在日志中注意到，在随机时间，与流量无关，并且看似与我们实际编写的任何代码无关，我们会收到大量 HTTP 502“Bad Gateway”错误。
+在 Tessian，我们有许多使用 [REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api) 相互交互的应用程序。我们在日志中注意到，在随机时间，与流量无关，并且看似与我们实际编写的任何代码无关，我们会收到大量 HTTP 502 “Bad Gateway”错误。
 
 Now that the issue is fixed, I wanted to explain what this error means, how you get it and how to solve it. My hope is that if you’re having to solve this same issue, this article will explain why and what to do.
 
@@ -170,8 +167,6 @@ I have included the configuration for common Python and Node server frameworks b
 
 ### uWSGI (Python)
 
-### uWSGI（Python）
-
 As a config file:
 
 作为配置文件：
@@ -208,8 +203,6 @@ As command line arguments:
 ```
 
 ### Express (Node)
-
-### 快递（节点）
 
 In Express, specify the time in milliseconds on the server object.
 
